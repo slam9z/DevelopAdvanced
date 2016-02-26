@@ -7,10 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNETBasic", "DotNETBasic\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{86326AAF-E993-4B78-B5DB-6A4D8461A9D1}"
 	ProjectSection(SolutionItems) = preProject
-		.NET线程同步.md = .NET线程同步.md
+		Document\.NET线程同步.md = Document\.NET线程同步.md
 		Document\Git常用命令.md = Document\Git常用命令.md
-		Markdown使用语法.md = Markdown使用语法.md
-		学习计划.md = 学习计划.md
+		Document\Markdown使用语法.md = Document\Markdown使用语法.md
+		Document\学习计划.md = Document\学习计划.md
 	EndProjectSection
 EndProject
 Global
