@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{86
 	ProjectSection(SolutionItems) = preProject
 		.NET线程同步.md = .NET线程同步.md
 		Document\Git常用命令.md = Document\Git常用命令.md
+		Markdown使用语法.md = Markdown使用语法.md
 		学习计划.md = 学习计划.md
 	EndProjectSection
 EndProject
