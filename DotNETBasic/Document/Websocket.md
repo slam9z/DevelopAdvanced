@@ -97,12 +97,46 @@ StreamWebSocket 仅支持二进制消息。对于 UTF-8 消息，必须使用 Me
     ``` C#
       public abstract Task<WebSocketReceiveResult> ReceiveAsync(ArraySegment<byte> buffer,CancellationToken cancellationToken)
     ```
-    有点奇怪为什么是使用方法而不是事件。
+    有点奇怪为什么是使用方法而不是事件（event-based）,标准写法
     
+     ``` C#
+      private static async Task ChatWithServer()
+      {
+        using (ClientWebSocket ws = new ClientWebSocket())
+        {
+            Uri serverUri = new Uri("ws://localhost/WSChat/WSHandler.ashx");
+            await ws.ConnectAsync(serverUri, CancellationToken.None);
+            while (true)
+            {
+                Console.Write("Input message ('exit' to exit): ");
+                string msg = Console.ReadLine();
+                if (msg == "exit")
+                {
+                    break;
+                }
+                ArraySegment<byte> bytesToSend = new ArraySegment<byte>(
+                    Encoding.UTF8.GetBytes(msg));
+                await ws.SendAsync(
+                    bytesToSend, WebSocketMessageType.Text, 
+                    true, CancellationToken.None);
+                ArraySegment<byte> bytesReceived = new ArraySegment<byte>(new byte[1024]);
+                WebSocketReceiveResult result = await ws.ReceiveAsync(
+                    bytesReceived, CancellationToken.None);
+                Console.WriteLine(Encoding.UTF8.GetString(
+                    bytesReceived.Array, 0, result.Count));
+                if (ws.State != WebSocketState.Open)
+                {
+                    break;
+                }
+            }
+        }
+     }
+    ```
 
     * ServerHost
     
       * Using `HttpContext.AcceptWebSocketRequest`
       * Creating a WCF service with `CallbackContract` and the new `netHttpBinding`
       * Using `WebSocketHandler` or `WebSocketHost` provided in *Microsoft.WebSockets.dll*
+          event-based.
  
