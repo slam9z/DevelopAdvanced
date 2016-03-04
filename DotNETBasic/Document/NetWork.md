@@ -1,12 +1,40 @@
 
 
 ##Websocket
+
+  The WebSocket protocol was standardized by IETF(Internet Engineering Task Force ) as  [RFC 6455](http://tools.ietf.org/html/rfc6455).
+  
+  RFC(Request For Commits)
+  
+  A WebSocket connection is established by a HTTP handshake (prefixed by "ws://" or "wss://") between the client and the server. the client sends a request:
+```
+GET /mychat HTTP/1.1
+Host: server.example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==
+Sec-WebSocket-Protocol: chat
+Sec-WebSocket-Version: 13
+Origin: http://example.com
+```
+  Then the server sends a response to accept the connection:
+
+```
+Hide   Copy Code
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=
+Sec-WebSocket-Protocol: chat
+```
   
   Websocket是一种长连接，双通道的网络协议。
   
   Websocket是html5的一部分，通过javascript可以直接使用Websocket。
   
   Websocket支持代理，需要在Connect之前设置。
+  
+  [wiki](https://en.wikipedia.org/wiki/WebSocket)
 
 ####.NET实现
   
