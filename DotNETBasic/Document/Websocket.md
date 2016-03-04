@@ -35,7 +35,8 @@ Sec-WebSocket-Protocol: chat
   
   消息类型：Text Or Binary。
   
-  Frame与Payload的概念
+  Frame与Payload的概念,数据是按Frame发送的
+  [WebSocket协议分析](http://www.cnblogs.com/caosiyang/archive/2012/08/14/2637721.html)
   
   [wiki](https://en.wikipedia.org/wiki/WebSocket)
 
