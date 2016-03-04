@@ -35,8 +35,8 @@ Sec-WebSocket-Protocol: chat
   
   消息类型：Text Or Binary。
   
-  Frame与Payload的概念,数据是按Frame发送的
-  <br/>[WebSocket协议分析](http://www.cnblogs.com/caosiyang/archive/2012/08/14/2637721.html)
+  Frame与Payload的概念,数据是按Frame发送的  
+  [WebSocket协议分析](http://www.cnblogs.com/caosiyang/archive/2012/08/14/2637721.html)
   
   [wiki](https://en.wikipedia.org/wiki/WebSocket)
 
@@ -138,6 +138,6 @@ StreamWebSocket 仅支持二进制消息。对于 UTF-8 消息，必须使用 Me
     
       * Using `HttpContext.AcceptWebSocketRequest`
       * Creating a WCF service with `CallbackContract` and the new `netHttpBinding`
-      * Using `WebSocketHandler` or `WebSocketHost` provided in *Microsoft.WebSockets.dll*
-          <br/>event-based.
+      * Using `WebSocketHandler` or `WebSocketHost` provided in *Microsoft.WebSockets.dll*  
+      event-based.
  
