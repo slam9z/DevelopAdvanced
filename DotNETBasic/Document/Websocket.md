@@ -1,5 +1,4 @@
 
-
 ##Websocket
 
   The WebSocket protocol was standardized by IETF(Internet Engineering Task Force ) as  [RFC 6455](http://tools.ietf.org/html/rfc6455).
@@ -72,10 +71,3 @@ StreamWebSocket 仅支持二进制消息。对于 UTF-8 消息，必须使用 Me
       [Using Microsoft.WebSockets.dll](http://www.codeproject.com/Articles/620731/Using-WebSocket-in-NET-4-5-Part-4) 
   
 
-##HTTP
-
-
-##TCP/IP
-
-
-###Proxy
