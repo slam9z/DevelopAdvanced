@@ -35,6 +35,8 @@ Sec-WebSocket-Protocol: chat
   
   消息类型：Text Or Binary。
   
+  Frame与Payload的概念
+  
   [wiki](https://en.wikipedia.org/wiki/WebSocket)
 
 ####.NET实现
