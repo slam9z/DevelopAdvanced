@@ -9,7 +9,7 @@
   Websocket支持代理，需要在Connect之前设置。
 
 ####.NET实现
-
+  
   * WinRt与UWP实现
     * MessageWebSocket 支持UTF-8消息
       * Closed 
@@ -31,7 +31,12 @@ StreamWebSocket 仅支持二进制消息。对于 UTF-8 消息，必须使用 Me
 
       [StreamWebSocket类](https://msdn.microsoft.com/zh-cn/library/windows/apps/windows.networking.sockets.streamwebsocket.aspx)
     
-
+  *.NET4.5的支持Server与Client（感觉十分的复杂）
+    1. [Overview on WebSocket protocol and .NET support](http://www.codeproject.com/Articles/617611/Using-WebSocket-in-NET-4-5-Part-1) 
+    2. [Using WebSocket in Traditional ASP.NET and MVC 4](http://www.codeproject.com/Articles/618032/Using-WebSocket-in-NET-4-5-Part-2)
+    3. [Using WCF support for WebSocket](http://www.codeproject.com/Articles/619343/Using-WebSocket-in-NET-4-5-Part-3)
+    4. [Using Microsoft.WebSockets.dll](http://www.codeproject.com/Articles/620731/Using-WebSocket-in-NET-4-5-Part-4) 
+  
 
 ##HTTP
 
