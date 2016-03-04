@@ -1,6 +1,8 @@
 
-详细说明的链接：
+璇︾粏璇存槑鐨勯摼鎺ワ細
 
-[Markdown 语法说明 (简体中文版)](http://wowubuntu.com/markdown/)
+[Markdown 璇硶璇存槑 (绠�浣撲腑鏂囩増)](http://wowubuntu.com/markdown/)
 
-[GitHub上README写法暨markdown语法解读](http://www.tuicool.com/articles/zIJrEjn)
+[GitHub涓奟EADME鍐欐硶鏆╩arkdown璇硶瑙ｈ](http://www.tuicool.com/articles/zIJrEjn)
+
+[GitHub瀹樻柟璇硶](https://help.github.com/categories/writing-on-github/)
