@@ -33,6 +33,8 @@ Sec-WebSocket-Protocol: chat
   
   Websocket支持代理，需要在Connect之前设置。
   
+  消息类型：Text Or Binary。
+  
   [wiki](https://en.wikipedia.org/wiki/WebSocket)
 
 ####.NET实现
@@ -69,5 +71,36 @@ StreamWebSocket 仅支持二进制消息。对于 UTF-8 消息，必须使用 Me
       [Using WCF support for WebSocket](http://www.codeproject.com/Articles/619343/Using-WebSocket-in-NET-4-5-Part-3)
     
       [Using Microsoft.WebSockets.dll](http://www.codeproject.com/Articles/620731/Using-WebSocket-in-NET-4-5-Part-4) 
-  
+    
+    * WebSocket(抽象类)
+    
+    Close方法
 
+    ``` C#
+      public abstract Task CloseAsync(WebSocketCloseStatus closeStatus,
+                string statusDescription,CancellationToken cancellationToken)
+    ```
+    CloseStatus也是有相应规范的，例如 NormalClosure (1000) 表示正常完成请求关闭。
+ 
+    [WebSocketCloseStatus](https://msdn.microsoft.com/en-us/library/system.net.websockets.websocketclosestatus(v=vs.110).aspx)
+    
+    Send方法
+    
+    ``` C#
+      public abstract Task SendAsync(	ArraySegment<byte> buffer,WebSocketMessageType messageType,
+          	bool endOfMessage,CancellationToken cancellationToken)
+    ```
+    
+    Receive方法
+    ``` C#
+      public abstract Task<WebSocketReceiveResult> ReceiveAsync(ArraySegment<byte> buffer,CancellationToken cancellationToken)
+    ```
+    有点奇怪为什么是使用方法而不是事件。
+    
+
+    * ServerHost
+    
+      * Using `HttpContext.AcceptWebSocketRequest`
+      * Creating a WCF service with `CallbackContract` and the new `netHttpBinding`
+      * Using `WebSocketHandler` or `WebSocketHost` provided in *Microsoft.WebSockets.dll*
+ 
