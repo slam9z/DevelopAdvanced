@@ -142,4 +142,8 @@ StreamWebSocket 仅支持二进制消息。对于 UTF-8 消息，必须使用 Me
       * Creating a WCF service with `CallbackContract` and the new `netHttpBinding`
       * Using `WebSocketHandler` or `WebSocketHost` provided in *Microsoft.WebSockets.dll*  
       event-based.
- 
+	
+	* websocket-sharp
+	   
+		自带了HttpRequest和HttpServer的实现，感觉十分的有趣。	
+	
