@@ -11,10 +11,12 @@
 
 ###WebRequest(HttpWebRequest)
 
+	WebRequest Request for URI. request/response model 
 
 * RequestHeaders
 * UserAgent
-* BeginGetRequestStream与EndGetRequestStream  IAsyncResult
+* Create(Uri)
+* BeginGetRequestStream与EndGetRequestStream(IAsyncResult)或者或者GetRequestStream
 
 	获取body的写入流
 ``` C#
@@ -36,7 +38,7 @@
                     }, request);
 ```
 
-* BeginGetResponse与EndGetResponse 
+* BeginGetResponse与EndGetResponse 或者GetResponse 
 
 ``` C#
 		var resAsyncResult = request.BeginGetResponse((resar) =>
@@ -72,6 +74,30 @@
         }
 ```
 
+* upload file(form)
+
+	ContentType Multipart/form-data与boundary,boundary是为了支持同时上传多个文件的。
+
+``` C#
+	const string end = "\r\n";
+	const string twoHyphens = "--";
+	var boundary = string.Format("--------------WI{0}", Guid.NewGuid().ToString("N"));
+	var contentType = string.Format("multipart/form-data; boundary={0}", boundary);
+	var contentDisposition = "Content-Disposition: form-data; name=\"" + fileFormName + "\"; filename=\"" + uploadedFileName + "\"";
+	var twoHyphensbytes = Encoding.UTF8.GetBytes(twoHyphens);
+	var boundaryBytes = Encoding.UTF8.GetBytes(boundary);
+	var endBytes = Encoding.UTF8.GetBytes(end);
+	var contentDispositionbytes = Encoding.UTF8.GetBytes(contentDisposition);
+	var contentTypebytes = Encoding.UTF8.GetBytes("Content-Type: application/octet-stream");
+```
+
+[Multipart/form-data POST文件上传详解](http://blog.csdn.net/xiaojianpitt/article/details/6856536)
+
+
+
+[WebRequest类](https://msdn.microsoft.com/zh-cn/library/system.net.webrequest(v=vs.110).aspx)
+
+[HttpWebRequest类](https://msdn.microsoft.com/zh-cn/library/system.net.httpwebrequest(v=vs.110).aspx)
 
 
 ###WebClient
