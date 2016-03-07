@@ -45,14 +45,14 @@ Sec-WebSocket-Protocol: chat
   [wiki](https://en.wikipedia.org/wiki/WebSocket)
 
 ####.NET实现
-  
+  	
 * WinRt与UWP实现
-    * MessageWebSocket 支持UTF-8消息
-      * Closed 
-      * MessageReceived 
-      * ConnectAsync 
-      * Control(MessageWebSocketControl) 支持设置代理（ProxyCredential）和验证（ServerCredential）
-      * OutputStream  通过[DataWriter](https://msdn.microsoft.com/zh-cn/library/windows/apps/windows.storage.streams.datawriter.aspx)发送信息给服务端
+	* MessageWebSocket 支持UTF-8消息
+      	* Closed 
+    	* MessageReceived 
+    	* ConnectAsync 
+      	* Control(MessageWebSocketControl) 支持设置代理（ProxyCredential）和验证（ServerCredential）
+      	* OutputStream  通过[DataWriter](https://msdn.microsoft.com/zh-cn/library/windows/apps/windows.storage.streams.datawriter.aspx)发送信息给服务端
 
      `MessageWebSocket 类提供 WebSocket 协议的基于消息的抽象。使用 MessageWebSocket 时，在单个操作中读取或写入整个 WebSocket         消息。与之对比，使用 StreamWebSocket 允许每个读取操作读取消息的各个部分，而不是要求在单个操作读取整个消息。
 对于 UTF-8 消息，必须使用 MessageWebSocket。StreamWebSocket 仅支持二进制消息。`
@@ -67,9 +67,9 @@ StreamWebSocket 仅支持二进制消息。对于 UTF-8 消息，必须使用 Me
 
       [StreamWebSocket类](https://msdn.microsoft.com/zh-cn/library/windows/apps/windows.networking.sockets.streamwebsocket.aspx)
    
-  * .NET4.5的支持Server与Client（感觉十分的复杂）
+* .NET4.5的支持Server与Client（感觉十分的复杂）
     
-    * CodeProject系列文章：
+   * CodeProject系列文章：
     
       [Overview on WebSocket protocol and .NET support](http://www.codeproject.com/Articles/617611/Using-WebSocket-in-NET-4-5-Part-1)
     
@@ -140,26 +140,26 @@ StreamWebSocket 仅支持二进制消息。对于 UTF-8 消息，必须使用 Me
 
     * ServerHost
     
-      * Using `HttpContext.AcceptWebSocketRequest`
-      * Creating a WCF service with `CallbackContract` and the new `netHttpBinding`
-      * Using `WebSocketHandler` or `WebSocketHost` provided in *Microsoft.WebSockets.dll*  
+    	* Using `HttpContext.AcceptWebSocketRequest`
+      	* Creating a WCF service with `CallbackContract` and the new `netHttpBinding`
+      	* Using `WebSocketHandler` or `WebSocketHost` provided in *Microsoft.WebSockets.dll*  
       event-based.
 
-  * websocket-sharp
+* websocket-sharp
 	   
-		自带了HttpRequest和HttpServer的实现，感觉十分的有趣。	
+	自带了HttpRequest和HttpServer的实现，感觉十分的有趣。	
 		
 	* Client
 				
-	基于事件的处理方式，源代码使用Frame与PlayloadData与协议的的描述十分一致。
-	
-	  * OnOpen	
-      * OnMessage
-	  * OnError
-	  * OnClose
-	  * Connect
-	  * SetProxy
-	  * Send
+		基于事件的处理方式，源代码使用Frame与PlayloadData与协议的的描述十分一致。	
+
+		* OnOpen			
+		* OnMessage
+		* OnError	
+		* OnClose
+		* Connect
+		* SetProxy
+		* Send
 
 	* Server
 				
