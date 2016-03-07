@@ -46,7 +46,7 @@ Sec-WebSocket-Protocol: chat
 
 ####.NET实现
   
-  * WinRt与UWP实现
+* WinRt与UWP实现
     * MessageWebSocket 支持UTF-8消息
       * Closed 
       * MessageReceived 
@@ -144,29 +144,29 @@ StreamWebSocket 仅支持二进制消息。对于 UTF-8 消息，必须使用 Me
       * Creating a WCF service with `CallbackContract` and the new `netHttpBinding`
       * Using `WebSocketHandler` or `WebSocketHost` provided in *Microsoft.WebSockets.dll*  
       event-based.
-	
-	* websocket-sharp
+
+  * websocket-sharp
 	   
 		自带了HttpRequest和HttpServer的实现，感觉十分的有趣。	
 		
-		* Client
+	* Client
 				
-			基于事件的处理方式，源代码使用Frame与PlayloadData与协议的的描述十分一致。
+	基于事件的处理方式，源代码使用Frame与PlayloadData与协议的的描述十分一致。
+	
+		* OnOpen
+		* OnMessage
+		* OnError
+		* OnClose
+		* Connect
+		* SetProxy
+		* Send
 
-			* OnOpen
-			* OnMessage
-			* OnError
-			* OnClose
-			* Connect
-			* SetProxy
-			* Send
-
-		* Server
+	* Server
 				
-			HttpServer作为一个简单的Server。RootPath，OnGet(OnDelete等方法)，Start与Stop
-      AddWebSocketService添加WebSocketBehavior对象处理Websocket消息。
+		HttpServer作为一个简单的Server。RootPath，OnGet(OnDelete等方法)，Start与Stop
+     AddWebSocketService添加WebSocketBehavior对象处理Websocket消息。
 		
-			WebSocketBehavior来处理请求方法与WebSocket一致。每个WebSocket请求都会生成一个新的WebSocket。
+		WebSocketBehavior来处理请求方法与WebSocket一致。每个WebSocket请求都会生成一个新的WebSocket。
 
 
 
