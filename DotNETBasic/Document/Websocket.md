@@ -163,8 +163,10 @@ StreamWebSocket 仅支持二进制消息。对于 UTF-8 消息，必须使用 Me
 
 	* Server
 				
-		HttpServer作为一个简单的Server。RootPath，OnGet(OnDelete等方法)，Start与Stop
+		HttpServer作为一个简单的Http Server。RootPath，OnGet(OnDelete等方法)，Start与Stop
      AddWebSocketService添加WebSocketBehavior对象处理Websocket消息。
+
+		也可以单独使用WebSocketServer作为服务器。
 		
 		WebSocketBehavior来处理请求方法与WebSocket一致。每个WebSocket请求都会生成一个新的WebSocket。
 
