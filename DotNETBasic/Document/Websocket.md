@@ -153,13 +153,13 @@ StreamWebSocket 仅支持二进制消息。对于 UTF-8 消息，必须使用 Me
 				
 	基于事件的处理方式，源代码使用Frame与PlayloadData与协议的的描述十分一致。
 	
-		* OnOpen
-		* OnMessage
-		* OnError
-		* OnClose
-		* Connect
-		* SetProxy
-		* Send
+	  * OnOpen	
+      * OnMessage
+	  * OnError
+	  * OnClose
+	  * Connect
+	  * SetProxy
+	  * Send
 
 	* Server
 				
