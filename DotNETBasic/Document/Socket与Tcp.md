@@ -47,16 +47,39 @@
 * Bind(EndPoint)
 * Listen(Int32)
 最大连接数
+
+* 编程模型
+    * 同步
+    * AsyncCallback Delegate and State Object
+
+       AsyncCallback 
+
+    * Event-based Asynchronous Pattern
+
+        SocketAsyncEventArgs,Completed事件是必须的。这种编程感觉更加难理解
+
+
+[Using an AsyncCallback Delegate and State Object](https://msdn.microsoft.com/zh-cn/library/ms228978(v=vs.110).aspx)
+
+[Event-based Asynchronous Pattern (EAP)](https://msdn.microsoft.com/zh-cn/library/ms228969(v=vs.110).aspx)
+
+
 * Accept方法
     
-包含3种编程模型
-
 Socket Accept()  
 bool AcceptAsync(SocketAsyncEventArgs)  
-IAsyncResult BeginAccept(AsyncCallback,object state)
+IAsyncResult BeginAccept(AsyncCallback,object state)  
+EndAccept(IAsyncResult)
 
-    
+* Receive
 
+* Send
+   
+* Shutdown(SocketShutdown)
+
+* Close()
+
+* Connect(EndPoint)
 
 
 [C#Socket 异步代码示例](http://www.cnblogs.com/klvk/archive/2011/07/05/2098632.html)
