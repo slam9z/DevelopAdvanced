@@ -3,9 +3,9 @@
 
 ###Socket原理
 
-    Socket是建立在各种底层传输层上的一个编程抽象接口，门面模式的设计模式。
+Socket是建立在各种底层传输层上的一个编程抽象接口，门面模式的设计模式。
     
-    Socket概念与方法
+Socket概念与方法
     
 * Type(Tcp ,Udp 等)
 * EndPoint(IP and port)
@@ -280,3 +280,68 @@ IP路由选择主要完成以下功能：
 
 ###Tcp .NET实现
 
+####TcpClient
+
+* Connect
+
+    与Socket一样
+* NetworkStream GetStream
+
+    然后 Read Write  CanRead
+
+    接收数据搞不懂啊！竟然不是事件模型。
+
+* NetworkStream
+        
+
+####TcpListener
+
+* Start
+* TcpClient  AcceptTcpClient
+
+    然后与客户端一样
+
+    建立连接的目标就是接收数据，然后读取数据。
+
+    如果不是事件驱动，用同一个连接双方怎么知道对方有发送新的数据呢？好像读写完就关闭了。使用循环！
+
+``` C#
+private void HandleClientComm(object client)
+{
+    TcpClient tcpClient = (TcpClient)client;
+    NetworkStream clientStream = tcpClient.GetStream();
+
+    byte[] message = new byte[4096];
+    int bytesRead;
+
+    while (true)
+    {
+        bytesRead = 0;
+
+        try
+        {
+            //blocks until a client sends a message
+            bytesRead = clientStream.Read(message, 0, 4096);
+        }
+        catch
+        {
+            //a socket error has occured
+            break;
+        }
+
+        if (bytesRead == 0)
+        {
+            //the client has disconnected from the server
+            break;
+        }
+
+        //message has successfully been received
+        ASCIIEncoding encoder = new ASCIIEncoding();
+        System.Diagnostics.Debug.WriteLine(encoder.GetString(message, 0, bytesRead));
+    }
+
+    tcpClient.Close();
+}
+```
+
+    [c#网络编程使用tcpListener和tcpClient](http://ilewen.com/questions/514)
