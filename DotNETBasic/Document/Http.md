@@ -116,6 +116,19 @@
 
 	Windows.Web.Http与System.Net.Http有一套相同的API。
 
+	HttpClient优势
+
+	(1) 可以在HttpClient实例上配置扩展，设置默认的头部，取消未完成的的请求和设置
+
+	(2) HttpClient有自己的连接池
+
+	(3) HttpClient 不与特定的服务器绑定，可以访问任何Http请求
+
+	(4) HttpClient采用异步请求处理（更加先进的异步）
+
+	(5) 有拦截功能
+
+
 * HttpResponseMessage
 	
 	所有方法都返回这个对象
@@ -207,7 +220,10 @@ IHttpContent - A base interface for developers to create their own content objec
 * GetAsync(requestUri)还有许多其它具体方法
 * PostAsync(requestUri,content)
 * PutAsync(Uri requestUri,HttpContent content)
-* SendAsync(HttpRequestMessage request)
+* SendAsync(HttpRequestMessage request) (.NET)
+* SendRequestAsync(HttpRequestMessage)  （Winrt）
+
+
 
 	Send方法因为可以指定Method所以应该可以实现Delete Get Post Put的功能。这种API的设计还不错。
 
@@ -247,6 +263,21 @@ IHttpContent - A base interface for developers to create their own content objec
     {
 	}
 ```
+
+* HttpClinet类在.NET与Winrt之间的差异
+	
+	* Content在Winrt是IHttpContent的接口.NET是HttpCotent抽象类。
+
+	* .NET使用HttpMessageHandler，构造函数的参数，Winrt使用IHttpFilter为参数，虽然类名称不一样但是作用也是一样。
+HttpMessageHandler(The HTTP handler stack to use for sending requests. )，SendAsync的方法可以做拦截处理。
+IHttpFilter接口的SendRequestAsync方法
+
+[IHttpFilter interface](https://msdn.microsoft.com/zh-cn/library/windows/apps/windows.web.http.filters.ihttpfilter.aspx)
+[HttpMessageHandler](https://msdn.microsoft.com/en-us/library/system.net.http.httpmessagehandler(v=vs.118).aspx)
+	
+
+里面介绍了HttpMessageHandler的用法。
+[ASP.NET MVC Web API 学习笔记----HttpClient简介](http://www.cnblogs.com/qingyuan/archive/2012/11/08/2760034.html)
 
 [Calling a Web API From a .NET Client in ASP.NET Web API 2](http://www.asp.net/web-api/overview/advanced/calling-a-web-api-from-a-net-client)
 
