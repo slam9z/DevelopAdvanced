@@ -51,8 +51,8 @@
     
 包含3种编程模型
 
-Socket Accept()
-bool AcceptAsync(SocketAsyncEventArgs)
+Socket Accept()  
+bool AcceptAsync(SocketAsyncEventArgs)  
 IAsyncResult BeginAccept(AsyncCallback,object state)
 
     
