@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{86
 		Document\Git常用命令.md = Document\Git常用命令.md
 		Document\Http.md = Document\Http.md
 		Document\Markdown使用语法.md = Document\Markdown使用语法.md
+		Document\Socket与Tcp.md = Document\Socket与Tcp.md
 		Document\Websocket.md = Document\Websocket.md
 		Document\学习计划.md = Document\学习计划.md
 	EndProjectSection
