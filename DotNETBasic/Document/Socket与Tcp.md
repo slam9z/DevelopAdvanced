@@ -345,3 +345,5 @@ private void HandleClientComm(object client)
 ```
 
 [c#网络编程使用tcpListener和tcpClient](http://ilewen.com/questions/514)
+
+[How to write a scalable Tcp/Ip based server](http://stackoverflow.com/questions/869744/how-to-write-a-scalable-tcp-ip-based-server)
