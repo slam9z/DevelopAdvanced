@@ -243,7 +243,7 @@ IHttpContent - A base interface for developers to create their own content objec
 	}
 ```
 
-*Upload file
+* Upload file
 
 ``` C#
 	HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post,new Uri(url));
@@ -276,7 +276,7 @@ IHttpFilter接口的SendRequestAsync方法
 [HttpMessageHandler](https://msdn.microsoft.com/en-us/library/system.net.http.httpmessagehandler(v=vs.118).aspx)
 	
 
-里面介绍了HttpMessageHandler的用法。
+里面介绍了HttpMessageHandler的用法。  
 [ASP.NET MVC Web API 学习笔记----HttpClient简介](http://www.cnblogs.com/qingyuan/archive/2012/11/08/2760034.html)
 
 [Calling a Web API From a .NET Client in ASP.NET Web API 2](http://www.asp.net/web-api/overview/advanced/calling-a-web-api-from-a-net-client)
