@@ -6,6 +6,9 @@
 ###Code highlight  
 [languages](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
 
+###使用特殊符号
+
+* < 符号的使用需要在< 右侧添加空格或者特殊的符号。也许只是我这个Vs插件Markdown Mode编译的highlight这样。 
 
 
 详细说明的链接：
