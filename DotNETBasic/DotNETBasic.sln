@@ -14,6 +14,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{86
 		Document\Websocket.md = Document\Websocket.md
 		Document\使用多线程.md = Document\使用多线程.md
 		Document\学习计划.md = Document\学习计划.md
+		Document\异步编程：.NET 4.5 基于任务的异步编程模型(TAP).md = Document\异步编程：.NET 4.5 基于任务的异步编程模型(TAP).md
+		Document\异步编程：.NET4.X 数据并行.md = Document\异步编程：.NET4.X 数据并行.md
+		Document\异步编程：IAsyncResult异步编程模型 (APM).md = Document\异步编程：IAsyncResult异步编程模型 (APM).md
+		Document\异步编程：使用线程池管理线程.md = Document\异步编程：使用线程池管理线程.md
+		Document\异步编程：基于事件的异步编程模式(EAP).md = Document\异步编程：基于事件的异步编程模式(EAP).md
+		Document\异步编程：线程概述及使用.md = Document\异步编程：线程概述及使用.md
+		Document\深入探究 WinRT 和 await.md = Document\深入探究 WinRT 和 await.md
 		Document\通信软件系统设计.md = Document\通信软件系统设计.md
 	EndProjectSection
 EndProject
