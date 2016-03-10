@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{86
 		Document\Websocket.md = Document\Websocket.md
 		Document\使用多线程.md = Document\使用多线程.md
 		Document\学习计划.md = Document\学习计划.md
+		Document\通信软件系统设计.md = Document\通信软件系统设计.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThreading", "MultiThreading\MultiThreading.csproj", "{81705DA4-242A-456D-A5C2-28729C1CC08A}"
