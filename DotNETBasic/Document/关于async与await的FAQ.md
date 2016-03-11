@@ -15,15 +15,14 @@
 
     .NET团队博客同样也有”async”和”await”主题的优秀资源：[《Async in .NET4.5: 值得期待》](http://blogs.msdn.com/b/dotnet/archive/2012/04/03/async-in-4-5-worth-the-await.aspx)
 
-2.         为什么需要编译器帮助我们完成异步编程？
+2. 为什么需要编译器帮助我们完成异步编程？
 
     Anders Hejlsberg’s在2011 微软Build大会上花了1个小时来帮我们说明为什么编译器在这里真的有用，视频：[《C#和Visual Basic未来的发展方向》](http://channel9.msdn.com/events/BUILD/BUILD2011/TOOL-816T)。简而言之，传统的异步编程模型（APM或EAP）要求你手写大量代码（eg：连续传递委托、回调）来实现，并且这些代码会导致语句控制流混乱颠倒。通过.NET4.5提供的新的编程模型（TAP），你可以像在写同步代码一样使用常规的顺序控制流结合并行任务及”async”和”await”关键字来完成异步编程，编译器在后台应用必要的转换以使用回调方式来避免阻塞线程。
 
-3.         通过Task.Run() 将同步方法包装成异步任务是否真的有益处？
+3. 通过Task.Run() 将同步方法包装成异步任务是否真的有益处？
 
     这取决于你的目标，你为什么要异步调用方法。如果你的目标只是想将当前任务切换到另一个线程执行，比如，保证UI线程的响应能力，那么肯定有益。如果你的目标是为了提高可扩展性，那么使用Task.Run() 包装成异步调用将没有任何实际意义。更多信息，请看《我是否应该公开同步方法对应的异步方法API？》。通过Task.Run() 你可以很轻松的实现从UI线程分担工作到另一个工作线程，且可协调后台线程一旦完成工作就返回到UI线程。（这里说的可扩展性就如当增加cpu时，Task.Run()并不会增加程序的并行效率，因为他只相当于启动了一个线程执行任务，倘若使用Parallel.For就具有更好的可扩展性。什么是系统的可扩展性？）
 
- 
 
 ###“async”关键字
 
@@ -99,7 +98,7 @@
 
     不需要，一般来说，你不需要 Dispose() 任何任务。请看[《.NET4.X并行任务Task需要释放吗？》](http://www.cnblogs.com/heyuquan/archive/2013/02/28/2937701.html)。
 
-8.  “async”是如何关联到当前SynchronizationContext？
+8. “async”是如何关联到当前SynchronizationContext？
 
     对于”async” 标记的方法，如果返回Task或Task<TResult>，则没有方法级的SynchronizationContext交互；对于”async” 标记的方法，如果返回void，则有一个隐藏的SynchronizationContext交互。
 
@@ -264,7 +263,7 @@
 
     当然能。但你不能在Main()方法中使用”await”，因为入口点不能被标记为”async”。相反，你能在控制台应用程序的其他方法中使用”await”。如果你在Main()中调用这些方法，你可以同步等待(而不是异步等待)他们的完成。Eg：
 
-        你还可以使用自定义的SynchronizationContext或TaskScheduler来实现相似的功能，更多信息请看：
+    你还可以使用自定义的SynchronizationContext或TaskScheduler来实现相似的功能，更多信息请看：
 
     1)  [Await, SynchronizationContext, and Console Apps: Part 1](http://blogs.msdn.com/b/pfxteam/archive/2012/01/20/10259049.aspx)
 
@@ -290,7 +289,7 @@
 
     7)  [The Nature of TaskCompletionSource<TResult>](http://blogs.msdn.com/b/pfxteam/archive/2009/06/02/9685804.aspx)
 
-9.         编译器对async/await生成的代码是否能高效异步执行？
+9. 编译器对async/await生成的代码是否能高效异步执行？
 
     大多数情况下，是的。因为大量的生成代码已经被编译器所优化并且.NET Framework也为生成代码建立依赖关系。要了解更多信息，包括使用async/await的最小化开销的最佳实践等。请看
 
