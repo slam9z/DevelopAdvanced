@@ -307,6 +307,6 @@
 
 作者：[Stephen Toub - MSFT](https://social.msdn.microsoft.com/profile/stephen%20toub%20-%20msft/)
 
-
+另外，稍作改动，参考文献：[C# Async Tips and Tricks Part 2 : Async Void](http://www.jaylee.org/post/2012/07/08/c-sharp-async-tips-and-tricks-part-2-async-void.aspx)
 
 [关于async与await的FAQ](http://www.cnblogs.com/heyuquan/archive/2012/11/30/2795859.html)
