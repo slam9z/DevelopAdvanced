@@ -21,7 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{86
 		Document\异步编程：使用线程池管理线程.md = Document\异步编程：使用线程池管理线程.md
 		Document\异步编程：基于事件的异步编程模式(EAP).md = Document\异步编程：基于事件的异步编程模式(EAP).md
 		Document\异步编程：线程概述及使用.md = Document\异步编程：线程概述及使用.md
+		Document\普通的集合.md = Document\普通的集合.md
 		Document\深入探究 WinRT 和 await.md = Document\深入探究 WinRT 和 await.md
+		Document\线程安全普通的集合.md = Document\线程安全普通的集合.md
 		Document\通信软件系统设计.md = Document\通信软件系统设计.md
 	EndProjectSection
 EndProject
