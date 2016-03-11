@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{86
 		Document\Socket与Tcp.md = Document\Socket与Tcp.md
 		Document\Websocket.md = Document\Websocket.md
 		Document\使用多线程.md = Document\使用多线程.md
+		Document\关于async与await的FAQ.md = Document\关于async与await的FAQ.md
 		Document\学习计划.md = Document\学习计划.md
 		Document\异步编程：.NET 4.5 基于任务的异步编程模型(TAP).md = Document\异步编程：.NET 4.5 基于任务的异步编程模型(TAP).md
 		Document\异步编程：.NET4.X 数据并行.md = Document\异步编程：.NET4.X 数据并行.md
