@@ -209,19 +209,19 @@
 
     3) 在lock/SyncLock块中，不能使用”await”。关于谈论为什么不允许，以及SemaphoreSlim.WaitAsync（哪一个能用于此情况的等待），请看《What’s New for Parallelism in .NET 4.5 Beta》。你还可以阅读如下文章，关于如何构建各种自定义异步同步基元：
 
-    a)  构建Async同步基元，Part 1 AsyncManualResetEvent
+    a)  [构建Async同步基元，Part 1 AsyncManualResetEvent](http://www.cnblogs.com/heyuquan/archive/2012/12/27/2835481.html)
        
-    b)  构建Async同步基元，Part 2 AsyncAutoResetEvent
+    b)  [构建Async同步基元，Part 2 AsyncAutoResetEvent](http://www.cnblogs.com/heyuquan/archive/2013/01/14/2860112.html)
        
-    c)  构建Async同步基元，Part 3 AsyncCountdownEvent
+    c)  [构建Async同步基元，Part 3 AsyncCountdownEvent](http://www.cnblogs.com/heyuquan/archive/2013/01/15/2860631.html)
        
-    d)  构建Async同步基元，Part 4 AsyncBarrier
+    d)  [构建Async同步基元，Part 4 AsyncBarrier](http://www.cnblogs.com/heyuquan/archive/2013/01/15/2861605.html)
        
-    e)  构建Async同步基元，Part 5 AsyncSemaphore
+    e)  [构建Async同步基元，Part 5 AsyncSemaphore](http://www.cnblogs.com/heyuquan/archive/2013/01/16/2862191.html)
        
-    f)  构建Async同步基元，Part 6 AsyncLock
+    f)  [构建Async同步基元，Part 6 AsyncLock](http://www.cnblogs.com/heyuquan/archive/2013/01/16/2863094.html)
        
-    g)  构建Async同步基元，Part 7 AsyncReaderWriterLock
+    g)  [构建Async同步基元，Part 7 AsyncReaderWriterLock](http://www.cnblogs.com/heyuquan/archive/2013/01/18/2865850.html)
 
     4)  在unsafe区域中，不能使用”await”。注意，你能在标记”async”的方法内部使用”unsafe”关键字，但是你不能在unsafe区域中使用”await”。
 
