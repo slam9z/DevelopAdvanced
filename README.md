@@ -2,13 +2,24 @@
 
 1. 多线程编程
 
-  * 线程同步
-  * Thread，ThreadPool,Task。
-  * 异步编程模式：APM,EAP,TAP。
+    * 线程同步
+    * Thread，ThreadPool,Task。
+    * 异步编程模式：APM,EAP,TAP。
 
 2. 网络编程
 
-  * WebSocket
-  * Socket和TCP
+    * WebSocket
+    * Socket和TCP
+    * HTTP
 
 3. Next?
+
+    时间规划！    
+    * 数据库与SQL
+    * File System 
+    * 设计模式 
+    * Web（ASP.NET MVC,Web API,nodejs,angularjs,jQuery,js,typescript 
+    * C#基础点  
+    * CLR
+
+    
