@@ -35,7 +35,7 @@ namespace CachingTasks
 
 				contents.ContinueWith(delegate
 				{
-					s_urlToContents.TryRemove(url, out contents);
+					//s_urlToContents.TryRemove(url, out contents);
 
 					//s_urlToContents.Remove(url);
 				}, CancellationToken.None,
