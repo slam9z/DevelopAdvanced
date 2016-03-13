@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{86
 		Document\深入探究 WinRT 和 await.md = Document\深入探究 WinRT 和 await.md
 		Document\线程安全普通的集合.md = Document\线程安全普通的集合.md
 		Document\设计模式总结.md = Document\设计模式总结.md
-		Document\详解设计模式六大原则.md = Document\详解设计模式六大原则.md
+		Document\详解设计模式原则.md = Document\详解设计模式原则.md
 		Document\通信软件系统设计.md = Document\通信软件系统设计.md
 	EndProjectSection
 EndProject
