@@ -24,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{86
 		Document\普通的集合.md = Document\普通的集合.md
 		Document\深入探究 WinRT 和 await.md = Document\深入探究 WinRT 和 await.md
 		Document\线程安全普通的集合.md = Document\线程安全普通的集合.md
+		Document\设计模式-创建型.md = Document\设计模式-创建型.md
 		Document\设计模式总结.md = Document\设计模式总结.md
 		Document\详解设计模式原则.md = Document\详解设计模式原则.md
 		Document\通信软件系统设计.md = Document\通信软件系统设计.md
@@ -41,6 +42,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingTasks", "CachingTask
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image", "Image", "{A39D37C0-847E-47E7-8410-7DA4643ED5EF}"
 	ProjectSection(SolutionItems) = preProject
+		Image\抽象工厂结构.PNG = Image\抽象工厂结构.PNG
 		Image\设计模式之间的关系.png = Image\设计模式之间的关系.png
 		Image\设计模式空间.png = Image\设计模式空间.png
 	EndProjectSection
