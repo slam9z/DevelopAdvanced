@@ -39,6 +39,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventWaitHandleDemo", "Even
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingTasks", "CachingTasks\CachingTasks.csproj", "{71C773A5-74AF-4682-BDFB-A60BA5A39279}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image", "Image", "{A39D37C0-847E-47E7-8410-7DA4643ED5EF}"
+	ProjectSection(SolutionItems) = preProject
+		Image\设计模式之间的关系.png = Image\设计模式之间的关系.png
+		Image\设计模式空间.png = Image\设计模式空间.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
