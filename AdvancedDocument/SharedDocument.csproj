@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Book\Algorithm\算法导论\第六部分 图算法\第22章 图的基本算法.md" />
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试一：初认Unit Test .md" />
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试三：实战单元测试.md" />
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试二：测试需要从哪些方面着手.md" />
