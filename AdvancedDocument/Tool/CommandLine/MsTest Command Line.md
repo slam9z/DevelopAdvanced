@@ -8,10 +8,16 @@
 
 ```
 mstest  /testcontainer:AlgorithmTests.dll
+DevelopAdvanced\Algorithm\
 
 //不要进入测试目录,方便编译。
 
-DevelopAdvanced\Algorithm\mstest /testcontainer:AlgorithmTests\bin\debug\algorithmtests.dll
+csc /target:library Algorithm/sort/*.cs Algorithm/struct/*.cs  Algorithm/struct/BPlusTree/*.cs Algorithm/struct/BPlusTree/Storage/*.cs  /out:AlgorithmTests/bin/debug/Algorithm.dll
+
+csc /target:library AlgorithmTests/sort/*.cs AlgorithmTests/struct/*.cs  /out:AlgorithmTests/bin/debug/AlgorithmTest.dll /r:AlgorithmTests/bin/debug/Algorithm.dll  /r:AlgorithmTests/bin/debug/Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+
+mstest /testcontainer:AlgorithmTests\bin\debug\algorithmtests.dll
+
 ```  
 
 就会自动测试，这个还比较简单。一般我也只需要这个命令。

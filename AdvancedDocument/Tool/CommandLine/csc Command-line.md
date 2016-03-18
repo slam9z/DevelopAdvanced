@@ -1,24 +1,15 @@
 ##使用
 
-###编译Algorithm
-
-```
-DevelopAdvanced\Algorithm>
-
-csc /target:library Algorithm/sort/*.cs Algorithm/struct/*.cs  /out:Algorithm/bin/debug/Algorithm.dll
-
-csc /target:library Algorithm/*.cs  /out:Algorithm/bin/debug/Algorithm.dll
-
-```
+目前发现文件匹配不支持目录有点痛苦，要是能匹配目录就好了。
 
 ###编译AlgorithmTest
 
 ```
 DevelopAdvanced\Algorithm>
 
-csc /target:library Algorithm/sort/*.cs Algorithm/struct/*.cs  /out:AlgorithmTests/bin/debug/Algorithm.dll
+csc /target:library Algorithm/sort/*.cs Algorithm/struct/*.cs  Algorithm/struct/BPlusTree/*.cs Algorithm/struct/BPlusTree/Storage/*.cs  /out:AlgorithmTests/bin/debug/Algorithm.dll
 
-csc /target:library AlgorithmTests/sort/*.cs AlgorithmTests/struct/*.cs  /out:AlgorithmTests/bin/debug/Algorithm.dll /r:AlgorithmTests/bin/debug/Algorithm.dll  /r:AlgorithmTests/bin/debug/Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+csc /target:library AlgorithmTests/sort/*.cs AlgorithmTests/struct/*.cs  /out:AlgorithmTests/bin/debug/AlgorithmTest.dll /r:AlgorithmTests/bin/debug/Algorithm.dll  /r:AlgorithmTests/bin/debug/Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 
 ```
 
