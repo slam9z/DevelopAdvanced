@@ -12,10 +12,6 @@ DevelopAdvanced\Algorithm\
 
 //不要进入测试目录,方便编译。
 
-csc /target:library Algorithm/sort/*.cs Algorithm/struct/*.cs  Algorithm/struct/BPlusTree/*.cs Algorithm/struct/BPlusTree/Storage/*.cs  /out:AlgorithmTests/bin/debug/Algorithm.dll
-
-csc /target:library AlgorithmTests/sort/*.cs AlgorithmTests/struct/*.cs  /out:AlgorithmTests/bin/debug/AlgorithmTest.dll /r:AlgorithmTests/bin/debug/Algorithm.dll  /r:AlgorithmTests/bin/debug/Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-
 mstest /testcontainer:AlgorithmTests\bin\debug\algorithmtests.dll
 
 ```  
