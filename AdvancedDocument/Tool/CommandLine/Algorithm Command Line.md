@@ -11,6 +11,8 @@ mstest /testcontainer:AlgorithmTests\bin\debug\AlgorithmTests.dll     /test:Dept
 
 mstest /testcontainer:AlgorithmTests\bin\debug\AlgorithmTests.dll     /test:TopologicalSortTest /detail:errormessage  /detail:stdout  /detail:errorstacktrace
 
+mstest /testcontainer:AlgorithmTests\bin\debug\AlgorithmTests.dll     /test:TopologicalSortTest /detail:errormessage  /detail:stdout  /detail:errorstacktrace
+
 csc /target:library Algorithm/Struct/Graph/*.cs  Algorithm/sort/*.cs Algorithm/struct/*.cs  Algorithm/struct/BPlusTree/*.cs Algorithm/struct/BPlusTree/Storage/*.cs  /out:AlgorithmTests/bin/debug/Algorithm.dll
 
 csc /target:library AlgorithmTests/Struct/Graph/*.cs AlgorithmTests/*.cs AlgorithmTests/Struct/BPlusTree/*.cs AlgorithmTests/Sort/*.cs AlgorithmTests/Struct/*.cs  /out:AlgorithmTests/bin/debug/AlgorithmTests.dll /r:AlgorithmTests/bin/debug/Algorithm.dll  /r:AlgorithmTests/bin/debug/Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll

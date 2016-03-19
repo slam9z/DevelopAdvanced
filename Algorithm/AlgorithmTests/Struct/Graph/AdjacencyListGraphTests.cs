@@ -151,6 +151,20 @@ namespace Algorithm.Struct.Tests
 			Console.WriteLine();
 			graph.PrintPath(source,graph.GetVertexByIndex(4));
 		}
+		
+		[TestMethod()]
+		public void GetVertexEdgeTest()
+		{
+			Console.WriteLine("GetVertexEdgeTest");
+			var graph=CreateDirectionNoCircuitGraph1();
+			var source=graph.GetVertexByIndex(0);
+			var edges= graph.GetVertexEdge(source);
+			foreach (var item in edges)
+			{
+				Console.WriteLine(item);
+			}
+			
+		}
 
 	}
 }

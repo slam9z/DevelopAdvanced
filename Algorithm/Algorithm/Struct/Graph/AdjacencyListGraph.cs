@@ -164,22 +164,22 @@ public class AdjacencyListGraph<T>: GraphBase<T> where T:IComparable
 		_time=_time+1;
 		source.FisrtVisitTime=_time;
 		
-		Console.WriteLine();
-		Console.WriteLine("Visit");
-		
-		Console.Write("{0} ,",source);
-		Console.Write("time {0} ,",_time);
+// 		Console.WriteLine();
+// 		Console.Write("Visit  ");
+// 		
+// 		Console.Write("{0} ,",source);
+// 		Console.Write("time {0} ,",_time);
 		
 		var edges=GetVertexEdge(source);
 		
 		foreach (var item in edges)
 		{
-			Console.WriteLine();
-			Console.WriteLine("Edge");
-		
-			Console.Write("{0} ,",source);
-			Console.Write("{0} ,",item);
-			Console.Write("time {0} ,",_time);
+// 			Console.WriteLine();
+// 			Console.Write("Edge   ");
+// 		
+// 			Console.Write("{0} ,",source);
+// 			Console.Write("{0} ,",item);
+// 			Console.Write("time {0} ,",_time);
 			
 			var vertex=_adjacencyList[item.End];
 			if(vertex.Color==Color.White)
@@ -264,7 +264,7 @@ public class AdjacencyListGraph<T>: GraphBase<T> where T:IComparable
 	public void AddEdge(int first, int second)
 	{
 		AddEdgeCore(first,second);
-		if(HasDirection)
+		if(!HasDirection)
 		{
 			AddEdgeCore(second,first);
 		}
@@ -290,7 +290,9 @@ public class AdjacencyListGraph<T>: GraphBase<T> where T:IComparable
 			{
 				pointerEdge=pointerEdge.Next;
 			}
-			pointerEdge=edge;
+			//竟然这里错了,写了这么多才发现，之前的测试不完备呢。 不是因为拓扑排序都不知道
+			//pointerEdge=edge;
+			pointerEdge.Next=edge;
 		}
 	}
 	
