@@ -2,6 +2,8 @@
 
 目前发现文件匹配不支持目录有点痛苦，要是能匹配目录就好了。
 
+最大问题不能debug,只能打log啊。
+
 ###编译AlgorithmTest
 
 ```
@@ -9,7 +11,7 @@ DevelopAdvanced\Algorithm>
 
 csc /target:library Algorithm/Struct/Graph/*.cs  Algorithm/sort/*.cs Algorithm/struct/*.cs  Algorithm/struct/BPlusTree/*.cs Algorithm/struct/BPlusTree/Storage/*.cs  /out:AlgorithmTests/bin/debug/Algorithm.dll
 
-csc /target:library  AlgorithmTests/*.cs AlgorithmTests/Struct/BPlusTree/*.cs AlgorithmTests/Sort/*.cs AlgorithmTests/Struct/*.cs  /out:AlgorithmTests/bin/debug/AlgorithmTests.dll /r:AlgorithmTests/bin/debug/Algorithm.dll  /r:AlgorithmTests/bin/debug/Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+csc /target:library AlgorithmTests/Struct/Graph/*.cs AlgorithmTests/*.cs AlgorithmTests/Struct/BPlusTree/*.cs AlgorithmTests/Sort/*.cs AlgorithmTests/Struct/*.cs  /out:AlgorithmTests/bin/debug/AlgorithmTests.dll /r:AlgorithmTests/bin/debug/Algorithm.dll  /r:AlgorithmTests/bin/debug/Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 
 ```
 

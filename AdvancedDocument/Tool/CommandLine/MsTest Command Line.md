@@ -12,7 +12,9 @@ DevelopAdvanced\Algorithm\
 
 //不要进入测试目录,方便编译。
 
-mstest /testcontainer:AlgorithmTests\bin\debug\algorithmtests.dll
+mstest /testcontainer:AlgorithmTests\bin\debug\AlgorithmTests.dll
+
+mstest /testcontainer:AlgorithmTests\bin\debug\AlgorithmTests.dll    /test:BreadthFirstSearchTest   /detail:errormessage  /detail:stdout  /detail:errorstacktrace
 
 ```  
 
