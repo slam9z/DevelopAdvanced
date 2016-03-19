@@ -8,7 +8,7 @@ namespace  Algorithm.Struct
 {
 	
 
-public class AdjacencyVertex<T>
+public class AdjacencyVertex<T> where T:IComparable
 {
 	public T Key{get;set;}
 	
@@ -18,6 +18,11 @@ public class AdjacencyVertex<T>
 	public AdjacencyVertex<T> Parent{get;set;}
 	
 	public int Distance{get;set;}
+	
+	public override string ToString()
+	{
+		return string.Format("Key: {0}",Key);
+	}
 }
 
 internal enum Color
@@ -44,9 +49,14 @@ public class AdjacencyEdge
 		Start=start;
 		End=end;
 	}
+	
+	public override string ToString()
+	{
+		return string.Format("Start: {0} End:{1}",Start,End);
+	}
 }
 
-public class AdjacencyListGraph<T>: GraphBase<T>
+public class AdjacencyListGraph<T>: GraphBase<T> where T:IComparable
 {
 	private IList<AdjacencyVertex<T>> _adjacencyList=new List<AdjacencyVertex<T>>();
 	
@@ -62,15 +72,21 @@ public class AdjacencyListGraph<T>: GraphBase<T>
 		HasDirection=hasDirection;
 	}
 	
-	public override void BreadthFirstSearch(AdjacencyVertex<T> source)
+	public  void BreadthFirstSearch(AdjacencyVertex<T> source,Action<AdjacencyVertex<T>> action)
 	{
-		var vertexcount=_adjacencyList.Count;
+		var vertexCount=_adjacencyList.Count;
 		var sourceIndex=_adjacencyList.IndexOf(source);
 		
-		var colors=new List<Color>(vertexcount);
+		var colors=new Color[vertexCount];
 		var grayQueue=new Queue<AdjacencyVertex<T>>();
 		
-	    for (int i = 0; i < vertexcount; i++)
+		Console.WriteLine("sourceIndex:{0} vertexCount:{1} colorsCount:{2}"
+			,sourceIndex
+			,vertexCount
+			,colors.Length
+		);
+		
+	    for (int i = 0; i < vertexCount; i++)
 		{
 			var vertex=_adjacencyList[i];
 			if(vertex==source)
@@ -86,6 +102,8 @@ public class AdjacencyListGraph<T>: GraphBase<T>
 		source.Parent=null;
 		source.Distance=0;
 		
+		Console.WriteLine("grayQueue start");
+			
 		grayQueue.Enqueue(source);
 		while(!grayQueue.IsEmpty)
 		{
@@ -103,6 +121,7 @@ public class AdjacencyListGraph<T>: GraphBase<T>
 				}
 			}
 			colors[_adjacencyList.IndexOf(startVertex)]=Color.Black;
+			action(startVertex);
 		}
 	}
 	
@@ -116,6 +135,16 @@ public class AdjacencyListGraph<T>: GraphBase<T>
 			edge=edge.Next;
 		}
 		return edges;
+	}
+	
+	public AdjacencyVertex<T> GetVertexByKey(T key)
+	{
+		return _adjacencyList.Where(o=>o.Key.CompareTo(key)==0).FirstOrDefault();	
+	}
+	
+	public AdjacencyVertex<T> GetVertexByIndex(int index)
+	{
+		return _adjacencyList[index];
 	}
 	
 	public int AddVertex(T key)
