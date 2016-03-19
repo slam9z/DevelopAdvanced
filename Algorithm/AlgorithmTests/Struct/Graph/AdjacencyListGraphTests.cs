@@ -12,7 +12,7 @@ namespace Algorithm.Struct.Tests
 	[TestClass()]
 	public class AdjacencyListGraphTestss
 	{
-		private AdjacencyListGraph<int> CreateGraph1()
+		private AdjacencyListGraph<int> CreateGraph1(bool hasDirection=false)
 		{
 			var  vertexs=new List<int>
 			{
@@ -32,7 +32,7 @@ namespace Algorithm.Struct.Tests
 				new Tuple<int,int>(3,4),
 			};
 			
-			var graph=new AdjacencyListGraph<int>();
+			var graph=new AdjacencyListGraph<int>(hasDirection);
 			
 			foreach (var item in vertexs)
 			{
@@ -47,23 +47,110 @@ namespace Algorithm.Struct.Tests
 			return graph;
 		}
 
+	private AdjacencyListGraph<int> CreateDirectionNoCircuitGraph1(bool hasDirection=false)
+		{
+			var  vertexs=new List<int>
+			{
+			    1,2,3,4,5	
+			};
+			
+			var edges=new List<Tuple<int,int>>
+			{
+				new Tuple<int,int>(0,1),
+				new Tuple<int,int>(0,4),
+				
+				new Tuple<int,int>(1,2),
+				new Tuple<int,int>(1,3),	
+		
+			};
+			
+			var graph=new AdjacencyListGraph<int>(true);
+			
+			foreach (var item in vertexs)
+			{
+				graph.AddVertex(item);
+			}
+			
+			foreach (var item in edges)
+			{
+				graph.AddEdge(item.Item1,item.Item2);
+			}
+			
+			return graph;
+		}
 		[TestMethod()]
 		public void BreadthFirstSearchTest()
 		{
 			var graph=CreateGraph1();
-			
-			Console.WriteLine("start");
-			
 			var source=graph.GetVertexByIndex(0);
 			Console.WriteLine(source);
 			graph.BreadthFirstSearch(source,
 				(vertex)=>
 				{
-					Console.Write("{0} ,",vertex.Key);
+					Console.Write("{0} ,",vertex);
 				}
 			);
 		}
 
+		[TestMethod()]
+		public void DepthFirstSearchTest()
+		{
+			var graph=CreateGraph1(true);
+			
+			Console.WriteLine();
+			Console.WriteLine("DepthFirstSearchTest");
+			Console.WriteLine();
+				
+			graph.DepthFirstSearch(
+				(vertex)=>
+				{
+					Console.WriteLine("{0} ,",vertex);
+				}
+			);
+			
+		}
+
+		[TestMethod()]
+		public void TopologicalSortTest()
+		{
+			var graph=CreateDirectionNoCircuitGraph1();
+			
+			Console.WriteLine("CreateDirectionNoCircuitGraph1");
+			Console.WriteLine();
+			Console.WriteLine("TopologicalSortTest");
+			Console.WriteLine();
+				
+			var result= graph.TopologicalSort();
+			
+			Console.WriteLine();
+			Console.WriteLine("TopologicalSortTestReslut");
+			foreach (var item in result)
+			{
+				Console.WriteLine(item);
+			}
+			
+			
+			
+		}
+
+		[TestMethod()]
+		public void PrintPathTest()
+		{
+			var graph=CreateGraph1(true);
+			var source=graph.GetVertexByIndex(0);
+			Console.WriteLine(source);
+			graph.BreadthFirstSearch(source,
+				(vertex)=>
+				{
+					
+				}
+			);
+			
+			Console.WriteLine();
+			Console.WriteLine("PrintPath");
+			Console.WriteLine();
+			graph.PrintPath(source,graph.GetVertexByIndex(4));
+		}
 
 	}
 }

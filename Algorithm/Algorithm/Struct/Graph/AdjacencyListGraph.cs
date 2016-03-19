@@ -19,9 +19,21 @@ public class AdjacencyVertex<T> where T:IComparable
 	
 	public int Distance{get;set;}
 	
+	internal Color Color{get;set;}
+	
+	internal int FisrtVisitTime{get;set;}
+	
+	internal int FinalVisitTime{get;set;}
+	
+	
 	public override string ToString()
 	{
-		return string.Format("Key: {0}",Key);
+		return string.Format("Key: {0} Distance: {1} FisrtVisitTime:{2} FinalVisitTime:{3}"
+		,Key
+		,Distance
+		,FisrtVisitTime
+		,FinalVisitTime
+		);
 	}
 }
 
@@ -72,19 +84,20 @@ public class AdjacencyListGraph<T>: GraphBase<T> where T:IComparable
 		HasDirection=hasDirection;
 	}
 	
+	//BFS
 	public  void BreadthFirstSearch(AdjacencyVertex<T> source,Action<AdjacencyVertex<T>> action)
 	{
 		var vertexCount=_adjacencyList.Count;
 		var sourceIndex=_adjacencyList.IndexOf(source);
 		
-		var colors=new Color[vertexCount];
+		
 		var grayQueue=new Queue<AdjacencyVertex<T>>();
 		
-		Console.WriteLine("sourceIndex:{0} vertexCount:{1} colorsCount:{2}"
-			,sourceIndex
-			,vertexCount
-			,colors.Length
-		);
+// 		Console.WriteLine("sourceIndex:{0} vertexCount:{1} colorsCount:{2}"
+// 			,sourceIndex
+// 			,vertexCount
+// 			,colors.Length
+// 		);
 		
 	    for (int i = 0; i < vertexCount; i++)
 		{
@@ -93,16 +106,16 @@ public class AdjacencyListGraph<T>: GraphBase<T> where T:IComparable
 			{
 				continue;
 			}
-			vertex.Distance=0;
+			vertex.Distance=int.MaxValue;
 			vertex.Parent=null;
-			colors[i]=Color.White;
+			vertex.Color=Color.White;
 		}
 		
-		colors[sourceIndex]=Color.Gray;
+		source.Color=Color.Gray;
 		source.Parent=null;
 		source.Distance=0;
 		
-		Console.WriteLine("grayQueue start");
+		//Console.WriteLine("grayQueue start");
 			
 		grayQueue.Enqueue(source);
 		while(!grayQueue.IsEmpty)
@@ -112,18 +125,108 @@ public class AdjacencyListGraph<T>: GraphBase<T> where T:IComparable
 			{
 				var endeEnd=edge.End;
 				var endVertex=_adjacencyList[endeEnd];
-				if(colors[endeEnd]==Color.White)
+				if(endVertex.Color==Color.White)
 				{
-					colors[endeEnd]=Color.Gray;
+					endVertex.Color=Color.Gray;
 					endVertex.Distance=startVertex.Distance+1;
 					endVertex.Parent=startVertex;
 					grayQueue.Enqueue(endVertex);
 				}
 			}
-			colors[_adjacencyList.IndexOf(startVertex)]=Color.Black;
+			startVertex.Color=Color.Black;
 			action(startVertex);
 		}
 	}
+	
+	//DFS
+	private int _time;
+	public void DepthFirstSearch(Action<AdjacencyVertex<T>> action)
+	{
+		foreach (var item in _adjacencyList)
+		{
+			item.Color=Color.White;
+			item.Parent=null;
+		}
+		_time=0;
+		
+		foreach (var item in _adjacencyList)
+		{
+			if(item.Color==Color.White)
+			{
+				DepthFirstSearchVisit(item,action);
+			}
+		}
+	}
+	
+	private void DepthFirstSearchVisit(AdjacencyVertex<T> source,Action<AdjacencyVertex<T>> action)
+	{
+		source.Color=Color.Gray;
+		_time=_time+1;
+		source.FisrtVisitTime=_time;
+		
+		Console.WriteLine();
+		Console.WriteLine("Visit");
+		
+		Console.Write("{0} ,",source);
+		Console.Write("time {0} ,",_time);
+		
+		var edges=GetVertexEdge(source);
+		
+		foreach (var item in edges)
+		{
+			Console.WriteLine();
+			Console.WriteLine("Edge");
+		
+			Console.Write("{0} ,",source);
+			Console.Write("{0} ,",item);
+			Console.Write("time {0} ,",_time);
+			
+			var vertex=_adjacencyList[item.End];
+			if(vertex.Color==Color.White)
+			{
+				vertex.Parent=source;
+				DepthFirstSearchVisit(vertex,action);
+			}
+		}
+		
+		source.Color=Color.Black;
+		
+		_time=_time+1;
+		source.FinalVisitTime=_time;
+		
+		action(source);
+	}
+	
+	
+	public IEnumerable<AdjacencyVertex<T>>  TopologicalSort()
+	{
+		var result=new List<AdjacencyVertex<T>>();
+		DepthFirstSearch((vertex)=>
+		{
+			result.Insert(0,vertex);
+		});
+		
+		return result;
+	}
+	public void PrintPath(AdjacencyVertex<T> source,AdjacencyVertex<T> vertex)
+	{
+		if(source==vertex)
+		{
+			Console.WriteLine(vertex);
+			return;
+		}
+		if(vertex.Parent==null)
+		{
+			Console.WriteLine("no path form source:{0} vertex:{1}",source,vertex);
+		}
+		else
+		{
+			PrintPath(source,vertex.Parent);
+			Console.WriteLine(vertex);
+		}
+	}
+	
+	
 	
 	public IEnumerable<AdjacencyEdge> GetVertexEdge(AdjacencyVertex<T> vertex)
 	{
@@ -137,6 +240,10 @@ public class AdjacencyListGraph<T>: GraphBase<T> where T:IComparable
 		return edges;
 	}
 	
+	public IEnumerable<AdjacencyVertex<T>> GetVertexs()
+	{
+		return _adjacencyList;
+	}
 	public AdjacencyVertex<T> GetVertexByKey(T key)
 	{
 		return _adjacencyList.Where(o=>o.Key.CompareTo(key)==0).FirstOrDefault();	
