@@ -47,6 +47,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image", "Image", "{A39D37C0
 		Image\代理结构.PNG = Image\代理结构.PNG
 		Image\单实例结构.PNG = Image\单实例结构.PNG
 		Image\原型结构.PNG = Image\原型结构.PNG
+		Image\外观结构.PNG = Image\外观结构.PNG
 		Image\工厂方法结构.PNG = Image\工厂方法结构.PNG
 		Image\抽象工厂结构.PNG = Image\抽象工厂结构.PNG
 		Image\构建模式结构.PNG = Image\构建模式结构.PNG
