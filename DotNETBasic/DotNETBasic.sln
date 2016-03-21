@@ -43,12 +43,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingTasks", "CachingTask
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image", "Image", "{A39D37C0-847E-47E7-8410-7DA4643ED5EF}"
 	ProjectSection(SolutionItems) = preProject
+		Image\享元结构.PNG = Image\享元结构.PNG
+		Image\代理结构.PNG = Image\代理结构.PNG
 		Image\单实例结构.PNG = Image\单实例结构.PNG
 		Image\原型结构.PNG = Image\原型结构.PNG
 		Image\工厂方法结构.PNG = Image\工厂方法结构.PNG
 		Image\抽象工厂结构.PNG = Image\抽象工厂结构.PNG
 		Image\构建模式结构.PNG = Image\构建模式结构.PNG
 		Image\桥接结构.PNG = Image\桥接结构.PNG
+		Image\组合结构.PNG = Image\组合结构.PNG
+		Image\装饰结构.PNG = Image\装饰结构.PNG
 		Image\设计模式之间的关系.png = Image\设计模式之间的关系.png
 		Image\设计模式空间.png = Image\设计模式空间.png
 		Image\适配器结构.PNG = Image\适配器结构.PNG
