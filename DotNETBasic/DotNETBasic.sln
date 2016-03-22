@@ -56,12 +56,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image", "Image", "{A39D37C0
 		Image\抽象工厂结构.PNG = Image\抽象工厂结构.PNG
 		Image\构建模式结构.PNG = Image\构建模式结构.PNG
 		Image\桥接结构.PNG = Image\桥接结构.PNG
+		Image\模板方法结构.PNG = Image\模板方法结构.PNG
+		Image\状态结构.PNG = Image\状态结构.PNG
+		Image\策略结构.PNG = Image\策略结构.PNG
 		Image\组合结构.PNG = Image\组合结构.PNG
 		Image\职责链结构.PNG = Image\职责链结构.PNG
 		Image\装饰结构.PNG = Image\装饰结构.PNG
 		Image\观察者结构.PNG = Image\观察者结构.PNG
 		Image\设计模式之间的关系.png = Image\设计模式之间的关系.png
 		Image\设计模式空间.png = Image\设计模式空间.png
+		Image\访问者结构.PNG = Image\访问者结构.PNG
 		Image\迭代器结构.PNG = Image\迭代器结构.PNG
 		Image\适配器结构.PNG = Image\适配器结构.PNG
 	EndProjectSection
