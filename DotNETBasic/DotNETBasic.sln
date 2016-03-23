@@ -82,6 +82,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "网络", "网络", "{C66744
 		Document\网络\Websocket.md = Document\网络\Websocket.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "领域驱动设计", "领域驱动设计", "{3021536B-C007-4061-8BC2-1CD5BC1D425F}"
+	ProjectSection(SolutionItems) = preProject
+		Document\领域驱动设计\Server代码组织.md = Document\领域驱动设计\Server代码组织.md
+		Document\领域驱动设计\领域驱动设计（1）为复杂业务而生 .md = Document\领域驱动设计\领域驱动设计（1）为复杂业务而生 .md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,5 +122,6 @@ Global
 		{BF80A7C4-D54F-43F1-A454-6B141240C197} = {86326AAF-E993-4B78-B5DB-6A4D8461A9D1}
 		{BFF43B51-C511-45F8-A377-D3AD372033BE} = {86326AAF-E993-4B78-B5DB-6A4D8461A9D1}
 		{C667441A-3955-47FC-853F-56A54C9458C9} = {86326AAF-E993-4B78-B5DB-6A4D8461A9D1}
+		{3021536B-C007-4061-8BC2-1CD5BC1D425F} = {86326AAF-E993-4B78-B5DB-6A4D8461A9D1}
 	EndGlobalSection
 EndGlobal
