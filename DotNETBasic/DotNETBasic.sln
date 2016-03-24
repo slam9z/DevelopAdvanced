@@ -86,6 +86,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "领域驱动设计", "领�
 	ProjectSection(SolutionItems) = preProject
 		Document\领域驱动设计\Server代码组织.md = Document\领域驱动设计\Server代码组织.md
 		Document\领域驱动设计\领域驱动设计（1）为复杂业务而生 .md = Document\领域驱动设计\领域驱动设计（1）为复杂业务而生 .md
+		Document\领域驱动设计\领域驱动设计（2）Repository在DDD中的应用 .md = Document\领域驱动设计\领域驱动设计（2）Repository在DDD中的应用 .md
 	EndProjectSection
 EndProject
 Global
