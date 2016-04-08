@@ -3,16 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{86326AAF-E993-4B78-B5DB-6A4D8461A9D1}"
-	ProjectSection(SolutionItems) = preProject
-		Document\Git常用命令.md = Document\Git常用命令.md
-		Document\Markdown使用语法.md = Document\Markdown使用语法.md
-		Document\学习计划.md = Document\学习计划.md
-		Document\普通的集合.md = Document\普通的集合.md
-		Document\线程安全普通的集合.md = Document\线程安全普通的集合.md
-		Document\通信软件系统设计.md = Document\通信软件系统设计.md
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThreading", "MultiThreading\MultiThreading.csproj", "{81705DA4-242A-456D-A5C2-28729C1CC08A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServer", "TcpServer\TcpServer.csproj", "{356AB809-2ACA-4618-842A-EDE34066150C}"
@@ -23,71 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventWaitHandleDemo", "Even
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingTasks", "CachingTasks\CachingTasks.csproj", "{71C773A5-74AF-4682-BDFB-A60BA5A39279}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image", "Image", "{A39D37C0-847E-47E7-8410-7DA4643ED5EF}"
-	ProjectSection(SolutionItems) = preProject
-		Image\中介者结构.PNG = Image\中介者结构.PNG
-		Image\享元结构.PNG = Image\享元结构.PNG
-		Image\代理结构.PNG = Image\代理结构.PNG
-		Image\单实例结构.PNG = Image\单实例结构.PNG
-		Image\原型结构.PNG = Image\原型结构.PNG
-		Image\命令结构.PNG = Image\命令结构.PNG
-		Image\备忘录结构.PNG = Image\备忘录结构.PNG
-		Image\外观结构.PNG = Image\外观结构.PNG
-		Image\工厂方法结构.PNG = Image\工厂方法结构.PNG
-		Image\抽象工厂结构.PNG = Image\抽象工厂结构.PNG
-		Image\构建模式结构.PNG = Image\构建模式结构.PNG
-		Image\桥接结构.PNG = Image\桥接结构.PNG
-		Image\模板方法结构.PNG = Image\模板方法结构.PNG
-		Image\状态结构.PNG = Image\状态结构.PNG
-		Image\策略结构.PNG = Image\策略结构.PNG
-		Image\组合结构.PNG = Image\组合结构.PNG
-		Image\职责链结构.PNG = Image\职责链结构.PNG
-		Image\装饰结构.PNG = Image\装饰结构.PNG
-		Image\观察者结构.PNG = Image\观察者结构.PNG
-		Image\设计模式之间的关系.png = Image\设计模式之间的关系.png
-		Image\设计模式空间.png = Image\设计模式空间.png
-		Image\访问者结构.PNG = Image\访问者结构.PNG
-		Image\迭代器结构.PNG = Image\迭代器结构.PNG
-		Image\适配器结构.PNG = Image\适配器结构.PNG
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "多线程", "多线程", "{BF80A7C4-D54F-43F1-A454-6B141240C197}"
-	ProjectSection(SolutionItems) = preProject
-		Document\.NET线程同步.md = Document\.NET线程同步.md
-		Document\多线程\.NET轻量级线程同步.md = Document\多线程\.NET轻量级线程同步.md
-		Document\多线程\使用多线程.md = Document\多线程\使用多线程.md
-		Document\多线程\关于async与await的FAQ.md = Document\多线程\关于async与await的FAQ.md
-		Document\多线程\异步编程：.NET 4.5 基于任务的异步编程模型(TAP).md = Document\多线程\异步编程：.NET 4.5 基于任务的异步编程模型(TAP).md
-		Document\多线程\异步编程：.NET4.X 数据并行.md = Document\多线程\异步编程：.NET4.X 数据并行.md
-		Document\多线程\异步编程：IAsyncResult异步编程模型 (APM).md = Document\多线程\异步编程：IAsyncResult异步编程模型 (APM).md
-		Document\多线程\异步编程：使用线程池管理线程.md = Document\多线程\异步编程：使用线程池管理线程.md
-		Document\多线程\异步编程：基于事件的异步编程模式(EAP).md = Document\多线程\异步编程：基于事件的异步编程模式(EAP).md
-		Document\多线程\异步编程：线程概述及使用.md = Document\多线程\异步编程：线程概述及使用.md
-		Document\多线程\深入探究 WinRT 和 await.md = Document\多线程\深入探究 WinRT 和 await.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gof设计模式", "Gof设计模式", "{BFF43B51-C511-45F8-A377-D3AD372033BE}"
-	ProjectSection(SolutionItems) = preProject
-		Document\Gof设计模式\设计模式-创建型.md = Document\Gof设计模式\设计模式-创建型.md
-		Document\Gof设计模式\设计模式-结构型.md = Document\Gof设计模式\设计模式-结构型.md
-		Document\Gof设计模式\设计模式-行为型.md = Document\Gof设计模式\设计模式-行为型.md
-		Document\Gof设计模式\设计模式总结.md = Document\Gof设计模式\设计模式总结.md
-		Document\Gof设计模式\详解设计模式原则.md = Document\Gof设计模式\详解设计模式原则.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "网络", "网络", "{C667441A-3955-47FC-853F-56A54C9458C9}"
-	ProjectSection(SolutionItems) = preProject
-		Document\网络\Http.md = Document\网络\Http.md
-		Document\网络\Socket与Tcp.md = Document\网络\Socket与Tcp.md
-		Document\网络\Websocket.md = Document\网络\Websocket.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "领域驱动设计", "领域驱动设计", "{3021536B-C007-4061-8BC2-1CD5BC1D425F}"
-	ProjectSection(SolutionItems) = preProject
-		Document\领域驱动设计\Server代码组织.md = Document\领域驱动设计\Server代码组织.md
-		Document\领域驱动设计\领域驱动设计（1）为复杂业务而生 .md = Document\领域驱动设计\领域驱动设计（1）为复杂业务而生 .md
-		Document\领域驱动设计\领域驱动设计（2）Repository在DDD中的应用 .md = Document\领域驱动设计\领域驱动设计（2）Repository在DDD中的应用 .md
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedDocument", "..\..\AdvancedDocument\SharedDocument\SharedDocument.csproj", "{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,14 +41,12 @@ Global
 		{71C773A5-74AF-4682-BDFB-A60BA5A39279}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71C773A5-74AF-4682-BDFB-A60BA5A39279}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71C773A5-74AF-4682-BDFB-A60BA5A39279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{BF80A7C4-D54F-43F1-A454-6B141240C197} = {86326AAF-E993-4B78-B5DB-6A4D8461A9D1}
-		{BFF43B51-C511-45F8-A377-D3AD372033BE} = {86326AAF-E993-4B78-B5DB-6A4D8461A9D1}
-		{C667441A-3955-47FC-853F-56A54C9458C9} = {86326AAF-E993-4B78-B5DB-6A4D8461A9D1}
-		{3021536B-C007-4061-8BC2-1CD5BC1D425F} = {86326AAF-E993-4B78-B5DB-6A4D8461A9D1}
 	EndGlobalSection
 EndGlobal
