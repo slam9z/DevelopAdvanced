@@ -9,101 +9,101 @@
  
 3. 有Invoke方法的类的实例，参数表也需要汇聚到一个object[]中，这两种设计应该是有不同需求背景的，目前不知道究竟有什么不同
 
-构造函数第一个为Next参数。
+    构造函数第一个为Next参数。
 
-``` C#
+    ``` C#
 
-using System.Threading.Tasks;
+    using System.Threading.Tasks;
 
-namespace Microsoft.Owin
-{
-    /// <summary>
-    /// An abstract base class for a standard middleware pattern.
-    /// </summary>
-    public abstract class OwinMiddleware
+    namespace Microsoft.Owin
     {
         /// <summary>
-        /// Instantiates the middleware with an optional pointer to the next component.
+        /// An abstract base class for a standard middleware pattern.
         /// </summary>
-        /// <param name="next"></param>
-        protected OwinMiddleware(OwinMiddleware next)
+        public abstract class OwinMiddleware
         {
-            Next = next;
+            /// <summary>
+            /// Instantiates the middleware with an optional pointer to the next component.
+            /// </summary>
+            /// <param name="next"></param>
+            protected OwinMiddleware(OwinMiddleware next)
+            {
+                Next = next;
+            }
+
+            /// <summary>
+            /// The optional next component.
+            /// </summary>
+            protected OwinMiddleware Next { get; set; }
+
+            /// <summary>
+            /// Process an individual request.
+            /// </summary>
+            /// <param name="context"></param>
+            /// <returns></returns>
+            public abstract Task Invoke(IOwinContext context);
         }
-
-        /// <summary>
-        /// The optional next component.
-        /// </summary>
-        protected OwinMiddleware Next { get; set; }
-
-        /// <summary>
-        /// Process an individual request.
-        /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        public abstract Task Invoke(IOwinContext context);
     }
-}
 
-```
+    ```
  
 4. Type，这需要对这个类的构造方法进行封装，参考UseHandlerMiddleware的构造函数，第一个参数应该是一个AppFunc
 
-```C#
-namespace Microsoft.Owin.Extensions
-{
-    using AppFunc = Func<IDictionary<string, object>, Task>;
-
-    /// <summary>
-    /// Represents a middleware for executing in-line function middleware.
-    /// </summary>
-    public class UseHandlerMiddleware
+    ```C#
+    namespace Microsoft.Owin.Extensions
     {
-        private readonly AppFunc _next;
-        private readonly Func<IOwinContext, Task> _handler;
+        using AppFunc = Func<IDictionary<string, object>, Task>;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:Microsoft.Owin.Extensions.UseHandlerMiddleware" /> class.
+        /// Represents a middleware for executing in-line function middleware.
         /// </summary>
-        /// <param name="next">The pointer to next middleware.</param>
-        /// <param name="handler">A function that handles all requests.</param>
-        public UseHandlerMiddleware(AppFunc next, Func<IOwinContext, Task> handler)
+        public class UseHandlerMiddleware
         {
-            if (handler == null)
+            private readonly AppFunc _next;
+            private readonly Func<IOwinContext, Task> _handler;
+
+            /// <summary>
+            /// Initializes a new instance of the <see cref="T:Microsoft.Owin.Extensions.UseHandlerMiddleware" /> class.
+            /// </summary>
+            /// <param name="next">The pointer to next middleware.</param>
+            /// <param name="handler">A function that handles all requests.</param>
+            public UseHandlerMiddleware(AppFunc next, Func<IOwinContext, Task> handler)
             {
-                throw new ArgumentNullException("handler");
+                if (handler == null)
+                {
+                    throw new ArgumentNullException("handler");
+                }
+                _next = next;
+                _handler = handler;
             }
-            _next = next;
-            _handler = handler;
-        }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:Microsoft.Owin.Extensions.UseHandlerMiddleware" /> class.
-        /// </summary>
-        /// <param name="next">The pointer to next middleware.</param>
-        /// <param name="handler">A function that handles the request or calls the given next function.</param>
-        public UseHandlerMiddleware(AppFunc next, Func<IOwinContext, Func<Task>, Task> handler)
-        {
-            if (handler == null)
+            /// <summary>
+            /// Initializes a new instance of the <see cref="T:Microsoft.Owin.Extensions.UseHandlerMiddleware" /> class.
+            /// </summary>
+            /// <param name="next">The pointer to next middleware.</param>
+            /// <param name="handler">A function that handles the request or calls the given next function.</param>
+            public UseHandlerMiddleware(AppFunc next, Func<IOwinContext, Func<Task>, Task> handler)
             {
-                throw new ArgumentNullException("handler");
+                if (handler == null)
+                {
+                    throw new ArgumentNullException("handler");
+                }
+                _next = next;
+                _handler = context => handler.Invoke(context, () => _next(context.Environment));
             }
-            _next = next;
-            _handler = context => handler.Invoke(context, () => _next(context.Environment));
-        }
 
-        /// <summary>
-        /// Invokes the handler for processing the request.
-        /// </summary>
-        /// <param name="environment">The OWIN context.</param>
-        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> object that represents the request operation.</returns>
-        public Task Invoke(IDictionary<string, object> environment)
-        {
-            IOwinContext context = new OwinContext(environment);
-            return _handler.Invoke(context);
+            /// <summary>
+            /// Invokes the handler for processing the request.
+            /// </summary>
+            /// <param name="environment">The OWIN context.</param>
+            /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> object that represents the request operation.</returns>
+            public Task Invoke(IDictionary<string, object> environment)
+            {
+                IOwinContext context = new OwinContext(environment);
+                return _handler.Invoke(context);
+            }
         }
     }
-}
 
-```
+    ```
  

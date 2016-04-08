@@ -1,11 +1,11 @@
-## IIS Host
+ï»¿## IIS Host
 
-Ö§³ÖIIS pineline event¡£
+æ”¯æŒIIS pineline eventã€‚
 
 
 ## Self-Host
 
-###Ê¹ÓÃWebApi
+###ä½¿ç”¨WebApi
 
 ``` C#
 public void Configuration(IAppBuilder appBuilder) 
@@ -22,4 +22,4 @@ public void Configuration(IAppBuilder appBuilder)
     } 
 ```
 
-[Ê¹ÓÃ OWIN Self-Host ASP.NET Web API 2 ](http://www.cnblogs.com/shanyou/p/3650705.html)
+[ä½¿ç”¨ OWIN Self-Host ASP.NET Web API 2 ](http://www.cnblogs.com/shanyou/p/3650705.html)
