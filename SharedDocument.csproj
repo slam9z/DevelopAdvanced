@@ -50,6 +50,7 @@
     <None Include="Gof设计模式\设计模式总结.md" />
     <None Include="Gof设计模式\详解设计模式原则.md" />
     <None Include="Markdown使用语法.md" />
+    <None Include="Project  struct.md" />
     <None Include="WebAdvanced\20160407  MiddleWare  Exception.md" />
     <None Include="WebAdvanced\Nodejs VS Overview.md" />
     <None Include="WebAdvanced\Owin and Kanata\An Overview of Project Katana.md" />
