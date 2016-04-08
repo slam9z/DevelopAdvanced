@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SharedDocument</RootNamespace>
+    <AssemblyName>SharedDocument</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Git常用命令.md" />
+    <None Include="Gof设计模式\设计模式-创建型.md" />
+    <None Include="Gof设计模式\设计模式-结构型.md" />
+    <None Include="Gof设计模式\设计模式-行为型.md" />
+    <None Include="Gof设计模式\设计模式总结.md" />
+    <None Include="Gof设计模式\详解设计模式原则.md" />
+    <None Include="Markdown使用语法.md" />
+    <None Include="WebAdvanced\20160407  MiddleWare  Exception.md" />
+    <None Include="WebAdvanced\Nodejs VS Overview.md" />
+    <None Include="WebAdvanced\Owin and Kanata\An Overview of Project Katana.md" />
+    <None Include="WebAdvanced\Owin and Kanata\AppBuilder（一）Use汇总 .md" />
+    <None Include="WebAdvanced\Owin and Kanata\AppBuilder（三）BuildInternal .md" />
+    <None Include="WebAdvanced\Owin and Kanata\AppBuilder（二）UseStageMarker .md" />
+    <None Include="WebAdvanced\Owin and Kanata\AppBuilder（四）SignatureConversions .md" />
+    <None Include="WebAdvanced\Owin and Kanata\Kanata host.md" />
+    <None Include="WebAdvanced\Owin and Kanata\Kanata IIS.md" />
+    <None Include="WebAdvanced\Owin and Kanata\Middleware.md" />
+    <None Include="WebAdvanced\WebAPI overview.md" />
+    <None Include="多线程\.NET线程同步.md" />
+    <None Include="多线程\.NET轻量级线程同步.md" />
+    <None Include="多线程\使用多线程.md" />
+    <None Include="多线程\关于async与await的FAQ.md" />
+    <None Include="多线程\异步编程：.NET 4.5 基于任务的异步编程模型%28TAP%29.md" />
+    <None Include="多线程\异步编程：.NET4.X 数据并行.md" />
+    <None Include="多线程\异步编程：IAsyncResult异步编程模型 %28APM%29.md" />
+    <None Include="多线程\异步编程：使用线程池管理线程.md" />
+    <None Include="多线程\异步编程：基于事件的异步编程模式%28EAP%29.md" />
+    <None Include="多线程\异步编程：线程概述及使用.md" />
+    <None Include="多线程\深入探究 WinRT 和 await.md" />
+    <None Include="学习计划.md" />
+    <None Include="普通的集合.md" />
+    <None Include="线程安全普通的集合.md" />
+    <None Include="网络\Http.md" />
+    <None Include="网络\Socket与Tcp.md" />
+    <None Include="网络\Websocket.md" />
+    <None Include="通信软件系统设计.md" />
+    <None Include="领域驱动设计\Server代码组织.md" />
+    <None Include="领域驱动设计\领域驱动设计（1）为复杂业务而生 .md" />
+    <None Include="领域驱动设计\领域驱动设计（2）Repository在DDD中的应用 .md" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
