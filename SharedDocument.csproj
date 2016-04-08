@@ -83,6 +83,32 @@
     <None Include="领域驱动设计\领域驱动设计（1）为复杂业务而生 .md" />
     <None Include="领域驱动设计\领域驱动设计（2）Repository在DDD中的应用 .md" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Image\设计模式\中介者结构.PNG" />
+    <Content Include="Image\设计模式\享元结构.PNG" />
+    <Content Include="Image\设计模式\代理结构.PNG" />
+    <Content Include="Image\设计模式\单实例结构.PNG" />
+    <Content Include="Image\设计模式\原型结构.PNG" />
+    <Content Include="Image\设计模式\命令结构.PNG" />
+    <Content Include="Image\设计模式\备忘录结构.PNG" />
+    <Content Include="Image\设计模式\外观结构.PNG" />
+    <Content Include="Image\设计模式\工厂方法结构.PNG" />
+    <Content Include="Image\设计模式\抽象工厂结构.PNG" />
+    <Content Include="Image\设计模式\构建模式结构.PNG" />
+    <Content Include="Image\设计模式\桥接结构.PNG" />
+    <Content Include="Image\设计模式\模板方法结构.PNG" />
+    <Content Include="Image\设计模式\状态结构.PNG" />
+    <Content Include="Image\设计模式\策略结构.PNG" />
+    <Content Include="Image\设计模式\组合结构.PNG" />
+    <Content Include="Image\设计模式\职责链结构.PNG" />
+    <Content Include="Image\设计模式\装饰结构.PNG" />
+    <Content Include="Image\设计模式\观察者结构.PNG" />
+    <Content Include="Image\设计模式\设计模式之间的关系.png" />
+    <Content Include="Image\设计模式\设计模式空间.png" />
+    <Content Include="Image\设计模式\访问者结构.PNG" />
+    <Content Include="Image\设计模式\迭代器结构.PNG" />
+    <Content Include="Image\设计模式\适配器结构.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
