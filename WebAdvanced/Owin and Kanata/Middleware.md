@@ -11,7 +11,8 @@
 
 构造函数第一个为Next参数。
 
-''' C#
+``` C#
+
 using System.Threading.Tasks;
 
 namespace Microsoft.Owin
@@ -44,7 +45,7 @@ namespace Microsoft.Owin
     }
 }
 
-'''
+```
  
 4. Type，这需要对这个类的构造方法进行封装，参考UseHandlerMiddleware的构造函数，第一个参数应该是一个AppFunc
 

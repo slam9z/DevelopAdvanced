@@ -48,7 +48,7 @@ At present, there are 3 primary hosting options for Katana-based applications:
 
 ##Components ¨C NuGet Packages
 
-!()[http://media-www-asp.azureedge.net/media/4388678/owin.png]
+![](http://media-www-asp.azureedge.net/media/4388678/owin.png)
 
 
 ##KanataµÄÏûÊ§

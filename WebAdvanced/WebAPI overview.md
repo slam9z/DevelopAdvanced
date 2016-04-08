@@ -4,22 +4,22 @@
 
 1. Owin Startup Attirbute
 
-``` C#
-[assembly: OwinStartup(startupType)]
+    ``` C#
+    [assembly: OwinStartup(startupType)]
 
-OwinStartupAttribute(Type startupType)
-```
-``` XMl
-<appSettings>  
-  <add key="owin:appStartup" value="StartupDemo.ProductionStartup" />
-</appSettings>
-```
+    OwinStartupAttribute(Type startupType)
+    ```
+    ``` XMl
+    <appSettings>  
+      <add key="owin:appStartup" value="StartupDemo.ProductionStartup" />
+    </appSettings>
+    ```
 
 2. Configuration Method
 
-``` C#
-public void Configuration(IAppBuilder app)
-```
+    ``` C#
+    public void Configuration(IAppBuilder app)
+    ```
 
 ###App_Start
 
@@ -141,81 +141,81 @@ configuration
 
 1. IAppBuilder接口
 
-``` C#
+    ``` C#
 
-namespace Owin
-{
-	public interface IAppBuilder
-	{
-		IDictionary<string, object> Properties { get; }
+    namespace Owin
+    {
+	    public interface IAppBuilder
+	    {
+		    IDictionary<string, object> Properties { get; }
 
-		object Build(Type returnType);
-		IAppBuilder New();
-		IAppBuilder Use(object middleware, params object[] args);
-	}
-}
-```
+		    object Build(Type returnType);
+		    IAppBuilder New();
+		    IAppBuilder Use(object middleware, params object[] args);
+	    }
+    }
+    ```
 
-主要使用IAppBuilder的Use方法配置中间件
+    主要使用IAppBuilder的Use方法配置中间件
 
 2. IAppBuilder扩展
-一般使用扩展方法进行扩展，例如
+    一般使用扩展方法进行扩展，例如
 
-```
-namespace Owin
-{
-    public static class AppBuilderExtensions
+    ```
+    namespace Owin
     {
-		public static IAppBuilder CreatePerOwinContext<T>(this IAppBuilder app, Func<T> createCallback) where T : class, IDisposable;
-		public static IAppBuilder CreatePerOwinContext<T>(this IAppBuilder app, Func<IdentityFactoryOptions<T>, IOwinContext, T> createCallback) where T : class, IDisposable;
-		public static void UseExternalSignInCookie(this IAppBuilder app);
-		public static void UseExternalSignInCookie(this IAppBuilder app, string externalAuthenticationType);
-		public static void UseOAuthBearerTokens(this IAppBuilder app, OAuthAuthorizationServerOptions options);
-		public static void UseTwoFactorRememberBrowserCookie(this IAppBuilder app, string authenticationType);
-		public static void UseTwoFactorSignInCookie(this IAppBuilder app, string authenticationType, TimeSpan expires);
-    }
-}
-```
-``` C#
-namespace Owin
-{
-	public static class CookieAuthenticationExtensions
-	{
-		public static IAppBuilder UseCookieAuthentication(this IAppBuilder app, CookieAuthenticationOptions options);
-		public static IAppBuilder UseCookieAuthentication(this IAppBuilder app, CookieAuthenticationOptions options, PipelineStage stage);
-	}
-}
-```
-
-实例
-``` C#
-namespace WebApplication2015
-{
-    public partial class Startup
-    {
-        // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
-        public void ConfigureAuth(IAppBuilder app)
+        public static class AppBuilderExtensions
         {
+		    public static IAppBuilder CreatePerOwinContext<T>(this IAppBuilder app, Func<T> createCallback) where T : class, IDisposable;
+		    public static IAppBuilder CreatePerOwinContext<T>(this IAppBuilder app, Func<IdentityFactoryOptions<T>, IOwinContext, T> createCallback) where T : class, IDisposable;
+		    public static void UseExternalSignInCookie(this IAppBuilder app);
+		    public static void UseExternalSignInCookie(this IAppBuilder app, string externalAuthenticationType);
+		    public static void UseOAuthBearerTokens(this IAppBuilder app, OAuthAuthorizationServerOptions options);
+		    public static void UseTwoFactorRememberBrowserCookie(this IAppBuilder app, string authenticationType);
+		    public static void UseTwoFactorSignInCookie(this IAppBuilder app, string authenticationType, TimeSpan expires);
         }
     }
-}
-```
+    ```
+    ``` C#
+    namespace Owin
+    {
+	    public static class CookieAuthenticationExtensions
+	    {
+		    public static IAppBuilder UseCookieAuthentication(this IAppBuilder app, CookieAuthenticationOptions options);
+		    public static IAppBuilder UseCookieAuthentication(this IAppBuilder app, CookieAuthenticationOptions options, PipelineStage stage);
+	    }
+    }
+    ```
+
+    实例
+    ``` C#
+    namespace WebApplication2015
+    {
+        public partial class Startup
+        {
+            // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
+            public void ConfigureAuth(IAppBuilder app)
+            {
+            }
+        }
+    }
+    ```
 
 3. 职责链？
 
-是职责链吧 Next去哪了？
+    
 
 4. 原理
 
-Parameters
-middleware
->Type: System.Object
-The middleware parameter determines which behavior is being chained into the pipeline. If the middleware given to Use is a Delegate, 
-then it will be invoked with the "next app" in the chain as the first parameter. If the delegate takes more than the single argument, 
-then the additional values must be provided to Use in the args array. If the middleware given 
-to Use is a Type, then the public constructor will be invoked with the "next app" in the chain 
-as the first parameter. The resulting object must have a public Invoke method. If the object has 
-constructors which take more than the single "next app" argument, then additional values may be 
-provided in the args array.
+    Parameters
+    middleware
+    >Type: System.Object
+    The middleware parameter determines which behavior is being chained into the pipeline. If the middleware given to Use is a Delegate, 
+    then it will be invoked with the "next app" in the chain as the first parameter. If the delegate takes more than the single argument, 
+    then the additional values must be provided to Use in the args array. If the middleware given 
+    to Use is a Type, then the public constructor will be invoked with the "next app" in the chain 
+    as the first parameter. The resulting object must have a public Invoke method. If the object has 
+    constructors which take more than the single "next app" argument, then additional values may be 
+    provided in the args array.
 
 [AppBuilder（一）Use汇总 ](http://www.cnblogs.com/hmxb/p/5299216.html)
