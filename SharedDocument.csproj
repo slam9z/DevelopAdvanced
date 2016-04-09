@@ -63,6 +63,15 @@
     <None Include="WebAdvanced\Owin and Kanata\Middleware.md" />
     <None Include="WebAdvanced\WebAPI overview.md" />
     <None Include="WebAdvanced\WebApi\Action Results in Web API 2.md" />
+    <None Include="WebAdvanced\WebApi\aspnet-web-api-poster.pdf" />
+    <None Include="WebAdvanced\WebApi\Route\Attribute Routing in ASP.NET Web API 2.md" />
+    <None Include="WebAdvanced\WebApi\Route\Routing and Action Selection in ASP.NET Web API.md" />
+    <None Include="WebAdvanced\WebApi\Route\Routing in ASP.NET Web API.md" />
+    <None Include="WebAdvanced\WebApi\Serialization and  Model  Binding\Content Negotiation in ASP.NET Web API.md" />
+    <None Include="WebAdvanced\WebApi\Serialization and  Model  Binding\JSON and XML Serialization in ASP.NET Web API.md" />
+    <None Include="WebAdvanced\WebApi\Serialization and  Model  Binding\Media Formatters in ASP.NET Web API 2.md" />
+    <None Include="WebAdvanced\WebApi\Serialization and  Model  Binding\Model Validation in ASP.NET Web API.md" />
+    <None Include="WebAdvanced\WebApi\Serialization and  Model  Binding\Parameter Binding in ASP.NET Web API.md" />
     <None Include="WebAdvanced\WebApi\WebApi Exception.md" />
     <None Include="多线程\.NET线程同步.md" />
     <None Include="多线程\.NET轻量级线程同步.md" />
@@ -112,6 +121,7 @@
     <Content Include="Image\设计模式\迭代器结构.PNG" />
     <Content Include="Image\设计模式\适配器结构.PNG" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
