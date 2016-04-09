@@ -52,6 +52,8 @@
     <None Include="Markdown使用语法.md" />
     <None Include="Project  struct.md" />
     <None Include="WebAdvanced\20160407  MiddleWare  Exception.md" />
+    <None Include="WebAdvanced\WebApi\HttpController的激活\ASP.NET Web API中的Controller.md" />
+    <None Include="WebAdvanced\WebApi\ASP.NET Web API标准的“管道式”设计 .md" />
     <None Include="WebAdvanced\Nodejs VS Overview.md" />
     <None Include="WebAdvanced\Owin and Kanata\An Overview of Project Katana.md" />
     <None Include="WebAdvanced\Owin and Kanata\AppBuilder（一）Use汇总 .md" />
@@ -64,6 +66,8 @@
     <None Include="WebAdvanced\WebAPI overview.md" />
     <None Include="WebAdvanced\WebApi\Action Results in Web API 2.md" />
     <None Include="WebAdvanced\WebApi\aspnet-web-api-poster.pdf" />
+    <None Include="WebAdvanced\WebApi\How ASP.NET Web API 2.0 Works.md" />
+    <None Include="WebAdvanced\WebApi\HttpController的激活\IoC在ASP.NET Web API中的应用.md" />
     <None Include="WebAdvanced\WebApi\Route\Attribute Routing in ASP.NET Web API 2.md" />
     <None Include="WebAdvanced\WebApi\Route\Routing and Action Selection in ASP.NET Web API.md" />
     <None Include="WebAdvanced\WebApi\Route\Routing in ASP.NET Web API.md" />
