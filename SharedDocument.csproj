@@ -70,6 +70,8 @@
     <None Include="WebAdvanced\WebApi\HttpController的激活\ASP.NET Web API的Controller是如何被创建的？.md" />
     <None Include="WebAdvanced\WebApi\HttpController的激活\IoC在ASP.NET Web API中的应用.md" />
     <None Include="WebAdvanced\WebApi\HttpController的激活\总体介绍ASP.NET Web API下Controller的激活与释放流程 .md" />
+    <None Include="WebAdvanced\WebApi\Route\ASP.NET Web API路由系统的几个核心类型.md" />
+    <None Include="WebAdvanced\WebApi\Route\ASP.NET的路由系统：路由映射 .md" />
     <None Include="WebAdvanced\WebApi\Route\Attribute Routing in ASP.NET Web API 2.md" />
     <None Include="WebAdvanced\WebApi\Route\Routing and Action Selection in ASP.NET Web API.md" />
     <None Include="WebAdvanced\WebApi\Route\Routing in ASP.NET Web API.md" />
