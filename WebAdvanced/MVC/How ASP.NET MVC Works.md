@@ -1,7 +1,9 @@
-﻿##一、ASP.NET + MVC
+﻿[How ASP.NET MVC Works? ](http://www.cnblogs.com/artech/archive/2012/04/10/how-mvc-works.html)
+
+##一、ASP.NET + MVC   
 
 
-[IIS与ASP.NET管道 ]()
+[IIS与ASP.NET管道 ](http://www.cnblogs.com/artech/archive/2009/06/20/1507165.html)
 
 [MVC、MVP以及Model2[上篇] ]()
 [MVC、MVP以及Model2[下篇] ]()

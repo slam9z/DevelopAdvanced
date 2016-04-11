@@ -63,8 +63,12 @@
     <None Include="WebAdvanced\MVC\Filter\Creating Custom Action Filters.md" />
     <None Include="WebAdvanced\MVC\Filter\Filtering in ASP.NET MVC.md" />
     <None Include="WebAdvanced\MVC\How ASP.NET MVC Works.md" />
+    <None Include="WebAdvanced\MVC\Route\ASP.NET MVC路由扩展：路由映射.md" />
+    <None Include="WebAdvanced\MVC\Route\ASP.NET MVC路由扩展：链接和URL的生成 .md" />
     <None Include="WebAdvanced\MVC\Understanding Action Results.md" />
+    <None Include="WebAdvanced\MVC、MVP以及Model2.md" />
     <None Include="WebAdvanced\Route\ASP.NET Routing.md" />
+    <None Include="WebAdvanced\Route\ASP.NET路由系统实现原理：HttpHandler的动态映射.md" />
     <None Include="WebAdvanced\WCF技术剖析之二：再谈IIS与ASP.NET管道.md" />
     <None Include="WebAdvanced\WebApi\Filter\Asp.net web Api源码分析-Filter .md" />
     <None Include="WebAdvanced\WebApi\Filter\MVC和Web API 过滤器Filter.md" />
@@ -89,9 +93,9 @@
     <None Include="WebAdvanced\WebApi\HttpController的激活\总体介绍ASP.NET Web API下Controller的激活与释放流程 .md" />
     <None Include="WebAdvanced\Route\ASP.NET Web API路由系统的几个核心类型.md" />
     <None Include="WebAdvanced\Route\ASP.NET的路由系统：路由映射 .md" />
-    <None Include="WebAdvanced\Route\Attribute Routing in ASP.NET Web API 2.md" />
-    <None Include="WebAdvanced\Route\Routing and Action Selection in ASP.NET Web API.md" />
-    <None Include="WebAdvanced\Route\Routing in ASP.NET Web API.md" />
+    <None Include="WebAdvanced\WebApi\Route\Attribute Routing in ASP.NET Web API 2.md" />
+    <None Include="WebAdvanced\WebApi\Route\Routing and Action Selection in ASP.NET Web API.md" />
+    <None Include="WebAdvanced\WebApi\Route\Routing in ASP.NET Web API.md" />
     <None Include="WebAdvanced\WebApi\Serialization and  Model  Binding\Content Negotiation in ASP.NET Web API.md" />
     <None Include="WebAdvanced\WebApi\Serialization and  Model  Binding\JSON and XML Serialization in ASP.NET Web API.md" />
     <None Include="WebAdvanced\WebApi\Serialization and  Model  Binding\Media Formatters in ASP.NET Web API 2.md" />
