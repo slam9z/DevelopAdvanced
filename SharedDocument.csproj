@@ -65,6 +65,7 @@
     <None Include="WebAdvanced\MVC\How ASP.NET MVC Works.md" />
     <None Include="WebAdvanced\MVC\Understanding Action Results.md" />
     <None Include="WebAdvanced\Route\ASP.NET Routing.md" />
+    <None Include="WebAdvanced\WCF技术剖析之二：再谈IIS与ASP.NET管道.md" />
     <None Include="WebAdvanced\WebApi\Filter\Asp.net web Api源码分析-Filter .md" />
     <None Include="WebAdvanced\WebApi\Filter\MVC和Web API 过滤器Filter.md" />
     <None Include="WebAdvanced\WebApi\Filter\web api 开发之 filter .md" />
