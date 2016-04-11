@@ -52,6 +52,9 @@
     <None Include="Markdown使用语法.md" />
     <None Include="Project  struct.md" />
     <None Include="WebAdvanced\20160407  MiddleWare  Exception.md" />
+    <None Include="WebAdvanced\Route\ASP.NET Routing.md" />
+    <None Include="WebAdvanced\WebApi\Filter\Asp.net web Api源码分析-Filter .md" />
+    <None Include="WebAdvanced\WebApi\Filter\web api 开发之 filter .md" />
     <None Include="WebAdvanced\WebApi\HttpController的激活\ASP.NET Web API中的Controller.md" />
     <None Include="WebAdvanced\WebApi\ASP.NET Web API标准的“管道式”设计 .md" />
     <None Include="WebAdvanced\Nodejs VS Overview.md" />
@@ -70,11 +73,11 @@
     <None Include="WebAdvanced\WebApi\HttpController的激活\ASP.NET Web API的Controller是如何被创建的？.md" />
     <None Include="WebAdvanced\WebApi\HttpController的激活\IoC在ASP.NET Web API中的应用.md" />
     <None Include="WebAdvanced\WebApi\HttpController的激活\总体介绍ASP.NET Web API下Controller的激活与释放流程 .md" />
-    <None Include="WebAdvanced\WebApi\Route\ASP.NET Web API路由系统的几个核心类型.md" />
-    <None Include="WebAdvanced\WebApi\Route\ASP.NET的路由系统：路由映射 .md" />
-    <None Include="WebAdvanced\WebApi\Route\Attribute Routing in ASP.NET Web API 2.md" />
-    <None Include="WebAdvanced\WebApi\Route\Routing and Action Selection in ASP.NET Web API.md" />
-    <None Include="WebAdvanced\WebApi\Route\Routing in ASP.NET Web API.md" />
+    <None Include="WebAdvanced\Route\ASP.NET Web API路由系统的几个核心类型.md" />
+    <None Include="WebAdvanced\Route\ASP.NET的路由系统：路由映射 .md" />
+    <None Include="WebAdvanced\Route\Attribute Routing in ASP.NET Web API 2.md" />
+    <None Include="WebAdvanced\Route\Routing and Action Selection in ASP.NET Web API.md" />
+    <None Include="WebAdvanced\Route\Routing in ASP.NET Web API.md" />
     <None Include="WebAdvanced\WebApi\Serialization and  Model  Binding\Content Negotiation in ASP.NET Web API.md" />
     <None Include="WebAdvanced\WebApi\Serialization and  Model  Binding\JSON and XML Serialization in ASP.NET Web API.md" />
     <None Include="WebAdvanced\WebApi\Serialization and  Model  Binding\Media Formatters in ASP.NET Web API 2.md" />
