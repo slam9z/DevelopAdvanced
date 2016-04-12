@@ -81,6 +81,11 @@
     <None Include="WebAdvanced\MVC\Model的绑定\ASP.NET MVC以ValueProvider为核心的值提供系统：NameValueCollectionValueProvider .md" />
     <None Include="WebAdvanced\MVC\Model的绑定\ASP.NET MVC以ValueProvider为核心的值提供系统：ValueProviderFactory.md" />
     <None Include="WebAdvanced\MVC\Model的绑定\通过实例模拟ASP.NET MVC的Model绑定机制.md" />
+    <None Include="WebAdvanced\MVC\Model验证\ASP.NET MVC以ModelValidator为核心的Model验证体系：ModelValidator .md" />
+    <None Include="WebAdvanced\MVC\Model验证\ASP.NET MVC以ModelValidator为核心的Model验证体系：ModelValidatorProvider.md" />
+    <None Include="WebAdvanced\MVC\Model验证\ASP.NET MVC以ModelValidator为核心的Model验证体系：ModelValidatorProviders.md" />
+    <None Include="WebAdvanced\MVC\Model验证\ASP.NET MVC基于标注特性的Model验证.md" />
+    <None Include="WebAdvanced\MVC\Model验证\ASP.NET MVC的客户端验证：jQuery的验证.md" />
     <None Include="WebAdvanced\MVC\Route\ASP.NET MVC路由扩展：路由映射.md" />
     <None Include="WebAdvanced\MVC\Route\ASP.NET MVC路由扩展：链接和URL的生成 .md" />
     <None Include="WebAdvanced\MVC\Understanding Action Results.md" />
@@ -170,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="WebAdvanced\Core\" />
+    <Folder Include="WebAdvanced\MVC\Action的执行\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
