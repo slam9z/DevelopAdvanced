@@ -73,6 +73,14 @@
     <None Include="WebAdvanced\MVC\Model元数据的提供\ASP.NET MVC的Model元数据与Model模板：模板的获取与执行策略.md" />
     <None Include="WebAdvanced\MVC\Model元数据的提供\ASP.NET MVC的Model元数据与Model模板：预定义模板 .md" />
     <None Include="WebAdvanced\MVC\Model元数据的提供\ASP.NET MVC的Model元数据提供机制的实现 .md" />
+    <None Include="WebAdvanced\MVC\Model的绑定\ASP.NET MVC三个重要的描述对象：ActionDescriptor .md" />
+    <None Include="WebAdvanced\MVC\Model的绑定\ASP.NET MVC三个重要的描述对象：ControllerDescriptor.md" />
+    <None Include="WebAdvanced\MVC\Model的绑定\ASP.NET MVC三个重要的描述对象：ControllerDescriptor和ActionDescriptor的创建 .md" />
+    <None Include="WebAdvanced\MVC\Model的绑定\ASP.NET MVC三个重要的描述对象：ParameterDescriptor .md" />
+    <None Include="WebAdvanced\MVC\Model的绑定\ASP.NET MVC以ValueProvider为核心的值提供系统：DictionaryValueProvider .md" />
+    <None Include="WebAdvanced\MVC\Model的绑定\ASP.NET MVC以ValueProvider为核心的值提供系统：NameValueCollectionValueProvider .md" />
+    <None Include="WebAdvanced\MVC\Model的绑定\ASP.NET MVC以ValueProvider为核心的值提供系统：ValueProviderFactory.md" />
+    <None Include="WebAdvanced\MVC\Model的绑定\通过实例模拟ASP.NET MVC的Model绑定机制.md" />
     <None Include="WebAdvanced\MVC\Route\ASP.NET MVC路由扩展：路由映射.md" />
     <None Include="WebAdvanced\MVC\Route\ASP.NET MVC路由扩展：链接和URL的生成 .md" />
     <None Include="WebAdvanced\MVC\Understanding Action Results.md" />
