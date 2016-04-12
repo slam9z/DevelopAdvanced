@@ -51,6 +51,8 @@
     <None Include="Gof设计模式\详解设计模式原则.md" />
     <None Include="Markdown使用语法.md" />
     <None Include="Project  struct.md" />
+    <None Include="Reflection\反射%28Reflection%29详解.md" />
+    <None Include="Reflection\通过反射创建表达树.md" />
     <None Include="WebAdvanced\20160407  MiddleWare  Exception.md" />
     <None Include="WebAdvanced\MVC\Action Results\ASP.NET MVC的Razor引擎：RazorView .md" />
     <None Include="WebAdvanced\MVC\Action Results\ASP.NET MVC的Razor引擎：RazorViewEngine .md" />
