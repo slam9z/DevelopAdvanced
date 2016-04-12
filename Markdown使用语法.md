@@ -19,3 +19,6 @@
 
 [GitHub官方语法](https://help.github.com/categories/writing-on-github/)
 
+[Creating and highlighting code blocks](https://help.github.com/articles/creating-and-highlighting-code-blocks/)
+
+[languages.yml](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
