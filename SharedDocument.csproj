@@ -60,6 +60,11 @@
     <None Include="WebAdvanced\MVC\Action Results\了解ASP.NET MVC几种ActionResult的本质：FileResult .md" />
     <None Include="WebAdvanced\MVC\Action Results\了解ASP.NET MVC几种ActionResult的本质：HttpStatusCodeResult   RedirectResult RedirectToRouteResult .md" />
     <None Include="WebAdvanced\MVC\Action Results\了解ASP.NET MVC几种ActionResult的本质：JavaScriptResult  JsonResult .md" />
+    <None Include="WebAdvanced\MVC\Action的执行\ASP.NET MVC下的异步Action的定义和执行原理 .md" />
+    <None Include="WebAdvanced\MVC\Action的执行\ASP.NET MVC中的ActionFilter是如何执行的？.md" />
+    <None Include="WebAdvanced\MVC\Action的执行\ASP.NET MVC涉及到的5个同步与异步，你是否傻傻分不清楚.md" />
+    <None Include="WebAdvanced\MVC\Action的执行\深入探讨ASP.NET MVC的筛选器.md" />
+    <None Include="WebAdvanced\MVC\Action的执行\认识ASP.NET MVC的5种AuthorizationFilter .md" />
     <None Include="WebAdvanced\MVC\Controller\ASP.NET MVC Controller激活系统详解：IoC的应用.md" />
     <None Include="WebAdvanced\MVC\Controller\ASP.NET MVC Controller激活系统详解：总体设计 .md" />
     <None Include="WebAdvanced\MVC\Controller\ASP.NET MVC Controller激活系统详解：默认实现 .md" />
@@ -175,7 +180,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="WebAdvanced\Core\" />
-    <Folder Include="WebAdvanced\MVC\Action的执行\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
