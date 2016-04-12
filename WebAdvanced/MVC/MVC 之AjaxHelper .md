@@ -64,17 +64,17 @@ ajaxOptions：配置Ajax的一些选项，看完下面的例子我们再详细�
 
 
 |参数|说明|
-|---|--|
-|Confirm |获取或设置提交请求之前，显示在确认窗口中的消息。 |
-|HttpMethod |获取或设置 HTTP 请求方法（“Get”或“Post”）。 |
+|----|-------|
+|Confirm |获取或设置提交请求之前，显示在确认窗口中的消息。|
+|HttpMethod |获取或设置 HTTP 请求方法（“Get”或“Post”）。|
 |InsertionMode |获取或设置指定如何将响应插入目标 DOM 元素的模式。 |
-|LoadingElementId |获取或设置加载 Ajax 函数时要显示的 HTML 元素的 id 特性。 |
+|LoadingElementId |获取或设置加载 Ajax 函数时要显示的 HTML 元素的 id 特性。|
 |OnBegin | 获取或设置更新页面之前，恰好调用的 JavaScript 函数的名称。 |
 |OnComplete | 获取或设置实例化响应数据之后但更新页面之前，要调用的 JavaScript 函数。 |
 |OnFailure | 获取或设置页面更新失败时，要调用的 JavaScript 函数。 |
 |OnSuccess |获取或设置成功更新页面之后，要调用的 JavaScript 函数。 |
 |UpdateTargetId |获取或设置要使用服务器响应来更新的 DOM 元素的 ID。 |
-|Url |获取或设置要向其发送请求的 URL。 |
+|Url |获取或设置要向其发送请求的 URL。|
 
 
 我们将使用ActionLink分别异步请求ContentController，Json格式的Controller和PartialView格式的Controller来显示详细信息：
