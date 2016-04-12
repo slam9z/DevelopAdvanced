@@ -93,9 +93,11 @@
     <None Include="WebAdvanced\MVC\Model验证\ASP.NET MVC以ModelValidator为核心的Model验证体系：ModelValidatorProviders.md" />
     <None Include="WebAdvanced\MVC\Model验证\ASP.NET MVC基于标注特性的Model验证.md" />
     <None Include="WebAdvanced\MVC\Model验证\ASP.NET MVC的客户端验证：jQuery的验证.md" />
+    <None Include="WebAdvanced\MVC\MVC 之AjaxHelper .md" />
     <None Include="WebAdvanced\MVC\Route\ASP.NET MVC路由扩展：路由映射.md" />
     <None Include="WebAdvanced\MVC\Route\ASP.NET MVC路由扩展：链接和URL的生成 .md" />
     <None Include="WebAdvanced\MVC\Understanding Action Results.md" />
+    <None Include="WebAdvanced\MVC\View\[ASP.NET MVC 小牛之路]12 - Section、Partial View 和 Child Action.md" />
     <None Include="WebAdvanced\MVC、MVP以及Model2.md" />
     <None Include="WebAdvanced\Route\ASP.NET Routing.md" />
     <None Include="WebAdvanced\Route\ASP.NET路由系统实现原理：HttpHandler的动态映射.md" />
