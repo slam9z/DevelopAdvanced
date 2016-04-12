@@ -17,13 +17,13 @@ Razor视图引擎支持将View中的一部分内容分离出来，以便在需�
 注意，section只能在当前View或它的Layout中被调用。@RenderSection方法没有找到参数指定的section会抛异常，
 如果不确定section是否存在，则需要指定第二个参数的值为falsefalse，如下：
 
-``` Html
+``` C#
 @RenderSection("scripts", false) 
 ```
 
 我们还可以通过 IsSectionDefined 方法来判断一个section是否被定义或在当前View中是否能调用得到，如：
 
-``` Html
+``` C#
 @if (IsSectionDefined("Footer")) { 
     @RenderSection("Footer") 
 } else { 
@@ -38,7 +38,7 @@ Partial view（分部视图）是将部分 Razor 和 Html 标签放在一个独�
 
 继续为此添加一个 List.cshtml 视图，并通过@Html.Partial方法来调用我们要呈现的分部视图，如下：
 
-``` Html
+``` C#
 @{
     ViewBag.Title = "List";
     Layout = null;
@@ -59,7 +59,7 @@ Child action 和 Patial view 类似，也是在应用程序的不同地方可以
 
 在 List.cshtml 视图中添加如下代码来调用 Time action 方法 ：
 
-``` Html
+``` C#
 @Html.Action("Time")
 ```
 
