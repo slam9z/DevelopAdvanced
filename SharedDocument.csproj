@@ -53,6 +53,7 @@
     <None Include="Project  struct.md" />
     <None Include="Reflection\反射%28Reflection%29详解.md" />
     <None Include="Reflection\通过反射创建表达树.md" />
+    <None Include="WebAdvanced\HttpApplication 类.md" />
     <None Include="WebAdvanced\MVC\使用Bundle打包.md" />
     <None Include="WebAdvanced\WebApi\20160407  MiddleWare  Exception.md" />
     <None Include="WebAdvanced\MVC\Action Results\ASP.NET MVC的Razor引擎：RazorView .md" />
