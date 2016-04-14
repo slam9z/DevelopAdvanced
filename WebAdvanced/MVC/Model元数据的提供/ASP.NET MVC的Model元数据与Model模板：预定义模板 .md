@@ -1,5 +1,9 @@
 ﻿[ASP.NET MVC的Model元数据与Model模板：预定义模板 ](http://www.cnblogs.com/artech/archive/2012/05/02/model-metadata-and-template-01.html)
 
+```C#
+HtmlHelper<TModel>.EditorForModel
+```
+
 ##一、 实例演示：通过模板将布尔值显示为RadioButton
 
 
