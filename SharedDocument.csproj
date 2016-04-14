@@ -41,9 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="WebAdvanced\Javascript\ECMAScript 6入门\ECMAScript 6简介.md" />
-    <None Include="WebAdvanced\Javascript\ECMAScript 6入门\let和const命令.md" />
-    <None Include="WebAdvanced\Javascript\ECMAScript 6入门\变量的解构赋值.md" />
+    <None Include="WebAdvanced\Javascript\Array.prototype.map%28%29.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\Class.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\ECMAScript 6简介.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\let和const命令.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\Module.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\Require Object Literal Shorthand Syntax %28object-shorthand%29.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\变量的解构赋值.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\字符串的扩展.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\数组的扩展.md" />
+    <None Include="WebAdvanced\Javascript\Enforces return statements in callbacks of array’s methods %28array-callback-return%29.md" />
+    <None Include="WebAdvanced\Javascript\ES5和ES6中的继承.md" />
     <None Include="WebAdvanced\Javascript\JavaScript Style Guide.md" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +66,8 @@
     <None Include="Reflection\反射%28Reflection%29详解.md" />
     <None Include="Reflection\通过反射创建表达树.md" />
     <None Include="WebAdvanced\HttpApplication 类.md" />
+    <None Include="WebAdvanced\Javascript\JavaScript.md" />
+    <None Include="WebAdvanced\Javascript\Javascript定义类（class）的三种方法.md" />
     <None Include="WebAdvanced\Javascript\全面理解Javascript中Function对象的属性和方法.md" />
     <None Include="WebAdvanced\MVC\Introduction to ASP.NET Web Programming Using the Razor Syntax %28CSharp%29.md" />
     <None Include="WebAdvanced\MVC\使用Bundle打包.md" />
