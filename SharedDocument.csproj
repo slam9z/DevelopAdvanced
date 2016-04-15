@@ -42,14 +42,14 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="WebAdvanced\Javascript\Array.prototype.map%28%29.md" />
-    <None Include="WebAdvanced\Javascript\ECMAScript 6\Class.md" />
-    <None Include="WebAdvanced\Javascript\ECMAScript 6\ECMAScript 6简介.md" />
-    <None Include="WebAdvanced\Javascript\ECMAScript 6\let和const命令.md" />
-    <None Include="WebAdvanced\Javascript\ECMAScript 6\Module.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\18. Class.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\1. ECMAScript 6简介.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\2. let和const命令.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\20. Module.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\Require Object Literal Shorthand Syntax %28object-shorthand%29.md" />
-    <None Include="WebAdvanced\Javascript\ECMAScript 6\变量的解构赋值.md" />
-    <None Include="WebAdvanced\Javascript\ECMAScript 6\字符串的扩展.md" />
-    <None Include="WebAdvanced\Javascript\ECMAScript 6\数组的扩展.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\3. 变量的解构赋值.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\4. 字符串的扩展.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\7. 数组的扩展.md" />
     <None Include="WebAdvanced\Javascript\Enforces return statements in callbacks of array’s methods %28array-callback-return%29.md" />
     <None Include="WebAdvanced\Javascript\ES5和ES6中的继承.md" />
     <None Include="WebAdvanced\Javascript\JavaScript Style Guide.md" />
