@@ -42,16 +42,23 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="WebAdvanced\Javascript\Array.prototype.map%28%29.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\17.异步操作和Async函数.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\18. Class.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\1. ECMAScript 6简介.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\2. let和const命令.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\20. Module.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\6. 数值的扩展.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\8. 函数的扩展.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\Generator 函数.md" />
+    <None Include="WebAdvanced\Javascript\ECMAScript 6\Promise对象.md" />
+    <None Include="WebAdvanced\Javascript\异步\jQuery的Deferred对象，Promise对象.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\Require Object Literal Shorthand Syntax %28object-shorthand%29.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\3. 变量的解构赋值.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\4. 字符串的扩展.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\7. 数组的扩展.md" />
     <None Include="WebAdvanced\Javascript\Enforces return statements in callbacks of array’s methods %28array-callback-return%29.md" />
     <None Include="WebAdvanced\Javascript\ES5和ES6中的继承.md" />
+    <None Include="WebAdvanced\Javascript\Function.prototype.apply%28%29.md" />
     <None Include="WebAdvanced\Javascript\JavaScript Style Guide.md" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +76,7 @@
     <None Include="WebAdvanced\Javascript\JavaScript.md" />
     <None Include="WebAdvanced\Javascript\Javascript定义类（class）的三种方法.md" />
     <None Include="WebAdvanced\Javascript\全面理解Javascript中Function对象的属性和方法.md" />
+    <None Include="WebAdvanced\Javascript\异步\理解 JavaScript 中的 generator %28EcmaScript 6%29 .md" />
     <None Include="WebAdvanced\MVC\Introduction to ASP.NET Web Programming Using the Razor Syntax %28CSharp%29.md" />
     <None Include="WebAdvanced\MVC\使用Bundle打包.md" />
     <None Include="WebAdvanced\WebApi\20160407  MiddleWare  Exception.md" />
