@@ -57,6 +57,10 @@
     <None Include="WebAdvanced\Javascript\ECMAScript 6\15. Generator 函数.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\16. Promise对象.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\9. 对象的扩展.md" />
+    <None Include="WebAdvanced\Javascript\Mozilla\Mozilla JavaScript.md" />
+    <None Include="WebAdvanced\Javascript\Mozilla\严格模式.md" />
+    <None Include="WebAdvanced\Javascript\Mozilla\内存管理.md" />
+    <None Include="WebAdvanced\Javascript\Mozilla\继承与原型链.md" />
     <None Include="WebAdvanced\Javascript\异步\jQuery的Deferred对象，Promise对象.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\Require Object Literal Shorthand Syntax %28object-shorthand%29.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\3. 变量的解构赋值.md" />
