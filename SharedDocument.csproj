@@ -222,6 +222,7 @@
   <ItemGroup>
     <Folder Include="WebAdvanced\Core\" />
     <Folder Include="WebAdvanced\Css\" />
+    <Folder Include="WebAdvanced\Html\" />
     <Folder Include="WebAdvanced\Javascript\Typescript\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
