@@ -41,6 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="WebAdvanced\CSS\Mozilla\3. CSS 如何工作.md" />
+    <None Include="WebAdvanced\CSS\Mozilla\2. 为何使用CSS？.md" />
+    <None Include="WebAdvanced\CSS\Mozilla\4. 层叠和继承.md" />
+    <None Include="WebAdvanced\CSS\Mozilla\5. 选择器（Selectors）.md" />
+    <None Include="WebAdvanced\CSS\Mozilla\7. Text styles.md" />
+    <None Include="WebAdvanced\CSS\Mozilla\8. Color.md" />
+    <None Include="WebAdvanced\CSS\Mozilla\9. Content.md" />
     <None Include="WebAdvanced\Javascript\Array.prototype.map%28%29.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\10. Symbol.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\11. Proxy和Reflect.md" />
@@ -221,7 +228,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="WebAdvanced\Core\" />
-    <Folder Include="WebAdvanced\Css\" />
     <Folder Include="WebAdvanced\Html\" />
     <Folder Include="WebAdvanced\Javascript\Typescript\" />
   </ItemGroup>
