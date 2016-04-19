@@ -1,4 +1,6 @@
-﻿##Naming Conventions
+﻿这里就是自己C#的编程规范，一定要遵守。
+
+##Naming Conventions
 
 Use camelCase与PascalCase命名方式。
 
@@ -12,6 +14,9 @@ Use camelCase与PascalCase命名方式。
 
 ##Define Group
 
-这个比较麻烦，自己也没弄好过，需要好好看一下书。
+这个比较麻烦，自己也没弄好过，需要好好看一下书。主要是看类型与含义，这两者是有冲突的。
 
+* 属性与它的私有变量定义，需要Group，先私有变量再属性。
+
+* 一般采用变量与属性，构造函数，方法从上到下定义。
 
