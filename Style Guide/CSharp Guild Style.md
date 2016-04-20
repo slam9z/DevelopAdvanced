@@ -12,6 +12,7 @@ Use camelCase与PascalCase命名方式。
 
 1. 静态私有变量使用camelCase方式加s_前缀
 
+
 ##Define Group
 
 这个比较麻烦，自己也没弄好过，需要好好看一下书。主要是看类型与含义，这两者是有冲突的。
@@ -20,3 +21,8 @@ Use camelCase与PascalCase命名方式。
 
 1. 一般采用变量与属性，构造函数，方法从上到下定义。
 
+
+##GUI Style
+
+1. 控件本身的事件处理方法使用On+事件名，其它使用 控件名_事件名。
+1. 控件命名，使用后缀，不要与具体类型绑定。例如Input, text,options。
