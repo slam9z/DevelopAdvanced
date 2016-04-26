@@ -12,6 +12,7 @@ Use camelCase与PascalCase命名方式。
 
 1. 静态私有变量使用camelCase方式加s_前缀
 
+1. const声明使用全大写+_。
 
 ##Define Group
 
