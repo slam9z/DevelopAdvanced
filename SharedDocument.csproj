@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Bug\Bug分类.md" />
     <None Include="Style Guide\CSharp Guild Style.md" />
     <None Include="Style Guide\Refactoring  Guild  Style.md" />
     <None Include="Style Guide\Client Guild Style.md" />
@@ -194,6 +195,7 @@
     <None Include="多线程\深入探究 WinRT 和 await.md" />
     <None Include="学习计划.md" />
     <None Include="普通的集合.md" />
+    <None Include="概念\_aaS.md" />
     <None Include="线程安全普通的集合.md" />
     <None Include="网络\HTTP\Http.md" />
     <None Include="网络\HTTP\对 HTTP 304 的理解%28转%29.md" />
