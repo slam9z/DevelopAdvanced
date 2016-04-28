@@ -53,6 +53,7 @@
     <None Include="WebAdvanced\CSS\Mozilla\7. Text styles.md" />
     <None Include="WebAdvanced\CSS\Mozilla\8. Color.md" />
     <None Include="WebAdvanced\CSS\Mozilla\9. Content.md" />
+    <None Include="WebAdvanced\CSS\Mozilla\11. Boxes.md" />
     <None Include="WebAdvanced\Javascript\Array.prototype.map%28%29.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\10. Symbol.md" />
     <None Include="WebAdvanced\Javascript\ECMAScript 6\11. Proxy和Reflect.md" />
