@@ -45,6 +45,7 @@
     <None Include="Style Guide\CSharp Guild Style.md" />
     <None Include="Style Guide\Refactoring  Guild  Style.md" />
     <None Include="Style Guide\Client Guild Style.md" />
+    <None Include="Style Guide\Source Control Guild Style.md" />
     <None Include="WebAdvanced\CSS\Mozilla\10. Lists.md" />
     <None Include="WebAdvanced\CSS\Mozilla\12. Layout.md" />
     <None Include="WebAdvanced\CSS\Mozilla\13. Tables.md" />
