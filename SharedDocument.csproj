@@ -42,9 +42,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Bug\Bug分类.md" />
+    <None Include="Source Code Control\GitTfs  Tfs migrate Git.md" />
     <None Include="Style Guide\CSharp Guild Style.md" />
     <None Include="Style Guide\Refactoring  Guild  Style.md" />
     <None Include="Style Guide\Client Guild Style.md" />
+    <None Include="Style Guide\Source Control Guild Style.md" />
     <None Include="WebAdvanced\CSS\Mozilla\10. Lists.md" />
     <None Include="WebAdvanced\CSS\Mozilla\12. Layout.md" />
     <None Include="WebAdvanced\CSS\Mozilla\13. Tables.md" />
@@ -95,7 +97,7 @@
     <None Include="WebAdvanced\Javascript\JavaScript Style Guide.md" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Git常用命令.md" />
+    <None Include="Source Code Control\Git常用命令.md" />
     <None Include="Gof设计模式\设计模式-创建型.md" />
     <None Include="Gof设计模式\设计模式-结构型.md" />
     <None Include="Gof设计模式\设计模式-行为型.md" />
