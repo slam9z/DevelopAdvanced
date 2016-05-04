@@ -57,6 +57,7 @@
     <None Include="WebAdvanced\CSS\Mozilla\8. Color.md" />
     <None Include="WebAdvanced\CSS\Mozilla\9. Content.md" />
     <None Include="WebAdvanced\CSS\Mozilla\11. Boxes.md" />
+    <None Include="WebAdvanced\CSS\Mozilla\CSS.md" />
     <None Include="WebAdvanced\CSS\Mozilla\Getting started with CSS.md" />
     <None Include="WebAdvanced\CSS\Mozilla\JavaScript and CSS.md" />
     <None Include="WebAdvanced\CSS\Mozilla\line-height.md" />
