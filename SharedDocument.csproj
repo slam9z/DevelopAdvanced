@@ -43,6 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Bug\Bug分类.md" />
     <None Include="Source Code Control\GitTfs  Tfs migrate Git.md" />
+    <None Include="Source Code Control\Nuget.md" />
     <None Include="Style Guide\CSharp Guild Style.md" />
     <None Include="Style Guide\Refactoring  Guild  Style.md" />
     <None Include="Style Guide\Client Guild Style.md" />
@@ -66,11 +67,14 @@
     <None Include="WebAdvanced\CSS\Mozilla\margin collapsing.md" />
     <None Include="WebAdvanced\CSS\Mozilla\SVG and CSS.md" />
     <None Include="WebAdvanced\CSS\Mozilla\XML data.md" />
-    <None Include="WebAdvanced\DOM\Document Object Model Events.md" />
-    <None Include="WebAdvanced\DOM\Document Object Model.md" />
+    <None Include="WebAdvanced\DOM\Document .md" />
+    <None Include="WebAdvanced\DOM\Events and the DOM.md" />
+    <None Include="WebAdvanced\DOM\DOM.md" />
+    <None Include="WebAdvanced\DOM\Element.md" />
     <None Include="WebAdvanced\DOM\Event.md" />
     <None Include="WebAdvanced\DOM\EventListener.md" />
     <None Include="WebAdvanced\DOM\EventTarget.md" />
+    <None Include="WebAdvanced\DOM\Node.md" />
     <None Include="WebAdvanced\DOM\setInterval.md" />
     <None Include="WebAdvanced\DOM\setTimeout.md" />
     <None Include="WebAdvanced\Javascript\Array.prototype.map%28%29.md" />
