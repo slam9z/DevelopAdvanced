@@ -31,3 +31,21 @@ git tfs  clone  http://tfs2013app:8080/tfs/DefaultCollection   $/YPWare/Dev/Wind
 git tfs  clone  http://tfs2013app:8080/tfs/DefaultCollection   $/YPWare/Dev/Windows/BlueOffice.UWP
 
 git tfs  clone  http://tfs2013app:8080/tfs/DefaultCollection   $/YPWare/Dev/Windows/BlueOffice
+
+git tfs  clone  http://tfs2013app:8080/tfs/DefaultCollection   $/YPWare/Dev/Windows/ClientInfrastructure
+   
+git tfs  clone  http://tfs2013app:8080/tfs/DefaultCollection   $/YPWare/Dev/Windows/OneDriveServiceCommon
+	  
+git tfs  clone  http://tfs2013app:8080/tfs/DefaultCollection   $/YPWare/Dev/Windows/BlueOfficeTest
+
+git tfs  clone  http://tfs2013app:8080/tfs/DefaultCollection   $/YPWare/Dev/Windows/WinRTInfrastructure
+
+
+http://tfs2013app:8080/tfs/WindowsCollection/BlueOffice/_git/BlueOfficePC
+
+http://tfs2013app:8080/tfs/WindowsCollection/BlueOffice/_git/BlueOfficeWP
+
+http://tfs2013app:8080/tfs/WindowsCollection/BlueOffice/_git/BlueOfficeCommon
+
+##提交到之前的Git上
+先作为一个branch  push到上面  然后在merge就行了
