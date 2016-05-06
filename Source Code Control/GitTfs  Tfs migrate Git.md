@@ -49,3 +49,6 @@ http://tfs2013app:8080/tfs/WindowsCollection/BlueOffice/_git/BlueOfficeCommon
 
 ##提交到之前的Git上
 先作为一个branch  push到上面  然后在merge就行了
+
+
+先checkout之前的文件，再merge。

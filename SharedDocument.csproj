@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Bug\Bug分类.md" />
+    <None Include="Source Code Control\git branch用法总结 .md" />
     <None Include="Source Code Control\GitTfs  Tfs migrate Git.md" />
     <None Include="Source Code Control\Nuget.md" />
     <None Include="Style Guide\CSharp Guild Style.md" />

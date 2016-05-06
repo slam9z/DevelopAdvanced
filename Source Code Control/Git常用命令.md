@@ -19,3 +19,5 @@ git commit --amend -m "New commit message"
 http://stackoverflow.com/questions/179123/edit-an-incorrect-commit-message-in-git
 
 ##3. fetch与pull的区别,fetch是获取到远程的变化,但是pull会获取远程的变化并且merge
+
+##branch
