@@ -70,6 +70,7 @@
     <None Include="WebAdvanced\CSS\Mozilla\SVG and CSS.md" />
     <None Include="WebAdvanced\CSS\Mozilla\XML data.md" />
     <None Include="WebAdvanced\DOM\Document .md" />
+    <None Include="WebAdvanced\DOM\document.ready和onload的区别----JavaScript文档加载完成事件.md" />
     <None Include="WebAdvanced\DOM\Events and the DOM.md" />
     <None Include="WebAdvanced\DOM\DOM.md" />
     <None Include="WebAdvanced\DOM\Element.md" />
@@ -262,6 +263,7 @@
     <Folder Include="WebAdvanced\Core\" />
     <Folder Include="WebAdvanced\Html\" />
     <Folder Include="WebAdvanced\Javascript\Typescript\" />
+    <Folder Include="WebAdvanced\JQuery\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
