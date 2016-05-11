@@ -129,10 +129,17 @@
     <None Include="WebAdvanced\JQuery\%24 vs %24%28%29.md" />
     <None Include="WebAdvanced\JQuery\%24%28 document %29.ready%28%29.md" />
     <None Include="WebAdvanced\JQuery\Attributes.md" />
+    <None Include="WebAdvanced\JQuery\CSS , Styling , Dimensions.md" />
+    <None Include="WebAdvanced\JQuery\Data Methods.md" />
+    <None Include="WebAdvanced\JQuery\Iterating over jQuery and non-jQuery Objects.md" />
     <None Include="WebAdvanced\JQuery\Learning Center.md" />
     <None Include="WebAdvanced\JQuery\Manipulating Elements.md" />
     <None Include="WebAdvanced\JQuery\Selecting Elements.md" />
+    <None Include="WebAdvanced\JQuery\The jQuery Object.md" />
+    <None Include="WebAdvanced\JQuery\Traversing.md" />
     <None Include="WebAdvanced\JQuery\Using jQuery Core.md" />
+    <None Include="WebAdvanced\JQuery\Using jQuery’s .index%28%29 Function.md" />
+    <None Include="WebAdvanced\JQuery\Utility Methods.md" />
     <None Include="WebAdvanced\JQuery\Working with Selections.md" />
     <None Include="WebAdvanced\MVC\Introduction to ASP.NET Web Programming Using the Razor Syntax %28CSharp%29.md" />
     <None Include="WebAdvanced\MVC\使用Bundle打包.md" />
