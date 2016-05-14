@@ -126,6 +126,10 @@
     <None Include="WebAdvanced\Javascript\Javascript定义类（class）的三种方法.md" />
     <None Include="WebAdvanced\Javascript\全面理解Javascript中Function对象的属性和方法.md" />
     <None Include="WebAdvanced\Javascript\异步\理解 JavaScript 中的 generator %28EcmaScript 6%29 .md" />
+    <None Include="WebAdvanced\JQuery\Ajax\Ajax and Forms.md" />
+    <None Include="WebAdvanced\JQuery\Ajax\Ajax.md" />
+    <None Include="WebAdvanced\JQuery\Ajax\jQuery’s Ajax-Related Methods.md" />
+    <None Include="WebAdvanced\JQuery\Ajax\Key Concepts.md" />
     <None Include="WebAdvanced\JQuery\Effects\Custom Effects with .animate%28%29.md" />
     <None Include="WebAdvanced\JQuery\Effects\Effects.md" />
     <None Include="WebAdvanced\JQuery\Effects\Introduction to Effects.md" />
@@ -148,7 +152,7 @@
     <None Include="WebAdvanced\JQuery\Using jQuery Core\Iterating over jQuery and non-jQuery Objects.md" />
     <None Include="WebAdvanced\JQuery\Using jQuery Core\Learning Center.md" />
     <None Include="WebAdvanced\JQuery\Using jQuery Core\Manipulating Elements.md" />
-    <None Include="WebAdvanced\JQuery\Using jQuery Core\Selecting Elements.md" />
+    <None Include="WebAdvanced\JQuery\Using jQuery Core\Selecting Elements%28by ID or Class%29.md" />
     <None Include="WebAdvanced\JQuery\Using jQuery Core\The jQuery Object.md" />
     <None Include="WebAdvanced\JQuery\Using jQuery Core\Traversing.md" />
     <None Include="WebAdvanced\JQuery\Using jQuery Core\Using jQuery Core.md" />
