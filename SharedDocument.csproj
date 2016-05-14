@@ -126,6 +126,10 @@
     <None Include="WebAdvanced\Javascript\Javascript定义类（class）的三种方法.md" />
     <None Include="WebAdvanced\Javascript\全面理解Javascript中Function对象的属性和方法.md" />
     <None Include="WebAdvanced\Javascript\异步\理解 JavaScript 中的 generator %28EcmaScript 6%29 .md" />
+    <None Include="WebAdvanced\JQuery\Effects\Custom Effects with .animate%28%29.md" />
+    <None Include="WebAdvanced\JQuery\Effects\Effects.md" />
+    <None Include="WebAdvanced\JQuery\Effects\Introduction to Effects.md" />
+    <None Include="WebAdvanced\JQuery\Effects\Queue  Dequeue Explained.md" />
     <None Include="WebAdvanced\JQuery\Events\Event Helpers.md" />
     <None Include="WebAdvanced\JQuery\Events\Events.md" />
     <None Include="WebAdvanced\JQuery\Events\Handling Events.md" />
