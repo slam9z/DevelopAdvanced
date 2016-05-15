@@ -144,6 +144,11 @@
     <None Include="WebAdvanced\JQuery\Events\jQuery Event Extensions.md" />
     <None Include="WebAdvanced\JQuery\Events\Triggering Event Handlers.md" />
     <None Include="WebAdvanced\JQuery\Events\Understanding Event Delegation.md" />
+    <None Include="WebAdvanced\JQuery\Plugins\Advanced Plugin Concepts.md" />
+    <None Include="WebAdvanced\JQuery\Plugins\Finding   Evaluating Plugins.md" />
+    <None Include="WebAdvanced\JQuery\Plugins\How to Create a Basic Plugin.md" />
+    <None Include="WebAdvanced\JQuery\Plugins\Plugins.md" />
+    <None Include="WebAdvanced\JQuery\Plugins\Writing Stateful Plugins with the jQuery UI Widget Factory.md" />
     <None Include="WebAdvanced\JQuery\Using jQuery Core\%24 vs %24%28%29.md" />
     <None Include="WebAdvanced\JQuery\Using jQuery Core\%24%28 document %29.ready%28%29.md" />
     <None Include="WebAdvanced\JQuery\Using jQuery Core\Attributes.md" />
