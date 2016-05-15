@@ -41,6 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="WebAdvanced\jQuery\Code Organization\Beware Anonymous Functions.md" />
+    <None Include="WebAdvanced\jQuery\Code Organization\Code Organization Concepts.md" />
+    <None Include="WebAdvanced\jQuery\Code Organization\Deferreds.md" />
+    <None Include="WebAdvanced\jQuery\Code Organization\Feature   Browser Detection.md" />
+    <None Include="WebAdvanced\jQuery\Code Organization\Keep Things DRY.md" />
     <None Include="WebAdvanced\jQuery\Performance\Don’t Treat jQuery as a Black Box.md" />
     <None Include="Bug\Bug分类.md" />
     <None Include="CommandLine\cd.md" />
