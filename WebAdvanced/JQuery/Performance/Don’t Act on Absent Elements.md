@@ -1,0 +1,1 @@
+﻿[Don’t Act on Absent Elements](http://learn.jquery.com/performance/dont-act-on-absent-elements/)
