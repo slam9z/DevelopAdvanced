@@ -46,6 +46,7 @@
     <None Include="WebAdvanced\jQuery\Code Organization\Deferreds.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Feature   Browser Detection.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Keep Things DRY.md" />
+    <None Include="WebAdvanced\jQuery\jQuery UI\jQuery UI.md" />
     <None Include="WebAdvanced\jQuery\Performance\Don’t Treat jQuery as a Black Box.md" />
     <None Include="Bug\Bug分类.md" />
     <None Include="CommandLine\cd.md" />
