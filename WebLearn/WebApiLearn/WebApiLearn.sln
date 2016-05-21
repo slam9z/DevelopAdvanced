@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop_WebAPI", "WebShop_WebAPI\WebShop_WebAPI.csproj", "{2D3C4238-8A12-4D7B-9241-C245EDF05A99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShopCommon", "..\WebLearnShare\WebShopCommon\WebShopCommon.csproj", "{93F4901F-45C9-4682-B396-BB9C0869A033}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedDocument", "..\..\AdvancedDocument\SharedDocument.csproj", "{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D3C4238-8A12-4D7B-9241-C245EDF05A99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D3C4238-8A12-4D7B-9241-C245EDF05A99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D3C4238-8A12-4D7B-9241-C245EDF05A99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D3C4238-8A12-4D7B-9241-C245EDF05A99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93F4901F-45C9-4682-B396-BB9C0869A033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93F4901F-45C9-4682-B396-BB9C0869A033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93F4901F-45C9-4682-B396-BB9C0869A033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93F4901F-45C9-4682-B396-BB9C0869A033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
