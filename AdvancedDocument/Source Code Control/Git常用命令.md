@@ -21,3 +21,7 @@ http://stackoverflow.com/questions/179123/edit-an-incorrect-commit-message-in-gi
 ##3. fetch与pull的区别,fetch是获取到远程的变化,但是pull会获取远程的变化并且merge
 
 ##branch
+
+##添加删除的文件
+
+git ls-files --deleted -z | xargs -0 git rm 
