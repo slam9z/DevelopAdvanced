@@ -1,0 +1,1 @@
+﻿[Optimize Selectors](http://learn.jquery.com/performance/optimize-selectors/)

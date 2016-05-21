@@ -1,0 +1,1 @@
+﻿[Writing Stateful Plugins with the jQuery UI Widget Factory](http://learn.jquery.com/plugins/stateful-plugins-with-widget-factory/)

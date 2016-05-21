@@ -1,0 +1,1 @@
+﻿[Cache Length During Loops](http://learn.jquery.com/performance/cache-loop-length/)
