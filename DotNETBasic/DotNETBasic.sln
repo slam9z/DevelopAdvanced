@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThreading", "MultiThreading\MultiThreading.csproj", "{81705DA4-242A-456D-A5C2-28729C1CC08A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServer", "TcpServer\TcpServer.csproj", "{356AB809-2ACA-4618-842A-EDE34066150C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpClient", "TcpClient\TcpClient.csproj", "{60C2FC5F-D701-42C7-93D8-F3B712F74EB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventWaitHandleDemo", "EventWaitHandleDemo\EventWaitHandleDemo.csproj", "{1051DAB0-7BAB-4A26-91B2-10510C98E3A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CachingTasks", "CachingTasks\CachingTasks.csproj", "{71C773A5-74AF-4682-BDFB-A60BA5A39279}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedDocument", "..\..\AdvancedDocument\SharedDocument.csproj", "{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81705DA4-242A-456D-A5C2-28729C1CC08A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81705DA4-242A-456D-A5C2-28729C1CC08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81705DA4-242A-456D-A5C2-28729C1CC08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81705DA4-242A-456D-A5C2-28729C1CC08A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{356AB809-2ACA-4618-842A-EDE34066150C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{356AB809-2ACA-4618-842A-EDE34066150C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{356AB809-2ACA-4618-842A-EDE34066150C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{356AB809-2ACA-4618-842A-EDE34066150C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60C2FC5F-D701-42C7-93D8-F3B712F74EB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60C2FC5F-D701-42C7-93D8-F3B712F74EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60C2FC5F-D701-42C7-93D8-F3B712F74EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60C2FC5F-D701-42C7-93D8-F3B712F74EB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1051DAB0-7BAB-4A26-91B2-10510C98E3A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1051DAB0-7BAB-4A26-91B2-10510C98E3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1051DAB0-7BAB-4A26-91B2-10510C98E3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1051DAB0-7BAB-4A26-91B2-10510C98E3A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71C773A5-74AF-4682-BDFB-A60BA5A39279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C773A5-74AF-4682-BDFB-A60BA5A39279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C773A5-74AF-4682-BDFB-A60BA5A39279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C773A5-74AF-4682-BDFB-A60BA5A39279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
