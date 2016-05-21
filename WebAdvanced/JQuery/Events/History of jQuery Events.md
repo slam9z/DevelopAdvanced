@@ -1,1 +1,0 @@
-﻿[History of jQuery Events](http://learn.jquery.com/events/history-of-events/)

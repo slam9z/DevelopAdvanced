@@ -1,1 +1,0 @@
-﻿[Beware Anonymous Functions](http://learn.jquery.com/code-organization/beware-anonymous-functions/)

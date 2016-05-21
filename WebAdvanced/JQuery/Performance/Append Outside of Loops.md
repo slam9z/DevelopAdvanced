@@ -1,1 +1,0 @@
-﻿[Append Outside of Loops](http://learn.jquery.com/performance/append-outside-loop/)

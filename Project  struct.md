@@ -1,4 +1,0 @@
-DevelopAdvanced
-* AdvancedDocument
-* DotNETBasic
-* WebLearn

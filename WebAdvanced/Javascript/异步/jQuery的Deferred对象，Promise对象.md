@@ -1,1 +1,0 @@
-﻿[jQuery的Deferred对象，Promise对象](http://www.cnblogs.com/alicewang999/p/4596439.htmlS)
