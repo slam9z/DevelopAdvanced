@@ -100,7 +100,6 @@ namespace WebShop.Controllers
             }
         }
 
-        [HttpGet]
         [HttpPost]
         [Route("api/Account/Register")]
  
@@ -142,5 +141,41 @@ namespace WebShop.Controllers
         }
 
 
-    }
+		[HttpGet]
+		[Route("api/Account/Register")]
+
+		public HttpResponseMessage Register(string userName)
+		{
+			// HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+
+		
+
+			var account = _accountBusiness.GetAccountByName(userName);
+
+			var result = CommonOperationStatus.AlreadyExist;
+			if (account == null)
+			{
+				result = _accountBusiness.CreateAccount(account);
+			}
+
+			StringWriter sw = new StringWriter();
+			JsonWriter writer = new JsonTextWriter(sw);
+
+			writer.WriteStartObject();
+			writer.WritePropertyName("Code");
+			writer.WriteValue(result);
+			writer.WriteEndObject();
+			writer.Flush();
+
+			string jsonText = sw.GetStringBuilder().ToString();
+
+			var resp = new HttpResponseMessage()
+			{
+				Content = new StringContent(jsonText)
+			};
+
+			return resp;
+		}
+
+	}
 }

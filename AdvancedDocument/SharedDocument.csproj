@@ -41,6 +41,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Data access\Entity Framework\code first  mapping.md" />
+    <None Include="Data access\Entity Framework\Database First    Mode First   Code  First.md" />
+    <None Include="Data access\Entity Framework\Entity Framework  Tutorial.md" />
+    <None Include="Data access\Entity Framework\Entity Framework.md" />
+    <None Include="Data access\Entity Framework\Entity Framework教程%28第二版%29 .md" />
+    <None Include="Data access\Entity Framework\Entity Framework的原理及使用方式.md" />
+    <None Include="Data access\Entity Framework\mapping advanced topics.md" />
+    <None Include="Data access\Entity Framework\[hystar整理]Entity Framework 教程 .md" />
+    <None Include="Data access\Entity Framework\变更跟踪.md" />
+    <None Include="Data access\Entity Framework\并发.md" />
+    <None Include="Data access\Entity Framework\数据加载.md" />
+    <None Include="Data access\sql server connectionstring.md" />
+    <None Include="Data access\Sql\database.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Beware Anonymous Functions.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Code Organization Concepts.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Deferreds.md" />
