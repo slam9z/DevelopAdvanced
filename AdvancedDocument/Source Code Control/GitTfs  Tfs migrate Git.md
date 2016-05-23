@@ -16,11 +16,16 @@ Please contact your administrator. There was an error contacting the server.
 Technical information (for administrator):
   HTTP code 200: OK
 
+
+##添加用户名和密码
+  -u=weili -p=wei
   
 
-##正确的Clone
+##git bash Clone
 
-直接打开git dash
+###将当前git-tfs添加到当前用户的path属性。
+
+###直接打开git bash
 
 git tfs  clone  http://tfs2013app:8080/tfs/DefaultCollection   $/YPWare/Dev/Windows/TaskForce
 
@@ -47,8 +52,21 @@ http://tfs2013app:8080/tfs/WindowsCollection/BlueOffice/_git/BlueOfficeWP
 
 http://tfs2013app:8080/tfs/WindowsCollection/BlueOffice/_git/BlueOfficeCommon
 
+##直接使用git-tfs.exe
+
+
 ##提交到之前的Git上
 先作为一个branch  push到上面  然后在merge就行了
 
 
 先checkout之前的文件，再merge。
+
+## TFS repository can not be root and must start with "$/".
+
+https://github.com/git-tfs/git-tfs/issues/845
+
+使用git bash出错，在前面加上MSYS_NO_PATHCONV=1
+
+MSYS_NO_PATHCONV=1 git tfs  clone  http://tfs2013app:8080/tfs/DefaultCollection   $/YPWare/Dev/Windows/BlueOfficeTest
+
+

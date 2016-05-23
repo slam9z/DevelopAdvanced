@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="CommandLine\cmd快捷操作.md" />
     <None Include="Data access\Entity Framework\code first  mapping.md" />
     <None Include="Data access\Entity Framework\Database First    Mode First   Code  First.md" />
     <None Include="Data access\Entity Framework\Entity Framework  Tutorial.md" />
@@ -273,6 +274,8 @@
     <None Include="WebAdvanced\WebApi\Serialization and  Model  Binding\Model Validation in ASP.NET Web API.md" />
     <None Include="WebAdvanced\WebApi\Serialization and  Model  Binding\Parameter Binding in ASP.NET Web API.md" />
     <None Include="WebAdvanced\WebApi\WebApi Exception.md" />
+    <None Include="Windows\Management\.msc文件.md" />
+    <None Include="Windows\Management\mmc %28Microsoft Management Console%29.md" />
     <None Include="多线程\.NET线程同步.md" />
     <None Include="多线程\.NET轻量级线程同步.md" />
     <None Include="多线程\使用多线程.md" />
