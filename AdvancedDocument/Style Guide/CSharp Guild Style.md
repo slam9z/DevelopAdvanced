@@ -22,5 +22,8 @@ Use camelCase与PascalCase命名方式。
 
 1. 一般采用变量与属性，构造函数，方法从上到下定义。
 
+##Define Method
+
+1. 一般习惯将callback方法，写在最后，但是default参数冲突。如果callback不可为空，怎作为第一个参数，可为空就放在最后。 
 
 
