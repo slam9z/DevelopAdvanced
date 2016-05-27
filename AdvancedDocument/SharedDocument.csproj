@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Database\T-SQL\INSERT、UPDATE、DELETE  OUTPUT.md" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="CommandLine\cmd快捷操作.md" />
     <None Include="Data access\Entity Framework\code first  mapping.md" />

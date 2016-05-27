@@ -1,0 +1,1 @@
+﻿[Sql server 2005中output用法解析 ](http://www.cnblogs.com/yuananyun/archive/2010/12/04/1896276.html)
