@@ -40,6 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data access\Sql\Conditional Expressions.md" />
+    <None Include="Data access\Sql\Filtering Data.md" />
+    <None Include="Data access\Sql\LIMIT 10..20 in SQL Server.md" />
+    <None Include="Data access\Sql\Querying Data.md" />
+    <None Include="Data access\Sql\Sorting Data.md" />
+    <None Include="Data access\Sql\SQL Tutorial.md" />
     <None Include="Database\T-SQL\INSERT、UPDATE、DELETE  OUTPUT.md" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="CommandLine\cmd快捷操作.md" />
