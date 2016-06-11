@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data access\Sql\Aggregate Functions.md" />
     <None Include="Data access\Sql\Conditional Expressions.md" />
     <None Include="Data access\Sql\Filtering Data.md" />
+    <None Include="Data access\Sql\Grouping Data.md" />
+    <None Include="Data access\Sql\Joining Multiple Tables.md" />
     <None Include="Data access\Sql\LIMIT 10..20 in SQL Server.md" />
     <None Include="Data access\Sql\Querying Data.md" />
     <None Include="Data access\Sql\Sorting Data.md" />
