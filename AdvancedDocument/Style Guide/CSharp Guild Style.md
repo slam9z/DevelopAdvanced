@@ -27,3 +27,6 @@ Use camelCase与PascalCase命名方式。
 1. 一般习惯将callback方法，写在最后，但是default参数冲突。如果callback不可为空，怎作为第一个参数，可为空就放在最后。 
 
 
+##Define Class
+
+1. 尽可能不要使用静态类，毫无扩展性，可以用单实例对象替代静态类。
