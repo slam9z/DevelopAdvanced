@@ -49,6 +49,7 @@
     <None Include="Data access\Sql\Querying Data.md" />
     <None Include="Data access\Sql\Sorting Data.md" />
     <None Include="Data access\Sql\SQL Tutorial.md" />
+    <None Include="Data access\Sql\Using SET Operators.md" />
     <None Include="Database\T-SQL\INSERT、UPDATE、DELETE  OUTPUT.md" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="CommandLine\cmd快捷操作.md" />
