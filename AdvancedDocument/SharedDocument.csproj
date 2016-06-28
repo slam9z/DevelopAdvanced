@@ -68,6 +68,7 @@
     <None Include="Data access\sql server connectionstring.md" />
     <None Include="Data access\Sql\database.md" />
     <None Include="Database\SQL SERVER\时间精度问题.md" />
+    <None Include="Visual Studio\Solve Solution Exploler  location error  by  reset  visual stuido user date.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Beware Anonymous Functions.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Code Organization Concepts.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Deferreds.md" />
