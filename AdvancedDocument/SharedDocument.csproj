@@ -80,6 +80,7 @@
     <None Include="Data access\sql server connectionstring.md" />
     <None Include="Data access\Sql\database.md" />
     <None Include="Database\SQL SERVER\时间精度问题.md" />
+    <None Include="Source Code Control\How to show git log history for a sub directory of a git repo.md" />
     <None Include="System\教程：WP8.1系统如何升级到Win10 Mobile预览版更新.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Beware Anonymous Functions.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Code Organization Concepts.md" />
