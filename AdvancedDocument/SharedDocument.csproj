@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CommandLine\cmd open edge.md" />
     <None Include="Data access\Sql\Aggregate Functions.md" />
     <None Include="Data access\Sql\Conditional Expressions.md" />
     <None Include="Data access\Sql\Filtering Data.md" />
@@ -68,7 +67,6 @@
     <None Include="Data access\sql server connectionstring.md" />
     <None Include="Data access\Sql\database.md" />
     <None Include="Database\SQL SERVER\时间精度问题.md" />
-    <None Include="Visual Studio\Solve Solution Exploler  location error  by  reset  visual stuido user date.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Beware Anonymous Functions.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Code Organization Concepts.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Deferreds.md" />
@@ -315,6 +313,90 @@
     <None Include="领域驱动设计\领域驱动设计（2）Repository在DDD中的应用 .md" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\1.asp" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\addorder.asp" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\adduser.asp" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\checkuser.asp" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\conn.asp" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\database\date.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\database\新建文本文档 - Copy.txt" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\database\新建文本文档.txt" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\exit.asp" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\image\0.jpg" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\image\001.jpg" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\image\1.jpg" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\image\2.jpg" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\image\3.jpg" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\image\4.jpg" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\image\look.gif" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\image\nt1.jpg" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\image\nt2.jpg" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\image\nt3.jpg" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\image\nt4.jpg" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\index.asp" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\login.asp" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\order.asp" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\reg.asp" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\styles\base.css" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\styles\detail.css" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\styles\header.css" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\styles\index.css" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\styles\main.css" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\styles\nav.css" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\styles\skin\skin_0.css" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\styles\skin\skin_1.css" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\styles\skin\skin_2.css" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\styles\skin\skin_3.css" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\styles\skin\skin_4.css" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\styles\skin\skin_5.css" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\styles\thickbox.css" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\userct.asp" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\使用方法.txt" />
+    <Content Include="DarkPast\MyWeb-all\MyWeb样式版\黑风ASP服务器.exe" />
+    <Content Include="DarkPast\Playfair加密解密.exe" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\1.asp" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\addorder.asp" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\adduser.asp" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\checkuser.asp" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\conn.asp" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\database\date.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DarkPast\WebShop\MyWebStyle\database\新建文本文档.txt" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\exit.asp" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\image\0.jpg" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\image\001.jpg" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\image\1.jpg" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\image\2.jpg" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\image\3.jpg" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\image\4.jpg" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\image\look.gif" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\image\nt1.jpg" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\image\nt2.jpg" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\image\nt3.jpg" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\image\nt4.jpg" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\index.asp" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\login.asp" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\order.asp" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\reg.asp" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\styles\base.css" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\styles\detail.css" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\styles\header.css" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\styles\index.css" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\styles\main.css" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\styles\nav.css" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\styles\skin\skin_0.css" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\styles\skin\skin_1.css" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\styles\skin\skin_2.css" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\styles\skin\skin_3.css" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\styles\skin\skin_4.css" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\styles\skin\skin_5.css" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\styles\thickbox.css" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\userct.asp" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\使用方法.txt" />
+    <Content Include="DarkPast\WebShop\MyWebStyle\黑风ASP服务器.exe" />
     <Content Include="Image\设计模式\中介者结构.PNG" />
     <Content Include="Image\设计模式\享元结构.PNG" />
     <Content Include="Image\设计模式\代理结构.PNG" />
