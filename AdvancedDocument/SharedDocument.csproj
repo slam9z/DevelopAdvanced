@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CommandLine\How to open the Recycle Bin from the Windows command line.md" />
     <None Include="DarkPast\java版通讯录.rar" />
     <None Include="DarkPast\MyWeb-all.rar" />
     <None Include="DarkPast\MyWeb-all\MyWeb.rar" />
