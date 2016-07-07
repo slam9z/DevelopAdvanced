@@ -26,6 +26,7 @@ Use camelCase与PascalCase命名方式。
 
 1. 一般习惯将callback方法，写在最后，但是default参数冲突。如果callback不可为空，怎作为第一个参数，可为空就放在最后。 
 
+1. 使用模板方法的时候方法名加 Internal 后缀。
 
 ##Define Class
 

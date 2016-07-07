@@ -40,7 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Source Code Control\gitignore使用.md" />
+    <None Include="DarkPast\java版通讯录.rar" />
+    <None Include="DarkPast\MyWeb-all.rar" />
+    <None Include="DarkPast\MyWeb-all\MyWeb.rar" />
+    <None Include="DarkPast\MyWeb-all\MyWeb样式版.rar" />
+    <None Include="DarkPast\MyWeb-all\MyWeb样式版\Web.config" />
+    <None Include="DarkPast\MyWeb-all\MyWeb样式版\win7如何安装iis.doc" />
+    <None Include="DarkPast\MyWeb-all\MyWeb自设计.7z" />
+    <None Include="DarkPast\WebShop\MyWeb.rar" />
+    <None Include="DarkPast\WebShop\MyWebStyle\Web.config" />
+    <None Include="DarkPast\WebShop\MyWebStyle\win7如何安装iis.doc" />
+    <None Include="DarkPast\WebShop\MyWeb样式版.rar" />
+    <None Include="DarkPast\WebShop\MyWeb自设计.7z" />
+    <None Include="DarkPast\数据结构课程设计.rar" />
+    <None Include="DarkPast\竞赛程序%281%29.rar" />
     <None Include="Data access\Sql\Aggregate Functions.md" />
     <None Include="Data access\Sql\Conditional Expressions.md" />
     <None Include="Data access\Sql\Filtering Data.md" />
@@ -68,6 +81,8 @@
     <None Include="Data access\sql server connectionstring.md" />
     <None Include="Data access\Sql\database.md" />
     <None Include="Database\SQL SERVER\时间精度问题.md" />
+    <None Include="Source Code Control\How to show git log history for a sub directory of a git repo.md" />
+    <None Include="System\教程：WP8.1系统如何升级到Win10 Mobile预览版更新.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Beware Anonymous Functions.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Code Organization Concepts.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Deferreds.md" />
