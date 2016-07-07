@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Source Code Control\gitignore使用.md" />
     <None Include="Data access\Sql\Aggregate Functions.md" />
     <None Include="Data access\Sql\Conditional Expressions.md" />
     <None Include="Data access\Sql\Filtering Data.md" />
