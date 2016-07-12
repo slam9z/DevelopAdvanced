@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
+    <None Include="Source Code Control\git revert和git reset的区别.md" />
     <None Include="Source Code Control\git使用注意点.md" />
     <None Include="CommandLine\cmd ren命令 重命名文件（夹）可批量修改后缀.md" />
     <None Include="CommandLine\How to open the Recycle Bin from the Windows command line.md" />
