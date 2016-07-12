@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
     <None Include="Source Code Control\git使用注意点.md" />
     <None Include="CommandLine\cmd ren命令 重命名文件（夹）可批量修改后缀.md" />
     <None Include="CommandLine\How to open the Recycle Bin from the Windows command line.md" />
@@ -66,6 +67,7 @@
     <None Include="Data access\Sql\Querying Data.md" />
     <None Include="Data access\Sql\Sorting Data.md" />
     <None Include="Data access\Sql\SQL Tutorial.md" />
+    <None Include="Data access\Sql\Using SET Operators.md" />
     <None Include="Database\T-SQL\INSERT、UPDATE、DELETE  OUTPUT.md" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="CommandLine\cmd快捷操作.md" />
@@ -83,9 +85,6 @@
     <None Include="Data access\sql server connectionstring.md" />
     <None Include="Data access\Sql\database.md" />
     <None Include="Database\SQL SERVER\时间精度问题.md" />
-    <None Include="Json\Json.NET\Serializing and Deserializing JSON.md" />
-    <None Include="Source Code Control\git命令之git tag 给当前分支打标签 .md" />
-    <None Include="Source Code Control\How to exit git log.md" />
     <None Include="Source Code Control\How to show git log history for a sub directory of a git repo.md" />
     <None Include="System\教程：WP8.1系统如何升级到Win10 Mobile预览版更新.md" />
     <None Include="WebAdvanced\jQuery\Code Organization\Beware Anonymous Functions.md" />
