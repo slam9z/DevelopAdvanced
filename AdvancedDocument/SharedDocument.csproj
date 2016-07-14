@@ -308,6 +308,7 @@
     <None Include="WebAdvanced\WebApi\WebApi Exception.md" />
     <None Include="Windows\Management\.msc文件.md" />
     <None Include="Windows\Management\mmc %28Microsoft Management Console%29.md" />
+    <None Include="WorkingLanguage\Human.md" />
     <None Include="多线程\.NET线程同步.md" />
     <None Include="多线程\.NET轻量级线程同步.md" />
     <None Include="多线程\使用多线程.md" />
