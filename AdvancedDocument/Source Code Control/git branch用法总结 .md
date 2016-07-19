@@ -33,3 +33,12 @@ git branch -d -r branchname 删除远程branchname分支
 ##rename remote branch
 
 这个没什么办法，只能先修改本地的branch名，然后将新分支publish到remote上，再删除原来的remote branch。
+
+
+##can not see  new remote branch
+
+在cmd里面使用git pull命令。git branch -r可能也不会去拿remote的数据。
+
+
+
+
