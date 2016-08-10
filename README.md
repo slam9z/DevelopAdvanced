@@ -14,7 +14,6 @@
 
 3. Next?
 
-    时间规划！面试！
     
     * 数据库与SQL
     * File System 
