@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data access\Paging\EF分页中的陷阱.md" />
+    <None Include="Data access\Paging\Paging in Entity Framework.md" />
+    <None Include="Data access\Paging\Sql Server 数据分页.md" />
     <None Include="NET Core\.NET Core全新路线图%282016.07%29.md" />
     <None Include="NET Core\.NET Core系列  1、.NET Core 环境搭建和命令行CLI入门.md" />
     <None Include="NET Core\.NET Core系列 ： 2 、project.json 这葫芦里卖的什么药.md" />
