@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data access\ADO.NET\ADO.NET - 全面梳理.md" />
+    <None Include="Data access\ADO.NET\ADO.NET Overview.md" />
+    <None Include="Data access\ADO.NET\ADO.NET常用对象.md" />
     <None Include="Data access\Paging\EF分页中的陷阱.md" />
     <None Include="Data access\Paging\Paging in Entity Framework.md" />
     <None Include="Data access\Paging\Sql Server 数据分页.md" />

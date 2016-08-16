@@ -1,0 +1,1 @@
+﻿[ADO.NET常用对象 ](http://www.cnblogs.com/aito/archive/2010/08/25/1808471.html)
