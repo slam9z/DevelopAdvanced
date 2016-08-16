@@ -69,3 +69,25 @@ IF(@@ERROR > 0) //这是系统变量，存储你在执行更新，删除，插�
 ELSE
     COMMIT
 ```
+
+###4.说说“TransactionScope”，让事务更加的简单 
+
+```C#
+using (TransactionScope transactionScope = new TransactionScope())
+{
+    try
+    {
+        using (SqlConnection connection = new SqlConnection())
+        {
+            // TO DO
+            //提交事务，如果有异常，他会自动回滚的
+            transactionScope.Complete();
+        }
+    }
+    catch (Exception)
+    {
+        //捕获异常
+        throw;
+    }
+}
+```
