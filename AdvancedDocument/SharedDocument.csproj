@@ -103,10 +103,10 @@
     <None Include="Source Code Control\git branch用法总结 .md" />
     <None Include="Source Code Control\GitTfs  Tfs migrate Git.md" />
     <None Include="Source Code Control\Nuget.md" />
-    <None Include="Style Guide\CSharp Guild Style.md" />
-    <None Include="Style Guide\Refactoring  Guild  Style.md" />
-    <None Include="Style Guide\Client Guild Style.md" />
-    <None Include="Style Guide\Source Control Guild Style.md" />
+    <None Include="Style Guide\CSharp Style  Guide.md" />
+    <None Include="Style Guide\Refactoring Style Guide.md" />
+    <None Include="Style Guide\Client Style Guide.md" />
+    <None Include="Style Guide\Source Control Style Guide.md" />
     <None Include="WebAdvanced\CSS\Mozilla\10. Lists.md" />
     <None Include="WebAdvanced\CSS\Mozilla\12. Layout.md" />
     <None Include="WebAdvanced\CSS\Mozilla\13. Tables.md" />
@@ -314,6 +314,7 @@
     <None Include="Windows\Management\mmc %28Microsoft Management Console%29.md" />
     <None Include="WorkingLanguage\Human.md" />
     <None Include="Work\Work.md" />
+    <None Include="Work\广州\工作.md" />
     <None Include="Work\深圳\东方网力科技.md" />
     <None Include="Work\深圳\华为.md" />
     <None Include="Work\深圳\印孚瑟斯技术（中国）有限公司.md" />
