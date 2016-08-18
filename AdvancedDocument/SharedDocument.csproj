@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="API Design\RESTful API 设计指南.md" />
     <None Include="Data access\ADO.NET\ADO.NET - 全面梳理.md" />
     <None Include="Data access\ADO.NET\ADO.NET Overview.md" />
     <None Include="Data access\ADO.NET\ADO.NET常用对象.md" />
@@ -50,6 +51,8 @@
     <None Include="Data access\Sql\Performance\SQL 语句性能调优.md" />
     <None Include="Data access\Sql\Performance\SQL调优.md" />
     <None Include="Data access\Sql\Performance\读书笔记之SQL注入漏洞和SQL调优.md" />
+    <None Include="Data access\Sql\Procedure\CREATE PROCEDURE %28Transact-SQL%29.md" />
+    <None Include="Data access\Sql\Procedure\SQL Server 存储过程.md" />
     <None Include="NET Core\.NET Core全新路线图%282016.07%29.md" />
     <None Include="NET Core\.NET Core系列  1、.NET Core 环境搭建和命令行CLI入门.md" />
     <None Include="NET Core\.NET Core系列 ： 2 、project.json 这葫芦里卖的什么药.md" />
@@ -175,13 +178,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Source Code Control\Git常用命令.md" />
-    <None Include="Gof设计模式\设计模式-创建型.md" />
-    <None Include="Gof设计模式\设计模式-结构型.md" />
-    <None Include="Gof设计模式\设计模式-行为型.md" />
-    <None Include="Gof设计模式\设计模式总结.md" />
-    <None Include="Gof设计模式\详解设计模式原则.md" />
-    <None Include="Markdown使用语法.md" />
-    <None Include="Project  struct.md" />
+    <None Include="Gof Design Pattern\设计模式-创建型.md" />
+    <None Include="Gof Design Pattern\设计模式-结构型.md" />
+    <None Include="Gof Design Pattern\设计模式-行为型.md" />
+    <None Include="Gof Design Pattern\设计模式总结.md" />
+    <None Include="Gof Design Pattern\详解设计模式原则.md" />
+    <None Include="Tool\Markdown使用语法.md" />
     <None Include="Reflection\反射%28Reflection%29详解.md" />
     <None Include="Reflection\通过反射创建表达树.md" />
     <None Include="Web\HttpApplication 类.md" />
@@ -318,12 +320,13 @@
     <None Include="Web\WebApi\WebApi Exception.md" />
     <None Include="Windows\Management\.msc文件.md" />
     <None Include="Windows\Management\mmc %28Microsoft Management Console%29.md" />
-    <None Include="WorkingLanguage\Human.md" />
+    <None Include="Working Language\Human.md" />
     <None Include="Work\Work.md" />
     <None Include="Work\广州\工作.md" />
     <None Include="Work\广州\投简历公司.md" />
     <None Include="Work\广州\本.md" />
     <None Include="Work\广州\广州 面试.xlsx" />
+    <None Include="Work\广州\赛百威.md" />
     <None Include="Work\深圳\东方网力科技.md" />
     <None Include="Work\深圳\华为.md" />
     <None Include="Work\深圳\印孚瑟斯技术（中国）有限公司.md" />
@@ -338,31 +341,29 @@
     <None Include="Work\深圳\趣旅网.md" />
     <None Include="Work\深圳\软通动力信息技术.md" />
     <None Include="Work\深圳\金蝶软件.md" />
-    <None Include="多线程\.NET线程同步.md" />
-    <None Include="多线程\.NET轻量级线程同步.md" />
-    <None Include="多线程\使用多线程.md" />
-    <None Include="多线程\关于async与await的FAQ.md" />
-    <None Include="多线程\异步编程：.NET 4.5 基于任务的异步编程模型%28TAP%29.md" />
-    <None Include="多线程\异步编程：.NET4.X 数据并行.md" />
-    <None Include="多线程\异步编程：IAsyncResult异步编程模型 %28APM%29.md" />
-    <None Include="多线程\异步编程：使用线程池管理线程.md" />
-    <None Include="多线程\异步编程：基于事件的异步编程模式%28EAP%29.md" />
-    <None Include="多线程\异步编程：线程概述及使用.md" />
-    <None Include="多线程\深入探究 WinRT 和 await.md" />
-    <None Include="学习计划.md" />
-    <None Include="普通的集合.md" />
-    <None Include="概念\_aaS.md" />
-    <None Include="线程安全普通的集合.md" />
-    <None Include="网络\HTTP\Http.md" />
-    <None Include="网络\HTTP\对 HTTP 304 的理解%28转%29.md" />
-    <None Include="网络\Socket与Tcp.md" />
-    <None Include="网络\Websocket.md" />
-    <None Include="网络\坑\ClickOnce安装因为exe文件被redirect .md" />
-    <None Include="网络\坑\Websocket握手请求头被改，导致无法连接.md" />
-    <None Include="通信软件系统设计.md" />
-    <None Include="领域驱动设计\Server代码组织.md" />
-    <None Include="领域驱动设计\领域驱动设计（1）为复杂业务而生 .md" />
-    <None Include="领域驱动设计\领域驱动设计（2）Repository在DDD中的应用 .md" />
+    <None Include="Multi-threading\.NET线程同步.md" />
+    <None Include="Multi-threading\.NET轻量级线程同步.md" />
+    <None Include="Multi-threading\使用多线程.md" />
+    <None Include="Multi-threading\关于async与await的FAQ.md" />
+    <None Include="Multi-threading\异步编程：.NET 4.5 基于任务的异步编程模型%28TAP%29.md" />
+    <None Include="Multi-threading\异步编程：.NET4.X 数据并行.md" />
+    <None Include="Multi-threading\异步编程：IAsyncResult异步编程模型 %28APM%29.md" />
+    <None Include="Multi-threading\异步编程：使用线程池管理线程.md" />
+    <None Include="Multi-threading\异步编程：基于事件的异步编程模式%28EAP%29.md" />
+    <None Include="Multi-threading\异步编程：线程概述及使用.md" />
+    <None Include="Multi-threading\深入探究 WinRT 和 await.md" />
+    <None Include="Study Plan\学习计划.md" />
+    <None Include="Concept\_aaS.md" />
+    <None Include="Network\HTTP\Http.md" />
+    <None Include="Network\HTTP\对 HTTP 304 的理解%28转%29.md" />
+    <None Include="Network\Socket与Tcp.md" />
+    <None Include="Network\Websocket.md" />
+    <None Include="Network\坑\ClickOnce安装因为exe文件被redirect .md" />
+    <None Include="Network\坑\Websocket握手请求头被改，导致无法连接.md" />
+    <None Include="Software Design\通信软件系统设计.md" />
+    <None Include="Domain-Driven Design\Server代码组织.md" />
+    <None Include="Domain-Driven Design\领域驱动设计（1）为复杂业务而生 .md" />
+    <None Include="Domain-Driven Design\领域驱动设计（2）Repository在DDD中的应用 .md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Image\设计模式\中介者结构.PNG" />
