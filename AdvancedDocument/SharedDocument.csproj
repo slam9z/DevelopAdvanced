@@ -53,6 +53,9 @@
     <None Include="Data access\Sql\Performance\读书笔记之SQL注入漏洞和SQL调优.md" />
     <None Include="Data access\Sql\Procedure\CREATE PROCEDURE %28Transact-SQL%29.md" />
     <None Include="Data access\Sql\Procedure\SQL Server 存储过程.md" />
+    <None Include="Distributed-System\The Reactive Manifesto.md" />
+    <None Include="Distributed-System\使用Akka.net开发第一个分布式应用 .md" />
+    <None Include="Json\Json.NET\Serializing and Deserializing JSON.md" />
     <None Include="NET Core\.NET Core全新路线图%282016.07%29.md" />
     <None Include="NET Core\.NET Core系列  1、.NET Core 环境搭建和命令行CLI入门.md" />
     <None Include="NET Core\.NET Core系列 ： 2 、project.json 这葫芦里卖的什么药.md" />
@@ -64,6 +67,7 @@
     <None Include="NET Technology\basic service.webp" />
     <None Include="NET Technology\Systems Programming in CSharp.md" />
     <None Include="Open Source\OpenAuth.Net.md" />
+    <None Include="Open Source\Open Source  List.md" />
     <None Include="Source Code Control\git revert和git reset的区别.md" />
     <None Include="Source Code Control\git使用注意点.md" />
     <None Include="CommandLine\cmd ren命令 重命名文件（夹）可批量修改后缀.md" />
@@ -98,6 +102,7 @@
     <None Include="Source Code Control\How to show git log history for a sub directory of a git repo.md" />
     <None Include="System\教程：WP8.1系统如何升级到Win10 Mobile预览版更新.md" />
     <None Include="Technology\SSO（Single Sign On）.md" />
+    <None Include="Visual Studio\Solve Solution Exploler  location error  by  reset  visual stuido user date.md" />
     <None Include="Web\CSS\聊聊css盒子模型 .md" />
     <None Include="Web\Javascript\Ajax工作原理.md" />
     <None Include="Web\jQuery\Code Organization\Beware Anonymous Functions.md" />
@@ -366,6 +371,7 @@
     <None Include="Domain-Driven Design\领域驱动设计（2）Repository在DDD中的应用 .md" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Design\search design.png" />
     <Content Include="Image\设计模式\中介者结构.PNG" />
     <Content Include="Image\设计模式\享元结构.PNG" />
     <Content Include="Image\设计模式\代理结构.PNG" />
