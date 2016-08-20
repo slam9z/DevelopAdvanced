@@ -45,6 +45,15 @@ namespace Algorithm.Sort.Tests
 		}
 
 
+		[TestMethod()]
+		public void QuickSortTest()
+		{
+			var sort = new QuickSort();
+			Test1(sort);
+			//RunAllTest(sort);
+		}
+
+
 		private void RunAllTest(ISort sort)
 		{
 			EmptyTest(sort);
