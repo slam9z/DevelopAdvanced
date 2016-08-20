@@ -26,7 +26,7 @@ namespace Algorithm.Sort
 			{
 				var partition = Partition(source, bound, upper, larger);
 				QuickSortCore(source, bound, partition - 1, larger);
-				QuickSortCore(source, partition +1, upper, larger);
+				QuickSortCore(source, partition + 1, upper, larger);
 			}
 		}
 
@@ -34,19 +34,19 @@ namespace Algorithm.Sort
 		//到底发生了什么
 		private void HoareQuickSortCore<T>(IList<T> source, int bound, int upper, Func<T, T, bool> larger)
 		{
-			if (bound < upper)
+			if (upper > bound)
 			{
 				var partition = HoarePartition(source, bound, upper, larger);
 
-				HoareQuickSortCore(source, bound, partition , larger);
-				HoareQuickSortCore(source, partition, upper, larger);
+				HoareQuickSortCore(source, bound, partition, larger);
+				HoareQuickSortCore(source, partition + 1, upper, larger);
 			}
 		}
 
-
+		//分为2组
 		private int HoarePartition<T>(IList<T> source, int bound, int upper, Func<T, T, bool> larger)
 		{
-			var key = source[upper];
+			var key = source[bound];
 			var smallPointer = bound - 1;
 			var largePointer = upper + 1;
 
@@ -54,25 +54,18 @@ namespace Algorithm.Sort
 
 			while (true)
 			{
-				while (true)
+				do
 				{
 					largePointer--;
-					if (!larger(source[largePointer], key))
-					{
-						break;
-					}
-					Print("largePointer:{0}", largePointer);
 				}
+				while (larger(source[largePointer], key));
 
-				while (true)
+				do
 				{
 					smallPointer++;
-					if (!larger(key, source[smallPointer]))
-					{
-						break;
-					}
-					Print("smallPointer:{0}", smallPointer);
 				}
+				while (larger(key, source[smallPointer]));
+
 				if (largePointer > smallPointer)
 				{
 					Print(source, bound, upper);
@@ -92,6 +85,7 @@ namespace Algorithm.Sort
 
 
 		//这个划分方式不是很直观还是记住
+		//分为3组
 		private int Partition<T>(IList<T> source, int bound, int upper, Func<T, T, bool> larger)
 		{
 			var key = source[upper];

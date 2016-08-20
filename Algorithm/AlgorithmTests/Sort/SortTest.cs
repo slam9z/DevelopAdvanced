@@ -50,7 +50,7 @@ namespace Algorithm.Sort.Tests
 		{
 			var sort = new QuickSort();
 			Test1(sort);
-			//RunAllTest(sort);
+			RunAllTest(sort);
 		}
 
 
