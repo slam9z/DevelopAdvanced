@@ -36,6 +36,14 @@ namespace Algorithm.Sort.Tests
 		}
 
 
+		[TestMethod()]
+		public void HeapSortTest()
+		{
+			var sort = new HeapSort();
+			//Test1(sort);
+			RunAllTest(sort);
+		}
+
 
 		private void RunAllTest(ISort sort)
 		{

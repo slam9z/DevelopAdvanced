@@ -8,28 +8,28 @@ namespace Algorithm.Sort
 {
 	public class MergeSort : SortBase
 	{
-		public override IList<T> Sort<T>(IList<T> source, Func<T, T, bool> greater)
+		public override IList<T> Sort<T>(IList<T> source, Func<T, T, bool> larger)
 		{
 			var result = new List<T>(source);
-			MergeSortCore(result, 0, result.Count - 1, greater);
+			MergeSortCore(result, 0, result.Count - 1, larger);
 			return result;
 		}
 
-		private void MergeSortCore<T>(IList<T> source, int bound, int upper, Func<T, T, bool> greater)
+		private void MergeSortCore<T>(IList<T> source, int bound, int upper, Func<T, T, bool> larger)
 		{
 			if (upper > bound)
 			{
 				//var split = upper + bound / 2;
 				var split = (upper + bound) / 2;
-				MergeSortCore(source, bound, split, greater);
-				MergeSortCore(source, split + 1, upper, greater);
-				Merge(source, bound, split, upper, greater);
+				MergeSortCore(source, bound, split, larger);
+				MergeSortCore(source, split + 1, upper, larger);
+				Merge(source, bound, split, upper, larger);
 			}
 		}
 
 		//递归出问题最好的办法就是打印结果了。
 
-		private void Merge<T>(IList<T> source, int bound, int split, int upper, Func<T, T, bool> greater)
+		private void Merge<T>(IList<T> source, int bound, int split, int upper, Func<T, T, bool> larger)
 		{
 			Print("message source bound:{0} upper:{1}",bound,upper);
 			Print(source, bound, upper);
@@ -74,7 +74,7 @@ namespace Algorithm.Sort
 					break;
 				}
 
-				if (greater(boundData[b], upperData[u]))
+				if (larger(boundData[b], upperData[u]))
 				{
 					source[k] = upperData[u];
 					u++;

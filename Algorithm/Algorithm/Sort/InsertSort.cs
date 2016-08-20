@@ -8,7 +8,7 @@ namespace Algorithm.Sort
 {
 	public class InsertSort : SortBase
 	{
-		public override IList<T> Sort<T>(IList<T> source, Func<T, T, bool> greater)
+		public override IList<T> Sort<T>(IList<T> source, Func<T, T, bool> larger)
 		{
 			var length = source.Count;
 
@@ -30,7 +30,7 @@ namespace Algorithm.Sort
 
 				//这里不太适合for循环，而是适合while循环,因为结束条件是动态的，
 				//而且结果在外面也要用到
-				while (j >= 0 && greater(result[j], key))
+				while (j >= 0 && larger(result[j], key))
 				{
 					Exchange(result, j, j + 1);
 					j--;

@@ -9,7 +9,7 @@ namespace Algorithm.Sort
 {
 	public class BubbleSort : SortBase
 	{
-		public override IList<T> Sort<T>(IList<T> source, Func<T, T, bool> greater)
+		public override IList<T> Sort<T>(IList<T> source, Func<T, T, bool> larger)
 		{
 			var length = source.Count;
 
@@ -24,7 +24,7 @@ namespace Algorithm.Sort
 				//for (int j = 0; j < length - i+1; j++)
 				for (int j = 0; j < length - i; j++)
 				{
-					if (greater(result[j],result[j + 1]))
+					if (larger(result[j],result[j + 1]))
 					{
 						Exchange(result, j + 1, j);
 					}
