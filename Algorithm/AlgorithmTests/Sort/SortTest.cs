@@ -54,6 +54,15 @@ namespace Algorithm.Sort.Tests
 		}
 
 
+		[TestMethod()]
+		public void CountingSortTest()
+		{
+			var sort = new CountingSort();
+			var result = sort.Sort(_testData1, 20);
+			VerifyTestResult(_testData1, result);
+		}
+
+
 		private void RunAllTest(ISort sort)
 		{
 			EmptyTest(sort);
@@ -67,11 +76,11 @@ namespace Algorithm.Sort.Tests
 
 		}
 
-		private IList<int> testData1 = new List<int>() { 12, 3, 8, 19, 5, 1, 2, 9, 3 };
+		private IList<int> _testData1 = new List<int>() { 12, 3, 8, 19, 5, 1, 2, 9, 3 };
 
 		private void Test1(ISort sort)
 		{
-			RunTest(sort, testData1);
+			RunTest(sort, _testData1);
 		}
 
 		private void EmptyTest(ISort sort)
