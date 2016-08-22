@@ -10,3 +10,10 @@
 分为同步与异步版本WriteToServer，WriteToServerAsync。
 
 参数DataRow[]，DataTable，DataReader，IDataReader。
+
+##Property
+
+* DestinationTableName 
+* BatchSize
+
+
