@@ -52,6 +52,7 @@
     <Compile Include="Sort\MergeSort.cs" />
     <Compile Include="Sort\QuickSort.cs" />
     <Compile Include="Sort\SortBase.cs" />
+    <Compile Include="Struct\Queue.cs" />
     <Compile Include="Struct\Stack.cs" />
   </ItemGroup>
   <ItemGroup />
