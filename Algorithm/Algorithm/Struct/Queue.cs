@@ -23,10 +23,9 @@ namespace Algorithm.Struct
 		}
 
 		//问题多多，这两种操作还是用链表操作最好
-
+		//反复使用会爆炸。
 		public void Enqueue(T data)
 		{
-			_tail++;
 			if (_tail >= _datas.Count)
 			{
 				_datas.Add(data);
@@ -35,6 +34,7 @@ namespace Algorithm.Struct
 			{
 				_datas[_tail] = data;
 			}
+			_tail++;	
 		}
 
 		public T Dequeue()
@@ -44,8 +44,9 @@ namespace Algorithm.Struct
 				throw new InvalidOperationException("queue is empty");
 			}
 
+			var data= _datas[_head];
 			_head++;
-			return _datas[_head - 1];
+			return data;
 		}
 	}
 }
