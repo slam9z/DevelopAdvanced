@@ -20,6 +20,9 @@ Use camelCase与PascalCase命名方式。
 
 	[C#成员中文命名？](http://www.zhihu.com/question/29426006)
 
+1. 类名和方法名不要使用编号。
+
+	和中文一样，有时候是缺乏领域开发的认识，提取关键字。
 
 ##Define Group
 
