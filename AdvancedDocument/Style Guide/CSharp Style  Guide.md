@@ -14,6 +14,13 @@ Use camelCase与PascalCase命名方式。
 
 1. const声明使用全大写+_。
 
+1. Enum值要中文！
+
+1. 命名不要使用中文。
+
+	[C#成员中文命名？](http://www.zhihu.com/question/29426006)
+
+
 ##Define Group
 
 这个比较麻烦，自己也没弄好过，需要好好看一下书。主要是看类型与含义，这两者是有冲突的。
@@ -31,3 +38,7 @@ Use camelCase与PascalCase命名方式。
 ##Define Class
 
 1. 尽可能不要使用静态类，毫无扩展性，可以用单实例对象替代静态类。
+
+
+##Define Enum
+

@@ -103,6 +103,8 @@
     <None Include="Data access\Sql\database.md" />
     <None Include="Database\SQL SERVER\时间精度问题.md" />
     <None Include="Source Code Control\Git\How to show git log history for a sub directory of a git repo.md" />
+    <None Include="Source Code Control\Svn\git-svn — 让git和svn协同工作.md" />
+    <None Include="Source Code Control\Svn\git-svn 使用经验.md" />
     <None Include="Source Code Control\Svn\Svn的基本使用方法.md" />
     <None Include="System\教程：WP8.1系统如何升级到Win10 Mobile预览版更新.md" />
     <None Include="Technology\SSO（Single Sign On）.md" />
