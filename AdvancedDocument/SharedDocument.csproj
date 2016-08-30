@@ -111,6 +111,7 @@
     <None Include="Technology\SSO（Single Sign On）.md" />
     <None Include="Visual Studio\Solve Solution Exploler  location error  by  reset  visual stuido user date.md" />
     <None Include="Web\CSS\聊聊css盒子模型 .md" />
+    <None Include="Web\IIS\win7 下 IIS的配置问题.md" />
     <None Include="Web\Javascript\Ajax工作原理.md" />
     <None Include="Web\jQuery\Code Organization\Beware Anonymous Functions.md" />
     <None Include="Web\jQuery\Code Organization\Code Organization Concepts.md" />
