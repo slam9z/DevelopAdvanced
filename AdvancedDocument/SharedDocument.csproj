@@ -71,8 +71,8 @@
     <None Include="NET Technology\Systems Programming in CSharp.md" />
     <None Include="Open Source\OpenAuth.Net.md" />
     <None Include="Open Source\Open Source  List.md" />
-    <None Include="Source Code Control\git revert和git reset的区别.md" />
-    <None Include="Source Code Control\git使用注意点.md" />
+    <None Include="Source Code Control\Git\git revert和git reset的区别.md" />
+    <None Include="Source Code Control\Git\git使用注意点.md" />
     <None Include="CommandLine\cmd ren命令 重命名文件（夹）可批量修改后缀.md" />
     <None Include="CommandLine\How to open the Recycle Bin from the Windows command line.md" />
     <None Include="Data access\Sql\Aggregate Functions.md" />
@@ -102,7 +102,8 @@
     <None Include="Data access\sql server connectionstring.md" />
     <None Include="Data access\Sql\database.md" />
     <None Include="Database\SQL SERVER\时间精度问题.md" />
-    <None Include="Source Code Control\How to show git log history for a sub directory of a git repo.md" />
+    <None Include="Source Code Control\Git\How to show git log history for a sub directory of a git repo.md" />
+    <None Include="Source Code Control\Svn\Svn的基本使用方法.md" />
     <None Include="System\教程：WP8.1系统如何升级到Win10 Mobile预览版更新.md" />
     <None Include="Technology\SSO（Single Sign On）.md" />
     <None Include="Visual Studio\Solve Solution Exploler  location error  by  reset  visual stuido user date.md" />
@@ -117,8 +118,8 @@
     <None Include="Web\jQuery\Performance\Don’t Treat jQuery as a Black Box.md" />
     <None Include="Bug\Bug分类.md" />
     <None Include="CommandLine\cd.md" />
-    <None Include="Source Code Control\git branch用法总结 .md" />
-    <None Include="Source Code Control\GitTfs  Tfs migrate Git.md" />
+    <None Include="Source Code Control\Git\git branch用法总结 .md" />
+    <None Include="Source Code Control\Git\GitTfs  Tfs migrate Git.md" />
     <None Include="Source Code Control\Nuget.md" />
     <None Include="Style Guide\CSharp Style  Guide.md" />
     <None Include="Style Guide\Refactoring Style Guide.md" />
@@ -185,7 +186,7 @@
     <None Include="Web\Javascript\JavaScript Style Guide.md" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Source Code Control\Git常用命令.md" />
+    <None Include="Source Code Control\Git\Git常用命令.md" />
     <None Include="Gof Design Pattern\设计模式-创建型.md" />
     <None Include="Gof Design Pattern\设计模式-结构型.md" />
     <None Include="Gof Design Pattern\设计模式-行为型.md" />
