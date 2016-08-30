@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="API Design\RESTful API 设计指南.md" />
+    <None Include="Design\API Design\RESTful API 设计指南.md" />
     <None Include="Book\分析模式 可复用的对象模型.md" />
     <None Include="Book\总结.md" />
     <None Include="Book\领域驱动设计：软件核心复杂性应对之道.md" />
