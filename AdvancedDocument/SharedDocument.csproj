@@ -107,7 +107,7 @@
     <None Include="Source Code Control\Svn\git-svn — 让git和svn协同工作.md" />
     <None Include="Source Code Control\Svn\git-svn 使用经验.md" />
     <None Include="Source Code Control\Svn\Svn的基本使用方法.md" />
-    <None Include="Windows System\教程：WP8.1系统如何升级到Win10 Mobile预览版更新.md" />
+    <None Include="Windows System\Win10\教程：WP8.1系统如何升级到Win10 Mobile预览版更新.md" />
     <None Include="Technology\SSO（Single Sign On）.md" />
     <None Include="Visual Studio\Solve Solution Exploler  location error  by  reset  visual stuido user date.md" />
     <None Include="Web\CSS\聊聊css盒子模型 .md" />
@@ -188,7 +188,7 @@
     <None Include="Web\Javascript\ES5和ES6中的继承.md" />
     <None Include="Web\Javascript\Function.prototype.apply%28%29.md" />
     <None Include="Web\Javascript\JavaScript Style Guide.md" />
-    <None Include="Windows System\Win10 设置系统显示语言.md" />
+    <None Include="Windows System\Win10\Win10 设置系统显示语言.md" />
     <None Include="XML\c#读取XML .md" />
   </ItemGroup>
   <ItemGroup>
@@ -337,7 +337,7 @@
     <None Include="Web\Webform\ascx文件用法.md" />
     <None Include="Web\ASP.NET\ASP.NET各种文件名后缀解释.md" />
     <None Include="Web\Webform\web config 文件问题.md" />
-    <None Include="Windows System\Win10 安装与升级" />
+    <None Include="Windows System\Win10\Win10 安装与升级" />
     <None Include="Windows System\磁盘空间整理.md" />
     <None Include="Windows System\Management\.msc文件.md" />
     <None Include="Windows System\Management\mmc %28Microsoft Management Console%29.md" />
