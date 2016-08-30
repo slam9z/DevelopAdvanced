@@ -187,6 +187,8 @@
     <None Include="Web\Javascript\ES5和ES6中的继承.md" />
     <None Include="Web\Javascript\Function.prototype.apply%28%29.md" />
     <None Include="Web\Javascript\JavaScript Style Guide.md" />
+    <None Include="Windows-System\Win10 设置系统显示语言.md" />
+    <None Include="XML\c#读取XML .md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Source Code Control\Git\Git常用命令.md" />
@@ -333,8 +335,12 @@
     <None Include="Web\Webform\.ascx和.ashx文件说明.md" />
     <None Include="Web\Webform\ascx文件用法.md" />
     <None Include="Web\ASP.NET\ASP.NET各种文件名后缀解释.md" />
+    <None Include="Web\Webform\web config 文件问题.md" />
+    <None Include="Windows-System\Win10 安装与升级" />
+    <None Include="Windows-System\磁盘空间整理.md" />
     <None Include="Windows\Management\.msc文件.md" />
     <None Include="Windows\Management\mmc %28Microsoft Management Console%29.md" />
+    <None Include="Windows\WPF WindowsFormsHost 类 .md" />
     <None Include="Working Language\Human.md" />
     <None Include="Work\Work.md" />
     <None Include="Work\广州\工作.md" />
