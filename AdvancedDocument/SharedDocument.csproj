@@ -56,8 +56,8 @@
     <None Include="Data access\Sql\Performance\读书笔记之SQL注入漏洞和SQL调优.md" />
     <None Include="Data access\Sql\Procedure\CREATE PROCEDURE %28Transact-SQL%29.md" />
     <None Include="Data access\Sql\Procedure\SQL Server 存储过程.md" />
-    <None Include="Distributed-System\The Reactive Manifesto.md" />
-    <None Include="Distributed-System\使用Akka.net开发第一个分布式应用 .md" />
+    <None Include="Distributed System\The Reactive Manifesto.md" />
+    <None Include="Distributed System\使用Akka.net开发第一个分布式应用 .md" />
     <None Include="DOTNET\.NET各种文件名后缀的含义.md" />
     <None Include="Json\Json.NET\Serializing and Deserializing JSON.md" />
     <None Include="NET Core\.NET Core全新路线图%282016.07%29.md" />
@@ -187,7 +187,7 @@
     <None Include="Web\Javascript\ES5和ES6中的继承.md" />
     <None Include="Web\Javascript\Function.prototype.apply%28%29.md" />
     <None Include="Web\Javascript\JavaScript Style Guide.md" />
-    <None Include="Windows-System\Win10 设置系统显示语言.md" />
+    <None Include="Windows System\Win10 设置系统显示语言.md" />
     <None Include="XML\c#读取XML .md" />
   </ItemGroup>
   <ItemGroup>
@@ -336,8 +336,8 @@
     <None Include="Web\Webform\ascx文件用法.md" />
     <None Include="Web\ASP.NET\ASP.NET各种文件名后缀解释.md" />
     <None Include="Web\Webform\web config 文件问题.md" />
-    <None Include="Windows-System\Win10 安装与升级" />
-    <None Include="Windows-System\磁盘空间整理.md" />
+    <None Include="Windows System\Win10 安装与升级" />
+    <None Include="Windows System\磁盘空间整理.md" />
     <None Include="Windows\Management\.msc文件.md" />
     <None Include="Windows\Management\mmc %28Microsoft Management Console%29.md" />
     <None Include="Windows\WPF WindowsFormsHost 类 .md" />
@@ -382,9 +382,9 @@
     <None Include="Network\坑\ClickOnce安装因为exe文件被redirect .md" />
     <None Include="Network\坑\Websocket握手请求头被改，导致无法连接.md" />
     <None Include="Software Design\通信软件系统设计.md" />
-    <None Include="Domain-Driven Design\Server代码组织.md" />
-    <None Include="Domain-Driven Design\领域驱动设计（1）为复杂业务而生 .md" />
-    <None Include="Domain-Driven Design\领域驱动设计（2）Repository在DDD中的应用 .md" />
+    <None Include="Domain Driven Design\Server代码组织.md" />
+    <None Include="Domain Driven Design\领域驱动设计（1）为复杂业务而生 .md" />
+    <None Include="Domain Driven Design\领域驱动设计（2）Repository在DDD中的应用 .md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Design\search design.png" />
