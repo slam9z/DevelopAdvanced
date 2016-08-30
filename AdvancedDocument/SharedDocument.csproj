@@ -56,6 +56,7 @@
     <None Include="Data access\Sql\Performance\读书笔记之SQL注入漏洞和SQL调优.md" />
     <None Include="Data access\Sql\Procedure\CREATE PROCEDURE %28Transact-SQL%29.md" />
     <None Include="Data access\Sql\Procedure\SQL Server 存储过程.md" />
+    <None Include="Design\System Design\如果应对频繁更新又保证系统的可读性.md" />
     <None Include="Distributed System\The Reactive Manifesto.md" />
     <None Include="Distributed System\使用Akka.net开发第一个分布式应用 .md" />
     <None Include="DOTNET\.NET各种文件名后缀的含义.md" />
