@@ -52,6 +52,9 @@
     <Compile Include="Sort\MergeSort.cs" />
     <Compile Include="Sort\QuickSort.cs" />
     <Compile Include="Sort\SortBase.cs" />
+    <Compile Include="Struct\BinarySearchTree.cs" />
+    <Compile Include="Struct\BinaryTree.cs" />
+    <Compile Include="Struct\BinaryTreeNode.cs" />
     <Compile Include="Struct\LinkList.cs" />
     <Compile Include="Struct\LinkNode.cs" />
     <Compile Include="Struct\Queue.cs" />
