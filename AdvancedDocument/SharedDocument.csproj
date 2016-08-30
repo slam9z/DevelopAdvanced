@@ -107,7 +107,7 @@
     <None Include="Source Code Control\Svn\git-svn — 让git和svn协同工作.md" />
     <None Include="Source Code Control\Svn\git-svn 使用经验.md" />
     <None Include="Source Code Control\Svn\Svn的基本使用方法.md" />
-    <None Include="System\教程：WP8.1系统如何升级到Win10 Mobile预览版更新.md" />
+    <None Include="Windows System\教程：WP8.1系统如何升级到Win10 Mobile预览版更新.md" />
     <None Include="Technology\SSO（Single Sign On）.md" />
     <None Include="Visual Studio\Solve Solution Exploler  location error  by  reset  visual stuido user date.md" />
     <None Include="Web\CSS\聊聊css盒子模型 .md" />
@@ -339,9 +339,9 @@
     <None Include="Web\Webform\web config 文件问题.md" />
     <None Include="Windows System\Win10 安装与升级" />
     <None Include="Windows System\磁盘空间整理.md" />
-    <None Include="Windows\Management\.msc文件.md" />
-    <None Include="Windows\Management\mmc %28Microsoft Management Console%29.md" />
-    <None Include="Windows\WPF WindowsFormsHost 类 .md" />
+    <None Include="Windows System\Management\.msc文件.md" />
+    <None Include="Windows System\Management\mmc %28Microsoft Management Console%29.md" />
+    <None Include="Xaml\WPF WindowsFormsHost 类 .md" />
     <None Include="Working Language\Human.md" />
     <None Include="Work\Work.md" />
     <None Include="Work\广州\工作.md" />
