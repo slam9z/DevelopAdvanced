@@ -60,6 +60,7 @@
     <None Include="Distributed System\The Reactive Manifesto.md" />
     <None Include="Distributed System\使用Akka.net开发第一个分布式应用 .md" />
     <None Include="DOTNET\.NET各种文件名后缀的含义.md" />
+    <None Include="DOTNET\String\string 的扩展方法 IsNullOrWhiteSpace.md" />
     <None Include="Json\Json.NET\Serializing and Deserializing JSON.md" />
     <None Include="NET Core\.NET Core全新路线图%282016.07%29.md" />
     <None Include="NET Core\.NET Core系列  1、.NET Core 环境搭建和命令行CLI入门.md" />
