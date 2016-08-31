@@ -108,7 +108,9 @@
     <None Include="Source Code Control\Git\How to show git log history for a sub directory of a git repo.md" />
     <None Include="Source Code Control\Svn\git-svn — 让git和svn协同工作.md" />
     <None Include="Source Code Control\Svn\git-svn 使用经验.md" />
+    <None Include="Source Code Control\Svn\Svn工具.md" />
     <None Include="Source Code Control\Svn\Svn的基本使用方法.md" />
+    <None Include="Tool\Markdown\Markdown工具.md" />
     <None Include="Windows System\Win10 bug\win10 周年更新微软拼音切换简体繁体快捷键 ctrl+shift+F.md" />
     <None Include="Windows System\Win10\教程：WP8.1系统如何升级到Win10 Mobile预览版更新.md" />
     <None Include="Technology\SSO（Single Sign On）.md" />
@@ -201,7 +203,7 @@
     <None Include="Gof Design Pattern\设计模式-行为型.md" />
     <None Include="Gof Design Pattern\设计模式总结.md" />
     <None Include="Gof Design Pattern\详解设计模式原则.md" />
-    <None Include="Tool\Markdown使用语法.md" />
+    <None Include="Tool\Markdown\Markdown使用语法.md" />
     <None Include="Reflection\反射%28Reflection%29详解.md" />
     <None Include="Reflection\通过反射创建表达树.md" />
     <None Include="Web\HttpApplication 类.md" />
