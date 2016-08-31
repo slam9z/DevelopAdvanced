@@ -71,61 +71,60 @@ namespace Algorithm.Struct
 
 			//3种情况直接写会包含很多冗余代码，删除是一个比较复杂的操作
 
-			BinaryTreeNode<T> y;
-			BinaryTreeNode<T> x;
+			BinaryTreeNode<T> deleteNode;
+			BinaryTreeNode<T> deleteNodeChild;
 
 
 			#region //确定要删除的点
 			if (node.Left == null || node.Right == null)
 			{
-				y = node;
+				deleteNode = node;
 			}
 			else
 			{
-				y = Successor(node);
+				deleteNode = Successor(node);
 			}
 			#endregion
 
-
-			#region //x设为y的子女，或者null
-			if (y.Left != null)
+			#region //Child
+			if (deleteNode.Left != null)
 			{
-				x = y.Left;
+				deleteNodeChild = deleteNode.Left;
 			}
 			else
 			{
-				x = y.Right;
-			}
-
-			#endregion
-
-			#region //通过修改y的parent和x的指针删除y
-
-			if (x != null)
-			{
-				x.Parent = y.Parent;
-			}
-
-			if (y.Parent == null)
-			{
-				Root = x;
-			}
-			else if (y == y.Parent.Left)
-			{
-				y.Parent.Left = x;
-			}
-			else
-			{
-				y.Parent.Right = x;
+				deleteNodeChild = deleteNode.Right;
 			}
 
 			#endregion
 
+			#region //通过修改指针删除 deleteNode
 
-			#region //如果z的后继就是要删除的点，就把y复制过去
-			if (y != node)
+			if (deleteNodeChild != null)
 			{
-				node.Data = y.Data;
+				deleteNodeChild.Parent = deleteNode.Parent;
+			}
+
+			if (deleteNode.Parent == null)
+			{
+				Root = deleteNodeChild;
+			}
+			else if (deleteNode == deleteNode.Parent.Left)
+			{
+				deleteNode.Parent.Left = deleteNodeChild;
+			}
+			else
+			{
+				deleteNode.Parent.Right = deleteNodeChild;
+			}
+
+			#endregion
+
+
+			#region //如果node的后继就是要删除的点，就把deleteNode复制过去
+			if (deleteNode != node)
+			{
+				node.Data = deleteNode.Data;
 				//不要改变删除对象的数据，不这样更新很复杂
 			}
 
