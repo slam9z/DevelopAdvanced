@@ -120,10 +120,11 @@ namespace Algorithm.Struct.Tests
 
 			var tree1_2 = CreateTree1();
 			var node7 = tree1_2.Search(tree1_2.Root, 7);
+
+			Console.WriteLine("delete {0}", node7.Data);
 			tree1_2.Delete(node7);
 			//Assert.AreEqual(node7_d, node7);
-			Console.WriteLine("delete {0}", node7.Data);
-
+		
 			PrintTree(tree1_2);
 
 			//var tree1_3 = CreateTree1();

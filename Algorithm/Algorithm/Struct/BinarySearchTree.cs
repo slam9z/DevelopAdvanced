@@ -17,7 +17,7 @@ namespace Algorithm.Struct
 
 		}
 
-		public void Create(IEnumerable<T> datas)
+		public override void Create(IEnumerable<T> datas)
 		{
 			foreach (var data in datas)
 			{
@@ -26,7 +26,7 @@ namespace Algorithm.Struct
 			}
 		}
 
-		public void Insert(BinaryTreeNode<T> newNode)
+		public override void Insert(BinaryTreeNode<T> newNode)
 		{
 			//怎样命名？
 			BinaryTreeNode<T> y = null;
@@ -63,7 +63,7 @@ namespace Algorithm.Struct
 			}
 		}
 
-		public void Delete(BinaryTreeNode<T> node)
+		public override void Delete(BinaryTreeNode<T> node)
 		{
 			//没有子女   直接去掉父节点的引用
 			//两个节点   删除后继点，然后与当前值交换
@@ -74,7 +74,8 @@ namespace Algorithm.Struct
 			BinaryTreeNode<T> y;
 			BinaryTreeNode<T> x;
 
-			//确定要删除的点
+
+			#region //确定要删除的点
 			if (node.Left == null || node.Right == null)
 			{
 				y = node;
@@ -83,8 +84,10 @@ namespace Algorithm.Struct
 			{
 				y = Successor(node);
 			}
+			#endregion
 
 
+			#region //x设为y的子女，或者null
 			if (y.Left != null)
 			{
 				x = y.Left;
@@ -94,7 +97,11 @@ namespace Algorithm.Struct
 				x = y.Right;
 			}
 
-			if(x!=null)
+			#endregion
+
+			#region //通过修改y的parent和x的指针删除y
+
+			if (x != null)
 			{
 				x.Parent = y.Parent;
 			}
@@ -112,12 +119,17 @@ namespace Algorithm.Struct
 				y.Parent.Right = x;
 			}
 
+			#endregion
+
+
+			#region //如果z的后继就是要删除的点，就把y复制过去
 			if (y != node)
 			{
-				//node.Data = y.Data;
+				node.Data = y.Data;
 				//不要改变删除对象的数据，不这样更新很复杂
 			}
 
+			#endregion
 		}
 
 		public BinaryTreeNode<T> Search(BinaryTreeNode<T> node, T data)

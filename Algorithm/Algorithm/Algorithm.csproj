@@ -58,6 +58,8 @@
     <Compile Include="Struct\LinkList.cs" />
     <Compile Include="Struct\LinkNode.cs" />
     <Compile Include="Struct\Queue.cs" />
+    <Compile Include="Struct\RedBlackTree.cs" />
+    <Compile Include="Struct\RedBlackTreeNode.cs" />
     <Compile Include="Struct\Stack.cs" />
   </ItemGroup>
   <ItemGroup />

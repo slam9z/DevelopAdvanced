@@ -20,6 +20,19 @@ namespace Algorithm.Struct
 			Root = root;
 		}
 
+		public virtual void Create(IEnumerable<T> datas)
+		{
+		}
+
+		public virtual void Insert(BinaryTreeNode<T> newNode)
+		{
+		}
+
+		public virtual void Delete(BinaryTreeNode<T> node)
+		{
+			
+		}
+
 		/// <summary>
 		/// 后序
 		/// </summary>
