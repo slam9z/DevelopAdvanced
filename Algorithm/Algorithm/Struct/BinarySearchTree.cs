@@ -29,38 +29,44 @@ namespace Algorithm.Struct
 		public override void Insert(BinaryTreeNode<T> newNode)
 		{
 			//怎样命名？
-			BinaryTreeNode<T> y = null;
-			var x = Root;
-			while (x != null)
+			BinaryTreeNode<T> newNodeParent = null;
+			var positionNode = Root;
+
+			#region //寻找插入的地方
+			while (positionNode != null)
 			{
-				y = x;
-				if (newNode.Data.CompareTo(x.Data) > 0)
+				newNodeParent = positionNode;
+				if (newNode.Data.CompareTo(positionNode.Data) > 0)
 				{
-					x = x.Right;
+					positionNode = positionNode.Right;
 				}
 				else
 				{
-					x = x.Left;
+					positionNode = positionNode.Left;
 				}
 			}
+			#endregion
 
-			newNode.Parent = y;
+			#region 插入结点
 
-			if (y == null)
+			newNode.Parent = newNodeParent;
+
+			if (newNodeParent == null)
 			{
 				Root = newNode;
 			}
 			else
 			{
-				if (newNode.Data.CompareTo(y.Data) > 0)
+				if (newNode.Data.CompareTo(newNodeParent.Data) > 0)
 				{
-					y.Right = newNode;
+					newNodeParent.Right = newNode;
 				}
 				else
 				{
-					y.Left = newNode;
+					newNodeParent.Left = newNode;
 				}
-			}
+			} 
+			#endregion
 		}
 
 		public override void Delete(BinaryTreeNode<T> node)
