@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Business\Finance\Letter of Credit\Letter of Credit %28信用证%29.md" />
     <None Include="Design\API Design\RESTful API 设计指南.md" />
     <None Include="Book\分析模式 可复用的对象模型.md" />
     <None Include="Book\总结.md" />
@@ -420,7 +421,6 @@
     <Content Include="Image\设计模式\适配器结构.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Business\Finance\" />
     <Folder Include="Web\Core\" />
     <Folder Include="Web\Html\" />
     <Folder Include="Web\Javascript\Typescript\" />
