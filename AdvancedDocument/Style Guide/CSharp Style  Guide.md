@@ -38,10 +38,18 @@ Use camelCase与PascalCase命名方式。
 
 1. 使用模板方法的时候方法名加 Internal 后缀。
 
+1. 定义一堆Extentions Method 编程感觉不错，可以使用链式的编程方法。
+
+
 ##Define Class
 
 1. 尽可能不要使用静态类，毫无扩展性，可以用单实例对象替代静态类。
 
 
 ##Define Enum
+
+
+##Expression
+
+1. 使用Expression来构建查询语句是一个非常好的办法：动态，安全，高效。
 

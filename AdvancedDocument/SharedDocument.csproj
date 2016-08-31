@@ -116,6 +116,11 @@
     <None Include="Tool\Markdown\Markdown工具.md" />
     <None Include="Tool\Notepad++\Notepad++使用.md" />
     <None Include="Web\ASP.NET\ASP.NET Webform和ASP.NET MVC的区别.md" />
+    <None Include="Web\Javascript\Control\WdatePicker日历控件使用方法.md" />
+    <None Include="Web\Javascript\RegExp\%241...%249 属性 %28RegExp%29 %28JavaScript%29.md" />
+    <None Include="Web\Javascript\RegExp\RegExp.md" />
+    <None Include="Web\Webform\Control\asp.net学习之Repeater控件.md" />
+    <None Include="Web\Webform\Control\Using the ASP.NET Repeater Control.md" />
     <None Include="Web\Webform\Tutorial\3-tier Architecture with ASP.NET 2.0 .md" />
     <None Include="Windows System\Win10 bug\win10 周年更新微软拼音切换简体繁体快捷键 ctrl+shift+F.md" />
     <None Include="Windows System\Win10\教程：WP8.1系统如何升级到Win10 Mobile预览版更新.md" />
@@ -426,9 +431,11 @@
     <Content Include="Image\设计模式\适配器结构.PNG" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Design\Code Design\" />
     <Folder Include="Web\Core\" />
     <Folder Include="Web\Html\" />
     <Folder Include="Web\Javascript\Typescript\" />
+    <Folder Include="Web\jQuery\Method\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
