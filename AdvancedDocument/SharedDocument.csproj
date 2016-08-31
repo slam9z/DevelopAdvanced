@@ -346,7 +346,7 @@
     <None Include="Windows System\磁盘空间整理.md" />
     <None Include="Windows System\Management\.msc文件.md" />
     <None Include="Windows System\Management\mmc %28Microsoft Management Console%29.md" />
-    <None Include="Xaml\WPF WindowsFormsHost 类 .md" />
+    <None Include="XAML\WPF WindowsFormsHost 类 .md" />
     <None Include="Working Language\Human.md" />
     <None Include="Work\Work.md" />
     <None Include="Work\广州\工作.md" />
