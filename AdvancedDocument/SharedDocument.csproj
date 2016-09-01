@@ -122,6 +122,8 @@
     <None Include="Web\Javascript\Control\WdatePicker日历控件使用方法.md" />
     <None Include="Web\Javascript\RegExp\%241...%249 属性 %28RegExp%29 %28JavaScript%29.md" />
     <None Include="Web\Javascript\RegExp\RegExp.md" />
+    <None Include="Web\jQuery\DOM\select\Adding options to a  select  using jQuery JavaScript.md" />
+    <None Include="Web\jQuery\DOM\select\jquery获得select option的值 和对select option的操作.md" />
     <None Include="Web\Webform\Control\asp.net学习之Repeater控件.md" />
     <None Include="Web\Webform\Control\Server Control.md" />
     <None Include="Web\Webform\Control\Using the ASP.NET Repeater Control.md" />
