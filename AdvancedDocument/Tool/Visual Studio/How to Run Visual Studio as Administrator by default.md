@@ -1,0 +1,1 @@
+﻿[How to Run Visual Studio as Administrator by default](http://stackoverflow.com/questions/9654833/how-to-run-visual-studio-as-administrator-by-default)

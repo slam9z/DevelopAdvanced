@@ -1,0 +1,1 @@
+﻿1. Support Markdown ///支持Markdown        Support table1. View edit history //可以查看历史1. 编辑需要登录，查看不需要。支持注册，以后支持域用户。1. 支持树形展示1. 支持标题查询，全文查询(待定)1. 应该需要使用开源项目
