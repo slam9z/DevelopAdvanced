@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Business\Finance\Letter of Credit\Letter of Credit %28信用证%29.md" />
+    <None Include="Concept\Sftp和ftp 区别、工作原理等（汇总ing）.md" />
     <None Include="Design\API Design\RESTful API 设计指南.md" />
     <None Include="Book\分析模式 可复用的对象模型.md" />
     <None Include="Book\总结.md" />
@@ -64,7 +65,14 @@
     <None Include="DOTNET\DateTime\Csharp怎么显示中文格式的星期几.md" />
     <None Include="DOTNET\String\string 的扩展方法 IsNullOrWhiteSpace.md" />
     <None Include="Json\Json.NET\Serializing and Deserializing JSON.md" />
+    <None Include="MyProject\Cloud\amazon.md" />
+    <None Include="MyProject\Cloud\azure.md" />
+    <None Include="MyProject\Cloud\阿里云.md" />
+    <None Include="MyProject\Wiki\open source Enterprise Wiki software.md" />
     <None Include="MyProject\Wiki\Requirement.md" />
+    <None Include="MyProject\Wiki\roadkillwiki.md" />
+    <None Include="MyProject\Wiki\Roadkill\LightSpeed ORM.md" />
+    <None Include="MyProject\Wiki\Roadkill\运行RoadKill.md" />
     <None Include="NET Core\.NET Core全新路线图%282016.07%29.md" />
     <None Include="NET Core\.NET Core系列  1、.NET Core 环境搭建和命令行CLI入门.md" />
     <None Include="NET Core\.NET Core系列 ： 2 、project.json 这葫芦里卖的什么药.md" />
@@ -119,6 +127,7 @@
     <None Include="Tool\Notepad++\Notepad++使用.md" />
     <None Include="Tool\Visual Studio\How to Run Visual Studio as Administrator by default.md" />
     <None Include="Web\ASP.NET\ASP.NET Webform和ASP.NET MVC的区别.md" />
+    <None Include="Web\CSS\Set margin.md" />
     <None Include="Web\Javascript\Control\WdatePicker日历控件使用方法.md" />
     <None Include="Web\Javascript\RegExp\%241...%249 属性 %28RegExp%29 %28JavaScript%29.md" />
     <None Include="Web\Javascript\RegExp\RegExp.md" />
