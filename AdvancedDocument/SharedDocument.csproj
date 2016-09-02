@@ -41,7 +41,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Business\Finance\Letter of Credit\Letter of Credit %28信用证%29.md" />
+    <None Include="Tool\CommandLine\cmd open edge.md" />
     <None Include="Concept\Sftp和ftp 区别、工作原理等（汇总ing）.md" />
+    <None Include="Tool\Source Code Control\gitignore使用.md" />
+    <None Include="Tool\Source Code Control\git命令之git tag 给当前分支打标签 .md" />
+    <None Include="Tool\Source Code Control\How to exit git log.md" />
+    <None Include="Style Guide\Microsoft REST API Guidelines.md" />
+    <None Include="Style Guide\Rest-API\ REST WebService与SOAP WebService的比较 .md" />
+    <None Include="Style Guide\Rest-API\REST API Tutorial.md" />
+    <None Include="Style Guide\Rest-API\Rest API 开发 学习笔记 .md" />
+    <None Include="Style Guide\Rest-API\Web service  Wiki.md" />
+    <None Include="Style Guide\Rest-API\Web Service学习笔记 .md" />
+    <None Include="Style Guide\Rest-API\Web 服务编程，REST 与 SOAP.md" />
+    <None Include="Style Guide\Rest-API\浅谈 SOAP%28Simple Object Access Protocol %29.md" />
+    <None Include="Web\ASP.NET\Application, Cache, Session, Cookie, Viewstate 用法和区别.md" />
+    <None Include="Data access\Sql Server\SQL Server 批量插入数据的两种方法.md" />
     <None Include="Design\API Design\RESTful API 设计指南.md" />
     <None Include="Book\分析模式 可复用的对象模型.md" />
     <None Include="Book\总结.md" />
@@ -59,12 +73,12 @@
     <None Include="Data access\Sql\Procedure\CREATE PROCEDURE %28Transact-SQL%29.md" />
     <None Include="Data access\Sql\Procedure\SQL Server 存储过程.md" />
     <None Include="Design\System Design\如果应对频繁更新又保证系统的可读性.md" />
-    <None Include="Distributed System\The Reactive Manifesto.md" />
-    <None Include="Distributed System\使用Akka.net开发第一个分布式应用 .md" />
+    <None Include="Design\Distributed System Design\The Reactive Manifesto.md" />
+    <None Include="Design\Distributed System Design\使用Akka.net开发第一个分布式应用 .md" />
     <None Include="DOTNET\.NET各种文件名后缀的含义.md" />
     <None Include="DOTNET\DateTime\Csharp怎么显示中文格式的星期几.md" />
     <None Include="DOTNET\String\string 的扩展方法 IsNullOrWhiteSpace.md" />
-    <None Include="Json\Json.NET\Serializing and Deserializing JSON.md" />
+    <None Include="DOTNET\Json\Json.NET\Serializing and Deserializing JSON.md" />
     <None Include="MyProject\Cloud\amazon.md" />
     <None Include="MyProject\Cloud\azure.md" />
     <None Include="MyProject\Cloud\阿里云.md" />
@@ -85,10 +99,10 @@
     <None Include="NET Technology\Systems Programming in CSharp.md" />
     <None Include="Open Source\OpenAuth.Net.md" />
     <None Include="Open Source\Open Source  List.md" />
-    <None Include="Source Code Control\Git\git revert和git reset的区别.md" />
-    <None Include="Source Code Control\Git\git使用注意点.md" />
-    <None Include="CommandLine\cmd ren命令 重命名文件（夹）可批量修改后缀.md" />
-    <None Include="CommandLine\How to open the Recycle Bin from the Windows command line.md" />
+    <None Include="Tool\Source Code Control\Git\git revert和git reset的区别.md" />
+    <None Include="Tool\Source Code Control\Git\git使用注意点.md" />
+    <None Include="Tool\CommandLine\cmd ren命令 重命名文件（夹）可批量修改后缀.md" />
+    <None Include="Tool\CommandLine\How to open the Recycle Bin from the Windows command line.md" />
     <None Include="Data access\Sql\Aggregate Functions.md" />
     <None Include="Data access\Sql\Conditional Expressions.md" />
     <None Include="Data access\Sql\Filtering Data.md" />
@@ -99,9 +113,9 @@
     <None Include="Data access\Sql\Sorting Data.md" />
     <None Include="Data access\Sql\SQL Tutorial.md" />
     <None Include="Data access\Sql\Using SET Operators.md" />
-    <None Include="Database\T-SQL\INSERT、UPDATE、DELETE  OUTPUT.md" />
+    <None Include="Data access\T-SQL\INSERT、UPDATE、DELETE  OUTPUT.md" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="CommandLine\cmd快捷操作.md" />
+    <None Include="Tool\CommandLine\cmd快捷操作.md" />
     <None Include="Data access\Entity Framework\code first  mapping.md" />
     <None Include="Data access\Entity Framework\Database First    Mode First   Code  First.md" />
     <None Include="Data access\Entity Framework\Entity Framework  Tutorial.md" />
@@ -113,14 +127,14 @@
     <None Include="Data access\Entity Framework\变更跟踪.md" />
     <None Include="Data access\Entity Framework\并发.md" />
     <None Include="Data access\Entity Framework\数据加载.md" />
-    <None Include="Data access\sql server connectionstring.md" />
+    <None Include="Data access\Sql Server\sql server connectionstring.md" />
     <None Include="Data access\Sql\database.md" />
-    <None Include="Database\SQL SERVER\时间精度问题.md" />
-    <None Include="Source Code Control\Git\How to show git log history for a sub directory of a git repo.md" />
-    <None Include="Source Code Control\Svn\git-svn — 让git和svn协同工作.md" />
-    <None Include="Source Code Control\Svn\git-svn 使用经验.md" />
-    <None Include="Source Code Control\Svn\Svn工具.md" />
-    <None Include="Source Code Control\Svn\Svn的基本使用方法.md" />
+    <None Include="Data access\Sql Server\时间精度问题.md" />
+    <None Include="Tool\Source Code Control\Git\How to show git log history for a sub directory of a git repo.md" />
+    <None Include="Tool\Source Code Control\Svn\git-svn — 让git和svn协同工作.md" />
+    <None Include="Tool\Source Code Control\Svn\git-svn 使用经验.md" />
+    <None Include="Tool\Source Code Control\Svn\Svn工具.md" />
+    <None Include="Tool\Source Code Control\Svn\Svn的基本使用方法.md" />
     <None Include="Tool\Fiddler\Fiddler使用.md" />
     <None Include="Tool\Markdown\Markdown 表格生成工具.md" />
     <None Include="Tool\Markdown\Markdown工具.md" />
@@ -156,10 +170,10 @@
     <None Include="Web\jQuery\jQuery UI\jQuery UI.md" />
     <None Include="Web\jQuery\Performance\Don’t Treat jQuery as a Black Box.md" />
     <None Include="Bug\Bug分类.md" />
-    <None Include="CommandLine\cd.md" />
-    <None Include="Source Code Control\Git\git branch用法总结 .md" />
-    <None Include="Source Code Control\Git\GitTfs  Tfs migrate Git.md" />
-    <None Include="Source Code Control\Nuget.md" />
+    <None Include="Tool\CommandLine\cd.md" />
+    <None Include="Tool\Source Code Control\Git\git branch用法总结 .md" />
+    <None Include="Tool\Source Code Control\Git\GitTfs  Tfs migrate Git.md" />
+    <None Include="Tool\Source Code Control\Nuget.md" />
     <None Include="Style Guide\CSharp Style  Guide.md" />
     <None Include="Style Guide\Refactoring Style Guide.md" />
     <None Include="Style Guide\Client Style Guide.md" />
@@ -224,18 +238,22 @@
     <None Include="Web\Javascript\Function.prototype.apply%28%29.md" />
     <None Include="Web\Javascript\JavaScript Style Guide.md" />
     <None Include="Windows System\Win10\Win10 设置系统显示语言.md" />
-    <None Include="XML\c#读取XML .md" />
+    <None Include="Work\Hunting\广州\0823 广州 面试.xlsx" />
+    <None Include="Work\WorkDiff\WorkDiff.md" />
+    <None Include="Work\Working Language\CodeLanguage.md" />
+    <None Include="Work\招聘网站.md" />
+    <None Include="DOTNET\XML\c#读取XML .md" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Source Code Control\Git\Git常用命令.md" />
-    <None Include="Gof Design Pattern\设计模式-创建型.md" />
-    <None Include="Gof Design Pattern\设计模式-结构型.md" />
-    <None Include="Gof Design Pattern\设计模式-行为型.md" />
-    <None Include="Gof Design Pattern\设计模式总结.md" />
-    <None Include="Gof Design Pattern\详解设计模式原则.md" />
+    <None Include="Tool\Source Code Control\Git\Git常用命令.md" />
+    <None Include="Design\Gof Design Pattern\设计模式-创建型.md" />
+    <None Include="Design\Gof Design Pattern\设计模式-结构型.md" />
+    <None Include="Design\Gof Design Pattern\设计模式-行为型.md" />
+    <None Include="Design\Gof Design Pattern\设计模式总结.md" />
+    <None Include="Design\Gof Design Pattern\详解设计模式原则.md" />
     <None Include="Tool\Markdown\Markdown使用语法.md" />
-    <None Include="Reflection\反射%28Reflection%29详解.md" />
-    <None Include="Reflection\通过反射创建表达树.md" />
+    <None Include="DOTNET\Reflection\反射%28Reflection%29详解.md" />
+    <None Include="DOTNET\Reflection\通过反射创建表达树.md" />
     <None Include="Web\HttpApplication 类.md" />
     <None Include="Web\Javascript\JavaScript.md" />
     <None Include="Web\Javascript\Javascript定义类（class）的三种方法.md" />
@@ -376,7 +394,7 @@
     <None Include="Windows System\磁盘空间整理.md" />
     <None Include="Windows System\Management\.msc文件.md" />
     <None Include="Windows System\Management\mmc %28Microsoft Management Console%29.md" />
-    <None Include="XAML\WPF WindowsFormsHost 类 .md" />
+    <None Include="Windows Client\XAML\WPF WindowsFormsHost 类 .md" />
     <None Include="Work\Working Language\Human.md" />
     <None Include="Work\Hunting\Work.md" />
     <None Include="Work\Hunting\广州\工作.md" />
@@ -398,17 +416,17 @@
     <None Include="Work\Hunting\深圳\趣旅网.md" />
     <None Include="Work\Hunting\深圳\软通动力信息技术.md" />
     <None Include="Work\Hunting\深圳\金蝶软件.md" />
-    <None Include="Multi threading\.NET线程同步.md" />
-    <None Include="Multi threading\.NET轻量级线程同步.md" />
-    <None Include="Multi threading\使用多线程.md" />
-    <None Include="Multi threading\关于async与await的FAQ.md" />
-    <None Include="Multi threading\异步编程：.NET 4.5 基于任务的异步编程模型%28TAP%29.md" />
-    <None Include="Multi threading\异步编程：.NET4.X 数据并行.md" />
-    <None Include="Multi threading\异步编程：IAsyncResult异步编程模型 %28APM%29.md" />
-    <None Include="Multi threading\异步编程：使用线程池管理线程.md" />
-    <None Include="Multi threading\异步编程：基于事件的异步编程模式%28EAP%29.md" />
-    <None Include="Multi threading\异步编程：线程概述及使用.md" />
-    <None Include="Multi threading\深入探究 WinRT 和 await.md" />
+    <None Include="DOTNET\Multi threading\.NET线程同步.md" />
+    <None Include="DOTNET\Multi threading\.NET轻量级线程同步.md" />
+    <None Include="DOTNET\Multi threading\使用多线程.md" />
+    <None Include="DOTNET\Multi threading\关于async与await的FAQ.md" />
+    <None Include="DOTNET\Multi threading\异步编程：.NET 4.5 基于任务的异步编程模型%28TAP%29.md" />
+    <None Include="DOTNET\Multi threading\异步编程：.NET4.X 数据并行.md" />
+    <None Include="DOTNET\Multi threading\异步编程：IAsyncResult异步编程模型 %28APM%29.md" />
+    <None Include="DOTNET\Multi threading\异步编程：使用线程池管理线程.md" />
+    <None Include="DOTNET\Multi threading\异步编程：基于事件的异步编程模式%28EAP%29.md" />
+    <None Include="DOTNET\Multi threading\异步编程：线程概述及使用.md" />
+    <None Include="DOTNET\Multi threading\深入探究 WinRT 和 await.md" />
     <None Include="Study Plan\学习计划.md" />
     <None Include="Concept\_aaS.md" />
     <None Include="Network\HTTP\Http.md" />
@@ -417,10 +435,10 @@
     <None Include="Network\Websocket.md" />
     <None Include="Network\坑\ClickOnce安装因为exe文件被redirect .md" />
     <None Include="Network\坑\Websocket握手请求头被改，导致无法连接.md" />
-    <None Include="Software Design\通信软件系统设计.md" />
-    <None Include="Domain Driven Design\Server代码组织.md" />
-    <None Include="Domain Driven Design\领域驱动设计（1）为复杂业务而生 .md" />
-    <None Include="Domain Driven Design\领域驱动设计（2）Repository在DDD中的应用 .md" />
+    <None Include="Design\Software Design\通信软件系统设计.md" />
+    <None Include="Design\Domain Driven Design\Server代码组织.md" />
+    <None Include="Design\Domain Driven Design\领域驱动设计（1）为复杂业务而生 .md" />
+    <None Include="Design\Domain Driven Design\领域驱动设计（2）Repository在DDD中的应用 .md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Design\search design.png" />
@@ -448,6 +466,7 @@
     <Content Include="Image\设计模式\访问者结构.PNG" />
     <Content Include="Image\设计模式\迭代器结构.PNG" />
     <Content Include="Image\设计模式\适配器结构.PNG" />
+    <Content Include="Web\Framework\前段框架对比.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Design\Code Design\" />

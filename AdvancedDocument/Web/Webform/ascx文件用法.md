@@ -32,3 +32,7 @@ ascx即WebUserControl,和WindowsApplication中的UserControl作用类似,主要�
 ```xml
 <uc:ucSample ID="uc1" runat="server" />就可以了。
 ```
+
+##Namespace
+
+    default namespace is ASP
