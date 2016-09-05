@@ -40,7 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Algorithm\五大常用算法之一：分治算法.md" />
+    <None Include="Algorithm\五大常用算法之三：贪心算法.md" />
+    <None Include="Algorithm\五大常用算法之二：动态规划算法.md" />
+    <None Include="Algorithm\五大常用算法之五：分支限界法.md" />
+    <None Include="Algorithm\五大常用算法之四：回溯法.md" />
+    <None Include="Algorithm\如何实现将大小不一的很多图合并到多个4000x4000大图里算法，让用到的大图最少.md" />
+    <None Include="Algorithm\矩形切割\Greatest Common Divisor from a set of more than 2 integers.md" />
+    <None Include="Algorithm\矩形切割\矩形切割.md" />
+    <None Include="Algorithm\矩形切割\矩形排料算法.md" />
+    <None Include="Algorithm\算法策略的总结.md" />
+    <None Include="Algorithm\贪心算法.md" />
     <None Include="Business\Finance\Letter of Credit\Letter of Credit %28信用证%29.md" />
+    <None Include="DOTNET\CSharp\6.0\CSharp 6.0新特性之字符串嵌入 String Interpolation.md" />
     <None Include="Tool\CommandLine\cmd open edge.md" />
     <None Include="Concept\Sftp和ftp 区别、工作原理等（汇总ing）.md" />
     <None Include="Tool\Source Code Control\gitignore使用.md" />
@@ -160,6 +172,7 @@
     <None Include="Web\Webform\Tutorial\3-tier Architecture with ASP.NET 2.0 .md" />
     <None Include="Web\Webform\Webform Directive.md" />
     <None Include="Windows System\Win10 bug\win10 周年更新微软拼音切换简体繁体快捷键 ctrl+shift+F.md" />
+    <None Include="Windows System\Win10\win10系统如何设置VPN网络.md" />
     <None Include="Windows System\Win10\教程：WP8.1系统如何升级到Win10 Mobile预览版更新.md" />
     <None Include="Technology\SSO（Single Sign On）.md" />
     <None Include="Tool\Visual Studio\Solve Solution Exploler  location error  by  reset  visual stuido user date.md" />
@@ -394,7 +407,7 @@
     <None Include="Web\Webform\ascx文件用法.md" />
     <None Include="Web\ASP.NET\ASP.NET各种文件名后缀解释.md" />
     <None Include="Web\Webform\web config 文件问题.md" />
-    <None Include="Windows System\Win10\Win10 安装与升级" />
+    <None Include="Windows System\Win10\Win10 安装与升级.md" />
     <None Include="Windows System\磁盘空间整理.md" />
     <None Include="Windows System\Management\.msc文件.md" />
     <None Include="Windows System\Management\mmc %28Microsoft Management Console%29.md" />
