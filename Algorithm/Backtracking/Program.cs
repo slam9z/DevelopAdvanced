@@ -89,7 +89,7 @@ namespace Algorithm
 
             _target = target;
             _hasResult = false;
-            CombineCore(0);
+            CombineCore();
         }
 
 
@@ -102,11 +102,20 @@ namespace Algorithm
             }
         }
 
+        private void PrintHandlderList()
+        {
+            //Console.WriteLine("PrintHandlderList");
+            //foreach (var handler in _handlderList)
+            //{
+            //    Console.Write("{0}, ", handler.Name);
+            //}
+            //Console.WriteLine("");
+        }
+
         /// <summary>
         /// 使用回溯算法递归解决!没写好，感觉和枚举没啥区别。
         /// </summary>
-        /// <param name="arrangeIndex"></param>
-        private void CombineCore(int arrangedCount)
+        private void CombineCore()
         {
             //只求唯一解
             if (_hasResult)
@@ -115,15 +124,18 @@ namespace Algorithm
             }
 
             //结束条件。
-            if (arrangedCount >= _sourceList.Count)
+            if (_handlderList.Count == _sourceList.Count)
             {
-                OutputCombinedRectanglePart();
+                //OutputCombinedRectanglePart();
+                Console.WriteLine("Combined result");
+                PrintHandlderList();
                 _hasResult = true;
                 return;
             }
 
             for (var i = 0; i <= _sourceList.Count - 1; i++)
             {
+
                 var currentArrange = _sourceList[i];
                 if (currentArrange.IsHandle)
                 {
@@ -134,7 +146,7 @@ namespace Algorithm
                 {
                     if (CheckAndCombine(null, currentArrange))
                     {
-                        CombineCore(arrangedCount + 1);
+                        CombineCore();
                         Clear();
                     }
                 }
@@ -142,11 +154,13 @@ namespace Algorithm
                 {
                     for (var j = 0; j <= _handlderList.Count - 1; j++)
                     {
+                        Console.Write("(i {0}, j {1})  ", i, j);
+
                         var dockItem = _handlderList[j];
 
                         if (CheckAndCombine(dockItem, currentArrange))
                         {
-                            CombineCore(arrangedCount + 1);
+                            CombineCore();
                             Clear();
                         }
                     }
@@ -167,6 +181,7 @@ namespace Algorithm
                 removeItem.IsHandle = false;
 
                 _handlderList.Remove(removeItem);
+                PrintHandlderList();
             }
 
         }
@@ -194,7 +209,8 @@ namespace Algorithm
 
                 _handlderList.Add(arrange);
 
-                Console.WriteLine("step: {0}", arrange);
+                //  Console.WriteLine("step: {0}", arrange);
+                PrintHandlderList();
                 return true;
             }
 
@@ -211,7 +227,8 @@ namespace Algorithm
 
                 _handlderList.Add(arrange);
 
-                Console.WriteLine("step: {0}", arrange);
+                PrintHandlderList();
+                //   Console.WriteLine("step: {0}", arrange);
                 return true;
             }
 
@@ -230,12 +247,12 @@ namespace Algorithm
 
                 _handlderList.Add(arrange);
 
-
-                Console.WriteLine("step: {0}", arrange);
+                PrintHandlderList();
+                //   Console.WriteLine("step: {0}", arrange);
                 return true;
 
             }
-
+            PrintHandlderList();
             return false;
         }
 
