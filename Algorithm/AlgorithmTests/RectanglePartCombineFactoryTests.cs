@@ -69,19 +69,13 @@ namespace Algorithm.Tests
             var factory = new RectanglePartCombineFactory();
             factory.Combine(source1, target);
 
-            //is current result
-            //Combined result
-            //Name: r1 X:0 Y: 0 Width: 8 Height: 3
-            //Name: r3 X:0 Y: 3 Width: 6 Height: 3
-            //Name: r4 X:6 Y: 3 Width: 4 Height: 3
-            //Name: r2 X:8 Y: 0 Width: 2 Height: 3
-
         }
 
         [TestMethod()]
         public void CombineTest()
         {
             CombineTest1();
+            CombineTest2();
         }
     }
 }
