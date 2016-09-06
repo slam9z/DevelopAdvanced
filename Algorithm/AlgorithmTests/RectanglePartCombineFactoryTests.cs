@@ -12,7 +12,7 @@ namespace Algorithm.Tests
     public class RectanglePartCombineFactoryTests
     {
 
-        private void CombineTest1()
+        public void CombineTest1()
         {
             var source1 = new List<RectanglePart>()
             {

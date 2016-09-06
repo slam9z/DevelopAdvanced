@@ -51,6 +51,7 @@
     <None Include="Algorithm\矩形切割\矩形排料算法.md" />
     <None Include="Algorithm\算法策略的总结.md" />
     <None Include="Algorithm\贪心算法.md" />
+    <None Include="Bug and Test\MSTest\使用注意点.md" />
     <None Include="Business\Finance\Letter of Credit\Letter of Credit %28信用证%29.md" />
     <None Include="DOTNET\CSharp\6.0\CSharp 6.0新特性之字符串嵌入 String Interpolation.md" />
     <None Include="Tool\CommandLine\cmd open edge.md" />
@@ -186,7 +187,7 @@
     <None Include="Web\jQuery\Code Organization\Keep Things DRY.md" />
     <None Include="Web\jQuery\jQuery UI\jQuery UI.md" />
     <None Include="Web\jQuery\Performance\Don’t Treat jQuery as a Black Box.md" />
-    <None Include="Bug\Bug分类.md" />
+    <None Include="Bug and Test\Bug分类.md" />
     <None Include="Tool\CommandLine\cd.md" />
     <None Include="Tool\Source Code Control\Git\git branch用法总结 .md" />
     <None Include="Tool\Source Code Control\Git\GitTfs  Tfs migrate Git.md" />
