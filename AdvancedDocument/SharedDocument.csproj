@@ -57,6 +57,7 @@
     <None Include="Business\Finance\Letter of Credit\Letter of Credit %28信用证%29.md" />
     <None Include="Design\UI Design\网页颜色搭配表及颜色搭配技巧.md" />
     <None Include="DOTNET\CSharp\6.0\CSharp 6.0新特性之字符串嵌入 String Interpolation.md" />
+    <None Include="DOTNET\Drawing\Center text output from Graphics.DrawString%28%29.md" />
     <None Include="DOTNET\Sort\How can I sort generic list DESC and ASC.md" />
     <None Include="Tool\CommandLine\cmd open edge.md" />
     <None Include="Concept\Sftp和ftp 区别、工作原理等（汇总ing）.md" />
