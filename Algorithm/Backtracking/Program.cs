@@ -15,8 +15,8 @@ namespace Algorithm
         public int Width { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
-        public bool IsBottomDocked { get; set; }
-        public bool IsRightDocked { get; set; }
+        public RectanglePart BottomNode { get; set; }
+        public RectanglePart RightNode { get; set; }
         public bool IsHandle { get; set; }
 
         public RectanglePart()
@@ -72,17 +72,18 @@ namespace Algorithm
 
         }
 
+
+        /// <summary>
+        /// not thread-safe
+        /// </summary>
+        /// <param name="sourceList"></param>
+        /// <param name="target"></param>
         public void Combine(IList<RectanglePart> sourceList, RectanglePart target)
         {
             //先按比例从大到小的顺序优化搜索。
-            //_sourceList = sourceList.OrderByDescending
-            //    (i =>
-            //        Math.Max((double)i.Width / target.Width, (double)(i.Height) / target.Height)
-            //    ).ToList();
-
             _sourceList = sourceList.OrderByDescending
                 (i =>
-                    Math.Max(i.Width / target.Width, (i.Height) / target.Height)
+                    Math.Max((double)i.Width / target.Width, (double)(i.Height) / target.Height)
                 ).ToList();
 
             _handlderList = new List<RectanglePart>();
@@ -113,7 +114,7 @@ namespace Algorithm
         }
 
         /// <summary>
-        /// 使用回溯算法递归解决!没写好，感觉和枚举没啥区别。
+        /// 使用回溯算法递归。
         /// </summary>
         private void CombineCore()
         {
@@ -126,13 +127,14 @@ namespace Algorithm
             //结束条件。
             if (_handlderList.Count == _sourceList.Count)
             {
-                //OutputCombinedRectanglePart();
-                Console.WriteLine("Combined result");
+                OutputCombinedRectanglePart();
+
                 PrintHandlderList();
                 _hasResult = true;
                 return;
             }
 
+            //利用循环递归回溯
             for (var i = 0; i <= _sourceList.Count - 1; i++)
             {
 
@@ -147,6 +149,10 @@ namespace Algorithm
                     if (CheckAndCombine(null, currentArrange))
                     {
                         CombineCore();
+                        if (_hasResult)
+                        {
+                            return;
+                        }
                         Clear();
                     }
                 }
@@ -154,13 +160,15 @@ namespace Algorithm
                 {
                     for (var j = 0; j <= _handlderList.Count - 1; j++)
                     {
-                        Console.Write("(i {0}, j {1})  ", i, j);
-
                         var dockItem = _handlderList[j];
 
                         if (CheckAndCombine(dockItem, currentArrange))
                         {
                             CombineCore();
+                            if (_hasResult)
+                            {
+                                return;
+                            }
                             Clear();
                         }
                     }
@@ -171,36 +179,50 @@ namespace Algorithm
 
         private void Clear()
         {
-            if (_handlderList.Count >= 1)
-            {
-                var removeItem = _handlderList.Last();
-                removeItem.X = 0;
-                removeItem.Y = 0;
-                removeItem.IsBottomDocked = false;
-                removeItem.IsRightDocked = false;
-                removeItem.IsHandle = false;
 
-                _handlderList.Remove(removeItem);
+            var removeNode = _handlderList.LastOrDefault();
+            if (removeNode != null)
+            {
+                removeNode.X = 0;
+                removeNode.Y = 0;
+                removeNode.BottomNode = null;
+                removeNode.RightNode = null;
+                removeNode.IsHandle = false;
+                _handlderList.Remove(removeNode);
+
+                //清除父节点的引用
+                var parentNode = _handlderList.LastOrDefault();
+                if (parentNode != null)
+                {
+                    if (parentNode.BottomNode == removeNode)
+                    {
+                        parentNode.BottomNode = null;
+                    }
+                    else if (parentNode.RightNode == removeNode)
+                    {
+                        parentNode.RightNode = null;
+                    }
+
+                }
                 PrintHandlderList();
             }
-
         }
 
 
         /// <summary>
-        /// 检查一个矩形是否可以放置在另一个举行下侧或者右侧。
+        /// 检查一个矩形是否可以放置在另一个举行下侧或者右侧，这是一个构建二叉树的过程
         /// </summary>
         /// <param name="dockArranged"></param>
         /// <returns></returns>
         private bool CheckAndCombine(RectanglePart dockArranged, RectanglePart arrange)
         {
-            //为什么会出现重复?清理还没处理
+            //处理重复出现的节点，只要调用方正确，不应该出现这种情况。
             if (dockArranged == arrange)
             {
                 return false;
             }
 
-            //没有被处理的元素。
+            //处理根节点
             if (dockArranged == null)
             {
                 arrange.X = 0;
@@ -209,17 +231,18 @@ namespace Algorithm
 
                 _handlderList.Add(arrange);
 
-                //  Console.WriteLine("step: {0}", arrange);
                 PrintHandlderList();
                 return true;
             }
 
-            //检查下界
-            if (!dockArranged.IsBottomDocked &&
-                dockArranged.Y + dockArranged.Height + arrange.Height <= _target.Height
+            //添加下面的节点
+            if (dockArranged.BottomNode == null
+                && dockArranged.X + arrange.Width <= _target.Width
+                && dockArranged.Y + dockArranged.Height + arrange.Height <= _target.Height
+
                 )
             {
-                dockArranged.IsBottomDocked = true;
+                dockArranged.BottomNode = arrange;
 
                 arrange.X = dockArranged.X;
                 arrange.Y = dockArranged.Height + dockArranged.Y;
@@ -228,18 +251,19 @@ namespace Algorithm
                 _handlderList.Add(arrange);
 
                 PrintHandlderList();
-                //   Console.WriteLine("step: {0}", arrange);
+
                 return true;
             }
 
 
-            //检查右界
+            //添加右边节点
 
-            if (!dockArranged.IsRightDocked &&
-                dockArranged.X + dockArranged.Width + arrange.Width <= _target.Width
+            if (dockArranged.RightNode == null
+                && dockArranged.X + dockArranged.Width + arrange.Width <= _target.Width
+                && dockArranged.Y + arrange.Height <= _target.Height
                 )
             {
-                dockArranged.IsRightDocked = true;
+                dockArranged.RightNode = arrange;
 
                 arrange.X = dockArranged.Width + dockArranged.X;
                 arrange.Y = dockArranged.Y;
@@ -248,7 +272,7 @@ namespace Algorithm
                 _handlderList.Add(arrange);
 
                 PrintHandlderList();
-                //   Console.WriteLine("step: {0}", arrange);
+
                 return true;
 
             }
@@ -321,7 +345,7 @@ namespace Algorithm
             factory.Combine(source1, target);
 
 
-            //is current result
+            //is correct result
             //Combined result
             //Name: r1 X:0 Y: 0 Width: 8 Height: 3
             //Name: r3 X:0 Y: 3 Width: 6 Height: 3
@@ -341,7 +365,7 @@ namespace Algorithm
                 && r4 != null && r4.X == 6 && r4.Y == 3
                 )
             {
-
+                Console.WriteLine("correct result");
             }
             else
             {
