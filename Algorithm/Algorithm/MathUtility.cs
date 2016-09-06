@@ -8,14 +8,15 @@ namespace Algorithm
 {
     public static class MathUtility
     {
-        public static int GreatestCommonDivisor(int[] source)
+        public static int GreatestCommonDivisor(IList<int> source)
         {
-            if (source.Length < 2)
+            var length = source.Count;
+
+            if (length < 2)
             {
                 throw new ArgumentException("Do not use this method if there are less than two numbers.");
             }
 
-            var length = source.Length;
 
             int temp = GreatestCommonDivisor(source[length - 1], source[length - 2]);
 

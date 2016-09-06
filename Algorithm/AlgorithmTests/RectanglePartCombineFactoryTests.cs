@@ -68,14 +68,30 @@ namespace Algorithm.Tests
 
             var factory = new RectanglePartCombineFactory();
             factory.Combine(source1, target);
+        }
 
+
+        private void CombineTest3()
+        {
+            var source1 = new List<RectanglePart>()
+            {
+                new RectanglePart("r1",6,3),
+                new RectanglePart("r2",2,1),
+                new RectanglePart("r3",2,2),
+                new RectanglePart("r3",8,1),
+            };
+            var target = new RectanglePart("rt", 8, 4);
+
+            var factory = new RectanglePartCombineFactory();
+            factory.Combine(source1, target);
         }
 
         [TestMethod()]
         public void CombineTest()
         {
-            CombineTest1();
-            CombineTest2();
+            //CombineTest1();
+            //CombineTest2();
+            CombineTest3();
         }
     }
 }
