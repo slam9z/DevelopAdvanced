@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Algorithm\Scale\CSharp method to scale values.md" />
+    <None Include="Algorithm\Scale\image scale.md" />
     <None Include="Algorithm\五大常用算法之一：分治算法.md" />
     <None Include="Algorithm\五大常用算法之三：贪心算法.md" />
     <None Include="Algorithm\五大常用算法之二：动态规划算法.md" />
@@ -58,6 +60,7 @@
     <None Include="DOTNET\Sort\How can I sort generic list DESC and ASC.md" />
     <None Include="Tool\CommandLine\cmd open edge.md" />
     <None Include="Concept\Sftp和ftp 区别、工作原理等（汇总ing）.md" />
+    <None Include="Tool\Fiddler\关于 WEB HTTP 调试利器 Fiddler 的一些技巧分享.md" />
     <None Include="Tool\Source Code Control\gitignore使用.md" />
     <None Include="Tool\Source Code Control\git命令之git tag 给当前分支打标签 .md" />
     <None Include="Tool\Source Code Control\How to exit git log.md" />

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Algorithm
 {
@@ -39,6 +41,51 @@ namespace Algorithm
             }
 
             return a;
+        }
+
+        /// <summary>
+        ///取scale值
+        /// </summary>
+        /// <returns></returns>
+        public static double GetMaxScaling(
+            int orignWidth, int orignHeight
+            , int minWidth, int maxWidth
+            , int minHeight, int maxHeight
+            )
+        {
+            if (orignWidth == 0 || orignHeight == 0)
+            {
+                return 0d;
+            }
+
+            var maxWidthScale = Math.Max(
+                    minWidth / (double)(orignWidth)
+                    , maxWidth / (double)(orignWidth)
+                );
+
+            var minWidthScale = Math.Min(
+                     minWidth / (double)(orignWidth)
+                     , maxWidth / (double)(orignWidth)
+                 );
+
+            var maxHeightScale = Math.Max(
+                    minHeight / (double)(orignHeight)
+                    , maxHeight / (double)(orignHeight)
+                );
+
+            var minHeightScale = Math.Min(
+                     minHeight / (double)(orignHeight)
+                    , maxHeight / (double)(orignHeight)
+                );
+
+            //无交集
+            if (minHeightScale > maxWidthScale || minWidthScale > maxHeightScale)
+            {
+                return 0;
+            }
+
+            //相交,取两者最大里面的最小一个。
+            return Math.Min(maxWidthScale, maxHeightScale);
         }
     }
 }
