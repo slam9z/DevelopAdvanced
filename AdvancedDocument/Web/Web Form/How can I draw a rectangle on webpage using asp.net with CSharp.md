@@ -39,3 +39,6 @@ Response.End();
 ```
 Source:
 [Source drawing Web Graphics](http://www.codeproject.com/Articles/1827/Web-Graphics-On-The-Fly-in-ASP-NET)
+
+
+使用FillRectangle画填充的Rectangle。
