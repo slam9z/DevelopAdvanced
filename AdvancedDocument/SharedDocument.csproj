@@ -47,6 +47,7 @@
     <None Include="Algorithm\Scholar\五大常用算法之二：动态规划算法.md" />
     <None Include="Algorithm\Scholar\五大常用算法之五：分支限界法.md" />
     <None Include="Algorithm\Scholar\五大常用算法之四：回溯法.md" />
+    <None Include="Algorithm\刻度问题.md" />
     <None Include="Algorithm\如何实现将大小不一的很多图合并到多个4000x4000大图里算法，让用到的大图最少.md" />
     <None Include="Algorithm\排列组合和回溯算法-面试题.md" />
     <None Include="Algorithm\矩形切割\Greatest Common Divisor from a set of more than 2 integers.md" />
@@ -57,13 +58,21 @@
     <None Include="Bug and Test\Bug分类.md" />
     <None Include="Bug and Test\MSTest\使用注意点.md" />
     <None Include="Business\Finance\Letter of Credit\Letter of Credit %28信用证%29.md" />
+    <None Include="Data access\Sql\使用GROUP BY的时候如何统计记录条数 COUNT  DISTINCT.md" />
     <None Include="Design\UI Design\网页颜色搭配表及颜色搭配技巧.md" />
     <None Include="DOTNET\CSharp\6.0\CSharp 6.0新特性之字符串嵌入 String Interpolation.md" />
     <None Include="DOTNET\Drawing\Center text output from Graphics.DrawString%28%29.md" />
     <None Include="DOTNET\Sort\How can I sort generic list DESC and ASC.md" />
+    <None Include="MyProject\Wiki\Roadkill\Dependencies .md" />
+    <None Include="Open Source\IoC\StructureMap\IoC - StructureMap 2.6.1 .md" />
+    <None Include="Open Source\IoC\StructureMap\ServiceLocator IoC.md" />
+    <None Include="Open Source\IoC\StructureMap IoC.md" />
+    <None Include="MyProject\Wiki\Roadkill\Plugin.md" />
+    <None Include="MyProject\Wiki\Roadkill\Theme.md" />
     <None Include="Tool\CommandLine\cmd open edge.md" />
     <None Include="Concept\Sftp和ftp 区别、工作原理等（汇总ing）.md" />
     <None Include="Tool\Fiddler\关于 WEB HTTP 调试利器 Fiddler 的一些技巧分享.md" />
+    <None Include="Tool\Markdown\Markdown技巧和注意点.md" />
     <None Include="Tool\Source Code Control\gitignore使用.md" />
     <None Include="Tool\Source Code Control\git命令之git tag 给当前分支打标签 .md" />
     <None Include="Tool\Source Code Control\How to exit git log.md" />
@@ -106,7 +115,7 @@
     <None Include="MyProject\Wiki\open source Enterprise Wiki software.md" />
     <None Include="MyProject\Wiki\Requirement.md" />
     <None Include="MyProject\Wiki\roadkillwiki.md" />
-    <None Include="MyProject\Wiki\Roadkill\LightSpeed ORM.md" />
+    <None Include="Open Source\ORM\LightSpeed ORM.md" />
     <None Include="MyProject\Wiki\Roadkill\运行RoadKill.md" />
     <None Include="NET Core\.NET Core全新路线图%282016.07%29.md" />
     <None Include="NET Core\.NET Core系列  1、.NET Core 环境搭建和命令行CLI入门.md" />
@@ -166,6 +175,7 @@
     <None Include="Web\CSS\margin属性.md" />
     <None Include="Web\CSS\overflow属性.md" />
     <None Include="Web\Html\frameset、frame、noframes和iframe的区别.md" />
+    <None Include="Web\Html\frame和iframe的区别.md" />
     <None Include="Web\Javascript\Control\WdatePicker日历控件使用方法.md" />
     <None Include="Web\Javascript\RegExp\%241...%249 属性 %28RegExp%29 %28JavaScript%29.md" />
     <None Include="Web\Javascript\RegExp\RegExp.md" />
@@ -494,10 +504,15 @@
     <Content Include="Image\设计模式\访问者结构.PNG" />
     <Content Include="Image\设计模式\迭代器结构.PNG" />
     <Content Include="Image\设计模式\适配器结构.PNG" />
+    <Content Include="MyProject\Wiki\Roadkill\Image\Theme\BlackBar.png" />
+    <Content Include="MyProject\Wiki\Roadkill\Image\Theme\Mediawiki.png" />
+    <Content Include="MyProject\Wiki\Roadkill\Image\Theme\Plain.png" />
+    <Content Include="MyProject\Wiki\Roadkill\Image\Theme\Responsive.png" />
     <Content Include="Web\Framework\前段框架对比.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Design\Code Design\" />
+    <Folder Include="MyProject\Wiki\Roadkill\Dependencies\" />
     <Folder Include="Web\Core\" />
     <Folder Include="Web\Javascript\Typescript\" />
     <Folder Include="Web\jQuery\Method\" />
