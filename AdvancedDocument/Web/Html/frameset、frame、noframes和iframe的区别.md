@@ -96,6 +96,11 @@
 可以放些提醒字句之类。通常 iframe 配合一个辨认浏览器的 JavaScript 会较好，
 若 JavaScript 认出该浏览器并非 Internet Explorer 便会切换至另一版本。
 
+*所有浏览器都支持*
+
+[HTML iframe 标签](http://www.w3school.com.cn/tags/tag_iframe.asp)
+
+
 iframe 的参数设定如下：
 
 ```html
