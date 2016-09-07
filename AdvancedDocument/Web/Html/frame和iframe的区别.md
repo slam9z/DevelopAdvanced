@@ -6,19 +6,19 @@
 ```html 
 <!--<body>--> 
 <frameset rows="50%,*"> 
-   <frame   name="frame1"   src="test1.htm"/>  
-   <frame   name="frame2"   src="test2.htm"/>  
+    <frame name="frame1" src="test1.htm"/> 
+    <frame name="frame2" src="test2.htm"/> 
 </frameset> 
 <!--<body>--> 
 ```
 
 如下不能正常显示： 
 
-```html  
+```html 
 <body> 
 <frameset rows="50%,*"> 
-   <frame   name="frame1"   src="test1.htm"/>  
-   <frame   name="frame2"   src="test2.htm"/>  
+    <frame name="frame1" src="test1.htm"/>
+    <frame  name="frame2"  src="test2.htm"/>
 </frameset> 
 <body> 
 ```
@@ -26,12 +26,12 @@
 
 ##3. 嵌套在frameSet中的iframe必需放在body中；如下可以正常显示： 
 
-```html  
+```html
 <body> 
-    <frameset>  
-      <iframe   name="frame1"   src="test1.htm"/>  
-      <iframe   name="frame2"   src="test2.htm"/>  
-    </frameset>  
+    <frameset>
+         <iframe name="frame1" src="test1.htm"/> 
+         <iframe name="frame2" src="test2.htm"/>
+     </frameset>
 </body> 
 ```
 
@@ -39,10 +39,10 @@
 
 ```html
 <!--<body>--> 
-  <frameset>  
-    <iframe   name="frame1"   src="test1.htm"/>  
-    <iframe   name="frame2"   src="test2.htm"/>  
-  </frameset>  
+<frameset> 
+    <iframe name="frame1" src="test1.htm"/> 
+    <iframe name="frame2"src="test2.htm"/> 
+</frameset>  
 <!--</body>--> 
 ```
 
@@ -53,14 +53,14 @@
 
 ```html
 <body> 
-   <iframe   name="frame1"   src="test1.htm"/>  
-   <iframe   name="frame2"   src="test2.htm"/>  
+    <iframe  name="frame1" src="test1.htm"/>
+    <iframe  name="frame2"  src="test2.htm"/> 
 </body> 
 
 
 <!--<body>--> 
-   <iframe   name="frame1"   src="test1.htm"/>  
-   <iframe   name="frame2"   src="test2.htm"/>  
+<iframe name="frame1" src="test1.htm"/>
+<iframe name="frame2" src="test2.htm"/> 
 <!--</body>--> 
 ```
 
@@ -76,8 +76,8 @@
 
 <body> 
 <frameset> 
-   <iframe height="30%"  name="frame1"   src="test1.htm"/>  
-   <iframe height="100"  name="frame2"   src="test2.htm"/>  
+    <iframe height="30%"  name="frame1"   src="test1.htm"/>  
+    <iframe height="100"  name="frame2"   src="test2.htm"/>  
 </frameset> 
 </body> 
 ```
@@ -110,31 +110,32 @@
     而frameset不能与body元素共存，也就说有frameset元素的文档只能是一个框架集，不能有别的东东 
 
 4. IFrame是放在网业的什么地方都行   
-    但是frame只能放到上下左右四个方向 
+    但是frame只能放到上下左右四个方向 
 
 5. iframme 是活动帧, 而frame是非活动帧   
-  
+
     iframe使用方法如下   
-    ```html
+    ```html
     <iframe   scr="sourcefile"   frameborder=0   width="width"   height="height"></iframe> 
     ```
     iframe用起来更灵活，不需要frame那么多讲究   
     而且放的位置也可以自己设 
     iframe是内嵌的，比较灵活，不过也有不好的地方，就是位置在不同的浏览器和分辨率下有可能不同，有时会把本来好好的页面搞得变形 
     iframe就没有这个限制 
+    
 
 6. iframe可以加在网页中任何一个地方。而frame通常做框架页 
 
     iframe是一个网页中的子框架,两网页间是父子关系   
-    
-    frame是框架,由多个并列的网页构成 
+    
+    frame是框架,由多个并列的网页构成 
     楼上的说得对，iframe是浮动的。就像是浮动面板，而frame是固定的。只能四个方向上的。   
     你可以直接在网页里用一下，看看效果就行了。 
 
 
-7. <iframe>是被嵌入在网页的元素，而<frame>用于组成一个页面的多个框架！ 
+7.  iframe是被嵌入在网页的元素，而frame用于组成一个页面的多个框架！ 
     iframe   更利于版面的设计   
-    frame     一条直一条竖的不美观 
+    frame     一条直一条竖的不美观 
     
     frame的那一条线也可以去掉的呦！只不过，iframe更方便对其进行数据的交换吧！ 
     iframe可以放置到你想放的任意位置,控制起来比frame方便 
@@ -153,20 +154,20 @@
     其实Frame是一个控件   
     使用方法和Panle相同。 
 
-    frame是把网页分成多个页面的页面。它要有一个框架集页面frameset   
+    frame是把网页分成多个页面的页面。它要有一个框架集页面frameset
     iframe是一个浮动的框架,就是在你的页面里再加上一个页面, 
 
-    <frame>用来把页面横着或竖着切开，   
-    <iframe>用来在页面中插入一个矩形的小窗口 
+    frame用来把页面横着或竖着切开，   
+    iframe用来在页面中插入一个矩形的小窗口 
 
-    Frame一般用来设置页面布局,将整个页面分成规则的几块,每一块里面包含一个新页面.   
-  iframe用来在页面的任何地方插入一个新的页面.   
-    
-  因此,Frame用来控制页面格式,比如一本书,左边是章节目录,右边是正文,正文很长,看的时候要拖动,但又不想目录也被拖动得开不到了
-    .因此最好将页面用Frame分成规则的2页,一左一右.   
-    
-  而iframe则更灵活,不要求将整个页面划分,你可以在页面任何地方用iframe嵌入新的页面. 
+    Frame一般用来设置页面布局,将整个页面分成规则的几块,每一块里面包含一个新页面.
+    iframe用来在页面的任何地方插入一个新的页面.
+    
+    因此,Frame用来控制页面格式,比如一本书,左边是章节目录,右边是正文,正文很长,看的时候要拖动,但又不想目录也被拖动得开不到了
+    因此最好将页面用Frame分成规则的2页,一左一右.
 
-    我个人认为:   
-      <frame>用于全页面   
-      <iframe>只用于局部  
+    而iframe则更灵活,不要求将整个页面划分,你可以在页面任何地方用iframe嵌入新的页面. 
+
+##我个人认为:
+    <frame>用于全页面
+    <iframe>只用于局部
