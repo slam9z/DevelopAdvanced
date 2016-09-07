@@ -1,4 +1,4 @@
-﻿[frameset、frame、noframes和iframe的区别](http://blog.csdn.net/ccecwg/article/details/42425315)
+[frameset、frame、noframes和iframe的区别](http://blog.csdn.net/ccecwg/article/details/42425315)
 
 
 ##框架概念 ：
@@ -46,7 +46,7 @@
 * bordercolor="#008000" ：设定框架的边框颜色。颜色值请参考【调色原理】。
 * framespacing="5"：表示框架与框架间的保留空白的距离。
 
-### frame      
+###frame
 <frame> 参数设定：
 
 ```html
@@ -65,7 +65,6 @@
 * marginhight=5：表示框架高度部份边缘所保留的空间。
 * marginwidth=5：表示框架宽度部份边缘所保留的空间。
 
-   
 
 ##<noframes>
 
@@ -76,21 +75,22 @@
 在<frameset> 标记范围加入 </noframes> 标记，以下是一个例子：
 
 ```html
-    <frameset rows="80,*">
-        <noframes>
-            <body>
-            很抱歉，阁下使用的浏览器不支持框架功能，请转用新的浏览器。
-            </body>
-        </noframes>
-        <frame name="top" src="a.html">
-        <frame name="bottom" src="b.html">
-    </frameset>
+<frameset rows="80,*">
+    <noframes>
+        <body>
+        很抱歉，阁下使用的浏览器不支持框架功能，请转用新的浏览器。
+        </body>
+    </noframes>
+    <frame name="top" src="a.html">
+    <frame name="bottom" src="b.html">
+</frameset>
 ```
 
 若浏览器支持框架，那么它不会理会 <noframes> 中的东西，但若浏览器不支持框架，由于不认识所有框架标记，
-不明的标记会被略过，标记包围的东西便被解读出来，所以放在 <noframes>范围内的文字会被显示。
+不明的标记会被略过，标记包围的东西便被解读出来，所以放在 <noframes>范围内的文字会被显示
 
 ##<iframe>
+
 这标记只适用于IE(comet:也使用于FireFox)。它的作用是在一网页中间插入一个框窗以显示另一个文件
 。它是一个围堵标记，但围着的字句只有在浏览器不支持 iframe 标记时才会显示，如<noframes> 一样，
 可以放些提醒字句之类。通常 iframe 配合一个辨认浏览器的 JavaScript 会较好，
