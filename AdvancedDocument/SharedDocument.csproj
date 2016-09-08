@@ -183,6 +183,8 @@
     <None Include="Web\jQuery\DOM\select\jquery获得select option的值 和对select option的操作.md" />
     <None Include="Web\Web Form\ASP.NET WebForm页面内容输出方式.md" />
     <None Include="Web\Web Form\Control\asp.net学习之Repeater控件.md" />
+    <None Include="Web\Web Form\Control\ASP.NET控件之Content控件.md" />
+    <None Include="Web\Web Form\Control\Content.md" />
     <None Include="Web\Web Form\Control\Server Control.md" />
     <None Include="Web\Web Form\Control\Using the ASP.NET Repeater Control.md" />
     <None Include="Web\Web Form\Develop Tutorial\Debugging.md" />
