@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Algorithm\Tree\Binary Tree\二叉树的遍历.md" />
     <None Include="Algorithm\Mumeric\How can you get the first digit in an int  Csharp.md" />
     <None Include="Algorithm\Scale\CSharp method to scale values.md" />
     <None Include="Algorithm\Scale\image scale.md" />
