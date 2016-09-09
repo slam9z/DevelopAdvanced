@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Algorithm\Tree\Binary Tree\二叉树的遍历.md" />
+    <None Include="Algorithm\Ogami\July\July大神.md" />
+    <None Include="Algorithm\Tree\B tree\从B 树、B+树 谈到R 树.md" />
+    <None Include="Algorithm\Tree\Binary tree\二叉树的遍历.md" />
     <None Include="Algorithm\Mumeric\How can you get the first digit in an int  Csharp.md" />
     <None Include="Algorithm\Scale\CSharp method to scale values.md" />
     <None Include="Algorithm\Scale\image scale.md" />
@@ -57,6 +59,8 @@
     <None Include="Algorithm\矩形切割\矩形排料算法.md" />
     <None Include="Algorithm\Scholar\算法策略的总结.md" />
     <None Include="Algorithm\贪心算法.md" />
+    <None Include="Book\Algorithm\算法导论.md" />
+    <None Include="Book\Algorithm\计算机程序设计艺术.md" />
     <None Include="Bug and Test\Bug分类.md" />
     <None Include="Bug and Test\MSTest\使用注意点.md" />
     <None Include="Business\Finance\Letter of Credit\Letter of Credit %28信用证%29.md" />
