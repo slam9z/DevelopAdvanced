@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Algorithm\Mumeric\How can you get the first digit in an int  Csharp.md" />
     <None Include="Algorithm\Scale\CSharp method to scale values.md" />
     <None Include="Algorithm\Scale\image scale.md" />
     <None Include="Algorithm\Scholar\五大常用算法之一：分治算法.md" />
@@ -171,6 +172,7 @@
     <None Include="Tool\Notepad++\Notepad++使用.md" />
     <None Include="Tool\Visual Studio\How to Run Visual Studio as Administrator by default.md" />
     <None Include="Web\ASP.NET\ASP.NET Webform和ASP.NET MVC的区别.md" />
+    <None Include="Web\CSS\Center image using text-align center.md" />
     <None Include="Web\CSS\CSS参考手册.md" />
     <None Include="Web\CSS\margin属性.md" />
     <None Include="Web\CSS\overflow属性.md" />

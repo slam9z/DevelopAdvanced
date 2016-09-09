@@ -13,6 +13,8 @@ namespace Algorithm
         public int Width { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+
+        //考虑实际数学坐标，需要换成TopNode。感觉计算也不需要转变啊
         public RectanglePart BottomNode { get; set; }
         public RectanglePart RightNode { get; set; }
         public bool IsHandle { get; set; }
