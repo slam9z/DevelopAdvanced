@@ -63,7 +63,7 @@
     <None Include="Book\Algorithm\计算机程序设计艺术.md" />
     <None Include="Bug and Test\Bug分类.md" />
     <None Include="Bug and Test\MSTest\使用注意点.md" />
-    <None Include="Business\Finance\Letter of Credit\Letter of Credit %28信用证%29.md" />
+    <None Include="Work\Business\Finance\Letter of Credit\Letter of Credit %28信用证%29.md" />
     <None Include="Data access\Sql\使用GROUP BY的时候如何统计记录条数 COUNT  DISTINCT.md" />
     <None Include="Design\UI Design\网页颜色搭配表及颜色搭配技巧.md" />
     <None Include="DOTNET\CSharp\6.0\CSharp 6.0新特性之字符串嵌入 String Interpolation.md" />
@@ -216,7 +216,6 @@
     <None Include="Web\jQuery\Code Organization\Keep Things DRY.md" />
     <None Include="Web\jQuery\jQuery UI\jQuery UI.md" />
     <None Include="Web\jQuery\Performance\Don’t Treat jQuery as a Black Box.md" />
-    <None Include="Bug\Bug分类.md" />
     <None Include="Tool\CommandLine\cd.md" />
     <None Include="Tool\Source Code Control\Git\git branch用法总结 .md" />
     <None Include="Tool\Source Code Control\Git\GitTfs  Tfs migrate Git.md" />
