@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Algorithm\Ogami\July\July大神.md" />
+    <None Include="Algorithm\Sort\Sort.md" />
     <None Include="Algorithm\Tree\B tree\从B 树、B+树 谈到R 树.md" />
     <None Include="Algorithm\Tree\Binary tree\二叉树的遍历.md" />
     <None Include="Algorithm\Mumeric\How can you get the first digit in an int  Csharp.md" />
@@ -54,6 +55,7 @@
     <None Include="Algorithm\刻度问题.md" />
     <None Include="Algorithm\如何实现将大小不一的很多图合并到多个4000x4000大图里算法，让用到的大图最少.md" />
     <None Include="Algorithm\排列组合和回溯算法-面试题.md" />
+    <None Include="Algorithm\提供算法实现正确率.md" />
     <None Include="Algorithm\矩形切割\Greatest Common Divisor from a set of more than 2 integers.md" />
     <None Include="Algorithm\矩形切割\矩形切割.md" />
     <None Include="Algorithm\矩形切割\矩形排料算法.md" />

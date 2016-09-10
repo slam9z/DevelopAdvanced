@@ -11,13 +11,13 @@ namespace Algorithm.Sort
 	{
 		public override IList<T> Sort<T>(IList<T> source, Func<T, T, bool> greater)
 		{
-			var result = new List<T>(source);
-
-			var length = result.Count;
+			var length = source.Count;
 			if (length <= 1)
 			{
-				return result;
+				return source;
 			}
+
+			var result = new List<T>(source);
 
 			//冒泡的的趟数
 			for (int i = 1; i <= length; i++)
