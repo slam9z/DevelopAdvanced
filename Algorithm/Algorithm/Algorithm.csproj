@@ -7,8 +7,8 @@
     <ProjectGuid>{C848647C-7C30-444B-AED1-BF6DB5946AE1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Algorithm.Common</RootNamespace>
-    <AssemblyName>Algorithm.Common</AssemblyName>
+    <RootNamespace>Algorithm</RootNamespace>
+    <AssemblyName>Algorithm</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,6 +44,9 @@
     <Compile Include="MathUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RectanglePartCombine.cs" />
+    <Compile Include="Sort\BubbleSort.cs" />
+    <Compile Include="Sort\ISort.cs" />
+    <Compile Include="Sort\SortBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
