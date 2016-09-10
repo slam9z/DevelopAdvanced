@@ -27,6 +27,14 @@ namespace Algorithm.Sort.Tests
 			RunAllTest(sort);
 		}
 
+		[TestMethod()]
+		public void MergeSortTest()
+		{
+			var sort = new MergeSort();
+			//Test1(sort);
+			RunAllTest(sort);
+		}
+
 
 
 		private void RunAllTest(ISort sort)
@@ -34,9 +42,14 @@ namespace Algorithm.Sort.Tests
 			EmptyTest(sort);
 			OneDataTest(sort);
 			Test1(sort);
-			RandomDataTest(sort);
+
+			for (int i = 0; i < 100; i++)
+			{
+				RandomDataTest(sort);
+			}
 
 		}
+
 		private IList<int> testData1 = new List<int>() { 12, 3, 8, 19, 5, 1, 2, 9, 3 };
 
 		private void Test1(ISort sort)

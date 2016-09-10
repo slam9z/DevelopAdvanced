@@ -12,10 +12,6 @@ namespace Algorithm.Sort
 		public override IList<T> Sort<T>(IList<T> source, Func<T, T, bool> greater)
 		{
 			var length = source.Count;
-			if (length <= 1)
-			{
-				return source;
-			}
 
 			var result = new List<T>(source);
 
@@ -28,7 +24,7 @@ namespace Algorithm.Sort
 				//for (int j = 0; j < length - i+1; j++)
 				for (int j = 0; j < length - i; j++)
 				{
-					if (!greater(result[j + 1], result[j]))
+					if (greater(result[j],result[j + 1]))
 					{
 						Exchange(result, j + 1, j);
 					}

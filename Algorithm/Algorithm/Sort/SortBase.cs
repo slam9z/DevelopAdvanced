@@ -29,8 +29,34 @@ namespace Algorithm.Sort
 		{
 			T temp;
 			temp = source[indexa];
-			source[indexa] =source[indexb];
+			source[indexa] = source[indexb];
 			source[indexb] = temp;
+		}
+
+		protected void Print(string format,params object[] args)
+		{
+			Console.WriteLine(format,args);
+		}
+
+		protected void Print(string message)
+		{
+			Console.WriteLine(message);
+		}
+
+
+		protected void Print<T>(IList<T> source, int bound, int upper)
+		{
+			Print("");
+			for (int i = bound; i <= upper; i++)
+			{
+				Console.Write("{0}, ",source[i]);
+			}
+			Print("");
+		}
+
+		protected void Print<T>(IList<T> source)
+		{
+			Print(source, 0, source.Count);
 		}
 	}
 }
