@@ -1,0 +1,3 @@
+﻿##IEmailClient
+
+##EmailTemplate
