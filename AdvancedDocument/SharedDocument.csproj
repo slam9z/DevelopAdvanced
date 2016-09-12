@@ -90,6 +90,7 @@
     <None Include="MyProject\Wiki\Roadkill\Design\Text\MarkupConverter\MarkupConverter.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Text\Parsers\Markdown.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Theme.md" />
+    <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
     <None Include="Work\Business\Finance\Letter of Credit\Letter of Credit %28信用证%29.md" />
     <None Include="Data access\Sql\使用GROUP BY的时候如何统计记录条数 COUNT  DISTINCT.md" />
     <None Include="Design\UI Design\网页颜色搭配表及颜色搭配技巧.md" />
