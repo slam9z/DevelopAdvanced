@@ -65,6 +65,9 @@
     <None Include="Bug and Test\MSTest\使用注意点.md" />
     <None Include="Design\Database Design\Database Design.md" />
     <None Include="Design\Database Design\分库分表的几种常见形式以及可能遇到的难题.md" />
+    <None Include="DOTNET\Code generate\Design-Time Code Generation by using T4 Text Templates.md" />
+    <None Include="DOTNET\Code generate\Run-Time Text Generation with T4 Text Templates.md" />
+    <None Include="DOTNET\Code generate\T4模版引擎之基础入门.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Attachments.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Cache.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Configuration.md" />
