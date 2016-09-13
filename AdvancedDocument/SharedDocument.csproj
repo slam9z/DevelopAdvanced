@@ -100,11 +100,14 @@
     <None Include="Web\Web Form\Control\Setting asp.net button name and value.md" />
     <None Include="Web\Web Form\foreach or Repeater - which is better.md" />
     <None Include="Web\Web Form\Problem\类型“Button”的控件“sync”必须放在具有 runat=server 的窗体标记内.md" />
-    <None Include="Web\Web Form\ViewState\ASP.NET ViewState详解.md" />
-    <None Include="Web\Web Form\ViewState\Understanding ASP.NET View State.md" />
-    <None Include="Web\Web Form\ViewState\ViewState and Postback.md" />
+    <None Include="Web\Web Form\ViewState and Postback\ASP.NET ViewState详解.md" />
+    <None Include="Web\Web Form\ViewState and Postback\Completely remove ViewState for specific pages.md" />
+    <None Include="Web\Web Form\ViewState and Postback\How to decode viewstate.md" />
+    <None Include="Web\Web Form\ViewState and Postback\Understanding ASP.NET View State.md" />
+    <None Include="Web\Web Form\ViewState and Postback\ViewState and Postback.md" />
+    <None Include="Web\Web Form\ViewState and Postback\Why does __VIEWSTATE hidden field gets rendered even when I have the EnableViewState set to false.md" />
     <None Include="Web\Web Form\为WebForms说几句话，以及一些ASP.NET开发上的经验.md" />
-    <None Include="Web\Web Form\浅谈ASP.NET的Postback .md" />
+    <None Include="Web\Web Form\ViewState and Postback\浅谈ASP.NET的Postback .md" />
     <None Include="Web\Web Form\自己认为Web form的问题.md" />
     <None Include="Work\Business\Finance\Letter of Credit\Letter of Credit %28信用证%29.md" />
     <None Include="Data access\Sql\使用GROUP BY的时候如何统计记录条数 COUNT  DISTINCT.md" />

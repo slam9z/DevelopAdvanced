@@ -1,6 +1,6 @@
 ﻿<%@ Page
-    Language="C#" AutoEventWireup="true"
-    EnableViewState="false"
+    Language="C#" AutoEventWireup="false"
+    EnableViewState="true" ViewStateMode="Disabled"
     CodeFile="Postback.aspx.cs" Inherits="WebFormLearn.View.Postback" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -9,7 +9,7 @@
     <title>Test Page</title>
 </head>
 <body>
-    <form id="form1" runat="server" enableviewstate="false">
+    <form id="form1" runat="server">
         <div>
             <asp:Label runat="server" ID="LabelMessage" ForeColor="red" EnableViewState="false"></asp:Label>
         </div>
@@ -26,7 +26,8 @@
                 EnableViewState="false" />
             <asp:Button runat="server" ID="Button3" Text="Button3" OnClick="Button3_Click"
                 OnCommand="Button_Command" CommandArgument="Button3" UseSubmitBehavior="false"
-                EnableViewState="false" />
+                EnableViewState="false"
+                ViewStateMode="Disabled" />
 
         </div>
     </form>
