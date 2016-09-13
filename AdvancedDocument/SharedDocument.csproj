@@ -63,6 +63,8 @@
     <None Include="Book\Algorithm\计算机程序设计艺术.md" />
     <None Include="Bug and Test\Bug分类.md" />
     <None Include="Bug and Test\MSTest\使用注意点.md" />
+    <None Include="Design\Database Design\Database Design.md" />
+    <None Include="Design\Database Design\分库分表的几种常见形式以及可能遇到的难题.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Attachments.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Cache.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Configuration.md" />
@@ -92,6 +94,14 @@
     <None Include="MyProject\Wiki\Roadkill\Design\Theme.md" />
     <None Include="Style Guide\Web Style Guide.md" />
     <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Front Controller.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Intercepting Filter.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Model-View-Controller.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Observer.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Page Cache.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Page Controller.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Web Presentation Patterns.md" />
+    <None Include="Work\Current\Current  problem and challenge.md" />
     <None Include="Web\CSS\Fixed Table Cell Width.md" />
     <None Include="Web\Html\Best replacement for font tag in html.md" />
     <None Include="Web\Html\table标签中thead、tbody、tfoot的作用.md" />
@@ -100,6 +110,7 @@
     <None Include="Web\Web Form\Control\Setting asp.net button name and value.md" />
     <None Include="Web\Web Form\foreach or Repeater - which is better.md" />
     <None Include="Web\Web Form\Problem\类型“Button”的控件“sync”必须放在具有 runat=server 的窗体标记内.md" />
+    <None Include="Web\Web Form\Tutorial\Learn About ASP.NET Web Forms.md" />
     <None Include="Web\Web Form\ViewState and Postback\ASP.NET ViewState详解.md" />
     <None Include="Web\Web Form\ViewState and Postback\Completely remove ViewState for specific pages.md" />
     <None Include="Web\Web Form\ViewState and Postback\How to decode viewstate.md" />
@@ -565,6 +576,7 @@
   <ItemGroup>
     <Folder Include="Design\Code Design\" />
     <Folder Include="MyProject\Wiki\Roadkill\Dependencies\" />
+    <Folder Include="Web\ASP.NET\Web Presentation Patterns\Image\" />
     <Folder Include="Web\Core\" />
     <Folder Include="Web\Javascript\Typescript\" />
     <Folder Include="Web\jQuery\Method\" />
