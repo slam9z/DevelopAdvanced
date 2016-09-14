@@ -1,25 +1,7 @@
-将一些姿势放进自己的脑库里面,尤其是那些比较重要 基础的知识。
+##20160915目前的计划
 
-1. 多线程编程
+### 复习算法，消化最近整理的资料，复习 算法导论 
 
-    * 线程同步
-    * Thread，ThreadPool,Task。
-    * 异步编程模式：APM,EAP,TAP。
+### 学习和改造roadkillwiki
 
-2. 网络编程
-
-    * WebSocket
-    * Socket和TCP
-    * HTTP
-
-3. Next?
-
-    
-    * 数据库与SQL
-    * File System 
-    * 设计模式 
-    * Web（ASP.NET MVC,Web API,nodejs,angularjs,jQuery,js,typescript 
-    * C#基础点  
-    * CLR
-
-    
+### 学习工作相关的内容: Web Form,js,jquery,css,html
