@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Algorithm\Knowledge\希腊字母读音包含渐进记号.md" />
     <None Include="Algorithm\Ogami\July\July大神.md" />
     <None Include="Algorithm\Tree\B tree\从B 树、B+树 谈到R 树.md" />
     <None Include="Algorithm\Tree\Binary tree\二叉树的遍历.md" />
@@ -61,18 +62,23 @@
     <None Include="Algorithm\计划和总结.md" />
     <None Include="Algorithm\贪心算法.md" />
     <None Include="Book\Algorithm\算法导论.md" />
+    <None Include="Book\Algorithm\算法导论\第1章 算法在计算机中的作用.md" />
     <None Include="Book\Algorithm\计算机程序设计艺术.md" />
     <None Include="Book\Data access\数据库设计教程 （第二版）.md" />
     <None Include="Bug and Test\Bug分类.md" />
     <None Include="Bug and Test\MSTest\使用注意点.md" />
+    <None Include="Data access\Entity Framework\Member Mapping specified is not valid  %28update  edmx%29 .md" />
     <None Include="Data access\Linq\Linq Extension method for Join.md" />
     <None Include="Data access\Linq\LINQ 之 JOIN.md" />
     <None Include="Data access\Sql Server\使用sa账号登录.md" />
     <None Include="Design\Database Design\Database Design.md" />
+    <None Include="Design\Database Design\GUID varchar%2836%29 versus uniqueidentifier.md" />
+    <None Include="Design\Database Design\NULL vs NOT NULL.md" />
     <None Include="Design\Database Design\分库分表的几种常见形式以及可能遇到的难题.md" />
     <None Include="DOTNET\Code generate\Design-Time Code Generation by using T4 Text Templates.md" />
     <None Include="DOTNET\Code generate\Run-Time Text Generation with T4 Text Templates.md" />
     <None Include="DOTNET\Code generate\T4模版引擎之基础入门.md" />
+    <None Include="DOTNET\Expression\只是想简单说下表达式树 - Expression Trees.md" />
     <None Include="DOTNET\LINQ\Split List into Sublists with LINQ.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Attachments.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Cache.md" />
@@ -102,6 +108,10 @@
     <None Include="MyProject\Wiki\Roadkill\Design\Text\Parsers\Markdown.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Theme.md" />
     <None Include="Open Source\ORM\Dapper.md" />
+    <None Include="Open Source\ORM\Dapper\Dapper - a simple object mapper for .Net.md" />
+    <None Include="Open Source\ORM\Dapper\Net下无敌的Micro ORM — Dapper .md" />
+    <None Include="Open Source\ORM\Dapper\第一篇：Dapper快速学习.md" />
+    <None Include="Open Source\ORM\Dapper\第二篇：Dapper中的一些复杂操作和inner join应该注意的坑 .md" />
     <None Include="Open Source\ORM\LightSpeed.md" />
     <None Include="Style Guide\Web Style Guide.md" />
     <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
