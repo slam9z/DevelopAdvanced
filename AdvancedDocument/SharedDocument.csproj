@@ -58,6 +58,7 @@
     <None Include="Algorithm\矩形切割\矩形切割.md" />
     <None Include="Algorithm\矩形切割\矩形排料算法.md" />
     <None Include="Algorithm\Scholar\算法策略的总结.md" />
+    <None Include="Algorithm\计划和总结.md" />
     <None Include="Algorithm\贪心算法.md" />
     <None Include="Book\Algorithm\算法导论.md" />
     <None Include="Book\Algorithm\计算机程序设计艺术.md" />
@@ -100,6 +101,8 @@
     <None Include="MyProject\Wiki\Roadkill\Design\Text\MarkupConverter\MarkupConverter.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Text\Parsers\Markdown.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Theme.md" />
+    <None Include="Open Source\ORM\Dapper.md" />
+    <None Include="Open Source\ORM\LightSpeed.md" />
     <None Include="Style Guide\Web Style Guide.md" />
     <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Front Controller.md" />
@@ -185,7 +188,6 @@
     <None Include="MyProject\Wiki\open source Enterprise Wiki software.md" />
     <None Include="MyProject\Wiki\Requirement.md" />
     <None Include="MyProject\Wiki\roadkillwiki.md" />
-    <None Include="Open Source\ORM\LightSpeed ORM.md" />
     <None Include="MyProject\Wiki\Roadkill\运行RoadKill.md" />
     <None Include="NET Core\.NET Core全新路线图%282016.07%29.md" />
     <None Include="NET Core\.NET Core系列  1、.NET Core 环境搭建和命令行CLI入门.md" />
