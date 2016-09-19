@@ -85,6 +85,7 @@
     <None Include="DOTNET\Code generate\T4模版引擎之基础入门.md" />
     <None Include="DOTNET\Expression\只是想简单说下表达式树 - Expression Trees.md" />
     <None Include="DOTNET\LINQ\Split List into Sublists with LINQ.md" />
+    <None Include="MyProject\Note.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Attachments.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Cache.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Configuration.md" />
@@ -136,6 +137,9 @@
     <None Include="Web\Html\Can we have multiple  tbody  in same  table.md" />
     <None Include="Web\Html\Html5\HTML input  autocomplete 属性.md" />
     <None Include="Web\Html\Why not use tables for layout in HTML.md" />
+    <None Include="Web\jQuery\Editor Plugin\10 Best jQuery and HTML5 WYSIWYG Plugins .md" />
+    <None Include="Web\jQuery\Editor Plugin\10+ jQuery Text Editor Plugins.md" />
+    <None Include="Web\jQuery\Editor Plugin\ContentTools.md" />
     <None Include="Web\Web Form\Web form 类型之间不明确的引用.md" />
     <None Include="Web\Web Form\细说 Form %28表单%29.md" />
     <None Include="Work\Current\Current  problem and challenge.md" />
