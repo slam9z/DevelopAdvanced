@@ -72,6 +72,7 @@
     <None Include="Data Access\Entity Framework\Member Mapping specified is not valid  %28update  edmx%29 .md" />
     <None Include="Data Access\Linq\Linq Extension method for Join.md" />
     <None Include="Data Access\Linq\LINQ 之 JOIN.md" />
+    <None Include="Data Access\Sql Server\Sqlserver：timestamp数据类 .md" />
     <None Include="Data Access\Sql Server\使用sa账号登录.md" />
     <None Include="Data Access\Sql\关于SQL语句中SUM函数返回NULL的解决办法.md" />
     <None Include="Design\API Design\API 设计规范.md" />
@@ -128,6 +129,8 @@
     <None Include="Web\ASP.NET\Web Presentation Patterns\Page Cache.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Page Controller.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Web Presentation Patterns.md" />
+    <None Include="Web\Html\Html5\HTML input  autocomplete 属性.md" />
+    <None Include="Web\Web Form\Web form 类型之间不明确的引用.md" />
     <None Include="Web\Web Form\细说 Form %28表单%29.md" />
     <None Include="Work\Current\Current  problem and challenge.md" />
     <None Include="Web\CSS\Fixed Table Cell Width.md" />
@@ -599,6 +602,7 @@
     <Content Include="MyProject\Wiki\Roadkill\Image\Theme\Plain.png" />
     <Content Include="MyProject\Wiki\Roadkill\Image\Theme\Responsive.png" />
     <Content Include="Web\Framework\前段框架对比.png" />
+    <Content Include="Work\Hunting\Image\面试1.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Design\Code Design\" />
