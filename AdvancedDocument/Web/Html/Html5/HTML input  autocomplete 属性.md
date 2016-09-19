@@ -1,4 +1,4 @@
-﻿[HTML <input> autocomplete 属性](http://www.w3school.com.cn/tags/att_input_autocomplete.asp)
+[HTML <input> autocomplete 属性](http://www.w3school.com.cn/tags/att_input_autocomplete.asp)
 
 ##Problem
 
@@ -13,7 +13,7 @@
 
 ##autocomplete
 
-##定义和用法
+###定义和用法
 
 autocomplete 属性规定输入字段是否应该启用自动完成功能。
 
@@ -26,13 +26,13 @@ text, search, url, telephone, email, password, datepickers, range 以及 color�
 HTML 4.01 与 HTML 5 之间的差异
 autocomplete 属性是 HTML5 中的新属性。
 
-##语法
+###语法
 
 ```html
 <input autocomplete="value">
 ```
 
-##属性值
+###属性值
 
 |值 |描述                |
 |---|-------------------|
