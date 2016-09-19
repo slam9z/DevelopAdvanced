@@ -1,7 +1,7 @@
-[Dapper](https://github.com/StackExchange/dapper-dot-net)
+ï»¿[Dapper](https://github.com/StackExchange/dapper-dot-net)
 
 
-##Ô´´úÂë±àÒë´íÎó
+##æºä»£ç ç¼–è¯‘é”™è¯¯
 
 ```
 E:\Source\MyGithub\dapper-dot-net\Dapper\Dapper.xproj : error  : The imported project 
@@ -10,4 +10,9 @@ was not found. Confirm that the path in the <Import> declaration is correct, and
  E:\Source\MyGithub\dapper-dot-net\Dapper\Dapper.xproj
 ```
 
-¹À¼ÆÊÇÃ»°²×°.NET Core»·¾³
+ä¼°è®¡æ˜¯æ²¡å®‰è£….NET Coreç¯å¢ƒ
+
+
+è§£å†³æ–¹æ³•:ä¸‹è½½.NET Core 1.0 for Visual Studio å®‰è£…Â 
+
+https://www.microsoft.com/net/core#windows
