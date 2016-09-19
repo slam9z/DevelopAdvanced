@@ -122,6 +122,7 @@
     <None Include="Style Guide\Web Style Guide.md" />
     <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
     <None Include="Tool\SQL Prompt\SQL Prompt.md" />
+    <None Include="Web\ASP.NET\ASP.NET网站路径.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Front Controller.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Intercepting Filter.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Model-View-Controller.md" />
@@ -129,7 +130,12 @@
     <None Include="Web\ASP.NET\Web Presentation Patterns\Page Cache.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Page Controller.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Web Presentation Patterns.md" />
+    <None Include="Web\CSS\display 属性\CSS display 属性.md" />
+    <None Include="Web\CSS\display 属性\我所知道的几种display table-cell的应用.md" />
+    <None Include="Web\Html\Actual table Vs. Div table.md" />
+    <None Include="Web\Html\Can we have multiple  tbody  in same  table.md" />
     <None Include="Web\Html\Html5\HTML input  autocomplete 属性.md" />
+    <None Include="Web\Html\Why not use tables for layout in HTML.md" />
     <None Include="Web\Web Form\Web form 类型之间不明确的引用.md" />
     <None Include="Web\Web Form\细说 Form %28表单%29.md" />
     <None Include="Work\Current\Current  problem and challenge.md" />
