@@ -85,6 +85,7 @@
     <None Include="DOTNET\Code generate\T4模版引擎之基础入门.md" />
     <None Include="DOTNET\Expression\只是想简单说下表达式树 - Expression Trees.md" />
     <None Include="DOTNET\LINQ\Split List into Sublists with LINQ.md" />
+    <None Include="DOTNET\String\string StartsWith  vs FirstOrDefault.md" />
     <None Include="MyProject\Note.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Attachments.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Cache.md" />
