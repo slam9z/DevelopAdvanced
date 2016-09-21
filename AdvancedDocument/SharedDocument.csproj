@@ -127,6 +127,7 @@
     <None Include="Style Guide\CSS\CSS（10）——命名规范.md" />
     <None Include="Style Guide\SQL Style Guide.md" />
     <None Include="Style Guide\Web Style Guide.md" />
+    <None Include="Tittle\中国码农拿下全球第一！围观国内的CTO们怎么讨论这事儿.md" />
     <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
     <None Include="Tool\SQL Prompt\SQL Prompt.md" />
     <None Include="Web\ASP.NET\ASP.NET网站路径.md" />
