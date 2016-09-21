@@ -80,6 +80,7 @@
     <None Include="Design\Database Design\GUID varchar%2836%29 versus uniqueidentifier.md" />
     <None Include="Design\Database Design\NULL vs NOT NULL.md" />
     <None Include="Design\Database Design\分库分表的几种常见形式以及可能遇到的难题.md" />
+    <None Include="Design\UI Design\ERP UI Design\search  panel  design.md" />
     <None Include="DOTNET\Code generate\Design-Time Code Generation by using T4 Text Templates.md" />
     <None Include="DOTNET\Code generate\Run-Time Text Generation with T4 Text Templates.md" />
     <None Include="DOTNET\Code generate\T4模版引擎之基础入门.md" />
@@ -120,6 +121,10 @@
     <None Include="Open Source\ORM\Dapper\第一篇：Dapper快速学习.md" />
     <None Include="Open Source\ORM\Dapper\第二篇：Dapper中的一些复杂操作和inner join应该注意的坑 .md" />
     <None Include="Open Source\ORM\LightSpeed.md" />
+    <None Include="Style Guide\CSS\Airbnb CSS  Sass Styleguide.md" />
+    <None Include="Style Guide\CSS\Airbnb CSS-in-JavaScript Style Guide.md" />
+    <None Include="Style Guide\PascalCase和camelCase .md" />
+    <None Include="Style Guide\CSS\CSS（10）——命名规范.md" />
     <None Include="Style Guide\SQL Style Guide.md" />
     <None Include="Style Guide\Web Style Guide.md" />
     <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
@@ -378,11 +383,13 @@
     <None Include="Web\Javascript\Enforces return statements in callbacks of array’s methods %28array-callback-return%29.md" />
     <None Include="Web\Javascript\ES5和ES6中的继承.md" />
     <None Include="Web\Javascript\Function.prototype.apply%28%29.md" />
-    <None Include="Web\Javascript\JavaScript Style Guide.md" />
+    <None Include="Style Guide\Javascript\Airbnb JavaScript Style Guide.md" />
     <None Include="Windows System\Win10\Win10 设置系统显示语言.md" />
     <None Include="Work\Hunting\广州\0823 广州 面试.xlsx" />
     <None Include="Work\WorkDiff\WorkDiff.md" />
+    <None Include="Work\Working Language\Co.,Ltd..md" />
     <None Include="Work\Working Language\CodeLanguage.md" />
+    <None Include="Work\Working Language\英文论文中i.e.,e.g.,etc.的正确用法 .md" />
     <None Include="Work\招聘网站.md" />
     <None Include="DOTNET\XML\c#读取XML .md" />
   </ItemGroup>
