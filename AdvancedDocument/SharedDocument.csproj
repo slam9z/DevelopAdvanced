@@ -52,6 +52,7 @@
     <None Include="Algorithm\Scholar\五大常用算法之二：动态规划算法.md" />
     <None Include="Algorithm\Scholar\五大常用算法之五：分支限界法.md" />
     <None Include="Algorithm\Scholar\五大常用算法之四：回溯法.md" />
+    <None Include="Algorithm\Tree\拷贝文件夹算法.md" />
     <None Include="Algorithm\刻度问题.md" />
     <None Include="Algorithm\如何实现将大小不一的很多图合并到多个4000x4000大图里算法，让用到的大图最少.md" />
     <None Include="Algorithm\排列组合和回溯算法-面试题.md" />
@@ -147,6 +148,7 @@
     <None Include="Web\jQuery\Editor Plugin\10 Best jQuery and HTML5 WYSIWYG Plugins .md" />
     <None Include="Web\jQuery\Editor Plugin\10+ jQuery Text Editor Plugins.md" />
     <None Include="Web\jQuery\Editor Plugin\ContentTools.md" />
+    <None Include="Web\Web Form\Problem\div runat server visible do not work.md" />
     <None Include="Web\Web Form\Web form 类型之间不明确的引用.md" />
     <None Include="Web\Web Form\细说 Form %28表单%29.md" />
     <None Include="Work\Current\Current  problem and challenge.md" />
