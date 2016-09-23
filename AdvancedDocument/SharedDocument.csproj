@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Style Guide\summary.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Patterns Rate.md" />
     <None Include="Web\Web Form\Overview of user controls vs. custom controls .md" />
     <None Include="Algorithm\Knowledge\希腊字母读音包含渐进记号.md" />

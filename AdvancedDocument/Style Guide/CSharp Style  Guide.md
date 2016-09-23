@@ -28,6 +28,8 @@ Use camelCase与PascalCase命名方式。
 
 1. 部分类可以加Partial后缀
 
+
+
 ##Define Group
 
 这个比较麻烦，自己也没弄好过，需要好好看一下书。主要是看类型与含义，这两者是有冲突的。
