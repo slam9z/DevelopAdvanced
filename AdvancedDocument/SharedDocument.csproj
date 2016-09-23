@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Patterns Rate.md" />
+    <None Include="Web\Web Form\Overview of user controls vs. custom controls .md" />
     <None Include="Algorithm\Knowledge\希腊字母读音包含渐进记号.md" />
     <None Include="Algorithm\Ogami\July\July大神.md" />
     <None Include="Algorithm\Tree\B tree\从B 树、B+树 谈到R 树.md" />
@@ -148,10 +150,15 @@
     <None Include="Web\jQuery\Editor Plugin\10 Best jQuery and HTML5 WYSIWYG Plugins .md" />
     <None Include="Web\jQuery\Editor Plugin\10+ jQuery Text Editor Plugins.md" />
     <None Include="Web\jQuery\Editor Plugin\ContentTools.md" />
+    <None Include="Web\Web Form\Creating Reusable Content in ASP.NET.md" />
+    <None Include="Web\Web Form\How can I inherit from a Page.md" />
     <None Include="Web\Web Form\Problem\ASP.NET Web Form and F5 refresh issues.md" />
     <None Include="Web\Web Form\Problem\div runat server visible do not work.md" />
+    <None Include="Web\Web Form\Reuse common elements with ASP.NET components.md" />
     <None Include="Web\Web Form\Web form 类型之间不明确的引用.md" />
+    <None Include="Web\Web Form\不包含CSharp文件的Web Page.md" />
     <None Include="Web\Web Form\细说 Form %28表单%29.md" />
+    <None Include="Windows System\顿号怎么打.md" />
     <None Include="Work\Current\Current  problem and challenge.md" />
     <None Include="Web\CSS\Fixed Table Cell Width.md" />
     <None Include="Web\Html\Best replacement for font tag in html.md" />
