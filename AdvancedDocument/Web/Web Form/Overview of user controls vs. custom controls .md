@@ -124,11 +124,11 @@ and render markup text, such as HTML or XML, as a normal Web Form or user contro
 To write a custom control, you should directly or indirectly derive the new class from the System.Web.UI.Control
  class or from the System.Web.UI.WebControls.WebControl class:
 
-    * You should derive from System.Web.UI.Control if you want the control to render nonvisual elements. 
-     example, <meta> and <head> are examples of nonvisual rendering.
+* You should derive from System.Web.UI.Control if you want the control to render nonvisual elements. 
+example, <meta> and <head> are examples of nonvisual rendering.
     
-    * You should derive from System.Web.UI.WebControls.WebControl if you want the control to render HTML that 
-    generates a visual interface on the client computer.
+* You should derive from System.Web.UI.WebControls.WebControl if you want the control to render HTML that 
+generates a visual interface on the client computer.
 
 If you want to change the functionality of existing controls, such as a button or label, 
 you can directly derive the new class with these existing classes and can change their default behavior.
@@ -158,47 +158,19 @@ the same as the Response.Write method.
 Now that you have a basic idea of what user controls and custom controls are and how to create them, 
 let's take a quick look at the differences between the two. 
 
-|Factors| User control|Custom control|
-|-------|-------------|--------------|
-
-|Deployment|
-
-Designed for single-application scenarios
-
-Deployed in the source form (.ascx) along with the source code of the application
-
-If the same control needs to be used in more than one application, it introduces redundancy and maintenance problems|
-
-
-Designed so that it can be used by more than one application
-
-Deployed either in the application's Bin directory or in the global assembly cache
-
-Distributed easily and without problems associated with redundancy and maintenance|
-
-
-|Creation|
-
-Creation is similar to the way Web Forms pages are created; well-suited for rapid application development (RAD)|
-
-Writing involves lots of code because there is no designer support|
-
-|Content|
-
-A much better choice when you need static content within a fixed layout, for example, when you make headers and footers|
-
-More suited for when an application requires dynamic content to be displayed; can be reused across an application, for example, for a data bound table control with dynamic rows|
-
-|Design|
-
-Writing doesn't require much application designing because they are authored at design time and mostly contain static data|
-
-Writing from scratch requires a good understanding of the control's life cycle and the order in which events execute, which is normally taken care of in user controls|
+| Factors | User control |Custom control |
+|----------|----------|----------|
+| Deployment | Designed for single-application scenarios <br> Deployed in the source form (.ascx) along with the source code of the application <br> If the same control needs to be used in more than one application, it introduces redundancy and maintenance problems| Designed so that it can be used by more than one application <br> Deployed either in the application's Bin directory or in the global assembly cache <br> Distributed easily and without problems associated with redundancy and maintenance |
+| Creation |Creation is similar to the way Web Forms pages are created; well-suited for rapid application development (RAD) |Writing involves lots of code because there is no designer support |
+| Content |A much better choice when you need static content within a fixed layout, for example, when you make headers and footers|More suited for when an application requires dynamic content to be displayed; can be reused across an application, for example, for a data bound table control with dynamic rows |
+| Design |Writing doesn't require much application designing because they are authored at design time and mostly contain static data| Writing from scratch requires a good understanding of the control's life cycle and the order in which events execute, which is normally taken care of in user controls |
 
 ##Advanced topics
 
 Next, let's take a look at a few of the advanced features that you may use while developing custom controls.
-State management
+
+###State management
+
 Web applications are built on HTTP, which is stateless. A page and its child controls are created on every request and are disposed of after the request is over. To maintain state in classic ASP programming, you use session and application objects. But for that, you need to do lots of coding. To avoid this, ASP.NET provides a mechanism known as view state for maintaining state across several requests. To learn more about state management and view state, visit the following MSDN Web sites:
 Introduction to Web Forms state management
 http://msdn2.microsoft.com/en-us/library/75x4ha6s(vs.71).aspx
@@ -208,108 +180,11 @@ http://msdn.microsoft.com/msdnmag/issues/03/02/cuttingedge/default.aspx
 
 Saving Web Forms page values using view state
 http://msdn2.microsoft.com/en-us/library/4yfdwycw(vs.71).aspx
-Example using view state in a custom control
-ViewStateExample.cs
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Data;
-using System.Web;
-using System.Web.SessionState;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.HtmlControls;
-using System.Text;
 
-namespace ServerControlLib
-{
-	/// <summary>
-	/// When a page framework reloads this control after postback, it   
-        /// will restore the values which are in view state.
-	/// This control can easily perform state management without 
-        /// implementing our own logic for maintaining the state.
-	/// </summary>
-	public class ViewStateExample : WebControl
-	{
-		// Text to be displayed in Text box control.
-		private string _text;
-		
-		/*
-		 * This property needs to be populated before every 
-                 * postback in order to 
-		 * retain its value.
-		*/ 
-		public string Text
-		{
-			get { return (_text == null) ? "_text property is empty"  : _text; }
-			set { _text = value; }
-		}
+###Rendering
+In this section, I'll briefly describe what methods you should override when you derive a custom control from either the Control 
+class or the WebControl class.
 
-		/*
-		 * This property needs to be filled once and should be 
-                 * available on the successive postbacks.
-		*/ 
-		public string TextInViewState
-		{
-			get
-			{
-				object o = ViewState["TextInViewState"];
-				return (o == null) ? "View state is empty" : (string)o;
-			}
-			set { ViewState["TextInViewState"] = value; } 
-		}
-
-		/*
-		 * Over-ridden method on WebControl base class which                   
-                 * displays both of the property values 
-		 * i.e. one stored in view state and other which is not 
-                 * saved in view state.
-		*/
-		protected override void RenderContents(HtmlTextWriter writer)
-		{
-			writer.Write("Text Without View State = ");
-			writer.Write(Text);
-			writer.Write("<hr><br>");
-			writer.Write("Text In View State = ");
-			writer.Write(TextInViewState);
-		}
-	}
-}
-Example using the previous control on a Web Forms page
-ViewStateExampleDemo.aspx
-<%@ Page Language="C#" %>
-<%@ Register TagPrefix="CC" Namespace="ServerControlLib" Assembly = "ServerControlLib" %>
-
-<html>
-  <head>
-    <script runat="server">
-      void button1_Click(object sender, EventArgs e)
-      {
-          Control1.Text = textbox1.Text;
-          Control1.TextInViewState = textbox2.Text;
-      }
-    </script>
-  </head>
-  <body>
-    <form runat="server" ID="Form1">
-      <br>
-      Property Value Without View State: <asp:TextBox id="textbox1" 
-        runat="server" />
-      <br>
-      Property Value with View State: <asp:TextBox id="textbox2" 
-        runat="server" />
-
-      <asp:Button text="Cause Postback" onClick="button1_Click" 
-        id="button1" Runat="server" />
-
-      Output from the ViewStateExample Control :
-      <CC:ViewStateExample id="Control1" runat="server"/>
-    </form>
-  </body>
-</html>
-
-Rendering
-In this section, I'll briefly describe what methods you should override when you derive a custom control from either the Control class or the WebControl class.
 Rendering methods of the System.Web.UI.Control class
 For information about the rendering methods of the System.Web.UI.Control class, visit the following MSDN Web sites:
 Control.Render method
@@ -322,8 +197,11 @@ Control.RenderChildren method
 http://msdn2.microsoft.com/en-us/library/system.web.ui.control.renderchildren(vs.71).aspx
 
 
-How a control is rendered on the page
+###How a control is rendered on the page
+
 Every page has a control tree that represents a collection of all the child controls for that page. To render the control tree, an object of the HtmlTextWriter class is created that contains the HTML to be rendered on the client computer. That object is passed to the RenderControl method. In turn, the RenderControl method invokes the Render method. Then, the Render method calls the RenderChildren method on each child control, making a recursive loop until the end of the collection is reached. This process is best explained by the following example code. 
+
+```cs
 public void RenderControl(HtmlTextWriter writer) 
 {
     // Render method on that control will only be called if its visible property is true.
@@ -344,7 +222,10 @@ protected virtual void RenderChildren(HtmlTextWriter writer)
         c.RenderControl(writer);
     }
 } 
-Rendering methods of the System.Web.UI.WebControl class
+```
+
+###Rendering methods of the System.Web.UI.WebControl class
+
 For information about the rendering methods of the System.Web.UI.WebControl class, visit the following MSDN Web sites:
 WebControl.RenderBeginTag method
 http://msdn2.microsoft.com/en-us/library/system.web.ui.webcontrols.webcontrol.renderbegintag(vs.71).aspx
@@ -354,16 +235,22 @@ http://msdn2.microsoft.com/en-us/library/system.web.ui.webcontrols.webcontrol.re
 
 WebControl.RenderEndTag method
 http://msdn2.microsoft.com/en-us/library/system.web.ui.webcontrols.webcontrol.renderendtag(vs.71).aspx
-How the rendering of the WebControl class takes place
+
+###How the rendering of the WebControl class takes place
+
 The following code example shows the Render method for the custom control. 
+
+```cs
 protected override void Render(HtmlTextWriter writer)
 {
     RenderBeginTag(writer);
     RenderContents(writer);
     RenderEndTag(writer);
 }
+```
 You don't need to override the Render method for the WebControl class. If you want to render contents within the WebControl class, you need to override the RenderContents method. However, if you still want to override the Render method, you must override the RenderBeginTag method as well as the RenderEndTag method in the specific order that is shown in the previous code example.
-Conclusion
+
+##Conclusion
 That's all for now on user controls and custom controls in ASP.NET 1.0 and ASP.NET 1.1. I hope that this column helps you understand the basic differences between them and the various approaches you can take to develop them.
 
 Thank you for your time. We expect to write more about the advanced topics for custom controls, such as state management, control styles, composite controls, and design-time support for custom controls, in the near future.
