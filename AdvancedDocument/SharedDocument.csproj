@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data Access\Sql\SQL删除重复数据方法.md" />
     <None Include="Style Guide\summary.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Patterns Rate.md" />
     <None Include="Web\Web Form\Overview of user controls vs. custom controls .md" />
