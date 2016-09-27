@@ -7,3 +7,8 @@
 但是其实公司的也是有使用的。
 
 
+##Front Controller
+
+用ascx做的和Front Controller还是Web Api的的效果都差不多。
+
+WEB API的思想都是类似的，只是好不好的差别了。
