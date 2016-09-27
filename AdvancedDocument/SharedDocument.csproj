@@ -264,6 +264,7 @@
     <None Include="Data Access\Sql\Tutorial\SQL Tutorial.md" />
     <None Include="Data Access\Sql\Tutorial\Using SET Operators.md" />
     <None Include="Data Access\T-SQL\INSERT、UPDATE、DELETE  OUTPUT.md" />
+    <None Include="DOTNET\String\Convert List to String.md" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Tool\CommandLine\cmd快捷操作.md" />
     <None Include="Data Access\Entity Framework\code first  mapping.md" />
