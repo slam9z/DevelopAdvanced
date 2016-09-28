@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data Access\Entity Framework\Tutorial\Execute Native SQL Query.md" />
+    <None Include="Data Access\Entity Framework\数据读取器与指定的Patient不兼容。某个类型“id”的成员在同名的数据读取器中没有对应列.md" />
+    <None Include="Data Access\Sql Server\CSharp和sqlserver中生成新的32位GUID.md" />
     <None Include="Data Access\Sql\SQL删除重复数据方法.md" />
     <None Include="Style Guide\summary.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Front Controller in ASP.NET Using HTTPHandler.md" />
@@ -50,6 +53,7 @@
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Page Controller in ASP.NET.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Patterns Rate.md" />
     <None Include="Web\Web Form\ASP.NET的页面中对其他文件的引用.md" />
+    <None Include="Web\Web Form\OutputCache祥解.md" />
     <None Include="Web\Web Form\Overview of user controls vs. custom controls .md" />
     <None Include="Algorithm\Knowledge\希腊字母读音包含渐进记号.md" />
     <None Include="Algorithm\Ogami\July\July大神.md" />
