@@ -44,6 +44,10 @@
     <None Include="Data Access\Entity Framework\数据读取器与指定的Patient不兼容。某个类型“id”的成员在同名的数据读取器中没有对应列.md" />
     <None Include="Data Access\Sql Server\CSharp和sqlserver中生成新的32位GUID.md" />
     <None Include="Data Access\Sql\SQL删除重复数据方法.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 1 Patterns for Building Enterprise Solutions.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Enterprise Solution Patterns Using Microsoft DOTNET.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Foreword.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Summary.md" />
     <None Include="Style Guide\summary.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Front Controller in ASP.NET Using HTTPHandler.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Intercepting Filter in ASP.NET Using HTTP Module.md" />
@@ -615,6 +619,8 @@
     <None Include="Design\Domain Driven Design\领域驱动设计（2）Repository在DDD中的应用 .md" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Figure 1 The Pattern Frame.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 1  Singleton pattern, abbreviated.md.gif" />
     <Content Include="Design\search design.png" />
     <Content Include="Image\设计模式\中介者结构.PNG" />
     <Content Include="Image\设计模式\享元结构.PNG" />
