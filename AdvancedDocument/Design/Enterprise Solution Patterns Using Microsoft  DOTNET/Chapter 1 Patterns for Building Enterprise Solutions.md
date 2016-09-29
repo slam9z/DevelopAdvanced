@@ -178,35 +178,88 @@ understand the incremental differences between the initial pattern and patterns 
 , this time in the area of Web services, should help to illustrate the concept of refinement:
 
 
-You built a quote application for a successful enterprise that is rapidly expanding. Now you want to extend the application by exposing your quote engine to business partners and integrating additional partner services (such as shipping) into the quote application. How do you structure your business application to provide and consume services? 
+You built a quote application for a successful enterprise that is rapidly expanding. Now you want to extend the 
+application by exposing your quote engine to business partners and integrating additional partner services 
+(such as shipping) into the quote application. How do you structure your business application to provide and consume 
+services? 
 
-One solution to this problem is to extend Three-Layered Application by adding additional service-related responsibilities to each layer. The business layer adds the responsibility for providing a simplified set of operations to client applications through Service Interfaces. The responsibilities of the data access layer broaden beyond database and host integration to include communication with other service providers. This additional functionality in the data access layer is encapsulated in Service Gateway components, which are responsible for connecting to services (both synchronously and asynchronously), managing basic conversational state with the service, and notifying business process components of significant service-related events.
+One solution to this problem is to extend Three-Layered Application by adding additional service-related 
+responsibilities to each layer. The business layer adds the responsibility for providing a simplified set of
+ operations to client applications through Service Interfaces. The responsibilities of the data access layer
+ broaden beyond database and host integration to include communication with other service providers. This 
+additional functionality in the data access layer is encapsulated in Service Gateway components, which are 
+responsible for connecting to services (both synchronously and asynchronously), managing basic conversational
+ state with the service, and notifying business process components of significant service-related events.
 
 The Three-Layered Services Application (Figure 5) captures this problem-solution pair.
 
-Figure 5: Three-Layered Services Application, abbreviated
+[Figure 5: Three-Layered Services Application, abbreviated]
 
 Applying the Three-Layered Services Application pattern to the quote application example results in the following model.
 
-Figure 6: Three-Layered Services Application applied to the quote application
+[Figure 6: Three-Layered Services Application applied to the quote application]
 
-Notice the relationships between these patterns (see Figure 7). Layers introduces a fundamental strategy for organizing a software application. Three-Layered Application refines this idea and constrains it to business systems that require business logic reuse, flexible deployment, and efficient use of connections. Three-Layered Services Application refines Three-Layered Application and extends the design to provide and consume granular elements of data and logic from highly variable sources. 
+Notice the relationships between these patterns (see Figure 7). Layers introduces a fundamental strategy for organizing 
+a software application. Three-Layered Application refines this idea and constrains it to business systems that require
+ business logic reuse, flexible deployment, and efficient use of connections. Three-Layered Services Application refines
+ Three-Layered Application and extends the design to provide and consume granular elements of data and logic from highly
+ variable sources. 
 
-Figure 7: Refinement of related patterns
+[Figure 7: Refinement of related patterns]
 
-Adding additional types of components to specific layers is not the only way to manage this growing complexity. As complexity warrants, designers often create additional layers within the application to handle this responsibility. For example, some designers move Service Interfaces into a separate layer. Other designers separate the business layer into a domain layer and an application layer. In any case, you sometimes see these three layers expanded to four, five, or even six layers as designers use this pattern in response to complex requirements. Conversely, the Layers pattern was also used in the relatively simpler days of client-server applications, when two-layered applications were the standard.
+Adding additional types of components to specific layers is not the only way to manage this growing complexity. As 
+complexity warrants, designers often create additional layers within the application to handle this responsibility. 
+For example, some designers move Service Interfaces into a separate layer. Other designers separate the business layer
+ into a domain layer and an application layer. In any case, you sometimes see these three layers expanded to four,
+ five, or even six layers as designers use this pattern in response to complex requirements. Conversely, the Layers
+ pattern was also used in the relatively simpler days of client-server applications, when two-layered applications
+ were the standard.
 
-When grouped together, these Layers variations form a cluster of patterns (see Figure 8) that visually represents common approaches to application layering. Clustering, used in this context, simply means a logical grouping of some set of similar patterns. This notion of a cluster is quite useful for expanding the view of patterns to encompass an entire solution, and for identifying clusters of patterns that address similar concerns in the solution space. Chapter 2, "Organizing Patterns," discusses clusters in more detail.
+When grouped together, these Layers variations form a cluster of patterns (see Figure 8) that visually represents common
+ approaches to application layering. Clustering, used in this context, simply means a logical grouping of some set of
+ similar patterns. This notion of a cluster is quite useful for expanding the view of patterns to encompass an entire
+ solution, and for identifying clusters of patterns that address similar concerns in the solution space. Chapter 2,
+ "Organizing Patterns," discusses clusters in more detail.
 
-Figure 8: A cluster of patterns
-Common Vocabulary 
-While considering the Singleton, Layers, Three-Layered Application, and Layered Services Application patterns, you probably noticed that patterns also provide a powerful vocabulary for communicating software architecture and design ideas. Understanding a pattern not only communicates the knowledge and experience embedded within the pattern but also provides a unique, and hopefully evocative, name that serves as shorthand for evaluating and describing software design choices.
-For example, when designing an application a developer might say, "I think the pricing engine should be implemented as a Singleton and exposed through a Service Interface." If another developer understands these patterns, he or she would have a very detailed idea of the design implications under discussion. If the developer did not understand the patterns, he or she could look them up in a catalog and learn the mechanisms, and perhaps even learn some additional patterns along the way. 
-Patterns have a natural taxonomy. If you look at enough patterns and their relationships, you begin to see sets of ordered groups and categories at different levels of abstraction. For example, the Singleton pattern example was at a lower level of abstraction than the Layers pattern, but the Layers pattern had a set of related patterns that refined it in one way or another. Chapter 2 further expands and refines this taxonomy.
-Over time, developers discover and describe new patterns, thus extending the community body of knowledge in this area. In addition, as you start to understand patterns and the relationships between patterns, you can describe entire solutions in terms of patterns.
-Concise Solution Description 
+[Figure 8: A cluster of patterns]
+
+##Common Vocabulary[词汇量]
+
+While considering the Singleton, Layers, Three-Layered Application, and Layered Services Application patterns, you 
+probably noticed that patterns also provide a powerful vocabulary for communicating software architecture and design
+ ideas. Understanding a pattern not only communicates the knowledge and experience embedded within the pattern but 
+also provides a unique, and hopefully evocative[引起记忆的], name that serves as shorthand for evaluating and describing software
+ design choices.
+
+For example, when designing an application a developer might say, "I think the pricing engine should be implemented 
+as a Singleton and exposed through a Service Interface." If another developer understands these patterns, he or she
+ would have a very detailed idea of the design implications under discussion. If the developer did not understand
+ the patterns, he or she could look them up in a catalog and learn the mechanisms, and perhaps even learn some additional 
+patterns along the way. 
+
+Patterns have a natural taxonomy. If you look at enough patterns and their relationships, you begin to see sets of ordered 
+groups and categories at different levels of abstraction. For example, the Singleton pattern example was at a lower level 
+of abstraction than the Layers pattern, but the Layers pattern had a set of related patterns that refined it in one way or 
+another. Chapter 2 further expands and refines this taxonomy.
+
+Over time, developers discover and describe new patterns, thus extending the community body of knowledge in this area.
+ In addition, as you start to understand patterns and the relationships between patterns, you can describe entire 
+solutions in terms of patterns.
+
+##Concise[简明的] Solution Description 
 
 
-In this guide, the term solution has two very distinct meanings: first, to indicate part of a pattern itself, as in a problem-solution pair contained within a context; second, to indicate a business solution. When the term business solution is used, it refers to a software-intensive system that is designed to meet a specific set of functional and operational business requirements. A software-intensive system implies that you are not just concerned with software; you must deploy this software onto hardware processing nodes to provide a holistic technology solution. Further, the software under consideration includes both custom-developed software and purchased software infrastructure and platform components, all of which you integrate together.
-Summary 
-This chapter introduced the concept of a pattern, explained how patterns document simple, proven mechanisms, and showed how patterns provide a common language for developers and architects. Chapter 2 explains how to organize your thinking about patterns, and how to use patterns to describe entire solutions concisely.
+In this guide, the term solution has two very distinct meanings: 
+
+first, to indicate[指出] part of a pattern itself, as in a  problem-solution pair contained within a context; 
+second, to indicate a business solution. When the term business solution is used, it refers to a software-intensive system
+ that is designed to meet a specific set of functional and operational business  requirements. A software-intensive system 
+implies that you are not just concerned with software; you must deploy this software  onto hardware processing nodes to 
+provide a holistic technology solution. Further, the software under consideration includes
+ both custom-developed software and purchased software infrastructure and platform components, all of which you integrate together.
+
+##Summary 
+
+This chapter introduced the concept of a pattern, explained how patterns document simple, proven mechanisms, and showed 
+how patterns provide a common language for developers and architects. Chapter 2 explains how to organize your thinking 
+about patterns, and how to use patterns to describe entire solutions concisely.

@@ -49,8 +49,16 @@
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 1 Patterns for Building Enterprise Solutions.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Enterprise Solution Patterns Using Microsoft DOTNET.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Foreword.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 2  Organizing Patterns.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Summary.md" />
     <None Include="Design\Microsoft Application Architecture Guide, 2nd Edition\Microsoft Application Architecture Guide, 2nd Edition.md" />
+    <None Include="Design\patterns and practices\Azure Guidance.md" />
+    <None Include="Design\patterns and practices\patterns and practices.md" />
+    <None Include="DOTNET\CSharp\3.0\anonymous type.md" />
+    <None Include="DOTNET\CSharp\4.0\.Net 4.0 之 Dynamic 动态类型.md" />
+    <None Include="DOTNET\CSharp\4.0\CSharp 可选参数 命名参数.md" />
+    <None Include="DOTNET\CSharp\4.0\What are the true benefits of ExpandoObject.md" />
+    <None Include="DOTNET\CSharp\4.0\使用dynamic和Func实现数据的动态组装%28导出Excel应用%29.md" />
     <None Include="Style Guide\summary.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Front Controller in ASP.NET Using HTTPHandler.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Intercepting Filter in ASP.NET Using HTTP Module.md" />
@@ -625,6 +633,13 @@
   <ItemGroup>
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Figure 1 The Pattern Frame.md.gif" />
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 1  Singleton pattern, abbreviated.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 2  Quote application layers.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 3 Layers pattern, abbreviated.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 4 Three-Layered Application, abbreviated.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 5  Three-Layered Services Application, abbreviated.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 6 Three-Layered Services Application applied to the quote application.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 7 Refinement of related patterns.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 8 A cluster of patterns.gif" />
     <Content Include="Design\search design.png" />
     <Content Include="Image\设计模式\中介者结构.PNG" />
     <Content Include="Image\设计模式\享元结构.PNG" />
