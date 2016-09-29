@@ -47,6 +47,9 @@
     <None Include="Data Access\Sql\SQL删除重复数据方法.md" />
     <None Include="Design\Data Access for Highly-Scalable Solutions\Data Access for Highly-Scalable Solutions.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 1 Patterns for Building Enterprise Solutions.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 3  Web Presentation Patterns.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 4 Deployment Patterns\Deployment Patterns.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 4 Deployment Patterns\Layered Application.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Enterprise Solution Patterns Using Microsoft DOTNET.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Foreword.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 2  Organizing Patterns.md" />
@@ -631,15 +634,25 @@
     <None Include="Design\Domain Driven Design\领域驱动设计（2）Repository在DDD中的应用 .md" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 2  Organizing Patterns\Figure 1  A set of patterns.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 2  Organizing Patterns\Figure 2 Pattern relationships represented as lines.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 2  Organizing Patterns\Figure 3  Pattern clusters.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 2  Organizing Patterns\Figure 4  Levels of abstraction.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 2  Organizing Patterns\Figure 5 Adding viewpoints.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 2  Organizing Patterns\Figure 6 The Pattern Frame.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 2  Organizing Patterns\Figure 7 Root constraints of the Pattern Frame.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Figure 1  Deployment cluster.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Layered Application\Figure 1 Layers.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Layered Application\Figure 2 UML representation of layers composed of subsystems.md.gif" />
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Figure 1 The Pattern Frame.md.gif" />
-    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 1  Singleton pattern, abbreviated.md.gif" />
-    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 2  Quote application layers.md.gif" />
-    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 3 Layers pattern, abbreviated.md.gif" />
-    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 4 Three-Layered Application, abbreviated.md.gif" />
-    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 5  Three-Layered Services Application, abbreviated.md.gif" />
-    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 6 Three-Layered Services Application applied to the quote application.gif" />
-    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 7 Refinement of related patterns.gif" />
-    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Patterns for Building Enterprise Solutions\Figure 8 A cluster of patterns.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 1 Patterns for Building Enterprise Solutions\Figure 1  Singleton pattern, abbreviated.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 1 Patterns for Building Enterprise Solutions\Figure 2  Quote application layers.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 1 Patterns for Building Enterprise Solutions\Figure 3 Layers pattern, abbreviated.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 1 Patterns for Building Enterprise Solutions\Figure 4 Three-Layered Application, abbreviated.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 1 Patterns for Building Enterprise Solutions\Figure 5  Three-Layered Services Application, abbreviated.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 1 Patterns for Building Enterprise Solutions\Figure 6 Three-Layered Services Application applied to the quote application.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 1 Patterns for Building Enterprise Solutions\Figure 7 Refinement of related patterns.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 1 Patterns for Building Enterprise Solutions\Figure 8 A cluster of patterns.gif" />
     <Content Include="Design\search design.png" />
     <Content Include="Image\设计模式\中介者结构.PNG" />
     <Content Include="Image\设计模式\享元结构.PNG" />
