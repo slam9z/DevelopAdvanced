@@ -1,0 +1,1 @@
+[Data Access for Highly-Scalable Solutions: Using SQL, NoSQL, and Polyglot Persistence](https://msdn.microsoft.com/en-us/library/dn271399.aspx)

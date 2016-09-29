@@ -40,14 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Book\Design\Enterprise Solution Patterns using microsoft .net.pdf" />
     <None Include="Data Access\Entity Framework\Tutorial\Execute Native SQL Query.md" />
     <None Include="Data Access\Entity Framework\数据读取器与指定的Patient不兼容。某个类型“id”的成员在同名的数据读取器中没有对应列.md" />
     <None Include="Data Access\Sql Server\CSharp和sqlserver中生成新的32位GUID.md" />
     <None Include="Data Access\Sql\SQL删除重复数据方法.md" />
+    <None Include="Design\Data Access for Highly-Scalable Solutions\Data Access for Highly-Scalable Solutions.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 1 Patterns for Building Enterprise Solutions.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Enterprise Solution Patterns Using Microsoft DOTNET.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Foreword.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Summary.md" />
+    <None Include="Design\Microsoft Application Architecture Guide, 2nd Edition\Microsoft Application Architecture Guide, 2nd Edition.md" />
     <None Include="Style Guide\summary.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Front Controller in ASP.NET Using HTTPHandler.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Intercepting Filter in ASP.NET Using HTTP Module.md" />
@@ -175,6 +178,7 @@
     <None Include="Web\Web Form\Web form 类型之间不明确的引用.md" />
     <None Include="Web\Web Form\不包含CSharp文件的Web Page.md" />
     <None Include="Web\Web Form\细说 Form %28表单%29.md" />
+    <None Include="Windows System\There is a problem with this website%27s security certificate %28download.microsoft.com%29 .md" />
     <None Include="Windows System\顿号怎么打.md" />
     <None Include="Work\Current\Current  problem and challenge.md" />
     <None Include="Web\CSS\Fixed Table Cell Width.md" />
@@ -685,6 +689,7 @@
     <Content Include="Web\ASP.NET\Web Presentation Patterns\Image\Page Controller\Figure 2 Using BaseController to eliminate code duplication.gif" />
     <Content Include="Web\ASP.NET\Web Presentation Patterns\Image\Page Controller\Figure 3 Separating the Web-dependent and Web-independent code.gif" />
     <Content Include="Web\Framework\前段框架对比.png" />
+    <None Include="Tool\Visual Studio\Visual studio  extended trial has expired.md" />
     <Content Include="Work\Hunting\Image\面试1.png" />
   </ItemGroup>
   <ItemGroup>
