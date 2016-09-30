@@ -254,6 +254,7 @@ and associated implementations that serve as a roadmap to the patterns.
 
 Table 1: Distributed Systems Patterns
 
+|   |   |
 |----|---|
 | Broker| How can you structure a distributed system so that application developers do not have to deal with the details of remote communication?|
 | Data Transfer Object | How do you preserve the simple semantics of a procedure call interface without being subject to the latency issues inherent in remote communication? |

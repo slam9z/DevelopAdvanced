@@ -77,6 +77,7 @@ This initial release of Enterprise Solution Patterns Using Microsoft .NET (ESP) 
 
 *Table 1: Enterprise Solution Patterns Clusters*
 
+|   |   |
 |---|---|
 | Web Presentation | How do you create dynamic Web applications? |
 | Deployment | How do you divide an application into layers and then deploy them onto a multi-tiered hardware infrastructure?|
@@ -191,6 +192,7 @@ This line of reasoning results in the four viewpoints shown in Table 2.
 
 *Table 2: Enterprise Solution Patterns Viewpoints*
 
+|   |   |
 |---|----|
 | Database | The database view describes the persistent layer of the application. This view looks at such things as logical and physical schemas, database tables, relationships, and transactions.|
 | Application | The application view focuses on the executable aspect of the solution. It includes such things as domain models, class diagrams, assemblies, and processes. |
