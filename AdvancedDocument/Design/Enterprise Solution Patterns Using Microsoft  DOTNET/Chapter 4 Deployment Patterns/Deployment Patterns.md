@@ -128,6 +128,7 @@ Table 1 lists the patterns included in the deployment cluster, along with the pr
 
 Table 1: Deployment Patterns
 
+| | |
 |---|---|
 | Layered Application | How do you structure an application to support such operational requirements as maintainability, reusability, scalability, robustness, and security? |
 | Three-Layered Services Application | How do you layer a service-oriented application and then determine the components in each layer?|
