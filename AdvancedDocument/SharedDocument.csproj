@@ -63,6 +63,8 @@
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Implementing Data Transfer Object in .NET with a Typed DataSet.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Implementing Singleton in CSharp.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Singleton.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 6 Services Patterns\Service Interface.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 6 Services Patterns\Services Patterns.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Enterprise Solution Patterns Using Microsoft DOTNET.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Foreword.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 2  Organizing Patterns.md" />
@@ -762,6 +764,7 @@
   <ItemGroup>
     <Folder Include="Design\Code Design\" />
     <Folder Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Singleton\" />
+    <Folder Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 6 Services Patterns\Service Interface\" />
     <Folder Include="MyProject\Wiki\Roadkill\Dependencies\" />
     <Folder Include="Tool\UML\Visual Studio UML\" />
     <Folder Include="Web\Core\" />
