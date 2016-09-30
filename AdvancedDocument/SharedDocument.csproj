@@ -63,6 +63,13 @@
     <None Include="DOTNET\CSharp\4.0\What are the true benefits of ExpandoObject.md" />
     <None Include="DOTNET\CSharp\4.0\使用dynamic和Func实现数据的动态组装%28导出Excel应用%29.md" />
     <None Include="Style Guide\summary.md" />
+    <None Include="Tool\UML\Astah.md" />
+    <None Include="Tool\UML\StarUML.md" />
+    <None Include="Tool\UML\umltools.pdf" />
+    <None Include="Tool\UML\UML相关工具一览（截止2016年7月）.md" />
+    <None Include="Tool\UML\Unified Modeling Language %28UML%29 Tools.md" />
+    <None Include="Tool\UML\Visual Studio UML.md" />
+    <None Include="Tool\UML\在 Visio 中的 UML 图表.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Front Controller in ASP.NET Using HTTPHandler.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Intercepting Filter in ASP.NET Using HTTP Module.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Model-View-Controller in ASP.NET.md" />
@@ -723,6 +730,7 @@
   <ItemGroup>
     <Folder Include="Design\Code Design\" />
     <Folder Include="MyProject\Wiki\Roadkill\Dependencies\" />
+    <Folder Include="Tool\UML\Visual Studio UML\" />
     <Folder Include="Web\Core\" />
     <Folder Include="Web\Javascript\Typescript\" />
     <Folder Include="Web\jQuery\Method\" />
