@@ -165,33 +165,79 @@ There are basically two approaches to implementing the Layered Application patte
 
 * Create your own layering scheme
 * Reuse an existing layering scheme
-* Creating Your Own Layering Scheme 
 
 
-Buschmann provides a great discussion about implementing your own layered application. A brief overview is provided here, but it is highly recommended that you study the Layers pattern in Buschmann if you need to define your own layered application. The outline of the process is as follows:
-Use a well-defined set of criteria to group the functionality of the solution into a set of layers and define the services that each layer provides. This is an iterative process in which you will likely try multiple combinations of criteria, numbers of levels, functionality decomposition, and service assignments. UML sequence diagrams describing the interactions of layers and solution components are an ideal tool for understanding the tradeoffs involved with each candidate layering scheme. 
-Define the interfaces between each level and the protocols they require to communicate with each other. To avoid making lower levels dependent on higher levels, use techniques such as asynchronous messaging, callbacks, and events for communications that need to travel up the stack. Again, UML sequence diagrams are a great tool for ensuring that you have a complete and consistent set of interfaces. The diagrams give you a visual clue of the granularity or chattiness of your interface and protocols. Be particularly aware of the number of times you cross a layer boundary for a given scenario and look for opportunities to refactor your design to reduce the number of boundary crossings. A key design decision is to determine how much coupling should exist between levels. Do components in Layer J directly access components in Layer J-1? This makes higher levels dependent on lower-level implementation details. Patterns such as Facade and other decoupling techniques should be explored to minimize this type of coupling.
-Design the implementation of the layers. Traditional object-oriented design techniques work quite well for this task. Be sure to consider patterns such as Adapter, Bridge, and Strategy [Gamma95] to enable the switching out of multiple implementations of a given layer's interface. This capability is especially valuable when it comes to testing the interfaces and level implementations. Another critical design decision is how to handle errors. A consistent error-handling strategy must be defined across all the levels. Consider the following when designing your error-handling strategy:
-Try to deal with the error at the lowest level possible.
-Avoid exposing lower-level abstractions to higher levels through the exception handling mechanism.
-If you must escalate an exception up the stack, convert lower-level exceptions to exceptions that have some meaning to the handling layer.
-Reusing an Existing Layering Scheme 
+###Creating Your Own Layering Scheme 
 
 
-The other approach is to reuse an existing reference layered application to provide structure for your applications. The canonical three-layered application consists of the following three layers: presentation, domain, and data source. Even something as simple as this goes a long way towards achieving the benefits of the Layered Application pattern. An enhanced version of the canonical model is discussed in Layered Services Application.
+Buschmann provides a great discussion about implementing your own layered application. A brief overview is provided here, but 
+it is highly recommended that you study the Layers pattern in Buschmann if you need to define your own layered application. 
+The outline of the process is as follows:
 
-Martin Fowler has found the use of mediating layers between the presentation and domain layers as well as between the domain and data source layers useful at times. For more information, see Fowler's book, Patterns of Enterprise Application Architecture [Fowler03].
-Testing Considerations 
+* Use a well-defined set of criteria to group the functionality of the solution into a set of layers and define the services 
+that each layer provides. This is an iterative process in which you will likely try multiple combinations of criteria, numbers
+ of levels, functionality decomposition, and service assignments. UML sequence diagrams describing the interactions of layers 
+and solution components are an ideal tool for understanding the tradeoffs involved with each candidate layering scheme. 
+
+* Define the interfaces between each level and the protocols they require to communicate with each other. To avoid making lower
+ levels dependent on higher levels, use techniques such as asynchronous messaging, callbacks, and events for communications
+ that need to travel up the stack. Again, UML sequence diagrams are a great tool for ensuring that you have a complete and
+ consistent set of interfaces. The diagrams give you a visual clue of the granularity or chattiness of your interface and protocols.
+ Be particularly aware of the number of times you cross a layer boundary for a given scenario and look for opportunities to refactor 
+your design to reduce the number of boundary crossings. A key design decision is to determine how much coupling should exist between
+ levels. Do components in Layer J directly access components in Layer J-1? This makes higher levels dependent on lower-level 
+implementation details. Patterns such as Facade and other decoupling techniques should be explored to minimize this type of coupling.
+
+* Design the implementation of the layers. Traditional object-oriented design techniques work quite well for this task. Be sure to
+ consider patterns such as Adapter, Bridge, and Strategy [Gamma95] to enable the switching out of multiple implementations of a 
+given layer's interface. This capability is especially valuable when it comes to testing the interfaces and level implementations.
+ Another critical design decision is how to handle errors. A consistent error-handling strategy must be defined across all the levels. 
+Consider the following when designing your error-handling strategy:
+    
+    * Try to deal with the error at the lowest level possible.
+
+    * Avoid exposing lower-level abstractions to higher levels through the exception handling mechanism.
+
+    * If you must escalate an exception up the stack, convert lower-level exceptions to exceptions that have some 
+    meaning to the handling layer.
+
+
+###Reusing an Existing Layering Scheme 
+
+
+The other approach is to reuse an existing reference layered application to provide structure for your applications. The
+ canonical three-layered application consists of the following three layers: presentation, domain, and data source. Even 
+something as simple as this goes a long way towards achieving the benefits of the Layered Application pattern. An enhanced 
+version of the canonical model is discussed in Layered Services Application.
+
+Martin Fowler has found the use of mediating layers between the presentation and domain layers as well as between the 
+domain and data source layers useful at times. For more information, see Fowler's book, Patterns of Enterprise Application 
+Architecture [Fowler03].
+
+
+##Testing Considerations 
 
 
 Layered Application enhances testability in several ways:
-Because each layer interacts with the other layers only through well-defined interfaces, it is easy to plug in alternative implementations of a layer. This allows some testing on a layer before the layers it depends on are complete. In addition, an alternative implementation that immediately returns a set of known good data can be substituted for a layer that takes a long time to compute a correct answer, thus speeding up test execution. This ability is greatly enhanced if the layered supertype, abstract interface, and layer facade techniques are used, because they further decrease the dependencies between layers.
-It is easier to test individual components, because the dependencies between components are constrained such that components in higher levels can only call components in lower levels. This helps to isolate individual components for testing and facilitates swapping out lower-level components with special-purpose testing components.
-Example 
+
+* Because each layer interacts with the other layers only through well-defined interfaces, it is easy to plug in 
+alternative implementations of a layer. This allows some testing on a layer before the layers it depends on are complete.
+ In addition, an alternative implementation that immediately returns a set of known good data can be substituted for a
+ layer that takes a long time to compute a correct answer, thus speeding up test execution. This ability is greatly 
+enhanced if the layered supertype, abstract interface, and layer facade techniques are used, because they further decrease
+ the dependencies between layers.
+
+* It is easier to test individual components, because the dependencies between components are constrained such that components
+ in higher levels can only call components in lower levels. This helps to isolate individual components for testing and 
+facilitates swapping out lower-level components with special-purpose testing components.
+
+##Example 
+
 It is quite common for enterprise application architects to compose their solutions into the following three layers:
-Presentation. This layer is responsible for interacting with the user.
-Business. This layer implements the business logic of the solution. 
-Data. This layer encapsulates the code that accesses the persistent data stores such as a relational database.
+
+* Presentation. This layer is responsible for interacting with the user.
+* Business. This layer implements the business logic of the solution. 
+* Data. This layer encapsulates the code that accesses the persistent data stores such as a relational database.
 
 For more information, see the Three-Layered Services Application pattern.
 
@@ -201,18 +247,31 @@ Layered Application generally results in the following benefits and liabilities:
 
 ###Benefits 
 
-Maintenance of and enhancements to the solution are easier due to the low coupling between layers, high cohesion between the layers, and the ability to switch out varying implementations of the layer interfaces.
-Other solutions should be able to reuse functionality exposed by the various layers, especially if the layer interfaces are designed with reuse in mind. 
-Distributed development is easier if the work can be distributed at layer boundaries.
-Distributing the layers over multiple physical tiers can improve scalability, fault-tolerance, and performance. For more information, see the Tiered Distribution pattern.
-Testability benefits from having well-defined layer interfaces as well as the ability to switch out various implementations of the layer interfaces.
+* Maintenance of and enhancements[增加] to the solution are easier due to the low coupling between layers, high cohesion between
+ the layers, and the ability to switch out varying implementations of the layer interfaces.
+
+* Other solutions should be able to reuse functionality exposed by the various layers, especially if the layer interfaces
+ are designed with reuse in mind. 
+
+* Distributed development is easier if the work can be distributed at layer boundaries.
+
+* Distributing the layers over multiple physical tiers can improve scalability, fault-tolerance, and performance. 
+For more information, see the Tiered Distribution pattern.
+
+* Testability benefits from having well-defined layer interfaces as well as the ability to switch out various implementations
+ of the layer interfaces.
 
 ###Liabilities 
 
-The extra overhead of passing through layers instead of calling a component directly can negatively affect performance. To help offset the performance hit, you can use the relaxed layers approach, in which higher layers can directly call lower layers.
-Development of user-intensive applications can sometime take longer if the layering prevents the use of user interface components that directly interact with the database.
-The use of layers helps to control and encapsulate the complexity of large applications, but adds complexity to simple applications.
-Changes to lower-level interfaces tend to percolate to higher levels, especially if the relaxed layered approach is used.
+* The extra overhead of passing through layers instead of calling a component directly can negatively affect performance.
+ To help offset the performance hit, you can use the relaxed layers approach, in which higher layers can directly call lower layers.
+
+* Development of user-intensive applications can sometime take longer if the layering prevents the use of user interface 
+components that directly interact with the database.
+
+* The use of layers helps to control and encapsulate the complexity of large applications, but adds complexity to simple applications.
+
+* Changes to lower-level interfaces tend to percolate to higher levels, especially if the relaxed layered approach is used.
 
 ##Acknowledgments 
 

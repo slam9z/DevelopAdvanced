@@ -49,7 +49,13 @@
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 1 Patterns for Building Enterprise Solutions.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 3  Web Presentation Patterns.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 4 Deployment Patterns\Deployment Patterns.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 4 Deployment Patterns\Deployment Plan.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 4 Deployment Patterns\Layered Application.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 4 Deployment Patterns\Three-Layered Services Application.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 4 Deployment Patterns\Three-Tiered Distribution.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 4 Deployment Patterns\Tiered Distribution.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Broker.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Distributed Systems Patterns.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Enterprise Solution Patterns Using Microsoft DOTNET.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Foreword.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 2  Organizing Patterns.md" />
@@ -651,6 +657,14 @@
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Figure 1  Deployment cluster.md.gif" />
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Layered Application\Figure 1 Layers.md.gif" />
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Layered Application\Figure 2 UML representation of layers composed of subsystems.md.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Layered Application\Figure 3 Sequence diagram of a top-down scenario.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Layered Application\Figure 4 Sequence diagram of a bottom-up scenario.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Three-Layered Services Application\Figure 1  Three-Layered Services Application.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Tiered Distribution\Figure 1  Single-tiered distribution.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Tiered Distribution\Figure 2  Two-tiered distribution.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Tiered Distribution\Figure 3  Three-tiered distribution.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Tiered Distribution\Figure 4 Four-tiered distribution.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Figure 1  Patterns in the Distributed Systems cluster.gif" />
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Figure 1 The Pattern Frame.md.gif" />
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 1 Patterns for Building Enterprise Solutions\Figure 1  Singleton pattern, abbreviated.md.gif" />
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 1 Patterns for Building Enterprise Solutions\Figure 2  Quote application layers.md.gif" />
@@ -729,6 +743,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Design\Code Design\" />
+    <Folder Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Broker\" />
     <Folder Include="MyProject\Wiki\Roadkill\Dependencies\" />
     <Folder Include="Tool\UML\Visual Studio UML\" />
     <Folder Include="Web\Core\" />
