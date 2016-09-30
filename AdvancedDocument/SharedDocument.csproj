@@ -55,7 +55,14 @@
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 4 Deployment Patterns\Three-Tiered Distribution.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 4 Deployment Patterns\Tiered Distribution.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Broker.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Data Transfer Object.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Distributed Systems Patterns.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Implementing Broker with .NET Remoting Using Client-Activated Objects.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Implementing Broker with .NET Remoting Using Server-Activated Objects.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Implementing Data Transfer Object in .NET with a DataSet.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Implementing Data Transfer Object in .NET with a Typed DataSet.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Implementing Singleton in CSharp.md" />
+    <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 5 Distributed Systems Patterns\Singleton.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Enterprise Solution Patterns Using Microsoft DOTNET.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Foreword.md" />
     <None Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Chapter 2  Organizing Patterns.md" />
@@ -665,6 +672,16 @@
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Tiered Distribution\Figure 2  Two-tiered distribution.gif" />
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Tiered Distribution\Figure 3  Three-tiered distribution.gif" />
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 4 Deployment Patterns\Tiered Distribution\Figure 4 Four-tiered distribution.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Broker\Figure 1 Structure with no distribution.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Broker\Figure 2  Structure with distribution.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Broker\Figure 3  Behavior with distribution.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Broker\Figure 4  Broker structure with server look-up.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Broker\Figure 5 Broker behavior with server look-up.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Broker\Figure 6 Structure of Broker serving as intermediary.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Broker\Figure 7 Behavior of Broker serving as intermediary.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Data Transfer Object\Figure 1  Remote calls without a DTO.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Data Transfer Object\Figure 2  Reducing the number of calls by using a DTO.gif" />
+    <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Data Transfer Object\Figure 3  Using an Assembler to load data into the DTO.gif" />
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Figure 1  Patterns in the Distributed Systems cluster.gif" />
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Figure 1 The Pattern Frame.md.gif" />
     <Content Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 1 Patterns for Building Enterprise Solutions\Figure 1  Singleton pattern, abbreviated.md.gif" />
@@ -744,7 +761,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Design\Code Design\" />
-    <Folder Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Broker\" />
+    <Folder Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Singleton\" />
     <Folder Include="MyProject\Wiki\Roadkill\Dependencies\" />
     <Folder Include="Tool\UML\Visual Studio UML\" />
     <Folder Include="Web\Core\" />

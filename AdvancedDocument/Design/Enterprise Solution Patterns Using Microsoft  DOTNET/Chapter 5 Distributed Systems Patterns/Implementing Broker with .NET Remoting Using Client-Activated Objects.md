@@ -1,0 +1,1 @@
+﻿[Implementing Broker with .NET Remoting Using Client-Activated Objects](https://msdn.microsoft.com/en-us/library/ff650208.aspx)
