@@ -42,12 +42,18 @@
   <ItemGroup>
     <None Include="Book\Design\Enterprise Solution Patterns using microsoft .net.pdf" />
     <None Include="Bug and Test\Test.md" />
+    <None Include="Data Access\ADO.NET\System.ArgumentException 另一个SqlParameterCollection中已包含SqlParameter.md" />
+    <None Include="Data Access\Entity Framework\Member Mapping specified is not valid  %28update  edmx%29 .md" />
     <None Include="Data Access\Entity Framework\Tutorial\Execute Native SQL Query.md" />
     <None Include="Data Access\Entity Framework\数据读取器与指定的Patient不兼容。某个类型“id”的成员在同名的数据读取器中没有对应列.md" />
     <None Include="Data Access\Linq\Linq Extension method for Join.md" />
     <None Include="Data Access\Linq\LINQ 之 JOIN.md" />
     <None Include="Data Access\Sql Server\CSharp和sqlserver中生成新的32位GUID.md" />
+    <None Include="Data Access\Sql Server\Sqlserver：timestamp数据类 .md" />
+    <None Include="Data Access\Sql Server\使用sa账号登录.md" />
     <None Include="Data Access\Sql\SQL删除重复数据方法.md" />
+    <None Include="Data Access\Sql\关于SQL语句中SUM函数返回NULL的解决办法.md" />
+    <None Include="Design\API Design\API 设计规范.md" />
     <None Include="Design\Data Access for Highly-Scalable Solutions\Data Access for Highly-Scalable Solutions.md" />
     <None Include="Design\Database Design\Database Design.md" />
     <None Include="Design\Database Design\GUID varchar%2836%29 versus uniqueidentifier.md" />
