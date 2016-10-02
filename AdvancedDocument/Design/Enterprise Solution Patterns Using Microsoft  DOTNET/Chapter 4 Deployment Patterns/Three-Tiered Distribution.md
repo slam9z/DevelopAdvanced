@@ -1,0 +1,1 @@
+﻿[Three-Tiered Distribution](https://msdn.microsoft.com/en-us/library/ff647546.aspx)

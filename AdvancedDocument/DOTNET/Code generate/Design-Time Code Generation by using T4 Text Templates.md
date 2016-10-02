@@ -1,0 +1,1 @@
+﻿[Design-Time Code Generation by using T4 Text Templates](https://msdn.microsoft.com/en-us/library/dd820620.aspx )

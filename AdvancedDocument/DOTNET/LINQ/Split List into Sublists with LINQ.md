@@ -1,0 +1,1 @@
+﻿[Split List into Sublists with LINQ](http://stackoverflow.com/questions/419019/split-list-into-sublists-with-linq)

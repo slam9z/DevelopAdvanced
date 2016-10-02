@@ -1,0 +1,1 @@
+﻿[我所知道的几种display:table-cell的应用](http://www.zhangxinxu.com/wordpress/2010/10/%e6%88%91%e6%89%80%e7%9f%a5%e9%81%93%e7%9a%84%e5%87%a0%e7%a7%8ddisplaytable-cell%e7%9a%84%e5%ba%94%e7%94%a8/)
