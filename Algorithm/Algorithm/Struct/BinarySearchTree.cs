@@ -12,6 +12,7 @@ namespace Algorithm.Struct
 		{
 
 		}
+
 		public BinarySearchTree(BinaryTreeNode<T> root) : base(root)
 		{
 
