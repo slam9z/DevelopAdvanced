@@ -15,5 +15,17 @@ namespace Algorithm.Struct
 	public class RedBlackTreeNode<T> : BinaryTreeNode<T>
 	{
 		public NodeColor Color { get; set; }
+
+		public RedBlackTreeNode()
+		{
+
+		}
+
+		public RedBlackTreeNode(T data)
+		{
+			Data = data;
+		}
 	}
+
+
 }

@@ -21,6 +21,41 @@ namespace Algorithm.Struct
 
 		}
 
+		public RedBlackTree(BinaryTreeNode<T> root) : base(root)
+		{
+
+		}
+
+		public override void Create(IEnumerable<T> datas)
+		{
+			foreach (var data in datas)
+			{
+				var node = new RedBlackTreeNode<T>(data);
+				Insert(node);
+			}
+		}
+
+		public void ReplaceNullToEmpty()
+		{
+
+			Inorder(Root,
+				(node) =>
+				{
+					if (node.Parent == null)
+					{
+						node.Parent = Empty;
+					}
+					if (node.Left == null)
+					{
+						node.Left = Empty;
+					}
+					if (node.Right == null)
+					{
+						node.Right = Empty;
+					}
+				});
+		}
+
 
 		#region Rotate  //看着图写步骤，并不是太复杂的逻辑
 

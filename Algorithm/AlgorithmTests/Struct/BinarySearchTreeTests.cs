@@ -12,7 +12,7 @@ namespace Algorithm.Struct.Tests
 	[TestClass()]
 	public class BinarySearchTreeTests
 	{
-		private IEnumerable<int> TreeData1 = new List<int>
+		protected IEnumerable<int> TreeData1 = new List<int>
 		{
 			2,3,7,5,4,8
 		};
@@ -39,7 +39,7 @@ namespace Algorithm.Struct.Tests
 			return tree;
 		}
 
-		private void PrintTree(BinarySearchTree<int> tree)
+		protected void PrintTree(BinarySearchTree<int> tree)
 		{
 			tree.Inorder
 			(tree.Root

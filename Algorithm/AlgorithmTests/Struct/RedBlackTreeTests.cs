@@ -9,8 +9,31 @@ using System.Threading.Tasks;
 namespace Algorithm.Struct.Tests
 {
 	[TestClass()]
-	public class RedBlackTreeTests
+	public class RedBlackTreeTests:BinarySearchTreeTests
 	{
+		private BinarySearchTree<int> CreateTree1()
+		{
+			var root = new BinaryTreeNode<int>(2)
+			{
+				Right = new BinaryTreeNode<int>(3)
+				{
+					Right = new BinaryTreeNode<int>(7)
+					{
+						Left = new BinaryTreeNode<int>(5)
+						{
+							Left = new BinaryTreeNode<int>(4),
+						},
+						Right = new BinaryTreeNode<int>(8),
+					}
+				},
+			};
+
+			var tree = new RedBlackTree<int>(root);
+			tree.SetNodeParent();
+			tree.ReplaceNullToEmpty();
+			return tree;
+		}
+
 		[TestMethod()]
 		public void RedBlackTreeTest()
 		{
@@ -22,6 +45,8 @@ namespace Algorithm.Struct.Tests
 			CheckRoot(tree);
 			CheckRedNode(tree);
 		}
+
+
 
 		public void CheckRoot(RedBlackTree<int> tree)
 		{
@@ -43,11 +68,32 @@ namespace Algorithm.Struct.Tests
 			);
 		}
 
-
-
 		private RedBlackTreeNode<int> GetRedBlackTreeNode(BinaryTreeNode<int> node)
 		{
 			return node as RedBlackTreeNode<int>;
+		}
+
+		[TestMethod]
+		public void RotaleTest()
+		{
+			var tree = CreateTree1() as RedBlackTree<int>;
+		
+			var node3 = tree.Search(tree.Root, 3);
+			var node7 = tree.Search(tree.Root, 7);
+
+			tree.LeftRotate(node3);
+			PrintTree(tree);
+
+			tree.RightRotate(node3);
+			PrintTree(tree);
+
+
+			tree.LeftRotate(node7);
+			PrintTree(tree);
+
+			tree.RightRotate(node7);
+			PrintTree(tree);
+
 		}
 	}
 }
