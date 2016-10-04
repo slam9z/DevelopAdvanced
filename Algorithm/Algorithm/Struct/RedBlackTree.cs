@@ -35,10 +35,13 @@ namespace Algorithm.Struct
 			}
 		}
 
+		/// <summary>
+		/// 各种遍历还是很有用的，很多操作需要换操作类型。
+		/// </summary>
 		public void ReplaceNullToEmpty()
 		{
 
-			Inorder(Root,
+			Postorder(Root,
 				(node) =>
 				{
 					if (node.Parent == null)
