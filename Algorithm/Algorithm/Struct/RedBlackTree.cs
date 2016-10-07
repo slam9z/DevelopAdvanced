@@ -225,6 +225,120 @@ namespace Algorithm.Struct
 				node.Data = deleteNode.Data;
 			}
 
+			if (deleteNode.Color == NodeColor.Black)
+			{
+				DeleteFixup(deleteNodeChild);
+			}
+
+		}
+
+		private void DeleteFixup(RedBlackTreeNode<T> node)
+		{
+			while (node != Root && node.Color == NodeColor.Black)
+			{
+				#region left
+				if (node == node.Parent.Left)
+				{
+					#region case1   brother is red
+
+					var brother = DowntoRedBlackTreeNode(node.Parent.Right);
+					if (brother.Color == NodeColor.Red)
+					{
+						brother.Color = NodeColor.Black;
+						node.GetParentNode().Color = NodeColor.Red;
+						LeftRotate(node.GetParentNode());
+						brother = DowntoRedBlackTreeNode(node.GetParentNode().Right);
+					}
+
+					#endregion
+
+					#region brother  child  all  black
+
+					if (DowntoRedBlackTreeNode(brother.Left).Color == NodeColor.Black
+						&& DowntoRedBlackTreeNode(brother.Right).Color == NodeColor.Black)
+					{
+						brother.Color = NodeColor.Red;
+						node = node.GetParentNode();
+					}
+
+					#endregion
+
+					#region brother  left child  is red  right child is black
+
+					else if (DowntoRedBlackTreeNode(brother.Left).Color == NodeColor.Black
+					&& DowntoRedBlackTreeNode(brother.Right).Color == NodeColor.Red)
+					{
+						brother.Color = NodeColor.Red;
+						RightRotate(brother);
+						brother = DowntoRedBlackTreeNode(node.Parent.Right);
+					}
+
+					#endregion
+
+					else
+					{
+						brother.Color = node.GetParentNode().Color;
+						node.GetParentNode().Color = NodeColor.Black;
+						DowntoRedBlackTreeNode(brother.Right).Color = NodeColor.Black;
+						LeftRotate(node.GetParentNode());
+						node = DowntoRedBlackTreeNode(Root);
+					}
+				}
+				#endregion
+
+				#region right
+				else
+				{
+					#region case1   brother is red
+
+					var brother = DowntoRedBlackTreeNode(node.Parent.Left);
+					if (brother.Color == NodeColor.Red)
+					{
+						brother.Color = NodeColor.Black;
+						node.GetParentNode().Color = NodeColor.Red;
+						RightRotate(node.GetParentNode());
+						brother = DowntoRedBlackTreeNode(node.GetParentNode().Left);
+					}
+
+					#endregion
+
+					#region brother  child  all  black
+
+					if (DowntoRedBlackTreeNode(brother.Left).Color == NodeColor.Black
+						&& DowntoRedBlackTreeNode(brother.Right).Color == NodeColor.Black)
+					{
+						brother.Color = NodeColor.Red;
+						node = node.GetParentNode();
+					}
+
+					#endregion
+
+					#region brother  left child  is red  right child is black
+
+					else if (DowntoRedBlackTreeNode(brother.Right).Color == NodeColor.Black
+					&& DowntoRedBlackTreeNode(brother.Left).Color == NodeColor.Red)
+					{
+						brother.Color = NodeColor.Red;
+						RightRotate(brother);
+						brother = DowntoRedBlackTreeNode(node.Parent.Left);
+					}
+
+					#endregion
+
+					else
+					{
+						brother.Color = node.GetParentNode().Color;
+						node.GetParentNode().Color = NodeColor.Black;
+						DowntoRedBlackTreeNode(brother.Left).Color = NodeColor.Black;
+						RightRotate(node.GetParentNode());
+						node = DowntoRedBlackTreeNode(Root);
+					}
+
+				}
+
+				#endregion
+			}
+			node.Color = NodeColor.Black;
 		}
 
 		/// <summary>

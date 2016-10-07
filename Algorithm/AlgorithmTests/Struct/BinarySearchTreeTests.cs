@@ -48,6 +48,18 @@ namespace Algorithm.Struct.Tests
 			Console.WriteLine("");
 		}
 
+		protected IEnumerable<int> GetRandomData()
+		{
+			var random = new Random();
+			var length = random.Next(1, 1000);
+			var data = new List<int>(length);
+			for (int i = 0; i < length; i++)
+			{
+				data.Add(random.Next(1, 1000));
+			}
+			return data;
+		}
+
 		protected void PrintNode(BinaryTreeNode<int> node)
 		{
 			Console.Write("{0} ", node.Data);

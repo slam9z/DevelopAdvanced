@@ -35,7 +35,7 @@ namespace Algorithm.Struct.Tests
 			return tree;
 		}
 
-	
+
 
 		private void CheckRedBlackTree(RedBlackTree<int> tree)
 		{
@@ -114,30 +114,55 @@ namespace Algorithm.Struct.Tests
 			}
 		}
 
+		private IEnumerable<int> TreeData2 = new List<int>()
+		{
+			571,  395,  567,  417,  88,  539,  877,  16,  842,  425,
+		};
+
 		[TestMethod()]
 		public void RebBlackDeleteTest()
 		{
 			//4报错
+			//RebBlackDelete(TreeData1);
 
+			//for (int i = 0; i < 10; i++)
+			//{
+			//	RebBlackDelete(GetRandomData().Take(10));
+			//}
+
+			RebBlackDelete(TreeData2);
+		}
+
+
+		private void RebBlackDelete(IEnumerable<int> datas)
+		{
 			var tree = new RedBlackTree<int>();
-			foreach (var data in TreeData1)
+			foreach (var data in datas)
 			{
 				var node = new RedBlackTreeNode<int>(data);
 				tree.Insert(node);
-
-				CheckRedBlackTree(tree);
-			}
-
-
-			foreach (var data in TreeData1)
-			{
-				var node = tree.Search(tree.Root,data);
-				tree.Delete(node);
-				PrintTree(tree);
 				//CheckRedBlackTree(tree);
 			}
+			Console.WriteLine("new tree data");
+			foreach (var d in datas)
+			{
+				Console.Write("{0}  ", d);
+			}
 
+			foreach (var data in datas)
+			{
+				var node = tree.Search(tree.Root, data);
 
+				Console.WriteLine("delete node");
+				PrintNode(node);
+
+				tree.Delete(node);
+				PrintTree(tree);
+				CheckRedBlackTree(tree);
+			}
 		}
+
+
+
 	}
 }
