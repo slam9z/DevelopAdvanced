@@ -18,7 +18,7 @@ namespace Algorithm.Struct
 
 		public RedBlackTree()
 		{
-
+			Root = Empty;
 		}
 
 		public RedBlackTree(BinaryTreeNode<T> root) : base(root)
@@ -33,6 +33,59 @@ namespace Algorithm.Struct
 				var node = new RedBlackTreeNode<T>(data);
 				Insert(node);
 			}
+		}
+
+		public void Insert(RedBlackTreeNode<T> newNode)
+		{
+			var positionNode = Root;
+			var parentNode = positionNode;
+
+			while (positionNode != Empty)
+			{
+				parentNode = positionNode;
+
+				if (positionNode.Data.CompareTo(newNode.Data) > 0
+					)
+				{
+					positionNode = positionNode.Left;
+				}
+
+				else
+				{
+					positionNode = positionNode.Right;
+				}
+			}
+
+
+			if (parentNode == Empty)
+			{
+				newNode.Parent = Empty;
+				Root = newNode;
+			}
+			else
+			{
+				newNode.Parent = parentNode;
+				if (parentNode.Data.CompareTo(newNode.Data) > 0)
+				{
+					parentNode.Left = newNode;
+				}
+				else
+				{
+					parentNode.Right = newNode;
+				}
+			}
+
+
+			newNode.Left = Empty;
+			newNode.Right = Empty;
+			newNode.Color = NodeColor.Red;
+
+
+		}
+
+		private void InsertFixup(RedBlackTreeNode<T> fixupNode)
+		{
+
 		}
 
 		/// <summary>

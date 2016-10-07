@@ -13,24 +13,25 @@ namespace Algorithm.Struct.Tests
 	{
 		private BinarySearchTree<int> CreateTree1()
 		{
-			var root = new BinaryTreeNode<int>(2)
-			{
-				Right = new BinaryTreeNode<int>(3)
-				{
-					Right = new BinaryTreeNode<int>(7)
-					{
-						Left = new BinaryTreeNode<int>(5)
-						{
-							Left = new BinaryTreeNode<int>(4),
-						},
-						Right = new BinaryTreeNode<int>(8),
-					}
-				},
-			};
+			//var root = new BinaryTreeNode<int>(2)
+			//{
+			//	Right = new BinaryTreeNode<int>(3)
+			//	{
+			//		Right = new BinaryTreeNode<int>(7)
+			//		{
+			//			Left = new BinaryTreeNode<int>(5)
+			//			{
+			//				Left = new BinaryTreeNode<int>(4),
+			//			},
+			//			Right = new BinaryTreeNode<int>(8),
+			//		}
+			//	},
+			//};
 
-			var tree = new RedBlackTree<int>(root);
-			tree.SetNodeParent();
-			tree.ReplaceNullToEmpty();
+			var tree = new RedBlackTree<int>();
+			tree.Create(TreeData1);
+		//	tree.SetNodeParent();
+		//	tree.ReplaceNullToEmpty();
 			return tree;
 		}
 
