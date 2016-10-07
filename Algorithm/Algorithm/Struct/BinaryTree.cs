@@ -30,7 +30,22 @@ namespace Algorithm.Struct
 
 		public virtual void Delete(BinaryTreeNode<T> node)
 		{
-			
+
+		}
+
+		protected bool IsEmpty(BinaryTreeNode<T> node)
+		{
+			if (node == null)
+			{
+				return true;
+			}
+			var maybeEmptyNode = node as IEmptyNodeInterface;
+
+			if (maybeEmptyNode != null && maybeEmptyNode.IsEmpty)
+			{
+				return true;
+			}
+			return false;
 		}
 
 		/// <summary>
@@ -40,7 +55,7 @@ namespace Algorithm.Struct
 		//TODO:应该使用动词·
 		public void Postorder(BinaryTreeNode<T> node, Action<BinaryTreeNode<T>> action)
 		{
-			if (node != null)
+			if (!IsEmpty(node))
 			{
 				Postorder(node.Left, action);
 				Postorder(node.Right, action);
@@ -55,7 +70,7 @@ namespace Algorithm.Struct
 		/// <param name="action"></param>
 		public void Preorder(BinaryTreeNode<T> node, Action<BinaryTreeNode<T>> action)
 		{
-			if (node != null)
+			if (!IsEmpty(node))
 			{
 				action(node);
 				Preorder(node.Left, action);
@@ -70,7 +85,7 @@ namespace Algorithm.Struct
 		/// <param name="action"></param>
 		public void Inorder(BinaryTreeNode<T> node, Action<BinaryTreeNode<T>> action)
 		{
-			if (node != null)
+			if (!IsEmpty(node))
 			{
 				Inorder(node.Left, action);
 				action(node);

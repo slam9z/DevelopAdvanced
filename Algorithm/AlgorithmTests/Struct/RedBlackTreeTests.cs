@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Algorithm.Struct.Tests
 {
 	[TestClass()]
-	public class RedBlackTreeTests:BinarySearchTreeTests
+	public class RedBlackTreeTests : BinarySearchTreeTests
 	{
 		private BinarySearchTree<int> CreateTree1()
 		{
@@ -30,16 +30,12 @@ namespace Algorithm.Struct.Tests
 
 			var tree = new RedBlackTree<int>();
 			tree.Create(TreeData1);
-		//	tree.SetNodeParent();
-		//	tree.ReplaceNullToEmpty();
+			//	tree.SetNodeParent();
+			//	tree.ReplaceNullToEmpty();
 			return tree;
 		}
 
-		[TestMethod()]
-		public void RedBlackTreeTest()
-		{
-			Assert.Fail();
-		}
+	
 
 		private void CheckRedBlackTree(RedBlackTree<int> tree)
 		{
@@ -57,6 +53,7 @@ namespace Algorithm.Struct.Tests
 
 		public void CheckRedNode(RedBlackTree<int> tree)
 		{
+			Console.WriteLine("CheckRedNode Start");
 			tree.Inorder(tree.Root, (node) =>
 			 {
 				 var redBlackNode = node as RedBlackTreeNode<int>;
@@ -65,8 +62,12 @@ namespace Algorithm.Struct.Tests
 					 Assert.AreEqual(GetRedBlackTreeNode(redBlackNode.Right).Color, NodeColor.Black);
 					 Assert.AreEqual(GetRedBlackTreeNode(redBlackNode.Left).Color, NodeColor.Black);
 				 }
+				 PrintNode(redBlackNode);
 			 }
 			);
+
+			Console.WriteLine("CheckRedNode End");
+
 		}
 
 		private RedBlackTreeNode<int> GetRedBlackTreeNode(BinaryTreeNode<int> node)
@@ -78,7 +79,7 @@ namespace Algorithm.Struct.Tests
 		public void RotaleTest()
 		{
 			var tree = CreateTree1() as RedBlackTree<int>;
-		
+
 			var node3 = tree.Search(tree.Root, 3);
 			var node7 = tree.Search(tree.Root, 7);
 
@@ -95,6 +96,22 @@ namespace Algorithm.Struct.Tests
 			tree.RightRotate(node7);
 			PrintTree(tree);
 
+		}
+
+		//有啥好的好图工具？
+		[TestMethod()]
+		public void RebBlackInsertTest()
+		{
+			//4报错
+
+			var tree = new RedBlackTree<int>();
+			foreach (var data in TreeData1)
+			{
+				var node = new RedBlackTreeNode<int>(data);
+				tree.Insert(node);
+
+				CheckRedBlackTree(tree);
+			}
 		}
 	}
 }

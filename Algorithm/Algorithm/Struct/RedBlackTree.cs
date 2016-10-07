@@ -12,7 +12,8 @@ namespace Algorithm.Struct
 		public static RedBlackTreeNode<T> Empty { get; set; }
 			= new RedBlackTreeNode<T>()
 			{
-				Color = NodeColor.Black
+				Color = NodeColor.Black,
+				IsEmpty = true,
 			};
 
 
@@ -35,12 +36,14 @@ namespace Algorithm.Struct
 			}
 		}
 
+
+
 		public void Insert(RedBlackTreeNode<T> newNode)
 		{
 			var positionNode = Root;
 			var parentNode = positionNode;
 
-			while (positionNode != Empty)
+			while (!IsEmpty(positionNode))
 			{
 				parentNode = positionNode;
 
@@ -57,7 +60,7 @@ namespace Algorithm.Struct
 			}
 
 
-			if (parentNode == Empty)
+			if (IsEmpty(parentNode))
 			{
 				newNode.Parent = Empty;
 				Root = newNode;
@@ -79,13 +82,83 @@ namespace Algorithm.Struct
 			newNode.Left = Empty;
 			newNode.Right = Empty;
 			newNode.Color = NodeColor.Red;
-
+			InsertFixup(newNode);
 
 		}
 
 		private void InsertFixup(RedBlackTreeNode<T> fixupNode)
 		{
 
+			while (fixupNode.GetParentNode().Color == NodeColor.Red)
+			{
+				var parent = fixupNode.GetParentNode();
+				var grandfather = parent.GetParentNode();
+
+				if (parent == grandfather.Left)
+				{
+					var uncle = DowntoRedBlackTreeNode(grandfather.Right);
+
+					#region case 1 red up
+					if (uncle.Color == NodeColor.Red)
+					{
+						parent.Color = NodeColor.Black;
+						uncle.Color = NodeColor.Black;
+						grandfather.Color = NodeColor.Red;
+						fixupNode = grandfather;
+					}
+
+					#endregion
+
+					else
+					{
+						if (fixupNode == parent.Right)
+						{
+							fixupNode = fixupNode.GetParentNode();
+							LeftRotate(fixupNode);
+						}
+
+						fixupNode.GetParentNode().Color = NodeColor.Black;
+						var tempGrandfather = fixupNode.GetParentNode().GetParentNode();
+						tempGrandfather.Color = NodeColor.Red;
+
+						RightRotate(tempGrandfather);
+					}
+				}
+				else
+				{
+					var uncle = DowntoRedBlackTreeNode(grandfather.Left);
+
+					#region case 1 red up
+					if (uncle.Color == NodeColor.Red)
+					{
+						parent.Color = NodeColor.Black;
+						uncle.Color = NodeColor.Black;
+						grandfather.Color = NodeColor.Red;
+						fixupNode = grandfather;
+					}
+
+					#endregion
+
+					else
+					{
+						if (fixupNode == parent.Left)
+						{
+							fixupNode = fixupNode.GetParentNode();
+							RightRotate(fixupNode);
+						}
+
+						fixupNode.GetParentNode().Color = NodeColor.Black;
+						var tempGrandfather = fixupNode.GetParentNode().GetParentNode();
+						tempGrandfather.Color = NodeColor.Red;
+
+						LeftRotate(tempGrandfather);
+					}
+				}
+			}
+
+			var root = DowntoRedBlackTreeNode(Root);
+			//保证性质2
+			root.Color = NodeColor.Black;
 		}
 
 		/// <summary>
@@ -133,11 +206,11 @@ namespace Algorithm.Struct
 			targetNode.Parent = sourceNode.Parent;
 
 			//漏掉的逻辑,设置parent引用
-			if (sourceNode.Parent == Empty)
+			if (IsEmpty(sourceNode.Parent))
 			{
 				Root = targetNode;
 			}
-			else if (sourceNode == sourceNode.Parent.Left)
+			else if (sourceNode == targetNode.Parent.Left)
 			{
 				sourceNode.Parent.Left = targetNode;
 			}
@@ -159,36 +232,36 @@ namespace Algorithm.Struct
 
 		public void RightRotate(BinaryTreeNode<T> sourceNode)
 		{
-			var targetNode = sourceNode.Parent;
+			var targetNode = sourceNode.Left;
 
-			#region 使source的right节点成为target的left节点
+			#region 使target的right节点成为source的left节点
 
-			targetNode.Left = sourceNode.Right;
+			sourceNode.Left = targetNode.Right;
 			sourceNode.Right.Parent = targetNode;
 
 			#endregion
 
-			#region 使source的成为target的parent node
+			#region 使target的成为source的parent node
 
-			sourceNode.Parent = targetNode.Parent;
+			targetNode.Parent = sourceNode.Parent;
 
 			//设置parent的引用
-			if (targetNode.Parent == Empty)
+			if (IsEmpty(sourceNode.Parent))
 			{
-				Root = sourceNode;
+				Root = targetNode;
 			}
-			else if (targetNode.Parent.Right == targetNode)
+			else if (targetNode.Parent.Right == sourceNode)
 			{
-				targetNode.Parent.Right = sourceNode;
+				sourceNode.Parent.Right = targetNode;
 			}
 			else
 			{
-				targetNode.Parent.Left = sourceNode;
+				sourceNode.Parent.Left = targetNode;
 			}
 
-			sourceNode.Right = targetNode;
+			targetNode.Right = sourceNode;
 
-			targetNode.Parent = sourceNode;
+			sourceNode.Parent =targetNode;
 
 			#endregion
 
@@ -196,6 +269,13 @@ namespace Algorithm.Struct
 
 
 		#endregion
+
+
+		public RedBlackTreeNode<T> DowntoRedBlackTreeNode(BinaryTreeNode<T> node)
+		{
+			return node as RedBlackTreeNode<T>;
+		}
+
 	}
 
 

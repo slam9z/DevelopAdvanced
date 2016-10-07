@@ -48,6 +48,11 @@ namespace Algorithm.Struct.Tests
 			Console.WriteLine("");
 		}
 
+		protected void PrintNode(BinaryTreeNode<int> node)
+		{
+			Console.Write("{0} ", node.Data);
+		}
+
 		[TestMethod()]
 		public void CreateTest()
 		{
@@ -124,7 +129,7 @@ namespace Algorithm.Struct.Tests
 			Console.WriteLine("delete {0}", node7.Data);
 			tree1_2.Delete(node7);
 			//Assert.AreEqual(node7_d, node7);
-		
+
 			PrintTree(tree1_2);
 
 			//var tree1_3 = CreateTree1();

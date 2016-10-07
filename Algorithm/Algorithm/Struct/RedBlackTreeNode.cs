@@ -12,9 +12,14 @@ namespace Algorithm.Struct
 		Red = 1,
 	}
 
-	public class RedBlackTreeNode<T> : BinaryTreeNode<T>
+	public class RedBlackTreeNode<T> : BinaryTreeNode<T>,IEmptyNodeInterface
 	{
 		public NodeColor Color { get; set; }
+
+		public bool IsEmpty
+		{
+			get;set;
+		}
 
 		public RedBlackTreeNode()
 		{
@@ -24,6 +29,11 @@ namespace Algorithm.Struct
 		public RedBlackTreeNode(T data)
 		{
 			Data = data;
+		}
+
+		public RedBlackTreeNode<T> GetParentNode()
+		{
+			return Parent as RedBlackTreeNode<T>;
 		}
 	}
 
