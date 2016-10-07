@@ -98,7 +98,7 @@ namespace Algorithm.Struct
 				{
 					var uncle = DowntoRedBlackTreeNode(grandfather.Right);
 
-					#region case 1 red up
+					#region //case 1 uncle is red then red up
 					if (uncle.Color == NodeColor.Red)
 					{
 						parent.Color = NodeColor.Black;
@@ -111,18 +111,25 @@ namespace Algorithm.Struct
 
 					else
 					{
+						#region // case 2  uncle is black, node is right 
 						if (fixupNode == parent.Right)
 						{
 							fixupNode = fixupNode.GetParentNode();
 							LeftRotate(fixupNode);
 						}
+						#endregion
+
+						#region // case 2  uncle is black, node is left 
 
 						fixupNode.GetParentNode().Color = NodeColor.Black;
 						var tempGrandfather = fixupNode.GetParentNode().GetParentNode();
 						tempGrandfather.Color = NodeColor.Red;
 
 						RightRotate(tempGrandfather);
+
+						#endregion
 					}
+
 				}
 				else
 				{
