@@ -12,13 +12,28 @@ namespace Algorithm.Struct
 		Red = 1,
 	}
 
-	public class RedBlackTreeNode<T> : BinaryTreeNode<T>,IEmptyNodeInterface
+	public static class BinaryTreeNodeExtentions
+	{
+
+		public static RedBlackTreeNode<T> ToRedBlackTreeNode<T>(this BinaryTreeNode<T> node)
+		{
+			var rebBlackNode = node as RedBlackTreeNode<T>;
+			if (rebBlackNode != null)
+			{
+				return rebBlackNode;
+			}
+
+			throw new InvalidCastException(" node can't cast to RedBlackTreeNode");
+		}
+	}
+
+	public class RedBlackTreeNode<T> : BinaryTreeNode<T>, IEmptyNodeInterface
 	{
 		public NodeColor Color { get; set; }
 
 		public bool IsEmpty
 		{
-			get;set;
+			get; set;
 		}
 
 		public RedBlackTreeNode()

@@ -47,7 +47,7 @@ namespace Algorithm.Struct.Tests
 
 		public void CheckRoot(RedBlackTree<int> tree)
 		{
-			Assert.AreEqual(GetRedBlackTreeNode(tree.Root).Color, NodeColor.Black);
+			Assert.AreEqual(tree.Root.ToRedBlackTreeNode().Color, NodeColor.Black);
 		}
 
 
@@ -59,8 +59,8 @@ namespace Algorithm.Struct.Tests
 				 var redBlackNode = node as RedBlackTreeNode<int>;
 				 if (redBlackNode.Color == NodeColor.Red)
 				 {
-					 Assert.AreEqual(GetRedBlackTreeNode(redBlackNode.Right).Color, NodeColor.Black);
-					 Assert.AreEqual(GetRedBlackTreeNode(redBlackNode.Left).Color, NodeColor.Black);
+					 Assert.AreEqual(redBlackNode.Right.ToRedBlackTreeNode().Color, NodeColor.Black);
+					 Assert.AreEqual(redBlackNode.Left.ToRedBlackTreeNode().Color, NodeColor.Black);
 				 }
 				 PrintNode(redBlackNode);
 			 }
@@ -70,10 +70,6 @@ namespace Algorithm.Struct.Tests
 
 		}
 
-		private RedBlackTreeNode<int> GetRedBlackTreeNode(BinaryTreeNode<int> node)
-		{
-			return node as RedBlackTreeNode<int>;
-		}
 
 		[TestMethod]
 		public void RotaleTest()

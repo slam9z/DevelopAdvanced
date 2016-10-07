@@ -36,6 +36,8 @@ namespace Algorithm.Struct
 			}
 		}
 
+		#region insert
+
 		public override void Insert(BinaryTreeNode<T> newNode)
 		{
 			Insert(newNode as RedBlackTreeNode<T>);
@@ -99,7 +101,7 @@ namespace Algorithm.Struct
 
 				if (parent == grandfather.Left)
 				{
-					var uncle = DowntoRedBlackTreeNode(grandfather.Right);
+					var uncle = grandfather.Right.ToRedBlackTreeNode();
 
 					#region //case 1 uncle is red then red up
 					if (uncle.Color == NodeColor.Red)
@@ -136,7 +138,7 @@ namespace Algorithm.Struct
 				}
 				else
 				{
-					var uncle = DowntoRedBlackTreeNode(grandfather.Left);
+					var uncle = grandfather.Left.ToRedBlackTreeNode();
 
 					#region case 1 red up
 					if (uncle.Color == NodeColor.Red)
@@ -166,10 +168,14 @@ namespace Algorithm.Struct
 				}
 			}
 
-			var root = DowntoRedBlackTreeNode(Root);
+			var root = Root.ToRedBlackTreeNode();
 			//保证性质2
 			root.Color = NodeColor.Black;
 		}
+
+		#endregion
+
+		#region delete
 
 		public override void Delete(BinaryTreeNode<T> node)
 		{
@@ -188,17 +194,17 @@ namespace Algorithm.Struct
 			}
 			else
 			{
-				deleteNode = DowntoRedBlackTreeNode(Successor(node));
+				deleteNode = Successor(node).ToRedBlackTreeNode();
 			}
 
 
 			if (!IsEmpty(deleteNode.Left))
 			{
-				deleteNodeChild = DowntoRedBlackTreeNode(deleteNode.Left);
+				deleteNodeChild = deleteNode.Left.ToRedBlackTreeNode();
 			}
 			else
 			{
-				deleteNodeChild = DowntoRedBlackTreeNode(deleteNode.Right);
+				deleteNodeChild = deleteNode.Right.ToRedBlackTreeNode();
 			}
 
 
@@ -241,21 +247,21 @@ namespace Algorithm.Struct
 				{
 					#region case1   brother is red
 
-					var brother = DowntoRedBlackTreeNode(node.Parent.Right);
+					var brother = node.Parent.Right.ToRedBlackTreeNode();
 					if (brother.Color == NodeColor.Red)
 					{
 						brother.Color = NodeColor.Black;
 						node.GetParentNode().Color = NodeColor.Red;
 						LeftRotate(node.GetParentNode());
-						brother = DowntoRedBlackTreeNode(node.GetParentNode().Right);
+						brother = node.GetParentNode().Right.ToRedBlackTreeNode();
 					}
 
 					#endregion
 
 					#region brother  child  all  black
 
-					if (DowntoRedBlackTreeNode(brother.Left).Color == NodeColor.Black
-						&& DowntoRedBlackTreeNode(brother.Right).Color == NodeColor.Black)
+					if (brother.Left.ToRedBlackTreeNode().Color == NodeColor.Black
+						&& brother.Right.ToRedBlackTreeNode().Color == NodeColor.Black)
 					{
 						brother.Color = NodeColor.Red;
 						node = node.GetParentNode();
@@ -265,12 +271,12 @@ namespace Algorithm.Struct
 
 					#region brother  left child  is red  right child is black
 
-					else if (DowntoRedBlackTreeNode(brother.Left).Color == NodeColor.Black
-					&& DowntoRedBlackTreeNode(brother.Right).Color == NodeColor.Red)
+					else if (brother.Left.ToRedBlackTreeNode().Color == NodeColor.Black
+					&& brother.Right.ToRedBlackTreeNode().Color == NodeColor.Red)
 					{
 						brother.Color = NodeColor.Red;
 						RightRotate(brother);
-						brother = DowntoRedBlackTreeNode(node.Parent.Right);
+						brother = node.Parent.Right.ToRedBlackTreeNode();
 					}
 
 					#endregion
@@ -279,9 +285,9 @@ namespace Algorithm.Struct
 					{
 						brother.Color = node.GetParentNode().Color;
 						node.GetParentNode().Color = NodeColor.Black;
-						DowntoRedBlackTreeNode(brother.Right).Color = NodeColor.Black;
+						brother.Right.ToRedBlackTreeNode().Color = NodeColor.Black;
 						LeftRotate(node.GetParentNode());
-						node = DowntoRedBlackTreeNode(Root);
+						node = Root.ToRedBlackTreeNode();
 					}
 				}
 				#endregion
@@ -291,21 +297,21 @@ namespace Algorithm.Struct
 				{
 					#region case1   brother is red
 
-					var brother = DowntoRedBlackTreeNode(node.Parent.Left);
+					var brother = node.Parent.Left.ToRedBlackTreeNode();
 					if (brother.Color == NodeColor.Red)
 					{
 						brother.Color = NodeColor.Black;
 						node.GetParentNode().Color = NodeColor.Red;
 						RightRotate(node.GetParentNode());
-						brother = DowntoRedBlackTreeNode(node.GetParentNode().Left);
+						brother = node.GetParentNode().Left.ToRedBlackTreeNode();
 					}
 
 					#endregion
 
 					#region brother  child  all  black
 
-					if (DowntoRedBlackTreeNode(brother.Left).Color == NodeColor.Black
-						&& DowntoRedBlackTreeNode(brother.Right).Color == NodeColor.Black)
+					if (brother.Left.ToRedBlackTreeNode().Color == NodeColor.Black
+						&& brother.Right.ToRedBlackTreeNode().Color == NodeColor.Black)
 					{
 						brother.Color = NodeColor.Red;
 						node = node.GetParentNode();
@@ -315,12 +321,12 @@ namespace Algorithm.Struct
 
 					#region brother  left child  is red  right child is black
 
-					else if (DowntoRedBlackTreeNode(brother.Right).Color == NodeColor.Black
-					&& DowntoRedBlackTreeNode(brother.Left).Color == NodeColor.Red)
+					else if (brother.Right.ToRedBlackTreeNode().Color == NodeColor.Black
+					&& brother.Left.ToRedBlackTreeNode().Color == NodeColor.Red)
 					{
 						brother.Color = NodeColor.Red;
 						RightRotate(brother);
-						brother = DowntoRedBlackTreeNode(node.Parent.Left);
+						brother = node.Parent.Left.ToRedBlackTreeNode();
 					}
 
 					#endregion
@@ -329,9 +335,9 @@ namespace Algorithm.Struct
 					{
 						brother.Color = node.GetParentNode().Color;
 						node.GetParentNode().Color = NodeColor.Black;
-						DowntoRedBlackTreeNode(brother.Left).Color = NodeColor.Black;
+						brother.Left.ToRedBlackTreeNode().Color = NodeColor.Black;
 						RightRotate(node.GetParentNode());
-						node = DowntoRedBlackTreeNode(Root);
+						node = Root.ToRedBlackTreeNode();
 					}
 
 				}
@@ -341,30 +347,7 @@ namespace Algorithm.Struct
 			node.Color = NodeColor.Black;
 		}
 
-		/// <summary>
-		/// 各种遍历还是很有用的，很多操作需要换操作类型。
-		/// </summary>
-		public void ReplaceNullToEmpty()
-		{
-
-			Postorder(Root,
-				(node) =>
-				{
-					if (node.Parent == null)
-					{
-						node.Parent = Empty;
-					}
-					if (node.Left == null)
-					{
-						node.Left = Empty;
-					}
-					if (node.Right == null)
-					{
-						node.Right = Empty;
-					}
-				});
-		}
-
+		#endregion
 
 		#region Rotate  //看着图写步骤，并不是太复杂的逻辑
 
@@ -451,10 +434,31 @@ namespace Algorithm.Struct
 		#endregion
 
 
-		public RedBlackTreeNode<T> DowntoRedBlackTreeNode(BinaryTreeNode<T> node)
+		/// <summary>
+		/// 各种遍历还是很有用的，很多操作需要换操作类型。
+		/// </summary>
+		public void ReplaceNullToEmpty()
 		{
-			return node as RedBlackTreeNode<T>;
+
+			Postorder(Root,
+				(node) =>
+				{
+					if (node.Parent == null)
+					{
+						node.Parent = Empty;
+					}
+					if (node.Left == null)
+					{
+						node.Left = Empty;
+					}
+					if (node.Right == null)
+					{
+						node.Right = Empty;
+					}
+				});
 		}
+
+
 
 	}
 
