@@ -113,5 +113,31 @@ namespace Algorithm.Struct.Tests
 				CheckRedBlackTree(tree);
 			}
 		}
+
+		[TestMethod()]
+		public void RebBlackDeleteTest()
+		{
+			//4报错
+
+			var tree = new RedBlackTree<int>();
+			foreach (var data in TreeData1)
+			{
+				var node = new RedBlackTreeNode<int>(data);
+				tree.Insert(node);
+
+				CheckRedBlackTree(tree);
+			}
+
+
+			foreach (var data in TreeData1)
+			{
+				var node = tree.Search(tree.Root,data);
+				tree.Delete(node);
+				PrintTree(tree);
+				//CheckRedBlackTree(tree);
+			}
+
+
+		}
 	}
 }

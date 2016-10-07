@@ -34,7 +34,7 @@ namespace Algorithm.Struct
 			var positionNode = Root;
 
 			#region //寻找插入的地方
-			while (positionNode != null)
+			while (!IsEmpty(positionNode))
 			{
 				newNodeParent = positionNode;
 				if (newNode.Data.CompareTo(positionNode.Data) > 0)
@@ -52,7 +52,7 @@ namespace Algorithm.Struct
 
 			newNode.Parent = newNodeParent;
 
-			if (newNodeParent == null)
+			if (IsEmpty(newNodeParent))
 			{
 				Root = newNode;
 			}
@@ -66,7 +66,7 @@ namespace Algorithm.Struct
 				{
 					newNodeParent.Left = newNode;
 				}
-			} 
+			}
 			#endregion
 		}
 
@@ -83,7 +83,7 @@ namespace Algorithm.Struct
 
 
 			#region //确定要删除的点
-			if (node.Left == null || node.Right == null)
+			if (IsEmpty(node.Left) || IsEmpty(node.Right))
 			{
 				deleteNode = node;
 			}
@@ -94,7 +94,7 @@ namespace Algorithm.Struct
 			#endregion
 
 			#region //Child
-			if (deleteNode.Left != null)
+			if (!IsEmpty(deleteNode.Left))
 			{
 				deleteNodeChild = deleteNode.Left;
 			}
@@ -107,12 +107,12 @@ namespace Algorithm.Struct
 
 			#region //通过修改指针删除 deleteNode
 
-			if (deleteNodeChild != null)
+			if (!IsEmpty(deleteNodeChild))
 			{
 				deleteNodeChild.Parent = deleteNode.Parent;
 			}
 
-			if (deleteNode.Parent == null)
+			if (IsEmpty(deleteNode.Parent))
 			{
 				Root = deleteNodeChild;
 			}
@@ -140,7 +140,7 @@ namespace Algorithm.Struct
 
 		public BinaryTreeNode<T> Search(BinaryTreeNode<T> node, T data)
 		{
-			if (node == null || node.Data.CompareTo(data) == 0)
+			if (IsEmpty(node) || node.Data.CompareTo(data) == 0)
 			{
 				return node;
 			}
@@ -158,7 +158,7 @@ namespace Algorithm.Struct
 
 		public BinaryTreeNode<T> Minimum(BinaryTreeNode<T> node)
 		{
-			while (node.Left != null)
+			while (!IsEmpty(node.Left))
 			{
 				node = node.Left;
 			}
@@ -168,7 +168,7 @@ namespace Algorithm.Struct
 
 		public BinaryTreeNode<T> Maximum(BinaryTreeNode<T> node)
 		{
-			while (node.Right != null)
+			while (!IsEmpty(node.Right))
 			{
 				node = node.Right;
 			}
@@ -178,12 +178,12 @@ namespace Algorithm.Struct
 
 		public BinaryTreeNode<T> Successor(BinaryTreeNode<T> node)
 		{
-			if (node.Right != null)
+			if (!IsEmpty(node.Right))
 			{
 				return Minimum(node.Right);
 			}
 			var parent = node.Parent;
-			while (parent != null && parent.Right == node)
+			while (!IsEmpty(parent) && parent.Right == node)
 			{
 				node = parent;
 				parent = parent.Parent;
@@ -195,12 +195,12 @@ namespace Algorithm.Struct
 
 		public BinaryTreeNode<T> Predecessor(BinaryTreeNode<T> node)
 		{
-			if (node.Left != null)
+			if (!IsEmpty(node.Left))
 			{
 				return Maximum(node.Left);
 			}
 			var parent = node.Parent;
-			while (parent != null && parent.Left == node)
+			while (!IsEmpty(parent) && parent.Left == node)
 			{
 				node = parent;
 				parent = parent.Parent;

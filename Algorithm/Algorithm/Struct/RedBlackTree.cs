@@ -36,7 +36,10 @@ namespace Algorithm.Struct
 			}
 		}
 
-
+		public override void Insert(BinaryTreeNode<T> newNode)
+		{
+			Insert(newNode as RedBlackTreeNode<T>);
+		}
 
 		public void Insert(RedBlackTreeNode<T> newNode)
 		{
@@ -119,7 +122,7 @@ namespace Algorithm.Struct
 						}
 						#endregion
 
-						#region // case 2  uncle is black, node is left 
+						#region // case 2  uncle is black, node is left。变成一条线再旋转 
 
 						fixupNode.GetParentNode().Color = NodeColor.Black;
 						var tempGrandfather = fixupNode.GetParentNode().GetParentNode();
@@ -166,6 +169,62 @@ namespace Algorithm.Struct
 			var root = DowntoRedBlackTreeNode(Root);
 			//保证性质2
 			root.Color = NodeColor.Black;
+		}
+
+		public override void Delete(BinaryTreeNode<T> node)
+		{
+			Delete(node as RedBlackTreeNode<T>);
+		}
+
+		public void Delete(RedBlackTreeNode<T> node)
+		{
+			RedBlackTreeNode<T> deleteNode;
+			RedBlackTreeNode<T> deleteNodeChild;
+
+
+			if (IsEmpty(node.Left) || IsEmpty(node.Right))
+			{
+				deleteNode = node;
+			}
+			else
+			{
+				deleteNode = DowntoRedBlackTreeNode(Successor(node));
+			}
+
+
+			if (!IsEmpty(deleteNode.Left))
+			{
+				deleteNodeChild = DowntoRedBlackTreeNode(deleteNode.Left);
+			}
+			else
+			{
+				deleteNodeChild = DowntoRedBlackTreeNode(deleteNode.Right);
+			}
+
+
+
+			deleteNodeChild.Parent = deleteNode.Parent;
+
+
+			if (IsEmpty(deleteNodeChild.Parent))
+			{
+				Root = deleteNodeChild;
+			}
+			else if (deleteNodeChild.Parent.Left == deleteNode)
+			{
+				deleteNodeChild.Parent.Left = deleteNodeChild;
+			}
+			else
+			{
+				deleteNodeChild.Parent.Right = deleteNodeChild;
+			}
+
+
+			if (deleteNode != node)
+			{
+				node.Data = deleteNode.Data;
+			}
+
 		}
 
 		/// <summary>
@@ -268,7 +327,7 @@ namespace Algorithm.Struct
 
 			targetNode.Right = sourceNode;
 
-			sourceNode.Parent =targetNode;
+			sourceNode.Parent = targetNode;
 
 			#endregion
 
