@@ -33,7 +33,7 @@ namespace Algorithm.Struct
 
 		}
 
-		protected bool IsEmpty(BinaryTreeNode<T> node)
+		public bool IsEmpty(BinaryTreeNode<T> node)
 		{
 			if (node == null)
 			{

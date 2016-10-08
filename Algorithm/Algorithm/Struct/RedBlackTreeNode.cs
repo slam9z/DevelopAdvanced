@@ -17,6 +17,11 @@ namespace Algorithm.Struct
 
 		public static RedBlackTreeNode<T> ToRedBlackTreeNode<T>(this BinaryTreeNode<T> node)
 		{
+            if (node == null)
+            {
+                return null;
+            }
+
 			var rebBlackNode = node as RedBlackTreeNode<T>;
 			if (rebBlackNode != null)
 			{
@@ -50,7 +55,12 @@ namespace Algorithm.Struct
 		{
 			return Parent as RedBlackTreeNode<T>;
 		}
-	}
+
+        public RedBlackTreeNode<T> GetGrandparentNode()
+        {
+            return GetParentNode().GetParentNode();
+        }
+    }
 
 
 }
