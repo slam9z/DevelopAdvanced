@@ -1,0 +1,1 @@
+﻿[Persistent Data Structures](http://www.codeproject.com/Articles/9680/Persistent-Data-Structures)
