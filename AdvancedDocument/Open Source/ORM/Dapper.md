@@ -16,3 +16,9 @@ was not found. Confirm that the path in the <Import> declaration is correct, and
 解决方法:下载.NET Core 1.0 for Visual Studio 安装 
 
 https://www.microsoft.com/net/core#windows
+
+##dynamic Query
+
+需要使用IDynamicParameters接口或者DynamicParameters类型
+使用dynamic是不可以的。
+
