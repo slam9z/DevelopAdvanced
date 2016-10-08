@@ -14,17 +14,6 @@ namespace Algorithm.Struct
             {
                 Color = NodeColor.Black,
                 IsEmpty = true,
-                //Left = new RedBlackTreeNode<T>()
-                //{
-                //    Color = NodeColor.Black,
-                //    IsEmpty = true,
-                //},
-                //Right = new RedBlackTreeNode<T>()
-                //{
-                //    Color = NodeColor.Black,
-                //    IsEmpty = true,
-                //}
-
             };
 
 
@@ -45,6 +34,27 @@ namespace Algorithm.Struct
                 var node = new RedBlackTreeNode<T>(data);
                 Insert(node);
             }
+        }
+
+        public void CheckNodeParent()
+        {
+            var tree = this;
+            tree.Inorder(tree.Root, (node) =>
+            {
+                if (!tree.IsEmpty(node.Left))
+                {
+                    if (node.Left.Parent != node)
+                    {
+                    }
+
+                }
+                if (!tree.IsEmpty(node.Right))
+                {
+                    if (node.Right.Parent != node)
+                    {
+                    }
+                }
+            });
         }
 
         #region insert
@@ -133,6 +143,7 @@ namespace Algorithm.Struct
                             node = node.GetParentNode();
 
                             LeftRotate(node);
+                            CheckNodeParent();
                         }
                         #endregion
 
@@ -142,6 +153,7 @@ namespace Algorithm.Struct
                         node.GetGrandparentNode().Color = NodeColor.Red;
 
                         RightRotate(node.GetGrandparentNode());
+                        CheckNodeParent();
 
                         #endregion
                     }
@@ -424,7 +436,10 @@ namespace Algorithm.Struct
             #region 使target的right节点成为source的left节点
 
             sourceNode.Left = targetNode.Right;
-            sourceNode.Right.Parent = targetNode;
+            //难怪导致一堆问题
+            // sourceNode.Right.Parent = targetNode;
+            targetNode.Right.Parent = sourceNode;
+
 
             #endregion
 
