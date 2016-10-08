@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Book\Design\Enterprise Solution Patterns using microsoft .net.pdf" />
+    <None Include="Bug and Test\MSTest\Missing compiler required member %27Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo.Create%27.md" />
     <None Include="Bug and Test\Test.md" />
     <None Include="Data Access\ADO.NET\System.ArgumentException 另一个SqlParameterCollection中已包含SqlParameter.md" />
     <None Include="Data Access\Entity Framework\Member Mapping specified is not valid  %28update  edmx%29 .md" />
@@ -91,6 +92,7 @@
     <None Include="DOTNET\CSharp\3.0\anonymous type.md" />
     <None Include="DOTNET\CSharp\4.0\.Net 4.0 之 Dynamic 动态类型.md" />
     <None Include="DOTNET\CSharp\4.0\CSharp 可选参数 命名参数.md" />
+    <None Include="DOTNET\CSharp\4.0\IDictionary to ExpandoObject extension method.md" />
     <None Include="DOTNET\CSharp\4.0\What are the true benefits of ExpandoObject.md" />
     <None Include="DOTNET\CSharp\4.0\使用dynamic和Func实现数据的动态组装%28导出Excel应用%29.md" />
     <None Include="DOTNET\Expression\只是想简单说下表达式树 - Expression Trees.md" />

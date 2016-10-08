@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedDocument", "..\Advanc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringTest", "StringTest\StringTest.csproj", "{A0A7B774-BAFA-4112-BEAC-59D9057181F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "Framework\Framework.csproj", "{79CB6865-2B0F-4211-BBE6-471C17F4CAF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameworkTests", "FrameworkTests\FrameworkTests.csproj", "{F8C114BA-FAFB-4E1C-8C25-F7C54D6F915D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{A0A7B774-BAFA-4112-BEAC-59D9057181F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0A7B774-BAFA-4112-BEAC-59D9057181F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0A7B774-BAFA-4112-BEAC-59D9057181F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79CB6865-2B0F-4211-BBE6-471C17F4CAF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79CB6865-2B0F-4211-BBE6-471C17F4CAF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79CB6865-2B0F-4211-BBE6-471C17F4CAF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79CB6865-2B0F-4211-BBE6-471C17F4CAF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8C114BA-FAFB-4E1C-8C25-F7C54D6F915D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8C114BA-FAFB-4E1C-8C25-F7C54D6F915D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8C114BA-FAFB-4E1C-8C25-F7C54D6F915D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8C114BA-FAFB-4E1C-8C25-F7C54D6F915D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
