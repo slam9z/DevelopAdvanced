@@ -76,29 +76,7 @@ namespace Algorithm.Struct.Tests
         }
 
         //只有父节点出问题，不知道是旋转问题还是插入问题，很无语。
-        public void CheckNodeParent(BinarySearchTree<int> tree)
-        {
-            tree.Inorder(tree.Root, (node) =>
-             {
-                 if (!tree.IsEmpty(node.Left))
-                 {
-                     if(node.Left.Parent!= node)
-                     {
-                     }
-
-                     Assert.AreEqual(node.Left.Parent, node);
-                 }
-                 if (!tree.IsEmpty(node.Right))
-                 {
-                     if (node.Right.Parent != node)
-                     {
-                     }
-
-                     Assert.AreEqual(node.Right.Parent, node);
-                 }
-             });
-        }
-
+    
         [TestMethod()]
         public void CreateTest()
         {

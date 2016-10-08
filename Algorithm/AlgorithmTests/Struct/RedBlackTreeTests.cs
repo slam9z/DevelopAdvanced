@@ -38,39 +38,7 @@ namespace Algorithm.Struct.Tests
 
 
 
-        private void CheckRedBlackTree(RedBlackTree<int> tree)
-        {
-            CheckRoot(tree);
-            CheckRedNode(tree);
-            CheckNodeParent(tree);
-        }
-
-
-        public void CheckRoot(RedBlackTree<int> tree)
-        {
-            Assert.AreEqual(tree.Root.ToRedBlackTreeNode().Color, NodeColor.Black);
-        }
-
-
-        public void CheckRedNode(RedBlackTree<int> tree)
-        {
-            Console.WriteLine("CheckRedNode Start");
-            tree.Inorder(tree.Root, (node) =>
-            {
-                var redBlackNode = node as RedBlackTreeNode<int>;
-                if (redBlackNode.Color == NodeColor.Red)
-                {
-                    Assert.AreEqual(redBlackNode.Right.ToRedBlackTreeNode().Color, NodeColor.Black);
-                    Assert.AreEqual(redBlackNode.Left.ToRedBlackTreeNode().Color, NodeColor.Black);
-                }
-                PrintNode(redBlackNode);
-            }
-            );
-
-            Console.WriteLine("CheckRedNode End");
-
-        }
-
+     
 
         [TestMethod]
         public void RotaleTest()
@@ -88,14 +56,14 @@ namespace Algorithm.Struct.Tests
             {
                 var node = tree.Search(tree.Root, data);
                 tree.LeftRotate(node);
-                CheckNodeParent(tree);
+                ((BinarySearchTree<int>)tree).CheckNodeParent();
             }
 
             foreach (var data in datas)
             {
                 var node = tree.Search(tree.Root, data);
                 tree.RightRotate(node);
-                CheckNodeParent(tree);
+                tree.CheckNodeParent();
             }
         }
 
@@ -119,7 +87,7 @@ namespace Algorithm.Struct.Tests
 
                 tree.Insert(node);
 
-                CheckRedBlackTree(tree);
+                tree.CheckRedBlackTree();
             }
         }
 
@@ -172,7 +140,7 @@ namespace Algorithm.Struct.Tests
 
                 tree.Delete(node);
                 PrintTree(tree);
-                CheckRedBlackTree(tree);
+                tree.CheckRedBlackTree();
             }
         }
 
