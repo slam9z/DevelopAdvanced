@@ -73,6 +73,12 @@ namespace Algorithm.Struct.Tests
         public void RebBlackInsertTest()
         {
             //4报错
+
+            for (int i = 0; i < 10; i++)
+            {
+                RebBlackInsert(GetRandomData().Take(10).ToList());
+            }
+
             RebBlackInsert(TreeData3);
         }
 
@@ -98,14 +104,14 @@ namespace Algorithm.Struct.Tests
             //4报错
             //RebBlackDelete(TreeData1);
 
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    RebBlackDelete(GetRandomData().Take(10).ToList());
-            //}
+            for (int i = 0; i < 10; i++)
+            {
+                RebBlackDelete(GetRandomData().Take(10).ToList());
+            }
 
-            //RebBlackDelete(TreeData2);
+            RebBlackDelete(TreeData2);
 
-            RebBlackDelete(TreeData3);
+            // RebBlackDelete(TreeData3);
         }
 
 
