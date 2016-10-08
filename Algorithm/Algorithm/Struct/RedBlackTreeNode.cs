@@ -10,6 +10,7 @@ namespace Algorithm.Struct
 	{
 		Black = 0,
 		Red = 1,
+        None=99,
 	}
 
 

@@ -12,7 +12,7 @@ namespace Algorithm.Struct.Tests
     [TestClass()]
     public class BinarySearchTreeTests
     {
-        protected IEnumerable<int> TreeData1 = new List<int>
+        protected IList<int> TreeData1 = new List<int>
         {
             2,3,7,5,4,8
         };
@@ -27,6 +27,12 @@ namespace Algorithm.Struct.Tests
           939 , 675 , 594 , 13  ,809  ,166  ,281  ,808  ,288  ,276,
         };
 
+        protected IList<int> TreeData4= new List<int>()
+        {
+              635 , 656 , 810  ,631  ,603 , 783 , 370 , 214,  825 , 238,
+        };
+
+    
         private BinarySearchTree<int> CreateTree1()
         {
             var root = new BinaryTreeNode<int>(2)
@@ -61,7 +67,7 @@ namespace Algorithm.Struct.Tests
         protected IEnumerable<int> GetRandomData()
         {
             var random = new Random();
-            var length = random.Next(1, 1000);
+            var length = random.Next(100, 1000);
             var data = new List<int>(length);
             for (int i = 0; i < length; i++)
             {

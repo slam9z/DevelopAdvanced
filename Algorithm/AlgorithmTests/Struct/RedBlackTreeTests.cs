@@ -43,7 +43,11 @@ namespace Algorithm.Struct.Tests
         [TestMethod]
         public void RotaleTest()
         {
-            Rotale(TreeData3);
+            for (int i = 0; i < 10; i++)
+            {
+                Rotale(GetRandomData().Take(10).ToList());
+            }
+            //Rotale(TreeData3);
         }
 
         private void Rotale(IList<int> datas)
@@ -82,7 +86,7 @@ namespace Algorithm.Struct.Tests
 
             for (int i = 0; i < 10; i++)
             {
-                RebBlackInsert(GetRandomData().Take(10).ToList());
+                RebBlackInsert(GetRandomData().Take(100).ToList());
             }
 
             RebBlackInsert(TreeData3);
@@ -108,16 +112,18 @@ namespace Algorithm.Struct.Tests
         public void RebBlackDeleteTest()
         {
             //4报错
-            //RebBlackDelete(TreeData1);
+            // RebBlackDelete(TreeData1);
 
-            for (int i = 0; i < 10; i++)
-            {
-                RebBlackDelete(GetRandomData().Take(10).ToList());
-            }
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    RebBlackDelete(GetRandomData().Take(10).ToList());
+            //}
 
-            RebBlackDelete(TreeData2);
+            //RebBlackDelete(TreeData2);
 
-            // RebBlackDelete(TreeData3);
+            //RebBlackDelete(TreeData3);
+
+            RebBlackDelete(TreeData4);
         }
 
 
@@ -138,6 +144,8 @@ namespace Algorithm.Struct.Tests
 
             Console.WriteLine("new tree ");
             PrintTree(tree);
+
+            tree.CheckRedBlackTree();
 
             var count = datas.Count();
             for (int i = 0; i < count; i++)
