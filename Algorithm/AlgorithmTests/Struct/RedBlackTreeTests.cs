@@ -111,19 +111,19 @@ namespace Algorithm.Struct.Tests
         [TestMethod()]
         public void RebBlackDeleteTest()
         {
-            //4报错
-            // RebBlackDelete(TreeData1);
+			//4报错
+			// RebBlackDelete(TreeData1);
 
-            //for (int i = 0; i < 100; i++)
-            //{
-            //    RebBlackDelete(GetRandomData().Take(10).ToList());
-            //}
+			for (int i = 0; i < 100; i++)
+			{
+				RebBlackDelete(GetRandomData().Take(100).ToList());
+			}
 
-            //RebBlackDelete(TreeData2);
+			//RebBlackDelete(TreeData2);
 
-            //RebBlackDelete(TreeData3);
+			//RebBlackDelete(TreeData3);
 
-            RebBlackDelete(TreeData4);
+			RebBlackDelete(TreeData4);
         }
 
 

@@ -359,7 +359,7 @@ namespace Algorithm.Struct
                         {
                             brother.Right.ToRedBlackTreeNode().Color = NodeColor.Black;
                             brother.Color = NodeColor.Red;
-                            RightRotate(brother);
+                            LeftRotate(brother);
                             brother = parent.Left.ToRedBlackTreeNode();
                         }
 
