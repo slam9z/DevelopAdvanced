@@ -41,14 +41,14 @@ namespace Algorithm.Struct
             var tree = this;
             tree.Inorder(tree.Root, (node) =>
             {
-                if (!tree.IsEmpty(node.Left))
+                if (!node.Left.IsEmpty())
                 {
                     if (node.Left.Parent != node)
                     {
                     }
 
                 }
-                if (!tree.IsEmpty(node.Right))
+                if (!node.Right.IsEmpty())
                 {
                     if (node.Right.Parent != node)
                     {
@@ -70,7 +70,7 @@ namespace Algorithm.Struct
             BinaryTreeNode<T> parentNode = Empty;
             //var parentNode = positionNode;
 
-            while (!IsEmpty(positionNode))
+            while (!positionNode.IsEmpty())
             {
                 parentNode = positionNode;
 
@@ -88,7 +88,7 @@ namespace Algorithm.Struct
 
             newNode.Parent = parentNode;
 
-            if (IsEmpty(parentNode))
+            if (parentNode.IsEmpty())
             {
                 Root = newNode;
             }
@@ -212,7 +212,7 @@ namespace Algorithm.Struct
 
         public void Delete(RedBlackTreeNode<T> node)
         {
-            if (IsEmpty(node))
+            if (node.IsEmpty())
             {
                 throw new ArgumentException("node can't empty");
             }
@@ -221,7 +221,7 @@ namespace Algorithm.Struct
             RedBlackTreeNode<T> deleteNodeChild;
 
 
-            if (IsEmpty(node.Left) || IsEmpty(node.Right))
+            if (node.Left.IsEmpty() || node.Right.IsEmpty())
             {
                 deleteNode = node;
             }
@@ -231,7 +231,7 @@ namespace Algorithm.Struct
             }
 
 
-            if (!IsEmpty(deleteNode.Left))
+            if (!deleteNode.Left.IsEmpty())
             {
                 deleteNodeChild = deleteNode.Left.ToRedBlackTreeNode();
             }
@@ -245,7 +245,7 @@ namespace Algorithm.Struct
             deleteNodeChild.Parent = deleteNode.Parent;
 
 
-            if (IsEmpty(deleteNodeChild.Parent))
+            if (deleteNodeChild.Parent.IsEmpty())
             {
                 Root = deleteNodeChild;
             }
@@ -405,7 +405,7 @@ namespace Algorithm.Struct
             targetNode.Parent = sourceNode.Parent;
 
             //漏掉的逻辑,设置parent引用
-            if (IsEmpty(sourceNode.Parent))
+            if (sourceNode.Parent.IsEmpty())
             {
                 Root = targetNode;
             }
@@ -448,7 +448,7 @@ namespace Algorithm.Struct
             targetNode.Parent = sourceNode.Parent;
 
             //设置parent的引用
-            if (IsEmpty(sourceNode.Parent))
+            if (sourceNode.Parent.IsEmpty())
             {
                 Root = targetNode;
             }

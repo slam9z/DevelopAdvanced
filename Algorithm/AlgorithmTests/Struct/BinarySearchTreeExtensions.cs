@@ -14,7 +14,7 @@ namespace Algorithm.Struct.Tests
         {
             tree.Inorder(tree.Root, (node) =>
             {
-                if (!tree.IsEmpty(node.Left))
+                if (!node.Left.IsEmpty())
                 {
                     if (node.Left.Parent != node)
                     {
@@ -22,7 +22,7 @@ namespace Algorithm.Struct.Tests
 
                     Assert.AreEqual(node.Left.Parent, node);
                 }
-                if (!tree.IsEmpty(node.Right))
+                if (!node.Right.IsEmpty())
                 {
                     if (node.Right.Parent != node)
                     {

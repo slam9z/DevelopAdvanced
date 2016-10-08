@@ -38,7 +38,7 @@ namespace Algorithm.Struct.Tests
 
 
 
-     
+
 
         [TestMethod]
         public void RotaleTest()
@@ -55,14 +55,20 @@ namespace Algorithm.Struct.Tests
             foreach (var data in datas)
             {
                 var node = tree.Search(tree.Root, data);
-                tree.LeftRotate(node);
-                ((BinarySearchTree<int>)tree).CheckNodeParent();
+                if (!node.Right.IsEmpty())
+                {
+                    tree.LeftRotate(node);
+                    tree.CheckNodeParent();
+                }
             }
 
             foreach (var data in datas)
             {
                 var node = tree.Search(tree.Root, data);
-                tree.RightRotate(node);
+                if (!node.Left.IsEmpty())
+                {
+                    tree.RightRotate(node);
+                }
                 tree.CheckNodeParent();
             }
         }
