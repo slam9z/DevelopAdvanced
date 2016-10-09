@@ -69,8 +69,11 @@ namespace Algorithm.Struct.Tests
 		public void SearchTest()
 		{
 			//AllInsert(TestData1);
-			AllInsert(TestData2);
-			//AllInsert(TestHepler.GetRandomList().Take(20));
+			//AllInsert(TestData2);
+			for (int i = 0; i < 100; i++)
+			{
+				AllInsert(TestHepler.GetRandomList().Take(100));
+			}
 		}
 
 		private void AllInsert(IEnumerable<int> datas)
