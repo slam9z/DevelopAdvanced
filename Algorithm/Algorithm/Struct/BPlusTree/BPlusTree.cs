@@ -19,14 +19,14 @@ namespace Algorithm.Struct
 		{
 			var pointer = 1;
 
-			while (pointer <= searchedNode.KeyCount && key.CompareTo(searchedNode.GetKey(pointer)) <= 0)
+			while (pointer <= searchedNode.KeyCount && key.CompareTo(searchedNode.GetKey(pointer)) > 0)
 			{
 				pointer++;
 			}
 
 			if (pointer <= searchedNode.KeyCount && key.CompareTo(searchedNode.GetKey(pointer)) == 0)
 			{
-				return _storage.Read(searchedNode.GetChild(pointer));
+				return searchedNode;
 			}
 
 			if (searchedNode.IsLeaf)
@@ -197,7 +197,7 @@ namespace Algorithm.Struct
 
 		public string CreateIdentifier()
 		{
-			return _nodeCount.ToString("N");
+			return _nodeCount.ToString();
 		}
 
 		private BPlusTreeNode<T> CreateBPlusTreeNode()

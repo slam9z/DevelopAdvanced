@@ -48,5 +48,35 @@ namespace Algorithm.Struct
 			Children[order - 1] = identifier;
 		}
 
+		//不把所有信息ToString都没看了
+		public override string ToString()
+		{
+			var builder = new StringBuilder();
+			builder.AppendLine(string.Format("Identifier: {0}  ", Identifier));
+			builder.AppendLine(string.Format("KeyCount: {0}  ", KeyCount));
+			builder.AppendLine(string.Format("IsLeaf: {0}  ", IsLeaf));
+
+			builder.AppendLine("Keys: ");
+			for (int i = 0; i < KeyCount; i++)
+			{
+				var key = Keys[i];
+				builder.Append(string.Format("{0},  ", key));
+			}
+			builder.AppendLine();
+
+			if (!IsLeaf)
+			{
+				builder.AppendLine("Children: ");
+				for (int i = 0; i < KeyCount + 1; i++)
+				{
+					var child = Children[i];
+					builder.Append(string.Format("{0},  ", child));
+				}
+				builder.AppendLine();
+			}
+
+			return builder.ToString();
+		}
+
 	}
 }

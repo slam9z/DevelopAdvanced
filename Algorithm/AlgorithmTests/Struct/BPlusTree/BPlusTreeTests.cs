@@ -36,10 +36,6 @@ namespace Algorithm.Struct.Tests
 		#endregion
 
 
-		[TestMethod()]
-		public void CreateTest()
-		{
-		}
 
 		[TestMethod()]
 		public void InsertTest()
@@ -67,7 +63,11 @@ namespace Algorithm.Struct.Tests
 				var node = bTree.Search(bTree.Root, item);
 
 				//节点的值呢 ?
-				//	Console.Write("{0}  ",node.);
+				Console.WriteLine("Search key: {0}",item);
+				Console.WriteLine(node);
+
+				Assert.IsNotNull(node);
+				Assert.IsTrue(node.Keys.Contains(item));
 			}
 		}
 	}
