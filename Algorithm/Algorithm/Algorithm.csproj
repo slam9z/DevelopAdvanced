@@ -56,6 +56,10 @@
     <Compile Include="Struct\BinarySearchTree.cs" />
     <Compile Include="Struct\BinaryTree.cs" />
     <Compile Include="Struct\BinaryTreeNode.cs" />
+    <Compile Include="Struct\BPlusTree\BPlusTree.cs" />
+    <Compile Include="Struct\BPlusTree\BPlusTreeNode.cs" />
+    <Compile Include="Struct\BPlusTree\Storage\DictionaryNodeStorage.cs" />
+    <Compile Include="Struct\BPlusTree\Storage\INodeStorage.cs" />
     <Compile Include="Struct\IEmptyNodeInterface.cs" />
     <Compile Include="Struct\LinkList.cs" />
     <Compile Include="Struct\LinkNode.cs" />
@@ -65,6 +69,7 @@
     <Compile Include="Struct\Stack.cs" />
     <Compile Include="Struct\TreeNodeExtensions.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
