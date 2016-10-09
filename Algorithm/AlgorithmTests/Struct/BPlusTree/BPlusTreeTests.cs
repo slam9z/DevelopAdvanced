@@ -48,9 +48,15 @@ namespace Algorithm.Struct.Tests
 		#endregion
 
 		[TestMethod()]
+		public void CreateTest()
+		{
+			CreateTree(TestData2);
+		}
+
+
+		[TestMethod()]
 		public void InsertTest()
 		{
-
 			var bTree = new BPlusTree<int>();
 
 			foreach (var item in TestData1)
@@ -71,12 +77,7 @@ namespace Algorithm.Struct.Tests
 		{
 			TestHepler.PrintList(datas, "datas: ");
 
-			var bTree = new BPlusTree<int>();
-
-			foreach (var item in datas)
-			{
-				bTree.Insert(item);
-			}
+			var bTree = CreateTree(datas);
 
 			foreach (var item in datas)
 			{
@@ -89,6 +90,44 @@ namespace Algorithm.Struct.Tests
 				Assert.IsNotNull(node);
 				Assert.IsTrue(node.Keys.Contains(item));
 			}
+		}
+
+		
+		private BPlusTree<int> CreateTree(IEnumerable<int> datas)
+		{
+			var bTree = new BPlusTree<int>();
+
+			var insertedDatas = new List<int>();
+
+			foreach (var item in datas)
+			{
+				bTree.Insert(item);
+				insertedDatas.Add(item);
+
+				Console.WriteLine("Insert Data:{0}", item);
+				bTree.Order(bTree.Root, 
+					(d) => 
+					{
+						Console.Write("{0}, ", d);
+						Assert.IsTrue(insertedDatas.Contains(d));
+					});
+				Console.WriteLine();
+			}
+
+			return bTree;
+		}
+
+
+		[TestMethod()]
+		public void OrderTest()
+		{
+			TestHepler.PrintList(TestData2, "datas: ");
+			var bTree = CreateTree(TestData2);
+
+			TestHepler.PrintListWithOrder(TestData2, "order datas: ");
+
+			Console.WriteLine("order result:");
+			bTree.Order(bTree.Root, (d) => { Console.Write("{0}, ", d); });
 		}
 	}
 }

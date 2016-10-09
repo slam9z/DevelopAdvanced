@@ -20,12 +20,24 @@ namespace AlgorithmTests
 			return datas;
 		}
 
-		public static void PrintList(IEnumerable<int> datas,string message=default(string))
+		public static void PrintList(IEnumerable<int> datas, string message = default(string))
 		{
-			Console.WriteLine("{0}",message);
+			Console.WriteLine("{0}", message);
 			foreach (var data in datas)
 			{
-				Console.Write("{0}, ",data);
+				Console.Write("{0}, ", data);
+			}
+			Console.WriteLine("");
+		}
+
+		public static void PrintListWithOrder(IEnumerable<int> datas, string message = default(string))
+		{
+			datas = datas.OrderBy(t => t);
+
+			Console.WriteLine("{0}", message);
+			foreach (var data in datas)
+			{
+				Console.Write("{0}, ", data);
 			}
 			Console.WriteLine("");
 		}

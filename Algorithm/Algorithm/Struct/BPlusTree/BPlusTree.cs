@@ -50,6 +50,21 @@ namespace Algorithm.Struct
 			Root = node;
 		}
 
+		public void Order(BPlusTreeNode<T> node,Action<T> action)
+		{
+			for (int i = 1; i <= node.KeyCount; i++)
+			{
+				if (!node.IsLeaf)
+				{
+					Order(_storage.Read(node.GetChild(i)), action);
+				}
+				action(node.GetKey(i));
+			}
+			if (!node.IsLeaf)
+			{
+				Order(_storage.Read(node.GetChild(node.KeyCount+1)),action);
+			}
+		}
 
 		#region Insert
 
@@ -96,7 +111,6 @@ namespace Algorithm.Struct
 			{
 				while (pointer >= 1 && key.CompareTo(insertedNode.GetKey(pointer)) < 0)
 				{
-					insertedNode.SetKey(pointer + 1, insertedNode.GetKey(pointer));
 					pointer--;
 				}
 				pointer++;
@@ -160,7 +174,7 @@ namespace Algorithm.Struct
 
 			parentNode.SetChild(splitedPointer + 1, newSplitedNode.Identifier);
 
-			for (int i = parentNode.KeyCount; i >= splitedPointer + 1; i--)
+			for (int i = parentNode.KeyCount; i >= splitedPointer ; i--)
 			{
 				parentNode.SetKey(i + 1, parentNode.GetKey(i));
 			}
