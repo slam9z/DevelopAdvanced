@@ -12,3 +12,5 @@
 * 先直接Run Test，出问题再Debug
 
 * 重写Tostring方法是Test的一个好手段
+
+* 就算是Unit Test也需要Helper类
