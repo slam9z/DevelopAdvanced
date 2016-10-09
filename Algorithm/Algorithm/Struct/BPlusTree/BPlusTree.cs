@@ -113,11 +113,11 @@ namespace Algorithm.Struct
 					{
 						pointer++;
 					}
+
+					child = _storage.Read(insertedNode.GetChild(pointer));
 				}
-				else
-				{
-					InsertNotFull(child, key);
-				}
+
+				InsertNotFull(child, key);
 			}
 		}
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AlgorithmTests;
 
 namespace Algorithm.Struct.Tests
 {
@@ -35,11 +36,21 @@ namespace Algorithm.Struct.Tests
 
 		#endregion
 
+		#region data2
 
+		private IList<int> TestData2 = new List<int>()
+		{
+
+			357, 941, 305, 879, 809, 266, 961, 348, 154,
+			941, 316, 430, 207, 883, 75, 591, 54, 76, 594, 391,
+		};
+
+		#endregion
 
 		[TestMethod()]
 		public void InsertTest()
 		{
+
 			var bTree = new BPlusTree<int>();
 
 			foreach (var item in TestData1)
@@ -51,19 +62,28 @@ namespace Algorithm.Struct.Tests
 		[TestMethod()]
 		public void SearchTest()
 		{
+			//AllInsert(TestData1);
+			AllInsert(TestData2);
+			//AllInsert(TestHepler.GetRandomList().Take(20));
+		}
+
+		private void AllInsert(IEnumerable<int> datas)
+		{
+			TestHepler.PrintList(datas, "datas: ");
+
 			var bTree = new BPlusTree<int>();
 
-			foreach (var item in TestData1)
+			foreach (var item in datas)
 			{
 				bTree.Insert(item);
 			}
 
-			foreach (var item in TestData1)
+			foreach (var item in datas)
 			{
 				var node = bTree.Search(bTree.Root, item);
 
 				//节点的值呢 ?
-				Console.WriteLine("Search key: {0}",item);
+				Console.WriteLine("Search key: {0}", item);
 				Console.WriteLine(node);
 
 				Assert.IsNotNull(node);

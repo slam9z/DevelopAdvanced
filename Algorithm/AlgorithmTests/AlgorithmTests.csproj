@@ -62,6 +62,7 @@
     <Compile Include="Struct\RedBlackTreeExtensions.cs" />
     <Compile Include="Struct\RedBlackTreeTests.cs" />
     <Compile Include="Struct\StackTests.cs" />
+    <Compile Include="TestHepler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Algorithm\Algorithm.csproj">
