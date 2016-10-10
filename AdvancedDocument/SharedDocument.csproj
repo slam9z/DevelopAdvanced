@@ -99,6 +99,7 @@
     <None Include="DOTNET\CSharp\4.0\What are the true benefits of ExpandoObject.md" />
     <None Include="DOTNET\CSharp\4.0\使用dynamic和Func实现数据的动态组装%28导出Excel应用%29.md" />
     <None Include="DOTNET\Expression\只是想简单说下表达式树 - Expression Trees.md" />
+    <None Include="DOTNET\Generic\CSharp泛型参数的约束 .md" />
     <None Include="DOTNET\LINQ\Split List into Sublists with LINQ.md" />
     <None Include="MyProject\Note.md" />
     <None Include="Open Source\ORM\Dapper.md" />

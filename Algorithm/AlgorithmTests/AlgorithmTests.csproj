@@ -52,15 +52,17 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RectanglePartCombineFactoryTests.cs" />
+    <Compile Include="Backtracking\RectanglePartCombineFactoryTests.cs" />
     <Compile Include="Sort\SortTest.cs" />
     <Compile Include="Struct\BinarySearchTreeExtensions.cs" />
     <Compile Include="Struct\BinarySearchTreeTests.cs" />
+    <Compile Include="Struct\BPlusTree\BPlusTreeTests.cs" />
     <Compile Include="Struct\LinkListTests.cs" />
     <Compile Include="Struct\QueueTests.cs" />
     <Compile Include="Struct\RedBlackTreeExtensions.cs" />
     <Compile Include="Struct\RedBlackTreeTests.cs" />
     <Compile Include="Struct\StackTests.cs" />
+    <Compile Include="TestHepler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Algorithm\Algorithm.csproj">

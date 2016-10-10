@@ -1,0 +1,1 @@
+﻿[C#泛型参数的约束](http://blog.csdn.net/zhulongxi/article/details/51745593)
