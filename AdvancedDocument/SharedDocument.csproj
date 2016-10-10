@@ -42,8 +42,9 @@
   <ItemGroup>
     <None Include="Algorithm\Struct\Persistent Data Structures.md" />
     <None Include="Book\Design\Enterprise Solution Patterns using microsoft .net.pdf" />
+    <None Include="Bug and Test\CMS Test.md" />
     <None Include="Bug and Test\MSTest\Missing compiler required member %27Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo.Create%27.md" />
-    <None Include="Bug and Test\Test.md" />
+    <None Include="Bug and Test\Unit Test.md" />
     <None Include="Data Access\ADO.NET\System.ArgumentException 另一个SqlParameterCollection中已包含SqlParameter.md" />
     <None Include="Data Access\Entity Framework\Member Mapping specified is not valid  %28update  edmx%29 .md" />
     <None Include="Data Access\Entity Framework\Tutorial\Execute Native SQL Query.md" />
