@@ -1,0 +1,1 @@
+﻿[在 2016 年学 JavaScript 是一种什么样的体验？](https://www.v2ex.com/t/310767?p=2)

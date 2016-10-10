@@ -1,0 +1,1 @@
+﻿[CROSS APPLY和 OUTER APPLY 区别详解 ](http://www.cnblogs.com/end/archive/2011/02/17/1957011.html)

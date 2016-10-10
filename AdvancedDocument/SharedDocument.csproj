@@ -55,6 +55,8 @@
     <None Include="Data Access\Sql Server\使用sa账号登录.md" />
     <None Include="Data Access\Sql\SQL删除重复数据方法.md" />
     <None Include="Data Access\Sql\关于SQL语句中SUM函数返回NULL的解决办法.md" />
+    <None Include="Data Access\T-SQL\CROSS APPLY和 OUTER APPLY 区别详解.md" />
+    <None Include="Data Access\T-SQL\SQL Join的一些总结.md" />
     <None Include="Design\API Design\API 设计规范.md" />
     <None Include="Design\Data Access for Highly-Scalable Solutions\Data Access for Highly-Scalable Solutions.md" />
     <None Include="Design\Database Design\Database Design.md" />
@@ -113,8 +115,10 @@
     <None Include="Style Guide\summary.md" />
     <None Include="Style Guide\Web Style Guide.md" />
     <None Include="Tittle\中国码农拿下全球第一！围观国内的CTO们怎么讨论这事儿.md" />
+    <None Include="Tittle\在 2016 年学 JavaScript 是一种什么样的体验？.md" />
     <None Include="Tool\Markdown\Create table without header in markdown.md" />
     <None Include="Tool\SQL Prompt\SQL Prompt.md" />
+    <None Include="Tool\SQL Prompt\SQL SERVER – How to Refresh SSMS Intellisense Cache to Update Schema Changes.md" />
     <None Include="Tool\UML\Astah.md" />
     <None Include="Tool\UML\StarUML.md" />
     <None Include="Tool\UML\umltools.pdf" />
