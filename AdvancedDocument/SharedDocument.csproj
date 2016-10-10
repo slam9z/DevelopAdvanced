@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Tittle\比特币%28百度百科%29.md" />
+    <None Include="Tittle\这个22岁的程序猿可以打败比特币吗.md" />
+    <None Include="Web\Javascript\frames\js中top的作用.md" />
     <None Include="Algorithm\Struct\Persistent Data Structures.md" />
     <None Include="Book\Design\Enterprise Solution Patterns using microsoft .net.pdf" />
     <None Include="Bug and Test\CMS Test.md" />
@@ -135,6 +138,7 @@
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Page Cache in ASP.NET Using Absolute Expiration.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Page Controller in ASP.NET.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Patterns Rate.md" />
+    <None Include="Web\jQuery\jQuery的.live%28%29和.die%28%29 .md" />
     <None Include="Web\Web Form\ASP.NET的页面中对其他文件的引用.md" />
     <None Include="Web\Web Form\OutputCache祥解.md" />
     <None Include="Web\Web Form\Overview of user controls vs. custom controls .md" />
