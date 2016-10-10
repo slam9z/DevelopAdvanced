@@ -20,7 +20,7 @@ namespace AlgorithmTests
 			return datas;
 		}
 
-		public static void PrintList(IEnumerable<int> datas, string message = default(string))
+		public static void PrintList<T>(IEnumerable<T> datas, string message = default(string))
 		{
 			Console.WriteLine("{0}", message);
 			foreach (var data in datas)
@@ -30,7 +30,7 @@ namespace AlgorithmTests
 			Console.WriteLine("");
 		}
 
-		public static void PrintListWithOrder(IEnumerable<int> datas, string message = default(string))
+		public static void PrintListWithOrder<T>(IEnumerable<T> datas, string message = default(string))
 		{
 			datas = datas.OrderBy(t => t);
 
