@@ -288,7 +288,10 @@ namespace Algorithm.Struct
                 {
                     pointer--;
                 }
-                pointer++;
+                if (pointer != node.KeyCount || pointer == 0)
+                {
+                    pointer++;
+                }
 
                 var targetRoot = _storage.Read(node.GetChild(pointer));
 
@@ -297,7 +300,7 @@ namespace Algorithm.Struct
                 {
                     return;
                 }
-                    
+
                 if (targetRoot.KeyCount >= MinLimit)
                 {
                     DeleteCore(targetRoot, key);
@@ -338,7 +341,7 @@ namespace Algorithm.Struct
 
                 BPlusTreeNode<T> rootPostBrother = null;
 
-                if (pointer != targetRoot.KeyCount + 1)
+                if (pointer != node.KeyCount + 1)
                 {
                     rootPostBrother = _storage.Read(node.GetChild(pointer + 1));
                     if (rootPostBrother.KeyCount >= MinLimit)

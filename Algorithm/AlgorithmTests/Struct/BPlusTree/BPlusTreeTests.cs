@@ -47,6 +47,12 @@ namespace Algorithm.Struct.Tests
 
         #endregion
 
+        private IList<int> TestData3 = new List<int>()
+        {
+            355, 776, 836, 676, 732, 106, 838, 648
+        };
+
+
         [TestMethod()]
         public void CreateTest()
         {
@@ -106,15 +112,6 @@ namespace Algorithm.Struct.Tests
             {
                 bTree.Insert(item);
                 insertedDatas.Add(item);
-
-                Console.WriteLine("Insert Data:{0}", item);
-                bTree.Order(bTree.Root,
-                    (d) =>
-                    {
-                        Console.Write("{0}, ", d);
-                        Assert.IsTrue(insertedDatas.Contains(d));
-                    });
-                Console.WriteLine();
             }
 
             return bTree;
@@ -147,7 +144,7 @@ namespace Algorithm.Struct.Tests
             "X","Y","Z"
         };
 
-        
+
         public BPlusTree<string> CreateAlphabetTree()
         {
             var bTree = new BPlusTree<string>();
@@ -171,7 +168,7 @@ namespace Algorithm.Struct.Tests
 
             foreach (var item in Alphabet)
             {
-                Console.WriteLine("detele item :{0}",item);
+                Console.WriteLine("detele item :{0}", item);
 
                 bTree.Delete(item);
 
@@ -181,8 +178,41 @@ namespace Algorithm.Struct.Tests
 
                 bTree.Delete(item);
             };
+        }
 
 
+        [TestMethod()]
+        public void DeleteTest()
+        {
+            var count = TestHepler.GetRandom();
+            for (int i = 0; i < count; i++)
+            {
+                var datas = TestHepler.GetRandomList();
+                DeleteList(datas);
+            }
+
+            // DeleteList(TestData3);
+        }
+
+        private void DeleteList(IEnumerable<int> datas)
+        {
+            TestHepler.PrintList(datas, "create datas");
+
+            var bTree = CreateTree(datas);
+
+            Console.WriteLine("create order result:");
+            bTree.Order(bTree.Root, (d) => { Console.Write("{0}, ", d); });
+
+            foreach (var item in datas)
+            {
+                Console.WriteLine();
+                Console.WriteLine("detele item :{0}", item);
+
+                bTree.Delete(item);
+
+                Console.WriteLine("detele order result:");
+                bTree.Order(bTree.Root, (d) => { Console.Write("{0}, ", d); });
+            }
         }
     }
 }
