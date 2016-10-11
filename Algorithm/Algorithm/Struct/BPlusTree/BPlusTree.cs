@@ -292,6 +292,12 @@ namespace Algorithm.Struct
 
                 var targetRoot = _storage.Read(node.GetChild(pointer));
 
+                //删除不存在的值
+                if (targetRoot == null)
+                {
+                    return;
+                }
+                    
                 if (targetRoot.KeyCount >= MinLimit)
                 {
                     DeleteCore(targetRoot, key);
@@ -410,7 +416,7 @@ namespace Algorithm.Struct
 
                     DeleteCore(merge, key);
 
-                    _storage.Write(rootPostBrother);
+                    _storage.Write(merge);
                     return;
                 }
 

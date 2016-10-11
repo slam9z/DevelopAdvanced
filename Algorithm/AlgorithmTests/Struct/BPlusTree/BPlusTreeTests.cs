@@ -147,8 +147,8 @@ namespace Algorithm.Struct.Tests
             "X","Y","Z"
         };
 
-        [TestMethod()]
-        public void CreateAlphabetTree()
+        
+        public BPlusTree<string> CreateAlphabetTree()
         {
             var bTree = new BPlusTree<string>();
             bTree.MinLimit = 3;
@@ -156,29 +156,20 @@ namespace Algorithm.Struct.Tests
             {
                 bTree.Insert(item);
             };
-
-            Console.WriteLine("order result:");
-            bTree.Order(bTree.Root, (d) => { Console.Write("{0}, ", d); });
+            return bTree;
         }
 
         [TestMethod()]
         public void DeleteAlphabetTest()
         {
-            var bTree = new BPlusTree<string>();
-            bTree.MinLimit = 3;
-
-            var datas = Alphabet;
-
-            foreach (var item in datas)
-            {
-                bTree.Insert(item);
-            };
+            var bTree = CreateAlphabetTree();
 
             Console.WriteLine("create order result:");
             bTree.Order(bTree.Root, (d) => { Console.Write("{0}, ", d); });
             Console.WriteLine();
 
-            foreach (var item in datas)
+
+            foreach (var item in Alphabet)
             {
                 Console.WriteLine("detele item :{0}",item);
 
@@ -187,6 +178,8 @@ namespace Algorithm.Struct.Tests
                 Console.WriteLine("detele order result:");
                 bTree.Order(bTree.Root, (d) => { Console.Write("{0}, ", d); });
                 Console.WriteLine();
+
+                bTree.Delete(item);
             };
 
 
