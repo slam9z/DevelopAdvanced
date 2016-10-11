@@ -20,6 +20,23 @@ namespace AlgorithmTests
 			return datas;
 		}
 
+
+		public static IList<T> GetRandomList<T>(IList<T> source)
+		{
+			var random = new Random();
+
+			var count = random.Next(1, source.Count / 2);
+
+			for (int i = 1; i <= count; i++)
+			{
+				var exchange = random.Next(0, source.Count - 1);
+				var temp = source[exchange];
+				source[exchange] = source[source.Count - 1 - exchange];
+				source[source.Count - 1 - exchange] = temp;
+			}
+			return source;
+		}
+
 		public static void PrintList<T>(IEnumerable<T> datas, string message = default(string))
 		{
 			Console.WriteLine("{0}", message);
