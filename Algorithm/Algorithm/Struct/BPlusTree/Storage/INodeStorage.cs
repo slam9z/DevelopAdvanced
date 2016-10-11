@@ -14,6 +14,6 @@ namespace Algorithm.Struct
 
 		void Delete(string identifier);
 
-
-	}
+        void Delete(BPlusTreeNode<T> node);
+    }
 }

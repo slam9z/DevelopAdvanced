@@ -10,8 +10,12 @@ namespace Algorithm.Struct
 	{
 		private Dictionary<string, BPlusTreeNode<T>> _repository = new Dictionary<string, BPlusTreeNode<T>>();
 
-	
-		public void Delete(string identifier)
+        public void Delete(BPlusTreeNode<T> node)
+        {
+            Delete(node.Identifier);
+        }
+
+        public void Delete(string identifier)
 		{
 			if (_repository.ContainsKey(identifier))
 			{
@@ -21,7 +25,15 @@ namespace Algorithm.Struct
 
 		public BPlusTreeNode<T> Read(string identifier)
 		{
-			return _repository[identifier];
+            if (identifier == null)
+            {
+                return null;
+            }
+            if (_repository.ContainsKey(identifier))
+            {
+                return _repository[identifier];
+            }
+            return null;
 		}
 
 		public void Write(BPlusTreeNode<T> node)
