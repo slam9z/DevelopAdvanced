@@ -162,11 +162,14 @@ namespace Algorithm.Struct.Tests
         }
 
         [TestMethod()]
-        public void DeleteTest()
+        public void DeleteAlphabetTest()
         {
             var bTree = new BPlusTree<string>();
             bTree.MinLimit = 3;
-            foreach (var item in Alphabet)
+
+            var datas = Alphabet;
+
+            foreach (var item in datas)
             {
                 bTree.Insert(item);
             };
@@ -175,7 +178,7 @@ namespace Algorithm.Struct.Tests
             bTree.Order(bTree.Root, (d) => { Console.Write("{0}, ", d); });
             Console.WriteLine();
 
-            foreach (var item in Alphabet)
+            foreach (var item in datas)
             {
                 Console.WriteLine("detele item :{0}",item);
 

@@ -56,13 +56,21 @@ namespace Algorithm.Struct
             {
                 if (!node.IsLeaf)
                 {
-                    Order(_storage.Read(node.GetChild(i)), action);
+                    var child = _storage.Read(node.GetChild(i));
+                    if (child != null)
+                    {
+                        Order(child, action);
+                    }
                 }
                 action(node.GetKey(i));
             }
             if (!node.IsLeaf)
             {
-                Order(_storage.Read(node.GetChild(node.KeyCount + 1)), action);
+                var child = _storage.Read(node.GetChild(node.KeyCount + 1));
+                if (child != null)
+                {
+                    Order(child, action);
+                }
             }
         }
 
@@ -202,6 +210,7 @@ namespace Algorithm.Struct
             DeleteCore(Root, key);
         }
 
+        //没有伪代码实现起来问题多多。IsLeaf值问题，是否删除节点存储的问题。
         private void DeleteCore(BPlusTreeNode<T> node, T key)
         {
             var keyIndex = ArrayIndex(node.Keys, node.KeyCount, key);
@@ -217,7 +226,14 @@ namespace Algorithm.Struct
                     ArrayRemove(node.Keys, node.KeyCount, key);
                     node.KeyCount = node.KeyCount - 1;
 
-                    _storage.Write(node);
+                    if (node.KeyCount == 0)
+                    {
+                        _storage.Delete(node.Identifier);
+                    }
+                    else
+                    {
+                        _storage.Write(node);
+                    }
                     return;
                 }
 
@@ -249,10 +265,13 @@ namespace Algorithm.Struct
                     ArrayRemove(node.Children, node.KeyCount + 1, node.GetChild(pointer + 1));
                     node.KeyCount = node.KeyCount - 1;
 
-                    var mergeChild = Merge(preChild, key, postChild);
+                    preChild = Merge(preChild, key, postChild);
+                    _storage.Delete(postChild);
 
+                    _storage.Write(preChild);
                     _storage.Write(node);
-                    DeleteCore(mergeChild, key);
+
+                    DeleteCore(preChild, key);
 
                     return;
                 }
@@ -295,16 +314,20 @@ namespace Algorithm.Struct
 
 
                         ArrayRemove(rootPreBrother.Keys, rootPreBrother.KeyCount, rootPreBrother.GetKey(rootPreBrother.KeyCount));
-                        ArrayRemove(rootPreBrother.Children, rootPreBrother.KeyCount + 1, rootPreBrother.GetChild(rootPreBrother.KeyCount));
+                        if (!rootPreBrother.IsLeaf)
+                        {
+                            ArrayRemove(rootPreBrother.Children, rootPreBrother.KeyCount + 1, rootPreBrother.GetChild(rootPreBrother.KeyCount));
+                        }
                         rootPreBrother.KeyCount = rootPreBrother.KeyCount - 1;
 
                         _storage.Write(targetRoot);
                         _storage.Write(node);
                         _storage.Write(rootPreBrother);
+
+                        DeleteCore(targetRoot, key);
+                        return;
                     }
 
-                    DeleteCore(targetRoot, key);
-                    return;
                 }
 
                 BPlusTreeNode<T> rootPostBrother = null;
@@ -322,16 +345,19 @@ namespace Algorithm.Struct
 
 
                         ArrayRemove(rootPostBrother.Keys, rootPostBrother.KeyCount, rootPostBrother.GetKey(1));
-                        ArrayRemove(rootPostBrother.Children, rootPostBrother.KeyCount + 1, rootPostBrother.GetChild(1));
+                        if (!rootPostBrother.IsLeaf)
+                        {
+                            ArrayRemove(rootPostBrother.Children, rootPostBrother.KeyCount + 1, rootPostBrother.GetChild(1));
+                        }
                         rootPostBrother.KeyCount = rootPostBrother.KeyCount - 1;
 
                         _storage.Write(targetRoot);
                         _storage.Write(node);
                         _storage.Write(rootPostBrother);
-                    }
 
-                    DeleteCore(targetRoot, key);
-                    return;
+                        DeleteCore(targetRoot, key);
+                        return;
+                    }
                 }
 
                 #endregion
@@ -340,12 +366,24 @@ namespace Algorithm.Struct
 
                 if (rootPreBrother != null)
                 {
-                    ArrayRemove(node.Keys, node.KeyCount, key);
-                    ArrayRemove(node.Children, node.KeyCount + 1, node.GetChild(pointer));
+                    var nodeKey = node.GetKey(pointer);
+                    ArrayRemove(node.Keys, node.KeyCount, nodeKey);
+                    if (!node.IsLeaf)
+                    {
+                        ArrayRemove(node.Children, node.KeyCount + 1, node.GetChild(pointer));
+                    }
                     node.KeyCount = node.KeyCount - 1;
 
-                    Merge(rootPreBrother, node.GetKey(pointer), targetRoot);
-                    DeleteCore(targetRoot, key);
+                    var merge = Merge(rootPreBrother, node.GetKey(pointer), targetRoot);
+                    _storage.Delete(targetRoot);
+
+                    if (node == Root && node.KeyCount == 0)
+                    {
+                        Root = merge;
+                        _storage.Delete(node);
+                    }
+
+                    DeleteCore(merge, key);
 
                     _storage.Write(rootPreBrother);
                     return;
@@ -353,12 +391,24 @@ namespace Algorithm.Struct
 
                 if (rootPostBrother != null)
                 {
-                    ArrayRemove(node.Keys, node.KeyCount, key);
-                    ArrayRemove(node.Children, node.KeyCount + 1, node.GetChild(pointer + 1));
+                    var nodeKey = node.GetKey(pointer);
+                    ArrayRemove(node.Keys, node.KeyCount, nodeKey);
+                    if (!node.IsLeaf)
+                    {
+                        ArrayRemove(node.Children, node.KeyCount + 1, node.GetChild(pointer + 1));
+                    }
                     node.KeyCount = node.KeyCount - 1;
 
-                    Merge(targetRoot, node.GetKey(pointer), rootPostBrother);
-                    DeleteCore(targetRoot, key);
+                    var merge = Merge(targetRoot, nodeKey, rootPostBrother);
+                    _storage.Delete(rootPostBrother);
+
+                    if (node == Root && node.KeyCount == 0)
+                    {
+                        Root = merge;
+                        _storage.Delete(node);
+                    }
+
+                    DeleteCore(merge, key);
 
                     _storage.Write(rootPostBrother);
                     return;
@@ -384,7 +434,7 @@ namespace Algorithm.Struct
             {
                 for (int i = 1; i <= postSource.KeyCount + 1; i++)
                 {
-                    preSource.SetChild(preSource.KeyCount + i, postSource.GetChild(i));
+                    preSource.SetChild(preSource.KeyCount + 1 + i, postSource.GetChild(i));
                 }
             }
 
