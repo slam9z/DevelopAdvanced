@@ -207,6 +207,10 @@ namespace Algorithm.Struct
 
         public void Delete(T key)
         {
+			if (Root == null)
+			{
+				return;
+			}
             DeleteCore(Root, key);
         }
 

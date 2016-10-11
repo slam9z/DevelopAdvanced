@@ -17,7 +17,7 @@ namespace AlgorithmTests
 		public static IList<int> GetRandomList()
 		{
 			var random = new Random();
-			var length = random.Next(1, 1000);
+			var length = random.Next(5, 1000);
 			var datas = new List<int>(length);
 			for (int i = 0; i < length; i++)
 			{
