@@ -194,7 +194,7 @@ namespace Algorithm.Struct.Tests
             // DeleteList(TestData3);
         }
 
-        private void DeleteList(IEnumerable<int> datas)
+        private void DeleteList(IList<int> datas)
         {
             TestHepler.PrintList(datas, "create datas");
 
@@ -203,7 +203,9 @@ namespace Algorithm.Struct.Tests
             Console.WriteLine("create order result:");
             bTree.Order(bTree.Root, (d) => { Console.Write("{0}, ", d); });
 
-            foreach (var item in datas)
+			var deleteDatas = TestHepler.GetRandomList(datas);
+
+            foreach (var item in deleteDatas)
             {
                 Console.WriteLine();
                 Console.WriteLine("detele item :{0}", item);
