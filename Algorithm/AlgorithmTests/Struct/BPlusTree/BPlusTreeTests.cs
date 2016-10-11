@@ -161,5 +161,32 @@ namespace Algorithm.Struct.Tests
             bTree.Order(bTree.Root, (d) => { Console.Write("{0}, ", d); });
         }
 
+        [TestMethod()]
+        public void DeleteTest()
+        {
+            var bTree = new BPlusTree<string>();
+            bTree.MinLimit = 3;
+            foreach (var item in Alphabet)
+            {
+                bTree.Insert(item);
+            };
+
+            Console.WriteLine("create order result:");
+            bTree.Order(bTree.Root, (d) => { Console.Write("{0}, ", d); });
+            Console.WriteLine();
+
+            foreach (var item in Alphabet)
+            {
+                Console.WriteLine("detele item :{0}",item);
+
+                bTree.Delete(item);
+
+                Console.WriteLine("detele order result:");
+                bTree.Order(bTree.Root, (d) => { Console.Write("{0}, ", d); });
+                Console.WriteLine();
+            };
+
+
+        }
     }
 }
