@@ -52,6 +52,10 @@ namespace Algorithm.Struct
 
         public void Order(BPlusTreeNode<T> node, Action<T> action)
         {
+			if (node == null)
+			{
+				return;
+			}
             for (int i = 1; i <= node.KeyCount; i++)
             {
                 if (!node.IsLeaf)

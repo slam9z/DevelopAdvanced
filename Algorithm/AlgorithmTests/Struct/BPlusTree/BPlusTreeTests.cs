@@ -57,6 +57,13 @@ namespace Algorithm.Struct.Tests
 			294,
 		};
 
+		private IList<int> TestData5 = new List<int>()
+		{
+			271, 541, 889, 644, 188, 367, 704, 586, 238, 952, 394,
+			956, 192, 519, 215, 34, 619, 881, 908, 654
+		};
+
+
 		[TestMethod()]
 		public void CreateTest()
 		{
@@ -226,28 +233,63 @@ namespace Algorithm.Struct.Tests
 		{
 			for (int i = 0; i < 100000; i++)
 			{
-				var datas = TestHepler.GetRandomList();
-				InsertDelete(datas);
+				var datas = TestHepler.GetRandomList().Take(20).ToList();
+				var twoDatas = new List<int>(datas);
+				twoDatas.AddRange(datas);
+
+				InsertDelete(TestHepler.GetRandomList(twoDatas));
 			}
 
 			//InsertDelete(TestData4);
+
+			InsertDelete(TestData5);
 		}
 
 		public void InsertDelete(IList<int> datas)
 		{
-			var tree = new BPlusTree<int>();
-			Console.WriteLine("InsertDeleteTest");
+			var bTree = new BPlusTree<int>();
+
+			Console.WriteLine();
+			TestHepler.PrintList(datas, "InsertDeleteTestStartData");
+
 			for (int i = 0; i < datas.Count; i++)
 			{
 				var data = datas[i];
-				Console.Write("{0} , ", data);
+				Console.Write("{0} ", data);
+
 				if (data % 3 == 0)
 				{
-					tree.Delete(data);
+					bTree.Delete(data);
+
+					var preData = int.MinValue;
+
+					Console.WriteLine();
+					Console.WriteLine("InsertDeleteTest delete order start");
+					bTree.Order(bTree.Root, (d) =>
+					{
+						Console.Write("{0}, ", d);
+						Assert.IsTrue(preData <= d);
+						preData = d;
+					});
+					Console.WriteLine();
+					Console.WriteLine("InsertDeleteTest delete order end");
 				}
 				else
 				{
-					tree.Insert(data);
+					bTree.Insert(data);
+
+					var preData = int.MinValue;
+
+					Console.WriteLine();
+					Console.WriteLine("InsertDeleteTest insert order start");
+					bTree.Order(bTree.Root, (d) =>
+					{
+						Console.Write("{0}, ", d);
+						Assert.IsTrue(preData <= d);
+						preData = d;
+					});
+					Console.WriteLine();
+					Console.WriteLine("InsertDeleteTest insert order  end");
 				}
 			}
 			Console.WriteLine();
