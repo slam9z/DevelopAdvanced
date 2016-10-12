@@ -52,10 +52,10 @@ namespace Algorithm.Struct
 
         public void Order(BPlusTreeNode<T> node, Action<T> action)
         {
-			if (node == null)
-			{
-				return;
-			}
+            if (node == null)
+            {
+                return;
+            }
             for (int i = 1; i <= node.KeyCount; i++)
             {
                 if (!node.IsLeaf)
@@ -211,10 +211,10 @@ namespace Algorithm.Struct
 
         public void Delete(T key)
         {
-			if (Root == null)
-			{
-				return;
-			}
+            if (Root == null)
+            {
+                return;
+            }
             DeleteCore(Root, key);
         }
 
@@ -251,7 +251,7 @@ namespace Algorithm.Struct
                     if (preChild.KeyCount >= MinLimit)
                     {
                         var preKey = preChild.GetKey(preChild.KeyCount);
-                        node.SetKey(pointer + 1, preKey);
+                        node.SetKey(pointer, preKey);
                         DeleteCore(preChild, preKey);
 
                         _storage.Write(node);
@@ -262,7 +262,7 @@ namespace Algorithm.Struct
                     if (postChild.KeyCount >= MinLimit)
                     {
                         var postKey = postChild.GetKey(postChild.KeyCount);
-                        node.SetKey(pointer + 1, postKey);
+                        node.SetKey(pointer, postKey);
                         DeleteCore(postChild, postKey);
 
                         _storage.Write(node);
@@ -296,10 +296,14 @@ namespace Algorithm.Struct
                 {
                     pointer--;
                 }
-                if (pointer != node.KeyCount || pointer == 0)
-                {
-                    pointer++;
-                }
+
+                //pointer++;
+                pointer++;
+                //if ((pointer != node.KeyCount) || pointer == 0)
+                //{
+                //    pointer++;
+                //}
+
 
                 var targetRoot = _storage.Read(node.GetChild(pointer));
 
@@ -323,12 +327,14 @@ namespace Algorithm.Struct
                     rootPreBrother = _storage.Read(node.GetChild(pointer - 1));
                     if (rootPreBrother.KeyCount >= MinLimit)
                     {
+                        var nodePointer = pointer - 1;
+
                         targetRoot.KeyCount = targetRoot.KeyCount + 1;
-                        targetRoot.SetKey(targetRoot.KeyCount, node.GetKey(pointer));
-                        targetRoot.SetChild(targetRoot.KeyCount + 1, rootPreBrother.GetChild(rootPreBrother.KeyCount));
 
-                        node.SetKey(pointer, rootPreBrother.GetKey(rootPreBrother.KeyCount));
+                        ArrayInsert(targetRoot.Keys, 0, targetRoot.KeyCount, node.GetKey(nodePointer));
+                        ArrayInsert(targetRoot.Children, 0, targetRoot.KeyCount, rootPreBrother.GetChild(rootPreBrother.KeyCount));
 
+                        node.SetKey(nodePointer, rootPreBrother.GetKey(rootPreBrother.KeyCount));
 
                         ArrayRemove(rootPreBrother.Keys, rootPreBrother.KeyCount, rootPreBrother.GetKey(rootPreBrother.KeyCount));
                         if (!rootPreBrother.IsLeaf)
@@ -383,15 +389,17 @@ namespace Algorithm.Struct
 
                 if (rootPreBrother != null)
                 {
-                    var nodeKey = node.GetKey(pointer);
+                    var keyPointer = pointer > node.KeyCount ? pointer - 1 : pointer;
+
+                    var nodeKey = node.GetKey(keyPointer);
                     ArrayRemove(node.Keys, node.KeyCount, nodeKey);
                     if (!node.IsLeaf)
                     {
-                        ArrayRemove(node.Children, node.KeyCount + 1, node.GetChild(pointer));
+                        ArrayRemove(node.Children, node.KeyCount + 1, node.GetChild(keyPointer+1));
                     }
                     node.KeyCount = node.KeyCount - 1;
 
-                    var merge = Merge(rootPreBrother, node.GetKey(pointer), targetRoot);
+                    var merge = Merge(rootPreBrother, nodeKey, targetRoot);
                     _storage.Delete(targetRoot);
 
                     if (node == Root && node.KeyCount == 0)
@@ -459,6 +467,10 @@ namespace Algorithm.Struct
             return preSource;
 
         }
+
+
+        #region array operation
+
         private int ArrayIndex<R>(R[] array, int length, R key) where R : IComparable
         {
             var index = -1;
@@ -473,17 +485,46 @@ namespace Algorithm.Struct
 
             return index;
         }
+
+        //删除应该都是从高处到低处啊
         private void ArrayRemove<R>(R[] array, int length, R key) where R : IComparable
         {
             var removeAt = ArrayIndex(array, length, key);
-
+            if (removeAt == -1)
+            {
+                return;
+            }
             array[removeAt] = default(R);
+
+            if (length == 1)
+            {
+                return;
+            }
+            if (length == 2)
+            {
+                if (removeAt == 0)
+                {
+                    array[0] = array[1];
+                }
+                return;
+            }
 
             for (int i = removeAt; i < length - 1; i++)
             {
                 array[i] = array[i + 1];
             }
         }
+
+        private void ArrayInsert<R>(R[] array, int index, int length, R key) where R : IComparable
+        {
+            for (int i = length - 2; i >= index; i--)
+            {
+                array[i + 1] = array[i];
+            }
+            array[index] = key;
+        }
+
+        #endregion
 
         #endregion
 

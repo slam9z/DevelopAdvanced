@@ -32,17 +32,19 @@ namespace AlgorithmTests
 			{
 				return source;
 			}
+            var target = new List<T>(source);
 
 			var random = new Random();
-			var count = random.Next(0, source.Count - 1);
+			var count = random.Next(0, source.Count*10);
 			for (int i = 0; i < count; i++)
 			{
 				var exchange = random.Next(0, source.Count - 1);
-				var temp = source[exchange];
-				source[exchange] = source[source.Count - 1 - exchange];
-				source[source.Count - 1 - exchange] = temp;
+				var temp = target[exchange];
+                target[exchange] = source[source.Count - 1 - exchange];
+                target[source.Count - 1 - exchange] = temp;
 			}
-			return source;
+
+			return target;
 
 		}
 
