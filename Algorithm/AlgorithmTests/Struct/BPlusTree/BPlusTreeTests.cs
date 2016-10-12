@@ -110,6 +110,79 @@ namespace Algorithm.Struct.Tests
         };
 
 
+        #region TestData9
+
+        private IList<int> TestData9_c = new List<int>()
+        {
+            68, 412, 336, 264, 867, 866, 109, 300, 724, 516, 118, 326, 368, 316,
+            550, 661, 491, 216, 704, 331, 570, 333, 576, 49, 222, 842, 550, 780,
+            73, 686, 80, 44, 155, 563, 827, 739, 542, 786, 202, 77, 250, 933, 885,
+            693, 131, 609, 395, 688, 757, 538, 189, 453, 667, 96, 715, 735, 835, 288,
+            43, 25, 317, 328, 228, 38, 436, 75, 172, 804, 488, 811, 120, 704, 14,
+            628, 82, 637, 448, 882, 917, 613,
+        };
+
+        private IList<int> TestData9_d = new List<int>()
+        {
+            613, 917, 882, 448, 637, 82, 628, 300, 724, 120, 118, 488, 368, 172, 75, 436, 38, 228,
+            328, 331, 25, 333, 288, 835, 735, 715, 96, 780, 453, 189, 538, 757, 688, 563,
+            827, 131, 542, 786, 933, 250, 250, 202, 786, 542, 739, 827, 563, 155, 757, 80,
+            189, 453, 780, 96, 715, 735, 49, 288, 333, 25, 331, 328, 228, 491, 436, 550,
+            172, 368, 488, 118, 120, 724, 300, 109, 82, 867, 448, 882, 917, 68,
+        };
+
+
+        #endregion
+
+
+        #region TestData10
+
+        private IList<int> TestData10_c = new List<int>()
+        {
+            772, 686, 592, 302, 840, 268, 549, 697, 801, 699, 793, 588, 589, 278, 168, 53, 449,
+            358, 683, 974, 896, 697, 246, 475, 448, 846, 726, 413, 408, 925, 509, 275, 73, 408,
+            969, 784, 650, 204, 223, 740, 224, 489, 235, 369, 372, 770, 326, 936, 152, 427, 683,
+            553, 312, 161, 9, 75, 441, 118, 854, 993, 541, 136, 290, 875, 190, 519, 515, 182,
+            309, 384, 403, 246, 135, 943, 751, 407, 463, 877, 104, 677,
+        };
+
+        private IList<int> TestData10_d = new List<int>()
+        {
+            677, 104, 877, 463, 840, 751, 943, 135, 246, 403, 384, 588, 589, 278, 168, 190, 875,
+            290, 136, 541, 993, 854, 246, 441, 448, 9, 161, 312, 553, 683, 427, 152, 936, 408,
+            770, 784, 650, 235, 489, 224, 224, 223, 235, 650, 784, 770, 408, 73, 152, 427, 925,
+            553, 413, 726, 9, 448, 475, 246, 697, 896, 974, 683, 358, 875, 53, 168, 278, 589,
+            588, 793, 699, 801, 697, 943, 751, 840, 302, 592, 104, 677,
+        };
+
+
+        #endregion
+
+
+        #region TestData11
+
+        private IList<int> TestData11_c = new List<int>()
+        {
+             621, 100, 188, 559, 987, 273, 306, 415, 906, 104, 384, 678, 553, 442, 432,
+            778, 30, 658, 780, 724, 697, 142, 637, 431, 200, 950, 924, 833, 337,
+            349, 693, 722, 889, 359, 721, 373, 897, 163, 125, 862, 704, 584, 249, 554,
+            556, 487, 931, 840, 837, 965, 961, 423, 385, 827, 468, 479, 463, 756, 360,
+            38, 349, 472, 78, 557, 411, 661, 789, 194, 720, 59, 881, 867, 533, 917, 20,
+            114, 893, 83, 875, 712,
+        };
+
+        private IList<int> TestData11_d = new List<int>()
+        {
+            621, 875, 83, 893, 114, 20, 917, 533, 867, 104, 384, 720, 194, 789, 432, 411, 30, 658,
+            780, 349, 38, 142, 637, 463, 200, 468, 827, 385, 423, 961, 965, 837, 840,
+            931, 487, 556, 554, 249, 584, 704, 704, 125, 249, 554, 373, 487, 359, 889,
+            722, 965, 961, 337, 833, 827, 950, 200, 431, 637, 142, 38, 349, 780, 658, 30,
+            411, 432, 442, 553, 720, 384, 104, 906, 415, 917, 273, 114, 559, 83, 875, 712,
+        };
+
+
+        #endregion
+
         [TestMethod()]
         public void CreateTest()
         {
@@ -237,26 +310,40 @@ namespace Algorithm.Struct.Tests
             };
         }
 
+        private void PassedDeteleTest()
+        {
+            DeleteList(TestData3, TestData3);
+            DeleteList(TestData7, TestData7);
+            DeleteList(TestData8, TestData8);
+
+            DeleteList(TestData9_c, TestData9_d);
+
+            DeleteList(TestData10_c, TestData10_d);
+        }
 
         [TestMethod()]
         public void DeleteTest()
         {
-            var count = TestHepler.GetRandom();
-            for (int i = 0; i < count; i++)
-            {
-                var datas = TestHepler.GetRandomList().Take(80).ToList();
-                DeleteList(datas, TestHepler.GetRandomList(datas));
-            }
+           // PassedDeteleTest();
 
-            //DeleteList(TestData3, TestData3);
+            Console.WriteLine();
+            Console.WriteLine("Random Test");
 
-            //DeleteList(TestData7, TestHepler.GetRandomList(TestData7));
-            //DeleteList(TestData7, TestData7);
-            //DeleteList(TestData8, TestData8);
+            DeleteList(TestData11_c, TestData11_d);
+
+            //var count = TestHepler.GetRandom();
+            //for (int i = 0; i < count; i++)
+            //{
+            //    var datas = TestHepler.GetRandomList().Take(80).ToList();
+            //    DeleteList(datas, TestHepler.GetRandomList(datas));
+            //}
+
+
         }
 
         private void DeleteList(IList<int> datas, IList<int> deleteDatas)
         {
+            Console.WriteLine();
             TestHepler.PrintList(datas, "create datas");
 
             TestHepler.PrintList(deleteDatas, "delete datas");
@@ -275,7 +362,7 @@ namespace Algorithm.Struct.Tests
 
                 bTree.Delete(item);
 
-                // CheckTree(bTree);
+                CheckTree(bTree);
 
                 Console.WriteLine("detele order result:");
                 bTree.Order(bTree.Root, (d) => { Console.Write("{0}, ", d); });

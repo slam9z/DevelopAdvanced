@@ -250,6 +250,7 @@ namespace Algorithm.Struct
                     var preChild = _storage.Read(node.GetChild(pointer));
                     if (preChild.KeyCount >= MinLimit)
                     {
+                        //取后继并没有这么简单
                         var preKey = preChild.GetKey(preChild.KeyCount);
                         node.SetKey(pointer, preKey);
                         DeleteCore(preChild, preKey);
@@ -261,7 +262,7 @@ namespace Algorithm.Struct
                     var postChild = _storage.Read(node.GetChild(pointer + 1));
                     if (postChild.KeyCount >= MinLimit)
                     {
-                        var postKey = postChild.GetKey(postChild.KeyCount);
+                        var postKey = postChild.GetKey(1);
                         node.SetKey(pointer, postKey);
                         DeleteCore(postChild, postKey);
 
@@ -332,14 +333,14 @@ namespace Algorithm.Struct
                         targetRoot.KeyCount = targetRoot.KeyCount + 1;
 
                         ArrayInsert(targetRoot.Keys, 0, targetRoot.KeyCount, node.GetKey(nodePointer));
-                        ArrayInsert(targetRoot.Children, 0, targetRoot.KeyCount, rootPreBrother.GetChild(rootPreBrother.KeyCount));
+                        ArrayInsert(targetRoot.Children, 0, targetRoot.KeyCount+1, rootPreBrother.GetChild(rootPreBrother.KeyCount+1));
 
                         node.SetKey(nodePointer, rootPreBrother.GetKey(rootPreBrother.KeyCount));
 
                         ArrayRemove(rootPreBrother.Keys, rootPreBrother.KeyCount, rootPreBrother.GetKey(rootPreBrother.KeyCount));
                         if (!rootPreBrother.IsLeaf)
                         {
-                            ArrayRemove(rootPreBrother.Children, rootPreBrother.KeyCount + 1, rootPreBrother.GetChild(rootPreBrother.KeyCount));
+                            ArrayRemove(rootPreBrother.Children, rootPreBrother.KeyCount + 1, rootPreBrother.GetChild(rootPreBrother.KeyCount+1));
                         }
                         rootPreBrother.KeyCount = rootPreBrother.KeyCount - 1;
 
@@ -389,7 +390,7 @@ namespace Algorithm.Struct
 
                 if (rootPreBrother != null)
                 {
-                    var keyPointer = pointer > node.KeyCount ? pointer - 1 : pointer;
+                    var keyPointer = pointer - 1;
 
                     var nodeKey = node.GetKey(keyPointer);
                     ArrayRemove(node.Keys, node.KeyCount, nodeKey);
