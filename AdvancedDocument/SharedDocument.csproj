@@ -42,7 +42,12 @@
   <ItemGroup>
     <None Include="Tittle\比特币%28百度百科%29.md" />
     <None Include="Tittle\这个22岁的程序猿可以打败比特币吗.md" />
+    <None Include="Tool\Mind\Mindjet.md" />
+    <None Include="Tool\Source Code Control\Git\git add 和add 所有文件.md" />
+    <None Include="Tool\Source Code Control\Git\解决历史过多导致git repo过大的问题.md" />
+    <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
     <None Include="Web\ASP.NET\ASP.NET网站路径.md" />
+    <None Include="Web\ASP.NET\FileUpload\File Upload using jQuery AJAX in ASP.NET Web API.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Front Controller.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Intercepting Filter.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Model-View-Controller.md" />
