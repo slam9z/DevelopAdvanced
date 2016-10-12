@@ -395,7 +395,7 @@ namespace Algorithm.Struct
                     ArrayRemove(node.Keys, node.KeyCount, nodeKey);
                     if (!node.IsLeaf)
                     {
-                        ArrayRemove(node.Children, node.KeyCount + 1, node.GetChild(keyPointer+1));
+                        ArrayRemove(node.Children, node.KeyCount + 1, node.GetChild(pointer));
                     }
                     node.KeyCount = node.KeyCount - 1;
 

@@ -241,18 +241,18 @@ namespace Algorithm.Struct.Tests
         [TestMethod()]
         public void DeleteTest()
         {
-            //var count = TestHepler.GetRandom();
-            //for (int i = 0; i < count; i++)
-            //{
-            //    var datas = TestHepler.GetRandomList().Take(20).ToList();
-            //    DeleteList(datas, TestHepler.GetRandomList(datas));
-            //}
+            var count = TestHepler.GetRandom();
+            for (int i = 0; i < count; i++)
+            {
+                var datas = TestHepler.GetRandomList().Take(80).ToList();
+                DeleteList(datas, TestHepler.GetRandomList(datas));
+            }
 
-            //  DeleteList(TestData3);
+            //DeleteList(TestData3, TestData3);
 
-            //  DeleteList(TestData7, TestHepler.GetRandomList(TestData7));
-            //  DeleteList(TestData7, TestData7);
-            DeleteList(TestData8, TestData8);
+            //DeleteList(TestData7, TestHepler.GetRandomList(TestData7));
+            //DeleteList(TestData7, TestData7);
+            //DeleteList(TestData8, TestData8);
         }
 
         private void DeleteList(IList<int> datas, IList<int> deleteDatas)
@@ -275,7 +275,7 @@ namespace Algorithm.Struct.Tests
 
                 bTree.Delete(item);
 
-               // CheckTree(bTree);
+                // CheckTree(bTree);
 
                 Console.WriteLine("detele order result:");
                 bTree.Order(bTree.Root, (d) => { Console.Write("{0}, ", d); });
