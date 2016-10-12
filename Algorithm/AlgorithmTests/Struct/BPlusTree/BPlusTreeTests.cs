@@ -319,26 +319,23 @@ namespace Algorithm.Struct.Tests
             DeleteList(TestData9_c, TestData9_d);
 
             DeleteList(TestData10_c, TestData10_d);
+            DeleteList(TestData11_c, TestData11_d);
         }
 
         [TestMethod()]
         public void DeleteTest()
         {
-           // PassedDeteleTest();
+            PassedDeteleTest();
 
             Console.WriteLine();
             Console.WriteLine("Random Test");
 
-            DeleteList(TestData11_c, TestData11_d);
-
-            //var count = TestHepler.GetRandom();
-            //for (int i = 0; i < count; i++)
-            //{
-            //    var datas = TestHepler.GetRandomList().Take(80).ToList();
-            //    DeleteList(datas, TestHepler.GetRandomList(datas));
-            //}
-
-
+            var count = TestHepler.GetRandom();
+            for (int i = 0; i < 100; i++)
+            {
+                var datas = TestHepler.GetRandomList().ToList();
+                DeleteList(datas, TestHepler.GetRandomList(datas));
+            }
         }
 
         private void DeleteList(IList<int> datas, IList<int> deleteDatas)
@@ -369,23 +366,28 @@ namespace Algorithm.Struct.Tests
             }
         }
 
+
+        private void PassedInsertDeleteTest()
+        {
+
+            InsertDelete(TestData4);
+            InsertDelete(TestData5);
+        }
+
         [TestMethod()]
         public void InsertDeleteTest()
         {
-            //for (int i = 0; i < 1000; i++)
-            //{
-            //    var datas = TestHepler.GetRandomList().Take(200).ToList();
-            //    var twoDatas = new List<int>(datas);
-            //    twoDatas.AddRange(datas);
+            PassedInsertDeleteTest();
 
-            //    InsertDelete(TestHepler.GetRandomList(twoDatas));
-            //}
+            for (int i = 0; i < 1000; i++)
+            {
+                var datas = TestHepler.GetRandomList().Take(200).ToList();
+                var twoDatas = new List<int>(datas);
+                twoDatas.AddRange(datas);
 
-            //InsertDelete(TestData4);
+                InsertDelete(TestHepler.GetRandomList(twoDatas));
+            }
 
-            //  InsertDelete(TestData5);
-
-            InsertDelete(TestData6);
         }
 
         public void InsertDelete(IList<int> datas)
