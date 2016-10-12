@@ -42,6 +42,14 @@
   <ItemGroup>
     <None Include="Tittle\比特币%28百度百科%29.md" />
     <None Include="Tittle\这个22岁的程序猿可以打败比特币吗.md" />
+    <None Include="Web\ASP.NET\ASP.NET网站路径.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Front Controller.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Intercepting Filter.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Model-View-Controller.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Observer.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Page Cache.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Page Controller.md" />
+    <None Include="Web\ASP.NET\Web Presentation Patterns\Web Presentation Patterns.md" />
     <None Include="Web\Javascript\frames\js中top的作用.md" />
     <None Include="Algorithm\Struct\Persistent Data Structures.md" />
     <None Include="Book\Design\Enterprise Solution Patterns using microsoft .net.pdf" />
