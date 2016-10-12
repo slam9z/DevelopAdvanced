@@ -78,6 +78,33 @@ namespace Algorithm.Struct
             }
         }
 
+
+        public T Minimum(BPlusTreeNode<T> node)
+        {
+            if (node.IsLeaf)
+            {
+                return node.GetKey(1);
+            }
+            else
+            {
+                return Minimum(_storage.Read(node.GetChild(1)));
+            }
+
+        }
+
+        public T Maximum(BPlusTreeNode<T> node)
+        {
+            if (node.IsLeaf)
+            {
+                return node.GetKey(node.KeyCount);
+            }
+            else
+            {
+                return Maximum(_storage.Read(node.GetChild(node.KeyCount + 1)));
+            }
+        }
+
+
         #region Insert
 
         public void Insert(T key)
@@ -250,8 +277,8 @@ namespace Algorithm.Struct
                     var preChild = _storage.Read(node.GetChild(pointer));
                     if (preChild.KeyCount >= MinLimit)
                     {
-                        //取后继并没有这么简单
-                        var preKey = preChild.GetKey(preChild.KeyCount);
+                        //取前驱和后继并没有这么简单
+                        var preKey = Maximum(preChild);
                         node.SetKey(pointer, preKey);
                         DeleteCore(preChild, preKey);
 
@@ -262,7 +289,7 @@ namespace Algorithm.Struct
                     var postChild = _storage.Read(node.GetChild(pointer + 1));
                     if (postChild.KeyCount >= MinLimit)
                     {
-                        var postKey = postChild.GetKey(1);
+                        var postKey = Minimum(postChild);
                         node.SetKey(pointer, postKey);
                         DeleteCore(postChild, postKey);
 
@@ -333,14 +360,14 @@ namespace Algorithm.Struct
                         targetRoot.KeyCount = targetRoot.KeyCount + 1;
 
                         ArrayInsert(targetRoot.Keys, 0, targetRoot.KeyCount, node.GetKey(nodePointer));
-                        ArrayInsert(targetRoot.Children, 0, targetRoot.KeyCount+1, rootPreBrother.GetChild(rootPreBrother.KeyCount+1));
+                        ArrayInsert(targetRoot.Children, 0, targetRoot.KeyCount + 1, rootPreBrother.GetChild(rootPreBrother.KeyCount + 1));
 
                         node.SetKey(nodePointer, rootPreBrother.GetKey(rootPreBrother.KeyCount));
 
                         ArrayRemove(rootPreBrother.Keys, rootPreBrother.KeyCount, rootPreBrother.GetKey(rootPreBrother.KeyCount));
                         if (!rootPreBrother.IsLeaf)
                         {
-                            ArrayRemove(rootPreBrother.Children, rootPreBrother.KeyCount + 1, rootPreBrother.GetChild(rootPreBrother.KeyCount+1));
+                            ArrayRemove(rootPreBrother.Children, rootPreBrother.KeyCount + 1, rootPreBrother.GetChild(rootPreBrother.KeyCount + 1));
                         }
                         rootPreBrother.KeyCount = rootPreBrother.KeyCount - 1;
 
