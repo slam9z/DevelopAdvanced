@@ -324,14 +324,7 @@ namespace Algorithm.Struct
                 {
                     pointer--;
                 }
-
-                //pointer++;
                 pointer++;
-                //if ((pointer != node.KeyCount) || pointer == 0)
-                //{
-                //    pointer++;
-                //}
-
 
                 var targetRoot = _storage.Read(node.GetChild(pointer));
 
