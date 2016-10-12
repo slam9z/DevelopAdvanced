@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Algorithm.Tests
 {
-    [TestClass()]
+   // [TestClass()]
     public class RectanglePartCombineFactoryTests
     {
 
@@ -86,7 +86,7 @@ namespace Algorithm.Tests
             factory.Combine(source1, target);
         }
 
-        [TestMethod()]
+      //  [TestMethod()]
         public void CombineTest()
         {
             //CombineTest1();
