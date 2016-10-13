@@ -93,6 +93,8 @@
     <None Include="Web\ASP.NET\Web Presentation Patterns\Page Cache.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Page Controller.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Web Presentation Patterns.md" />
+    <None Include="Web\ASP.NET\我心目中的Asp.net核心对象.md" />
+    <None Include="Web\ASP.NET\细说 Request[]与Request.Params[].md" />
     <None Include="Web\Javascript\frames\js中top的作用.md" />
     <None Include="Algorithm\Struct\Persistent Data Structures.md" />
     <None Include="Book\Design\Enterprise Solution Patterns using microsoft .net.pdf" />

@@ -1,0 +1,1 @@
+﻿[我心目中的Asp.net核心对象](http://www.cnblogs.com/fish-li/archive/2011/08/21/2148640.html#_label5)
