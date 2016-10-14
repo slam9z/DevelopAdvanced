@@ -45,6 +45,7 @@
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试二：测试需要从哪些方面着手.md" />
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试五：单元测试文章系列目录.md" />
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试四：单元测试背后的思考和感悟.md" />
+    <None Include="Data Access\Paging\ROW_NUMBER分页.md" />
     <None Include="Design\Software Architecture\software-architecture-patterns.pdf" />
     <None Include="Design\Software Architecture\软件架构入门.md" />
     <None Include="DOTNET\String\Escaping in CSharp characters, strings, string formats, keywords, identifiers.md" />
@@ -87,7 +88,10 @@
     <None Include="Tool\Source Code Control\谷歌的代码管理.md" />
     <None Include="Web\ASP.NET\ASP.NET网站路径.md" />
     <None Include="Web\FileUpload\File Upload using jQuery AJAX in ASP.NET Web API.md" />
+    <None Include="Web\FileUpload\JS AJAX File Upload with Progress.md" />
+    <None Include="Web\FileUpload\Security.md" />
     <None Include="Web\FileUpload\summary.md" />
+    <None Include="Web\FileUpload\Unrestricted File Upload.md" />
     <None Include="Web\FileUpload\Upload files using an HttpHandler.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Front Controller.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Intercepting Filter.md" />
