@@ -1,0 +1,1 @@
+reverse_str(buf+1, n-2);

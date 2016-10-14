@@ -1,0 +1,2 @@
+sizeof(s2)
+*p%len

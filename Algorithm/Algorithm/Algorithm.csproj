@@ -51,6 +51,7 @@
     <Compile Include="Sort\ISort.cs" />
     <Compile Include="Sort\MergeSort.cs" />
     <Compile Include="Sort\QuickSort.cs" />
+    <Compile Include="Sort\Sort.cs" />
     <Compile Include="Sort\SortBase.cs" />
     <Compile Include="Struct\AVLTree.cs" />
     <Compile Include="Struct\BinarySearchTree.cs" />
