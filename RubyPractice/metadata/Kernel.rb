@@ -1,0 +1,1 @@
+p  Kernel.private_instance_methods.grep(/^pr/)
