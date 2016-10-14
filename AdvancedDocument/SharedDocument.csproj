@@ -47,6 +47,9 @@
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试四：单元测试背后的思考和感悟.md" />
     <None Include="Design\Software Architecture\software-architecture-patterns.pdf" />
     <None Include="Design\Software Architecture\软件架构入门.md" />
+    <None Include="DOTNET\String\Escaping in CSharp characters, strings, string formats, keywords, identifiers.md" />
+    <None Include="DOTNET\String\string StartsWith  vs FirstOrDefault.md" />
+    <None Include="DOTNET\String\大括号转义.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Attachments.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Cache.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Configuration.md" />
@@ -83,9 +86,9 @@
     <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
     <None Include="Tool\Source Code Control\谷歌的代码管理.md" />
     <None Include="Web\ASP.NET\ASP.NET网站路径.md" />
-    <None Include="Web\ASP.NET\FileUpload\File Upload using jQuery AJAX in ASP.NET Web API.md" />
-    <None Include="Web\ASP.NET\FileUpload\summary.md" />
-    <None Include="Web\ASP.NET\FileUpload\Upload files using an HttpHandler.md" />
+    <None Include="Web\FileUpload\File Upload using jQuery AJAX in ASP.NET Web API.md" />
+    <None Include="Web\FileUpload\summary.md" />
+    <None Include="Web\FileUpload\Upload files using an HttpHandler.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Front Controller.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Intercepting Filter.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Model-View-Controller.md" />
@@ -99,7 +102,8 @@
     <None Include="Web\CORS\HTTP访问控制%28CORS%29.md" />
     <None Include="Web\CORS\javascript跨域上传文件可以如何实现？.md" />
     <None Include="Web\CORS\JSONP.md" />
-    <None Include="Web\CORS\upload file cors.md" />
+    <None Include="Web\FileUpload\upload file cors.md" />
+    <None Include="Web\CORS\跨源资源共享 Cross Origin Resource Sharing%28CORS%29.md" />
     <None Include="Web\CSS\display 属性\CSS display 属性.md" />
     <None Include="Web\CSS\display 属性\我所知道的几种display table-cell的应用.md" />
     <None Include="Web\CSS\Fixed Table Cell Width.md" />
@@ -357,6 +361,7 @@
     <None Include="Data Access\Sql\Tutorial\Using SET Operators.md" />
     <None Include="Data Access\T-SQL\INSERT、UPDATE、DELETE  OUTPUT.md" />
     <None Include="DOTNET\String\Convert List to String.md" />
+    <None Include="Bug and Test\Debug\Edge debug.md" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Tool\CommandLine\cmd快捷操作.md" />
     <None Include="Data Access\Entity Framework\code first  mapping.md" />
