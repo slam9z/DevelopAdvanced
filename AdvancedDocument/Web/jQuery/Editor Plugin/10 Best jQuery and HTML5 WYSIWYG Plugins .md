@@ -1,1 +1,0 @@
-﻿[10 Best jQuery and HTML5 WYSIWYG Plugins](https://www.sitepoint.com/10-best-html-wysiwyg-plugins/)
