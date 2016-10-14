@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Book\Tittle\程序员的呐喊.md" />
+    <None Include="Language\Lisp\Lisp的本质.md" />
+    <None Include="Language\Steve Yegge%27s Next Big Language Revisited.md" />
     <None Include="Tittle\比特币%28百度百科%29.md" />
     <None Include="Tittle\这个22岁的程序猿可以打败比特币吗.md" />
     <None Include="Tool\Mind\Mindjet.md" />
