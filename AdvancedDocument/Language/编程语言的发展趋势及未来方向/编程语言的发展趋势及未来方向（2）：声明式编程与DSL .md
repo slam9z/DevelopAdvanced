@@ -1,0 +1,1 @@
+﻿[编程语言的发展趋势及未来方向（2）：声明式编程与DSL ](http://blog.zhaojie.me/2010/04/trends-and-future-directions-in-programming-languages-by-anders-2-declarative-programming-and-dsl.html)

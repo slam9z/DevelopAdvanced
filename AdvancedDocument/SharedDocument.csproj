@@ -53,6 +53,14 @@
     <None Include="DOTNET\String\Escaping in CSharp characters, strings, string formats, keywords, identifiers.md" />
     <None Include="DOTNET\String\string StartsWith  vs FirstOrDefault.md" />
     <None Include="DOTNET\String\大括号转义.md" />
+    <None Include="Language\编程语言的发展趋势及未来方向\综述：编程语言的发展趋势及未来方向.md" />
+    <None Include="Language\编程语言的发展趋势及未来方向\编程语言的发展趋势及未来方向（1）：历史回顾及趋势概述.md" />
+    <None Include="Language\编程语言的发展趋势及未来方向\编程语言的发展趋势及未来方向（2）：声明式编程与DSL .md" />
+    <None Include="Language\编程语言的发展趋势及未来方向\编程语言的发展趋势及未来方向（3）：函数式编程 .md" />
+    <None Include="Language\编程语言的发展趋势及未来方向\编程语言的发展趋势及未来方向（4）：动态语言 .md" />
+    <None Include="Language\编程语言的发展趋势及未来方向\编程语言的发展趋势及未来方向（5）：元编程 .md" />
+    <None Include="Language\编程语言的发展趋势及未来方向\编程语言的发展趋势及未来方向（6）：并发 .md" />
+    <None Include="Language\编程语言的发展趋势及未来方向\编程语言的发展趋势及未来方向（7）：总结 .md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Attachments.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Cache.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Configuration.md" />
@@ -779,6 +787,9 @@
     <Content Include="Image\设计模式\访问者结构.PNG" />
     <Content Include="Image\设计模式\迭代器结构.PNG" />
     <Content Include="Image\设计模式\适配器结构.PNG" />
+    <Content Include="Language\编程语言的发展趋势及未来方向\Image\综述\Laguages,Frameworks,Tool.png" />
+    <Content Include="Language\编程语言的发展趋势及未来方向\Image\综述\Potential Language Constructs .png" />
+    <Content Include="Language\编程语言的发展趋势及未来方向\Image\综述\Trends.png" />
     <Content Include="MyProject\Wiki\Roadkill\Image\Theme\BlackBar.png" />
     <Content Include="MyProject\Wiki\Roadkill\Image\Theme\Mediawiki.png" />
     <Content Include="MyProject\Wiki\Roadkill\Image\Theme\Plain.png" />
