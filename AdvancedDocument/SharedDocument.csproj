@@ -53,6 +53,7 @@
     <None Include="DOTNET\String\Escaping in CSharp characters, strings, string formats, keywords, identifiers.md" />
     <None Include="DOTNET\String\string StartsWith  vs FirstOrDefault.md" />
     <None Include="DOTNET\String\大括号转义.md" />
+    <None Include="Language\Ruby\ruby.md" />
     <None Include="Language\编程语言的发展趋势及未来方向\综述：编程语言的发展趋势及未来方向.md" />
     <None Include="Language\编程语言的发展趋势及未来方向\编程语言的发展趋势及未来方向（1）：历史回顾及趋势概述.md" />
     <None Include="Language\编程语言的发展趋势及未来方向\编程语言的发展趋势及未来方向（2）：声明式编程与DSL .md" />
