@@ -236,6 +236,7 @@
     <None Include="Web\jQuery\jQuery的.live%28%29和.die%28%29 .md" />
     <None Include="Web\jQuery\Plugins\Upload Plugin\iframe and html5 file uploader\README.md" />
     <None Include="Web\jQuery\Plugins\Upload Plugin\jQuery-File-Upload\Readme.md" />
+    <None Include="Web\jQuery\Traversing\Tree Traversal\.closest%28%29.md" />
     <None Include="Web\Web Form\ASP.NET指令.md" />
     <None Include="Web\Web Form\ASP.NET的页面中对其他文件的引用.md" />
     <None Include="Web\Web Form\Control\Master Page 初探 .md" />

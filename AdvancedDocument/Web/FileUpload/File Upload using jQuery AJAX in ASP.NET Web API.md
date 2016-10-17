@@ -12,11 +12,13 @@ If you want to upload large file(maximum 2 GB!) then you need to change the <
   <httpRuntime executionTimeout="240000" maxRequestLength="2147483647" />
 </system.web>
 
-<security>
-  <requestFiltering>
-    <requestLimits maxAllowedContentLength="4294967295"/>
-  </requestFiltering>
-</security>
+<system.webServer>
+    <security>
+      <requestFiltering>
+        <requestLimits maxAllowedContentLength="4294967295"/>
+      </requestFiltering>
+    </security>
+</system.webServer>
 ```
 
 ###executionTimeout
