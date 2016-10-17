@@ -46,10 +46,12 @@
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试五：单元测试文章系列目录.md" />
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试四：单元测试背后的思考和感悟.md" />
     <None Include="Data Access\Paging\ROW_NUMBER分页.md" />
+    <None Include="DataType\Json\Json.md" />
     <None Include="Design\Abstract machines\Turing machine\Turing machine wiki.md" />
     <None Include="Design\Abstract machines\Turing machine\图灵机百度百科.md" />
     <None Include="Design\Software Architecture\software-architecture-patterns.pdf" />
     <None Include="Design\Software Architecture\软件架构入门.md" />
+    <None Include="DOTNET\Json\Newtonsoft.Json\Creating JSON on the fly with JObject.md" />
     <None Include="DOTNET\String\Escaping in CSharp characters, strings, string formats, keywords, identifiers.md" />
     <None Include="DOTNET\String\string StartsWith  vs FirstOrDefault.md" />
     <None Include="DOTNET\String\大括号转义.md" />
