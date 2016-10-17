@@ -103,6 +103,8 @@
     <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
     <None Include="Tool\Source Code Control\谷歌的代码管理.md" />
     <None Include="Web\ASP.NET\ASP.NET网站路径.md" />
+    <None Include="Web\ASP.NET\Request\神奇的HttpFileCollection.md" />
+    <None Include="Web\ASP.NET\Route\How can you access RouteData from the code-behind.md" />
     <None Include="Web\FileUpload\File Upload using jQuery AJAX in ASP.NET Web API.md" />
     <None Include="Web\FileUpload\JS AJAX File Upload with Progress.md" />
     <None Include="Web\FileUpload\Security.md" />
