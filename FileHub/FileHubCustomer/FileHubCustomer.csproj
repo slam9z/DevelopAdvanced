@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CC98CDA2-1051-42E0-B24D-6F34584BC178}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FileHubCustomer</RootNamespace>
+    <AssemblyName>FileHubCustomer</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.1.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.1.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.1.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.1.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.1.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.1.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="basic-plus.html" />
+    <Content Include="index.html" />
+    <Content Include="packages.config" />
+    <Content Include="Scripts\bootstrap\3.2.0\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\Gallery\css\blueimp-gallery-indicator.css" />
+    <Content Include="Scripts\Gallery\css\blueimp-gallery-video.css" />
+    <Content Include="Scripts\Gallery\css\blueimp-gallery.css" />
+    <Content Include="Scripts\Gallery\css\blueimp-gallery.min.css" />
+    <Content Include="Scripts\Gallery\css\demo.css" />
+    <Content Include="Scripts\Gallery\js\blueimp-gallery-fullscreen.js" />
+    <Content Include="Scripts\Gallery\js\blueimp-gallery-indicator.js" />
+    <Content Include="Scripts\Gallery\js\blueimp-gallery-video.js" />
+    <Content Include="Scripts\Gallery\js\blueimp-gallery-vimeo.js" />
+    <Content Include="Scripts\Gallery\js\blueimp-gallery-youtube.js" />
+    <Content Include="Scripts\Gallery\js\blueimp-gallery.js" />
+    <Content Include="Scripts\Gallery\js\blueimp-gallery.min.js" />
+    <Content Include="Scripts\Gallery\js\blueimp-helper.js" />
+    <Content Include="Scripts\Gallery\js\demo.js" />
+    <Content Include="Scripts\Gallery\js\jquery.blueimp-gallery.js" />
+    <Content Include="Scripts\Gallery\js\jquery.blueimp-gallery.min.js" />
+    <Content Include="Scripts\Gallery\js\vendor\jquery.js" />
+    <Content Include="Scripts\JavaScript-Canvas-to-Blob\.gitignore" />
+    <Content Include="Scripts\JavaScript-Canvas-to-Blob\js\canvas-to-blob.js" />
+    <Content Include="Scripts\JavaScript-Canvas-to-Blob\js\canvas-to-blob.min.js" />
+    <Content Include="Scripts\JavaScript-Canvas-to-Blob\test\index.html" />
+    <Content Include="Scripts\JavaScript-Canvas-to-Blob\test\test.js" />
+    <Content Include="Scripts\JavaScript-Canvas-to-Blob\test\vendor\chai.js" />
+    <Content Include="Scripts\JavaScript-Canvas-to-Blob\test\vendor\load-image.js" />
+    <Content Include="Scripts\JavaScript-Canvas-to-Blob\test\vendor\mocha.css" />
+    <Content Include="Scripts\JavaScript-Canvas-to-Blob\test\vendor\mocha.js" />
+    <Content Include="Scripts\JavaScript-Load-Image\js\demo.js" />
+    <Content Include="Scripts\JavaScript-Load-Image\js\load-image-exif-map.js" />
+    <Content Include="Scripts\JavaScript-Load-Image\js\load-image-exif.js" />
+    <Content Include="Scripts\JavaScript-Load-Image\js\load-image-meta.js" />
+    <Content Include="Scripts\JavaScript-Load-Image\js\load-image-orientation.js" />
+    <Content Include="Scripts\JavaScript-Load-Image\js\load-image.all.min.js.map" />
+    <Content Include="Scripts\Gallery\js\jquery.blueimp-gallery.min.js.map" />
+    <Content Include="Scripts\Gallery\css\blueimp-gallery.less" />
+    <Content Include="Scripts\Gallery\css\blueimp-gallery.min.css.map" />
+    <Content Include="Scripts\Gallery\js\blueimp-gallery.min.js.map" />
+    <Content Include="Scripts\JavaScript-Canvas-to-Blob\.travis.yml" />
+    <Content Include="Scripts\JavaScript-Canvas-to-Blob\js\canvas-to-blob.min.js.map" />
+    <Content Include="Scripts\JavaScript-Canvas-to-Blob\package.json" />
+    <Content Include="Scripts\JavaScript-Canvas-to-Blob\README.md" />
+    <Content Include="Scripts\JavaScript-Templates\.travis.yml" />
+    <Content Include="Scripts\JavaScript-Templates\js\tmpl.min.js.map" />
+    <Content Include="Scripts\JavaScript-Templates\package.json" />
+    <Content Include="Scripts\JavaScript-Templates\README.md" />
+    <Content Include="Scripts\bootstrap\3.2.0\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\bootstrap\3.2.0\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Scripts\bootstrap\3.2.0\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="basic.html" />
+    <Content Include="Scripts\ai.0.22.19-build00125.js" />
+    <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
+    <Content Include="Scripts\bootstrap\3.2.0\css\bootstrap.min.css" />
+    <Content Include="Scripts\bootstrap\3.2.0\js\bootstrap.min.js" />
+    <Content Include="Scripts\JavaScript-Load-Image\js\load-image.all.min.js" />
+    <Content Include="Scripts\JavaScript-Load-Image\js\load-image.js" />
+    <Content Include="Scripts\JavaScript-Load-Image\js\vendor\jquery.Jcrop.js" />
+    <Content Include="Scripts\JavaScript-Load-Image\js\vendor\jquery.js" />
+    <Content Include="Scripts\JavaScript-Templates\.gitignore" />
+    <Content Include="Scripts\JavaScript-Templates\css\demo.css" />
+    <Content Include="Scripts\JavaScript-Templates\index.html" />
+    <Content Include="Scripts\JavaScript-Templates\js\compile.js" />
+    <Content Include="Scripts\JavaScript-Templates\js\demo.js" />
+    <Content Include="Scripts\JavaScript-Templates\js\runtime.js" />
+    <Content Include="Scripts\JavaScript-Templates\js\tmpl.js" />
+    <Content Include="Scripts\JavaScript-Templates\js\tmpl.min.js" />
+    <Content Include="Scripts\JavaScript-Templates\test\index.html" />
+    <Content Include="Scripts\JavaScript-Templates\test\test.js" />
+    <Content Include="Scripts\JavaScript-Templates\test\vendor\chai.js" />
+    <Content Include="Scripts\JavaScript-Templates\test\vendor\mocha.css" />
+    <Content Include="Scripts\JavaScript-Templates\test\vendor\mocha.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\css\demo-ie8.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\css\demo.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\css\jquery.fileupload-noscript.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\css\jquery.fileupload-ui.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\css\jquery.fileupload.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\css\style.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\img\loading.gif" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\img\progressbar.gif" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\cors\jquery.postmessage-transport.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\cors\jquery.xdr-transport.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\js\jquery.fileupload-audio.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\js\jquery.fileupload-image.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\js\jquery.fileupload-jquery-ui.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\js\jquery.fileupload-process.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\js\jquery.fileupload-ui.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\js\jquery.fileupload-validate.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\js\jquery.fileupload-video.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\js\jquery.fileupload.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\js\jquery.iframe-transport.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.12.5\js\vendor\jquery.ui.widget.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Attachment\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50812</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50812/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
