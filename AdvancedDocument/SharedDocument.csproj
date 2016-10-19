@@ -109,6 +109,11 @@
     <None Include="Web\ASP.NET\JQuery\Implementing  Consuming ASP.NET WEB API from JQuery %28MVC 4%29.md" />
     <None Include="Web\ASP.NET\Request\神奇的HttpFileCollection.md" />
     <None Include="Web\ASP.NET\Route\How can you access RouteData from the code-behind.md" />
+    <None Include="Web\CSS\Bootstrap\button style.md" />
+    <None Include="Web\CSS\Bootstrap\div style.md" />
+    <None Include="Web\CSS\Bootstrap\input style.md" />
+    <None Include="Web\CSS\Bootstrap\table style.md" />
+    <None Include="Web\CSS\Table\How can I wrap or break long text word in a fixed width span.md" />
     <None Include="Web\File Upload and Download\ASP.NET download file.md" />
     <None Include="Web\File Upload and Download\Download File Using jQuery.md" />
     <None Include="Web\File Upload and Download\File Upload using jQuery AJAX in ASP.NET Web API.md" />
@@ -134,7 +139,7 @@
     <None Include="Web\CORS\跨源资源共享 Cross Origin Resource Sharing%28CORS%29.md" />
     <None Include="Web\CSS\display 属性\CSS display 属性.md" />
     <None Include="Web\CSS\display 属性\我所知道的几种display table-cell的应用.md" />
-    <None Include="Web\CSS\Fixed Table Cell Width.md" />
+    <None Include="Web\CSS\Table\Fixed Table Cell Width.md" />
     <None Include="Web\Html\Frame\How to refresh an IFrame using Javascript.md" />
     <None Include="Web\Html\Table\Actual table Vs. Div table.md" />
     <None Include="Web\Html\Best replacement for font tag in html.md" />
@@ -242,6 +247,7 @@
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Page Controller in ASP.NET.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Patterns Rate.md" />
     <None Include="Web\JavaScript\JavaScript Source Map 详解.md" />
+    <None Include="Web\jQuery\API\Attributes\Forms\Manipulation\General Attributes\.val%28%29.md" />
     <None Include="Web\jQuery\API\Manipulation\DOM Insertion, Inside\.append%28%29.md" />
     <None Include="Web\jQuery\API\Manipulation\DOM Removal\.remove%28%29.md" />
     <None Include="Web\jQuery\API\Manipulation\General Attributes\.attr%28%29.md" />
@@ -862,7 +868,6 @@
     <Folder Include="MyProject\Wiki\Roadkill\Dependencies\" />
     <Folder Include="Tool\UML\Visual Studio UML\" />
     <Folder Include="Web\Core\" />
-    <Folder Include="Web\CSS\Bootstrap\" />
     <Folder Include="Web\JavaScript\Typescript\" />
     <Folder Include="Web\jQuery\Method\" />
   </ItemGroup>
