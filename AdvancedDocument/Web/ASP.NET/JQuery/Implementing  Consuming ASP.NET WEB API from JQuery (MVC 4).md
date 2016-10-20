@@ -1,0 +1,1 @@
+﻿[Implementing & Consuming ASP.NET WEB API from JQuery (MVC 4)](http://www.codeproject.com/Articles/424461/Implementing-Consuming-ASP-NET-WEB-API-from-JQuery)
