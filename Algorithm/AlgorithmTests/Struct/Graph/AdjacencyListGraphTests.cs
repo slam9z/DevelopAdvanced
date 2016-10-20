@@ -17,25 +17,28 @@ namespace Algorithm.Struct.Tests
 
         private AdjacencyListGraph<int> CreateGraph1(bool hasDirection = false)
         {
-            var vertexs = new List<int>
+            var vertexKeys = new List<int>
             {
                 1,2,3,4,5
             };
 
-            var edges = new List<Tuple<int, int>>
-            {
-                new Tuple<int,int>(0,1),
-                new Tuple<int,int>(0,4),
-
-                new Tuple<int,int>(1,2),
-                new Tuple<int,int>(1,3),
-                new Tuple<int,int>(1,4),
-
-                new Tuple<int,int>(2,3),
-                new Tuple<int,int>(3,4),
-            };
-
             var graph = new AdjacencyListGraph<int>(hasDirection);
+
+            var vertexs = graph.CreateVertexs(vertexKeys);
+
+            var edges = new List<AdjacencyEdge>
+            {
+                graph.CreateEdge(vertexs[0],vertexs[1]),
+                graph.CreateEdge(vertexs[0],vertexs[4]),
+
+                graph.CreateEdge(vertexs[1],vertexs[2]),
+                graph.CreateEdge(vertexs[1],vertexs[3]),
+                graph.CreateEdge(vertexs[1],vertexs[4]),
+
+                graph.CreateEdge(vertexs[2],vertexs[3]),
+                graph.CreateEdge(vertexs[3],vertexs[4]),
+
+            };
 
             graph.CreatGraph(vertexs, edges);
 
@@ -44,22 +47,25 @@ namespace Algorithm.Struct.Tests
 
         private AdjacencyListGraph<int> CreateDirectionNoCircuitGraph1(bool hasDirection = false)
         {
-            var vertexs = new List<int>
+            var vertexKeys = new List<int>
             {
                 1,2,3,4,5
             };
 
-            var edges = new List<Tuple<int, int>>
-            {
-                new Tuple<int,int>(0,1),
-                new Tuple<int,int>(0,4),
 
-                new Tuple<int,int>(1,2),
-                new Tuple<int,int>(1,3),
+            var graph = new AdjacencyListGraph<int>(hasDirection);
+
+            var vertexs = graph.CreateVertexs(vertexKeys);
+
+            var edges = new List<AdjacencyEdge>
+            {
+                graph.CreateEdge(vertexs[0],vertexs[1]),
+                graph.CreateEdge(vertexs[0],vertexs[4]),
+
+                graph.CreateEdge(vertexs[1],vertexs[2]),
+                graph.CreateEdge(vertexs[1],vertexs[3]),
 
             };
-
-            var graph = new AdjacencyListGraph<int>(true);
 
             graph.CreatGraph(vertexs, edges);
 
@@ -78,7 +84,7 @@ namespace Algorithm.Struct.Tests
         public void BreadthFirstSearchTest()
         {
             var graph = CreateGraph1();
-            var source = graph.GetVertexByIndex(0);
+            var source = graph.GetVertexByKey(1);
             Console.WriteLine(source);
             graph.BreadthFirstSearch(source,
                 (vertex) =>
@@ -133,7 +139,7 @@ namespace Algorithm.Struct.Tests
         public void PrintPathTest()
         {
             var graph = CreateGraph1(true);
-            var source = graph.GetVertexByIndex(0);
+            var source = graph.GetVertexByKey(1);
             Console.WriteLine(source);
             graph.BreadthFirstSearch(source,
                 (vertex) =>
@@ -145,7 +151,7 @@ namespace Algorithm.Struct.Tests
             Console.WriteLine();
             Console.WriteLine("PrintPath");
             Console.WriteLine();
-            graph.PrintPath(source, graph.GetVertexByIndex(4));
+            graph.PrintPath(source, graph.GetVertexByKey(1));
         }
 
         [TestMethod()]
@@ -153,7 +159,7 @@ namespace Algorithm.Struct.Tests
         {
             Console.WriteLine("GetVertexEdgeTest");
             var graph = CreateDirectionNoCircuitGraph1();
-            var source = graph.GetVertexByIndex(0);
+            var source = graph.GetVertexByKey(1);
             var edges = graph.GetVertexEdge(source);
             foreach (var item in edges)
             {

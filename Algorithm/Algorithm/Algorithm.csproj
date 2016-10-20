@@ -61,7 +61,10 @@
     <Compile Include="Struct\BPlusTree\BPlusTreeNode.cs" />
     <Compile Include="Struct\BPlusTree\Storage\DictionaryNodeStorage.cs" />
     <Compile Include="Struct\BPlusTree\Storage\INodeStorage.cs" />
+    <Compile Include="Struct\Graph\AdjacencyEdge.cs" />
     <Compile Include="Struct\Graph\AdjacencyListGraph.cs" />
+    <Compile Include="Struct\Graph\AdjacencyVertex.cs" />
+    <Compile Include="Struct\Graph\Color.cs" />
     <Compile Include="Struct\Graph\GraphBase.cs" />
     <Compile Include="Struct\IEmptyNodeInterface.cs" />
     <Compile Include="Struct\LinkList.cs" />
