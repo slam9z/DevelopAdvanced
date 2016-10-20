@@ -1,0 +1,4 @@
+##dynamic Query
+
+需要使用IDynamicParameters接口或者直接使用DynamicParameters类型
+使用dynamic对象是不可以的。
