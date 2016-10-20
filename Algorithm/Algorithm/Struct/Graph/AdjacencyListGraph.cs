@@ -53,8 +53,7 @@ namespace Algorithm.Struct
                 var startVertex = grayQueue.Dequeue();
                 foreach (var edge in GetVertexEdge(startVertex))
                 {
-                    var endeEnd = edge.End;
-                    var endVertex = _adjacencyDictionary[endeEnd];
+                    var endVertex = edge.End;
                     if (endVertex.Color == Color.White)
                     {
                         endVertex.Color = Color.Gray;
@@ -105,7 +104,7 @@ namespace Algorithm.Struct
 
             foreach (var item in edges)
             {
-                var vertex = _adjacencyDictionary[item.End];
+                var vertex = item.End;
                 if (vertex.Color == Color.White)
                 {
                     vertex.Parent = source;
@@ -227,20 +226,21 @@ namespace Algorithm.Struct
             var edges = GetVertexEdge(source);
 
             //调整
-
-            graph.AddVertex(CreateVertex(source));
+            var newSource = CreateVertex(source);
+            graph.AddVertex(newSource);
 
             foreach (var item in edges)
             {
-                var vertex = _adjacencyDictionary[item.End];
+                var vertex = item.End;
 
                 if (vertex.Color == Color.White)
                 {
                     //调整
 
-                    graph.AddVertex(CreateVertex(vertex));
+                    var newVertex = CreateVertex(vertex);
+                    graph.AddVertex(newVertex);
 
-                    graph.AddEdge(new AdjacencyEdge(item.End, item.Start));
+                    graph.AddEdge(new AdjacencyEdge<T>(newVertex, newSource));
 
                     vertex.Parent = source;
                     DepthFirstSearchVisitStronglyConnected(vertex, graph);
@@ -269,7 +269,7 @@ namespace Algorithm.Struct
 
         public void CreatGraph(
             IEnumerable<AdjacencyVertex<T>> vertexs
-            , IEnumerable<AdjacencyEdge> edges)
+            , IEnumerable<AdjacencyEdge<T>> edges)
         {
             _adjacencyDictionary.Clear();
             foreach (var item in vertexs)
@@ -303,17 +303,25 @@ namespace Algorithm.Struct
 
             var graph = new AdjacencyListGraph<T>(true);
 
-            var vertexs = new List<AdjacencyVertex<T>>();
-            var edges = new List<AdjacencyEdge>();
+            var vertexs = new Dictionary<int, AdjacencyVertex<T>>();
+            var edges = new List<AdjacencyEdge<T>>();
 
             foreach (var item in _adjacencyDictionary.Values)
             {
                 var newVertex = copyAction(item);
-                vertexs.Add(newVertex);
+                vertexs.Add(newVertex.Identifier, newVertex);
 
-                edges.AddRange(GetVertexEdge(item).Select(o => new AdjacencyEdge(o.End, o.Start)));
             }
-            graph.CreatGraph(vertexs, edges);
+
+            foreach (var item in _adjacencyDictionary.Values)
+            {
+                edges.AddRange(GetVertexEdge(item)
+                    .Select
+                    (o => new AdjacencyEdge<T>(vertexs[o.End.Identifier], vertexs[o.Start.Identifier]))
+                    );
+            }
+
+            graph.CreatGraph(vertexs.Values, edges);
             return graph;
         }
 
@@ -367,10 +375,6 @@ namespace Algorithm.Struct
             return _adjacencyDictionary.Values;
         }
 
-        public AdjacencyVertex<T> GetVertex(int id)
-        {
-            return _adjacencyDictionary[id];
-        }
 
         public AdjacencyVertex<T> GetVertexByKey(int key)
         {
@@ -399,9 +403,9 @@ namespace Algorithm.Struct
 
         #region edge
 
-        public IEnumerable<AdjacencyEdge> GetVertexEdge(AdjacencyVertex<T> vertex)
+        public IEnumerable<AdjacencyEdge<T>> GetVertexEdge(AdjacencyVertex<T> vertex)
         {
-            var edges = new List<AdjacencyEdge>();
+            var edges = new List<AdjacencyEdge<T>>();
             var edge = vertex.FirstEdge;
             while (edge != null)
             {
@@ -412,23 +416,19 @@ namespace Algorithm.Struct
         }
 
 
-        public AdjacencyEdge CreateEdge(AdjacencyEdge edge)
+
+        public AdjacencyEdge<T> CreateEdge(AdjacencyVertex<T> start, AdjacencyVertex<T> end)
         {
-            return new AdjacencyEdge(edge.Start, edge.End);
+            return new AdjacencyEdge<T>(start, end);
         }
 
-        public AdjacencyEdge CreateEdge(AdjacencyVertex<T> start, AdjacencyVertex<T> end)
-        {
-            return new AdjacencyEdge(start.Identifier, end.Identifier);
-        }
-
-        public void AddEdge(AdjacencyEdge item)
+        public void AddEdge(AdjacencyEdge<T> item)
         {
             AddEdgeCore(item.Start, item.End);
         }
 
 
-        public void AddEdge(int first, int second)
+        public void AddEdge(AdjacencyVertex<T> first, AdjacencyVertex<T> second)
         {
             AddEdgeCore(first, second);
             if (!HasDirection)
@@ -437,14 +437,11 @@ namespace Algorithm.Struct
             }
         }
 
-        public void AddEdgeCore(int start, int end)
+        public void AddEdgeCore(AdjacencyVertex<T> start, AdjacencyVertex<T> end)
         {
-            if (!_adjacencyDictionary.Keys.Contains(start) || !_adjacencyDictionary.Keys.Contains(end))
-            {
-                throw new ArgumentOutOfRangeException("can't find vertex");
-            }
-            var startVertex = _adjacencyDictionary[start];
-            var edge = new AdjacencyEdge(start, end);
+
+            var startVertex = start;
+            var edge = new AdjacencyEdge<T>(start, end);
 
             if (startVertex.FirstEdge == null)
             {

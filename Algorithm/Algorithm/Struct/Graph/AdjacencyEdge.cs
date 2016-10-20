@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Algorithm.Struct
 {
-    public class AdjacencyEdge
+    public class AdjacencyEdge<T> where T : IComparable
     {
-        public int Start { get; set; }
-        public int End { get; set; }
+        public AdjacencyVertex<T> Start { get; set; }
+        public AdjacencyVertex<T> End { get; set; }
 
-        public AdjacencyEdge Next { get; set; }
+        public AdjacencyEdge<T> Next { get; set; }
 
         public AdjacencyEdge()
         {
 
         }
 
-        public AdjacencyEdge(int start, int end)
+        public AdjacencyEdge(AdjacencyVertex<T> start, AdjacencyVertex<T> end)
         {
             Start = start;
             End = end;
@@ -26,7 +26,7 @@ namespace Algorithm.Struct
 
         public override string ToString()
         {
-            return string.Format("Start: {0} End:{1}", Start, End);
+            return string.Format("Start: {0} \n End:{1}", Start, End);
         }
     }
 }

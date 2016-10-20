@@ -18,7 +18,7 @@ namespace Algorithm.Struct
 
         public T Key { get; set; }
 
-        public AdjacencyEdge FirstEdge { get; set; }
+        public AdjacencyEdge<T> FirstEdge { get; set; }
 
         //某些算法用到,不属于自身性质
         public AdjacencyVertex<T> Parent { get; set; }

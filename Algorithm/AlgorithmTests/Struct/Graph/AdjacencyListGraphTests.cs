@@ -26,7 +26,7 @@ namespace Algorithm.Struct.Tests
 
             var vertexs = graph.CreateVertexs(vertexKeys);
 
-            var edges = new List<AdjacencyEdge>
+            var edges = new List<AdjacencyEdge<int>>
             {
                 graph.CreateEdge(vertexs[0],vertexs[1]),
                 graph.CreateEdge(vertexs[0],vertexs[4]),
@@ -57,7 +57,7 @@ namespace Algorithm.Struct.Tests
 
             var vertexs = graph.CreateVertexs(vertexKeys);
 
-            var edges = new List<AdjacencyEdge>
+            var edges = new List<AdjacencyEdge<int>>
             {
                 graph.CreateEdge(vertexs[0],vertexs[1]),
                 graph.CreateEdge(vertexs[0],vertexs[4]),
@@ -84,7 +84,7 @@ namespace Algorithm.Struct.Tests
 
             var vertexs = graph.CreateVertexs(vertexKeys);
 
-            var edges = new List<AdjacencyEdge>
+            var edges = new List<AdjacencyEdge<int>>
             {
                 graph.CreateEdge(vertexs[0],vertexs[1]),
                 graph.CreateEdge(vertexs[1],vertexs[2]),
@@ -119,7 +119,7 @@ namespace Algorithm.Struct.Tests
 
             var vertexs = graph.CreateVertexs(vertexKeys);
 
-            var edges = new List<AdjacencyEdge>
+            var edges = new List<AdjacencyEdge<int>>
             {
                 graph.CreateEdge(vertexs[0],vertexs[1]),
                 graph.CreateEdge(vertexs[1],vertexs[2]),
