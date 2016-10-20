@@ -45,6 +45,7 @@
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试二：测试需要从哪些方面着手.md" />
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试五：单元测试文章系列目录.md" />
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试四：单元测试背后的思考和感悟.md" />
+    <None Include="Data Access\ADO.NET\ConnectionString.md" />
     <None Include="Data Access\Paging\ROW_NUMBER分页.md" />
     <None Include="DataType\Json\Json.md" />
     <None Include="Design\Abstract machines\Turing machine\Turing machine wiki.md" />
