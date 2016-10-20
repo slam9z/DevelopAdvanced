@@ -115,6 +115,7 @@
     <None Include="Tool\Source Code Control\Git\解决历史过多导致git repo过大的问题.md" />
     <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
     <None Include="Tool\Source Code Control\谷歌的代码管理.md" />
+    <None Include="Tool\Visual Studio Code\VsCode.md" />
     <None Include="Tool\Visual Studio\Visual Studio 2015 community expired.md" />
     <None Include="Web\ASP.NET\Encode\ASP.NET中UrlEncode应该用Uri.EscapeDataString%28%29 .md" />
     <None Include="Web\ASP.NET\ASP.NET网站路径.md" />
