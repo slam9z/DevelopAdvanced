@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithm.Struct
 {
+    //时间基本没区别，可能是TransposeGraph的问题，不过这样才算比较正常的代码
     public class AdjacencyEdge<T> where T : IComparable
     {
         public AdjacencyVertex<T> Start { get; set; }
