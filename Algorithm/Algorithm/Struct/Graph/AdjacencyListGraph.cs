@@ -26,7 +26,7 @@ namespace Algorithm.Struct
 
 
 
-        #region   //BFS
+        #region   //BFS  最慢的就是你
 
         public void BreadthFirstSearch(AdjacencyVertex<T> source, Action<AdjacencyVertex<T>> finalVisitAction)
         {
