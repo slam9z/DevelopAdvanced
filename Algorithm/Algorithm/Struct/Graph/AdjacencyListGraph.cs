@@ -74,6 +74,7 @@ namespace Algorithm.Struct
         #region  //DFS
 
         private int _time;
+
         public void DepthFirstSearch(Action<AdjacencyVertex<T>> finalVisitAction = null)
         {
             foreach (var item in _adjacencyDictionary.Values)
@@ -120,6 +121,7 @@ namespace Algorithm.Struct
             finalVisitAction?.Invoke(source);
         }
 
+
         #endregion
 
         public IEnumerable<AdjacencyVertex<T>> TopologicalSort()
@@ -151,14 +153,18 @@ namespace Algorithm.Struct
             }
         }
 
+        #region StronglyConnectedComponenets
+
         /// <summary>
         /// 输出有点不明啊
         /// </summary>
-        public IEnumerable<AdjacencyListGraph<T>> GetStronglyConnectedComponenets()
+        public IList<AdjacencyListGraph<T>> GetStronglyConnectedComponenets()
         {
-            var stronglyConnectedGraphs = new List<AdjacencyListGraph<T>>();
 
             DepthFirstSearch();
+
+            //方便查看
+            var graph = this;
 
             var transpose = CreateTransposeGraph(
                 (oldVertex) => new AdjacencyVertex<T>
@@ -173,10 +179,81 @@ namespace Algorithm.Struct
             transpose.ResetVertexs(sortVertexs);
 
             //剩下怎么改造输出了。
-            transpose.DepthFirstSearch();
+            var stronglyConnectedGraphs = transpose.DepthFirstSearchStronglyConnected();
 
             return stronglyConnectedGraphs;
         }
+
+
+        //这个用改造通用版本有点勉强吧！应该没错
+        private IList<AdjacencyListGraph<T>> DepthFirstSearchStronglyConnected()
+        {
+            var stronglyConnectedGraphs = new List<AdjacencyListGraph<T>>();
+
+            foreach (var item in _adjacencyDictionary.Values)
+            {
+                item.Color = Color.White;
+                item.Parent = null;
+            }
+            _time = 0;
+
+            foreach (var item in _adjacencyDictionary.Values)
+            {
+                if (item.Color == Color.White)
+                {
+                    var graph = new AdjacencyListGraph<T>(true);
+
+                    DepthFirstSearchVisitStronglyConnected(item, graph);
+
+                    stronglyConnectedGraphs.Add(graph);
+                }
+            }
+            return stronglyConnectedGraphs;
+
+        }
+
+
+
+        private void DepthFirstSearchVisitStronglyConnected
+            (AdjacencyVertex<T> source
+            , AdjacencyListGraph<T> graph
+            )
+        {
+
+            source.Color = Color.Gray;
+            _time = _time + 1;
+            source.FisrtVisitTime = _time;
+
+            var edges = GetVertexEdge(source);
+
+            //调整
+
+            graph.AddVertex(CreateVertex(source));
+
+            foreach (var item in edges)
+            {
+                var vertex = _adjacencyDictionary[item.End];
+
+                if (vertex.Color == Color.White)
+                {
+                    //调整
+
+                    graph.AddVertex(CreateVertex(vertex));
+
+                    graph.AddEdge(new AdjacencyEdge(item.End, item.Start));
+
+                    vertex.Parent = source;
+                    DepthFirstSearchVisitStronglyConnected(vertex, graph);
+                }
+            }
+
+            source.Color = Color.Black;
+
+            _time = _time + 1;
+            source.FinalVisitTime = _time;
+
+        }
+        #endregion
 
         #region base
 
@@ -275,6 +352,15 @@ namespace Algorithm.Struct
             return vertex;
         }
 
+        public AdjacencyVertex<T> CreateVertex(AdjacencyVertex<T> vertex)
+        {
+            return new AdjacencyVertex<T>() { Key = vertex.Key, Identifier = vertex.Identifier };
+        }
+
+        public bool IsVertexExist(AdjacencyVertex<T> vertex)
+        {
+            return _adjacencyDictionary.ContainsKey(vertex.Identifier);
+        }
 
         public IEnumerable<AdjacencyVertex<T>> GetVertexs()
         {
@@ -294,13 +380,20 @@ namespace Algorithm.Struct
         public AdjacencyVertex<T> AddVertex(T key)
         {
             var vertex = CreateVertex(key);
-            _adjacencyDictionary[vertex.Identifier] = vertex;
+            AddVertex(vertex);
             return vertex;
         }
 
         public void AddVertex(AdjacencyVertex<T> vertex)
         {
-            _adjacencyDictionary[vertex.Identifier] = vertex;
+            if (!IsVertexExist(vertex))
+            {
+                _adjacencyDictionary[vertex.Identifier] = vertex;
+            }
+            else
+            {
+
+            }
         }
         #endregion
 
@@ -316,6 +409,12 @@ namespace Algorithm.Struct
                 edge = edge.Next;
             }
             return edges;
+        }
+
+
+        public AdjacencyEdge CreateEdge(AdjacencyEdge edge)
+        {
+            return new AdjacencyEdge(edge.Start, edge.End);
         }
 
         public AdjacencyEdge CreateEdge(AdjacencyVertex<T> start, AdjacencyVertex<T> end)
