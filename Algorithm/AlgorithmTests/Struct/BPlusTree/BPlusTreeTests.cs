@@ -331,7 +331,7 @@ namespace Algorithm.Struct.Tests
             Console.WriteLine("Random Test");
 
             var count = TestHepler.GetRandom();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
                 var datas = TestHepler.GetRandomList().ToList();
                 DeleteList(datas, TestHepler.GetRandomList(datas));
@@ -379,7 +379,7 @@ namespace Algorithm.Struct.Tests
         {
             PassedInsertDeleteTest();
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10; i++)
             {
                 var datas = TestHepler.GetRandomList().Take(200).ToList();
                 var twoDatas = new List<int>(datas);
