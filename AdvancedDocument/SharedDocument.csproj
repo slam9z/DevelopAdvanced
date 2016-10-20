@@ -108,6 +108,9 @@
     <None Include="Tool\CommandLine\How can I compile and run csharp program without using visual studio.md" />
     <None Include="Tool\CommandLine\MsTest Command Line.md" />
     <None Include="Tool\Mind\Mindjet.md" />
+    <None Include="Tool\Notepad++\markdown_npp_zenburn\README.md" />
+    <None Include="Tool\Notepad++\markdown_npp_zenburn\test.md" />
+    <None Include="Tool\Notepad++\notepad++ csharp.md" />
     <None Include="Tool\Source Code Control\Git\git add 和add 所有文件.md" />
     <None Include="Tool\Source Code Control\Git\解决历史过多导致git repo过大的问题.md" />
     <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
@@ -834,6 +837,11 @@
     <Content Include="MyProject\Wiki\Roadkill\Image\Theme\Mediawiki.png" />
     <Content Include="MyProject\Wiki\Roadkill\Image\Theme\Plain.png" />
     <Content Include="MyProject\Wiki\Roadkill\Image\Theme\Responsive.png" />
+    <Content Include="Tool\Notepad++\Image\notepad++ csharp.png" />
+    <Content Include="Tool\Notepad++\markdown_npp_zenburn\default_theme\markdown_npp_default_theme_screenshot.png" />
+    <Content Include="Tool\Notepad++\markdown_npp_zenburn\default_theme\userDefineLang_markdown.xml" />
+    <Content Include="Tool\Notepad++\markdown_npp_zenburn\zenburn_theme\markdown_npp_zenburn_screenshot.png" />
+    <Content Include="Tool\Notepad++\markdown_npp_zenburn\zenburn_theme\userDefineLang_markdown_zenburn.xml" />
     <Content Include="Tool\Visual Studio\Image\Visual Studio 2015 community expired.png" />
     <Content Include="Web\ASP.NET\Web Presentation Patterns\Image\design overview.gif" />
     <Content Include="Web\ASP.NET\Web Presentation Patterns\Image\Front Controller\Figure 1 Front Controller structure.gif" />
