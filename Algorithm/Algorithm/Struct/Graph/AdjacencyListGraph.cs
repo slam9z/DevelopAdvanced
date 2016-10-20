@@ -10,6 +10,11 @@ namespace Algorithm.Struct
 
     public class AdjacencyVertex<T> where T : IComparable
     {
+        /// <summary>
+        /// 使用Key做边的
+        /// </summary>
+        public object Identifier { get;internal set; }
+
         public T Key { get; set; }
 
         public AdjacencyEdge FirstEdge { get; set; }
@@ -72,8 +77,7 @@ namespace Algorithm.Struct
     {
         private IList<AdjacencyVertex<T>> _adjacencyList = new List<AdjacencyVertex<T>>();
 
-        //public readonly bool HasDirection{get;set;}
-        public bool HasDirection { get; set; }
+        public readonly bool HasDirection;
 
         public AdjacencyListGraph()
         {
@@ -84,6 +88,7 @@ namespace Algorithm.Struct
             HasDirection = hasDirection;
         }
 
+     
         //BFS
         public void BreadthFirstSearch(AdjacencyVertex<T> source, Action<AdjacencyVertex<T>> action)
         {
@@ -93,12 +98,7 @@ namespace Algorithm.Struct
 
             var grayQueue = new Queue<AdjacencyVertex<T>>();
 
-            // 		Console.WriteLine("sourceIndex:{0} vertexCount:{1} colorsCount:{2}"
-            // 			,sourceIndex
-            // 			,vertexCount
-            // 			,colors.Length
-            // 		);
-
+      
             for (int i = 0; i < vertexCount; i++)
             {
                 var vertex = _adjacencyList[i];
@@ -115,7 +115,7 @@ namespace Algorithm.Struct
             source.Parent = null;
             source.Distance = 0;
 
-            //Console.WriteLine("grayQueue start");
+     
 
             grayQueue.Enqueue(source);
             while (!grayQueue.IsEmpty)
@@ -164,23 +164,10 @@ namespace Algorithm.Struct
             _time = _time + 1;
             source.FisrtVisitTime = _time;
 
-            // 		Console.WriteLine();
-            // 		Console.Write("Visit  ");
-            // 		
-            // 		Console.Write("{0} ,",source);
-            // 		Console.Write("time {0} ,",_time);
-
             var edges = GetVertexEdge(source);
 
             foreach (var item in edges)
             {
-                // 			Console.WriteLine();
-                // 			Console.Write("Edge   ");
-                // 		
-                // 			Console.Write("{0} ,",source);
-                // 			Console.Write("{0} ,",item);
-                // 			Console.Write("time {0} ,",_time);
-
                 var vertex = _adjacencyList[item.End];
                 if (vertex.Color == Color.White)
                 {
@@ -208,6 +195,7 @@ namespace Algorithm.Struct
 
             return result;
         }
+
         public void PrintPath(AdjacencyVertex<T> source, AdjacencyVertex<T> vertex)
         {
             if (source == vertex)
@@ -226,6 +214,51 @@ namespace Algorithm.Struct
             }
         }
 
+        public void StronglyConnectedComponenets()
+        {
+            DepthFirstSearch((vertex)=> { });
+
+            var transpose = CreateTransposeGraph();
+
+            transpose.DepthFirstSearch((vertex) => { });
+
+
+        }
+
+        #region base
+
+        public void CreatGraph(IEnumerable<T> vertexs, IEnumerable<Tuple<int, int>> edges)
+        {
+            _adjacencyList.Clear();
+            foreach (var item in vertexs)
+            {
+                AddVertex(item);
+            }
+            foreach (var item in edges)
+            {
+                AddEdge(item.Item1, item.Item2);
+            }
+        }
+
+        public AdjacencyListGraph<T> CreateTransposeGraph()
+        {
+            if (!HasDirection)
+            {
+                throw new InvalidOperationException("must hasdirection graph");
+            }
+            var graph = new AdjacencyListGraph<T>(true);
+
+            var vertexs = new List<T>();
+            var edges = new List<Tuple<int, int>>();
+
+            foreach (var item in _adjacencyList)
+            {
+                vertexs.Add(item.Key);
+                edges.AddRange(GetVertexEdge(item).Select(o => new Tuple<int, int>(o.End, o.Start)));
+            }
+            graph.CreatGraph(vertexs, edges);
+            return graph;
+        }
 
 
         public IEnumerable<AdjacencyEdge> GetVertexEdge(AdjacencyVertex<T> vertex)
@@ -296,5 +329,6 @@ namespace Algorithm.Struct
             }
         }
 
+        #endregion
     }
 }

@@ -53,6 +53,8 @@
     <None Include="Design\Abstract machines\Turing machine\图灵机百度百科.md" />
     <None Include="Design\Software Architecture\software-architecture-patterns.pdf" />
     <None Include="Design\Software Architecture\软件架构入门.md" />
+    <None Include="DOTNET\Collection\List.md" />
+    <None Include="DOTNET\CSharp\readonly.md" />
     <None Include="DOTNET\Json\Newtonsoft.Json\Asp.Net中使用Newtonsoft.Json转换,读取,写入 .md" />
     <None Include="DOTNET\Json\Newtonsoft.Json\Creating JSON on the fly with JObject.md" />
     <None Include="DOTNET\Json\Newtonsoft.Json\Json.NET.md" />

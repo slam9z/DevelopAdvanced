@@ -9,9 +9,12 @@ using System.Threading.Tasks;
 
 namespace Algorithm.Struct.Tests
 {
+
     [TestClass()]
-    public class AdjacencyListGraphTestss
+    public class AdjacencyListGraphTests
     {
+        #region data
+
         private AdjacencyListGraph<int> CreateGraph1(bool hasDirection = false)
         {
             var vertexs = new List<int>
@@ -34,15 +37,7 @@ namespace Algorithm.Struct.Tests
 
             var graph = new AdjacencyListGraph<int>(hasDirection);
 
-            foreach (var item in vertexs)
-            {
-                graph.AddVertex(item);
-            }
-
-            foreach (var item in edges)
-            {
-                graph.AddEdge(item.Item1, item.Item2);
-            }
+            graph.CreatGraph(vertexs, edges);
 
             return graph;
         }
@@ -66,18 +61,19 @@ namespace Algorithm.Struct.Tests
 
             var graph = new AdjacencyListGraph<int>(true);
 
-            foreach (var item in vertexs)
-            {
-                graph.AddVertex(item);
-            }
-
-            foreach (var item in edges)
-            {
-                graph.AddEdge(item.Item1, item.Item2);
-            }
+            graph.CreatGraph(vertexs, edges);
 
             return graph;
         }
+
+        #endregion
+
+        [TestMethod()]
+        public void CreatGraphTest()
+        {
+        }
+
+
         [TestMethod()]
         public void BreadthFirstSearchTest()
         {
@@ -166,5 +162,12 @@ namespace Algorithm.Struct.Tests
 
         }
 
+        [TestMethod()]
+        public void CreateTransposeGraphTest()
+        {
+            var graph = CreateGraph1(true);
+            var transposeGraph = graph.CreateTransposeGraph();
+
+        }
     }
 }
