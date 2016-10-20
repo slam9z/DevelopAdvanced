@@ -104,11 +104,14 @@
     <None Include="Tool\Source Code Control\Git\解决历史过多导致git repo过大的问题.md" />
     <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
     <None Include="Tool\Source Code Control\谷歌的代码管理.md" />
-    <None Include="Web\ASP.NET\ASP.NET中UrlEncode应该用Uri.EscapeDataString%28%29 .md" />
+    <None Include="Web\ASP.NET\Encode\ASP.NET中UrlEncode应该用Uri.EscapeDataString%28%29 .md" />
     <None Include="Web\ASP.NET\ASP.NET网站路径.md" />
+    <None Include="Web\ASP.NET\Encode\参数编码规范.md" />
     <None Include="Web\ASP.NET\JQuery\Implementing  Consuming ASP.NET WEB API from JQuery %28MVC 4%29.md" />
     <None Include="Web\ASP.NET\Request\神奇的HttpFileCollection.md" />
     <None Include="Web\ASP.NET\Route\How can you access RouteData from the code-behind.md" />
+    <None Include="Web\ASP.NET\Encode\从此不再惧怕URI编码：JavaScript及CSharp URI编码详解（转）.md" />
+    <None Include="Web\CORS\cors httphander.md" />
     <None Include="Web\CSS\Bootstrap\button style.md" />
     <None Include="Web\CSS\Bootstrap\div style.md" />
     <None Include="Web\CSS\Bootstrap\input style.md" />
