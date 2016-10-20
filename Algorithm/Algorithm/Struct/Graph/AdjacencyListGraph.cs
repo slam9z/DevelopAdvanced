@@ -10,7 +10,7 @@ namespace Algorithm.Struct
     public class AdjacencyListGraph<T> : GraphBase<T> where T : IComparable
     {
         private IDictionary<int, AdjacencyVertex<T>>
-            _adjacencyList = new Dictionary<int, AdjacencyVertex<T>>();
+            _adjacencyDictionary = new Dictionary<int, AdjacencyVertex<T>>();
 
         public readonly bool HasDirection;
 
@@ -28,11 +28,11 @@ namespace Algorithm.Struct
 
         #region   //BFS
 
-        public void BreadthFirstSearch(AdjacencyVertex<T> source, Action<AdjacencyVertex<T>> action)
+        public void BreadthFirstSearch(AdjacencyVertex<T> source, Action<AdjacencyVertex<T>> finalVisitAction)
         {
             var grayQueue = new Queue<AdjacencyVertex<T>>();
 
-            foreach (var vertex in _adjacencyList.Values)
+            foreach (var vertex in _adjacencyDictionary.Values)
             {
                 if (vertex == source)
                 {
@@ -54,7 +54,7 @@ namespace Algorithm.Struct
                 foreach (var edge in GetVertexEdge(startVertex))
                 {
                     var endeEnd = edge.End;
-                    var endVertex = _adjacencyList[endeEnd];
+                    var endVertex = _adjacencyDictionary[endeEnd];
                     if (endVertex.Color == Color.White)
                     {
                         endVertex.Color = Color.Gray;
@@ -64,7 +64,7 @@ namespace Algorithm.Struct
                     }
                 }
                 startVertex.Color = Color.Black;
-                action(startVertex);
+                finalVisitAction(startVertex);
             }
         }
 
@@ -74,27 +74,27 @@ namespace Algorithm.Struct
         #region  //DFS
 
         private int _time;
-        public void DepthFirstSearch(Action<AdjacencyVertex<T>> action)
+        public void DepthFirstSearch(Action<AdjacencyVertex<T>> finalVisitAction = null)
         {
-            foreach (var item in _adjacencyList.Values)
+            foreach (var item in _adjacencyDictionary.Values)
             {
                 item.Color = Color.White;
                 item.Parent = null;
             }
             _time = 0;
 
-            foreach (var item in _adjacencyList.Values)
+            foreach (var item in _adjacencyDictionary.Values)
             {
                 if (item.Color == Color.White)
                 {
-                    DepthFirstSearchVisit(item, action);
+                    DepthFirstSearchVisit(item, finalVisitAction);
                 }
             }
         }
 
-  
 
-        private void DepthFirstSearchVisit(AdjacencyVertex<T> source, Action<AdjacencyVertex<T>> action)
+
+        private void DepthFirstSearchVisit(AdjacencyVertex<T> source, Action<AdjacencyVertex<T>> finalVisitAction)
         {
             source.Color = Color.Gray;
             _time = _time + 1;
@@ -104,11 +104,11 @@ namespace Algorithm.Struct
 
             foreach (var item in edges)
             {
-                var vertex = _adjacencyList[item.End];
+                var vertex = _adjacencyDictionary[item.End];
                 if (vertex.Color == Color.White)
                 {
                     vertex.Parent = source;
-                    DepthFirstSearchVisit(vertex, action);
+                    DepthFirstSearchVisit(vertex, finalVisitAction);
                 }
             }
 
@@ -117,7 +117,7 @@ namespace Algorithm.Struct
             _time = _time + 1;
             source.FinalVisitTime = _time;
 
-            action(source);
+            finalVisitAction?.Invoke(source);
         }
 
         #endregion
@@ -151,15 +151,31 @@ namespace Algorithm.Struct
             }
         }
 
-        public void StronglyConnectedComponenets()
+        /// <summary>
+        /// 输出有点不明啊
+        /// </summary>
+        public IEnumerable<AdjacencyListGraph<T>> GetStronglyConnectedComponenets()
         {
-            DepthFirstSearch((vertex) => { });
+            var stronglyConnectedGraphs = new List<AdjacencyListGraph<T>>();
 
-            var transpose = CreateTransposeGraph();
+            DepthFirstSearch();
 
-            transpose.DepthFirstSearch((vertex) => { });
+            var transpose = CreateTransposeGraph(
+                (oldVertex) => new AdjacencyVertex<T>
+                {
+                    FinalVisitTime = oldVertex.FinalVisitTime,
+                    Key = oldVertex.Key,
+                    Identifier = oldVertex.Identifier,
+                }
+            );
 
+            var sortVertexs = transpose._adjacencyDictionary.Values.OrderByDescending(o => o.FinalVisitTime);
+            transpose.ResetVertexs(sortVertexs);
 
+            //剩下怎么改造输出了。
+            transpose.DepthFirstSearch();
+
+            return stronglyConnectedGraphs;
         }
 
         #region base
@@ -178,7 +194,7 @@ namespace Algorithm.Struct
             IEnumerable<AdjacencyVertex<T>> vertexs
             , IEnumerable<AdjacencyEdge> edges)
         {
-            _adjacencyList.Clear();
+            _adjacencyDictionary.Clear();
             foreach (var item in vertexs)
             {
                 AddVertex(item);
@@ -189,20 +205,33 @@ namespace Algorithm.Struct
             }
         }
 
-        public AdjacencyListGraph<T> CreateTransposeGraph()
+        /// <summary>
+        /// 创建转置图
+        /// </summary>
+        /// <param name="copyAction">创建新结点复制属性</param>
+        /// <returns></returns>
+        public AdjacencyListGraph<T> CreateTransposeGraph(
+            Func<AdjacencyVertex<T>, AdjacencyVertex<T>> copyAction = null)
         {
             if (!HasDirection)
             {
                 throw new InvalidOperationException("must hasdirection graph");
             }
+
+            if (copyAction == null)
+            {
+                copyAction = (oldVertex) => new AdjacencyVertex<T>() { Key = oldVertex.Key, Identifier = oldVertex.Identifier };
+            }
+
+
             var graph = new AdjacencyListGraph<T>(true);
 
             var vertexs = new List<AdjacencyVertex<T>>();
             var edges = new List<AdjacencyEdge>();
 
-            foreach (var item in _adjacencyList.Values)
+            foreach (var item in _adjacencyDictionary.Values)
             {
-                var newVertex = new AdjacencyVertex<T> { Key = item.Key, Identifier = item.Identifier };
+                var newVertex = copyAction(item);
                 vertexs.Add(newVertex);
 
                 edges.AddRange(GetVertexEdge(item).Select(o => new AdjacencyEdge(o.End, o.Start)));
@@ -214,6 +243,20 @@ namespace Algorithm.Struct
         #endregion
 
         #region vertex
+
+        /// <summary>
+        /// 一般用来改变元素顺序
+        /// </summary>
+        /// <param name="vertexs"></param>
+        private void ResetVertexs(IEnumerable<AdjacencyVertex<T>> vertexs)
+        {
+            var newAdjacencyDictionary = new Dictionary<int, AdjacencyVertex<T>>();
+            foreach (var item in vertexs)
+            {
+                newAdjacencyDictionary[item.Identifier] = item;
+            }
+            _adjacencyDictionary = newAdjacencyDictionary;
+        }
 
         public IList<AdjacencyVertex<T>> CreateVertexs(IEnumerable<T> keys)
         {
@@ -235,30 +278,30 @@ namespace Algorithm.Struct
 
         public IEnumerable<AdjacencyVertex<T>> GetVertexs()
         {
-            return _adjacencyList.Values;
+            return _adjacencyDictionary.Values;
         }
 
         public AdjacencyVertex<T> GetVertex(int id)
         {
-            return _adjacencyList[id];
+            return _adjacencyDictionary[id];
         }
 
         public AdjacencyVertex<T> GetVertexByKey(int key)
         {
-            return _adjacencyList.Values.Where(o => o.Key.CompareTo(key) == 0).FirstOrDefault();
+            return _adjacencyDictionary.Values.Where(o => o.Key.CompareTo(key) == 0).FirstOrDefault();
         }
 
         public AdjacencyVertex<T> AddVertex(T key)
         {
             var vertex = CreateVertex(key);
-            _adjacencyList[vertex.Identifier] = vertex;
+            _adjacencyDictionary[vertex.Identifier] = vertex;
             return vertex;
         }
 
         public void AddVertex(AdjacencyVertex<T> vertex)
         {
-            _adjacencyList[vertex.Identifier] = vertex;
-        } 
+            _adjacencyDictionary[vertex.Identifier] = vertex;
+        }
         #endregion
 
         #region edge
@@ -297,11 +340,11 @@ namespace Algorithm.Struct
 
         public void AddEdgeCore(int start, int end)
         {
-            if (!_adjacencyList.Keys.Contains(start) || !_adjacencyList.Keys.Contains(end))
+            if (!_adjacencyDictionary.Keys.Contains(start) || !_adjacencyDictionary.Keys.Contains(end))
             {
                 throw new ArgumentOutOfRangeException("can't find vertex");
             }
-            var startVertex = _adjacencyList[start];
+            var startVertex = _adjacencyDictionary[start];
             var edge = new AdjacencyEdge(start, end);
 
             if (startVertex.FirstEdge == null)
