@@ -41,16 +41,17 @@ namespace Algorithm.Struct
         public DisjointSet<T> Union(DisjointSet<T> set)
         {
             var newdelegate = Link(Find(Delegate), Find(set.Delegate));
-            if (newdelegate == Delegate)
-            {
-                _nodes.AddRange(set._nodes);
-                return this;
-            }
-            else
-            {
-                set._nodes.AddRange(_nodes);
-                return set;
-            }
+
+            //消灭旧的DisjointSet，而不是创建全新的Set
+            //虽然它们的引用还是不一样，但是Delegate和node是完全一样的。
+
+            Delegate = newdelegate;
+            set.Delegate=newdelegate;
+            _nodes.AddRange(set._nodes);
+            set._nodes = _nodes;
+
+            return this;
+
         }
 
         //虽然代码少，思想和不简单

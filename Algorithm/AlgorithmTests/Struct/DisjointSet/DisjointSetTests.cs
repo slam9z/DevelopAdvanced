@@ -89,6 +89,11 @@ namespace Algorithm.Struct.Tests
             Assert.AreEqual(2, result.Count());
         }
 
+        /// <summary>
+        /// 获取连通图的算法是我有信心感觉我自己想的结构是对的，之后继续再验证。
+        /// </summary>
+        /// <param name="graph"></param>
+        /// <returns></returns>
         private IEnumerable<DisjointSet<AdjacencyVertex<int>>> GraphConnectedComponenets(AdjacencyListGraph<int> graph)
         {
             var vertexs = graph.GetVertexs();
