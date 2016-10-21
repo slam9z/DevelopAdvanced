@@ -113,6 +113,7 @@
     <None Include="Tool\Notepad++\markdown_npp_zenburn\README.md" />
     <None Include="Tool\Notepad++\markdown_npp_zenburn\test.md" />
     <None Include="Tool\Notepad++\notepad++ csharp.md" />
+    <None Include="Tool\Package Manager\Nuget\Nuget.md" />
     <None Include="Tool\Source Code Control\Git\git add 和add 所有文件.md" />
     <None Include="Tool\Source Code Control\Git\解决历史过多导致git repo过大的问题.md" />
     <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
@@ -130,11 +131,13 @@
     <None Include="Web\CORS\How to get JSON POST data in ASP.NET Web Forms.md" />
     <None Include="Web\CORS\HTTP访问控制%28CORS%29_mozilla.md" />
     <None Include="Web\CORS\jquery ajax ie9及以下浏览跨域不执行问题 可能情况与解决方案 .md" />
+    <None Include="Web\CORS\JQuery Built-in support for XDomainRequest.md" />
     <None Include="Web\CORS\jQuery-ajaxTransport-XDomainRequest\bower.json" />
     <None Include="Web\CORS\jQuery-ajaxTransport-XDomainRequest\package.json" />
     <None Include="Web\CORS\jQuery-ajaxTransport-XDomainRequest\README.md" />
     <None Include="Web\CORS\JQuery的Ajax跨域请求的解决方案.md" />
     <None Include="Web\CORS\Summary.md" />
+    <None Include="Web\CORS\XDomainRequest – Restrictions, Limitations and Workarounds.md" />
     <None Include="Web\CSS\Bootstrap\button style.md" />
     <None Include="Web\CSS\Bootstrap\div style.md" />
     <None Include="Web\CSS\Bootstrap\input style.md" />
