@@ -53,6 +53,8 @@
     <None Include="Design\Abstract machines\Turing machine\图灵机百度百科.md" />
     <None Include="Design\Software Architecture\software-architecture-patterns.pdf" />
     <None Include="Design\Software Architecture\软件架构入门.md" />
+    <None Include="DOTNET\Collection\List.md" />
+    <None Include="DOTNET\Json\Deserialize JSON into C# dynamic object.md" />
     <None Include="DOTNET\Json\Newtonsoft.Json\Asp.Net中使用Newtonsoft.Json转换,读取,写入 .md" />
     <None Include="DOTNET\Json\Newtonsoft.Json\Creating JSON on the fly with JObject.md" />
     <None Include="DOTNET\Json\Newtonsoft.Json\Json.NET.md" />
@@ -125,6 +127,14 @@
     <None Include="Web\ASP.NET\Route\How can you access RouteData from the code-behind.md" />
     <None Include="Web\ASP.NET\Encode\从此不再惧怕URI编码：JavaScript及CSharp URI编码详解（转）.md" />
     <None Include="Web\CORS\cors httphander.md" />
+    <None Include="Web\CORS\How to get JSON POST data in ASP.NET Web Forms.md" />
+    <None Include="Web\CORS\HTTP访问控制%28CORS%29_mozilla.md" />
+    <None Include="Web\CORS\jquery ajax ie9及以下浏览跨域不执行问题 可能情况与解决方案 .md" />
+    <None Include="Web\CORS\jQuery-ajaxTransport-XDomainRequest\bower.json" />
+    <None Include="Web\CORS\jQuery-ajaxTransport-XDomainRequest\package.json" />
+    <None Include="Web\CORS\jQuery-ajaxTransport-XDomainRequest\README.md" />
+    <None Include="Web\CORS\JQuery的Ajax跨域请求的解决方案.md" />
+    <None Include="Web\CORS\Summary.md" />
     <None Include="Web\CSS\Bootstrap\button style.md" />
     <None Include="Web\CSS\Bootstrap\div style.md" />
     <None Include="Web\CSS\Bootstrap\input style.md" />
@@ -148,7 +158,6 @@
     <None Include="Web\ASP.NET\我心目中的Asp.net核心对象.md" />
     <None Include="Web\ASP.NET\细说 Request[]与Request.Params[].md" />
     <None Include="Web\CORS\CORS.md" />
-    <None Include="Web\CORS\HTTP访问控制%28CORS%29.md" />
     <None Include="Web\CORS\javascript跨域上传文件可以如何实现？.md" />
     <None Include="Web\CORS\JSONP.md" />
     <None Include="Web\File Upload and Download\upload file cors.md" />
@@ -878,6 +887,9 @@
     <Content Include="Web\ASP.NET\Web Presentation Patterns\Image\Page Controller\Figure 1 Page Controller structure.gif" />
     <Content Include="Web\ASP.NET\Web Presentation Patterns\Image\Page Controller\Figure 2 Using BaseController to eliminate code duplication.gif" />
     <Content Include="Web\ASP.NET\Web Presentation Patterns\Image\Page Controller\Figure 3 Separating the Web-dependent and Web-independent code.gif" />
+    <Content Include="Web\CORS\jQuery-ajaxTransport-XDomainRequest\jQuery.XDomainRequest.js" />
+    <Content Include="Web\CORS\jQuery-ajaxTransport-XDomainRequest\jquery.xdomainrequest.min.js" />
+    <Content Include="Web\CORS\jQuery-ajaxTransport-XDomainRequest\LICENSE.txt" />
     <Content Include="Web\Framework\前段框架对比.png" />
     <None Include="Tool\Visual Studio\Visual studio  extended trial has expired.md" />
     <Content Include="Web\jQuery\Plugins\Upload Plugin\iframe and html5 file uploader\upload.js" />

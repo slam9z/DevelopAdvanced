@@ -34,4 +34,8 @@ string address = stuff.Address.City.Value;
 
 才是真正的值，直接转换成string会带{}。
 
-
+```
+requestData.id.GetType();
+{Name = "JValue" FullName = "Newtonsoft.Json.Linq.JValue"}
+```
+是一个JValue对象
