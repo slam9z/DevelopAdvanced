@@ -61,6 +61,8 @@
     <Compile Include="Struct\BPlusTree\BPlusTreeNode.cs" />
     <Compile Include="Struct\BPlusTree\Storage\DictionaryNodeStorage.cs" />
     <Compile Include="Struct\BPlusTree\Storage\INodeStorage.cs" />
+    <Compile Include="Struct\DisjointSet\DisjointSet.cs" />
+    <Compile Include="Struct\DisjointSet\DisjointSetNode.cs" />
     <Compile Include="Struct\Graph\AdjacencyEdge.cs" />
     <Compile Include="Struct\Graph\AdjacencyListGraph.cs" />
     <Compile Include="Struct\Graph\AdjacencyVertex.cs" />

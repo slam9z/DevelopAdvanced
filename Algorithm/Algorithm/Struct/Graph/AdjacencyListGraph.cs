@@ -12,6 +12,8 @@ namespace Algorithm.Struct
         private IDictionary<int, AdjacencyVertex<T>>
             _adjacencyDictionary = new Dictionary<int, AdjacencyVertex<T>>();
 
+        private IList<AdjacencyEdge<T>> _allEdges = new List<AdjacencyEdge<T>>();
+
         public readonly bool HasDirection;
 
         public AdjacencyListGraph()
@@ -415,8 +417,11 @@ namespace Algorithm.Struct
             return edges;
         }
 
-
-
+        public  IEnumerable<AdjacencyEdge<T>> GetEdges()
+        {
+            return _allEdges;
+        }
+ 
         public AdjacencyEdge<T> CreateEdge(AdjacencyVertex<T> start, AdjacencyVertex<T> end)
         {
             return new AdjacencyEdge<T>(start, end);
@@ -439,9 +444,12 @@ namespace Algorithm.Struct
 
         public void AddEdgeCore(AdjacencyVertex<T> start, AdjacencyVertex<T> end)
         {
+            
 
             var startVertex = start;
             var edge = new AdjacencyEdge<T>(start, end);
+
+            _allEdges.Add(edge);
 
             if (startVertex.FirstEdge == null)
             {

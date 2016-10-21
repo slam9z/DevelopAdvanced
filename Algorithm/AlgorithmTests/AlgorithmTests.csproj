@@ -57,6 +57,7 @@
     <Compile Include="Struct\BinarySearchTreeExtensions.cs" />
     <Compile Include="Struct\BinarySearchTreeTests.cs" />
     <Compile Include="Struct\BPlusTree\BPlusTreeTests.cs" />
+    <Compile Include="Struct\DisjointSet\DisjointSetTests.cs" />
     <Compile Include="Struct\Graph\AdjacencyListGraphTests.cs" />
     <Compile Include="Struct\LinkListTests.cs" />
     <Compile Include="Struct\QueueTests.cs" />

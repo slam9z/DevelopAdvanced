@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Algorithm.Struct
 {
 
-    public class AdjacencyVertex<T> where T : IComparable
+    public class AdjacencyVertex<T> : IComparable where T : IComparable
     {
         /// <summary>
         /// 使用Key做边和顶点的标志是有问题的，因为Key可以重复。
@@ -41,6 +41,11 @@ namespace Algorithm.Struct
             , FinalVisitTime
             , Identifier
             );
+        }
+
+        public int CompareTo(object obj)
+        {
+            return Identifier.CompareTo((obj as AdjacencyVertex<T>).Identifier);
         }
     }
 }
