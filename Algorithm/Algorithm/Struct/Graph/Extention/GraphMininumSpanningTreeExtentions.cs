@@ -11,7 +11,13 @@ namespace Algorithm.Struct
 
     public static class GraphMininumSpanningTreeExtentions
     {
-
+        /// <summary>
+        /// MST
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="graph"></param>
+        /// <param name="weightFunc"></param>
+        /// <returns></returns>
         public static IEnumerable<AdjacencyEdge<T>> GetMininumSpanningTreeKruskal<T>(
            this AdjacencyListGraph<T> graph,
            Func<AdjacencyListGraph<T>, AdjacencyEdge<T>, int> weightFunc
@@ -31,7 +37,7 @@ namespace Algorithm.Struct
 
             foreach (var edge in edges)
             {
-                edge.Weight = weightFunc(graph,edge);
+                edge.Weight = weightFunc(graph, edge);
             }
 
             //吃自己写的狗粮,这狗粮不好吃啊
@@ -57,6 +63,14 @@ namespace Algorithm.Struct
             }
 
             return result;
+        }
+
+
+        public static IEnumerable<AdjacencyEdge<T>> GetMininumSpanningTreePrim<T>(this AdjacencyListGraph<T> graph,
+           Func<AdjacencyListGraph<T>, AdjacencyEdge<T>, int> weightFunc
+            ) where T : IEquatable<T>
+        {
+            return null;
         }
     }
 }
