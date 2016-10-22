@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithm.Struct
 {
-    public class DisjointSetNode<T> where T: IComparable
+    public class DisjointSetNode<T> where T: IEquatable<T>
     {
         public T Value { get; set; }
 

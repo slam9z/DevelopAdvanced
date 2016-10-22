@@ -14,7 +14,7 @@ namespace Algorithm.Struct
     /// DisjointSet的基础就是每一个T都不相等
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class DisjointSet<T> where T : IComparable
+    public class DisjointSet<T> where T :IEquatable<T>
     {
         public DisjointSetNode<T> Delegate { get; set; }
 

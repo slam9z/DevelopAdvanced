@@ -87,64 +87,13 @@ namespace Algorithm.Struct.Tests
         public void ConnectedComponenetsTest()
         {
             var graph = CreateNotConnectedComponenetsGraph1();
-            var result = GraphConnectedComponenets(graph);
+            var result = graph.GetConnectedComponenets();
             Assert.AreEqual(2, result.Count());
         }
 
-        /// <summary>
-        /// 获取连通图的算法是我有信心感觉我自己想的结构是对的，之后继续再验证。
-        /// </summary>
-        /// <param name="graph"></param>
-        /// <returns></returns>
-        private IEnumerable<DisjointSet<AdjacencyVertex<int>>> GraphConnectedComponenets(AdjacencyListGraph<int> graph)
-        {
-            var vertexs = graph.GetVertexs();
-            var edges = graph.GetEdges();
-
-            var sets = new Dictionary<AdjacencyVertex<int>, DisjointSet<AdjacencyVertex<int>>>();
-
-            var result = new List<DisjointSet<AdjacencyVertex<int>>>();
 
 
-
-            foreach (var vertex in vertexs)
-            {
-                sets[vertex] = (new DisjointSet<AdjacencyVertex<int>>(vertex));
-            }
-
-            foreach (var edge in edges)
-            {
-                var startDisjointSet = sets[edge.Start];
-                var endDisjointSet = sets[edge.End];
-
-                DisjointSet<AdjacencyVertex<int>> newSet;
-
-                if (startDisjointSet.Find(startDisjointSet.GetNode(edge.Start))
-                    != endDisjointSet.Find(endDisjointSet.GetNode(edge.End)))
-                {
-                    newSet = startDisjointSet.Union(endDisjointSet);
-
-                    sets[edge.Start] = newSet;
-                    sets[edge.End] = newSet;
-
-
-                    if (!result.Contains(newSet))
-                    {
-                        result.Add(newSet);
-                    }
-
-                }
-            }
-
-            foreach (var item in result)
-            {
-                PrintDisjointSet(item);
-            }
-            return result;
-
-        }
-
-        private void PrintDisjointSet<T>(DisjointSet<T> set) where T : IComparable
+        private void PrintDisjointSet<T>(DisjointSet<T> set) where T : IEquatable<T>
         {
             var nodes = set.GetNodes();
             foreach (var item in nodes)

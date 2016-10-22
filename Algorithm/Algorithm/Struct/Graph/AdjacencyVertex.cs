@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Algorithm.Struct
 {
 
-    public class AdjacencyVertex<T> : IComparable where T : IComparable
+    public class AdjacencyVertex<T> : IEquatable<AdjacencyVertex<T>> where T : IEquatable<T>
     {
         /// <summary>
         /// 使用Key做边和顶点的标志是有问题的，因为Key可以重复。
@@ -22,6 +22,7 @@ namespace Algorithm.Struct
 
         //某些算法用到,不属于自身性质
         public AdjacencyVertex<T> Parent { get; set; }
+
 
         public int Distance { get; set; }
 
@@ -43,9 +44,10 @@ namespace Algorithm.Struct
             );
         }
 
-        public int CompareTo(object obj)
+    
+        public bool Equals(AdjacencyVertex<T> other)
         {
-            return Identifier.CompareTo((obj as AdjacencyVertex<T>).Identifier);
+            return Key.Equals(other.Key);
         }
     }
 }

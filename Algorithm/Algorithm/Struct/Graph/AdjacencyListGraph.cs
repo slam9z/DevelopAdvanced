@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Algorithm.Struct
 {
 
-    public class AdjacencyListGraph<T> : GraphBase<T> where T : IComparable
+    public class AdjacencyListGraph<T> : GraphBase<T> where T : IEquatable<T>
     {
         private IDictionary<int, AdjacencyVertex<T>>
             _adjacencyDictionary = new Dictionary<int, AdjacencyVertex<T>>();
@@ -136,21 +136,23 @@ namespace Algorithm.Struct
             return result;
         }
 
-        public void PrintPath(AdjacencyVertex<T> source, AdjacencyVertex<T> vertex)
+        public IEnumerable<AdjacencyVertex<T>> GetPath(AdjacencyVertex<T> source, AdjacencyVertex<T> vertex)
         {
+            var path = new List<AdjacencyVertex<T>>();
             if (source == vertex)
             {
-                Console.WriteLine(vertex);
-                return;
+                path.Add(vertex);
+                return path;
             }
             if (vertex.Parent == null)
             {
-                Console.WriteLine("no path form source:{0} vertex:{1}", source, vertex);
+                return null;
+                // Console.WriteLine("no path form source:{0} vertex:{1}", source, vertex);
             }
             else
             {
-                PrintPath(source, vertex.Parent);
-                Console.WriteLine(vertex);
+                path.AddRange(GetPath(source, vertex.Parent));
+                return path;
             }
         }
 
@@ -380,7 +382,7 @@ namespace Algorithm.Struct
 
         public AdjacencyVertex<T> GetVertexByKey(int key)
         {
-            return _adjacencyDictionary.Values.Where(o => o.Key.CompareTo(key) == 0).FirstOrDefault();
+            return _adjacencyDictionary.Values.Where(o => o.Key.Equals(key)).FirstOrDefault();
         }
 
         public AdjacencyVertex<T> AddVertex(T key)
@@ -417,11 +419,11 @@ namespace Algorithm.Struct
             return edges;
         }
 
-        public  IEnumerable<AdjacencyEdge<T>> GetEdges()
+        public IEnumerable<AdjacencyEdge<T>> GetEdges()
         {
             return _allEdges;
         }
- 
+
         public AdjacencyEdge<T> CreateEdge(AdjacencyVertex<T> start, AdjacencyVertex<T> end)
         {
             return new AdjacencyEdge<T>(start, end);
@@ -444,7 +446,7 @@ namespace Algorithm.Struct
 
         public void AddEdgeCore(AdjacencyVertex<T> start, AdjacencyVertex<T> end)
         {
-            
+
 
             var startVertex = start;
             var edge = new AdjacencyEdge<T>(start, end);

@@ -16,7 +16,7 @@ namespace Algorithm.Sort
 
 			HoareQuickSortCore(result, 0, result.Count - 1, larger);
 
-			Print(result);
+			//Print(result);
 			return result;
 		}
 
@@ -50,7 +50,6 @@ namespace Algorithm.Sort
 			var smallPointer = bound - 1;
 			var largePointer = upper + 1;
 
-			Print("key:{0}", key);
 
 			while (true)
 			{
@@ -68,15 +67,15 @@ namespace Algorithm.Sort
 
 				if (largePointer > smallPointer)
 				{
-					Print(source, bound, upper);
-					Print("Exchange:{0},{1}", smallPointer, largePointer);
+					//Print(source, bound, upper);
+					//Print("Exchange:{0},{1}", smallPointer, largePointer);
 
 					Exchange(source, smallPointer, largePointer);
 				}
 				else
 				{
-					Print(source, bound, upper);
-					Print("return" + largePointer);
+					//Print(source, bound, upper);
+					//Print("return" + largePointer);
 
 					return largePointer;
 				}
