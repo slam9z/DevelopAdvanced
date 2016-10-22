@@ -18,7 +18,7 @@ namespace Algorithm.Struct
     {
         public DisjointSetNode<T> Delegate { get; set; }
 
-        public List<DisjointSetNode<T>> _nodes = new List<DisjointSetNode<T>>();
+        public IDictionary<T,DisjointSetNode<T>> _nodes = new Dictionary<T,DisjointSetNode<T>>();
 
 
         public DisjointSet()
@@ -33,7 +33,7 @@ namespace Algorithm.Struct
             node.Parent = node;
             node.Rank = 0;
 
-            _nodes.Add(node);
+            _nodes.Add(node.Value,node);
 
             Delegate = node;
         }
@@ -47,7 +47,11 @@ namespace Algorithm.Struct
 
             Delegate = newdelegate;
             set.Delegate=newdelegate;
-            _nodes.AddRange(set._nodes);
+
+            foreach (var item in set._nodes)
+            {
+                _nodes.Add(item);
+            }
             set._nodes = _nodes;
 
             return this;
@@ -64,15 +68,6 @@ namespace Algorithm.Struct
             return node.Parent;
         }
 
-        public IEnumerable<T> GetVaules()
-        {
-            return _nodes.Select(o => o.Value);
-        }
-
-        public DisjointSetNode<T> GetDisjointSetNode(T value)
-        {
-            return _nodes.Where(o => o.Value.CompareTo(value) == 0).SingleOrDefault();
-        }
 
         private DisjointSetNode<T> Link(DisjointSetNode<T> first, DisjointSetNode<T> second)
         {
@@ -93,5 +88,21 @@ namespace Algorithm.Struct
         }
 
 
+        public IEnumerable<T> GetVaules()
+        {
+            return _nodes.Values.Select(o => o.Value);
+        }
+
+        public IEnumerable<DisjointSetNode<T>> GetNodes()
+        {
+            return _nodes.Values;
+        }
+
+        public DisjointSetNode<T> GetNode(T value)
+        {
+            return _nodes[value];
+        }
+
+       
     }
 }

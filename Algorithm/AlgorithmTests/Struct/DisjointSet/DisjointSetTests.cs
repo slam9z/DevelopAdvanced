@@ -47,6 +47,7 @@ namespace Algorithm.Struct.Tests
         }
 
 
+
         [TestMethod()]
         public void DisjointSetTest()
         {
@@ -65,7 +66,7 @@ namespace Algorithm.Struct.Tests
                 unionSet = unionSet.Union(sets[i]);
             }
 
-            var unionValues = unionSet.GetVaules();
+            var unionValues = unionSet.GetNodes();
 
             //如何自己实现区并集
             //如何证明两个集合值都是相等的呢？
@@ -73,9 +74,10 @@ namespace Algorithm.Struct.Tests
             //这样感觉的实现是对的！
             Assert.AreEqual(values.Count, unionValues.Count());
 
-            foreach (var item in values)
+            foreach (var item in unionValues)
             {
-                Assert.IsTrue(unionValues.Contains(item));
+                Console.WriteLine(item);
+                Assert.IsTrue(values.Contains(item.Value));
             }
 
         }
@@ -117,8 +119,8 @@ namespace Algorithm.Struct.Tests
 
                 DisjointSet<AdjacencyVertex<int>> newSet;
 
-                if (startDisjointSet.Find(startDisjointSet.GetDisjointSetNode(edge.Start))
-                    != endDisjointSet.Find(endDisjointSet.GetDisjointSetNode(edge.End)))
+                if (startDisjointSet.Find(startDisjointSet.GetNode(edge.Start))
+                    != endDisjointSet.Find(endDisjointSet.GetNode(edge.End)))
                 {
                     newSet = startDisjointSet.Union(endDisjointSet);
 
@@ -134,8 +136,21 @@ namespace Algorithm.Struct.Tests
                 }
             }
 
+            foreach (var item in result)
+            {
+                PrintDisjointSet(item);
+            }
             return result;
 
+        }
+
+        private void PrintDisjointSet<T>(DisjointSet<T> set) where T : IComparable
+        {
+            var nodes = set.GetNodes();
+            foreach (var item in nodes)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }

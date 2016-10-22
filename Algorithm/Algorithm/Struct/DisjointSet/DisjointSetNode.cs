@@ -16,7 +16,7 @@ namespace Algorithm.Struct
 
         public override string ToString()
         {
-            return Value.ToString();
+            return string.Format($"Value: {Value},Rank: {Rank} Parent:{Parent.Value}");
         }
     }
 }
