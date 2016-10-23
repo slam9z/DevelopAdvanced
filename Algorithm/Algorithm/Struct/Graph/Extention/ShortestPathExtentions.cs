@@ -100,9 +100,7 @@ namespace Algorithm.Struct
 
             var vertexs = graph.GetVertexs().ToList();
 
-            //不想再增加AdjacencyVertex节点的负担了
-
-   
+            //不想再增加AdjacencyVertex对象的负担了
 
             var queue = new MapBinanyHeap<AdjacencyVertex<T>>
                 (
@@ -124,8 +122,8 @@ namespace Algorithm.Struct
                 {
                     var oldWeight = edge.End.WeightBound;
                     Relax(graph, edge.Start, edge.End, weightFuc);
-                    //没有索引位置一下让我傻逼了!网上找了一下也是有调整的。
 
+                    //没有索引位置一下让我傻逼了!网上找了一下也是有调整的。
                     if (oldWeight != edge.End.WeightBound)
                     {
                         queue.UpdateKey(edge.End,edge.End);
