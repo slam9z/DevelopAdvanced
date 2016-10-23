@@ -65,11 +65,11 @@ namespace Algorithm.Sort.Tests
 
 		private void RunAllTest(ISort sort)
 		{
-			EmptyTest(sort);
-			OneDataTest(sort);
+			//EmptyTest(sort);
+			//OneDataTest(sort);
 			Test1(sort);
 
-			for (int i = 0; i < 100; i++)
+			for (int i = 0; i < 1000; i++)
 			{
 				RandomDataTest(sort);
 			}

@@ -70,6 +70,7 @@
     <Compile Include="Struct\Graph\Extention\GraphMininumSpanningTreeExtentions.cs" />
     <Compile Include="Struct\Graph\GraphBase.cs" />
     <Compile Include="Struct\BinaryTree\IEmptyNodeInterface.cs" />
+    <Compile Include="Struct\Heap\BinanyHeap.cs" />
     <Compile Include="Struct\LinkList.cs" />
     <Compile Include="Struct\LinkNode.cs" />
     <Compile Include="Struct\Queue.cs" />
