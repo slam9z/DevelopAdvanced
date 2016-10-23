@@ -10,24 +10,17 @@ namespace Algorithm.Struct
     /// 将原来写在HeapSort里面的重构出来
     /// 最大堆和最小堆能写在一块吗？还是用基类
     /// </summary>
-    public class BinanyHeap<T>
+    public class BinanyMaxHeap<T>
     {
         private int _heapSize;
 
         private IList<T> _source;
 
         private Func<T, T, bool> _larger;
-
-        public bool IsMaxHeap { get; set; }
-
-        public BinanyHeap(bool isMaxHeap)
+   
+        public BinanyMaxHeap(IList<T> source, Func<T, T, bool> larger)
         {
-            IsMaxHeap = isMaxHeap;
-        }
-
-        public BinanyHeap()
-        {
-            IsMaxHeap = true;
+            Build(source, larger);
         }
 
         public IList<T> Sort()
@@ -41,13 +34,19 @@ namespace Algorithm.Struct
                 _heapSize--;
 
                 //把最大的置换到最后！
-                MaxHeapify(sortResult, 1);
+                Heapify(sortResult, 1);
                 
             }
             return sortResult;
         }
 
-        public void BuildMaxHeap(IList<T> source, Func<T, T, bool> larger)
+        /// <summary>
+        /// BuildMaxHeap那种伪代码是面向过程的写法，选择使用面向对象的方法。
+        /// 重复调用会有问题，其实属于构造函数。
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="larger"></param>
+        private void Build(IList<T> source, Func<T, T, bool> larger)
         {
             _heapSize = source.Count;
             _source = source;
@@ -56,7 +55,7 @@ namespace Algorithm.Struct
             //从1开始的
             for (int i = _heapSize / 2; i >= 1; i--)
             {
-                MaxHeapify(source, i);
+                Heapify(source, i);
             }
         }
 
@@ -67,7 +66,7 @@ namespace Algorithm.Struct
         /// <param name="source"></param>
         /// <param name="root"></param>
         /// <param name="larger"></param>
-        public void MaxHeapify(IList<T> source, int root)
+        public void Heapify(IList<T> source, int root)
         {
             var left = Left(root);
             var right = Right(root);
@@ -91,9 +90,16 @@ namespace Algorithm.Struct
             if (largest != root)
             {
                 Exchange(source, GetListIndex(root), GetListIndex(largest));
-                MaxHeapify(source, largest);
+                Heapify(source, largest);
             }
         }
+
+        #region priorityQueue
+
+        #endregion
+
+
+        #region base
 
         private int Left(int root)
         {
@@ -118,7 +124,6 @@ namespace Algorithm.Struct
             source[indexb] = temp;
         }
 
-
         //IList索引和堆索引转换取值
         private int GetListIndex(int heapIndex)
         {
@@ -130,6 +135,7 @@ namespace Algorithm.Struct
             return listIndex + 1;
         }
 
+        #endregion
 
     }
 }
