@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Algorithm.Struct.Tests
 {
     [TestClass()]
-    public class GraphMininumSpanningTreeExtentionsTests
+    public class MininumSpanningTreeExtentionsTests
     {
         [TestMethod()]
         public void GetMininumSpanningTreeKruskalTest()

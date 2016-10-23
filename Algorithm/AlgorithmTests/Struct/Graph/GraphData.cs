@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Algorithm.Struct.Tests
 {
-    public  class GraphData
+    public class GraphData
     {
         #region data
 
@@ -39,6 +39,74 @@ namespace Algorithm.Struct.Tests
             graph.CreatGraph(vertexs, edges);
 
             return graph;
+        }
+
+        public static AdjacencyListGraph<int> CreateShortestPathGraph1()
+        {
+            var vertexKeys = new List<int>
+            {
+                1,2,3,4,5,6,7,8,9
+            };
+
+            var graph = new AdjacencyListGraph<int>(true);
+
+            var vertexs = graph.CreateVertexs(vertexKeys);
+
+            var edges = new List<AdjacencyEdge<int>>
+            {
+                graph.CreateEdge(vertexs[0],vertexs[1],3),
+                graph.CreateEdge(vertexs[1],vertexs[2],4),
+                graph.CreateEdge(vertexs[2],vertexs[3],1),
+                graph.CreateEdge(vertexs[2],vertexs[0],2),
+                graph.CreateEdge(vertexs[3],vertexs[4],3),
+                graph.CreateEdge(vertexs[4],vertexs[0],1),
+
+                graph.CreateEdge(vertexs[2],vertexs[5],1),
+
+                graph.CreateEdge(vertexs[5],vertexs[6],1),
+                graph.CreateEdge(vertexs[6],vertexs[7],2),
+                graph.CreateEdge(vertexs[7],vertexs[5],2),
+
+                graph.CreateEdge(vertexs[8],vertexs[7],9),
+            };
+
+            graph.CreatGraph(vertexs, edges);
+
+            return graph;
+
+        }
+
+        public static AdjacencyListGraph<int> CreateDAGShortestPathGraph1()
+        {
+            var vertexKeys = new List<int>
+            {
+                1,2,3,4,5,6,7,8,9
+            };
+
+            var graph = new AdjacencyListGraph<int>(true);
+
+            var vertexs = graph.CreateVertexs(vertexKeys);
+
+            var edges = new List<AdjacencyEdge<int>>
+            {
+                graph.CreateEdge(vertexs[0],vertexs[1],3),
+                graph.CreateEdge(vertexs[1],vertexs[2],4),
+                graph.CreateEdge(vertexs[2],vertexs[3],1),
+
+                graph.CreateEdge(vertexs[3],vertexs[4],3),
+
+                graph.CreateEdge(vertexs[2],vertexs[5],1),
+
+                graph.CreateEdge(vertexs[5],vertexs[6],1),
+                graph.CreateEdge(vertexs[6],vertexs[7],2),
+
+                graph.CreateEdge(vertexs[8],vertexs[7],9),
+            };
+
+            graph.CreatGraph(vertexs, edges);
+
+            return graph;
+
         }
 
         public static AdjacencyListGraph<int> CreateDirectionNoCircuitGraph1(bool hasDirection = false)

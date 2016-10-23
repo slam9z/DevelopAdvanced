@@ -10,9 +10,11 @@ namespace Algorithm.Struct
     /// 将原来写在HeapSort里面的重构出来
     /// 最大堆和最小堆能写在一块吗？还是用基类
     /// </summary>
-    public class BinanyHeap<T>
+    public class BinanyHeap<T> 
     {
-        private int _heapSize
+
+
+        protected int _heapSize
         {
             get
             {
@@ -20,9 +22,19 @@ namespace Algorithm.Struct
             }
         }
 
-        private IList<T> _source;
+        protected IList<T> _source;
 
-        private Func<T, T, bool> _com;
+        protected Func<T, T, bool> _com;
+
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return _source.Count == 0;
+            }
+        }
+
 
         public BinanyHeap(IList<T> source, Func<T, T, bool> com)
         {
@@ -54,7 +66,7 @@ namespace Algorithm.Struct
         /// </summary>
         /// <param name="source"></param>
         /// <param name="com"></param>
-        private void Build(IList<T> source, Func<T, T, bool> com)
+        protected virtual void Build(IList<T> source, Func<T, T, bool> com)
         {
             _source = source;
             _com = com;
@@ -73,7 +85,7 @@ namespace Algorithm.Struct
         /// <param name="source"></param>
         /// <param name="root"></param>
         /// <param name="larger"></param>
-        public void Heapify(IList<T> source, int root, int size)
+        public virtual void Heapify(IList<T> source, int root, int size)
         {
             var left = Left(root);
             var right = Right(root);
@@ -110,7 +122,7 @@ namespace Algorithm.Struct
             return _source[0];
         }
 
-        public T Extract()
+        public virtual T Extract()
         {
             if (_heapSize < 1)
             {
@@ -126,22 +138,23 @@ namespace Algorithm.Struct
 
 
 
-        public void Insert(T key)
+        public virtual void Insert(T key)
         {
             //没有无穷小给我取啊
 
             _source.Add(key);
-            IncreaseKey(_heapSize, key);
+            UpdateKey(_heapSize, key);
         }
 
 
         /// <summary>
         /// newKey不能小于oldKey
         /// 将newKey往上移
+        /// Increase和Decrease
         /// </summary>
         /// <param name="oldKey"></param>
         /// <param name="newKey"></param>
-        public void IncreaseKey(int heapIndex, T newKey)
+        public void UpdateKey(int heapIndex, T newKey)
         {
             if (_com(_source[GetListIndex(heapIndex)], newKey))
             {
@@ -180,7 +193,7 @@ namespace Algorithm.Struct
             return node / 2;
         }
 
-        protected void Exchange<T>(IList<T> source, int indexa, int indexb)
+        protected virtual void Exchange(IList<T> source, int indexa, int indexb)
         {
             T temp;
             temp = source[indexa];

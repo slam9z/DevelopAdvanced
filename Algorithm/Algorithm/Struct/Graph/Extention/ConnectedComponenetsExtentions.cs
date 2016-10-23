@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithm.Struct
 {
-    public static class GraphConnectedComponenetsExtentions
+    public static class ConnectedComponenetsExtentions
     {
         /// <summary>
         /// 获取连通图的算法是我有信心感觉我自己想的结构是对的，之后继续再验证。

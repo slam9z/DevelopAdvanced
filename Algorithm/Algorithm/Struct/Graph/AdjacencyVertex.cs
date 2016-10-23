@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Algorithm.Struct
 {
 
-    public class AdjacencyVertex<T> : IEquatable<AdjacencyVertex<T>> where T : IEquatable<T>
+    public partial class AdjacencyVertex<T> : IEquatable<AdjacencyVertex<T>> where T : IEquatable<T>
     {
         /// <summary>
         /// 使用Key做边和顶点的标志是有问题的，因为Key可以重复。
@@ -21,10 +21,15 @@ namespace Algorithm.Struct
         public AdjacencyEdge<T> FirstEdge { get; set; }
 
         //某些算法用到,不属于自身性质
-        public AdjacencyVertex<T> Parent { get; set; }
+        public AdjacencyVertex<T> Predecessor { get; set; }
 
 
         public int Distance { get; set; }
+
+        /// <summary>
+        /// 最短路径会使用
+        /// </summary>
+        public int WeightBound { get; set; }
 
         internal Color Color { get; set; }
 
@@ -35,16 +40,12 @@ namespace Algorithm.Struct
 
         public override string ToString()
         {
-            return string.Format("Identifier:{4} Key: {0} Distance: {1} FisrtVisitTime:{2} FinalVisitTime:{3}"
-            , Key
-            , Distance
-            , FisrtVisitTime
-            , FinalVisitTime
-            , Identifier
-            );
+            return $"Identifier:{Identifier} Key: {Key}"
+                + $"MapIndex:{MapIndex} WeightBound: {WeightBound}"
+                ;
         }
 
-    
+
         public bool Equals(AdjacencyVertex<T> other)
         {
             return Key.Equals(other.Key);

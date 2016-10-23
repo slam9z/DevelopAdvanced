@@ -16,6 +16,15 @@ namespace Algorithm.Struct
 
         public readonly bool HasDirection;
 
+        public int VertexLenght
+        {
+            get
+            {
+                return _adjacencyDictionary.Values.Count;
+            }
+        }
+
+
         public AdjacencyListGraph()
         {
 
@@ -41,12 +50,12 @@ namespace Algorithm.Struct
                     continue;
                 }
                 vertex.Distance = int.MaxValue;
-                vertex.Parent = null;
+                vertex.Predecessor = null;
                 vertex.Color = Color.White;
             }
 
             source.Color = Color.Gray;
-            source.Parent = null;
+            source.Predecessor = null;
             source.Distance = 0;
 
             grayQueue.Enqueue(source);
@@ -60,7 +69,7 @@ namespace Algorithm.Struct
                     {
                         endVertex.Color = Color.Gray;
                         endVertex.Distance = startVertex.Distance + 1;
-                        endVertex.Parent = startVertex;
+                        endVertex.Predecessor = startVertex;
                         grayQueue.Enqueue(endVertex);
                     }
                 }
@@ -68,6 +77,8 @@ namespace Algorithm.Struct
                 finalVisitAction(startVertex);
             }
         }
+
+
 
         #endregion
 
@@ -81,7 +92,7 @@ namespace Algorithm.Struct
             foreach (var item in _adjacencyDictionary.Values)
             {
                 item.Color = Color.White;
-                item.Parent = null;
+                item.Predecessor = null;
             }
             _time = 0;
 
@@ -109,7 +120,7 @@ namespace Algorithm.Struct
                 var vertex = item.End;
                 if (vertex.Color == Color.White)
                 {
-                    vertex.Parent = source;
+                    vertex.Predecessor = source;
                     DepthFirstSearchVisit(vertex, finalVisitAction);
                 }
             }
@@ -144,14 +155,14 @@ namespace Algorithm.Struct
                 path.Add(vertex);
                 return path;
             }
-            if (vertex.Parent == null)
+            if (vertex.Predecessor == null)
             {
                 return null;
                 // Console.WriteLine("no path form source:{0} vertex:{1}", source, vertex);
             }
             else
             {
-                path.AddRange(GetPath(source, vertex.Parent));
+                path.AddRange(GetPath(source, vertex.Predecessor));
                 return path;
             }
         }
@@ -196,7 +207,7 @@ namespace Algorithm.Struct
             foreach (var item in _adjacencyDictionary.Values)
             {
                 item.Color = Color.White;
-                item.Parent = null;
+                item.Predecessor = null;
             }
             _time = 0;
 
@@ -246,7 +257,7 @@ namespace Algorithm.Struct
 
                     graph.AddEdge(new AdjacencyEdge<T>(newVertex, newSource));
 
-                    vertex.Parent = source;
+                    vertex.Predecessor = source;
                     DepthFirstSearchVisitStronglyConnected(vertex, graph);
                 }
             }
@@ -333,6 +344,7 @@ namespace Algorithm.Struct
 
         #region vertex
 
+     
         /// <summary>
         /// 一般用来改变元素顺序
         /// </summary>
@@ -407,6 +419,21 @@ namespace Algorithm.Struct
 
         #region edge
 
+
+        public AdjacencyEdge<T> GetEdge(AdjacencyVertex<T> first, AdjacencyVertex<T> second)
+        {
+            var edge = first.FirstEdge;
+            while (edge != null)
+            {
+                if (edge.End == second)
+                {
+                    return edge;
+                }
+                edge = edge.Next;
+            }
+            return null;
+        }
+
         public IEnumerable<AdjacencyEdge<T>> GetVertexEdge(AdjacencyVertex<T> vertex)
         {
             var edges = new List<AdjacencyEdge<T>>();
@@ -429,27 +456,27 @@ namespace Algorithm.Struct
             return new AdjacencyEdge<T>(start, end);
         }
 
-        public void AddEdge(AdjacencyEdge<T> item)
+        public AdjacencyEdge<T> CreateEdge(AdjacencyVertex<T> start, AdjacencyVertex<T> end,int weight)
         {
-            AddEdgeCore(item.Start, item.End);
+            var edge =new AdjacencyEdge<T>(start, end);
+            edge.Weight = weight;
+            return edge;
         }
+      
 
 
         public void AddEdge(AdjacencyVertex<T> first, AdjacencyVertex<T> second)
         {
-            AddEdgeCore(first, second);
+            AddEdge(CreateEdge( first, second));
             if (!HasDirection)
             {
-                AddEdgeCore(second, first);
+                AddEdge(CreateEdge(second, first));
             }
         }
 
-        public void AddEdgeCore(AdjacencyVertex<T> start, AdjacencyVertex<T> end)
+        public void AddEdge(AdjacencyEdge<T> edge)
         {
-
-
-            var startVertex = start;
-            var edge = new AdjacencyEdge<T>(start, end);
+            var startVertex = edge.Start;
 
             _allEdges.Add(edge);
 
@@ -469,6 +496,7 @@ namespace Algorithm.Struct
                 pointerEdge.Next = edge;
             }
         }
+
 
         #endregion
 

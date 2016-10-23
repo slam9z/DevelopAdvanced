@@ -9,7 +9,7 @@ namespace Algorithm.Struct
 {
     //在不知道怎么设计的时候，先做出基本功能再优化，做的过程中会有思路的。
 
-    public static class GraphMininumSpanningTreeExtentions
+    public static class MininumSpanningTreeExtentions
     {
         /// <summary>
         /// MST
