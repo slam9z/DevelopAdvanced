@@ -10,7 +10,7 @@ namespace Algorithm.Struct
     /// 将原来写在HeapSort里面的重构出来
     /// 最大堆和最小堆能写在一块吗？还是用基类
     /// </summary>
-    public class BinanyMaxHeap<T>
+    public class BinanyHeap<T>
     {
         private int _heapSize
         {
@@ -22,11 +22,11 @@ namespace Algorithm.Struct
 
         private IList<T> _source;
 
-        private Func<T, T, bool> _larger;
+        private Func<T, T, bool> _com;
 
-        public BinanyMaxHeap(IList<T> source, Func<T, T, bool> larger)
+        public BinanyHeap(IList<T> source, Func<T, T, bool> com)
         {
-            Build(source, larger);
+            Build(source, com);
         }
 
         public IList<T> Sort()
@@ -53,11 +53,11 @@ namespace Algorithm.Struct
         /// 重复调用会有问题，其实属于构造函数。
         /// </summary>
         /// <param name="source"></param>
-        /// <param name="larger"></param>
-        private void Build(IList<T> source, Func<T, T, bool> larger)
+        /// <param name="com"></param>
+        private void Build(IList<T> source, Func<T, T, bool> com)
         {
             _source = source;
-            _larger = larger;
+            _com = com;
 
             //从1开始的
             for (int i = _heapSize / 2; i >= 1; i--)
@@ -80,7 +80,7 @@ namespace Algorithm.Struct
 
             var largest = 0;
 
-            if (left <= size && _larger(source[GetListIndex(left)], source[GetListIndex(root)]))
+            if (left <= size && _com(source[GetListIndex(left)], source[GetListIndex(root)]))
             {
                 largest = left;
             }
@@ -89,7 +89,7 @@ namespace Algorithm.Struct
                 largest = root;
             }
 
-            if (right <= size && _larger(source[GetListIndex(right)], source[GetListIndex(largest)]))
+            if (right <= size && _com(source[GetListIndex(right)], source[GetListIndex(largest)]))
             {
                 largest = right;
             }
@@ -105,49 +105,61 @@ namespace Algorithm.Struct
 
         #endregion
 
-        public void Insert(T value)
-        {
-
-        }
-
-        public T Maxinum()
+        public T Peek()
         {
             return _source[0];
         }
 
-        public T ExtractMax()
+        public T Extract()
         {
             if (_heapSize < 1)
             {
                 throw new InvalidOperationException("heap underflow");
             }
             var max = _source[0];
-            _source[0] = _source[_heapSize];
-            _source.RemoveAt(_heapSize);
+            _source[0] = _source[GetListIndex(_heapSize)];
+            _source.RemoveAt(GetListIndex(_heapSize));
 
             Heapify(_source, 1, _heapSize);
             return max;
         }
 
+
+
+        public void Insert(T key)
+        {
+            //没有无穷小给我取啊
+
+            _source.Add(key);
+            IncreaseKey(_heapSize, key);
+        }
+
+
         /// <summary>
         /// newKey不能小于oldKey
+        /// 将newKey往上移
         /// </summary>
         /// <param name="oldKey"></param>
         /// <param name="newKey"></param>
         public void IncreaseKey(int heapIndex, T newKey)
         {
-            if (_larger(_source[GetListIndex(heapIndex)], newKey))
+            if (_com(_source[GetListIndex(heapIndex)], newKey))
             {
-                throw new ArgumentException("new key must bigger than current key");
+                throw new ArgumentException("new key is invalid)");
             }
             _source[GetListIndex(heapIndex)] = newKey;
 
             while (heapIndex > 1
                 &&
-               _larger(newKey, _source[GetListIndex(Parent(heapIndex))])
+               _com(newKey, _source[GetListIndex(Parent(heapIndex))])
                )
             {
-                
+                Exchange(_source,
+                    GetListIndex(heapIndex),
+                    GetListIndex(Parent(heapIndex))
+                    );
+
+                heapIndex = Parent(heapIndex);
             }
         }
 

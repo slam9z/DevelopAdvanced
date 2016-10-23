@@ -15,7 +15,7 @@ namespace Algorithm.Sort
         public override IList<T> Sort<T>(IList<T> source, Func<T, T, bool> larger)
         {
             var result = new List<T>(source);
-            var maxHeap = new BinanyMaxHeap<T>(result, larger);
+            var maxHeap = new BinanyHeap<T>(result, larger);
             return  maxHeap.Sort();
         }
 
