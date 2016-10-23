@@ -12,12 +12,18 @@ namespace Algorithm.Struct
     /// </summary>
     public class BinanyMaxHeap<T>
     {
-        private int _heapSize;
+        private int _heapSize
+        {
+            get
+            {
+                return _source.Count;
+            }
+        }
 
         private IList<T> _source;
 
         private Func<T, T, bool> _larger;
-   
+
         public BinanyMaxHeap(IList<T> source, Func<T, T, bool> larger)
         {
             Build(source, larger);
@@ -28,14 +34,16 @@ namespace Algorithm.Struct
             //进行排序它就不是Heap了，这个有点头疼。
             //copy一个操作
             var sortResult = new List<T>(_source);
-            for (int i = sortResult.Count- 1; i >= 0; i--)
+
+            var size = sortResult.Count;
+            for (int i = sortResult.Count - 1; i >= 0; i--)
             {
                 Exchange(sortResult, 0, i);
-                _heapSize--;
 
                 //把最大的置换到最后！
-                Heapify(sortResult, 1);
-                
+                size--;
+                Heapify(sortResult, 1, size);
+
             }
             return sortResult;
         }
@@ -48,14 +56,13 @@ namespace Algorithm.Struct
         /// <param name="larger"></param>
         private void Build(IList<T> source, Func<T, T, bool> larger)
         {
-            _heapSize = source.Count;
             _source = source;
             _larger = larger;
 
             //从1开始的
             for (int i = _heapSize / 2; i >= 1; i--)
             {
-                Heapify(source, i);
+                Heapify(source, i, _heapSize);
             }
         }
 
@@ -66,14 +73,14 @@ namespace Algorithm.Struct
         /// <param name="source"></param>
         /// <param name="root"></param>
         /// <param name="larger"></param>
-        public void Heapify(IList<T> source, int root)
+        public void Heapify(IList<T> source, int root, int size)
         {
             var left = Left(root);
             var right = Right(root);
 
             var largest = 0;
 
-            if (left <= _heapSize && _larger(source[GetListIndex(left)], source[GetListIndex(root)]))
+            if (left <= size && _larger(source[GetListIndex(left)], source[GetListIndex(root)]))
             {
                 largest = left;
             }
@@ -82,7 +89,7 @@ namespace Algorithm.Struct
                 largest = root;
             }
 
-            if (right <= _heapSize && _larger(source[GetListIndex(right)], source[GetListIndex(largest)]))
+            if (right <= size && _larger(source[GetListIndex(right)], source[GetListIndex(largest)]))
             {
                 largest = right;
             }
@@ -90,7 +97,7 @@ namespace Algorithm.Struct
             if (largest != root)
             {
                 Exchange(source, GetListIndex(root), GetListIndex(largest));
-                Heapify(source, largest);
+                Heapify(source, largest, size);
             }
         }
 
@@ -98,6 +105,51 @@ namespace Algorithm.Struct
 
         #endregion
 
+        public void Insert(T value)
+        {
+
+        }
+
+        public T Maxinum()
+        {
+            return _source[0];
+        }
+
+        public T ExtractMax()
+        {
+            if (_heapSize < 1)
+            {
+                throw new InvalidOperationException("heap underflow");
+            }
+            var max = _source[0];
+            _source[0] = _source[_heapSize];
+            _source.RemoveAt(_heapSize);
+
+            Heapify(_source, 1, _heapSize);
+            return max;
+        }
+
+        /// <summary>
+        /// newKey不能小于oldKey
+        /// </summary>
+        /// <param name="oldKey"></param>
+        /// <param name="newKey"></param>
+        public void IncreaseKey(int heapIndex, T newKey)
+        {
+            if (_larger(_source[GetListIndex(heapIndex)], newKey))
+            {
+                throw new ArgumentException("new key must bigger than current key");
+            }
+            _source[GetListIndex(heapIndex)] = newKey;
+
+            while (heapIndex > 1
+                &&
+               _larger(newKey, _source[GetListIndex(Parent(heapIndex))])
+               )
+            {
+                
+            }
+        }
 
         #region base
 
@@ -123,6 +175,8 @@ namespace Algorithm.Struct
             source[indexa] = source[indexb];
             source[indexb] = temp;
         }
+
+
 
         //IList索引和堆索引转换取值
         private int GetListIndex(int heapIndex)
