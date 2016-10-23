@@ -59,8 +59,18 @@ namespace Algorithm.Sort.Tests
 		{
 			var sort = new CountingSort();
 			var result = sort.Sort(_testData1, 20);
-			VerifyTestResult(_testData1, result);
-		}
+
+            var source = _testData1;
+
+            var sortData = source.OrderBy(o => o).ToList();
+
+            Assert.AreEqual(sortData.Count, result.Count, "结果数不想等");
+
+            for (int i = 0; i < sortData.Count; i++)
+            {
+                Assert.AreEqual(sortData[i], result[i], "排序数值不想等");
+            }
+        }
 
 
 		private void RunAllTest(ISort sort)
@@ -107,7 +117,7 @@ namespace Algorithm.Sort.Tests
 
 		private void VerifyTestResult(IList<int> source, IList<int> result)
 		{
-			var sortData = source.OrderBy(o => o).ToList();
+			var sortData = source.OrderByDescending(o => o).ToList();
 
 			Assert.AreEqual(sortData.Count, result.Count, "结果数不想等");
 
@@ -119,7 +129,7 @@ namespace Algorithm.Sort.Tests
 
 		private void RunTest(ISort sort, IList<int> source)
 		{
-			var result = sort.Sort(source);
+			var result = sort.Sort(source,(a,b)=>a<b);
 			VerifyTestResult(source, result);
 		}
 	}
