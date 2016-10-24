@@ -68,6 +68,7 @@ namespace Algorithm.Struct
 
         /// <summary>
         /// 怎么输出最小生成树？
+        /// 很神奇的是这个贪心算法是对的
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="graph"></param>
@@ -81,6 +82,7 @@ namespace Algorithm.Struct
         {
             var vertexs = graph.GetVertexs().ToList();
 
+            //TempStorage顶点到到某一顶点相连的最小权值。
             foreach (var vertex in vertexs)
             {
                 vertex.TempStorage = int.MaxValue;

@@ -58,7 +58,7 @@ namespace Algorithm.Struct
             {
                 index++;
                 SetMapIndex(item, index);
-                SetBelonged(item,this);
+                SetBelonged(item, this);
             }
 
             base.Build(source, com);
@@ -72,8 +72,6 @@ namespace Algorithm.Struct
             SetMapIndex(source[indexa], indexa);
         }
 
-        private bool? _hasMapIndex;
-
         /// <summary>
         /// handler map index
         /// </summary>
@@ -81,20 +79,11 @@ namespace Algorithm.Struct
         /// <param name="index"></param>
         private void SetMapIndex(T node, int index)
         {
-            if (_hasMapIndex.HasValue&&!_hasMapIndex.Value)
+            var mapNode = node as IMapIndex;
+            if (mapNode != null)
             {
-                return;
+                mapNode.MapIndex = index;
             }
-
-            if (!_hasMapIndex.HasValue)
-            {
-                _hasMapIndex = node is IMapIndex;
-                if (!_hasMapIndex.Value)
-                {
-                    return;
-                }
-            }
-            (node as IMapIndex).MapIndex = index;
         }
 
         private bool? _hasBelonged;
@@ -107,7 +96,8 @@ namespace Algorithm.Struct
         /// <param name="belongedTo"></param>
         private void SetBelonged(T node, object belongedTo)
         {
-            if (_hasBelonged.HasValue&&!_hasBelonged.Value)
+            // 有过度优化的嫌疑
+            if (_hasBelonged.HasValue && !_hasBelonged.Value)
             {
                 return;
             }
