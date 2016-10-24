@@ -20,7 +20,7 @@ namespace Algorithm.Struct
         /// <returns></returns>
         public static IEnumerable<AdjacencyEdge<T>> GetMininumSpanningTreeKruskal<T>(
            this AdjacencyListGraph<T> graph,
-           Func<AdjacencyListGraph<T>, AdjacencyEdge<T>, int> weightFunc
+           Func<AdjacencyEdge<T>, int> weightFunc
             ) where T : IEquatable<T>
         {
             var vertexs = graph.GetVertexs();
@@ -37,7 +37,7 @@ namespace Algorithm.Struct
 
             foreach (var edge in edges)
             {
-                edge.Weight = weightFunc(graph, edge);
+                edge.Weight = weightFunc(edge);
             }
 
             //吃自己写的狗粮,这狗粮不好吃啊
@@ -66,11 +66,57 @@ namespace Algorithm.Struct
         }
 
 
-        public static IEnumerable<AdjacencyEdge<T>> GetMininumSpanningTreePrim<T>(this AdjacencyListGraph<T> graph,
-           Func<AdjacencyListGraph<T>, AdjacencyEdge<T>, int> weightFunc
+        /// <summary>
+        /// 怎么输出最小生成树？
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="graph"></param>
+        /// <param name="root"></param>
+        /// <param name="weightFunc"></param>
+        public static IList<AdjacencyEdge<T>> GetMininumSpanningTreePrim<T>(
+            this AdjacencyListGraph<T> graph,
+            AdjacencyVertex<T> root,
+            Func<AdjacencyEdge<T>, int> weightFunc
             ) where T : IEquatable<T>
         {
-            return null;
+            var vertexs = graph.GetVertexs().ToList();
+
+            foreach (var vertex in vertexs)
+            {
+                vertex.TempStorage = int.MaxValue;
+                vertex.Predecessor = null;
+            }
+            root.TempStorage = 0;
+
+
+            var result = new List<AdjacencyEdge<T>>();
+
+            var queue = new ExtentionBinanyHeap<AdjacencyVertex<T>>(vertexs, (f, s) => f.TempStorage < s.TempStorage);
+
+            while (!queue.IsEmpty)
+            {
+                var min = queue.Extract();
+                if (min != root)
+                {
+                    result.Add(graph.GetEdge(min.Predecessor,min));
+                }
+
+                var edges = graph.GetVertexEdge(min);
+                foreach (var edge in edges)
+                {
+                    var weight = weightFunc(edge);
+                    //TODO: 还有一个包含判断
+                    if (edge.End.BelongedTo == queue && weight < edge.End.TempStorage)
+                    {
+                        edge.End.Predecessor = min;
+                        edge.End.TempStorage = weight;
+                        queue.UpdateKey(edge.End, edge.End);
+                    }
+                }
+            }
+
+            return result;
+
         }
     }
 }

@@ -27,6 +27,11 @@ namespace Algorithm.Struct
         public int Distance { get; set; }
 
         /// <summary>
+        /// 通用的字段，否则Vertex类会爆炸，这也是静态语言不方便的地方。
+        /// </summary>
+        public int TempStorage { get; set; }
+
+        /// <summary>
         /// 最短路径会使用
         /// </summary>
         public int WeightBound { get; set; }
@@ -41,7 +46,8 @@ namespace Algorithm.Struct
         public override string ToString()
         {
             return $"Identifier:{Identifier} Key: {Key}"
-                + $"MapIndex:{MapIndex} WeightBound: {WeightBound}"
+                // + $"MapIndex:{MapIndex} WeightBound: {WeightBound}"
+               // + $"MapIndex:{MapIndex} TempStorage: {TempStorage}"
                 ;
         }
 

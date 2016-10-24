@@ -102,7 +102,7 @@ namespace Algorithm.Struct
 
             //不想再增加AdjacencyVertex对象的负担了
 
-            var queue = new MapBinanyHeap<AdjacencyVertex<T>>
+            var queue = new ExtentionBinanyHeap<AdjacencyVertex<T>>
                 (
                   vertexs,
                   (first, second) =>
@@ -115,6 +115,10 @@ namespace Algorithm.Struct
             while (!queue.IsEmpty)
             {
                 var min = queue.Extract();
+
+                Console.WriteLine("calcVertex");
+                Console.WriteLine(min);
+
                 calcVertexs.Add(min);
 
                 var edges = graph.GetVertexEdge(min);

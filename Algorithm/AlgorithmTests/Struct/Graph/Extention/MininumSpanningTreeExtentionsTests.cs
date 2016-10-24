@@ -14,7 +14,7 @@ namespace Algorithm.Struct.Tests
         [TestMethod()]
         public void GetMininumSpanningTreeKruskalTest()
         {
-            var graph = GraphData.CreateStronglyConnectedComponenetsGraph1();
+            var graph = GraphData.CreateMininumSpanningTreeGraph1();
             var edges = graph.GetMininumSpanningTreeKruskal(GetEdgeWeight);
             var vertexs = graph.GetVertexs();
 
@@ -44,15 +44,34 @@ namespace Algorithm.Struct.Tests
                 Assert.IsTrue(vertexs.Contains(item));
             }
 
+            Console.WriteLine($"mininum tree { edges.Sum(o => o.Weight)}");
+
             //最后一个是权值最小的就不太好验证了。
 
         }
 
-        private Random random = new Random();
 
-        private int GetEdgeWeight(AdjacencyListGraph<int> graph, AdjacencyEdge<int> edge)
+
+        private int GetEdgeWeight(AdjacencyEdge<int> edge)
         {
-            return random.Next(1, 10);
+            return edge.Weight;
+        }
+
+        [TestMethod()]
+        public void GetMininumSpanningTreePrimTest()
+        {
+
+            var graph = GraphData.CreateMininumSpanningTreeGraph1();
+            var root = graph.GetVertexByKey(3);
+            var edges = graph.GetMininumSpanningTreePrim(root, GetEdgeWeight);
+            var vertexs = graph.GetVertexs();
+
+            //不好判断算法是否正确
+            Assert.AreEqual(vertexs.Count()-1, edges.Count());
+
+            //强烈的需要一个求并集和差集的算法。
+
+            Console.WriteLine($"mininum tree { edges.Sum(o => o.Weight)}");
         }
     }
 }

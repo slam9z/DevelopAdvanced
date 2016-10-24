@@ -48,7 +48,8 @@ namespace Algorithm.Struct.Tests
                 1,2,3,4,5,6,7,8,9
             };
 
-            var graph = new AdjacencyListGraph<int>(true);
+            //需要无向的图啊
+            var graph = new AdjacencyListGraph<int>(false);
 
             var vertexs = graph.CreateVertexs(vertexKeys);
 
@@ -76,6 +77,50 @@ namespace Algorithm.Struct.Tests
 
         }
 
+
+        public static AdjacencyListGraph<int> CreateMininumSpanningTreeGraph1()
+        {
+            var vertexKeys = new List<int>
+            {
+                1,2,3,4,5,6,7,8,9
+            };
+
+            var graph = new AdjacencyListGraph<int>(true);
+
+            var vertexs = graph.CreateVertexs(vertexKeys);
+
+            var edges = new List<AdjacencyEdge<int>>();
+
+            edges.AddRange(graph.CreateNonDirectionEdge(vertexs[0], vertexs[1], 3));
+            edges.AddRange(graph.CreateNonDirectionEdge(vertexs[1], vertexs[2], 4));
+            edges.AddRange(graph.CreateNonDirectionEdge(vertexs[2], vertexs[3], 1));
+
+
+            edges.AddRange(graph.CreateNonDirectionEdge(vertexs[3], vertexs[4], 3));
+
+            edges.AddRange(graph.CreateNonDirectionEdge(vertexs[2], vertexs[5], 1));
+
+            edges.AddRange(graph.CreateNonDirectionEdge(vertexs[5], vertexs[6], 1));
+            edges.AddRange(graph.CreateNonDirectionEdge(vertexs[6], vertexs[7], 2));
+
+            edges.AddRange(graph.CreateNonDirectionEdge(vertexs[8], vertexs[7], 9));
+
+
+            //这时的值就是一个生成树。值是24！
+
+            edges.AddRange(graph.CreateNonDirectionEdge(vertexs[0], vertexs[4], 1));
+
+            edges.AddRange(graph.CreateNonDirectionEdge(vertexs[6], vertexs[8], 8));
+
+            //新的应该是
+
+            graph.CreatGraph(vertexs, edges);
+
+            return graph;
+
+        }
+
+
         public static AdjacencyListGraph<int> CreateDAGShortestPathGraph1()
         {
             var vertexKeys = new List<int>
@@ -87,27 +132,28 @@ namespace Algorithm.Struct.Tests
 
             var vertexs = graph.CreateVertexs(vertexKeys);
 
-            var edges = new List<AdjacencyEdge<int>>
-            {
-                graph.CreateEdge(vertexs[0],vertexs[1],3),
-                graph.CreateEdge(vertexs[1],vertexs[2],4),
-                graph.CreateEdge(vertexs[2],vertexs[3],1),
+            var edges = new List<AdjacencyEdge<int>>();
 
-                graph.CreateEdge(vertexs[3],vertexs[4],3),
+            edges.Add(graph.CreateEdge(vertexs[0], vertexs[1], 3));
+            edges.Add(graph.CreateEdge(vertexs[1], vertexs[2], 4));
+            edges.Add(graph.CreateEdge(vertexs[2], vertexs[3], 1));
 
-                graph.CreateEdge(vertexs[2],vertexs[5],1),
 
-                graph.CreateEdge(vertexs[5],vertexs[6],1),
-                graph.CreateEdge(vertexs[6],vertexs[7],2),
+            edges.Add(graph.CreateEdge(vertexs[3], vertexs[4], 3));
 
-                graph.CreateEdge(vertexs[8],vertexs[7],9),
-            };
+            edges.Add(graph.CreateEdge(vertexs[2], vertexs[5], 1));
+
+            edges.Add(graph.CreateEdge(vertexs[5], vertexs[6], 1));
+            edges.Add(graph.CreateEdge(vertexs[6], vertexs[7], 2));
+
+            edges.Add(graph.CreateEdge(vertexs[8], vertexs[7], 9));
 
             graph.CreatGraph(vertexs, edges);
 
             return graph;
-
         }
+
+
 
         public static AdjacencyListGraph<int> CreateDirectionNoCircuitGraph1(bool hasDirection = false)
         {

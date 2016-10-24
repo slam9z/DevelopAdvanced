@@ -65,15 +65,16 @@
     <Compile Include="Struct\Graph\AdjacencyEdge.cs" />
     <Compile Include="Struct\Graph\AdjacencyListGraph.cs" />
     <Compile Include="Struct\Graph\AdjacencyVertex.cs" />
-    <Compile Include="Struct\Graph\AdjacencyVertex.MapIndex.cs" />
+    <Compile Include="Struct\Graph\AdjacencyVertex.InterfaceExtention.cs" />
     <Compile Include="Struct\Graph\Color.cs" />
     <Compile Include="Struct\Graph\Extention\ConnectedComponenetsExtentions.cs" />
     <Compile Include="Struct\Graph\Extention\MininumSpanningTreeExtentions.cs" />
     <Compile Include="Struct\Graph\Extention\ShortestPathExtentions.cs" />
     <Compile Include="Struct\Graph\GraphBase.cs" />
     <Compile Include="Struct\BinaryTree\IEmptyNodeInterface.cs" />
-    <Compile Include="Struct\Heap\BinanyHeap.cs" />
-    <Compile Include="Struct\Heap\IMapIndex.cs" />
+    <Compile Include="Struct\Heap\BinanyHeap\BinanyHeap.cs" />
+    <Compile Include="Struct\Heap\BinanyHeap\IBelonged.cs" />
+    <Compile Include="Struct\Heap\BinanyHeap\IMapIndex.cs" />
     <Compile Include="Struct\LinkList.cs" />
     <Compile Include="Struct\LinkNode.cs" />
     <Compile Include="Struct\Queue.cs" />
@@ -83,7 +84,7 @@
     <Compile Include="Struct\BinaryTree\TreeNodeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Struct\Heap\MapBinanyHeap.cs" />
+    <Compile Include="Struct\Heap\BinanyHeap\ExtentionBinanyHeap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

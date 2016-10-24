@@ -344,7 +344,7 @@ namespace Algorithm.Struct
 
         #region vertex
 
-     
+
         /// <summary>
         /// 一般用来改变元素顺序
         /// </summary>
@@ -456,18 +456,37 @@ namespace Algorithm.Struct
             return new AdjacencyEdge<T>(start, end);
         }
 
-        public AdjacencyEdge<T> CreateEdge(AdjacencyVertex<T> start, AdjacencyVertex<T> end,int weight)
+        public AdjacencyEdge<T> CreateEdge(AdjacencyVertex<T> start, AdjacencyVertex<T> end, int weight)
         {
-            var edge =new AdjacencyEdge<T>(start, end);
+            var edge = new AdjacencyEdge<T>(start, end);
             edge.Weight = weight;
             return edge;
         }
-      
+
+        public IEnumerable<AdjacencyEdge<T>> CreateNonDirectionEdge(AdjacencyVertex<T> start, AdjacencyVertex<T> end, int weight)
+        {
+            var edges = new List<AdjacencyEdge<T>>();
+
+            var edge = new AdjacencyEdge<T>(start, end);
+            edge.Weight = weight;
+            edges.Add(edge);
+
+            var secondedge = new AdjacencyEdge<T>(end, start);
+            secondedge.Weight = weight;
+            //加边加错了，bug就是这么神奇
+            //edges.Add(edge);
+            edges.Add(secondedge);
+
+            return edges;
+
+        }
+
+
 
 
         public void AddEdge(AdjacencyVertex<T> first, AdjacencyVertex<T> second)
         {
-            AddEdge(CreateEdge( first, second));
+            AddEdge(CreateEdge(first, second));
             if (!HasDirection)
             {
                 AddEdge(CreateEdge(second, first));
