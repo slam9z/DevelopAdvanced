@@ -171,6 +171,7 @@
     <None Include="Web\CSS\display 属性\我所知道的几种display table-cell的应用.md" />
     <None Include="Web\CSS\Table\Fixed Table Cell Width.md" />
     <None Include="Web\Html\Frame\How to refresh an IFrame using Javascript.md" />
+    <None Include="Web\Html\Frame\Make iframe automatically adjust height according to the contents without using scrollbar.md" />
     <None Include="Web\Html\Table\Actual table Vs. Div table.md" />
     <None Include="Web\Html\Best replacement for font tag in html.md" />
     <None Include="Web\Html\Table\Can we have multiple  tbody  in same  table.md" />
@@ -180,6 +181,7 @@
     <None Include="Web\Html\Table\table标签中thead、tbody、tfoot的作用.md" />
     <None Include="Web\Html\Table\What%27s the difference between th and td HTML table tags.md" />
     <None Include="Web\Html\Table\Why not use tables for layout in HTML.md" />
+    <None Include="Web\JavaScript\Ajax\AJAX 浏览器支持.md" />
     <None Include="Web\JavaScript\frames\js中top的作用.md" />
     <None Include="Algorithm\Struct\Persistent Data Structures.md" />
     <None Include="Book\Design\Enterprise Solution Patterns using microsoft .net.pdf" />
@@ -277,6 +279,8 @@
     <None Include="Web\ASP.NET\Web Presentation Patterns\Implementing Page Controller in ASP.NET.md" />
     <None Include="Web\ASP.NET\Web Presentation Patterns\Patterns Rate.md" />
     <None Include="Web\JavaScript\JavaScript Source Map 详解.md" />
+    <None Include="Web\JavaScript\Json\Convert JS object to JSON string.md" />
+    <None Include="Web\JavaScript\Math\JavaScript 求最大值和最小值.md" />
     <None Include="Web\jQuery\API\Attributes\Forms\Manipulation\General Attributes\.val%28%29.md" />
     <None Include="Web\jQuery\API\Manipulation\DOM Insertion, Inside\.append%28%29.md" />
     <None Include="Web\jQuery\API\Manipulation\DOM Removal\.remove%28%29.md" />
@@ -350,9 +354,10 @@
     <None Include="Web\Web Form\为WebForms说几句话，以及一些ASP.NET开发上的经验.md" />
     <None Include="Web\Web Form\细说 Form %28表单%29.md" />
     <None Include="Web\Web Form\自己认为Web form的问题.md" />
+    <None Include="Windows System\Network\网络无法连接的基本解决步骤.md" />
     <None Include="Windows System\There is a problem with this website%27s security certificate %28download.microsoft.com%29 .md" />
-    <None Include="Windows System\windows 查看文件被哪个进程占用.md" />
-    <None Include="Windows System\查看那些文件被那个应用程序读写.md" />
+    <None Include="Windows System\Resource Monitor\windows 查看文件被哪个进程占用.md" />
+    <None Include="Windows System\Resource Monitor\查看那些文件被那个应用程序读写.md" />
     <None Include="Windows System\顿号怎么打.md" />
     <None Include="Work\Business\Finance\Letter of Credit\Letter of Credit %28信用证%29.md" />
     <None Include="Data Access\Sql\使用GROUP BY的时候如何统计记录条数 COUNT  DISTINCT.md" />
