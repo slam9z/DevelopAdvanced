@@ -60,7 +60,7 @@ pages and a number of optional pages based on user input. When implemented with 
 Front Controller solves the decentralization problem present in Page Controller by channeling all requests through a 
 single controller. The controller itself is usually implemented in two parts: a handler and a hierarchy of commands (see Figure 1). 
 
-[Figure 1: Front Controller structure]
+![Figure 1: Front Controller structure](../Image/Front Controller/Figure 1 Front Controller structure.gif)
 
 The handler has two responsibilities: 
 
