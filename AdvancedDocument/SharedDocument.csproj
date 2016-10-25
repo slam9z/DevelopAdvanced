@@ -115,6 +115,7 @@
     <None Include="Tool\Notepad++\notepad++ csharp.md" />
     <None Include="Tool\Package Manager\Nuget\Nuget.md" />
     <None Include="Tool\Source Code Control\Git\git add 和add 所有文件.md" />
+    <None Include="Tool\Source Code Control\Git\git中二进制文件冲突了怎么办 .md" />
     <None Include="Tool\Source Code Control\Git\解决历史过多导致git repo过大的问题.md" />
     <None Include="Tool\Source Code Control\Svn\Svn简单粗暴用法.md" />
     <None Include="Tool\Source Code Control\谷歌的代码管理.md" />
@@ -513,7 +514,6 @@
     <None Include="Tool\CommandLine\cd.md" />
     <None Include="Tool\Source Code Control\Git\git branch用法总结 .md" />
     <None Include="Tool\Source Code Control\Git\GitTfs  Tfs migrate Git.md" />
-    <None Include="Tool\Source Code Control\Nuget.md" />
     <None Include="Style Guide\CSharp Style  Guide.md" />
     <None Include="Style Guide\Refactoring Style Guide.md" />
     <None Include="Style Guide\Client Style Guide.md" />
