@@ -912,7 +912,9 @@
     <Folder Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 5 Distributed Systems Patterns\Singleton\" />
     <Folder Include="Design\Enterprise Solution Patterns Using Microsoft  DOTNET\Image\Chapter 6 Services Patterns\Service Interface\" />
     <Folder Include="MyProject\Wiki\Roadkill\Dependencies\" />
+    <Folder Include="Tool\Remote\mstsc\" />
     <Folder Include="Tool\UML\Visual Studio UML\" />
+    <Folder Include="Web\ASP.NET\Publish\" />
     <Folder Include="Web\Core\" />
     <Folder Include="Web\JavaScript\Typescript\" />
     <Folder Include="Web\jQuery\Method\" />
