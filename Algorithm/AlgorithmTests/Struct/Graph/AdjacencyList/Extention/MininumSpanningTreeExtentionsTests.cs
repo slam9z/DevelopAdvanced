@@ -37,12 +37,7 @@ namespace Algorithm.Struct.Tests
                 }
             }
 
-            Assert.AreEqual(vertexs.Count(), allEdgeVertexs.Count);
-
-            foreach (var item in allEdgeVertexs)
-            {
-                Assert.IsTrue(vertexs.Contains(item));
-            }
+            Assert.AreEqual(vertexs.Count(), vertexs.Union(allEdgeVertexs).Count());
 
             Console.WriteLine($"mininum tree { edges.Sum(o => o.Weight)}");
 

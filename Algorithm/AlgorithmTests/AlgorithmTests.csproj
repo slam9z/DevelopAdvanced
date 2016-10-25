@@ -58,9 +58,10 @@
     <Compile Include="Struct\BinarySearchTreeTests.cs" />
     <Compile Include="Struct\BPlusTree\BPlusTreeTests.cs" />
     <Compile Include="Struct\DisjointSet\DisjointSetTests.cs" />
-    <Compile Include="Struct\Graph\AdjacencyListGraphTests.cs" />
-    <Compile Include="Struct\Graph\Extention\MininumSpanningTreeExtentionsTests.cs" />
-    <Compile Include="Struct\Graph\Extention\ShortestPathExtentionsTests.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\AdjacencyListGraphTests.cs" />
+    <Compile Include="Struct\Graph\AdjacencyMatrix\AdjacencyMatrixGraphTests.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\Extention\MininumSpanningTreeExtentionsTests.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\Extention\ShortestPathExtentionsTests.cs" />
     <Compile Include="Struct\Graph\GraphData.cs" />
     <Compile Include="Struct\Heap\BinanyMaxHeapTests.cs" />
     <Compile Include="Struct\LinkListTests.cs" />

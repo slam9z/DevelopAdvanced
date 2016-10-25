@@ -9,7 +9,7 @@ namespace Algorithm.Struct.Tests
 {
     public class GraphData
     {
-        #region data
+        #region AdjacencyListData
 
         public static AdjacencyListGraph<int> CreateGraph1(bool hasDirection = false)
         {
@@ -248,5 +248,75 @@ namespace Algorithm.Struct.Tests
 
         #endregion
 
+        #region AdjacencyMartrixData
+
+
+        public static AdjacencyMatrixGraph<int> CreateShortestPathMartrixGraph1()
+        {
+            var martrix = new AdjacencyMatrixNode<int>[,]
+            {
+                {
+                    new AdjacencyMatrixNode<int>(),
+                    new AdjacencyMatrixNode<int>(3),
+                    new AdjacencyMatrixNode<int>(8),
+                    new AdjacencyMatrixNode<int>(),
+                    new AdjacencyMatrixNode<int>(-4),
+                },
+
+                {
+                    new AdjacencyMatrixNode<int>(),
+                    new AdjacencyMatrixNode<int>(),
+                    new AdjacencyMatrixNode<int>(),
+                    new AdjacencyMatrixNode<int>(1),
+                    new AdjacencyMatrixNode<int>(7)
+                },
+
+                {
+                    new AdjacencyMatrixNode<int>(),
+                    new AdjacencyMatrixNode<int>(4),
+                    new AdjacencyMatrixNode<int>(),
+                    new AdjacencyMatrixNode<int>(),
+                    new AdjacencyMatrixNode<int>()
+                },
+
+                {
+                    new AdjacencyMatrixNode<int>(2),
+                    new AdjacencyMatrixNode<int>(),
+                    new AdjacencyMatrixNode<int>(-5),
+                    new AdjacencyMatrixNode<int>(),
+                    new AdjacencyMatrixNode<int>()
+                },
+                
+                {
+                    new AdjacencyMatrixNode<int>(),
+                    new AdjacencyMatrixNode<int>(),
+                    new AdjacencyMatrixNode<int>(),
+                    new AdjacencyMatrixNode<int>(6),
+                    new AdjacencyMatrixNode<int>()
+                },
+            };
+
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    if (martrix[i, j].Weight == 0)
+                    {
+                        martrix[i, j].Weight = int.MaxValue;
+                    }
+                    if (i == j)
+                    {
+                        martrix[i, j].Weight = 0;
+                    }
+
+                    martrix[i, j].PathWeight = martrix[i, j].Weight;
+                }
+            }
+
+            var graph = new AdjacencyMatrixGraph<int>(martrix);
+            return graph;
+        }
+
+        #endregion
     }
 }
