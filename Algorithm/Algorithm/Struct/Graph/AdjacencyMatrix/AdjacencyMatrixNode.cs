@@ -18,7 +18,7 @@ namespace Algorithm.Struct
 
         public  T Key { get; set; }
 
-        public AdjacencyMatrixNode<T> Predecessor { get; set; }
+        public int Predecessor { get; set; }
 
         public AdjacencyMatrixNode()
         {
@@ -33,7 +33,7 @@ namespace Algorithm.Struct
 
         public override string ToString()
         {
-            return $"Weight: {Weight} PathWeight:{PathWeight}";
+            return $"Predecessor: {Predecessor} PathWeight:{PathWeight}";
         }
     }
 }

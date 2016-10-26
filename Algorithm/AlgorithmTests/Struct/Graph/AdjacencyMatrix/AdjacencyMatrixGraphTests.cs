@@ -19,6 +19,21 @@ namespace Algorithm.Struct.Tests
             var martrix = graph.SlowAllPairsShortestPath();
         }
 
-      
+        [TestMethod()]
+        public void FastAllPairsShortestPathTest()
+        {
+            var graph = GraphData.CreateShortestPathMartrixGraph1();
+            graph.PrintMartrix(graph.Matrix);
+            var martrix = graph.FastAllPairsShortestPath();
+        }
+
+        [TestMethod()]
+        public void FloydWarshallTest()
+        {
+            var graph = GraphData.CreateShortestPathMartrixGraph1();
+            graph.PrintMartrix(graph.Matrix);
+            var martrix = graph.FloydWarshall();
+            graph.PrintMartrix(martrix);
+        }
     }
 }

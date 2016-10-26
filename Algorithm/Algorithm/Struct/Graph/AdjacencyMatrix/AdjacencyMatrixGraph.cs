@@ -33,6 +33,7 @@ namespace Algorithm.Struct
             _matrix = matrix;
         }
 
+        #region Martric
 
         /// <summary>
         /// 自底上上计算
@@ -48,26 +49,29 @@ namespace Algorithm.Struct
             }
 
             return calcMatrix;
-
         }
 
 
-        public void PrintMartrix(AdjacencyMatrixNode<T>[,] martrix)
+        /// <summary>
+        /// 自底上上计算
+        /// </summary>
+        public AdjacencyMatrixNode<T>[,] FastAllPairsShortestPath()
         {
-            //多维数组的遍历
-            Console.WriteLine();
-            var length = martrix.GetLength(0);
-            for (int i = 0; i < length; i++)
+            var calcMatrix = _matrix;
+
+            int m = 1;
+            while (m < VertexLength - 1)
             {
-                Console.WriteLine();
-                for (int j = 0; j < length; j++)
-                {
-                    var s = martrix[i, j].PathWeight == int.MaxValue ? "oo" : martrix[i, j].PathWeight.ToString();
-                    //不支持表达式
-                    Console.Write($"{s} \t");
-                }
+                calcMatrix = ExtenedShortestPath(calcMatrix, calcMatrix);
+                m = 2 * m;
+                PrintMartrix(calcMatrix);
             }
+
+            return calcMatrix;
         }
+
+
+
 
 
         private AdjacencyMatrixNode<T>[,] ExtenedShortestPath(
@@ -87,15 +91,63 @@ namespace Algorithm.Struct
 
                     for (int k = 0; k < length; k++)
                     {
+                        var newPathWeight = Add(matrix[i, k].PathWeight, matrixB[k, j].PathWeight);
+
+                        result[i, j].Predecessor = i;
+
+                        if (newPathWeight < result[i, j].PathWeight)
+                        {
+                            result[i, j].Predecessor = k;
+                        }
+
                         result[i, j].PathWeight = Math.Min(
-                            result[i, j].PathWeight,
-                            Add(matrix[i, k].PathWeight, matrixB[k, j].Weight));
+                        result[i, j].PathWeight, newPathWeight);
+
                     }
                 }
 
             }
 
             return result;
+        }
+
+        #endregion
+
+
+        public AdjacencyMatrixNode<T>[,] FloydWarshall()
+        {
+            var resultMatrix = _matrix;
+
+            for (int k = 0; k < VertexLength; k++)
+            {
+                for (int i = 0; i < VertexLength; i++)
+                {
+                    for (int j = 0; j < VertexLength; j++)
+                    {
+                        var currentWeightPath = Add(resultMatrix[i, k].PathWeight, resultMatrix[k, j].PathWeight);
+                        resultMatrix[i, j].PathWeight = Math.Min(resultMatrix[i, j].PathWeight, currentWeightPath);
+                    }
+                }
+            }
+            return resultMatrix;
+        }
+
+        public void PrintMartrix(AdjacencyMatrixNode<T>[,] martrix)
+        {
+            //多维数组的遍历
+            Console.WriteLine();
+            var length = martrix.GetLength(0);
+            for (int i = 0; i < length; i++)
+            {
+                Console.WriteLine();
+                for (int j = 0; j < length; j++)
+                {
+                    var s = martrix[i, j].PathWeight == int.MaxValue ? "oo" : martrix[i, j].PathWeight.ToString();
+                    var p = martrix[i, j].Predecessor == int.MaxValue ? "oo" : martrix[i, j].Predecessor.ToString();
+                    //不支持表达式
+                    Console.Write($"{s}, {p} \t");
+                }
+            }
         }
 
 
