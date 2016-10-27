@@ -80,6 +80,7 @@ namespace ClearUnchangedFile
                         return file;
                     }
                 }
+                Console.WriteLine("not match");
             }
         }
 

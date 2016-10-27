@@ -58,6 +58,13 @@ namespace ClearUnchangedFile
 
                     //将不相同的文件复制到compareFolder
                     var newPath = compareFolder.RootFolder + file.RelativePath;
+                    var newFolder = Path.GetDirectoryName(newPath);
+
+                    if (!Directory.Exists(newFolder))
+                    {
+                        Directory.CreateDirectory(newFolder);
+                    }
+
                     File.Copy(file.FullPath, newPath, true);
                 }
             }
