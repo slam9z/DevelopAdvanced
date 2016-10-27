@@ -52,10 +52,11 @@ namespace ClearUnchangedFile
                 Console.WriteLine(file);
             }
             Console.WriteLine();
-            Console.WriteLine("select setting file , can user regexp");
+            Console.WriteLine("select setting file , can use regexp");
 
             while (true)
             {
+                Console.WriteLine();
                 var select = Console.ReadLine();
                 if (select.Length < 3)
                 {

@@ -95,6 +95,7 @@ namespace ClearUnchangedFile
                 _storage.CopyFolder(setting.ClearFolder, setting.CompareFolder);
 
                 Console.WriteLine("copy folder finished");
+     
                 Console.ReadKey();
 
             }
