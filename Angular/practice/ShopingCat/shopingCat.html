@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body ng-controller="CatController">
+    <h1>your order</h1>
+    <div ng-repeat='item in items'>
+        <span>{{item.title}}</span>
+        <input ng-model="item.quantity" />
+        <span>{{item.price|currency}}</span>
+        <span>{{item.price*item.quantity|currency}}</span>
+        <button ng-click="remove($index)">Remove</button>
+    </div>
+    <script src="../angular/angular.js">
+
+    </script>
+    <script>
+        var myApp = angular.module('myApp', []);
+        // myApp.controller('CatController',
+        //function ($scope) {
+        //    $scope.items = [
+        //        { title: '34234', price: 12, quantity: 12 },
+        //    { title: '3423334', price: 12, quantity: 12 }
+        //    ];
+        //    $scope.remove = function (index) {
+        //        $scope.items.splice(index, 1);
+        //    }
+        //});
+        myApp.factory('Items', function () {
+            var items = {};
+            items.query = function () {
+                return [
+                   { title: '34234', price: 12, quantity: 12 },
+               { title: '3423334', price: 12, quantity: 12 }
+                ];
+            };
+
+            return items;
+
+        });
+
+
+
+        myApp.controller('CatController',
+        function ($scope, Items) {
+            $scope.items = Items;
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>

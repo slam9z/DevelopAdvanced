@@ -1,0 +1,18 @@
+﻿<html ng-app="app">
+<head>
+    <title></title>
+    <script src="../angular/angular.js"></script>
+    <script src="controllers.js"></script>
+</head>
+<body>
+    <div ng-controller="SomeController">
+        <button ng-click="clickUnfocused()"> no focused</button>
+
+        <button ngbk-focus ng-click="clickFocused()">  focused</button>
+        <div>
+            {{message.text}}
+        </div>
+
+    </div>
+</body>
+</html>

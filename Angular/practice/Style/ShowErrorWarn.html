@@ -1,0 +1,22 @@
+﻿
+
+<html ng-app="myApp" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../angular/angular.js"></script>
+    <script src="controllers.js"></script>
+
+    <!--<link rel="stylesheet" href="Style.css" type="text/css">-->
+
+    <style type="text/css">
+        @import url(Style.css); /*这里是通过@import引用CSS的样式内容*/
+    </style>
+</head>
+<body >
+    <div ng-controller='HeaderController'>
+        <div ng-class="{warn:isWarn,error:isError}">{{Message}}</div>
+        <button ng-click='showError()'>Error</button>
+        <button ng-click='showWarn()'>Warn</button>
+    </div>
+</body>
+</html>
