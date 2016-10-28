@@ -1,0 +1,51 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+
+
+body {
+    background: #FFF;
+    color: #333;
+    font: 12px/1.6em Helvetica, Arial, sans-serif;
+    text-align: center;
+    align-content: center;
+}
+
+
+
+a {
+    color: #0287CA;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+ul, li {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+
+
+html {
+    overflow: -moz-scrollbars-vertical;
+}
+
+input[type="text"] {
+    margin: 3px 0;
+    padding: 0 0 0 5px;
+}
+
+input[type="password"] {
+    margin: 3px 0;
+    padding: 0 0 0 5px;
+}

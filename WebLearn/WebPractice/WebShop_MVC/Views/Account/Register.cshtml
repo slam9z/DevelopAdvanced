@@ -1,0 +1,54 @@
+﻿@using WebShopCommon.Models
+@model Account
+
+<div>
+    <h4 class="block-title">
+        用户登录
+    </h4>
+
+    <div>
+
+        @using (Html.BeginForm("register", "account", FormMethod.Post, null))
+        {
+
+            <table style="margin:4px auto;text-align:center;">
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(m => m.UserName, new { @placeholder = "用户名" });
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.PasswordFor(m => m.Password, new { @placeholder = "密码" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.PasswordFor(m => m.RepeatPassword, new { @placeholder = "确认密码" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input name="sex" placeholder="性别" type="text">
+                    </td>
+                </tr>
+                <tr>
+                <tr>
+                    <td>
+                        <input name="qq" placeholder="qq" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input name="mail" placeholder="电子邮件" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" name="submit" value="提交" style="text-align:center">
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+</div>

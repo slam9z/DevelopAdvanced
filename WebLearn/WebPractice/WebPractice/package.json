@@ -1,0 +1,13 @@
+{
+    "version": "1.0.0",
+    "name": "WebPractice",
+  "main": "server_express.js",
+    "devDependencies": {
+        "express": "~4.12.2"
+    },
+    "scripts":  
+    {
+        "start": "node server_express.js"
+    }
+
+}

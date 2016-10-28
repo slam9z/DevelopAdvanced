@@ -1,0 +1,60 @@
+﻿<div>
+    <h4 class="block-title">
+        用户登录
+    </h4>
+
+
+    <div >
+        <form name="regForm" novalidate ng-submit="register()">
+            <table style="margin:4px auto;text-align:center;">
+                <tr>
+                    <td>
+                        <input name="username" placeholder="用户名" ng-model="user.UserName" type="text" ng-required="true" />
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <input name="password" placeholder="密码" ng-model="user.Password" type="password" ng-required="true">
+
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <input type="password" name="repeatpassword" placeholder="确认密码" ng-model="user.Repeatpassword" ng-required="true">
+
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <input name="sex" placeholder="性别" type="text">
+                    </td>
+                </tr>
+
+                <tr>
+                <tr>
+
+                    <td>
+                        <input name="qq" placeholder="qq" type="text">
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <input name="mail" placeholder="电子邮件" type="text" >
+                    </td>
+                </tr>
+
+                <tr>
+
+                    <td>
+                        <input type="submit" name="submit" value="提交" style="text-align:center" ng-disabled="regform.$invalid">
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+</div>
