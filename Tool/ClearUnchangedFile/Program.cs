@@ -38,7 +38,9 @@ namespace ClearUnchangedFile
                 {
                     Console.WriteLine($"force delete file {file.RelativePath}");
                     File.Delete(file.FullPath);
+                    return;
                 }
+
                 var hasSameFile = compareFiles
                                     .Any((cmpFile) =>
                                         cmpFile.RelativePath == file.RelativePath
