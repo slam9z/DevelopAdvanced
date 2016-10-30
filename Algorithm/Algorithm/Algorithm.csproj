@@ -52,6 +52,7 @@
     <Compile Include="Sort\MergeSort.cs" />
     <Compile Include="Sort\QuickSort.cs" />
     <Compile Include="Sort\SortBase.cs" />
+    <Compile Include="String\Matcher\KmpMatcher.cs" />
     <Compile Include="Struct\BinaryTree\AVLTree.cs" />
     <Compile Include="Struct\BinaryTree\BinarySearchTree.cs" />
     <Compile Include="Struct\BinaryTree\BinaryTree.cs" />
@@ -88,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Struct\Heap\BinanyHeap\ExtentionBinanyHeap.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
