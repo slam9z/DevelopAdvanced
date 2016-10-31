@@ -11,6 +11,34 @@ namespace Algorithm.String
     /// </summary>
     public class KmpMatcher
     {
+        public int Match(string value, string pattern)
+        {
+            var index = -1;
+            var prefixFunction = ComputePrefixFunction(pattern);
+            var p = -1;
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                while (p > -1 && pattern[p + 1] != value[i])
+                {
+                    p = prefixFunction[p];
+                }
+                if (pattern[p + 1] == value[i])
+                {
+                    p = p + 1;
+                }
+                if (p == pattern.Length-1)
+                {
+                    index = i-(pattern.Length-1);
+                    p = pattern[p];
+                    break;
+                }
+              
+            }
+
+            return index;
+        }
+
         public IList<int> ComputePrefixFunction(string pattern)
         {
             var length = pattern.Length;
@@ -21,20 +49,20 @@ namespace Algorithm.String
             var k = -1;
             prefixFunction[0] = -1;
 
-            for (int q= 1; q < length; q++)
+            for (int q = 1; q < length; q++)
             {
                 while (k > -1 && pattern[k + 1] != pattern[q])
                 {
                     k = prefixFunction[k];
                 }
-                if (pattern[k+1] == pattern[q])
+                if (pattern[k + 1] == pattern[q])
                 {
                     k = k + 1;
                 }
                 prefixFunction[q] = k;
             }
 
-       
+
             return prefixFunction;
 
         }
