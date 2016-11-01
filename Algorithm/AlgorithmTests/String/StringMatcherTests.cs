@@ -68,7 +68,37 @@ namespace Algorithm.String.Tests
         {
 
             var automaton = new FiniteAutomatonMatcher();
-            var table = automaton.ComputeTransitionFunction("ababaca", new List<char> { 'a', 'b', 'c' });
+
+            var epsilon = new List<char> { 'a', 'b', 'c' };
+            var pattern = "ababaca";
+
+            var table = automaton.ComputeTransitionFunction(pattern, epsilon);
+
+
+            Console.Write("    ");
+            foreach (var item in epsilon)
+            {
+
+                Console.Write($"{item} ");
+            }
+
+            var m = pattern.Length;
+            for (int i = 0; i < m; i++)
+            {
+                Console.WriteLine();
+
+                Console.Write($"{i}  ");
+                for (int j = 0; j < epsilon.Count; j++)
+                {
+
+                    Console.Write($"{table[i, j]} ");
+                }
+
+
+                Console.Write($" {pattern[i]}  ");
+
+
+            }
         }
     }
 }

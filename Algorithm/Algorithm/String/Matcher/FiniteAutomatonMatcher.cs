@@ -16,27 +16,35 @@ namespace Algorithm.String
 
             var m = pattern.Length;
 
-            var table = new int[m+1, epsilon.Count];
+            var table = new int[m + 1, epsilon.Count];
 
             var k = 0;
 
-            for (int q = 0; q <= m ; q++)
+            for (int q = 0; q < m; q++)
             {
+           //     var pa = pattern[q];
                 for (var i = 0; i < epsilon.Count; i++)
                 {
+                  
                     var character = epsilon[i];
+
+
+                    k = Math.Min(m+1, q + 2);
 
                     while (true)
                     {
-                        k = Math.Min(m, q + 1);
                         k = k - 1;
 
+                        if (k == 0)
+                        {
+                            table[q, i] = 0;
+                            break;
+                        }
                         if (
-                        isSuffix(pattern, k, q, character)
+                        isSuffix(pattern, k, q-1, character)
                          )
                         {
-                            Console.WriteLine($"{q},{epsilon[i]}:{k}");
-                            table[q, i] = k;
+                            table[q, i] = k+1;
                             break;
                         }
                     }
@@ -60,6 +68,11 @@ namespace Algorithm.String
             for (int i = k - 1; i >= 0; i--)
             {
                 var p = q - (k - i + 1);
+
+                if (p < 0)
+                {
+                    break;
+                }
                 if (pattern[i] != pattern[p])
                 {
                     return false;
