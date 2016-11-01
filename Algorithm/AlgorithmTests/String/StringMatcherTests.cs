@@ -12,14 +12,51 @@ namespace Algorithm.String.Tests
     [TestClass()]
     public class StringMatcherTests
     {
+        //private IList<Tuple<string, string>> _data1 = new List<Tuple<string, string>>()
+        //{
+        //    new Tuple<string, string>("1a3ababababcaab","ababababca"),
+        //    new Tuple<string, string>("ababababca123","ababababca"),
+        //    new Tuple<string, string>("123ababababca","ababababca"),
+        //    new Tuple<string, string>("123ababababbca","ababababca"),
+        //    new Tuple<string, string>("ababababca","ababababca"),
+        //};
+
+
         private IList<Tuple<string, string>> _data1 = new List<Tuple<string, string>>()
         {
-            new Tuple<string, string>("1a3ababababcaab","ababababca"),
-            new Tuple<string, string>("ababababca123","ababababca"),
-            new Tuple<string, string>("123ababababca","ababababca"),
-            new Tuple<string, string>("123ababababbca","ababababca"),
-            new Tuple<string, string>("ababababca","ababababca"),
+            new Tuple<string, string>(
+                @"1a3wqeqewqweqweqwe
+                2342342342wewrwerewrwe
+                werwerwerwerwerwerwer
+                dfwewe232423423423423423
+                1a3wqeqewqweqweqwe
+                2342342342wewrwerewrwe
+                werwerwerwerwerwerwer
+                dfwewe232423423423423423
+                ababababcaab"
+                ,"ababababca"),
         };
+
+        public StringMatcherTests()
+        {
+            var builder = new StringBuilder();
+
+            var length = int.MaxValue/256;
+
+            for (int i = 0; i < length; i++)
+            {
+                builder.Append(length % 256);
+            }
+
+            var input = builder.ToString();
+
+            _data1 = new List<Tuple<string, string>>()
+            {
+                new Tuple<string, string>(
+                input
+                ,"ababababca"),
+            };
+        }
 
         [TestMethod()]
         public void KmpMatchTest()
@@ -48,7 +85,9 @@ namespace Algorithm.String.Tests
             }
         }
 
-
+        /// <summary>
+        /// 这个最快，开挂的不解释。
+        /// </summary>
         [TestMethod()]
         public void StringIndexMathcerTest()
         {
@@ -58,6 +97,20 @@ namespace Algorithm.String.Tests
             foreach (var data in _data1)
             {
                 var index = data.Item1.IndexOf(data.Item2);
+                Assert.AreEqual(data.Item1.IndexOf(data.Item2), index);
+            }
+        }
+
+
+        [TestMethod()]
+        public void FiniteAutomatonMatcherTest()
+        {
+
+            var automaton = new FiniteAutomatonMatcher();
+
+            foreach (var data in _data1)
+            {
+                var index = automaton.Match(data.Item1, data.Item2);
                 Assert.AreEqual(data.Item1.IndexOf(data.Item2), index);
             }
         }
@@ -82,7 +135,7 @@ namespace Algorithm.String.Tests
                 Console.Write($"{item} ");
             }
 
-            var m = pattern.Length;
+            var m = pattern.Length + 1;
             for (int i = 0; i < m; i++)
             {
                 Console.WriteLine();
@@ -94,9 +147,10 @@ namespace Algorithm.String.Tests
                     Console.Write($"{table[i, j]} ");
                 }
 
-
-                Console.Write($" {pattern[i]}  ");
-
+                if (i < m - 1)
+                {
+                    Console.Write($" {pattern[i]}  ");
+                }
 
             }
         }

@@ -8,6 +8,8 @@ namespace Algorithm.String
 {
     /// <summary>
     /// Kunth-Morris-Pratt
+    /// 这个理论上最好的算法竟然是最慢的，不科学。
+    /// 这样也算对的，它比普通状态机慢。
     /// </summary>
     public class KmpMatcher
     {
