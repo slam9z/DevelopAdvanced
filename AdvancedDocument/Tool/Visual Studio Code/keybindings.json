@@ -1,3 +1,5 @@
+//File->Prefernces->Keyboard Shortcuts
+//Open an a keybindings.json  then 
 // Place your key bindings in this file to overwrite the defaults
 [
     { "key": "shift+alt+down",         "command": "editor.action.insertCursorBelow","when": "editorTextFocus" }
