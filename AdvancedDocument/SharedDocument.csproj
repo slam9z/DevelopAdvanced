@@ -70,6 +70,10 @@
     <None Include="Language\编程语言的发展趋势及未来方向\编程语言的发展趋势及未来方向（5）：元编程 .md" />
     <None Include="Language\编程语言的发展趋势及未来方向\编程语言的发展趋势及未来方向（6）：并发 .md" />
     <None Include="Language\编程语言的发展趋势及未来方向\编程语言的发展趋势及未来方向（7）：总结 .md" />
+    <None Include="Math\Logarithm\lg1+lg2+...+lgn求解.md" />
+    <None Include="Math\Logarithm\n！近式值 斯特林公式 百科.md" />
+    <None Include="Math\Logarithm\对数 百科.md" />
+    <None Include="Math\Matrix\矩阵 百科.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Attachments.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Cache.md" />
     <None Include="MyProject\Wiki\Roadkill\Design\Configuration.md" />
@@ -864,6 +868,12 @@
     <Content Include="Language\编程语言的发展趋势及未来方向\Image\综述\Laguages,Frameworks,Tool.png" />
     <Content Include="Language\编程语言的发展趋势及未来方向\Image\综述\Potential Language Constructs .png" />
     <Content Include="Language\编程语言的发展趋势及未来方向\Image\综述\Trends.png" />
+    <Content Include="Math\Logarithm\Image\对数基本公式.png" />
+    <Content Include="Math\Logarithm\Image\对数基本公式证明.png" />
+    <Content Include="Math\Logarithm\Image\斯特林公式的形式.png" />
+    <Content Include="Math\Logarithm\Image\斯特林公式证明.png" />
+    <Content Include="Math\Matrix\Image\矩阵基本运算.png" />
+    <Content Include="Math\Matrix\Image\矩阵定义.png" />
     <Content Include="MyProject\Wiki\Roadkill\Image\Theme\BlackBar.png" />
     <Content Include="MyProject\Wiki\Roadkill\Image\Theme\Mediawiki.png" />
     <Content Include="MyProject\Wiki\Roadkill\Image\Theme\Plain.png" />
