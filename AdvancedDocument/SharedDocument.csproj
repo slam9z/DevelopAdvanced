@@ -130,7 +130,16 @@
     <None Include="Web\ASP.NET\Request\神奇的HttpFileCollection.md" />
     <None Include="Web\ASP.NET\Route\How can you access RouteData from the code-behind.md" />
     <None Include="Web\ASP.NET\Encode\从此不再惧怕URI编码：JavaScript及CSharp URI编码详解（转）.md" />
+    <None Include="Web\ASP.NET\支持Options请求\Asp.NET Web API - 405 - HTTP verb used to access this page is not allowed - how to set handler mappings.md" />
+    <None Include="Web\ASP.NET\支持Options请求\how to handle “OPTIONS Method” in ASP.NET MVC.md" />
+    <None Include="Web\ASP.NET\支持Options请求\HTTP OPTIONS.md" />
+    <None Include="Web\ASP.NET\支持Options请求\modules runAllManagedModulesForAllRequests=“true”  Meaning.md" />
+    <None Include="Web\ASP.NET\支持Options请求\How to support HTTP OPTIONS verb in ASP.NET MVC WebAPI application.md" />
+    <None Include="Web\ASP.NET\支持Options请求\Why are OPTIONS requests not arriving in my ASP.NET application.md" />
+    <None Include="Web\ASP.NET\支持Options请求\支持Options请求头.md" />
+    <None Include="Web\CORS\Access-Control-Allow-Origin Multiple Origin Domains.md" />
     <None Include="Web\CORS\cors httphander.md" />
+    <None Include="Web\CORS\CORS总结.md" />
     <None Include="Web\CORS\How to get JSON POST data in ASP.NET Web Forms.md" />
     <None Include="Web\CORS\HTTP访问控制%28CORS%29_mozilla.md" />
     <None Include="Web\CORS\jquery ajax ie9及以下浏览跨域不执行问题 可能情况与解决方案 .md" />
@@ -138,7 +147,7 @@
     <None Include="Web\CORS\jQuery-ajaxTransport-XDomainRequest\bower.json" />
     <None Include="Web\CORS\jQuery-ajaxTransport-XDomainRequest\package.json" />
     <None Include="Web\CORS\jQuery-ajaxTransport-XDomainRequest\README.md" />
-    <None Include="Web\CORS\JQuery的Ajax跨域请求的解决方案.md" />
+    <None Include="Web\CORS\JQuery的Ajax跨域请求的解决方案-jsonp.md" />
     <None Include="Web\CORS\Summary.md" />
     <None Include="Web\CORS\XDomainRequest – Restrictions, Limitations and Workarounds.md" />
     <None Include="Web\CSS\Bootstrap\button style.md" />
