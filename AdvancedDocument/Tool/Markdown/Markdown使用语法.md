@@ -1,24 +1,27 @@
 
-###GitHub表情
-:EMOJICODE:
-[GitHub表情](http://www.emoji-cheat-sheet.com/)
+##图片
 
-###Code highlight  
-[languages](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
+url既可以用相对路径，也可以用绝对路径
 
-###使用特殊符号
+###在引用图片处直接写url
 
-* < 符号的使用需要在< 右侧添加空格或者特殊的符号。也许只是我这个Vs插件Markdown Mode编译的highlight这样。 
+![图片描述](url)
+
+###将url放在markdown文件末尾统一管理，在引用处标上数字编号
+
+![图片描述][url编号]
+[url编号]: url
 
 
-详细说明的链接：
+##代码
 
-[Markdown 语法说明 (简体中文版)](http://wowubuntu.com/markdown/)
+###行内代码
 
-[GitHub上README写法暨markdown语法解读](http://www.tuicool.com/articles/zIJrEjn)
+行内代码可以与其他文字放在同一行。
+使用两个 ` 符号将代码包裹起来即可，该符号位于Esc键下方，在输入法英文状态下输入。
+markdown原文:
+`int a = 1;`
+markdown显示:
+int a = 1;
 
-[GitHub官方语法](https://help.github.com/categories/writing-on-github/)
 
-[Creating and highlighting code blocks](https://help.github.com/articles/creating-and-highlighting-code-blocks/)
-
-[languages.yml](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
