@@ -87,6 +87,7 @@ namespace Algorithm.String.Tests
 
         /// <summary>
         /// 这个最快，开挂的不解释。
+        /// 怎么比这个更快。
         /// </summary>
         [TestMethod()]
         public void StringIndexMathcerTest()
