@@ -34,13 +34,6 @@ namespace ClearUnchangedFile
             _storage.Traverse(clearFolder,
             (folder, file) =>
             {
-                if (forceDeleteFiles.Contains(file.Name))
-                {
-                    Console.WriteLine($"force delete file {file.RelativePath}");
-                    File.Delete(file.FullPath);
-                    return;
-                }
-
                 var hasSameFile = compareFiles
                                     .Any((cmpFile) =>
                                         cmpFile.RelativePath == file.RelativePath
@@ -55,6 +48,13 @@ namespace ClearUnchangedFile
                 }
                 else
                 {
+                    if (forceDeleteFiles.Contains(file.Name))
+                    {
+                        Console.WriteLine($"force delete file {file.RelativePath}");
+                        File.Delete(file.FullPath);
+                        return;
+                    }
+
                     changeFileCount++;
                     Console.WriteLine($"change file {file.RelativePath}");
 
