@@ -1,4 +1,6 @@
-﻿* 在markdown里面使用html的记录html标签的时候需要特别小心，容易相互影响。
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+* 在markdown里面使用html的记录html标签的时候需要特别小心，容易相互影响。
 
 
 
@@ -14,4 +16,5 @@ image目录和当前目录相同  ！[](image/image.jpg)
 
 ##数学公式
 
-$x^2=y$
+
+$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
