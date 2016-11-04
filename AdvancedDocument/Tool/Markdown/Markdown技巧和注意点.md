@@ -10,3 +10,8 @@ markdown能很好的支持相对路径，没有这个会死人！
 
 在同一个目录 ！[](image.jpg)
 image目录和当前目录相同  ！[](image/image.jpg)
+
+
+##数学公式
+
+$x^2=y$
