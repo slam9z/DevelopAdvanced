@@ -1,12 +1,15 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Garden.Cache;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace UnitTestProject1
+namespace Garden.Cache.Tests
 {
-    [TestClass]
-    public class UnitTest1
+    [TestClass()]
+    public class LRUCacheTests
     {
         [TestMethod]
         public void TestMethod1()
@@ -29,9 +32,9 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestMethodthread()
         {
-          
+
             var c = new LRUCache<int, String>(1000);
-          
+
 
             Task.Factory.StartNew(() =>
             {
@@ -46,13 +49,13 @@ namespace UnitTestProject1
                 );
 
             Task.Factory.StartNew(() =>
-             {
-                 for (int i = 500; i < 1000; i++)
-                 {
-                     c.Put(i, i.ToString());
-                 }
-                 Console.WriteLine("Put 2 [{0}] ", c.Count);
-             }
+            {
+                for (int i = 500; i < 1000; i++)
+                {
+                    c.Put(i, i.ToString());
+                }
+                Console.WriteLine("Put 2 [{0}] ", c.Count);
+            }
 
             );
 
@@ -64,7 +67,7 @@ namespace UnitTestProject1
                     var v = c.Get(i);
 
 
-                
+
                 }
 
                 Console.WriteLine("get [{0}] ", c.Count);
@@ -72,7 +75,5 @@ namespace UnitTestProject1
 
 
         }
-
-
     }
 }
