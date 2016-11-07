@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolViewer", "SymbolViewe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearUnchangedFile", "ClearUnchangedFile\ClearUnchangedFile.csproj", "{7761B2D5-92E6-4833-9ECF-196DE2221BF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrganizeFiles", "OrganizeFiles\OrganizeFiles.csproj", "{75133316-1D79-4051-95EC-BB5D453AF719}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7761B2D5-92E6-4833-9ECF-196DE2221BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7761B2D5-92E6-4833-9ECF-196DE2221BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7761B2D5-92E6-4833-9ECF-196DE2221BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75133316-1D79-4051-95EC-BB5D453AF719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75133316-1D79-4051-95EC-BB5D453AF719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75133316-1D79-4051-95EC-BB5D453AF719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75133316-1D79-4051-95EC-BB5D453AF719}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
