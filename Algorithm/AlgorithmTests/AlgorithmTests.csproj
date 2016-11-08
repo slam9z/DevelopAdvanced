@@ -63,6 +63,7 @@
     <Compile Include="Struct\Graph\AdjacencyMatrix\AdjacencyMatrixGraphTests.cs" />
     <Compile Include="Struct\Graph\AdjacencyList\Extention\MininumSpanningTreeExtentionsTests.cs" />
     <Compile Include="Struct\Graph\AdjacencyList\Extention\ShortestPathExtentionsTests.cs" />
+    <Compile Include="Struct\Graph\Flow\MaxFlowTests.cs" />
     <Compile Include="Struct\Graph\GraphData.cs" />
     <Compile Include="Struct\Heap\BinanyMaxHeapTests.cs" />
     <Compile Include="Struct\LinkListTests.cs" />

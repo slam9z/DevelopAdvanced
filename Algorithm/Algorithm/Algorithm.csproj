@@ -75,6 +75,8 @@
     <Compile Include="Struct\Graph\AdjacencyList\Extention\MininumSpanningTreeExtentions.cs" />
     <Compile Include="Struct\Graph\AdjacencyList\Extention\ShortestPathExtentions.cs" />
     <Compile Include="Struct\Graph\AdjacencyMatrix\AdjacencyMatrixNode.cs" />
+    <Compile Include="Struct\Graph\Flow\FlowEdge.cs" />
+    <Compile Include="Struct\Graph\Flow\MaxFlow.cs" />
     <Compile Include="Struct\Graph\GraphBase.cs" />
     <Compile Include="Struct\BinaryTree\IEmptyNodeInterface.cs" />
     <Compile Include="Struct\Heap\BinanyHeap\BinanyHeap.cs" />
