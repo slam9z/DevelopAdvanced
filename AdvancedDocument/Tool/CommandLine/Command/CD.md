@@ -1,4 +1,4 @@
-﻿[cd](http://ss64.com/nt/cd.html)
+﻿[CD](http://ss64.com/nt/cd.html)
 
 >这才是专业完整的回答
 

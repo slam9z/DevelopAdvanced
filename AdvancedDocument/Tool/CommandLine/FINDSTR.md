@@ -1,1 +1,0 @@
-[FINDSTR](http://ss64.com/nt/findstr.html)
