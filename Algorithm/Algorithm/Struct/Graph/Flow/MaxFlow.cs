@@ -88,7 +88,7 @@ namespace Algorithm.Struct
                 {
                     if (currentEdge.End != source
                         && currentEdge.End.Predecessor == null
-                        && currentEdge.Capacity>currentEdge.Flow
+                        && currentEdge.Capacity > currentEdge.Flow
                         )
                     {
                         path[currentEdge.End] = currentEdge;
@@ -105,5 +105,72 @@ namespace Algorithm.Struct
 
             return path;
         }
+
+        #region PushRelabel
+
+        public int GenericPushRelabel(
+             AdjacencyListGraph<T> graph
+            , AdjacencyVertex<T> source
+            , AdjacencyVertex<T> target
+            )
+        {
+            var maxFolw = 0;
+
+            InitializePreflow(graph, source);
+
+            
+            while (true)
+            {
+                    
+
+            }
+
+            return maxFolw;
+        }
+
+        private void InitializePreflow(AdjacencyListGraph<T> graph
+            , AdjacencyVertex<T> source)
+        {
+            var vertexs = graph.GetVertexs();
+
+            foreach (var vertex in vertexs)
+            {
+                vertex.Height = 0;
+                vertex.Preflow = 0;
+            }
+
+            var edges = graph.GetEdges();
+
+            foreach (FlowEdge<T> edge in edges)
+            {
+                edge.Flow = 0;
+                edge.Revolution.Flow = 0;
+            }
+
+            source.Height = vertexs.Count();
+
+            var sourceEdges = graph.GetVertexEdge(source);
+
+            foreach (FlowEdge<T> sourceEdge in sourceEdges)
+            {
+                sourceEdge.Flow = sourceEdge.Capacity;
+                sourceEdge.Revolution.Flow = -sourceEdge.Capacity;
+                sourceEdge.End.Preflow = sourceEdge.Capacity;
+                source.Preflow = source.Preflow - sourceEdge.Capacity;
+            }
+
+        }
+
+        private void Push(AdjacencyEdge<T> edge)
+        {
+
+        }
+
+        private void Relabel(AdjacencyListGraph<T> graph, AdjacencyVertex<T> vertex)
+        {
+
+        }
+
+        #endregion
     }
 }

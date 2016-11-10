@@ -38,6 +38,7 @@ namespace Algorithm.Struct
 
         /// <summary>
         /// 终于想明白了，回流肯定是可以只不过Capacity是0。
+        /// 算法就是要写，能写出来表示基本明白了。
         /// </summary>
         public FlowEdge<T> GetRevolution()
         {
