@@ -5,11 +5,7 @@
 %comspec% /k ""C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\VsDevCmd.bat""
 ```
 
-##RabbitMQ服务环境
 
->在C:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.5\sbin目录运行cmd。
-
-If you want to check on the queue, try using `rabbitmqctl list_queues`.
 
 
 ##Hello World
