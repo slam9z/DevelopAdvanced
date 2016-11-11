@@ -66,6 +66,7 @@
     <Compile Include="Struct\Graph\Flow\MaxFlowTests.cs" />
     <Compile Include="Struct\Graph\GraphData.cs" />
     <Compile Include="Struct\Heap\BinanyMaxHeapTests.cs" />
+    <Compile Include="Struct\Heap\FibonacciHeap\FibonacciHeapTests.cs" />
     <Compile Include="Struct\LinkListTests.cs" />
     <Compile Include="Struct\QueueTests.cs" />
     <Compile Include="Struct\RedBlackTreeExtensions.cs" />
