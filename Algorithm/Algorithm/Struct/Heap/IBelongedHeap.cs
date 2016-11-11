@@ -11,8 +11,8 @@ namespace Algorithm.Struct
     /// 除了通过节点扩展T，也可以使用接口让T包含node，再扩展node！
     /// 我只能想到这两个方法。
     /// </summary>
-    public interface IBelonged
+    public interface IBelongedHeap
     {
-        object BelongedTo { get; set; }
+        object BelongedHeap { get; set; }
     }
 }

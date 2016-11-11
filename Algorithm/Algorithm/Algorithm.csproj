@@ -81,8 +81,8 @@
     <Compile Include="Struct\Graph\GraphBase.cs" />
     <Compile Include="Struct\BinaryTree\IEmptyNodeInterface.cs" />
     <Compile Include="Struct\Heap\BinanyHeap\BinanyHeap.cs" />
-    <Compile Include="Struct\Heap\BinanyHeap\IBelonged.cs" />
-    <Compile Include="Struct\Heap\BinanyHeap\IMapIndex.cs" />
+    <Compile Include="Struct\Heap\IBelongedHeap.cs" />
+    <Compile Include="Struct\Heap\IHeapNodeMap.cs" />
     <Compile Include="Struct\Heap\FibonacciHeap\FibonacciHeap.cs" />
     <Compile Include="Struct\Heap\FibonacciHeap\FibonacciNode.cs" />
     <Compile Include="Struct\LinkList.cs" />

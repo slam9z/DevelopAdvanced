@@ -40,10 +40,10 @@ namespace Algorithm.Struct
         /// <param name="newKey"></param>
         public void UpdateKey(T node, T newNode)
         {
-            var mapNode = node as IMapIndex;
+            var mapNode = node as IHeapNodeMap;
             if (mapNode != null)
             {
-                UpdateKey(mapNode.MapIndex + 1, newNode);
+                UpdateKey((int)mapNode.HeapNodeMap + 1, newNode);
             }
             else
             {
@@ -79,10 +79,10 @@ namespace Algorithm.Struct
         /// <param name="index"></param>
         private void SetMapIndex(T node, int index)
         {
-            var mapNode = node as IMapIndex;
+            var mapNode = node as IHeapNodeMap;
             if (mapNode != null)
             {
-                mapNode.MapIndex = index;
+                mapNode.HeapNodeMap = index;
             }
         }
 
@@ -104,13 +104,13 @@ namespace Algorithm.Struct
 
             if (!_hasBelonged.HasValue)
             {
-                _hasBelonged = node is IBelonged;
+                _hasBelonged = node is IBelongedHeap;
                 if (!_hasBelonged.Value)
                 {
                     return;
                 }
             }
-            (node as IBelonged).BelongedTo = belongedTo;
+            (node as IBelongedHeap).BelongedHeap = belongedTo;
         }
 
     }

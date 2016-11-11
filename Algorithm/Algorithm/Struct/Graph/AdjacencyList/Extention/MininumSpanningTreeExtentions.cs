@@ -100,7 +100,7 @@ namespace Algorithm.Struct
                 var min = queue.Extract();
                 if (min != root)
                 {
-                    result.Add(graph.GetEdge(min.Predecessor,min));
+                    result.Add(graph.GetEdge(min.Predecessor, min));
                 }
 
                 var edges = graph.GetVertexEdge(min);
@@ -108,7 +108,7 @@ namespace Algorithm.Struct
                 {
                     var weight = weightFunc(edge);
                     //TODO: 还有一个包含判断
-                    if (edge.End.BelongedTo == queue && weight < edge.End.TempStorage)
+                    if (edge.End.BelongedHeap == queue && weight < edge.End.TempStorage)
                     {
                         edge.End.Predecessor = min;
                         edge.End.TempStorage = weight;
