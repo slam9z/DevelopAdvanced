@@ -1,11 +1,11 @@
 在Tutorial文件夹下运行cmd。
 
+代码量很小的话用csc更方便简单,就是有异常就麻烦了
+
 ##添加VsDevCmd环境
 ```
 %comspec% /k ""C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\VsDevCmd.bat""
 ```
-
-
 
 
 ##Hello World
@@ -100,3 +100,14 @@ start /d "bin" RPCServer.exe
 start /d "bin" RPCClient.exe  30
 
 ```
+
+
+##EasyNetQTest
+
+csc "EasyNetQTest/Messages.cs"  /t:library  /r:"bin/RabbitMQ.Client.dll","bin/EasyNetQ.dll"    /out:"bin/Messages.dll"
+csc "EasyNetQTest/Publisher.cs"  /r:"bin/RabbitMQ.Client.dll","bin/EasyNetQ.dll","bin/Messages.dll"    /out:"bin/Publisher.exe"
+csc "EasyNetQTest/Subscriber.cs"  /r:"bin/RabbitMQ.Client.dll","bin/EasyNetQ.dll","bin/Messages.dll"    /out:"bin/Subscriber.exe"
+
+
+start /d "bin" Publisher.exe  
+start /d "bin" Subscriber.exe  
