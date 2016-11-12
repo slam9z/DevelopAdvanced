@@ -23,6 +23,16 @@ namespace Algorithm.Struct
 
         public FibonacciNode<T> Right { get; set; }
 
+        public FibonacciNode()
+        {
+
+        }
+
+        public FibonacciNode(T key)
+        {
+            Key = key;
+        }
+
         public override string ToString()
         {
             return $"{Key}";

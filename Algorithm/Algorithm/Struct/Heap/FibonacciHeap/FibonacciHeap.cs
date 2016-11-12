@@ -19,6 +19,25 @@ namespace Algorithm.Struct
 
         public int Length { get; set; }
 
+        public int DegreeCountBound
+        {
+            get
+            {
+                if (Length == 0)
+                {
+                    return 0;
+                }
+                return (int)Math.Ceiling(Math.Log(Length, 2));
+            }
+        }
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return Length == 0;
+            }
+        }
 
         protected Func<T, T, bool> _com;
 
@@ -34,29 +53,47 @@ namespace Algorithm.Struct
             _com = com;
         }
 
-
-
         protected virtual void Build(IList<T> source)
         {
-
+            foreach (var item in source)
+            {
+                Insert(item);
+            }
         }
 
 
-
-        #region priorityQueue
-
-        #endregion
 
         public FibonacciNode<T> Peek()
         {
             return Peak;
         }
 
+        #region Extract
+
         public virtual FibonacciNode<T> Extract()
         {
             var extract = Peak;
             if (extract != null)
             {
+
+                foreach (var item in TraverseList(Peak.Child))
+                {
+                    AddNode(Peak, item);
+                    item.Parent = null;
+                }
+
+                DeleteNode(extract);
+
+                //只有一个节点才会这样
+                if (extract.Right == extract)
+                {
+                    Peak = null;
+                }
+                else
+                {
+                    Peak = extract.Right;
+                    Concatenate();
+                }
 
 
                 Length = Length - 1;
@@ -66,6 +103,94 @@ namespace Algorithm.Struct
         }
 
 
+        //使(成串地)连结[衔接]起来
+        private void Concatenate()
+        {
+            var degreeArray = new FibonacciNode<T>[DegreeCountBound];
+
+            var rootNode = Peak;
+            do
+            {
+                var currentNode = rootNode;
+                var degree = currentNode.Degree;
+
+                //将相同degree的Node合并成树。
+
+                while (degreeArray[degree] != null)
+                {
+                    var oldNode = degreeArray[degree];
+
+                    //构建一个有序树。
+
+                    if (_com(oldNode.Key, currentNode.Key))
+                    {
+                        Exchange(ref currentNode,ref oldNode);
+                    }
+
+                    Link(oldNode, currentNode);
+
+                    degreeArray[degree] = null;
+                    degree = degree + 1;
+                }
+
+                degreeArray[degree] = currentNode;
+
+                rootNode = rootNode.Left;
+            }
+            while (rootNode != Peak);
+
+
+            #region    //new peak and root list
+
+            Peak = null;
+
+            foreach (var item in degreeArray)
+            {
+                if (item != null)
+                {
+                    if (Peak == null)
+                    {
+                        Peak = item;
+                    }
+
+                    else
+                    {
+                        AddNode(Peak, item);
+                        if (_com(item.Key, Peak.Key))
+                        {
+                            Peak = item;
+                        }
+                    }
+                }
+            }
+
+            #endregion
+        }
+
+
+        private void Link(FibonacciNode<T> child, FibonacciNode<T> parent)
+        {
+            DeleteNode(child);
+
+            if (parent.Child == null)
+            {
+                parent.Child = child;
+                child.Left = child;
+                child.Right = child;
+            }
+            else
+            {
+                AddNode(parent.Child, child);
+            }
+
+            parent.Degree += 1;
+            child.Mark = false;
+        }
+
+
+
+
+        #endregion
 
         //将之前的2个堆变成1个之包含2个根节点的堆。
         public virtual void Union(FibonacciHeap<T> heap)
@@ -94,6 +219,10 @@ namespace Algorithm.Struct
             }
 
             Length = Length + heap.Length;
+
+            //删除heap。
+            heap.Peak = null;
+
         }
 
         public virtual void Insert(T key)
@@ -102,7 +231,6 @@ namespace Algorithm.Struct
             node.Key = key;
             Insert(node);
         }
-
 
         //一直插入是一个根列表
         public virtual void Insert(FibonacciNode<T> newNode)
@@ -133,8 +261,28 @@ namespace Algorithm.Struct
 
         }
 
+        /// <summary>
+        /// newKey不能小于oldKey
+        /// 将newKey往上移
+        /// Increase和Decrease
+        /// </summary>
+        /// <param name="oldKey"></param>
+        /// <param name="newKey"></param>
+        public void UpdateKey(int heapIndex, T newKey)
+        {
+            throw new NotImplementedException();
+        }
 
+        #region list
 
+        //双向环形链表有很多好处
+
+        private void DeleteNode(FibonacciNode<T> node)
+        {
+            node.Right.Left = node.Left;
+
+            node.Left.Right = node.Right;
+        }
 
         /// <summary>
         /// 将新节点插入到双向环形链表
@@ -152,7 +300,6 @@ namespace Algorithm.Struct
             newNode.Right = root;
             root.Left = newNode;
         }
-
 
         /// <summary>
         /// 合并两个双向环形链表
@@ -172,25 +319,29 @@ namespace Algorithm.Struct
             temp.Left = newRoot;
         }
 
-        //使(成串地)连结[衔接]起来
-        private void Concatenate()
+        private IEnumerable<FibonacciNode<T>> TraverseList(FibonacciNode<T> node)
         {
-
+            if (node == null)
+            {
+                yield break;
+            }
+            var temp = node;
+            do
+            {
+                yield return temp;
+                temp = temp.Left;
+            }
+            while (temp != node);
         }
 
-        /// <summary>
-        /// newKey不能小于oldKey
-        /// 将newKey往上移
-        /// Increase和Decrease
-        /// </summary>
-        /// <param name="oldKey"></param>
-        /// <param name="newKey"></param>
-        public void UpdateKey(int heapIndex, T newKey)
+        public void Exchange(ref FibonacciNode<T> x,ref FibonacciNode<T> y)
         {
-            throw new NotImplementedException();
+            var temp = x;
+            x = y;
+            y = temp;
         }
 
-
+        #endregion
 
 
 

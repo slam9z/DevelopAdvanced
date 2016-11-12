@@ -28,7 +28,13 @@ namespace Algorithm.Struct.Tests
             _heap2.Insert(5);
             _heap2.Insert(4);
             _heap2.Insert(6);
+        }
 
+        private FibonacciHeap<int> UnionHeap()
+        {
+            InitHeap();
+            _heap1.Union(_heap2);
+            return _heap1;
         }
 
         [TestMethod()]
@@ -40,8 +46,45 @@ namespace Algorithm.Struct.Tests
         [TestMethod()]
         public void UnionTest()
         {
-            InitHeap();
-            _heap1.Union(_heap2);
+            UnionHeap();
+        }
+
+        [TestMethod()]
+        public void ExtractTest()
+        {
+            var heap = UnionHeap();
+
+            FibonacciNode<int> prePeak = null;
+
+            while (!heap.IsEmpty)
+            {
+                var peak = heap.Extract();
+
+                Console.WriteLine(peak);
+
+                if (prePeak == null)
+                {
+                    prePeak = peak;
+                }
+                else
+                {
+                    Assert.IsTrue(prePeak.Key < peak.Key);
+                    prePeak = peak;
+                }
+
+            }
+        }
+
+        [TestMethod()]
+        public void ExchangeTest()
+        {
+            var heap =new FibonacciHeap<int>((a,b)=>a<b);
+            var node1 = new FibonacciNode<int>(12);
+            var node2 = new FibonacciNode<int>(11);
+
+            heap.Exchange(ref node1,ref node2);
+
+            Assert.AreEqual(node1.Key, 11);
         }
     }
 }
