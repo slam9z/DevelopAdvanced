@@ -11,8 +11,14 @@ namespace Algorithm.Struct
 
         public T Key { get; set; }
 
+        /// <summary>
+        /// 子女的个数
+        /// </summary>
         public int Degree { get; set; }
 
+        /// <summary>
+        /// 是否失去过一个孩子
+        /// </summary>
         public bool Mark { get; set; }
 
         public FibonacciNode<T> Parent { get; set; }
@@ -35,7 +41,7 @@ namespace Algorithm.Struct
 
         public override string ToString()
         {
-            return $"{Key}";
+            return $"key: {Key} Degree:{Degree}  ";
         }
 
     }

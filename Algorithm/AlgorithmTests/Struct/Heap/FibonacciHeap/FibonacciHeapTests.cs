@@ -14,20 +14,28 @@ namespace Algorithm.Struct.Tests
         private FibonacciHeap<int> _heap1;
         private FibonacciHeap<int> _heap2;
 
+        private Dictionary<int, FibonacciNode<int>> _nodes;
+
         private void InitHeap()
         {
+            _nodes = new Dictionary<int, FibonacciNode<int>>();
+
             _heap1 = new FibonacciHeap<int>((a, b) => a < b);
 
             _heap2 = new FibonacciHeap<int>((a, b) => a < b);
 
 
-            _heap1.Insert(3);
-            _heap1.Insert(1);
-            _heap1.Insert(2);
+            _nodes[3] = _heap1.Insert(3);
+            _nodes[1] = _heap1.Insert(1);
+            _nodes[2] = _heap1.Insert(2);
 
-            _heap2.Insert(5);
-            _heap2.Insert(4);
-            _heap2.Insert(6);
+            _nodes[5] = _heap2.Insert(5);
+
+            _nodes[4] = _heap2.Insert(4);
+
+            _nodes[6] = _heap2.Insert(6);
+
+
         }
 
         private FibonacciHeap<int> UnionHeap()
@@ -54,7 +62,7 @@ namespace Algorithm.Struct.Tests
         {
             var heap = UnionHeap();
 
-            FibonacciNode<int> prePeak = null;
+
 
             heap.Traverse(heap.Peak,
                 (node) =>
@@ -63,6 +71,39 @@ namespace Algorithm.Struct.Tests
                 }
                 );
 
+            FibonacciNode<int> prePeak = null;
+
+            while (!heap.IsEmpty)
+            {
+                var peak = heap.Extract();
+
+                Console.WriteLine();
+                Console.WriteLine($"Extract {peak}");
+
+                heap.Traverse(heap.Peak,
+                    (node) =>
+                    {
+                        Console.Write($"{node} ");
+                    }
+                    );
+
+                if (prePeak == null)
+                {
+                    prePeak = peak;
+                }
+                else
+                {
+                    Assert.IsTrue(prePeak.Key < peak.Key);
+                    prePeak = peak;
+                }
+
+            }
+        }
+
+        private void CheckHeap(FibonacciHeap<int> heap)
+        {
+
+            FibonacciNode<int> prePeak = null;
 
             while (!heap.IsEmpty)
             {
@@ -107,6 +148,30 @@ namespace Algorithm.Struct.Tests
         public void TraverseTest()
         {
             var heap = UnionHeap();
+
+            heap.Traverse(heap.Peak,
+                  (node) =>
+                  {
+                      Console.Write($"{node} ");
+                  }
+                  );
+        }
+
+        [TestMethod()]
+        public void UpdateKeyTest()
+        {
+            var heap = UnionHeap();
+
+            heap.Extract();
+
+            heap.UpdateKey(_nodes[4], -1);
+
+            heap.UpdateKey(_nodes[6], -2);
+
+            heap.UpdateKey(_nodes[2], -8);
+
+
+            CheckHeap(heap);
 
             heap.Traverse(heap.Peak,
                   (node) =>

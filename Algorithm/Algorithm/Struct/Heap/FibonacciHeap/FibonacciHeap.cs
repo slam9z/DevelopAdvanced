@@ -99,7 +99,9 @@ namespace Algorithm.Struct
             return extract;
         }
 
-
+        /// <summary>
+        /// 连接跟节点，使每个度最多只有一个根节点
+        /// </summary>
         //使(成串地)连结[衔接]起来
         private void Concatenate()
         {
@@ -224,11 +226,13 @@ namespace Algorithm.Struct
 
         }
 
-        public virtual void Insert(T key)
+        public virtual FibonacciNode<T> Insert(T key)
         {
             var node = new FibonacciNode<T>();
             node.Key = key;
             Insert(node);
+            return node;
+
         }
 
         //一直插入是一个根列表
@@ -260,6 +264,84 @@ namespace Algorithm.Struct
 
         }
 
+        #region UpdateKey
+        /// <summary>
+        /// Increase和Decrease
+        /// </summary>
+        /// <param name="oldKey"></param>
+        /// <param name="newKey"></param>
+        public void UpdateKey(FibonacciNode<T> node, T newKey)
+        {
+            if (_com(node.Key, newKey))
+            {
+                return;
+            }
+
+            node.Key = newKey;
+
+            var parent = node.Parent;
+
+            if (parent != null && _com(node.Key, parent.Key))
+            {
+                Cut(node, parent);
+                CascadingCut(parent);
+            }
+            if (_com(node.Key, Peak.Key))
+            {
+                Peak = node;
+            }
+
+        }
+
+        private void CascadingCut(FibonacciNode<T> node)
+        {
+            var parent = node.Parent;
+
+            if (parent != null)
+            {
+                if (!node.Mark)
+                {
+                    node.Mark=true;
+                }
+                else
+                {
+                    Cut(node, parent);
+                    CascadingCut(parent);
+                }
+            }
+        }
+
+        private void Cut(FibonacciNode<T> node, FibonacciNode<T> parent)
+        {
+            //更新Child
+
+            if (parent.Degree == 1)
+            {
+                parent.Child = null;
+            }
+            else if (parent.Child == node)
+            {
+                parent.Child = node.Right;
+            }
+
+            DeleteNode(node);
+            parent.Degree = parent.Degree - 1;
+
+            AddNode(Peak,node);
+            node.Parent = null;
+            node.Mark = false;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 因为是泛型不能取最小值，所以暂时不提供删除
+        /// </summary>
+        /// <param name="node"></param>
+        public void Delete(FibonacciNode<T> node)
+        {
+
+        }
 
         public void Traverse(FibonacciNode<T> startNode, Action<FibonacciNode<T>> action)
         {
@@ -291,17 +373,7 @@ namespace Algorithm.Struct
         }
 
 
-        /// <summary>
-        /// newKey不能小于oldKey
-        /// 将newKey往上移
-        /// Increase和Decrease
-        /// </summary>
-        /// <param name="oldKey"></param>
-        /// <param name="newKey"></param>
-        public void UpdateKey(int heapIndex, T newKey)
-        {
-            throw new NotImplementedException();
-        }
+
 
         #region list
 
@@ -309,6 +381,7 @@ namespace Algorithm.Struct
 
         private void DeleteNode(FibonacciNode<T> node)
         {
+
             node.Right.Left = node.Left;
 
             node.Left.Right = node.Right;
