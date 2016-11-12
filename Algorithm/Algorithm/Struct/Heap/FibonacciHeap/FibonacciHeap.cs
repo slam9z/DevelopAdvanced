@@ -75,8 +75,7 @@ namespace Algorithm.Struct
             var extract = Peak;
             if (extract != null)
             {
-
-                foreach (var item in TraverseList(Peak.Child))
+                foreach (var item in GetList(Peak.Child))
                 {
                     AddNode(Peak, item);
                     item.Parent = null;
@@ -94,8 +93,6 @@ namespace Algorithm.Struct
                     Peak = extract.Right;
                     Concatenate();
                 }
-
-
                 Length = Length - 1;
             }
 
@@ -108,10 +105,11 @@ namespace Algorithm.Struct
         {
             var degreeArray = new FibonacciNode<T>[DegreeCountBound];
 
-            var rootNode = Peak;
-            do
+            var roots = GetList(Peak).ToList();
+
+            foreach (var root in roots)
             {
-                var currentNode = rootNode;
+                var currentNode = root;
                 var degree = currentNode.Degree;
 
                 //将相同degree的Node合并成树。
@@ -124,7 +122,7 @@ namespace Algorithm.Struct
 
                     if (_com(oldNode.Key, currentNode.Key))
                     {
-                        Exchange(ref currentNode,ref oldNode);
+                        Exchange(ref currentNode, ref oldNode);
                     }
 
                     Link(oldNode, currentNode);
@@ -135,10 +133,7 @@ namespace Algorithm.Struct
 
                 degreeArray[degree] = currentNode;
 
-                rootNode = rootNode.Left;
             }
-            while (rootNode != Peak);
-
 
             #region    //new peak and root list
 
@@ -150,6 +145,9 @@ namespace Algorithm.Struct
                 {
                     if (Peak == null)
                     {
+                        //这个操作比较重要，新的root节点left和right都指向自己
+                        item.Left = item;
+                        item.Right = item;
                         Peak = item;
                     }
 
@@ -182,6 +180,7 @@ namespace Algorithm.Struct
             {
                 AddNode(parent.Child, child);
             }
+            child.Parent = parent;
 
             parent.Degree += 1;
             child.Mark = false;
@@ -261,6 +260,37 @@ namespace Algorithm.Struct
 
         }
 
+
+        public void Traverse(FibonacciNode<T> startNode, Action<FibonacciNode<T>> action)
+        {
+            foreach (var item in TraverseList(startNode))
+            {
+                action(item);
+                Traverse(item.Child, action);
+            }
+        }
+
+        /// <summary>
+        /// 不要在回修改引用的情况下使用这个方法
+        /// </summary>
+        /// <param name="startNode"></param>
+        /// <param name="action"></param>
+        public IEnumerable<FibonacciNode<T>> TraverseList(FibonacciNode<T> node)
+        {
+            if (node == null)
+            {
+                yield break;
+            }
+            var temp = node;
+            do
+            {
+                yield return temp;
+                temp = temp.Left;
+            }
+            while (temp != node);
+        }
+
+
         /// <summary>
         /// newKey不能小于oldKey
         /// 将newKey往上移
@@ -319,22 +349,31 @@ namespace Algorithm.Struct
             temp.Left = newRoot;
         }
 
-        private IEnumerable<FibonacciNode<T>> TraverseList(FibonacciNode<T> node)
+        //不能使用 yield ，各种修改引用很容易出问题。
+
+        private IEnumerable<FibonacciNode<T>> GetList(FibonacciNode<T> node)
         {
+            var result = new List<FibonacciNode<T>>();
+
             if (node == null)
             {
-                yield break;
+                return result;
             }
             var temp = node;
             do
             {
-                yield return temp;
+                result.Add(temp);
                 temp = temp.Left;
             }
             while (temp != node);
+
+            return result;
+
         }
 
-        public void Exchange(ref FibonacciNode<T> x,ref FibonacciNode<T> y)
+        //这么基本的操作都有点搞不清，只是交换值不会有什么影响
+
+        public void Exchange(ref FibonacciNode<T> x, ref FibonacciNode<T> y)
         {
             var temp = x;
             x = y;

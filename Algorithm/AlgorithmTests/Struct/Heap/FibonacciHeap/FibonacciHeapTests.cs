@@ -56,11 +56,27 @@ namespace Algorithm.Struct.Tests
 
             FibonacciNode<int> prePeak = null;
 
+            heap.Traverse(heap.Peak,
+                (node) =>
+                {
+                    Console.Write($"{node} ");
+                }
+                );
+
+
             while (!heap.IsEmpty)
             {
                 var peak = heap.Extract();
 
-                Console.WriteLine(peak);
+                Console.WriteLine();
+                Console.WriteLine($"Extract {peak}");
+
+                heap.Traverse(heap.Peak,
+                    (node) =>
+                    {
+                        Console.Write($"{node} ");
+                    }
+                    );
 
                 if (prePeak == null)
                 {
@@ -78,13 +94,26 @@ namespace Algorithm.Struct.Tests
         [TestMethod()]
         public void ExchangeTest()
         {
-            var heap =new FibonacciHeap<int>((a,b)=>a<b);
+            var heap = new FibonacciHeap<int>((a, b) => a < b);
             var node1 = new FibonacciNode<int>(12);
             var node2 = new FibonacciNode<int>(11);
 
-            heap.Exchange(ref node1,ref node2);
+            heap.Exchange(ref node1, ref node2);
 
             Assert.AreEqual(node1.Key, 11);
+        }
+
+        [TestMethod()]
+        public void TraverseTest()
+        {
+            var heap = UnionHeap();
+
+            heap.Traverse(heap.Peak,
+                  (node) =>
+                  {
+                      Console.Write($"{node} ");
+                  }
+                  );
         }
     }
 }
