@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynamicProgramming\LongestCommonSubsequenceLength.cs" />
     <Compile Include="Math\MathUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Backtracking\RectanglePartCombine.cs" />
