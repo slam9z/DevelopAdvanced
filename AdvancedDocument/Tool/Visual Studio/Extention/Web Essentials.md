@@ -9,3 +9,5 @@
 通过菜单Tools -> Code Snippets Manager（或按Ctrl+K, Ctrl+B），打开Code Snippets Manager窗口：
 
 把`region.snippet`移动`JavaScript`目录
+
+
