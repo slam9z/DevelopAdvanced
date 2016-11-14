@@ -18,3 +18,11 @@ image目录和当前目录相同  ！[](image/image.jpg)
 
 
 $$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
+
+
+##Word Wrap
+
+如果markdown一行的内容很多直接使用编辑器的`word wrap`功能就行，为什么要自己去切割呢。
+尤其是在copy别的文本的时候。
+
+一是减少不必要的时间，二是编辑器自己调整也比较灵活。
