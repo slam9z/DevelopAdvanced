@@ -12,7 +12,6 @@ namespace Algorithm.DynamicProgramming
     public class OptimalBinarySearchTree<T> : BinarySearchTree<T> where T : IComparable
     {
         private int[,] _root;
-        private int[,] _e;
         private int _length;
 
         private IList<T> _sequence;
@@ -28,10 +27,10 @@ namespace Algorithm.DynamicProgramming
         /// <param name="dq"></param>
         /// <param name="n"></param>
         /// <returns></returns>
-        public int Compute(IList<int> sequenceProbability, IList<int> distinctSequenceProbability, int length)
+        public float Compute(IList<float> sequenceProbability, IList<float> distinctSequenceProbability, int length)
         {
-            var e = new int[length + 2, length + 2];
-            var w = new int[length + 2, length + 2];
+            var e = new float[length + 2, length + 2];
+            var w = new float[length + 2, length + 2];
             var root = new int[length + 1, length + 1];
 
             for (int i = 1; i <= length + 1; i++)
@@ -52,7 +51,7 @@ namespace Algorithm.DynamicProgramming
                 for (int i = 1; i <= length - subLength + 1; i++)
                 {
                     var j = i + subLength - 1;
-                    e[i, j] = int.MaxValue;
+                    e[i, j] = float.MaxValue;
 
                     w[i, j] = w[i, j - 1] + sequenceProbability[j] + distinctSequenceProbability[j];
 
@@ -73,11 +72,10 @@ namespace Algorithm.DynamicProgramming
             }
 
            
-            _e = e;
             _root = root;
             _length = length;
 
-            return _e[1, _length];
+            return e[1, _length];
         }
 
 

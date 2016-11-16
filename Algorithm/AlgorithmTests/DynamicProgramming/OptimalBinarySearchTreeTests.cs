@@ -34,26 +34,26 @@ namespace Algorithm.DynamicProgramming.Tests
             };
 
             //添加一个虚拟的节点
-            var k = new int[]
+            var k = new float[]
                  {
                      0,
-                     15,10
-                    ,5,10
-                    ,20
+                     0.15f,0.10f
+                    ,0.05f,0.10f
+                    ,0.20f
                  };
-            var d = new int[]
+            var d = new float[]
             {
-                5,10
-                ,5, 5
-                ,5,10
+                0.05f,0.10f
+                ,0.05f, 0.05f
+                ,0.05f,0.10f
             };
 
-            Assert.AreEqual(k.Sum() + d.Sum(), 100);
+            Assert.AreEqual(k.Sum() + d.Sum(), 1);
 
             var obst = new OptimalBinarySearchTree<string>();
             var e = obst.Compute(k, d, 5);
 
-            Assert.AreEqual(e, 275);
+            Assert.AreEqual(e, 2.75);
 
             obst.PrintRoot();
             obst.Create(keys, ds);
