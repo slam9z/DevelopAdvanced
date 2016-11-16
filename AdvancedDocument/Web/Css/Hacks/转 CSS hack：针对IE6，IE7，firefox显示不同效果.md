@@ -1,0 +1,1 @@
+[转 CSS hack：针对IE6，IE7，firefox显示不同效果 ](http://www.cnblogs.com/wschacker/archive/2008/01/21/1047328.html)
