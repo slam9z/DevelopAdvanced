@@ -1,4 +1,6 @@
-﻿using Algorithm.Struct;
+﻿#define LOG
+
+using Algorithm.Struct;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,16 +66,23 @@ namespace Algorithm.DynamicProgramming
                             e[i, j] = temp;
                             root[i, j] = r;
 
+#if LOG
                             Console.Write($"{i},{j}: {e[i, j] }  ");
+#endif
                         }
                     }
 
                 }
             }
 
-           
+
             _root = root;
             _length = length;
+
+#if LOG
+            Utility.PrintArray(w, "w: ");
+            Utility.PrintArray(e, "e: ");
+#endif
 
             return e[1, _length];
         }
@@ -105,9 +114,10 @@ namespace Algorithm.DynamicProgramming
         public void CreateCore(
            int sequenceIndex, int distinctSequenceIndex, int rootindex, BinaryTreeNode<T> root)
         {
-            // Console.WriteLine();
-            // Console.WriteLine($"init {sequenceIndex} {distinctSequenceIndex} {rootindex}");
-
+#if LOG
+            Console.WriteLine();
+            Console.WriteLine($"init {sequenceIndex} {distinctSequenceIndex} {rootindex}");
+#endif
 
             if (distinctSequenceIndex < sequenceIndex - 1)
             {
@@ -120,13 +130,16 @@ namespace Algorithm.DynamicProgramming
                 //  if (distinctSequenceIndex <= rootChildIndex)
                 if (distinctSequenceIndex < rootindex)
                 {
-                    //   Console.WriteLine($"left leaf {_distinctSequence[distinctSequenceIndex]}");
+#if LOG
+                    Console.WriteLine($"left leaf {_distinctSequence[distinctSequenceIndex]}");
+#endif
                     root.Left = new BinaryTreeNode<T>(_distinctSequence[distinctSequenceIndex]);
                 }
                 else
                 {
-                    //   Console.WriteLine($"right leaf {_distinctSequence[distinctSequenceIndex]}");
-
+#if LOG
+                    Console.WriteLine($"right leaf {_distinctSequence[distinctSequenceIndex]}");
+#endif
                     root.Right = new BinaryTreeNode<T>(_distinctSequence[distinctSequenceIndex]);
                 }
                 return;
@@ -135,17 +148,18 @@ namespace Algorithm.DynamicProgramming
 
             var rootChildIndex = _root[sequenceIndex, distinctSequenceIndex];
 
-            // Console.WriteLine($"rootChildIndex {rootChildIndex}");
-
+#if LOG
+            Console.WriteLine($"rootChildIndex {rootChildIndex}");
+#endif
 
             //根节点
             if (rootChildIndex == _root[1, _length])
             {
                 root = new BinaryTreeNode<T>(_sequence[rootChildIndex - 1]);
                 Root = root;
-
-                //  Console.WriteLine($"root node {_sequence[rootChildIndex - 1]}");
-
+#if LOG
+                Console.WriteLine($"root node {_sequence[rootChildIndex - 1]}");
+#endif
             }
 
 
@@ -154,15 +168,17 @@ namespace Algorithm.DynamicProgramming
             {
                 if (rootChildIndex < rootindex)
                 {
-                    //  Console.WriteLine($"left node {_sequence[rootChildIndex - 1]}");
-
+#if LOG
+                    Console.WriteLine($"left node {_sequence[rootChildIndex - 1]}");
+#endif
                     root.Left = new BinaryTreeNode<T>(_sequence[rootChildIndex - 1]);
                     root = root.Left;
                 }
                 else
                 {
-                    //  Console.WriteLine($"right node {_sequence[rootChildIndex - 1]}");
-
+#if LOG
+                    Console.WriteLine($"right node {_sequence[rootChildIndex - 1]}");
+#endif
                     root.Right = new BinaryTreeNode<T>(_sequence[rootChildIndex - 1]);
                     root = root.Right;
                 }

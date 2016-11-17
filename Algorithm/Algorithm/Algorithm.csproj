@@ -94,6 +94,7 @@
     <Compile Include="Struct\BinaryTree\RedBlackTreeNode.cs" />
     <Compile Include="Struct\Stack.cs" />
     <Compile Include="Struct\BinaryTree\TreeNodeExtensions.cs" />
+    <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Struct\Heap\BinanyHeap\ExtentionBinanyHeap.cs" />
