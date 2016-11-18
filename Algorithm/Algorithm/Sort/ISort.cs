@@ -11,7 +11,7 @@ namespace Algorithm.Sort
 	{
 		IList<T> Sort<T>(IList<T> source) where T : IComparable;
 
-		IList<T> Sort<T>(IList<T> source, Func<T, T, bool> larger);
+		IList<T> Sort<T>(IList<T> source, Func<T, T, bool> com);
 
 	}
 }

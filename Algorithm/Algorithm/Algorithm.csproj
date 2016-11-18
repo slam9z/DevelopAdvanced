@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynamicProgramming\LongestCommonSubsequenceLength.cs" />
+    <Compile Include="DynamicProgramming\OptimalBinarySearchTree.cs" />
     <Compile Include="Math\MathUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Backtracking\RectanglePartCombine.cs" />
@@ -51,28 +53,55 @@
     <Compile Include="Sort\ISort.cs" />
     <Compile Include="Sort\MergeSort.cs" />
     <Compile Include="Sort\QuickSort.cs" />
-    <Compile Include="Sort\Sort.cs" />
     <Compile Include="Sort\SortBase.cs" />
-    <Compile Include="Struct\AVLTree.cs" />
-    <Compile Include="Struct\BinarySearchTree.cs" />
-    <Compile Include="Struct\BinaryTree.cs" />
-    <Compile Include="Struct\BinaryTreeNode.cs" />
+    <Compile Include="String\Matcher\FiniteAutomatonMatcher.cs" />
+    <Compile Include="String\Matcher\KmpMatcher.cs" />
+    <Compile Include="String\Matcher\NaiveStringMathcer.cs" />
+    <Compile Include="Struct\BinaryTree\AVLTree.cs" />
+    <Compile Include="Struct\BinaryTree\BinarySearchTree.cs" />
+    <Compile Include="Struct\BinaryTree\BinaryTree.cs" />
+    <Compile Include="Struct\BinaryTree\BinaryTreeNode.cs" />
     <Compile Include="Struct\BPlusTree\BPlusTree.cs" />
     <Compile Include="Struct\BPlusTree\BPlusTreeNode.cs" />
     <Compile Include="Struct\BPlusTree\Storage\DictionaryNodeStorage.cs" />
     <Compile Include="Struct\BPlusTree\Storage\INodeStorage.cs" />
-    <Compile Include="Struct\Graph\AdjacencyListGraph.cs" />
+    <Compile Include="Struct\DisjointSet\DisjointSet.cs" />
+    <Compile Include="Struct\DisjointSet\DisjointSetNode.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\AdjacencyEdge.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\AdjacencyListGraph.cs" />
+    <Compile Include="Struct\Graph\AdjacencyMatrix\AdjacencyMatrixGraph.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\AdjacencyVertex.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\AdjacencyVertex.InterfaceExtention.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\Color.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\Extention\ConnectedComponenetsExtentions.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\Extention\MininumSpanningTreeExtentions.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\Extention\ShortestPathExtentions.cs" />
+    <Compile Include="Struct\Graph\AdjacencyMatrix\AdjacencyMatrixNode.cs" />
+    <Compile Include="Struct\Graph\Flow\AdjacencyVertex.FlowExtention.cs" />
+    <Compile Include="Struct\Graph\Flow\FlowEdge.cs" />
+    <Compile Include="Struct\Graph\Flow\MaxFlow.cs" />
     <Compile Include="Struct\Graph\GraphBase.cs" />
-    <Compile Include="Struct\IEmptyNodeInterface.cs" />
+    <Compile Include="Struct\BinaryTree\IEmptyNodeInterface.cs" />
+    <Compile Include="Struct\Heap\BinanyHeap\BinanyHeap.cs" />
+    <Compile Include="Struct\Heap\IBelongedHeap.cs" />
+    <Compile Include="Struct\Heap\IHeapNodeMap.cs" />
+    <Compile Include="Struct\Heap\FibonacciHeap\FibonacciHeap.cs" />
+    <Compile Include="Struct\Heap\FibonacciHeap\FibonacciNode.cs" />
     <Compile Include="Struct\LinkList.cs" />
     <Compile Include="Struct\LinkNode.cs" />
     <Compile Include="Struct\Queue.cs" />
-    <Compile Include="Struct\RedBlackTree.cs" />
-    <Compile Include="Struct\RedBlackTreeNode.cs" />
+    <Compile Include="Struct\BinaryTree\RedBlackTree.cs" />
+    <Compile Include="Struct\BinaryTree\RedBlackTreeNode.cs" />
     <Compile Include="Struct\Stack.cs" />
-    <Compile Include="Struct\TreeNodeExtensions.cs" />
+    <Compile Include="Struct\BinaryTree\TreeNodeExtensions.cs" />
+    <Compile Include="Utility.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Struct\Heap\BinanyHeap\ExtentionBinanyHeap.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Matrix\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

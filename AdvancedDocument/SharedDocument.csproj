@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AI\人工智能丫丫.md" />
+    <None Include="Book\Algorithm\算法导论\第六部分 图算法\图 Graph.md" />
     <None Include="Book\Algorithm\算法导论\第六部分 图算法\第22章 图的基本算法.md" />
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试一：初认Unit Test .md" />
     <None Include="Bug and Test\Unit Test\走进单元测试\走进单元测试三：实战单元测试.md" />
@@ -53,7 +55,8 @@
     <None Include="Design\Abstract machines\Turing machine\图灵机百度百科.md" />
     <None Include="Design\Software Architecture\software-architecture-patterns.pdf" />
     <None Include="Design\Software Architecture\软件架构入门.md" />
-    <None Include="DOTNET\Collection\List.md" />
+	<None Include="DOTNET\Collection\List.md" />
+    <None Include="DOTNET\CSharp\readonly.md" />
     <None Include="DOTNET\Json\Deserialize JSON into C# dynamic object.md" />
     <None Include="DOTNET\Json\Newtonsoft.Json\Asp.Net中使用Newtonsoft.Json转换,读取,写入 .md" />
     <None Include="DOTNET\Json\Newtonsoft.Json\Creating JSON on the fly with JObject.md" />

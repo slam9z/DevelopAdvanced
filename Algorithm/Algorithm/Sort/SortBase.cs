@@ -14,7 +14,7 @@ namespace Algorithm.Sort
 			return Sort(source, (a, b) => a.CompareTo(b) > 0);
 		}
 
-		public abstract IList<T> Sort<T>(IList<T> source, Func<T, T, bool> larger);
+		public abstract IList<T> Sort<T>(IList<T> source, Func<T, T, bool> com);
 
 		//这种交换对值类型毫无意义
 		//public void Exchange<T>(T a, T b)

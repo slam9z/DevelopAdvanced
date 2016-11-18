@@ -51,13 +51,24 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DynamicProgramming\LongestCommonSubsequenceLengthTests.cs" />
+    <Compile Include="DynamicProgramming\OptimalBinarySearchTreeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Backtracking\RectanglePartCombineFactoryTests.cs" />
     <Compile Include="Sort\SortTest.cs" />
+    <Compile Include="String\StringMatcherTests.cs" />
     <Compile Include="Struct\BinarySearchTreeExtensions.cs" />
     <Compile Include="Struct\BinarySearchTreeTests.cs" />
     <Compile Include="Struct\BPlusTree\BPlusTreeTests.cs" />
-    <Compile Include="Struct\Graph\AdjacencyListGraphTests.cs" />
+    <Compile Include="Struct\DisjointSet\DisjointSetTests.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\AdjacencyListGraphTests.cs" />
+    <Compile Include="Struct\Graph\AdjacencyMatrix\AdjacencyMatrixGraphTests.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\Extention\MininumSpanningTreeExtentionsTests.cs" />
+    <Compile Include="Struct\Graph\AdjacencyList\Extention\ShortestPathExtentionsTests.cs" />
+    <Compile Include="Struct\Graph\Flow\MaxFlowTests.cs" />
+    <Compile Include="Struct\Graph\GraphData.cs" />
+    <Compile Include="Struct\Heap\BinanyMaxHeapTests.cs" />
+    <Compile Include="Struct\Heap\FibonacciHeap\FibonacciHeapTests.cs" />
     <Compile Include="Struct\LinkListTests.cs" />
     <Compile Include="Struct\QueueTests.cs" />
     <Compile Include="Struct\RedBlackTreeExtensions.cs" />
