@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html ng-app="fund" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="../angular/angular.js">
+
+    </script>
+    <script src="controllers.js"> </script>
+    <title></title>
+</head>
+<body>
+    <form ng-submit="requestFunding()" ng-controller="StartUpController">
+        starting: <input ng-model="funding.startingEstimate" ng-change="computeNeeded()" />
+        recommendation: {{funding.need}}
+        <button>fund my startup!</button>
+        <button  ng-click="reset()">reset</button>
+    </form>
+</body>
+</html>

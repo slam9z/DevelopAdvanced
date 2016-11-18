@@ -1,0 +1,5 @@
+﻿{
+  "ClearFolder": "E:\\Publish\\FileHub",
+  "CompareFolder": "E:\\Publish\\FileHub_Compare",
+  "ForceDeleteFiles": [ "Web.config" ]
+}

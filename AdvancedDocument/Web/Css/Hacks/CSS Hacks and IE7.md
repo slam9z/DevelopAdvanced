@@ -1,0 +1,1 @@
+[CSS Hacks and IE7](http://www.positioniseverything.net/articles/ie7-dehacker.html)

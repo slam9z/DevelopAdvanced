@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../angular/angular.js"></script>
+    <script src="controllers.js"></script>
+</head>
+<body ng-controller="StudentListController">
+    <!--<ul>
+        <li ng-repeat="student in students">
+            <a href="/Student/view/{{student.id}}">{{student.name}}</a>
+        </li>
+    </ul>-->
+
+    <table>
+        <tr ng-repeat="student in students">
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+        </tr>
+    </table>
+    <button ng-click="insertTom()">insert</button>
+</body>
+</html>

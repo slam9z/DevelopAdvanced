@@ -1,0 +1,52 @@
+﻿@import url("nav.css");
+
+#header {
+    width: 80%;
+    height: 100px;
+    background: #BB38D9;
+    /*margin:9px, auto;*/
+    margin: 9px auto;
+    padding: 6px 0;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+#logo {
+    float: left;
+    margin: 0 0 0 10px;
+    color: #FFF;
+    font-size: 3em;
+    font-weight: 700;
+    line-height: 80px;
+}
+
+#content {
+    width: 80%;
+    align-content: center;
+    text-align: center;
+    margin: 0px auto;
+    height: inherit;
+    display: block;
+    overflow: hidden;
+}
+
+
+#footer {
+    width: 80%;
+    margin: 10px auto;
+}
+
+    #footer div {
+        height: auto;
+        background-color: transparent;
+        border: none;
+    }
+
+        #footer div h4 {
+            height: 30px;
+            background: #BB38D9;
+         
+            text-align: center;
+            color: white;
+            line-height: 30px;
+        }

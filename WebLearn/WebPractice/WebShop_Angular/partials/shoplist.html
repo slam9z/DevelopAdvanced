@@ -1,0 +1,13 @@
+﻿<div class="global-module-prolist">
+    <h4>商品列表</h4>
+    <div class="prolist">
+        <ul >
+            <li ng-repeat="shop in shopList">
+                <a href='#/shop/{{shop.id}}'><img ng-src="shopImage/{{shop.imageId}}.jpg" height="150" width="150" alt="" /></a>
+                <span>{{shop.name}} </span>
+                <span> 一口价 {{shop.price}} 元</span>
+            </li>
+        </ul>
+
+    </div>
+</div> 

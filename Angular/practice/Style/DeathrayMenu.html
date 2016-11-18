@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../angular/angular.js"></script>
+    <script src="controllers.js"></script>
+    
+    <!--<link rel="stylesheet" href="Style.css" type="text/css">-->
+
+    <style type="text/css">
+       
+        @import url(Style.css); /*这里是通过@import引用CSS的样式内容*/
+        
+    </style> 
+</head>
+<body ng-controller="DeathrayMenuController">
+    <div ng-controller='DeathrayMenuController'>
+        <ul>
+            <li class='menu-disabled-{{isDisabled}}' ng-click='stun()'>Stun</li>
+
+        </ul>
+    </div>
+</body>
+</html>

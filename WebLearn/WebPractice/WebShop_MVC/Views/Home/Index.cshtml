@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using WebShopCommon.Models;
+
+
+<section class="featured">
+    <div class="global-module-prolist">
+        <h4>商品列表</h4>
+        <div class="prolist">
+            <ul>
+                @foreach (Shop shop in Model.Shops)
+                {
+                    <li>
+                        <img src="~/shopImage/@(shop.ImageId).jpg" height="150" width="150" alt="" />
+                        <span>  @shop.Name  </span>
+                        <span> 一口价  @shop.Price 元 </span>
+                    </li>
+
+                }
+
+            </ul>
+        </div>
+    </div>
+</section>
+
+
