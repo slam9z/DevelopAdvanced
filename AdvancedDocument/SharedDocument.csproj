@@ -487,6 +487,9 @@
     <None Include="Web\ASP.NET\IIS Use Request Filtering.md" />
     <None Include="Web\ASP.NET\Is it possible to debug Global.asax.md" />
     <None Include="Web\ASP.NET\JQuery\Implementing  Consuming ASP.NET WEB API from JQuery %28MVC 4%29.md" />
+    <None Include="Web\ASP.NET\Master page\FrameSet, Frame, IFrame, MasterPage的区别.md" />
+    <None Include="Web\ASP.NET\Master page\Why are frames so evil.md" />
+    <None Include="Web\ASP.NET\Master page\Why should we use master page when we have Iframes.md" />
     <None Include="Web\ASP.NET\Modules\IIS Modules Overview.md" />
     <None Include="Web\ASP.NET\Request\神奇的HttpFileCollection.md" />
     <None Include="Web\ASP.NET\Route\How can you access RouteData from the code-behind.md" />
@@ -512,7 +515,7 @@
     <None Include="Web\ASP.NET\支持Options请求\modules runAllManagedModulesForAllRequests=“true”  Meaning.md" />
     <None Include="Web\ASP.NET\支持Options请求\Why are OPTIONS requests not arriving in my ASP.NET application.md" />
     <None Include="Web\ASP.NET\支持Options请求\支持Options请求头.md" />
-    <None Include="Web\ASP.NET\模板页和iframe的对比.md" />
+    <None Include="Web\ASP.NET\Master page\模板页和iframe的对比.md" />
     <None Include="Web\ASP.NET\细说 Request[]与Request.Params[].md" />
     <None Include="Web\Browser\IE\Detect IE version %28prior to v9%29 in JavaScript.md" />
     <None Include="Web\Browser\IE\IE 7 expected identifier, string or number.md" />
