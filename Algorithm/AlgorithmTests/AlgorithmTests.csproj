@@ -54,6 +54,7 @@
     <Compile Include="Challenge\UnicursalTests.cs" />
     <Compile Include="DynamicProgramming\LongestCommonSubsequenceLengthTests.cs" />
     <Compile Include="DynamicProgramming\OptimalBinarySearchTreeTests.cs" />
+    <Compile Include="GreedyAlgorithms\HuffmanTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Backtracking\RectanglePartCombineFactoryTests.cs" />
     <Compile Include="Sort\SortTest.cs" />

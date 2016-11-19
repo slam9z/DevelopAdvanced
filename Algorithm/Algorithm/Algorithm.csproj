@@ -47,6 +47,9 @@
     <Compile Include="Challenge\Unicursal.cs" />
     <Compile Include="DynamicProgramming\LongestCommonSubsequenceLength.cs" />
     <Compile Include="DynamicProgramming\OptimalBinarySearchTree.cs" />
+    <Compile Include="Extensions\BitArrayExtensions.cs" />
+    <Compile Include="GreedyAlgorithms\Frequencytem.cs" />
+    <Compile Include="GreedyAlgorithms\Huffman.cs" />
     <Compile Include="Math\MathUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Backtracking\RectanglePartCombine.cs" />
