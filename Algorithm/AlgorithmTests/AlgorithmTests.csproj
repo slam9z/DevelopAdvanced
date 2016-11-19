@@ -75,6 +75,8 @@
     <Compile Include="Struct\RedBlackTreeExtensions.cs" />
     <Compile Include="Struct\RedBlackTreeTests.cs" />
     <Compile Include="Struct\StackTests.cs" />
+    <Compile Include="TailRecursive\FactorialTests.cs" />
+    <Compile Include="TailRecursive\FibonacciTests.cs" />
     <Compile Include="TestHepler.cs" />
   </ItemGroup>
   <ItemGroup>

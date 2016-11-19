@@ -30,6 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -39,6 +41,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Challenge\Unicursal.cs" />
@@ -95,6 +98,10 @@
     <Compile Include="Struct\BinaryTree\RedBlackTreeNode.cs" />
     <Compile Include="Struct\Stack.cs" />
     <Compile Include="Struct\BinaryTree\TreeNodeExtensions.cs" />
+    <Compile Include="TailRecursive\Factorial.cs">
+      <Generator>MSBuild:Compile</Generator>
+    </Compile>
+    <Compile Include="TailRecursive\Fibonacci.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
