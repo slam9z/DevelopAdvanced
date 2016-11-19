@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedDocument", "..\AdvancedDocument\SharedDocument.csproj", "{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}"
 EndProject
@@ -18,7 +18,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0F4C21E-7FF0-4DD0-9E9E-75917A7B4CDC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FCCEC61C-207C-42DA-857D-8B4359D01D8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

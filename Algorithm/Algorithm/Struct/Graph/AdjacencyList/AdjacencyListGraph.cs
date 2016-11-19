@@ -30,6 +30,11 @@ namespace Algorithm.Struct
 
         }
 
+        public AdjacencyListGraph(int initIdentifier)
+        {
+            _currentIdentifier = initIdentifier;
+        }
+
         public AdjacencyListGraph(bool hasDirection)
         {
             HasDirection = hasDirection;
@@ -391,10 +396,11 @@ namespace Algorithm.Struct
             return _adjacencyDictionary.Values;
         }
 
+    
 
         public AdjacencyVertex<T> GetVertexByKey(int key)
         {
-            return _adjacencyDictionary.Values.Where(o => o.Key.Equals(key)).FirstOrDefault();
+            return _adjacencyDictionary[key];
         }
 
         public AdjacencyVertex<T> AddVertex(T key)

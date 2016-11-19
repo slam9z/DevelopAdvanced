@@ -51,6 +51,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Challenge\UnicursalTests.cs" />
     <Compile Include="DynamicProgramming\LongestCommonSubsequenceLengthTests.cs" />
     <Compile Include="DynamicProgramming\OptimalBinarySearchTreeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

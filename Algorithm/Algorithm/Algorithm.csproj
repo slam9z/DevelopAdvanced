@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Challenge\Unicursal.cs" />
     <Compile Include="DynamicProgramming\LongestCommonSubsequenceLength.cs" />
     <Compile Include="DynamicProgramming\OptimalBinarySearchTree.cs" />
     <Compile Include="Math\MathUtility.cs" />

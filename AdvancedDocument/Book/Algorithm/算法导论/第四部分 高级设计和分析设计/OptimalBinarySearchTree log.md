@@ -1,6 +1,8 @@
 Test Name:	ComputeTest
 Test Outcome:	Passed
 Result StandardOutput:	
+
+```
 l: 1
 
 1,1: 0.45  2,2: 0.4  3,3: 0.25  4,4: 0.3  5,5: 0.5  
@@ -81,3 +83,4 @@ right leaf d5
 
 d0 k1 d1 k2 d2 k3 d3 k4 d4 k5 d5
 
+```
