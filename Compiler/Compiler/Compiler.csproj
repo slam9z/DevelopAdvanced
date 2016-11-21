@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\SyntaxException.cs" />
+    <Compile Include="Regular\Regular.cs" />
+    <Compile Include="Regular\RegularNodeItem.cs" />
+    <Compile Include="Regular\RegularSyntaxTree.cs" />
     <Compile Include="Simple\Lexer\Environment.cs" />
     <Compile Include="Simple\Lexer\Lexer.cs" />
     <Compile Include="Simple\Lexer\NumberToken.cs" />
@@ -53,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Input\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Algorithm\Algorithm\Algorithm.csproj">
+      <Project>{c848647c-7c30-444b-aed1-bf6db5946ae1}</Project>
+      <Name>Algorithm</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
