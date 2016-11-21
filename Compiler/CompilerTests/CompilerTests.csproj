@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Compiler\Compiler.csproj">
-      <Project>{76746EFA-AD6A-4F55-892E-1E7A235E7888}</Project>
+      <Project>{76746efa-ad6a-4f55-892e-1e7a235e7888}</Project>
       <Name>Compiler</Name>
     </ProjectReference>
   </ItemGroup>
