@@ -29,7 +29,7 @@ namespace Algorithm.Struct
 
 		public override string ToString()
 		{
-			return Data.ToString();
+			return Data .ToString();
 		}
 	}
 }
