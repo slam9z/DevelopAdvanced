@@ -477,6 +477,9 @@ namespace RegularExpression
                         exprA = (NfaExpression)stackNfa.Pop();
                         exprNew = new NfaExpression();
 
+                        //必须从A的FinalState到new的State,到达new的State后可以都可以到A的StartState
+                        //这个状态机能是识别A+。
+
                         exprNew.StartState().AddTransition(MetaSymbol.EPSILON, exprA.StartState());
                         exprNew.FinalState().AddTransition(MetaSymbol.EPSILON, exprA.StartState());
                         exprA.FinalState().AddTransition(MetaSymbol.EPSILON, exprNew.FinalState());
@@ -488,9 +491,14 @@ namespace RegularExpression
                         exprA = (NfaExpression)stackNfa.Pop();
                         exprNew = new NfaExpression();
 
+                        //这个识别A
                         exprNew.StartState().AddTransition(MetaSymbol.EPSILON, exprA.StartState());
-                        exprNew.StartState().AddTransition(MetaSymbol.EPSILON, exprNew.FinalState());
                         exprA.FinalState().AddTransition(MetaSymbol.EPSILON, exprNew.FinalState());
+
+                        //这个表示empty。
+                        exprNew.StartState().AddTransition(MetaSymbol.EPSILON, exprNew.FinalState());
+
+                      
 
                         stackNfa.Push(exprNew);
 
@@ -501,9 +509,14 @@ namespace RegularExpression
                         stackNfa.Push(exprNew);
                         break;
 
-                    case MetaSymbol.COMPLEMENT:  // ^ 
+                    case MetaSymbol.COMPLEMENT:  // ^   //[cba^]
+                        //忘记这个扩展是啥了
 
                         exprA = (NfaExpression)stackNfa.Pop();
+
+                        //c->b->c->exprDummy->New.FinalSate
+                        //New.StartStare->Any->New.FinalSate
+                        //大致懂了
 
                         NfaExpression exprDummy = new NfaExpression();
                         exprDummy.StartState().AddTransition(MetaSymbol.DUMMY, exprDummy.FinalState());
@@ -540,6 +553,21 @@ namespace RegularExpression
 
             }  // end of for..each loop
 
+            //这种只剩下一个表达式了?
+
+            //A* 不变化
+            //A|B 减少1
+            //AB 减少1
+            //A+ 不变
+            //A? 不变
+
+            //ANY加1
+            //^ 不变
+            //A 加1
+
+            //需要保证字符的数量比|与.的数量多1。
+            //排除其它的符号，这个结论是明显的。
+
             Debug.Assert(stackNfa.Count == 1);
             expr = (NfaExpression)stackNfa.Pop();  // pop the very last one.  YES, THERE SHOULD ONLY BE ONE LEFT AT THIS POINT
             expr.FinalState().AcceptingState = true;  // the very last state is the accepting state of the NFA
@@ -556,6 +584,8 @@ namespace RegularExpression
         /// <returns>Starting state of DFA</returns>
         private State ConvertToDfa(State stateStartNfa)
         {
+            //Subset Construction算法
+
             Set setAllInput = new Set();
             Set setAllState = new Set();
 
@@ -670,6 +700,7 @@ namespace RegularExpression
                 // choose group representative
                 State stateRepresentative = (State)setGroup[0]; // just choose the first one as group representative
 
+                //找到新的stateStartReducedDfa
 
                 // should the representative be start state of DFA M'
                 if (bStartingGroup == true)
@@ -714,6 +745,9 @@ namespace RegularExpression
             }  // end of outer foreach..loop
 
             //  STEP 4: now remove all "dead states"
+
+            //这也是一种循环安全删除的方法啊！
+
             int nIndex = 0;
             while (nIndex < setAllDfaState.Count)
             {
@@ -794,6 +828,7 @@ namespace RegularExpression
             // for accepting state, there should always be at least one state, if NOT then there must be something wrong somewhere
             arrGroup.Add(setAccepting);   // add this newly created partition to the master list
 
+            //第一步 分成setAccepting与setNonAccepting 将所有的AcceptingState 加入setAccepting。
 
             // now we iterate through these two partitions and see if they can be further partioned.
             // we continuew the iteration until no further paritioning is possible.
@@ -1067,6 +1102,7 @@ namespace RegularExpression
             int nIndex = nSearchStartAt;
             int nSearchUpTo = nSearchEndAt;
 
+            //看不懂这个匹配
 
             while (nIndex <= nSearchUpTo)
             {
@@ -1082,10 +1118,12 @@ namespace RegularExpression
 
                 char chInputSymbol = sSearchIn[nIndex];
 
+                
                 toState = stateCurr.GetSingleTransition(chInputSymbol.ToString());
 
                 if (toState == null)
                 {
+                    //找不到就寻找是否有any符号
                     toState = stateCurr.GetSingleTransition(MetaSymbol.ANY_ONE_CHAR_TRANS);
                 }
 
@@ -1118,6 +1156,8 @@ namespace RegularExpression
                 }
                 else
                 {
+                    //找不到状态就重新开始
+
                     if (!m_bMatchAtStart && !bAccepted)  // we reset everything
                     {
                         nIndex = (nFoundBeginAt != -1 ? nFoundBeginAt + 1 : nIndex + 1);

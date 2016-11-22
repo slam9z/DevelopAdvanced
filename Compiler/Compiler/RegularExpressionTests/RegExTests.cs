@@ -18,8 +18,8 @@ namespace RegularExpression.Tests
             var pattern = "a(a|b)cd*b";
 
             var string1 = "abcdb";
-            var string2 = "abcdba";
-
+            var string2 = "abcda";
+            var string3 = "csabca";
 
             var regex = new Regex(pattern);
 
@@ -37,15 +37,24 @@ namespace RegularExpression.Tests
             var string2FoundBeginAt = 0;
             var string2FoundEndAt = 0;
 
-            Assert.AreEqual(
-                reg.FindMatch(
-                    string1, 0, string1.Length-1
-                    , ref string1FoundBeginAt, ref string1FoundEndAt), true);
+            var string3FoundBeginAt = 0;
+            var string3FoundEndAt = 0;
+
+            //Assert.AreEqual(
+            //    reg.FindMatch(
+            //        string1, 0, string1.Length-1
+            //        , ref string1FoundBeginAt, ref string1FoundEndAt), true);
+
+            //Assert.AreEqual(
+            //    reg.FindMatch(
+            //        string2, 0, string2.Length-1
+            //        , ref string2FoundBeginAt, ref string2FoundEndAt), false);
+
 
             Assert.AreEqual(
-                reg.FindMatch(
-                    string2, 0, string2.Length-1
-                    , ref string2FoundBeginAt, ref string2FoundEndAt), true);
+              reg.FindMatch(
+                  string3, 0, string3.Length - 1
+                  , ref string3FoundBeginAt, ref string3FoundEndAt), false);
         }
     }
 }
