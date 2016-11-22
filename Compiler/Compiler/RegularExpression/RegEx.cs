@@ -429,10 +429,17 @@ namespace RegularExpression
                         exprNew.StartState().AddTransition(MetaSymbol.EPSILON, exprA.StartState());
                         exprNew.StartState().AddTransition(MetaSymbol.EPSILON, exprNew.FinalState());
 
+                        // exprNew的StartState可以通过EPSILON进入自己的FinalState
+                        // 也可以进入exprA的StartState
+                        // 而exprA的FinalState可以进入自己的StartState或者exprNew的FinalState
+                        // 因为exprA本来可以通过输入'A'进入从StartState进入FinalState
+                        // 所以这个exprNew可以识别A*。
+
                         stackNfa.Push(exprNew);
 
                         break;
                     case MetaSymbol.ALTERNATE:  // A|B
+
                         exprB = (NfaExpression)stackNfa.Pop();
                         exprA = (NfaExpression)stackNfa.Pop();
 
@@ -444,12 +451,16 @@ namespace RegularExpression
                         exprNew.StartState().AddTransition(MetaSymbol.EPSILON, exprA.StartState());
                         exprNew.StartState().AddTransition(MetaSymbol.EPSILON, exprB.StartState());
 
-                        // StartState包含A与B的状态  FinalState为空。
+                        // StartState进入A与B的StartState，A与B的FinalState进入exprNew的FinalState。
                         stackNfa.Push(exprNew);
 
                         break;
 
                     case MetaSymbol.CONCANATE:  // AB
+
+                        //CONCANATE比较简单。有exprA的StartState和exprB的FinalState构成新的State
+                        //之间用EPSILON转换
+
                         exprB = (NfaExpression)stackNfa.Pop();
                         exprA = (NfaExpression)stackNfa.Pop();
 
@@ -460,6 +471,7 @@ namespace RegularExpression
 
                         break;
 
+                        //剩下几个书上没讲不是很理解。
                     case MetaSymbol.ONE_OR_MORE:  // A+ => AA* => A.A*
 
                         exprA = (NfaExpression)stackNfa.Pop();
