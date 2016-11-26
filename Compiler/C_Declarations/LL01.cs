@@ -96,6 +96,9 @@ namespace AddressingModes
             return Continue;
         }
 
+        /// <summary>
+        /// 预测分析表
+        /// </summary>
         public void FillTable()
         {
             bool FoundLambda = false;
