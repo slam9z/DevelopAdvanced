@@ -1,0 +1,11 @@
+﻿<<Grammar Name = "WikiSampleTree" >>
+[1] ^^ Expr:   S Sum(!./FATAL<"end of input expected">);
+[2] ^Sum:     Product(^[+-] S Product)*               ;
+[3] ^Product: Value(^[*/] S Value)*                    ;  
+[4]
+Value:    Number S / '(' S Sum ')' S  /
+                 FATAL<"number or  ( <Sum> )  expected">;
+[5] ^^Number: [0-9]+ ('.' [0-9]+)?                      ;
+[6]
+S:        [ \n\r\t\v]*                              ;
+<</Grammar>>

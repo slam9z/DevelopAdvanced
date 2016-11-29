@@ -16,6 +16,7 @@ namespace Peg.Samples
         eJson, eJsonChecker, eOptimizedJsonChecker, eJsonTree, eJsonTreeOpt,
         eEMailAddress,eBERMinimal, eBERCustom,
         eParserGenerator, eKernighanAndRitchieC, eCSharp3, eCSharp3Fast,ePython_2_5_2
+        ,WikiSample
     };
     public struct ParserPostProcessParams
     {
@@ -234,6 +235,16 @@ namespace Peg.Samples
                         "Python 2.5.2 based on readable, not optimized and heavily backtracing grammar from python 2.5.2 reference",
                         @"PegSamples\python_2_5_2\input",
                         null));
+
+
+            sampleGrammars.Add(
+           new SampleInfo(
+                   ESampleId.WikiSample,
+                   (new WikiSampleTree.WikiSampleTree()).Expr,
+                   "WikiSample (readable grammar)",
+                   "WikiSample",
+                   @"PegSamples\WikiSampleTree\input",
+                   null));
         }
         bool Exec(PegCharParser.Matcher startRule, out PegNode tree)
         {

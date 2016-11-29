@@ -72,6 +72,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="python_2_5_2\python_2_5_2_i.cs" />
     <Compile Include="SamplesTester.cs" />
+    <Compile Include="WikiSampleTree\C#\WikiSampleTree.cs" />
+    <Content Include="WikiSampleTree\WikiSample.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PegBase\PEG Base.csproj">
