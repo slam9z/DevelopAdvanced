@@ -88,10 +88,24 @@ namespace TestProject
 
 			// generate the parse table
 			Parser parser = new Parser(grammar);
-			
-			// write the parse table to the screen
-			Debug.DumpParseTable(parser);
-		}
-	}
+
+
+            // write the parse table to the screen
+            Debug.DumpParseTable(parser);
+
+            Debug.DumpLALRStates(parser);
+
+            Debug.DumpNonterminals(parser);
+
+            Debug.DumpTerminals(parser);
+
+            Debug.DumpLR0States(parser);
+
+            Debug.DumpLR1Items(parser);
+
+
+
+        }
+    }
 }
 
