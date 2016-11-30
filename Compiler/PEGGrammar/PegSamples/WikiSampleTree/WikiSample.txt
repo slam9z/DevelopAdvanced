@@ -1,4 +1,4 @@
-﻿<<Grammar Name = "WikiSampleTree" >>
+﻿<<Grammar Name = "WikiSampleTree"  encoding_class="utf8" >>
 [1] ^^ Expr:   S Sum(!./FATAL<"end of input expected">);
 [2] ^Sum:     Product(^[+-] S Product)*               ;
 [3] ^Product: Value(^[*/] S Value)*                    ;  

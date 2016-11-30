@@ -1,4 +1,4 @@
-/* created on 29/11/2016 23:10:38 from peg generator V1.0 using 'WikiSample.txt' as input*/
+/* created on 30/11/2016 22:39:28 from peg generator V1.0 using 'WikiSample.txt' as input*/
 
 using Peg.Base;
 using System;
@@ -12,7 +12,7 @@ namespace WikiSampleTree
       {
         
          #region Input Properties
-        public static EncodingClass encodingClass = EncodingClass.ascii;
+        public static EncodingClass encodingClass = EncodingClass.utf8;
         public static UnicodeDetection unicodeDetection = UnicodeDetection.notApplicable;
         #endregion Input Properties
         #region Constructors
