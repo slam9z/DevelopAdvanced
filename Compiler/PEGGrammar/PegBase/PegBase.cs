@@ -1513,6 +1513,7 @@ namespace Peg.Base
         }
         public sealed class OptimizedLiterals
         {
+            //以空间换时间，构造一个由followChars沟通的树，相同的前缀子串具有相同的路径，深度等于字符串长度结尾。
             internal class Trie
             {
                 internal Trie(char cThis,int nIndex, string[] literals)
