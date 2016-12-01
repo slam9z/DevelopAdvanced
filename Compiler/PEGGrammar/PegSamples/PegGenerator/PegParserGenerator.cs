@@ -14,9 +14,12 @@ using System.Text;
 
 namespace Peg.Samples
 {
-    enum EPegGeneratorNodes{FatalNode=1001,WarningNode=1002,EnumeratorNode=1003,
-                                IntoVarWithContext=500,SemanticFunctionWithContext=501,
-                                GenericCall=600};
+    enum EPegGeneratorNodes
+    {
+        FatalNode = 1001, WarningNode = 1002, EnumeratorNode = 1003,
+        IntoVarWithContext = 500, SemanticFunctionWithContext = 501,
+        GenericCall = 600
+    };
     class PUtils
     {
         public static void Trim(StringBuilder s)
@@ -43,13 +46,13 @@ namespace Peg.Samples
             }
             return node;
         }
-        
+
         public static PegNode FindNode(PegNode node, EPegGrammar id, int nodeDistance)
         {
-            if (node == null || nodeDistance<=0) return null;
+            if (node == null || nodeDistance <= 0) return null;
             if (node.id_ == (int)id) return node;
             PegNode foundNode = FindNode(node.child_, id, nodeDistance - 1);
-            if (foundNode!=null) return foundNode;
+            if (foundNode != null) return foundNode;
             foundNode = FindNode(node.next_, id, nodeDistance - 1);
             if (foundNode != null) return foundNode;
             return null;
@@ -60,26 +63,26 @@ namespace Peg.Samples
         }
         public static PegNode FindNode(PegNode node, int nodeDistance, params EPegGrammar[] ids)/*FIND_IN_SEMANTIC_BLOCK*/
         {
-            if (node == null || nodeDistance<=0) return null;
+            if (node == null || nodeDistance <= 0) return null;
             foreach (EPegGrammar id in ids)
             {
                 if (node.id_ == (int)id) return node;
             }
-            PegNode foundNode = FindNode(node.child_, nodeDistance - 1,ids );
-            if (foundNode!=null) return foundNode;
-            foundNode = FindNode(node.next_, nodeDistance - 1,ids );
+            PegNode foundNode = FindNode(node.child_, nodeDistance - 1, ids);
+            if (foundNode != null) return foundNode;
+            foundNode = FindNode(node.next_, nodeDistance - 1, ids);
             if (foundNode != null) return foundNode;
             return null;
         }
         public static PegNode FindNode(PegNode node, params EPegGrammar[] ids)/*FIND_IN_SEMANTIC_BLOCK*/
         {
-            return FindNode(node, 8,ids );
+            return FindNode(node, 8, ids);
         }
         public static PegNode FindNodeInParents(PegNode node, EPegGrammar id)
         {
-            for(; node!=null;node=node.parent_)
+            for (; node != null; node = node.parent_)
             {
-                if( node.id_ == (int) id ) return node;
+                if (node.id_ == (int)id) return node;
             }
             return null;
         }
@@ -106,26 +109,29 @@ namespace Peg.Samples
         }
         public static PegNode GetRuleFromRoot(PegNode root)
         {
-            PegNode s= GetPegSpecification(root);
+            PegNode s = GetPegSpecification(root);
             return s.child_.next_.child_;
         }
-       
+
         public static PegNode GetRuleId(PegNode rule, bool bMustExist)
         {
-            Debug.Assert(		rule!=null
-			&&	rule.id_== (int)EPegGrammar.peg_rule
+            Debug.Assert(rule != null
+            && rule.id_ == (int)EPegGrammar.peg_rule
             && rule.child_ != null && rule.child_.id_ == (int)EPegGrammar.lhs_of_rule);
-            PegNode ruleId= rule.child_.child_;
-	        if( bMustExist ){
+            PegNode ruleId = rule.child_.child_;
+            if (bMustExist)
+            {
                 Debug.Assert(ruleId != null && ruleId.id_ == (int)EPegGrammar.rule_id); //either user defined or generated in preprocessing
                 return ruleId;
-	        }else{
+            }
+            else
+            {
                 if (ruleId != null && ruleId.id_ == (int)EPegGrammar.rule_id)
                 {
                     return ruleId;
-		        }
-		        return null;
-	        }
+                }
+                return null;
+            }
         }
         public static string GetRuleNameFromRule(PegNode rule, string src)
         {
@@ -133,70 +139,78 @@ namespace Peg.Samples
             string ruleName = ruleIdent.match_.GetAsString(src);
             return ruleName;
         }
-        public static string GetRuleNameFromRuleRef(PegNode ruleRef,string src)
+        public static string GetRuleNameFromRuleRef(PegNode ruleRef, string src)
         {
-            Debug.Assert(ruleRef.id_== (int)EPegGrammar.rule_ref );
+            Debug.Assert(ruleRef.id_ == (int)EPegGrammar.rule_ref);
             return ruleRef.match_.GetAsString(src);
         }
-        public static string GetAsString(string src,PegNode n)
+        public static string GetAsString(string src, PegNode n)
         {
             return n.match_.GetAsString(src);
         }
-        public static void ReplaceNode( PegNode  toReplace, PegNode replacement)
-        {	
-            Debug.Assert(replacement.next_==null);
-	        replacement.next_= toReplace.next_;
-	        replacement.parent_= toReplace.parent_;
-	        if( toReplace.parent_.child_==toReplace ){
-		        toReplace.parent_.child_= replacement;
-		        replacement.parent_= toReplace.parent_;
-	        }else{
-		        PegNode n;
-		        for(n= toReplace.parent_.child_;
-			        n.next_!=toReplace;
-			        n= n.next_){
-			    }
-		        n.next_= replacement;
-		        replacement.parent_= toReplace.parent_;
-	        }
+        public static void ReplaceNode(PegNode toReplace, PegNode replacement)
+        {
+            Debug.Assert(replacement.next_ == null);
+            replacement.next_ = toReplace.next_;
+            replacement.parent_ = toReplace.parent_;
+            if (toReplace.parent_.child_ == toReplace)
+            {
+                toReplace.parent_.child_ = replacement;
+                replacement.parent_ = toReplace.parent_;
+            }
+            else
+            {
+                PegNode n;
+                for (n = toReplace.parent_.child_;
+                    n.next_ != toReplace;
+                    n = n.next_)
+                {
+                }
+                n.next_ = replacement;
+                replacement.parent_ = toReplace.parent_;
+            }
         }
         public static bool IsTemplateCall(PegNode ruleRef)
         {
-	        PegNode n;
-	        if( ruleRef.id_== (int)EPegGrammar.rule_ref){
-                n= ruleRef.child_;
-		        if( n!=null || n.id_!= (int) EPegGrammar.rule_name) return false;
-		        return n.next_!=null && n.next_.id_== (int)EPegGrammar.rhs_of_rule;
-	        }else return false;
+            PegNode n;
+            if (ruleRef.id_ == (int)EPegGrammar.rule_ref)
+            {
+                n = ruleRef.child_;
+                if (n != null || n.id_ != (int)EPegGrammar.rule_name) return false;
+                return n.next_ != null && n.next_.id_ == (int)EPegGrammar.rhs_of_rule;
+            }
+            else return false;
         }
         public static string MakeFileName(string sFileTitle, params string[] directories)
         {
-            string path="";
+            string path = "";
             foreach (string dir in directories)
             {
                 path += dir;
-                if (dir.Length>0 && dir[dir.Length - 1] != '\\') path += '\\';
+                if (dir.Length > 0 && dir[dir.Length - 1] != '\\') path += '\\';
             }
             return path + sFileTitle;
         }
-        public static bool TreeOrAstPresent(PegNode n,out bool bIsTree,out bool bIsAst)
+        public static bool TreeOrAstPresent(PegNode n, out bool bIsTree, out bool bIsAst)
         {
-	        bIsTree=false; bIsAst=false;
-	        for( ;n!=null;n=n.next_){
-		        switch(n.id_){
-		        case (int)EPegGrammar.tree_symbol: bIsTree=true;return true;
-                case (int)EPegGrammar.ast_symbol: bIsAst = true; return true;
-		        default:break;
-		        }
-	        }
+            bIsTree = false; bIsAst = false;
+            for (; n != null; n = n.next_)
+            {
+                switch (n.id_)
+                {
+                    case (int)EPegGrammar.tree_symbol: bIsTree = true; return true;
+                    case (int)EPegGrammar.ast_symbol: bIsAst = true; return true;
+                    default: break;
+                }
+            }
             return false;
         }
         public static PegNode GetRhs(PegNode rule)
-        {	
-            Debug.Assert( rule.id_== (int)EPegGrammar.peg_rule); 
-	        PegNode n= rule.child_.next_;
-	        Debug.Assert(n==null || n.id_== (int)EPegGrammar.rhs_of_rule);
-	        return n;
+        {
+            Debug.Assert(rule.id_ == (int)EPegGrammar.peg_rule);
+            PegNode n = rule.child_.next_;
+            Debug.Assert(n == null || n.id_ == (int)EPegGrammar.rhs_of_rule);
+            return n;
         }
     }
     class NormalizeTree
@@ -211,7 +225,7 @@ namespace Peg.Samples
         HashSet<string> setRules_;
         #endregion Data Members
         #region Constructors
-        internal NormalizeTree(TreeContext c, HashSet<string> setRules)
+        public NormalizeTree(TreeContext c, HashSet<string> setRules)
         {
             c_ = c;
             bOk_ = true;
@@ -778,7 +792,7 @@ namespace Peg.Samples
                                 charsetNode != null
                             && charsetNode.child_ != null
                             && charsetNode.child_.id_ != (int)EPegGrammar.set_negation
-                            && charsetNode.parent_.next_==null //no quantor (e.g. * + {l,h})
+                            && charsetNode.parent_.next_ == null //no quantor (e.g. * + {l,h})
                             && choice.child_.next_ == null;//term must not have sibling term
                     if (canBeFused)
                     {
@@ -988,18 +1002,18 @@ namespace Peg.Samples
             NormalizeTree normalizeTree_;
         }
     }
-    internal class TreeContext
+    public class TreeContext
     {
-        public PegNode                      root_;
-        public string                       src_;
-        public TextWriter                   errOut_;
-        public ParserPostProcessParams      generatorParams_;
-        public Dictionary<string, PegNode>  dictNameRuleObj_;
-        public Dictionary<string, string>   dictProperties_;
-        public HashSet<PegNode>             semanticInfoNodes_;
-        public Dictionary<string, PegNode>  dictSemanticInfo_;
-        public HashSet<string>              referencedMembers_;
-        public string                       sErrorPrefix;
+        public PegNode root_;
+        public string src_;
+        public TextWriter errOut_;
+        public ParserPostProcessParams generatorParams_;
+        public Dictionary<string, PegNode> dictNameRuleObj_;
+        public Dictionary<string, string> dictProperties_;
+        public HashSet<PegNode> semanticInfoNodes_;
+        public Dictionary<string, PegNode> dictSemanticInfo_;
+        public HashSet<string> referencedMembers_;
+        public string sErrorPrefix;
 
         public static string caseSensitivity = "caseSensitivity";
         public static string encoding_class = "encoding_class";
@@ -1024,16 +1038,17 @@ namespace Peg.Samples
         void RegisterRules()
         {
             PegNode rule = PUtils.FindNode(root_, EPegGrammar.peg_rule);
-		    if( rule == null ) return;
-		    for(PegNode cur= rule;cur!=null;cur=cur.next_){
-			    string sRuleIdent= PUtils.GetAsString(src_,PUtils.FindNode(cur,EPegGrammar.rule_name,8));
-                if( !dictNameRuleObj_.ContainsKey(sRuleIdent) ) dictNameRuleObj_.Add(sRuleIdent,cur);
-		    }
+            if (rule == null) return;
+            for (PegNode cur = rule; cur != null; cur = cur.next_)
+            {
+                string sRuleIdent = PUtils.GetAsString(src_, PUtils.FindNode(cur, EPegGrammar.rule_name, 8));
+                if (!dictNameRuleObj_.ContainsKey(sRuleIdent)) dictNameRuleObj_.Add(sRuleIdent, cur);
+            }
         }
         public bool HasCaseSensitiveProperty()
         {
             string sCaseSensitive;
-            if( dictProperties_.TryGetValue(caseSensitivity,out sCaseSensitive) ) return sCaseSensitive.ToUpper()=="YES";
+            if (dictProperties_.TryGetValue(caseSensitivity, out sCaseSensitive)) return sCaseSensitive.ToUpper() == "YES";
             return false;
         }
         public bool IsGrammarForBinaryInput()
@@ -1044,7 +1059,7 @@ namespace Peg.Samples
         public string NameProperty()
         {
             string sName;
-            return dictProperties_.TryGetValue(Name, out sName) ? sName : ""; 
+            return dictProperties_.TryGetValue(Name, out sName) ? sName : "";
         }
         void RegisterProperties()
         {
@@ -1052,7 +1067,7 @@ namespace Peg.Samples
             if (attribute == null) return;
             for (PegNode cur = attribute; cur != null; cur = cur.next_)
             {
-                string key =   PUtils.FindNode(cur, EPegGrammar.attribute_key).GetAsString(src_).ToLower();
+                string key = PUtils.FindNode(cur, EPegGrammar.attribute_key).GetAsString(src_).ToLower();
                 string value = PUtils.FindNode(cur, EPegGrammar.attribute_value).child_.GetAsString(src_);
                 string prevValue;
                 if (dictProperties_.TryGetValue(key, out prevValue))
@@ -1070,13 +1085,15 @@ namespace Peg.Samples
         {
             PegNode topSemanticBlocks = PUtils.FindNode(root_, EPegGrammar.toplevel_semantic_blocks);
             List<PegNode> topLevelBlocksUsedAsLocalClasses = new List<PegNode> { };
-            for(PegNode semBlock= topSemanticBlocks.child_;semBlock!=null;semBlock=semBlock.next_)
+            for (PegNode semBlock = topSemanticBlocks.child_; semBlock != null; semBlock = semBlock.next_)
             {
-                PegNode content=null;
-                if( semBlock.id_==(int)EPegGrammar.named_semantic_block){
+                PegNode content = null;
+                if (semBlock.id_ == (int)EPegGrammar.named_semantic_block)
+                {
                     string className = semBlock.child_.GetAsString(src_);
                     if (className == "CREATE") continue; //a create block does not correspond to a local class
-                    if (UsedAsLocalClass(className)){
+                    if (UsedAsLocalClass(className))
+                    {
                         topLevelBlocksUsedAsLocalClasses.Add(semBlock);
                         continue;
                     }
@@ -1087,11 +1104,11 @@ namespace Peg.Samples
                     content = semBlock.child_;
                 }
                 if (content == null) continue;
-                RegisterSemBlockMembers(semBlock, content, dictSemanticInfo_,src_);
+                RegisterSemBlockMembers(semBlock, content, dictSemanticInfo_, src_);
 
             }
             //register use of top level members in methods of local classes
-            foreach(PegNode localSemBlock in topLevelBlocksUsedAsLocalClasses)
+            foreach (PegNode localSemBlock in topLevelBlocksUsedAsLocalClasses)
             {
                 RegisterTopLevelMembersInUse(GetContent(localSemBlock));
             }
@@ -1134,7 +1151,7 @@ namespace Peg.Samples
                     case EPegGrammar.destructor_decl:
                     case EPegGrammar.sem_func_declaration:
                     case EPegGrammar.func_declaration:
-                        RegisterTopLevelMembersInUseInBody(PUtils.FindNode(member.child_,EPegGrammar.method_body));
+                        RegisterTopLevelMembersInUseInBody(PUtils.FindNode(member.child_, EPegGrammar.method_body));
                         break;
                 }
             }
@@ -1162,7 +1179,7 @@ namespace Peg.Samples
                 {
                     case EPegGrammar.into_declaration:
                     case EPegGrammar.field_declaration:
-                        for (PegNode variable = PUtils.FindNode(member.child_,EPegGrammar.variable); variable != null; variable = variable.next_)
+                        for (PegNode variable = PUtils.FindNode(member.child_, EPegGrammar.variable); variable != null; variable = variable.next_)
                         {
                             dictSemanticInfo[variable.GetAsString(src)] = semBlock;
                         }
@@ -1184,18 +1201,18 @@ namespace Peg.Samples
             return NameProperty();
         }
     }
-    
-    class PegParserGenerator : IParserPostProcessor
+
+    public class PegParserGenerator : IParserPostProcessor
     {
-        
-        class CheckGrammar
+
+        public class CheckGrammar
         {
             #region Data Members
             internal HashSet<string> setRules_;
             internal TreeContext c_;
             internal bool bOk_;
             #endregion Data Members
-            internal CheckGrammar(TreeContext c)
+            public CheckGrammar(TreeContext c)
             {
                 c_ = c;
                 bOk_ = true;
@@ -1250,7 +1267,7 @@ namespace Peg.Samples
             TreeContext context = new TreeContext(postProcessorParams);
             var checker = new CheckGrammar(context);
             if (!checker.bOk_) return;
-            var normalize = new NormalizeTree(context,checker.setRules_);
+            var normalize = new NormalizeTree(context, checker.setRules_);
             if (!normalize.bOk_) return;
             Peg.CSharp.PegCSharpGenerator cSharpGenerator = new Peg.CSharp.PegCSharpGenerator(context);
         }

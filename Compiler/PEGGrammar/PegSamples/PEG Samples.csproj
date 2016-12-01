@@ -64,6 +64,7 @@
     <Compile Include="Json\json_check.cs" />
     <Compile Include="Json\json_fast.cs" />
     <Compile Include="Json\json_tree.cs" />
+    <Compile Include="Markdown\C#\Markdown.cs" />
     <Compile Include="PegGenerator\PegCSharpGenerator.cs" />
     <Compile Include="PegGenerator\PegGrammarParser.cs">
       <SubType>Code</SubType>
@@ -73,6 +74,7 @@
     <Compile Include="python_2_5_2\python_2_5_2_i.cs" />
     <Compile Include="SamplesTester.cs" />
     <Compile Include="WikiSampleTree\C#\WikiSampleTree.cs" />
+    <Content Include="Markdown\markdown.peg.txt" />
     <Content Include="WikiSampleTree\WikiSample.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -95,7 +97,7 @@
     <Content Include="Json\json_tree_peg.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Markdown\" />
+    <None Include="Markdown\input\link.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

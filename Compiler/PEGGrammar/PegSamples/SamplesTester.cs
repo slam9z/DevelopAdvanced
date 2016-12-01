@@ -12,15 +12,15 @@ namespace Peg.Samples
 {
     public enum ESampleId
     {
-        eDirectCalc,eTreeCalc,
+        eDirectCalc, eTreeCalc,
         eJson, eJsonChecker, eOptimizedJsonChecker, eJsonTree, eJsonTreeOpt,
-        eEMailAddress,eBERMinimal, eBERCustom,
-        eParserGenerator, eKernighanAndRitchieC, eCSharp3, eCSharp3Fast,ePython_2_5_2
-        ,WikiSample
+        eEMailAddress, eBERMinimal, eBERCustom,
+        eParserGenerator, eKernighanAndRitchieC, eCSharp3, eCSharp3Fast, ePython_2_5_2
+        , WikiSample, Markdown
     };
     public struct ParserPostProcessParams
     {
-        public ParserPostProcessParams(string outputDirectory,string sourceFileTitle, string grammarFileName, PegNode root, string src, TextWriter errOut)
+        public ParserPostProcessParams(string outputDirectory, string sourceFileTitle, string grammarFileName, PegNode root, string src, TextWriter errOut)
         {
             outputDirectory_ = outputDirectory;
             sourceFileTitle_ = sourceFileTitle;
@@ -32,7 +32,7 @@ namespace Peg.Samples
             maxLineLength_ = 60;
             spacesPerTap_ = 4;
         }
-        public ParserPostProcessParams(string outputDirectory,string sourceFileTitle, string grammarFileName, PegNode root, byte[] byteSrc, TextWriter errOut)
+        public ParserPostProcessParams(string outputDirectory, string sourceFileTitle, string grammarFileName, PegNode root, byte[] byteSrc, TextWriter errOut)
         {
             outputDirectory_ = outputDirectory;
             sourceFileTitle_ = sourceFileTitle;
@@ -41,7 +41,7 @@ namespace Peg.Samples
             src_ = null;
             byteSrc_ = byteSrc;
             errOut_ = errOut;
-            maxLineLength_= 60;
+            maxLineLength_ = 60;
             spacesPerTap_ = 4;
         }
 
@@ -58,15 +58,15 @@ namespace Peg.Samples
 
     public interface IParserPostProcessor
     {
-        string ShortDesc{get;}
+        string ShortDesc { get; }
         string ShortestDesc { get; }
         string DetailDesc { get; }
-        void   Postprocess(ParserPostProcessParams postProcessorParams);
+        void Postprocess(ParserPostProcessParams postProcessorParams);
     }
     public struct SampleInfo
     {
         #region Constructors
-        internal SampleInfo(ESampleId grammarId,PegCharParser.Matcher startRule,
+        internal SampleInfo(ESampleId grammarId, PegCharParser.Matcher startRule,
             string grammarName,
             string grammarDescription,
             string samplesDirectory,
@@ -83,10 +83,10 @@ namespace Peg.Samples
         #region Public Methods
         public EncodingClass GetEncodingClass()
         {
-            EncodingClass encoding= EncodingClass.ascii;
+            EncodingClass encoding = EncodingClass.ascii;
             UnicodeDetection detection;
-            var parser= startRule.Target as PegBaseParser;
-            if( parser!=null ) parser.GetProperties(out encoding,out detection);
+            var parser = startRule.Target as PegBaseParser;
+            if (parser != null) parser.GetProperties(out encoding, out detection);
             return encoding;
         }
         public UnicodeDetection GetUnicodeDetection()
@@ -101,7 +101,8 @@ namespace Peg.Samples
         #region Data Members
         public readonly ESampleId grammarId;
         public readonly PegCharParser.Matcher startRule;
-        public string GrammarName{
+        public string GrammarName
+        {
             set { grammarName_ = value; }
             get { return grammarName_; }
         }
@@ -115,7 +116,7 @@ namespace Peg.Samples
     {
         public List<SampleInfo> sampleGrammars;
 
-        List<IParserPostProcessor> 
+        List<IParserPostProcessor>
             AddPostprocessors(params IParserPostProcessor[] postProcessors)
         {
             var pegGrammarPostProcessor = new List<IParserPostProcessor>();
@@ -125,10 +126,20 @@ namespace Peg.Samples
             }
             return pegGrammarPostProcessor;
         }
-        
+
         public SamplesCollection()
         {
             sampleGrammars = new List<SampleInfo>();
+
+            sampleGrammars.Add(
+       new SampleInfo(
+               ESampleId.Markdown,
+               (new Markdown.Markdown()).MarkdownText,
+               "Markdown (readable grammar)",
+               "WikiSample",
+               @"PegSamples\Markdown\input",
+               null));
+
             sampleGrammars.Add(
                new SampleInfo(
                    ESampleId.eDirectCalc,
@@ -194,15 +205,15 @@ namespace Peg.Samples
                         @"PegSamples\BasicEncodingRules\input",
                         AddPostprocessors(new BERTree.BERConvertDefiniteLength(),
                                           new BERTree.BERConvertIndefiniteLength())));
-                sampleGrammars.Add(
-                new SampleInfo(
-                        ESampleId.eParserGenerator,
-                        (new PegGrammarParser()).peg_module,
-                        "PEG Parser Generator",
-                        "Generates a parse tree for a PEG grammar module",
-                        @"PegSamples\PegGenerator\input",
-                        AddPostprocessors(new PegParserGenerator())
-                        ));
+            sampleGrammars.Add(
+            new SampleInfo(
+                    ESampleId.eParserGenerator,
+                    (new PegGrammarParser()).peg_module,
+                    "PEG Parser Generator",
+                    "Generates a parse tree for a PEG grammar module",
+                    @"PegSamples\Markdown",
+                    AddPostprocessors(new PegParserGenerator())
+                    ));
             sampleGrammars.Add(
                new SampleInfo(
                        ESampleId.eKernighanAndRitchieC,
@@ -252,7 +263,7 @@ namespace Peg.Samples
             tree = ((PegCharParser)startRule.Target).GetRoot();
             return bMatches;
         }
-        bool RunImpl(ESampleId eSampleId, string src, TextWriter Fout,out PegNode tree)
+        bool RunImpl(ESampleId eSampleId, string src, TextWriter Fout, out PegNode tree)
         {
             SampleInfo sample = sampleGrammars.Find(si => si.grammarId == eSampleId);
             if (sample.startRule.Target is PegCharParser)
@@ -299,7 +310,7 @@ namespace Peg.Samples
         public bool Run(ESampleId eSampleId, string src, TextWriter Fout, out double elapsedTime, out PegNode tree)
         {
             int startTickCount = Environment.TickCount;
-            bool bResult = RunImpl(eSampleId, src, Fout,out tree);
+            bool bResult = RunImpl(eSampleId, src, Fout, out tree);
             elapsedTime = (Environment.TickCount - startTickCount);
             return bResult;
         }

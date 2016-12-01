@@ -189,7 +189,7 @@ namespace $(MODULE_NAME)
 {
       
       enum E$(MODULE_NAME){$(ENUMERATOR)};
-      class $(MODULE_NAME) : $(PARSER) 
+      public class $(MODULE_NAME) : $(PARSER) 
       {
         $(SEMANTIC_BLOCKS)
          #region Input Properties
@@ -2221,7 +2221,7 @@ $(MODULE_NAME) parent_;
         }
         #endregion Code Generator Classes
         #region Constructors
-        internal PegCSharpGenerator(TreeContext context)
+        public PegCSharpGenerator(TreeContext context)
         {
             context_=   context;
             literalsCount_ = 0;

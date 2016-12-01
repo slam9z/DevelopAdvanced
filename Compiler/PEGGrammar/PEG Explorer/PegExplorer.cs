@@ -319,15 +319,24 @@ namespace PEG_Explorer
             AddTreeNode(null, root, nodeToString);
             ExpandTop(10);
         }
+
+        private int id;
+
         private void AddTreeNode(TreeNode parent, PegNode node, NodeToString nodeToString)
         {
             if (node == null) return;
+
+            id++;
             string txt = nodeToString(node);
+            //string txt = id.ToString();
             if (node.parent_ == null) txt = "^" + txt;
             TreeNode tn = (parent == null ? tvParseTree.Nodes.Add(txt) : parent.Nodes.Add(txt));
             tn.Tag = node;
+
+           
             AddTreeNode(tn, node.child_, nodeToString);
             AddTreeNode(parent, node.next_, nodeToString);
+
         }
         #endregion btnParse_Click helper methods
         private void cmbPostProcess_SelectedIndexChanged(object sender, EventArgs e)
