@@ -14,7 +14,7 @@ namespace Markdown.Tests
     [TestClass()]
     public class MarkdownTests
     {
-        private string _baseFolder = "D:\\Source\\MyGithub\\DevelopAdvanced\\Compiler\\PEGGrammar\\PegSamples\\Markdown\\";
+        private string _baseFolder = "..\\..\\..\\PegSamples\\Markdown\\";
 
         private string _markdownFile;
 

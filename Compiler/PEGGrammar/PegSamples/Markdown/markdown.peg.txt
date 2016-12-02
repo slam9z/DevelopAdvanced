@@ -4,5 +4,5 @@
 InnerText: [#x20-#x21#x23-#xFFFF]+	;
 Text: [#x20-#x21#x23-#xFFFF]+	;
 S:        [ \n\r\t\v]*	;
-expect_file_end:!./ WARNING<"non-json stuff before end of file">;
+expect_file_end:!./ WARNING<" end of file">;
 <</Grammar>>

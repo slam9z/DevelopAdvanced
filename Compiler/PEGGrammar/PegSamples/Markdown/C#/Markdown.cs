@@ -1,4 +1,4 @@
-/* created on 01/12/2016 22:58:40 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 12/2/2016 9:40:06 AM from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -90,12 +90,10 @@ namespace Markdown
 
            return OptRepeat(()=> OneOf(" \n\r\t\v") );
 		}
-        public bool expect_file_end()    /*expect_file_end:!./ WARNING<"non-json stuff before end of file">;*/
+        public bool expect_file_end()    /*expect_file_end:!./ WARNING<" end of file">;*/
         {
 
-           return   
-                     Not(()=> Any() )
-                  || Warning("non-json stuff before end of file");
+           return     Not(()=> Any() ) || Warning(" end of file");
 		}
 		#endregion Grammar Rules
    }
