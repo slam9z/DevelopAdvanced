@@ -40,7 +40,7 @@ namespace Markdown.Tests
         public void Init()
         {
             errOut = new OutputWriter();
-            _markdownFile = _baseFolder + "input\\link.md";
+            _markdownFile = _baseFolder + "input\\markdown.md";
             _markdownPEGFile = _baseFolder + "markdown.peg.txt";
             grammarFileName = "Markdown";
             src = File.ReadAllText(_markdownPEGFile);

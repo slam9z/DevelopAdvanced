@@ -97,7 +97,7 @@
     <Content Include="Json\json_tree_peg.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Markdown\input\link.md" />
+    <None Include="Markdown\input\markdown.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

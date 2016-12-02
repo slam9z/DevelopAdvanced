@@ -1,4 +1,4 @@
-/* created on 12/2/2016 10:22:18 AM from peg generator V1.0 using 'Markdown' as input*/
+/* created on 12/2/2016 11:05:22 AM from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -54,14 +54,14 @@ namespace Markdown
         } 
         #endregion Overrides
 		#region Grammar Rules
-        public bool MarkdownText()    /*^^MarkdownText: S? (Link / Text)* S? expect_file_end ;*/
+        public bool MarkdownText()    /*^^MarkdownText: S (Link / Text)* S expect_file_end ;*/
         {
 
            return TreeNT((int)EMarkdown.MarkdownText,()=>
                 And(()=>  
-                     Option(()=> S() )
+                     S()
                   && OptRepeat(()=>     Link() || Text() )
-                  && Option(()=> S() )
+                  && S()
                   && expect_file_end() ) );
 		}
         public bool Link()    /*^^Link: '['  LinkText ']''('  LinkUrl ')' ;*/
@@ -76,20 +76,27 @@ namespace Markdown
                   && LinkUrl()
                   && Char(')') ) );
 		}
-        public bool LinkText()    /*LinkText: [#x20-#x5C#x5E-#xFFFF]+	;*/
+        public bool LinkText()    /*^^LinkText: [#x20-#x5C#x5E-#xFFFF]+	;*/
         {
 
-           return PlusRepeat(()=> In('\u0020','\u005c', '\u005e','\uffff') );
+           return TreeNT((int)EMarkdown.LinkText,()=>
+                PlusRepeat(()=> In('\u0020','\u005c', '\u005e','\uffff') ) );
 		}
-        public bool LinkUrl()    /*LinkUrl: [#x20-#x28#x2A-#xFFFF]+	;*/
+        public bool LinkUrl()    /*^^LinkUrl: [#x20-#x28#x2A-#xFFFF]+	;*/
         {
 
-           return PlusRepeat(()=> In('\u0020','\u0028', '\u002a','\uffff') );
+           return TreeNT((int)EMarkdown.LinkUrl,()=>
+                PlusRepeat(()=> In('\u0020','\u0028', '\u002a','\uffff') ) );
 		}
-        public bool Text()    /*Text: [#x20-#x21#x23-#xFFFF]+	;*/
+        public bool Text()    /*^^Text:S [#x20-#x21#x23-#xFFFF]+ S	;*/
         {
 
-           return PlusRepeat(()=> In('\u0020','\u0021', '\u0023','\uffff') );
+           return TreeNT((int)EMarkdown.Text,()=>
+                And(()=>  
+                     S()
+                  && PlusRepeat(()=>    
+                      In('\u0020','\u0021', '\u0023','\uffff') )
+                  && S() ) );
 		}
         public bool S()    /*S:        [ \n\r\t\v]*	;*/
         {
