@@ -1,7 +1,9 @@
 ﻿<<Grammar Name = "Markdown"  encoding_class="utf8" >>
 ^^MarkdownText: S? (Link / Text)* S? expect_file_end ;
-^^Link: '[' InnerText ']''(' InnerText ')' ;
-InnerText: [#x20-#x21#x23-#xFFFF]+	;
+^^Link: '['  LinkText ']''('  LinkUrl ')' ;
+LinkText: [#x20-#x5C#x5E-#xFFFF]+	;
+LinkUrl: [#x20-#x28#x2A-#xFFFF]+	;
+
 Text: [#x20-#x21#x23-#xFFFF]+	;
 S:        [ \n\r\t\v]*	;
 expect_file_end:!./ WARNING<" end of file">;

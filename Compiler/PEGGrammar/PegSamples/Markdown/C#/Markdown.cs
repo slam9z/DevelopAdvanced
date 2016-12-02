@@ -1,4 +1,4 @@
-/* created on 12/2/2016 9:40:06 AM from peg generator V1.0 using 'Markdown' as input*/
+/* created on 12/2/2016 10:22:18 AM from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -7,7 +7,8 @@ using System.Text;
 namespace Markdown
 {
       
-      enum EMarkdown{MarkdownText= 1, Link= 2, InnerText= 3, Text= 4, S= 5, expect_file_end= 6};
+      enum EMarkdown{MarkdownText= 1, Link= 2, LinkText= 3, LinkUrl= 4, Text= 5, S= 6, 
+                      expect_file_end= 7};
       public class Markdown : PegCharParser 
       {
         
@@ -63,22 +64,27 @@ namespace Markdown
                   && Option(()=> S() )
                   && expect_file_end() ) );
 		}
-        public bool Link()    /*^^Link: '[' InnerText ']''(' InnerText ')' ;*/
+        public bool Link()    /*^^Link: '['  LinkText ']''('  LinkUrl ')' ;*/
         {
 
            return TreeNT((int)EMarkdown.Link,()=>
                 And(()=>  
                      Char('[')
-                  && InnerText()
+                  && LinkText()
                   && Char(']')
                   && Char('(')
-                  && InnerText()
+                  && LinkUrl()
                   && Char(')') ) );
 		}
-        public bool InnerText()    /*InnerText: [#x20-#x21#x23-#xFFFF]+	;*/
+        public bool LinkText()    /*LinkText: [#x20-#x5C#x5E-#xFFFF]+	;*/
         {
 
-           return PlusRepeat(()=> In('\u0020','\u0021', '\u0023','\uffff') );
+           return PlusRepeat(()=> In('\u0020','\u005c', '\u005e','\uffff') );
+		}
+        public bool LinkUrl()    /*LinkUrl: [#x20-#x28#x2A-#xFFFF]+	;*/
+        {
+
+           return PlusRepeat(()=> In('\u0020','\u0028', '\u002a','\uffff') );
 		}
         public bool Text()    /*Text: [#x20-#x21#x23-#xFFFF]+	;*/
         {
