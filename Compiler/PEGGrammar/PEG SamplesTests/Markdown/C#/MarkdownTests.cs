@@ -96,6 +96,8 @@ namespace Markdown.Tests
         public void LinkTest()
         {
             var markdown = new Markdown(markdownSrc, errOut);
+            Console.WriteLine($"source length: {markdownSrc.Length}");
+            Console.WriteLine($"source : {markdownSrc}");
             markdown.MarkdownText();
         }
     }

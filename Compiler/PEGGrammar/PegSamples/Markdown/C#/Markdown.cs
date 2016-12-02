@@ -1,4 +1,4 @@
-/* created on 12/2/2016 11:05:22 AM from peg generator V1.0 using 'Markdown' as input*/
+/* created on 12/2/2016 5:35:05 PM from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -7,8 +7,8 @@ using System.Text;
 namespace Markdown
 {
       
-      enum EMarkdown{MarkdownText= 1, Link= 2, LinkText= 3, LinkUrl= 4, Text= 5, S= 6, 
-                      expect_file_end= 7};
+      enum EMarkdown{MarkdownText= 1, Link= 2, LinkText= 3, LinkUrl= 4, Text= 5, SpecialChar= 6, 
+                      S= 7, expect_file_end= 8};
       public class Markdown : PegCharParser 
       {
         
@@ -54,13 +54,13 @@ namespace Markdown
         } 
         #endregion Overrides
 		#region Grammar Rules
-        public bool MarkdownText()    /*^^MarkdownText: S (Link / Text)* S expect_file_end ;*/
+        public bool MarkdownText()    /*^^MarkdownText: S (Link / Text)+  S expect_file_end ;*/
         {
 
            return TreeNT((int)EMarkdown.MarkdownText,()=>
                 And(()=>  
                      S()
-                  && OptRepeat(()=>     Link() || Text() )
+                  && PlusRepeat(()=>     Link() || Text() )
                   && S()
                   && expect_file_end() ) );
 		}
@@ -76,32 +76,40 @@ namespace Markdown
                   && LinkUrl()
                   && Char(')') ) );
 		}
-        public bool LinkText()    /*^^LinkText: [#x20-#x5C#x5E-#xFFFF]+	;*/
+        public bool LinkText()    /*^^LinkText: (!SpecialChar .)+	;*/
         {
 
            return TreeNT((int)EMarkdown.LinkText,()=>
-                PlusRepeat(()=> In('\u0020','\u005c', '\u005e','\uffff') ) );
+                PlusRepeat(()=>  
+                  And(()=>    Not(()=> SpecialChar() ) && Any() ) ) );
 		}
-        public bool LinkUrl()    /*^^LinkUrl: [#x20-#x28#x2A-#xFFFF]+	;*/
+        public bool LinkUrl()    /*^^LinkUrl: (!SpecialChar .)+	;*/
         {
 
            return TreeNT((int)EMarkdown.LinkUrl,()=>
-                PlusRepeat(()=> In('\u0020','\u0028', '\u002a','\uffff') ) );
+                PlusRepeat(()=>  
+                  And(()=>    Not(()=> SpecialChar() ) && Any() ) ) );
 		}
-        public bool Text()    /*^^Text:S [#x20-#x21#x23-#xFFFF]+ S	;*/
+        public bool Text()    /*^^Text: S (!SpecialChar .)+ S ;*/
         {
 
            return TreeNT((int)EMarkdown.Text,()=>
                 And(()=>  
                      S()
                   && PlusRepeat(()=>    
-                      In('\u0020','\u0021', '\u0023','\uffff') )
+                      And(()=>    Not(()=> SpecialChar() ) && Any() ) )
                   && S() ) );
 		}
-        public bool S()    /*S:        [ \n\r\t\v]*	;*/
+        public bool SpecialChar()    /*^SpecialChar :   '~' / '*' / '_' / '`' / '&' / '[' / ']' / '(' / ')' / '<' / '!' / '#'  ;*/
         {
 
-           return OptRepeat(()=> OneOf(" \n\r\t\v") );
+           return TreeAST((int)EMarkdown.SpecialChar,()=>
+                OneOfLiterals(optimizedLiterals0) );
+		}
+        public bool S()    /*S:        [\n\r\t\v]*	;*/
+        {
+
+           return OptRepeat(()=> OneOf("\n\r\t\v") );
 		}
         public bool expect_file_end()    /*expect_file_end:!./ WARNING<" end of file">;*/
         {
@@ -109,5 +117,23 @@ namespace Markdown
            return     Not(()=> Any() ) || Warning(" end of file");
 		}
 		#endregion Grammar Rules
-   }
+
+        #region Optimization Data 
+        
+        internal static OptimizedLiterals optimizedLiterals0;
+        
+        static Markdown()
+        {
+            
+            {
+               string[] literals=
+               { "~","*","_","`","&","[","]","(",
+                  ")","<","!","#" };
+               optimizedLiterals0= new OptimizedLiterals(literals);
+            }
+
+            
+        }
+        #endregion Optimization Data 
+           }
 }

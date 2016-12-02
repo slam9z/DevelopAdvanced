@@ -1,10 +1,13 @@
 ﻿<<Grammar Name = "Markdown"  encoding_class="utf8" >>
-^^MarkdownText: S (Link / Text)* S expect_file_end ;
+^^MarkdownText: S (Link / Text)+  S expect_file_end ;
 ^^Link: '['  LinkText ']''('  LinkUrl ')' ;
-^^LinkText: [#x20-#x5C#x5E-#xFFFF]+	;
-^^LinkUrl: [#x20-#x28#x2A-#xFFFF]+	;
+^^LinkText: (!SpecialChar .)+	;
+^^LinkUrl: (!SpecialChar .)+	;
 
-^^Text:S [#x20-#x21#x23-#xFFFF]+ S	;
-S:        [ \n\r\t\v]*	;
+^^Text: S (!SpecialChar .)+ S ;
+
+^SpecialChar :   '~' / '*' / '_' / '`' / '&' / '[' / ']' / '(' / ')' / '<' / '!' / '#'  ;
+
+S:        [\n\r\t\v]*	;
 expect_file_end:!./ WARNING<" end of file">;
 <</Grammar>>
