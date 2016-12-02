@@ -1,4 +1,4 @@
-/* created on 12/2/2016 5:35:05 PM from peg generator V1.0 using 'Markdown' as input*/
+/* created on 02/12/2016 22:34:24 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -7,8 +7,8 @@ using System.Text;
 namespace Markdown
 {
       
-      enum EMarkdown{MarkdownText= 1, Link= 2, LinkText= 3, LinkUrl= 4, Text= 5, SpecialChar= 6, 
-                      S= 7, expect_file_end= 8};
+      enum EMarkdown{MarkdownText= 1, Image= 2, Link= 3, LinkText= 4, LinkUrl= 5, 
+                      Text= 6, SpecialChar= 7, S= 8, expect_file_end= 9};
       public class Markdown : PegCharParser 
       {
         
@@ -54,15 +54,21 @@ namespace Markdown
         } 
         #endregion Overrides
 		#region Grammar Rules
-        public bool MarkdownText()    /*^^MarkdownText: S (Link / Text)+  S expect_file_end ;*/
+        public bool MarkdownText()    /*^^MarkdownText: S (Image/Link / Text)+  S expect_file_end ;*/
         {
 
            return TreeNT((int)EMarkdown.MarkdownText,()=>
                 And(()=>  
                      S()
-                  && PlusRepeat(()=>     Link() || Text() )
+                  && PlusRepeat(()=>     Image() || Link() || Text() )
                   && S()
                   && expect_file_end() ) );
+		}
+        public bool Image()    /*^^Image: '!'Link ;*/
+        {
+
+           return TreeNT((int)EMarkdown.Image,()=>
+                And(()=>    Char('!') && Link() ) );
 		}
         public bool Link()    /*^^Link: '['  LinkText ']''('  LinkUrl ')' ;*/
         {
