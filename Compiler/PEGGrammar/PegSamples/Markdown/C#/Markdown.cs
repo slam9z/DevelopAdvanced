@@ -1,4 +1,4 @@
-/* created on 05/12/2016 21:03:40 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 05/12/2016 21:47:52 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -8,7 +8,7 @@ namespace Markdown
 {
       
       enum EMarkdown{MarkdownText= 1, Image= 2, Link= 3, LinkText= 4, LinkUrl= 5, 
-                      Text= 6, SpecialChar= 7, S= 8, expect_file_end= 9};
+                      Code= 6, InnerCode= 7, Text= 8, SpecialChar= 9, S= 10, expect_file_end= 11};
       public class Markdown : PegCharParser 
       {
         
@@ -54,21 +54,27 @@ namespace Markdown
         } 
         #endregion Overrides
 		#region Grammar Rules
-        public bool MarkdownText()    /*^^MarkdownText: S (Image/Link/Text)+ S expect_file_end ;*/
+        public bool MarkdownText()    /*^^MarkdownText: S (Image/Link/ InnerCode /Code/Text)+ S expect_file_end ;*/
         {
 
            return TreeNT((int)EMarkdown.MarkdownText,()=>
                 And(()=>  
                      S()
-                  && PlusRepeat(()=>     Image() || Link() || Text() )
+                  && PlusRepeat(()=>    
+                            
+                               Image()
+                            || Link()
+                            || InnerCode()
+                            || Code()
+                            || Text() )
                   && S()
                   && expect_file_end() ) );
 		}
-        public bool Image()    /*^^Image: '!'Link ;*/
+        public bool Image()    /*^^Image: S '!'Link S;*/
         {
 
            return TreeNT((int)EMarkdown.Image,()=>
-                And(()=>    Char('!') && Link() ) );
+                And(()=>    S() && Char('!') && Link() && S() ) );
 		}
         public bool Link()    /*^^Link: S '['  LinkText ']''('  LinkUrl ')' S ;*/
         {
@@ -97,6 +103,30 @@ namespace Markdown
            return TreeNT((int)EMarkdown.LinkUrl,()=>
                 PlusRepeat(()=>  
                   And(()=>    Not(()=> SpecialChar() ) && Any() ) ) );
+		}
+        public bool Code()    /*^^Code: S '```'(![`] .)+ '```' S;*/
+        {
+
+           return TreeNT((int)EMarkdown.Code,()=>
+                And(()=>  
+                     S()
+                  && Char('`','`','`')
+                  && PlusRepeat(()=>    
+                      And(()=>    Not(()=> OneOf("`") ) && Any() ) )
+                  && Char('`','`','`')
+                  && S() ) );
+		}
+        public bool InnerCode()    /*^^InnerCode:S '`' (![`] .)+ '`' S ;*/
+        {
+
+           return TreeNT((int)EMarkdown.InnerCode,()=>
+                And(()=>  
+                     S()
+                  && Char('`')
+                  && PlusRepeat(()=>    
+                      And(()=>    Not(()=> OneOf("`") ) && Any() ) )
+                  && Char('`')
+                  && S() ) );
 		}
         public bool Text()    /*^^Text: S (!SpecialChar .)+ S ;*/
         {

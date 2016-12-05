@@ -98,6 +98,8 @@
     <Content Include="Json\json_tree_peg.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Markdown\input\code.md" />
+    <None Include="Markdown\input\link.md" />
     <None Include="Markdown\input\markdown.md" />
     <None Include="Markdown\markdown.peg.md" />
   </ItemGroup>

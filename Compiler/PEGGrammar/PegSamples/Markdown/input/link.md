@@ -5,8 +5,3 @@
 
 ![stackoverfollow](www.stackoverfollow.com)
 
-`code`
-
-```
-Code
-```
