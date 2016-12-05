@@ -1,13 +1,13 @@
 ﻿<<Grammar Name = "Markdown"  encoding_class="utf8" >>
-^^MarkdownText: S (Image/Link / Text)+  S expect_file_end ;
+^^MarkdownText: S (Image/Link/Text)+ S expect_file_end ;
 ^^Image: '!'Link ;
-^^Link: '['  LinkText ']''('  LinkUrl ')' ;
+^^Link: S '['  LinkText ']''('  LinkUrl ')' S ;
 ^^LinkText: (!SpecialChar .)+	;
 ^^LinkUrl: (!SpecialChar .)+	;
 
 ^^Text: S (!SpecialChar .)+ S ;
 
-^SpecialChar :   '~' / '*' / '_' / '`' / '&' / '[' / ']' / '(' / ')' / '<' / '!' / '#'  ;
+^SpecialChar :   [~*_`&\[\]()!#] ;
 
 S:        [\n\r\t\v]*	;
 expect_file_end:!./ WARNING<" end of file">;

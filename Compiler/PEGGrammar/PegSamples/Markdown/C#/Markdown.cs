@@ -1,4 +1,4 @@
-/* created on 02/12/2016 22:34:24 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 05/12/2016 21:03:40 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -54,7 +54,7 @@ namespace Markdown
         } 
         #endregion Overrides
 		#region Grammar Rules
-        public bool MarkdownText()    /*^^MarkdownText: S (Image/Link / Text)+  S expect_file_end ;*/
+        public bool MarkdownText()    /*^^MarkdownText: S (Image/Link/Text)+ S expect_file_end ;*/
         {
 
            return TreeNT((int)EMarkdown.MarkdownText,()=>
@@ -70,17 +70,19 @@ namespace Markdown
            return TreeNT((int)EMarkdown.Image,()=>
                 And(()=>    Char('!') && Link() ) );
 		}
-        public bool Link()    /*^^Link: '['  LinkText ']''('  LinkUrl ')' ;*/
+        public bool Link()    /*^^Link: S '['  LinkText ']''('  LinkUrl ')' S ;*/
         {
 
            return TreeNT((int)EMarkdown.Link,()=>
                 And(()=>  
-                     Char('[')
+                     S()
+                  && Char('[')
                   && LinkText()
                   && Char(']')
                   && Char('(')
                   && LinkUrl()
-                  && Char(')') ) );
+                  && Char(')')
+                  && S() ) );
 		}
         public bool LinkText()    /*^^LinkText: (!SpecialChar .)+	;*/
         {
@@ -106,11 +108,11 @@ namespace Markdown
                       And(()=>    Not(()=> SpecialChar() ) && Any() ) )
                   && S() ) );
 		}
-        public bool SpecialChar()    /*^SpecialChar :   '~' / '*' / '_' / '`' / '&' / '[' / ']' / '(' / ')' / '<' / '!' / '#'  ;*/
+        public bool SpecialChar()    /*^SpecialChar :   [~*_`&\[\]()!#] ;*/
         {
 
            return TreeAST((int)EMarkdown.SpecialChar,()=>
-                OneOfLiterals(optimizedLiterals0) );
+                OneOf(optimizedCharset0) );
 		}
         public bool S()    /*S:        [\n\r\t\v]*	;*/
         {
@@ -125,19 +127,19 @@ namespace Markdown
 		#endregion Grammar Rules
 
         #region Optimization Data 
+        internal static OptimizedCharset optimizedCharset0;
         
-        internal static OptimizedLiterals optimizedLiterals0;
         
         static Markdown()
         {
-            
             {
-               string[] literals=
-               { "~","*","_","`","&","[","]","(",
-                  ")","<","!","#" };
-               optimizedLiterals0= new OptimizedLiterals(literals);
+               char[] oneOfChars = new char[]    {'~','*','_','`','&'
+                                                  ,'\\','[',']','(',')'
+                                                  ,'!','#'};
+               optimizedCharset0= new OptimizedCharset(null,oneOfChars);
             }
-
+            
+            
             
         }
         #endregion Optimization Data 
