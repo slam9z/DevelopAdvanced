@@ -1,1 +1,1 @@
-print "ÄãºÃ ruby"
+ï»¿print "ä½ å¥½ ruby"
