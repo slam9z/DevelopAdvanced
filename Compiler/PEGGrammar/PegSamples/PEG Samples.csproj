@@ -65,6 +65,7 @@
     <Compile Include="Json\json_check.cs" />
     <Compile Include="Json\json_fast.cs" />
     <Compile Include="Json\json_tree.cs" />
+    <Compile Include="Markdown\C#\Html.cs" />
     <Compile Include="Markdown\C#\Markdown.cs" />
     <Compile Include="PegGenerator\PegCSharpGenerator.cs" />
     <Compile Include="PegGenerator\PegGrammarParser.cs">
@@ -75,6 +76,9 @@
     <Compile Include="python_2_5_2\python_2_5_2_i.cs" />
     <Compile Include="SamplesTester.cs" />
     <Compile Include="WikiSampleTree\C#\WikiSampleTree.cs" />
+    <Content Include="Markdown\html.peg.txt" />
+    <Content Include="Markdown\input\html.html" />
+    <Content Include="Markdown\markdown.peg.transform.txt" />
     <Content Include="Markdown\markdown.peg.txt" />
     <Content Include="WikiSampleTree\WikiSample.txt" />
   </ItemGroup>

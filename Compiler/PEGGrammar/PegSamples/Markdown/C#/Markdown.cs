@@ -1,4 +1,4 @@
-/* created on 05/12/2016 21:47:52 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 06/12/2016 22:47:42 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -7,8 +7,9 @@ using System.Text;
 namespace Markdown
 {
       
-      enum EMarkdown{MarkdownText= 1, Image= 2, Link= 3, LinkText= 4, LinkUrl= 5, 
-                      Code= 6, InnerCode= 7, Text= 8, SpecialChar= 9, S= 10, expect_file_end= 11};
+      enum EMarkdown{Document= 1, Image= 2, Link= 3, LinkText= 4, LinkUrl= 5, Code= 6, 
+                      InnerCode= 7, Text= 8, SpecialChar= 9, S= 10, Eof= 11, Spacechar= 12, 
+                      Nonspacechar= 13, Newline= 14, Sp= 15, Spnl= 16};
       public class Markdown : PegCharParser 
       {
         
@@ -54,10 +55,10 @@ namespace Markdown
         } 
         #endregion Overrides
 		#region Grammar Rules
-        public bool MarkdownText()    /*^^MarkdownText: S (Image/Link/ InnerCode /Code/Text)+ S expect_file_end ;*/
+        public bool Document()    /*^^Document: S (Image/Link/ InnerCode /Code/Text)+ S Eof ;*/
         {
 
-           return TreeNT((int)EMarkdown.MarkdownText,()=>
+           return TreeNT((int)EMarkdown.Document,()=>
                 And(()=>  
                      S()
                   && PlusRepeat(()=>    
@@ -68,7 +69,7 @@ namespace Markdown
                             || Code()
                             || Text() )
                   && S()
-                  && expect_file_end() ) );
+                  && Eof() ) );
 		}
         public bool Image()    /*^^Image: S '!'Link S;*/
         {
@@ -149,10 +150,41 @@ namespace Markdown
 
            return OptRepeat(()=> OneOf("\n\r\t\v") );
 		}
-        public bool expect_file_end()    /*expect_file_end:!./ WARNING<" end of file">;*/
+        public bool Eof()    /*Eof :          !./ WARNING<" end of file">;*/
         {
 
            return     Not(()=> Any() ) || Warning(" end of file");
+		}
+        public bool Spacechar()    /*Spacechar :      ' ' / '\t';*/
+        {
+
+           return     Char(' ') || Char('\t');
+		}
+        public bool Nonspacechar()    /*Nonspacechar :    !Spacechar !Newline ;*/
+        {
+
+           return And(()=>  
+                     Not(()=> Spacechar() )
+                  && Not(()=> Newline() ) );
+		}
+        public bool Newline()    /*Newline :       '\n' / '\r''\n'?;*/
+        {
+
+           return   
+                     Char('\n')
+                  || And(()=>    Char('\r') && Option(()=> Char('\n') ) );
+		}
+        public bool Sp()    /*Sp :            Spacechar*;*/
+        {
+
+           return OptRepeat(()=> Spacechar() );
+		}
+        public bool Spnl()    /*Spnl :           Sp (Newline Sp)?;*/
+        {
+
+           return And(()=>  
+                     Sp()
+                  && Option(()=> And(()=>    Newline() && Sp() ) ) );
 		}
 		#endregion Grammar Rules
 

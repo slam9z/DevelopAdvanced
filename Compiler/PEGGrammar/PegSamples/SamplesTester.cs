@@ -16,7 +16,7 @@ namespace Peg.Samples
         eJson, eJsonChecker, eOptimizedJsonChecker, eJsonTree, eJsonTreeOpt,
         eEMailAddress, eBERMinimal, eBERCustom,
         eParserGenerator, eKernighanAndRitchieC, eCSharp3, eCSharp3Fast, ePython_2_5_2
-        , WikiSample, Markdown
+        , WikiSample, Markdown, Html
     };
     public struct ParserPostProcessParams
     {
@@ -134,11 +134,20 @@ namespace Peg.Samples
             sampleGrammars.Add(
        new SampleInfo(
                ESampleId.Markdown,
-               (new Markdown.Markdown()).MarkdownText,
+               (new Markdown.Markdown()).Document,
                "Markdown (readable grammar)",
                "WikiSample",
                @"PegSamples\Markdown\input",
                null));
+
+            sampleGrammars.Add(
+                 new SampleInfo(
+        ESampleId.Html,
+        (new Html.Html()).Doc,
+        "HTML (readable grammar)",
+        "HTML",
+        @"PegSamples\Markdown\input",
+        null));
 
             sampleGrammars.Add(
                new SampleInfo(

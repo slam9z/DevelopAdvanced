@@ -1268,7 +1268,10 @@ namespace Peg.Samples
             var checker = new CheckGrammar(context);
             if (!checker.bOk_) return;
             var normalize = new NormalizeTree(context, checker.setRules_);
-            if (!normalize.bOk_) return;
+            if (!normalize.bOk_)
+            {
+                return;
+            }
             Peg.CSharp.PegCSharpGenerator cSharpGenerator = new Peg.CSharp.PegCSharpGenerator(context);
         }
         #endregion IParserPostProcessor functions

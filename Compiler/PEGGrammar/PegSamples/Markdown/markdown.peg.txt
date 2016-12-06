@@ -1,5 +1,5 @@
 ﻿<<Grammar Name = "Markdown"  encoding_class="utf8" >>
-^^MarkdownText: S (Image/Link/ InnerCode /Code/Text)+ S expect_file_end ;
+^^Document: S (Image/Link/ InnerCode /Code/Text)+ S Eof ;
 ^^Image: S '!'Link S;
 ^^Link: S '['  LinkText ']''('  LinkUrl ')' S ;
 ^^LinkText: (!SpecialChar .)+	;
@@ -13,5 +13,12 @@
 ^SpecialChar :   [~*_`&\[\]()!#] ;
 
 S:        [\n\r\t\v]*	;
-expect_file_end:!./ WARNING<" end of file">;
+
+Eof :          !./ WARNING<" end of file">;
+Spacechar :      ' ' / '\t';
+Nonspacechar :    !Spacechar !Newline ;
+Newline :       '\n' / '\r''\n'?;
+Sp :            Spacechar*;
+Spnl :           Sp (Newline Sp)?;
+
 <</Grammar>>

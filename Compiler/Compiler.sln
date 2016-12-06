@@ -33,6 +33,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeProject.Syntax", "CodeP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEG SamplesTests", "PEGGrammar\PEG SamplesTests\PEG SamplesTests.csproj", "{8F2D30F1-606A-46DD-A106-105D2893EBC3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{0FD52E54-C0F9-464C-8B52-584E3B0AF303}"
+	ProjectSection(SolutionItems) = preProject
+		PEGGrammar\Documents\PEG_GrammarExplorer_fromCP.htm = PEGGrammar\Documents\PEG_GrammarExplorer_fromCP.htm
+		PEGGrammar\Documents\PEG_GrammerExplorer.jpg = PEGGrammar\Documents\PEG_GrammerExplorer.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -155,5 +161,6 @@ Global
 		{9913580D-1543-40D5-B463-14C95BF3120C} = {B8120F05-CC9A-415E-B59C-5968768A731D}
 		{C1DDE212-68D9-4CD2-9B44-FDE1D44AFD26} = {B8120F05-CC9A-415E-B59C-5968768A731D}
 		{8F2D30F1-606A-46DD-A106-105D2893EBC3} = {B8120F05-CC9A-415E-B59C-5968768A731D}
+		{0FD52E54-C0F9-464C-8B52-584E3B0AF303} = {B8120F05-CC9A-415E-B59C-5968768A731D}
 	EndGlobalSection
 EndGlobal
