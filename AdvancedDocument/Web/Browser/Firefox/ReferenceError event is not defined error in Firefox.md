@@ -1,0 +1,1 @@
+[ReferenceError: event is not defined error in Firefox](http://stackoverflow.com/questions/20522887/referenceerror-event-is-not-defined-error-in-firefox)
