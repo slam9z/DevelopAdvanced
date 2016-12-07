@@ -106,6 +106,7 @@
     <None Include="Markdown\input\link.md" />
     <None Include="Markdown\input\markdown.md" />
     <None Include="Markdown\markdown.peg.md" />
+    <None Include="Markdown\markdown_parser.leg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

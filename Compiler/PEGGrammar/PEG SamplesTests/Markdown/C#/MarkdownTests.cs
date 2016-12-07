@@ -95,7 +95,6 @@ namespace Markdown.Tests
         [TestMethod()]
         public void CreateMarkdown()
         {
-            _markdownPEGFile = _baseFolder + "markdown.peg.txt";
             pegSrc = File.ReadAllText(_markdownPEGFile);
 
             if (RunImpl(pegSrc, errOut))
@@ -144,7 +143,7 @@ namespace Markdown.Tests
             var markdown = new Markdown(markdownSrc, errOut);
             Console.WriteLine($"source length: {markdownSrc.Length}");
             Console.WriteLine($"source : {markdownSrc}");
-            markdown.Document();
+            markdown.Doc();
         }
 
         [TestMethod()]

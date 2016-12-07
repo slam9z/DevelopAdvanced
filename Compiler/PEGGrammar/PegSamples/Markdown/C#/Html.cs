@@ -1,4 +1,4 @@
-/* created on 07/12/2016 00:22:50 from peg generator V1.0 using 'Html' as input*/
+/* created on 07/12/2016 20:30:56 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -1427,7 +1427,7 @@ namespace Html
                 'ul' / 'dd' / 'dt' / 'frameset' / 'li' / 'tbody' / 'td' / 'tfoot' / 'th' / 'thead' / 'tr' / 'script' /
                 'ADDRESS' / 'BLOCKQUOTE' / 'CENTER' / 'DIR' / 'DIV' / 'DL' / 'FIELDSET' / 'FORM' / 'H1' / 'H2' / 'H3' /
                 'H4' / 'H5' / 'H6' / 'HR' / 'ISINDEX' / 'MENU' / 'NOFRAMES' / 'NOSCRIPT' / 'OL' / 'P' / 'PRE' / 'TABLE' /
-                'UL' / 'DD' / 'DT' / 'FRAMESET' / 'LI' / 'TBODY' / 'TD' / 'TFOOT' / 'TH' / 'THEAD' / 'TR' / 'SCRIPT';*/
+                'UL' / 'DD' / 'DT' / 'FRAMESET' / 'LI' / 'TBODY' / 'TD' / 'TFOOT' / 'TH' / 'THEAD' / 'TR' / 'SCRIPT'/'br'/'BR';*/
         {
 
            var result=OneOfLiterals(optimizedLiterals0); return result;
@@ -1610,7 +1610,7 @@ namespace Html
                   "DL","FIELDSET","FORM","H1","H2","H3","H4","H5",
                   "H6","HR","ISINDEX","MENU","NOFRAMES","NOSCRIPT","OL","P",
                   "PRE","TABLE","UL","DD","DT","FRAMESET","LI","TBODY",
-                  "TD","TFOOT","TH","THEAD","TR","SCRIPT" };
+                  "TD","TFOOT","TH","THEAD","TR","SCRIPT","br","BR" };
                optimizedLiterals0= new OptimizedLiterals(literals);
             }
 

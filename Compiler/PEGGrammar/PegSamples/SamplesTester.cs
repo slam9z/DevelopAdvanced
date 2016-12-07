@@ -134,7 +134,7 @@ namespace Peg.Samples
             sampleGrammars.Add(
        new SampleInfo(
                ESampleId.Markdown,
-               (new Markdown.Markdown()).Document,
+               (new Markdown.Markdown()).Doc,
                "Markdown (readable grammar)",
                "WikiSample",
                @"PegSamples\Markdown\input",

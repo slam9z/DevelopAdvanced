@@ -619,7 +619,6 @@ namespace Peg.Base
                 tree.addPolicy = PegTree.AddPolicy.eAddAsSibling;
                 nodeCreator(ECreatorPhase.eCreationComplete, ruleNode, nRuleId);
             }
-            Console.WriteLine($"Matcher {toMatch.Target},{toMatch.Method.Name} {bMatches} pos:{pos_}");
             return bMatches;
         }
         public bool TreeAST(int nRuleId, Matcher toMatch)
