@@ -37,11 +37,11 @@
 
 ^^SetextBottom2 : '-'+ Newline;
 
-^^SetextHeading1 :  (RawLine SetextBottom1)
+^^SetextHeading1 : & (RawLine SetextBottom1)
                   StartList ( !Endline Inline  )+ Sp Newline
                   SetextBottom1 ;
 
-^^SetextHeading2 :  (RawLine SetextBottom2)
+^^SetextHeading2 : & (RawLine SetextBottom2)
                   StartList ( !Endline Inline  )+ Sp Newline
                   SetextBottom2 ;
 
@@ -76,7 +76,7 @@
 
 ^^Bullet : !HorizontalRule NonindentSpace ('+' / '*' / '-') Spacechar+;
 
-^^BulletList : Bullet (ListTight / ListLoose);
+^^BulletList : &Bullet (ListTight / ListLoose);
              
 
 ^^ListTight : StartList
@@ -319,7 +319,8 @@ InStyleTags :   StyleOpen (!StyleClose .)* StyleClose ;
                         / Endline &Inline  )+ Endline? ;
             
 
-Inline  : Str
+^^Inline :
+		Str
         / Endline
         / UlOrStarLine
         / Space
@@ -335,7 +336,8 @@ Inline  : Str
         / Entity
         / EscapedChar
         / Smart
-        / Symbol  ;
+        / Symbol
+		;
 
 Space : Spacechar+ ;
       
@@ -519,7 +521,7 @@ HexEntity :      '&' '#' [Xx] [0-9a-fA-F]+ ';' ;
 DecEntity :      '&' '#' [0-9]+  ';' ;
 CharEntity :     '&' [A-Za-z0-9]+ ';' ;
 
-NonindentSpace :    '   ' / '  ' / ' ' ;
+NonindentSpace :    '   ' / '  ' / ' '?;
 Indent :            '\t' / '    ';
 IndentedLine :      Indent Line;
 OptionallyIndentedLine : Indent? Line;

@@ -1,4 +1,4 @@
-/* created on 07/12/2016 23:58:45 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 08/12/2016 21:57:04 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -230,14 +230,14 @@ namespace Markdown
            var result= TreeNT((int)EMarkdown.SetextBottom2,()=>
                 And(()=>    PlusRepeat(()=> Char('-') ) && Newline() ) ); return result;
 		}
-        public bool SetextHeading1()    /*^^SetextHeading1 :  (RawLine SetextBottom1)
+        public bool SetextHeading1()    /*^^SetextHeading1 : & (RawLine SetextBottom1)
                   StartList ( !Endline Inline  )+ Sp Newline
                   SetextBottom1 ;*/
         {
 
            var result= TreeNT((int)EMarkdown.SetextHeading1,()=>
                 And(()=>  
-                     And(()=>    RawLine() && SetextBottom1() )
+                     Peek(()=> And(()=>    RawLine() && SetextBottom1() ) )
                   && StartList()
                   && PlusRepeat(()=>    
                       And(()=>    Not(()=> Endline() ) && Inline() ) )
@@ -245,14 +245,14 @@ namespace Markdown
                   && Newline()
                   && SetextBottom1() ) ); return result;
 		}
-        public bool SetextHeading2()    /*^^SetextHeading2 :  (RawLine SetextBottom2)
+        public bool SetextHeading2()    /*^^SetextHeading2 : & (RawLine SetextBottom2)
                   StartList ( !Endline Inline  )+ Sp Newline
                   SetextBottom2 ;*/
         {
 
            var result= TreeNT((int)EMarkdown.SetextHeading2,()=>
                 And(()=>  
-                     And(()=>    RawLine() && SetextBottom2() )
+                     Peek(()=> And(()=>    RawLine() && SetextBottom2() ) )
                   && StartList()
                   && PlusRepeat(()=>    
                       And(()=>    Not(()=> Endline() ) && Inline() ) )
@@ -366,11 +366,13 @@ namespace Markdown
                   && (    Char('+') || Char('*') || Char('-'))
                   && PlusRepeat(()=> Spacechar() ) ) ); return result;
 		}
-        public bool BulletList()    /*^^BulletList : Bullet (ListTight / ListLoose);*/
+        public bool BulletList()    /*^^BulletList : &Bullet (ListTight / ListLoose);*/
         {
 
            var result= TreeNT((int)EMarkdown.BulletList,()=>
-                And(()=>    Bullet() && (    ListTight() || ListLoose()) ) ); return result;
+                And(()=>  
+                     Peek(()=> Bullet() )
+                  && (    ListTight() || ListLoose()) ) ); return result;
 		}
         public bool ListTight()    /*^^ListTight : StartList
             ( ListItemTight  )+
@@ -1873,7 +1875,8 @@ namespace Markdown
                             || And(()=>    Endline() && Peek(()=> Inline() ) ) )
                   && Option(()=> Endline() ) ) ); return result;
 		}
-        public bool Inline()    /*Inline  : Str
+        public bool Inline()    /*^^Inline :
+		Str
         / Endline
         / UlOrStarLine
         / Space
@@ -1889,10 +1892,12 @@ namespace Markdown
         / Entity
         / EscapedChar
         / Smart
-        / Symbol  ;*/
+        / Symbol
+		;*/
         {
 
-           var result=  
+           var result= TreeNT((int)EMarkdown.Inline,()=>
+                  
                      Str()
                   || Endline()
                   || UlOrStarLine()
@@ -1909,7 +1914,7 @@ namespace Markdown
                   || Entity()
                   || EscapedChar()
                   || Smart()
-                  || Symbol(); return result;
+                  || Symbol() ); return result;
 		}
         public bool Space()    /*Space : Spacechar+ ;*/
         {
@@ -2693,10 +2698,13 @@ namespace Markdown
                   && PlusRepeat(()=> In('A','Z', 'a','z', '0','9') )
                   && Char(';') ); return result;
 		}
-        public bool NonindentSpace()    /*NonindentSpace :    '   ' / '  ' / ' ' ;*/
+        public bool NonindentSpace()    /*NonindentSpace :    '   ' / '  ' / ' '?;*/
         {
 
-           var result=    Char(' ',' ',' ') || Char(' ',' ') || Char(' '); return result;
+           var result=  
+                     Char(' ',' ',' ')
+                  || Char(' ',' ')
+                  || Option(()=> Char(' ') ); return result;
 		}
         public bool Indent()    /*Indent :            '\t' / '    ';*/
         {

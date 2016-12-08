@@ -59,10 +59,10 @@
 
 %}
 
-Doc =       BOM? a:StartList ( Block { a = cons($$, a); } )*
+^^Doc =       BOM? a:StartList ( Block { a = cons($$, a); } )*
             { parse_result = reverse(a); }
 
-Block =     BlankLine*
+^^Block =     BlankLine*
             ( BlockQuote
             | Verbatim
             | Note

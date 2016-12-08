@@ -103,6 +103,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Markdown\input\code.md" />
+    <None Include="Markdown\input\orderedList.md" />
+    <None Include="Markdown\input\bulletList.md" />
     <None Include="Markdown\input\link.md" />
     <None Include="Markdown\input\markdown.md" />
     <None Include="Markdown\markdown.peg.md" />
