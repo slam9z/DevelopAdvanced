@@ -1,17 +1,7 @@
 [FluentInterface](http://martinfowler.com/bliki/FluentInterface.html)
 
 
-
 # [FluentInterface](FluentInterface.html)
-
-
-
-[![](/mf.jpg "Photo of Martin Fowler")](/)
-
-[Martin Fowler](/)
-
-20 December 2005
-
 
 
 [API design](/tags/API design.html)&nbsp;· [domain specific language](/tags/domain specific language.html)
