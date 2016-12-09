@@ -1,4 +1,5 @@
 name =["123123","saeda"]
+name.push("qweqwe")
 p name
 
 
