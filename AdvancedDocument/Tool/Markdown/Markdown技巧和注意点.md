@@ -28,3 +28,20 @@ $$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
 一是减少不必要的时间，二是编辑器自己调整也比较灵活。
 
 * 在markdown里面使用html的记录html标签的时候需要特别小心，容易相互影响。
+
+
+## 想知道页内跳转怎么做。
+
+
+## 这种引用也没学会，这个不错，可以把url写到一个地方。
+
+including [Setext] [1], [atx] [2], [Textile] [3], [reStructuredText] [4],
+[Grutatext] [5], and [EtText] [6] -- the single biggest source of
+inspiration for Markdown's syntax is the format of plain text email.
+
+[1]: http://docutils.sourceforge.net/mirror/setext.html
+[2]: http://www.aaronsw.com/2002/atx/
+[3]: http://textism.com/tools/textile/
+[4]: http://docutils.sourceforge.net/rst.html
+[5]: http://www.triptico.com/software/grutatxt.html
+[6]: http://ettext.taint.org/doc/

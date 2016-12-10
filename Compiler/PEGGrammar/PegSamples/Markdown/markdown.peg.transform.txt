@@ -4,11 +4,11 @@
            
 
 ^^Block :     BlankLine*
-            ( BlockQuote
-            / Verbatim
-            / Note
-            / Reference
-            / HorizontalRule
+            ( BlockQuote     //引用
+            / Verbatim       //逐字报告  这是啥   就是Code Block吧！会被翻译成<pre><code>
+            / Note           //注释？
+            / Reference      //参考  这个暂时也不知道是啥
+            / HorizontalRule   //会画一条线
             / Heading
             / OrderedList
             / BulletList
@@ -458,7 +458,7 @@ AutoLink : AutoLinkUrl / AutoLinkEmail ;
 ^^AutoLinkEmail : '<' ( 'mailto:' )?  [-A-Za-z0-9+_./!%~$]+ '@' ( !Newline !'>' . )+  '>';
           
 
-Reference : NonindentSpace !'[]' Label ':' Spnl RefSrc RefTitle BlankLine+;
+^^Reference : NonindentSpace !'[]' Label ':' Spnl RefSrc RefTitle? (BlankLine+/Eof);
        
 
 ^^Label : '[' ( !'^'  )
@@ -470,7 +470,7 @@ Reference : NonindentSpace !'[]' Label ':' Spnl RefSrc RefTitle BlankLine+;
 RefSrc :  Nonspacechar+  ;
  
 
-RefTitle :  ( RefTitleSingle / RefTitleDouble / RefTitleParens / EmptyTitle );
+^^RefTitle :  ( RefTitleSingle / RefTitleDouble / RefTitleParens / EmptyTitle );
             
 
 EmptyTitle :  '\"\"' ;
@@ -493,7 +493,7 @@ References : StartList
 ^^BlankLine :     Sp Newline;
 
 Quoted :        '\"' (!'\"' .)* '\"' / '\'' (!'\'' .)* '\'';
-^^HtmlAttribute : (AlphanumericAscii / '-')+ Spnl (':' Spnl (Quoted / (!'>' Nonspacechar)+))? Spnl ;
+^^HtmlAttribute : (AlphanumericAscii / '-')+ Spnl ('=' Spnl (Quoted / (!'>' Nonspacechar)+))? Spnl ;
 ^^HtmlComment :   '!--' (!'-->' .)* '-->';
 HtmlTag :       '<' Spnl '/'? AlphanumericAscii+ Spnl HtmlAttribute* '/'? Spnl '>';
 Eof :          !.; 

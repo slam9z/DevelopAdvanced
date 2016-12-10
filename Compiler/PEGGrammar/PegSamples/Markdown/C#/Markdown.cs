@@ -1,4 +1,4 @@
-/* created on 10/12/2016 17:59:38 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 10/12/2016 18:53:06 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -123,11 +123,11 @@ namespace Markdown
                 OptRepeat(()=> Block() ) ); return result;
 		}
         public bool Block()    /*^^Block :     BlankLine*
-            ( BlockQuote
-            / Verbatim
-            / Note
-            / Reference
-            / HorizontalRule
+            ( BlockQuote     //引用
+            / Verbatim       //逐字报告  这是啥   就是Code Block吧！会被翻译成<pre><code>
+            / Note           //注释？
+            / Reference      //参考  这个暂时也不知道是啥
+            / HorizontalRule   //会画一条线
             / Heading
             / OrderedList
             / BulletList
@@ -2273,18 +2273,19 @@ namespace Markdown
                             && Any() ) )
                   && Char('>') ) ); return result;
 		}
-        public bool Reference()    /*Reference : NonindentSpace !'[]' Label ':' Spnl RefSrc RefTitle BlankLine+;*/
+        public bool Reference()    /*^^Reference : NonindentSpace !'[]' Label ':' Spnl RefSrc RefTitle? (BlankLine+/Eof);*/
         {
 
-           var result=And(()=>  
+           var result= TreeNT((int)EMarkdown.Reference,()=>
+                And(()=>  
                      NonindentSpace()
                   && Not(()=> Char('[',']') )
                   && Label()
                   && Char(':')
                   && Spnl()
                   && RefSrc()
-                  && RefTitle()
-                  && PlusRepeat(()=> BlankLine() ) ); return result;
+                  && Option(()=> RefTitle() )
+                  && (    PlusRepeat(()=> BlankLine() ) || Eof()) ) ); return result;
 		}
         public bool Label()    /*^^Label : '[' ( !'^'  )
         StartList
@@ -2306,14 +2307,15 @@ namespace Markdown
 
            var result=PlusRepeat(()=> Nonspacechar() ); return result;
 		}
-        public bool RefTitle()    /*RefTitle :  ( RefTitleSingle / RefTitleDouble / RefTitleParens / EmptyTitle );*/
+        public bool RefTitle()    /*^^RefTitle :  ( RefTitleSingle / RefTitleDouble / RefTitleParens / EmptyTitle );*/
         {
 
-           var result=  
+           var result= TreeNT((int)EMarkdown.RefTitle,()=>
+                  
                      RefTitleSingle()
                   || RefTitleDouble()
                   || RefTitleParens()
-                  || EmptyTitle(); return result;
+                  || EmptyTitle() ); return result;
 		}
         public bool EmptyTitle()    /*EmptyTitle :  '\"\"' ;*/
         {
@@ -2427,7 +2429,7 @@ namespace Markdown
                             And(()=>    Not(()=> Char('\'') ) && Any() ) )
                       && Char('\'') ); return result;
 		}
-        public bool HtmlAttribute()    /*^^HtmlAttribute : (AlphanumericAscii / '-')+ Spnl (':' Spnl (Quoted / (!'>' Nonspacechar)+))? Spnl ;*/
+        public bool HtmlAttribute()    /*^^HtmlAttribute : (AlphanumericAscii / '-')+ Spnl ('=' Spnl (Quoted / (!'>' Nonspacechar)+))? Spnl ;*/
         {
 
            var result= TreeNT((int)EMarkdown.HtmlAttribute,()=>
@@ -2436,7 +2438,7 @@ namespace Markdown
                   && Spnl()
                   && Option(()=>    
                       And(()=>      
-                               Char(':')
+                               Char('=')
                             && Spnl()
                             && (        
                                        Quoted()
