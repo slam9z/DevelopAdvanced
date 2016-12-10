@@ -1,4 +1,4 @@
-/* created on 10/12/2016 17:26:51 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 10/12/2016 17:47:31 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -58,19 +58,19 @@ namespace Markdown
                       TitleDouble= 174, AutoLink= 175, AutoLinkUrl= 176, AutoLinkEmail= 177, 
                       Reference= 178, Label= 179, RefSrc= 180, RefTitle= 181, EmptyTitle= 182, 
                       RefTitleSingle= 183, RefTitleDouble= 184, RefTitleParens= 185, 
-                      References= 186, Ticks1= 187, Ticks2= 188, Ticks3= 189, Ticks4= 190, 
-                      Ticks5= 191, Code= 192, RawHtml= 193, BlankLine= 194, Quoted= 195, 
-                      HtmlAttribute= 196, HtmlComment= 197, HtmlTag= 198, Eof= 199, 
-                      Spacechar= 200, Nonspacechar= 201, Newline= 202, Sp= 203, Spnl= 204, 
-                      SpecialChar= 205, NormalChar= 206, Alphanumeric= 207, AlphanumericAscii= 208, 
-                      Digit= 209, BOM= 210, HexEntity= 211, DecEntity= 212, CharEntity= 213, 
-                      NonindentSpace= 214, Indent= 215, IndentedLine= 216, OptionallyIndentedLine= 217, 
-                      StartList= 218, Line= 219, RawLine= 220, SkipBlock= 221, ExtendedSpecialChar= 222, 
-                      Smart= 223, Apostrophe= 224, Ellipsis= 225, Dash= 226, EnDash= 227, 
-                      EmDash= 228, SingleQuoteStart= 229, SingleQuoteEnd= 230, SingleQuoted= 231, 
-                      DoubleQuoteStart= 232, DoubleQuoteEnd= 233, DoubleQuoted= 234, 
-                      NoteReference= 235, RawNoteReference= 236, Note= 237, InlineNote= 238, 
-                      Notes= 239, RawNoteBlock= 240};
+                      References= 186, CodeLanguage= 187, Code= 188, InnerCode= 189, 
+                      RawHtml= 190, BlankLine= 191, Quoted= 192, HtmlAttribute= 193, 
+                      HtmlComment= 194, HtmlTag= 195, Eof= 196, Spacechar= 197, Nonspacechar= 198, 
+                      Newline= 199, Sp= 200, Spnl= 201, SpecialChar= 202, NormalChar= 203, 
+                      Alphanumeric= 204, AlphanumericAscii= 205, Digit= 206, BOM= 207, 
+                      HexEntity= 208, DecEntity= 209, CharEntity= 210, NonindentSpace= 211, 
+                      Indent= 212, IndentedLine= 213, OptionallyIndentedLine= 214, 
+                      StartList= 215, Line= 216, RawLine= 217, SkipBlock= 218, ExtendedSpecialChar= 219, 
+                      Smart= 220, Apostrophe= 221, Ellipsis= 222, Dash= 223, EnDash= 224, 
+                      EmDash= 225, SingleQuoteStart= 226, SingleQuoteEnd= 227, SingleQuoted= 228, 
+                      DoubleQuoteStart= 229, DoubleQuoteEnd= 230, DoubleQuoted= 231, 
+                      NoteReference= 232, RawNoteReference= 233, Note= 234, InlineNote= 235, 
+                      Notes= 236, RawNoteBlock= 237};
       public class Markdown : PegCharParser 
       {
         
@@ -133,6 +133,7 @@ namespace Markdown
             / BulletList
             / HtmlBlock
             / StyleBlock
+			/ Code
             / Plain );
 
 //^^Para :      NonindentSpace Inlines BlankLine+;
@@ -155,6 +156,7 @@ namespace Markdown
                       || BulletList()
                       || HtmlBlock()
                       || StyleBlock()
+                      || Code()
                       || Plain()) ) ); return result;
 		}
         public bool Plain()    /*^^Plain :     Inlines;*/
@@ -1880,7 +1882,7 @@ namespace Markdown
         / Link
         / NoteReference
         / InlineNote
-        / Code
+        / InnerCode
         / RawHtml
         / Entity
         / EscapedChar
@@ -1901,7 +1903,7 @@ namespace Markdown
                   || Link()
                   || NoteReference()
                   || InlineNote()
-                  || Code()
+                  || InnerCode()
                   || RawHtml()
                   || Entity()
                   || EscapedChar()
@@ -2367,150 +2369,32 @@ namespace Markdown
                      StartList()
                   && OptRepeat(()=>     Reference() || SkipBlock() ) ); return result;
 		}
-        public bool Ticks1()    /*Ticks1 : '`' !'`' ;*/
+        public bool CodeLanguage()    /*^^CodeLanguage:Sp Str Sp ;*/
         {
 
-           var result=And(()=>    Char('`') && Not(()=> Char('`') ) ); return result;
+           var result= TreeNT((int)EMarkdown.CodeLanguage,()=>
+                And(()=>    Sp() && Str() && Sp() ) ); return result;
 		}
-        public bool Ticks2()    /*Ticks2 : '``' !'`' ;*/
-        {
-
-           var result=And(()=>    Char('`','`') && Not(()=> Char('`') ) ); return result;
-		}
-        public bool Ticks3()    /*Ticks3 : '```' !'`';*/
-        {
-
-           var result=And(()=>    Char('`','`','`') && Not(()=> Char('`') ) ); return result;
-		}
-        public bool Ticks4()    /*Ticks4 : '````' !'`';*/
-        {
-
-           var result=And(()=>  
-                     Char('`','`','`','`')
-                  && Not(()=> Char('`') ) ); return result;
-		}
-        public bool Ticks5()    /*Ticks5 : '`````' !'`';*/
-        {
-
-           var result=And(()=>  
-                     Char('`','`','`','`','`')
-                  && Not(()=> Char('`') ) ); return result;
-		}
-        public bool Code()    /*^^Code : ( Ticks1 Sp  ( ( !'`' Nonspacechar )+ / !Ticks1 '`'+ / !( Sp Ticks1 ) ( Spacechar / Newline !BlankLine ) )+  Sp Ticks1
-       / Ticks2 Sp  ( ( !'`' Nonspacechar )+ / !Ticks2 '`'+ / !( Sp Ticks2 ) ( Spacechar / Newline !BlankLine ) )+  Sp Ticks2
-       / Ticks3 Sp  ( ( !'`' Nonspacechar )+ / !Ticks3 '`'+ / !( Sp Ticks3 ) ( Spacechar / Newline !BlankLine ) )+  Sp Ticks3
-       / Ticks4 Sp  ( ( !'`' Nonspacechar )+ / !Ticks4 '`'+ / !( Sp Ticks4 ) ( Spacechar / Newline !BlankLine ) )+  Sp Ticks4
-       / Ticks5 Sp  ( ( !'`' Nonspacechar )+ / !Ticks5 '`'+ / !( Sp Ticks5 ) ( Spacechar / Newline !BlankLine ) )+  Sp Ticks5
-       );*/
+        public bool Code()    /*^^Code:  '```'(CodeLanguage Newline)? (!'`' .)+ '```' ;*/
         {
 
            var result= TreeNT((int)EMarkdown.Code,()=>
-                  
-                     And(()=>    
-                         Ticks1()
-                      && Sp()
-                      && PlusRepeat(()=>      
-                                    
-                                       PlusRepeat(()=>          
-                                              And(()=>            
-                                                             Not(()=> Char('`') )
-                                                          && Nonspacechar() ) )
-                                    || And(()=>          
-                                                 Not(()=> Ticks1() )
-                                              && PlusRepeat(()=> Char('`') ) )
-                                    || And(()=>          
-                                                 Not(()=> And(()=>    Sp() && Ticks1() ) )
-                                              && (            
-                                                             Spacechar()
-                                                          || And(()=>              
-                                                                           Newline()
-                                                                        && Not(()=> BlankLine() ) )) ) )
-                      && Sp()
-                      && Ticks1() )
-                  || And(()=>    
-                         Ticks2()
-                      && Sp()
-                      && PlusRepeat(()=>      
-                                    
-                                       PlusRepeat(()=>          
-                                              And(()=>            
-                                                             Not(()=> Char('`') )
-                                                          && Nonspacechar() ) )
-                                    || And(()=>          
-                                                 Not(()=> Ticks2() )
-                                              && PlusRepeat(()=> Char('`') ) )
-                                    || And(()=>          
-                                                 Not(()=> And(()=>    Sp() && Ticks2() ) )
-                                              && (            
-                                                             Spacechar()
-                                                          || And(()=>              
-                                                                           Newline()
-                                                                        && Not(()=> BlankLine() ) )) ) )
-                      && Sp()
-                      && Ticks2() )
-                  || And(()=>    
-                         Ticks3()
-                      && Sp()
-                      && PlusRepeat(()=>      
-                                    
-                                       PlusRepeat(()=>          
-                                              And(()=>            
-                                                             Not(()=> Char('`') )
-                                                          && Nonspacechar() ) )
-                                    || And(()=>          
-                                                 Not(()=> Ticks3() )
-                                              && PlusRepeat(()=> Char('`') ) )
-                                    || And(()=>          
-                                                 Not(()=> And(()=>    Sp() && Ticks3() ) )
-                                              && (            
-                                                             Spacechar()
-                                                          || And(()=>              
-                                                                           Newline()
-                                                                        && Not(()=> BlankLine() ) )) ) )
-                      && Sp()
-                      && Ticks3() )
-                  || And(()=>    
-                         Ticks4()
-                      && Sp()
-                      && PlusRepeat(()=>      
-                                    
-                                       PlusRepeat(()=>          
-                                              And(()=>            
-                                                             Not(()=> Char('`') )
-                                                          && Nonspacechar() ) )
-                                    || And(()=>          
-                                                 Not(()=> Ticks4() )
-                                              && PlusRepeat(()=> Char('`') ) )
-                                    || And(()=>          
-                                                 Not(()=> And(()=>    Sp() && Ticks4() ) )
-                                              && (            
-                                                             Spacechar()
-                                                          || And(()=>              
-                                                                           Newline()
-                                                                        && Not(()=> BlankLine() ) )) ) )
-                      && Sp()
-                      && Ticks4() )
-                  || And(()=>    
-                         Ticks5()
-                      && Sp()
-                      && PlusRepeat(()=>      
-                                    
-                                       PlusRepeat(()=>          
-                                              And(()=>            
-                                                             Not(()=> Char('`') )
-                                                          && Nonspacechar() ) )
-                                    || And(()=>          
-                                                 Not(()=> Ticks5() )
-                                              && PlusRepeat(()=> Char('`') ) )
-                                    || And(()=>          
-                                                 Not(()=> And(()=>    Sp() && Ticks5() ) )
-                                              && (            
-                                                             Spacechar()
-                                                          || And(()=>              
-                                                                           Newline()
-                                                                        && Not(()=> BlankLine() ) )) ) )
-                      && Sp()
-                      && Ticks5() ) ); return result;
+                And(()=>  
+                     Char('`','`','`')
+                  && Option(()=> And(()=>    CodeLanguage() && Newline() ) )
+                  && PlusRepeat(()=>    
+                      And(()=>    Not(()=> Char('`') ) && Any() ) )
+                  && Char('`','`','`') ) ); return result;
+		}
+        public bool InnerCode()    /*^^InnerCode: '`' (!'`' .)+ '`'  ;*/
+        {
+
+           var result= TreeNT((int)EMarkdown.InnerCode,()=>
+                And(()=>  
+                     Char('`')
+                  && PlusRepeat(()=>    
+                      And(()=>    Not(()=> Char('`') ) && Any() ) )
+                  && Char('`') ) ); return result;
 		}
         public bool RawHtml()    /*^^RawHtml :    (HtmlComment / HtmlBlockScript / HtmlTag) ;*/
         {
