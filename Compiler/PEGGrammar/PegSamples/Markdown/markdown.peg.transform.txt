@@ -322,8 +322,9 @@ InStyleTags :   StyleOpen (!StyleClose .)* StyleClose ;
                          )+ Endline? ;
             
 
-Inline :
+^^Inline :
 		Str
+		/ InnerLine
         / Endline
         / UlOrStarLine
         / Space
@@ -360,17 +361,18 @@ EscapedChar :   '\\' !Newline  [-\\`/*_{}[\]()#+.!><]   ;
 
 Entity :    ( HexEntity / DecEntity / CharEntity );
             
+^^InnerLine:  ' '? Newline !BlankLine !'>' !AtxStart
+                  !(Line (':'+ / '-'+) Newline) !Newline;
 
-Endline :   LineBreak / TerminalEndline / NormalEndline ;
+^^Endline :   LineBreak / TerminalEndline  ;
 
-NormalEndline :   Sp Newline !BlankLine !'>' !AtxStart
+^^NormalEndline :   Sp Newline !BlankLine !'>' !AtxStart
                   !(Line (':'+ / '-'+) Newline);
               
-
-TerminalEndline : Sp Newline Eof ;
+^^TerminalEndline : Sp Newline Eof ;
                   
 
-LineBreak : '  ' NormalEndline ;
+^^LineBreak : '  ' NormalEndline ;
             
 
 ^^Symbol :     SpecialChar  ;
@@ -491,6 +493,7 @@ References : StartList
 ^^RawHtml :    (HtmlComment / HtmlBlockScript / HtmlTag) ;
         
 ^^BlankLine :     Sp Newline;
+
 
 Quoted :        '\"' (!'\"' .)* '\"' / '\'' (!'\'' .)* '\'';
 ^^HtmlAttribute : (AlphanumericAscii / '-')+ Spnl ('=' Spnl (Quoted / (!'>' Nonspacechar)+))? Spnl ;

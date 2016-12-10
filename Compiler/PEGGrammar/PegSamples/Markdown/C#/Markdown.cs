@@ -1,4 +1,4 @@
-/* created on 10/12/2016 18:53:06 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 10/12/2016 19:11:05 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -49,28 +49,28 @@ namespace Markdown
                       HtmlBlockType= 135, StyleOpen= 136, StyleClose= 137, InStyleTags= 138, 
                       StyleBlock= 139, Inlines= 140, Inline= 141, Space= 142, Str= 143, 
                       StrChunk= 144, AposChunk= 145, EscapedChar= 146, Entity= 147, 
-                      Endline= 148, NormalEndline= 149, TerminalEndline= 150, LineBreak= 151, 
-                      Symbol= 152, UlOrStarLine= 153, StarLine= 154, UlLine= 155, Emph= 156, 
-                      Whitespace= 157, EmphStar= 158, EmphUl= 159, Strong= 160, StrongStar= 161, 
-                      StrongUl= 162, Strike= 163, Image= 164, Link= 165, ReferenceLink= 166, 
-                      ReferenceLinkDouble= 167, ReferenceLinkSingle= 168, ExplicitLink= 169, 
-                      Source= 170, SourceContents= 171, Title= 172, TitleSingle= 173, 
-                      TitleDouble= 174, AutoLink= 175, AutoLinkUrl= 176, AutoLinkEmail= 177, 
-                      Reference= 178, Label= 179, RefSrc= 180, RefTitle= 181, EmptyTitle= 182, 
-                      RefTitleSingle= 183, RefTitleDouble= 184, RefTitleParens= 185, 
-                      References= 186, CodeLanguage= 187, Code= 188, InnerCode= 189, 
-                      RawHtml= 190, BlankLine= 191, Quoted= 192, HtmlAttribute= 193, 
-                      HtmlComment= 194, HtmlTag= 195, Eof= 196, ExpectFileEnd= 197, 
-                      Spacechar= 198, Nonspacechar= 199, Newline= 200, Sp= 201, Spnl= 202, 
-                      SpecialChar= 203, NormalChar= 204, Alphanumeric= 205, AlphanumericAscii= 206, 
-                      Digit= 207, BOM= 208, HexEntity= 209, DecEntity= 210, CharEntity= 211, 
-                      NonindentSpace= 212, Indent= 213, IndentedLine= 214, OptionallyIndentedLine= 215, 
-                      StartList= 216, Line= 217, RawLine= 218, SkipBlock= 219, ExtendedSpecialChar= 220, 
-                      Smart= 221, Apostrophe= 222, Ellipsis= 223, Dash= 224, EnDash= 225, 
-                      EmDash= 226, SingleQuoteStart= 227, SingleQuoteEnd= 228, SingleQuoted= 229, 
-                      DoubleQuoteStart= 230, DoubleQuoteEnd= 231, DoubleQuoted= 232, 
-                      NoteReference= 233, RawNoteReference= 234, Note= 235, InlineNote= 236, 
-                      Notes= 237, RawNoteBlock= 238};
+                      InnerLine= 148, Endline= 149, NormalEndline= 150, TerminalEndline= 151, 
+                      LineBreak= 152, Symbol= 153, UlOrStarLine= 154, StarLine= 155, 
+                      UlLine= 156, Emph= 157, Whitespace= 158, EmphStar= 159, EmphUl= 160, 
+                      Strong= 161, StrongStar= 162, StrongUl= 163, Strike= 164, Image= 165, 
+                      Link= 166, ReferenceLink= 167, ReferenceLinkDouble= 168, ReferenceLinkSingle= 169, 
+                      ExplicitLink= 170, Source= 171, SourceContents= 172, Title= 173, 
+                      TitleSingle= 174, TitleDouble= 175, AutoLink= 176, AutoLinkUrl= 177, 
+                      AutoLinkEmail= 178, Reference= 179, Label= 180, RefSrc= 181, 
+                      RefTitle= 182, EmptyTitle= 183, RefTitleSingle= 184, RefTitleDouble= 185, 
+                      RefTitleParens= 186, References= 187, CodeLanguage= 188, Code= 189, 
+                      InnerCode= 190, RawHtml= 191, BlankLine= 192, Quoted= 193, HtmlAttribute= 194, 
+                      HtmlComment= 195, HtmlTag= 196, Eof= 197, ExpectFileEnd= 198, 
+                      Spacechar= 199, Nonspacechar= 200, Newline= 201, Sp= 202, Spnl= 203, 
+                      SpecialChar= 204, NormalChar= 205, Alphanumeric= 206, AlphanumericAscii= 207, 
+                      Digit= 208, BOM= 209, HexEntity= 210, DecEntity= 211, CharEntity= 212, 
+                      NonindentSpace= 213, Indent= 214, IndentedLine= 215, OptionallyIndentedLine= 216, 
+                      StartList= 217, Line= 218, RawLine= 219, SkipBlock= 220, ExtendedSpecialChar= 221, 
+                      Smart= 222, Apostrophe= 223, Ellipsis= 224, Dash= 225, EnDash= 226, 
+                      EmDash= 227, SingleQuoteStart= 228, SingleQuoteEnd= 229, SingleQuoted= 230, 
+                      DoubleQuoteStart= 231, DoubleQuoteEnd= 232, DoubleQuoted= 233, 
+                      NoteReference= 234, RawNoteReference= 235, Note= 236, InlineNote= 237, 
+                      Notes= 238, RawNoteBlock= 239};
       public class Markdown : PegCharParser 
       {
         
@@ -1874,8 +1874,9 @@ namespace Markdown
                       And(()=>    Not(()=> Endline() ) && Inline() ) )
                   && Option(()=> Endline() ) ) ); return result;
 		}
-        public bool Inline()    /*Inline :
+        public bool Inline()    /*^^Inline :
 		Str
+		/ InnerLine
         / Endline
         / UlOrStarLine
         / Space
@@ -1895,8 +1896,10 @@ namespace Markdown
 		;*/
         {
 
-           var result=  
+           var result= TreeNT((int)EMarkdown.Inline,()=>
+                  
                      Str()
+                  || InnerLine()
                   || Endline()
                   || UlOrStarLine()
                   || Space()
@@ -1912,7 +1915,7 @@ namespace Markdown
                   || Entity()
                   || EscapedChar()
                   || Smart()
-                  || Symbol(); return result;
+                  || Symbol() ); return result;
 		}
         public bool Space()    /*Space : Spacechar+ ;*/
         {
@@ -1961,16 +1964,38 @@ namespace Markdown
 
            var result=    HexEntity() || DecEntity() || CharEntity(); return result;
 		}
-        public bool Endline()    /*Endline :   LineBreak / TerminalEndline / NormalEndline ;*/
+        public bool InnerLine()    /*^^InnerLine:  ' '? Newline !BlankLine !'>' !AtxStart
+                  !(Line (':'+ / '-'+) Newline) !Newline;*/
         {
 
-           var result=    LineBreak() || TerminalEndline() || NormalEndline(); return result;
+           var result= TreeNT((int)EMarkdown.InnerLine,()=>
+                And(()=>  
+                     Option(()=> Char(' ') )
+                  && Newline()
+                  && Not(()=> BlankLine() )
+                  && Not(()=> Char('>') )
+                  && Not(()=> AtxStart() )
+                  && Not(()=>    
+                      And(()=>      
+                               Line()
+                            && (        
+                                       PlusRepeat(()=> Char(':') )
+                                    || PlusRepeat(()=> Char('-') ))
+                            && Newline() ) )
+                  && Not(()=> Newline() ) ) ); return result;
 		}
-        public bool NormalEndline()    /*NormalEndline :   Sp Newline !BlankLine !'>' !AtxStart
+        public bool Endline()    /*^^Endline :   LineBreak / TerminalEndline  ;*/
+        {
+
+           var result= TreeNT((int)EMarkdown.Endline,()=>
+                    LineBreak() || TerminalEndline() ); return result;
+		}
+        public bool NormalEndline()    /*^^NormalEndline :   Sp Newline !BlankLine !'>' !AtxStart
                   !(Line (':'+ / '-'+) Newline);*/
         {
 
-           var result=And(()=>  
+           var result= TreeNT((int)EMarkdown.NormalEndline,()=>
+                And(()=>  
                      Sp()
                   && Newline()
                   && Not(()=> BlankLine() )
@@ -1982,17 +2007,19 @@ namespace Markdown
                             && (        
                                        PlusRepeat(()=> Char(':') )
                                     || PlusRepeat(()=> Char('-') ))
-                            && Newline() ) ) ); return result;
+                            && Newline() ) ) ) ); return result;
 		}
-        public bool TerminalEndline()    /*TerminalEndline : Sp Newline Eof ;*/
+        public bool TerminalEndline()    /*^^TerminalEndline : Sp Newline Eof ;*/
         {
 
-           var result=And(()=>    Sp() && Newline() && Eof() ); return result;
+           var result= TreeNT((int)EMarkdown.TerminalEndline,()=>
+                And(()=>    Sp() && Newline() && Eof() ) ); return result;
 		}
-        public bool LineBreak()    /*LineBreak : '  ' NormalEndline ;*/
+        public bool LineBreak()    /*^^LineBreak : '  ' NormalEndline ;*/
         {
 
-           var result=And(()=>    Char(' ',' ') && NormalEndline() ); return result;
+           var result= TreeNT((int)EMarkdown.LineBreak,()=>
+                And(()=>    Char(' ',' ') && NormalEndline() ) ); return result;
 		}
         public bool Symbol()    /*^^Symbol :     SpecialChar  ;
             
