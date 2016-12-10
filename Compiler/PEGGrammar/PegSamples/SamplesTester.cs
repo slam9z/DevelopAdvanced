@@ -8,6 +8,8 @@ using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Peg.Base;
+using Peg.Generator;
+
 namespace Peg.Samples
 {
     public enum ESampleId
@@ -18,51 +20,9 @@ namespace Peg.Samples
         eParserGenerator, eKernighanAndRitchieC, eCSharp3, eCSharp3Fast, ePython_2_5_2
         , WikiSample, Markdown, Html
     };
-    public struct ParserPostProcessParams
-    {
-        public ParserPostProcessParams(string outputDirectory, string sourceFileTitle, string grammarFileName, PegNode root, string src, TextWriter errOut)
-        {
-            outputDirectory_ = outputDirectory;
-            sourceFileTitle_ = sourceFileTitle;
-            grammarFileName_ = grammarFileName;
-            root_ = root;
-            src_ = src;
-            byteSrc_ = null;
-            errOut_ = errOut;
-            maxLineLength_ = 60;
-            spacesPerTap_ = 4;
-        }
-        public ParserPostProcessParams(string outputDirectory, string sourceFileTitle, string grammarFileName, PegNode root, byte[] byteSrc, TextWriter errOut)
-        {
-            outputDirectory_ = outputDirectory;
-            sourceFileTitle_ = sourceFileTitle;
-            grammarFileName_ = grammarFileName;
-            root_ = root;
-            src_ = null;
-            byteSrc_ = byteSrc;
-            errOut_ = errOut;
-            maxLineLength_ = 60;
-            spacesPerTap_ = 4;
-        }
+  
 
-        public readonly string outputDirectory_;
-        public readonly string sourceFileTitle_;
-        public readonly string grammarFileName_;
-        public readonly PegNode root_;
-        public readonly string src_;
-        public readonly byte[] byteSrc_;
-        public readonly TextWriter errOut_;
-        public readonly int maxLineLength_;
-        public readonly int spacesPerTap_;
-    }
 
-    public interface IParserPostProcessor
-    {
-        string ShortDesc { get; }
-        string ShortestDesc { get; }
-        string DetailDesc { get; }
-        void Postprocess(ParserPostProcessParams postProcessorParams);
-    }
     public struct SampleInfo
     {
         #region Constructors

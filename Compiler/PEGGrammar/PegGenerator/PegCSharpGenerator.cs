@@ -13,9 +13,8 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-using Peg.Samples;
 
-namespace Peg.CSharp
+namespace Peg.Generator
 {
     enum ECSharpKind{
 			Project,

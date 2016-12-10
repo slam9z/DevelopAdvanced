@@ -4,9 +4,10 @@ using System.IO;
 using System.Diagnostics;
 using System.Text;
 
-namespace Peg.Samples
-{
-    enum EPegGrammar
+namespace Peg.Generator
+{ 
+
+    public enum EPegGrammar
     {
         peg_module = 1, peg_head = 2, peg_tail = 3, checked_eos = 4, peg_specification = 5,
         enumeration_definitions = 6, attribute = 7, attribute_value = 8, attribute_key = 9, checked_peg_rules = 10,

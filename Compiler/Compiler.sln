@@ -39,6 +39,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 		PEGGrammar\Documents\PEG_GrammerExplorer.jpg = PEGGrammar\Documents\PEG_GrammerExplorer.jpg
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Peg Generator", "PEGGrammar\PegGenerator\Peg Generator.csproj", "{C21214B0-420D-44DF-8664-9522D8CB0F34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -149,6 +151,14 @@ Global
 		{8F2D30F1-606A-46DD-A106-105D2893EBC3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F2D30F1-606A-46DD-A106-105D2893EBC3}.Release|x86.ActiveCfg = Release|Any CPU
 		{8F2D30F1-606A-46DD-A106-105D2893EBC3}.Release|x86.Build.0 = Release|Any CPU
+		{C21214B0-420D-44DF-8664-9522D8CB0F34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C21214B0-420D-44DF-8664-9522D8CB0F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C21214B0-420D-44DF-8664-9522D8CB0F34}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C21214B0-420D-44DF-8664-9522D8CB0F34}.Debug|x86.Build.0 = Debug|Any CPU
+		{C21214B0-420D-44DF-8664-9522D8CB0F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C21214B0-420D-44DF-8664-9522D8CB0F34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C21214B0-420D-44DF-8664-9522D8CB0F34}.Release|x86.ActiveCfg = Release|Any CPU
+		{C21214B0-420D-44DF-8664-9522D8CB0F34}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -162,5 +172,6 @@ Global
 		{C1DDE212-68D9-4CD2-9B44-FDE1D44AFD26} = {B8120F05-CC9A-415E-B59C-5968768A731D}
 		{8F2D30F1-606A-46DD-A106-105D2893EBC3} = {B8120F05-CC9A-415E-B59C-5968768A731D}
 		{0FD52E54-C0F9-464C-8B52-584E3B0AF303} = {B8120F05-CC9A-415E-B59C-5968768A731D}
+		{C21214B0-420D-44DF-8664-9522D8CB0F34} = {B8120F05-CC9A-415E-B59C-5968768A731D}
 	EndGlobalSection
 EndGlobal

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Peg.Samples;
 using System.IO;
 using Peg.Base;
+using Peg.Generator;
 
 namespace Markdown.Tests
 {

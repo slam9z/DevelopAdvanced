@@ -12,6 +12,7 @@ using Peg.Samples;
 using System.IO;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using Peg.Generator;
 
 namespace PEG_Explorer
 {

@@ -12,7 +12,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Peg.Samples
+namespace Peg.Generator
 {
     enum EPegGeneratorNodes
     {
@@ -20,7 +20,7 @@ namespace Peg.Samples
         IntoVarWithContext = 500, SemanticFunctionWithContext = 501,
         GenericCall = 600
     };
-    class PUtils
+    public class PUtils
     {
         public static void Trim(StringBuilder s)
         {
@@ -1272,7 +1272,7 @@ namespace Peg.Samples
             {
                 return;
             }
-            Peg.CSharp.PegCSharpGenerator cSharpGenerator = new Peg.CSharp.PegCSharpGenerator(context);
+            PegCSharpGenerator cSharpGenerator = new PegCSharpGenerator(context);
         }
         #endregion IParserPostProcessor functions
     }

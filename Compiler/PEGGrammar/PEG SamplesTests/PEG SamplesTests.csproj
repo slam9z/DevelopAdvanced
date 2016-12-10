@@ -63,6 +63,10 @@
       <Project>{9913580d-1543-40d5-b463-14c95bf3120c}</Project>
       <Name>PEG Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PegGenerator\Peg Generator.csproj">
+      <Project>{c21214b0-420d-44df-8664-9522d8cb0f34}</Project>
+      <Name>Peg Generator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PegSamples\PEG Samples.csproj">
       <Project>{FDED1663-CDEA-44B1-8589-8338D6B68656}</Project>
       <Name>PEG Samples</Name>

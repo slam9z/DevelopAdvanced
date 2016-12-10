@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Peg.Samples;
+using Peg.Generator;
 using Peg.Base;
 using System.IO;
 using System.Diagnostics;

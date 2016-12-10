@@ -4,6 +4,7 @@ using Peg.Base;
 using System.Diagnostics;
 using System;
 using System.IO;
+using Peg.Generator;
 
 namespace calc0_tree
 {
