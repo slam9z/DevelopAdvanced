@@ -103,7 +103,7 @@
             !ListContinuationBlock ;
 
 ^^ListBlock : StartList
-            !BlankLine Line 
+            !BlankLine Inline 
             ( ListBlockLine  )*;
             
 

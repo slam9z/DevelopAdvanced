@@ -1,4 +1,4 @@
-/* created on 08/12/2016 21:57:04 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 10/12/2016 15:09:45 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -433,7 +433,7 @@ namespace Markdown
                   && Not(()=> ListContinuationBlock() ) ) ); return result;
 		}
         public bool ListBlock()    /*^^ListBlock : StartList
-            !BlankLine Line 
+            !BlankLine Inline 
             ( ListBlockLine  )*;*/
         {
 
@@ -441,7 +441,7 @@ namespace Markdown
                 And(()=>  
                      StartList()
                   && Not(()=> BlankLine() )
-                  && Line()
+                  && Inline()
                   && OptRepeat(()=> ListBlockLine() ) ) ); return result;
 		}
         public bool ListContinuationBlock()    /*^^ListContinuationBlock : StartList
