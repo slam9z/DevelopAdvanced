@@ -1,4 +1,4 @@
-/* created on 10/12/2016 16:39:52 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 10/12/2016 17:26:51 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -7,71 +7,70 @@ using System.Text;
 namespace Markdown
 {
       
-      enum EMarkdown{Doc= 1, Block= 2, Para= 3, Plain= 4, AtxInline= 5, AtxStart= 6, 
-                      AtxHeading= 7, SetextHeading= 8, SetextBottom1= 9, SetextBottom2= 10, 
-                      SetextHeading1= 11, SetextHeading2= 12, Heading= 13, BlockQuote= 14, 
-                      BlockQuoteRaw= 15, NonblankIndentedLine= 16, VerbatimChunk= 17, 
-                      Verbatim= 18, HorizontalRule= 19, Bullet= 20, BulletList= 21, 
-                      ListTight= 22, ListLoose= 23, ListItem= 24, ListItemTight= 25, 
-                      ListBlock= 26, ListContinuationBlock= 27, Enumerator= 28, OrderedList= 29, 
-                      ListBlockLine= 30, HtmlBlockOpenAddress= 31, HtmlBlockCloseAddress= 32, 
-                      HtmlBlockAddress= 33, HtmlBlockOpenBlockquote= 34, HtmlBlockCloseBlockquote= 35, 
-                      HtmlBlockBlockquote= 36, HtmlBlockOpenCenter= 37, HtmlBlockCloseCenter= 38, 
-                      HtmlBlockCenter= 39, HtmlBlockOpenDir= 40, HtmlBlockCloseDir= 41, 
-                      HtmlBlockDir= 42, HtmlBlockOpenDiv= 43, HtmlBlockCloseDiv= 44, 
-                      HtmlBlockDiv= 45, HtmlBlockOpenDl= 46, HtmlBlockCloseDl= 47, 
-                      HtmlBlockDl= 48, HtmlBlockOpenFieldset= 49, HtmlBlockCloseFieldset= 50, 
-                      HtmlBlockFieldset= 51, HtmlBlockOpenForm= 52, HtmlBlockCloseForm= 53, 
-                      HtmlBlockForm= 54, HtmlBlockOpenH1= 55, HtmlBlockCloseH1= 56, 
-                      HtmlBlockH1= 57, HtmlBlockOpenH2= 58, HtmlBlockCloseH2= 59, HtmlBlockH2= 60, 
-                      HtmlBlockOpenH3= 61, HtmlBlockCloseH3= 62, HtmlBlockH3= 63, HtmlBlockOpenH4= 64, 
-                      HtmlBlockCloseH4= 65, HtmlBlockH4= 66, HtmlBlockOpenH5= 67, HtmlBlockCloseH5= 68, 
-                      HtmlBlockH5= 69, HtmlBlockOpenH6= 70, HtmlBlockCloseH6= 71, HtmlBlockH6= 72, 
-                      HtmlBlockOpenMenu= 73, HtmlBlockCloseMenu= 74, HtmlBlockMenu= 75, 
-                      HtmlBlockOpenNoframes= 76, HtmlBlockCloseNoframes= 77, HtmlBlockNoframes= 78, 
-                      HtmlBlockOpenNoscript= 79, HtmlBlockCloseNoscript= 80, HtmlBlockNoscript= 81, 
-                      HtmlBlockOpenOl= 82, HtmlBlockCloseOl= 83, HtmlBlockOl= 84, HtmlBlockOpenP= 85, 
-                      HtmlBlockCloseP= 86, HtmlBlockP= 87, HtmlBlockOpenPre= 88, HtmlBlockClosePre= 89, 
-                      HtmlBlockPre= 90, HtmlBlockOpenTable= 91, HtmlBlockCloseTable= 92, 
-                      HtmlBlockTable= 93, HtmlBlockOpenUl= 94, HtmlBlockCloseUl= 95, 
-                      HtmlBlockUl= 96, HtmlBlockOpenDd= 97, HtmlBlockCloseDd= 98, HtmlBlockDd= 99, 
-                      HtmlBlockOpenDt= 100, HtmlBlockCloseDt= 101, HtmlBlockDt= 102, 
-                      HtmlBlockOpenFrameset= 103, HtmlBlockCloseFrameset= 104, HtmlBlockFrameset= 105, 
-                      HtmlBlockOpenLi= 106, HtmlBlockCloseLi= 107, HtmlBlockLi= 108, 
-                      HtmlBlockOpenTbody= 109, HtmlBlockCloseTbody= 110, HtmlBlockTbody= 111, 
-                      HtmlBlockOpenTd= 112, HtmlBlockCloseTd= 113, HtmlBlockTd= 114, 
-                      HtmlBlockOpenTfoot= 115, HtmlBlockCloseTfoot= 116, HtmlBlockTfoot= 117, 
-                      HtmlBlockOpenTh= 118, HtmlBlockCloseTh= 119, HtmlBlockTh= 120, 
-                      HtmlBlockOpenThead= 121, HtmlBlockCloseThead= 122, HtmlBlockThead= 123, 
-                      HtmlBlockOpenTr= 124, HtmlBlockCloseTr= 125, HtmlBlockTr= 126, 
-                      HtmlBlockOpenScript= 127, HtmlBlockCloseScript= 128, HtmlBlockScript= 129, 
-                      HtmlBlockOpenHead= 130, HtmlBlockCloseHead= 131, HtmlBlockHead= 132, 
-                      HtmlBlockInTags= 133, HtmlBlock= 134, HtmlBlockSelfClosing= 135, 
-                      HtmlBlockType= 136, StyleOpen= 137, StyleClose= 138, InStyleTags= 139, 
-                      StyleBlock= 140, Inlines= 141, Inline= 142, Space= 143, Str= 144, 
-                      StrChunk= 145, AposChunk= 146, EscapedChar= 147, Entity= 148, 
-                      Endline= 149, NormalEndline= 150, TerminalEndline= 151, LineBreak= 152, 
-                      Symbol= 153, UlOrStarLine= 154, StarLine= 155, UlLine= 156, Emph= 157, 
-                      Whitespace= 158, EmphStar= 159, EmphUl= 160, Strong= 161, StrongStar= 162, 
-                      StrongUl= 163, Strike= 164, Image= 165, Link= 166, ReferenceLink= 167, 
-                      ReferenceLinkDouble= 168, ReferenceLinkSingle= 169, ExplicitLink= 170, 
-                      Source= 171, SourceContents= 172, Title= 173, TitleSingle= 174, 
-                      TitleDouble= 175, AutoLink= 176, AutoLinkUrl= 177, AutoLinkEmail= 178, 
-                      Reference= 179, Label= 180, RefSrc= 181, RefTitle= 182, EmptyTitle= 183, 
-                      RefTitleSingle= 184, RefTitleDouble= 185, RefTitleParens= 186, 
-                      References= 187, Ticks1= 188, Ticks2= 189, Ticks3= 190, Ticks4= 191, 
-                      Ticks5= 192, Code= 193, RawHtml= 194, BlankLine= 195, Quoted= 196, 
-                      HtmlAttribute= 197, HtmlComment= 198, HtmlTag= 199, Eof= 200, 
-                      Spacechar= 201, Nonspacechar= 202, Newline= 203, Sp= 204, Spnl= 205, 
-                      SpecialChar= 206, NormalChar= 207, Alphanumeric= 208, AlphanumericAscii= 209, 
-                      Digit= 210, BOM= 211, HexEntity= 212, DecEntity= 213, CharEntity= 214, 
-                      NonindentSpace= 215, Indent= 216, IndentedLine= 217, OptionallyIndentedLine= 218, 
-                      StartList= 219, Line= 220, RawLine= 221, SkipBlock= 222, ExtendedSpecialChar= 223, 
-                      Smart= 224, Apostrophe= 225, Ellipsis= 226, Dash= 227, EnDash= 228, 
-                      EmDash= 229, SingleQuoteStart= 230, SingleQuoteEnd= 231, SingleQuoted= 232, 
-                      DoubleQuoteStart= 233, DoubleQuoteEnd= 234, DoubleQuoted= 235, 
-                      NoteReference= 236, RawNoteReference= 237, Note= 238, InlineNote= 239, 
-                      Notes= 240, RawNoteBlock= 241};
+      enum EMarkdown{Doc= 1, Block= 2, Plain= 3, AtxInline= 4, AtxStart= 5, AtxHeading= 6, 
+                      SetextHeading= 7, SetextBottom1= 8, SetextBottom2= 9, SetextHeading1= 10, 
+                      SetextHeading2= 11, Heading= 12, BlockQuote= 13, BlockQuoteRaw= 14, 
+                      NonblankIndentedLine= 15, VerbatimChunk= 16, Verbatim= 17, HorizontalRule= 18, 
+                      Bullet= 19, BulletList= 20, ListTight= 21, ListLoose= 22, ListItem= 23, 
+                      ListItemTight= 24, ListBlock= 25, ListContinuationBlock= 26, 
+                      Enumerator= 27, OrderedList= 28, ListBlockLine= 29, HtmlBlockOpenAddress= 30, 
+                      HtmlBlockCloseAddress= 31, HtmlBlockAddress= 32, HtmlBlockOpenBlockquote= 33, 
+                      HtmlBlockCloseBlockquote= 34, HtmlBlockBlockquote= 35, HtmlBlockOpenCenter= 36, 
+                      HtmlBlockCloseCenter= 37, HtmlBlockCenter= 38, HtmlBlockOpenDir= 39, 
+                      HtmlBlockCloseDir= 40, HtmlBlockDir= 41, HtmlBlockOpenDiv= 42, 
+                      HtmlBlockCloseDiv= 43, HtmlBlockDiv= 44, HtmlBlockOpenDl= 45, 
+                      HtmlBlockCloseDl= 46, HtmlBlockDl= 47, HtmlBlockOpenFieldset= 48, 
+                      HtmlBlockCloseFieldset= 49, HtmlBlockFieldset= 50, HtmlBlockOpenForm= 51, 
+                      HtmlBlockCloseForm= 52, HtmlBlockForm= 53, HtmlBlockOpenH1= 54, 
+                      HtmlBlockCloseH1= 55, HtmlBlockH1= 56, HtmlBlockOpenH2= 57, HtmlBlockCloseH2= 58, 
+                      HtmlBlockH2= 59, HtmlBlockOpenH3= 60, HtmlBlockCloseH3= 61, HtmlBlockH3= 62, 
+                      HtmlBlockOpenH4= 63, HtmlBlockCloseH4= 64, HtmlBlockH4= 65, HtmlBlockOpenH5= 66, 
+                      HtmlBlockCloseH5= 67, HtmlBlockH5= 68, HtmlBlockOpenH6= 69, HtmlBlockCloseH6= 70, 
+                      HtmlBlockH6= 71, HtmlBlockOpenMenu= 72, HtmlBlockCloseMenu= 73, 
+                      HtmlBlockMenu= 74, HtmlBlockOpenNoframes= 75, HtmlBlockCloseNoframes= 76, 
+                      HtmlBlockNoframes= 77, HtmlBlockOpenNoscript= 78, HtmlBlockCloseNoscript= 79, 
+                      HtmlBlockNoscript= 80, HtmlBlockOpenOl= 81, HtmlBlockCloseOl= 82, 
+                      HtmlBlockOl= 83, HtmlBlockOpenP= 84, HtmlBlockCloseP= 85, HtmlBlockP= 86, 
+                      HtmlBlockOpenPre= 87, HtmlBlockClosePre= 88, HtmlBlockPre= 89, 
+                      HtmlBlockOpenTable= 90, HtmlBlockCloseTable= 91, HtmlBlockTable= 92, 
+                      HtmlBlockOpenUl= 93, HtmlBlockCloseUl= 94, HtmlBlockUl= 95, HtmlBlockOpenDd= 96, 
+                      HtmlBlockCloseDd= 97, HtmlBlockDd= 98, HtmlBlockOpenDt= 99, HtmlBlockCloseDt= 100, 
+                      HtmlBlockDt= 101, HtmlBlockOpenFrameset= 102, HtmlBlockCloseFrameset= 103, 
+                      HtmlBlockFrameset= 104, HtmlBlockOpenLi= 105, HtmlBlockCloseLi= 106, 
+                      HtmlBlockLi= 107, HtmlBlockOpenTbody= 108, HtmlBlockCloseTbody= 109, 
+                      HtmlBlockTbody= 110, HtmlBlockOpenTd= 111, HtmlBlockCloseTd= 112, 
+                      HtmlBlockTd= 113, HtmlBlockOpenTfoot= 114, HtmlBlockCloseTfoot= 115, 
+                      HtmlBlockTfoot= 116, HtmlBlockOpenTh= 117, HtmlBlockCloseTh= 118, 
+                      HtmlBlockTh= 119, HtmlBlockOpenThead= 120, HtmlBlockCloseThead= 121, 
+                      HtmlBlockThead= 122, HtmlBlockOpenTr= 123, HtmlBlockCloseTr= 124, 
+                      HtmlBlockTr= 125, HtmlBlockOpenScript= 126, HtmlBlockCloseScript= 127, 
+                      HtmlBlockScript= 128, HtmlBlockOpenHead= 129, HtmlBlockCloseHead= 130, 
+                      HtmlBlockHead= 131, HtmlBlockInTags= 132, HtmlBlock= 133, HtmlBlockSelfClosing= 134, 
+                      HtmlBlockType= 135, StyleOpen= 136, StyleClose= 137, InStyleTags= 138, 
+                      StyleBlock= 139, Inlines= 140, Inline= 141, Space= 142, Str= 143, 
+                      StrChunk= 144, AposChunk= 145, EscapedChar= 146, Entity= 147, 
+                      Endline= 148, NormalEndline= 149, TerminalEndline= 150, LineBreak= 151, 
+                      Symbol= 152, UlOrStarLine= 153, StarLine= 154, UlLine= 155, Emph= 156, 
+                      Whitespace= 157, EmphStar= 158, EmphUl= 159, Strong= 160, StrongStar= 161, 
+                      StrongUl= 162, Strike= 163, Image= 164, Link= 165, ReferenceLink= 166, 
+                      ReferenceLinkDouble= 167, ReferenceLinkSingle= 168, ExplicitLink= 169, 
+                      Source= 170, SourceContents= 171, Title= 172, TitleSingle= 173, 
+                      TitleDouble= 174, AutoLink= 175, AutoLinkUrl= 176, AutoLinkEmail= 177, 
+                      Reference= 178, Label= 179, RefSrc= 180, RefTitle= 181, EmptyTitle= 182, 
+                      RefTitleSingle= 183, RefTitleDouble= 184, RefTitleParens= 185, 
+                      References= 186, Ticks1= 187, Ticks2= 188, Ticks3= 189, Ticks4= 190, 
+                      Ticks5= 191, Code= 192, RawHtml= 193, BlankLine= 194, Quoted= 195, 
+                      HtmlAttribute= 196, HtmlComment= 197, HtmlTag= 198, Eof= 199, 
+                      Spacechar= 200, Nonspacechar= 201, Newline= 202, Sp= 203, Spnl= 204, 
+                      SpecialChar= 205, NormalChar= 206, Alphanumeric= 207, AlphanumericAscii= 208, 
+                      Digit= 209, BOM= 210, HexEntity= 211, DecEntity= 212, CharEntity= 213, 
+                      NonindentSpace= 214, Indent= 215, IndentedLine= 216, OptionallyIndentedLine= 217, 
+                      StartList= 218, Line= 219, RawLine= 220, SkipBlock= 221, ExtendedSpecialChar= 222, 
+                      Smart= 223, Apostrophe= 224, Ellipsis= 225, Dash= 226, EnDash= 227, 
+                      EmDash= 228, SingleQuoteStart= 229, SingleQuoteEnd= 230, SingleQuoted= 231, 
+                      DoubleQuoteStart= 232, DoubleQuoteEnd= 233, DoubleQuoted= 234, 
+                      NoteReference= 235, RawNoteReference= 236, Note= 237, InlineNote= 238, 
+                      Notes= 239, RawNoteBlock= 240};
       public class Markdown : PegCharParser 
       {
         
@@ -134,8 +133,12 @@ namespace Markdown
             / BulletList
             / HtmlBlock
             / StyleBlock
-            / Para
-            / Plain );*/
+            / Plain );
+
+//^^Para :      NonindentSpace Inlines BlankLine+;
+            
+//Inlines 会吞并所有的字符啊！肯定哪里错了
+//Plain :     Inlines;*/
         {
 
            var result= TreeNT((int)EMarkdown.Block,()=>
@@ -152,17 +155,7 @@ namespace Markdown
                       || BulletList()
                       || HtmlBlock()
                       || StyleBlock()
-                      || Para()
                       || Plain()) ) ); return result;
-		}
-        public bool Para()    /*^^Para :      NonindentSpace Inlines BlankLine+;*/
-        {
-
-           var result= TreeNT((int)EMarkdown.Para,()=>
-                And(()=>  
-                     NonindentSpace()
-                  && Inlines()
-                  && PlusRepeat(()=> BlankLine() ) ) ); return result;
 		}
         public bool Plain()    /*^^Plain :     Inlines;*/
         {
@@ -1854,7 +1847,9 @@ namespace Markdown
                   && StyleClose() ); return result;
 		}
         public bool StyleBlock()    /*^^StyleBlock :    InStyleTags 
-                BlankLine*  ;*/
+                BlankLine*  ;
+
+// 表示一行*/
         {
 
            var result= TreeNT((int)EMarkdown.StyleBlock,()=>
@@ -1863,19 +1858,17 @@ namespace Markdown
                   && OptRepeat(()=> BlankLine() ) ) ); return result;
 		}
         public bool Inlines()    /*^^Inlines  :  StartList ( !Endline Inline 
-                        / Endline &Inline  )+ Endline? ;*/
+                         )+ Endline? ;*/
         {
 
            var result= TreeNT((int)EMarkdown.Inlines,()=>
                 And(()=>  
                      StartList()
                   && PlusRepeat(()=>    
-                            
-                               And(()=>    Not(()=> Endline() ) && Inline() )
-                            || And(()=>    Endline() && Peek(()=> Inline() ) ) )
+                      And(()=>    Not(()=> Endline() ) && Inline() ) )
                   && Option(()=> Endline() ) ) ); return result;
 		}
-        public bool Inline()    /*^^Inline :
+        public bool Inline()    /*Inline :
 		Str
         / Endline
         / UlOrStarLine
@@ -1896,8 +1889,7 @@ namespace Markdown
 		;*/
         {
 
-           var result= TreeNT((int)EMarkdown.Inline,()=>
-                  
+           var result=  
                      Str()
                   || Endline()
                   || UlOrStarLine()
@@ -1914,7 +1906,7 @@ namespace Markdown
                   || Entity()
                   || EscapedChar()
                   || Smart()
-                  || Symbol() ); return result;
+                  || Symbol(); return result;
 		}
         public bool Space()    /*Space : Spacechar+ ;*/
         {
@@ -2627,11 +2619,10 @@ namespace Markdown
                      Sp()
                   && Option(()=> And(()=>    Newline() && Sp() ) ) ); return result;
 		}
-        public bool SpecialChar()    /*^^SpecialChar :   '~' / '*' / '_' / '`' / '&' / '[' / ']' / '(' / ')' / '<' / '!' / '#' / '\\' / '\'' / '\"' / '='/ExtendedSpecialChar;*/
+        public bool SpecialChar()    /*SpecialChar :   '~' / '*' / '_' / '`' / '&' / '[' / ']' / '(' / ')' / '<' / '!' / '#' / '\\' / '\'' / '\"' / '='/ExtendedSpecialChar;*/
         {
 
-           var result= TreeNT((int)EMarkdown.SpecialChar,()=>
-                  
+           var result=  
                      Char('~')
                   || Char('*')
                   || Char('_')
@@ -2648,15 +2639,14 @@ namespace Markdown
                   || Char('\'')
                   || Char('\"')
                   || Char('=')
-                  || ExtendedSpecialChar() ); return result;
+                  || ExtendedSpecialChar(); return result;
 		}
-        public bool NormalChar()    /*^^NormalChar :    !( SpecialChar / Spacechar / Newline ) .;*/
+        public bool NormalChar()    /*NormalChar :    !( SpecialChar / Spacechar / Newline ) .;*/
         {
 
-           var result= TreeNT((int)EMarkdown.NormalChar,()=>
-                And(()=>  
+           var result=And(()=>  
                      Not(()=>     SpecialChar() || Spacechar() || Newline() )
-                  && Any() ) ); return result;
+                  && Any() ); return result;
 		}
         public bool Alphanumeric()    /*Alphanumeric : [0-9A-Za-z]  ;*/
         {
