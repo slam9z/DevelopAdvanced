@@ -1,4 +1,4 @@
-/* created on 10/12/2016 15:09:45 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 10/12/2016 16:06:09 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -1996,14 +1996,15 @@ namespace Markdown
 
            var result=And(()=>    Char(' ',' ') && NormalEndline() ); return result;
 		}
-        public bool Symbol()    /*Symbol :     SpecialChar  ;
+        public bool Symbol()    /*^^Symbol :     SpecialChar  ;
             
 
 // This keeps the parser from getting bogged down on long strings of '*' or '_',
 // or strings of '*' or '_' with space on each side:*/
         {
 
-           var result=SpecialChar(); return result;
+           var result= TreeNT((int)EMarkdown.Symbol,()=>
+                SpecialChar() ); return result;
 		}
         public bool UlOrStarLine()    /*UlOrStarLine :  (UlLine / StarLine)  ;*/
         {
@@ -2143,10 +2144,11 @@ namespace Markdown
            var result= TreeNT((int)EMarkdown.Link,()=>
                     ExplicitLink() || ReferenceLink() || AutoLink() ); return result;
 		}
-        public bool ReferenceLink()    /*ReferenceLink : ReferenceLinkDouble / ReferenceLinkSingle;*/
+        public bool ReferenceLink()    /*^^ReferenceLink : ReferenceLinkDouble / ReferenceLinkSingle;*/
         {
 
-           var result=    ReferenceLinkDouble() || ReferenceLinkSingle(); return result;
+           var result= TreeNT((int)EMarkdown.ReferenceLink,()=>
+                    ReferenceLinkDouble() || ReferenceLinkSingle() ); return result;
 		}
         public bool ReferenceLinkDouble()    /*ReferenceLinkDouble :  Label  Spnl  !'[]'  Label;*/
         {
@@ -2164,18 +2166,18 @@ namespace Markdown
                      Label()
                   && Option(()=> And(()=>    Spnl() && Char('[',']') ) ) ); return result;
 		}
-        public bool ExplicitLink()    /*ExplicitLink :  Label '(' Sp Source Spnl Title Sp ')';*/
+        public bool ExplicitLink()    /*^^ExplicitLink :  Label '(' Sp Source Spnl  Sp ')';*/
         {
 
-           var result=And(()=>  
+           var result= TreeNT((int)EMarkdown.ExplicitLink,()=>
+                And(()=>  
                      Label()
                   && Char('(')
                   && Sp()
                   && Source()
                   && Spnl()
-                  && Title()
                   && Sp()
-                  && Char(')') ); return result;
+                  && Char(')') ) ); return result;
 		}
         public bool Source()    /*^^Source  : ( '<'  SourceContents '>' /  SourceContents  );*/
         {
@@ -2623,10 +2625,11 @@ namespace Markdown
                      Sp()
                   && Option(()=> And(()=>    Newline() && Sp() ) ) ); return result;
 		}
-        public bool SpecialChar()    /*SpecialChar :   '~' / '*' / '_' / '`' / '&' / '[' / ']' / '(' / ')' / '<' / '!' / '#' / '\\' / '\'' / '\"' / ExtendedSpecialChar;*/
+        public bool SpecialChar()    /*^^SpecialChar :   '~' / '*' / '_' / '`' / '&' / '[' / ']' / '(' / ')' / '<' / '!' / '#' / '\\' / '\'' / '\"' / '='/ExtendedSpecialChar;*/
         {
 
-           var result=  
+           var result= TreeNT((int)EMarkdown.SpecialChar,()=>
+                  
                      Char('~')
                   || Char('*')
                   || Char('_')
@@ -2642,14 +2645,16 @@ namespace Markdown
                   || Char('\\')
                   || Char('\'')
                   || Char('\"')
-                  || ExtendedSpecialChar(); return result;
+                  || Char('=')
+                  || ExtendedSpecialChar() ); return result;
 		}
-        public bool NormalChar()    /*NormalChar :    !( SpecialChar / Spacechar / Newline ) .;*/
+        public bool NormalChar()    /*^^NormalChar :    !( SpecialChar / Spacechar / Newline ) .;*/
         {
 
-           var result=And(()=>  
+           var result= TreeNT((int)EMarkdown.NormalChar,()=>
+                And(()=>  
                      Not(()=>     SpecialChar() || Spacechar() || Newline() )
-                  && Any() ); return result;
+                  && Any() ) ); return result;
 		}
         public bool Alphanumeric()    /*Alphanumeric : [0-9A-Za-z]  ;*/
         {

@@ -370,7 +370,7 @@ TerminalEndline : Sp Newline Eof ;
 LineBreak : '  ' NormalEndline ;
             
 
-Symbol :     SpecialChar  ;
+^^Symbol :     SpecialChar  ;
             
 
 // This keeps the parser from getting bogged down on long strings of '*' or '_',
@@ -425,14 +425,14 @@ Strike :
 
 ^^Link :  ExplicitLink / ReferenceLink / AutoLink;
 
-ReferenceLink : ReferenceLinkDouble / ReferenceLinkSingle;
+^^ReferenceLink : ReferenceLinkDouble / ReferenceLinkSingle;
 
 ReferenceLinkDouble :  Label  Spnl  !'[]'  Label;
                     
 ReferenceLinkSingle :  Label  (Spnl '[]')? ;
                    
 
-ExplicitLink :  Label '(' Sp Source Spnl Title Sp ')';
+^^ExplicitLink :  Label '(' Sp Source Spnl  Sp ')';
                
 
 ^^Source  : ( '<'  SourceContents '>' /  SourceContents  );
@@ -510,8 +510,8 @@ Nonspacechar :  !Spacechar !Newline .;
 Newline :       '\n' / '\r' '\n'?;
 Sp :            Spacechar*;
 Spnl :          Sp (Newline Sp)?;
-SpecialChar :   '~' / '*' / '_' / '`' / '&' / '[' / ']' / '(' / ')' / '<' / '!' / '#' / '\\' / '\'' / '\"' / ExtendedSpecialChar;
-NormalChar :    !( SpecialChar / Spacechar / Newline ) .;
+^^SpecialChar :   '~' / '*' / '_' / '`' / '&' / '[' / ']' / '(' / ')' / '<' / '!' / '#' / '\\' / '\'' / '\"' / '='/ExtendedSpecialChar;
+^^NormalChar :    !( SpecialChar / Spacechar / Newline ) .;
 Alphanumeric : [0-9A-Za-z]  ;
 AlphanumericAscii : [A-Za-z0-9] ;
 Digit : [0-9];
