@@ -1,4 +1,4 @@
-/* created on 10/12/2016 19:11:05 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 10/12/2016 21:25:44 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -1874,7 +1874,7 @@ namespace Markdown
                       And(()=>    Not(()=> Endline() ) && Inline() ) )
                   && Option(()=> Endline() ) ) ); return result;
 		}
-        public bool Inline()    /*^^Inline :
+        public bool Inline()    /*Inline :
 		Str
 		/ InnerLine
         / Endline
@@ -1896,8 +1896,7 @@ namespace Markdown
 		;*/
         {
 
-           var result= TreeNT((int)EMarkdown.Inline,()=>
-                  
+           var result=  
                      Str()
                   || InnerLine()
                   || Endline()
@@ -1915,7 +1914,7 @@ namespace Markdown
                   || Entity()
                   || EscapedChar()
                   || Smart()
-                  || Symbol() ); return result;
+                  || Symbol(); return result;
 		}
         public bool Space()    /*Space : Spacechar+ ;*/
         {
@@ -2349,7 +2348,7 @@ namespace Markdown
 
            var result=Char('\"','\"'); return result;
 		}
-        public bool RefTitleSingle()    /*RefTitleSingle : Spnl '\''  ( !( '\'' Sp Newline / Newline ) . )*  '\'';*/
+        public bool RefTitleSingle()    /*RefTitleSingle : Spnl '\''  ( !( '\''  / Newline  ) . )*  '\'';*/
         {
 
            var result=And(()=>  
@@ -2357,14 +2356,11 @@ namespace Markdown
                   && Char('\'')
                   && OptRepeat(()=>    
                       And(()=>      
-                               Not(()=>        
-                                              
-                                                 And(()=>    Char('\'') && Sp() && Newline() )
-                                              || Newline() )
+                               Not(()=>     Char('\'') || Newline() )
                             && Any() ) )
                   && Char('\'') ); return result;
 		}
-        public bool RefTitleDouble()    /*RefTitleDouble : Spnl '\"'  ( !('\"' Sp Newline / Newline) . )*  '\"';*/
+        public bool RefTitleDouble()    /*RefTitleDouble : Spnl '\"'  ( !('\"' / Newline ) . )*  '\"';*/
         {
 
            var result=And(()=>  
@@ -2372,14 +2368,11 @@ namespace Markdown
                   && Char('\"')
                   && OptRepeat(()=>    
                       And(()=>      
-                               Not(()=>        
-                                              
-                                                 And(()=>    Char('\"') && Sp() && Newline() )
-                                              || Newline() )
+                               Not(()=>     Char('\"') || Newline() )
                             && Any() ) )
                   && Char('\"') ); return result;
 		}
-        public bool RefTitleParens()    /*RefTitleParens : Spnl '('  ( !(')' Sp Newline / Newline) . )*  ')';*/
+        public bool RefTitleParens()    /*RefTitleParens : Spnl '('  ( !(')'  / Newline ) . )*  ')';*/
         {
 
            var result=And(()=>  
@@ -2387,10 +2380,7 @@ namespace Markdown
                   && Char('(')
                   && OptRepeat(()=>    
                       And(()=>      
-                               Not(()=>        
-                                              
-                                                 And(()=>    Char(')') && Sp() && Newline() )
-                                              || Newline() )
+                               Not(()=>     Char(')') || Newline() )
                             && Any() ) )
                   && Char(')') ); return result;
 		}
@@ -2435,11 +2425,10 @@ namespace Markdown
            var result= TreeNT((int)EMarkdown.RawHtml,()=>
                     HtmlComment() || HtmlBlockScript() || HtmlTag() ); return result;
 		}
-        public bool BlankLine()    /*^^BlankLine :     Sp Newline;*/
+        public bool BlankLine()    /*BlankLine :     Sp Newline;*/
         {
 
-           var result= TreeNT((int)EMarkdown.BlankLine,()=>
-                And(()=>    Sp() && Newline() ) ); return result;
+           var result=And(()=>    Sp() && Newline() ); return result;
 		}
         public bool Quoted()    /*Quoted :        '\"' (!'\"' .)* '\"' / '\'' (!'\'' .)* '\'';*/
         {

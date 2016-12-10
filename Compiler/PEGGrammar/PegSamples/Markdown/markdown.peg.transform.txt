@@ -322,7 +322,7 @@ InStyleTags :   StyleOpen (!StyleClose .)* StyleClose ;
                          )+ Endline? ;
             
 
-^^Inline :
+Inline :
 		Str
 		/ InnerLine
         / Endline
@@ -477,11 +477,11 @@ RefSrc :  Nonspacechar+  ;
 
 EmptyTitle :  '\"\"' ;
 
-RefTitleSingle : Spnl '\''  ( !( '\'' Sp Newline / Newline ) . )*  '\'';
+RefTitleSingle : Spnl '\''  ( !( '\''  / Newline  ) . )*  '\'';
 
-RefTitleDouble : Spnl '\"'  ( !('\"' Sp Newline / Newline) . )*  '\"';
+RefTitleDouble : Spnl '\"'  ( !('\"' / Newline ) . )*  '\"';
 
-RefTitleParens : Spnl '('  ( !(')' Sp Newline / Newline) . )*  ')';
+RefTitleParens : Spnl '('  ( !(')'  / Newline ) . )*  ')';
 
 References : StartList
              ( Reference  / SkipBlock )*;
@@ -492,7 +492,7 @@ References : StartList
 
 ^^RawHtml :    (HtmlComment / HtmlBlockScript / HtmlTag) ;
         
-^^BlankLine :     Sp Newline;
+BlankLine :     Sp Newline;
 
 
 Quoted :        '\"' (!'\"' .)* '\"' / '\'' (!'\'' .)* '\'';
