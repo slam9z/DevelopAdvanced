@@ -37,9 +37,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="IParserPostProcessor.cs" />
     <Compile Include="PegCSharpGenerator.cs" />
     <Compile Include="PegGrammarParser.cs" />
