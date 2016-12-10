@@ -324,7 +324,6 @@ InStyleTags :   StyleOpen (!StyleClose .)* StyleClose ;
 
 Inline :
 		Str
-		/ InnerLine
         / Endline
         / UlOrStarLine
         / Space

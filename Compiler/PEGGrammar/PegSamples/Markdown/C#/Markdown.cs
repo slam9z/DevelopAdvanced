@@ -1,4 +1,4 @@
-/* created on 10/12/2016 21:25:44 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 10/12/2016 23:12:36 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -1876,7 +1876,6 @@ namespace Markdown
 		}
         public bool Inline()    /*Inline :
 		Str
-		/ InnerLine
         / Endline
         / UlOrStarLine
         / Space
@@ -1898,7 +1897,6 @@ namespace Markdown
 
            var result=  
                      Str()
-                  || InnerLine()
                   || Endline()
                   || UlOrStarLine()
                   || Space()
