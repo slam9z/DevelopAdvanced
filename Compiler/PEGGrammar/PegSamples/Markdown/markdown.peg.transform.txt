@@ -449,10 +449,10 @@ TitleDouble : '\"' ( !( '\"' Sp ( ')' / Newline ) ) . )*  '\"' ;
 
 AutoLink : AutoLinkUrl / AutoLinkEmail ;
 
-AutoLinkUrl :   '<'  [A-Za-z]+ '://' ( !Newline !'>' . )+  '>' ;
+^^AutoLinkUrl :   '<'  [A-Za-z]+ '://' ( !Newline !'>' . )+  '>' ;
                 
 
-AutoLinkEmail : '<' ( 'mailto:' )?  [-A-Za-z0-9+_./!%~$]+ '@' ( !Newline !'>' . )+  '>';
+^^AutoLinkEmail : '<' ( 'mailto:' )?  [-A-Za-z0-9+_./!%~$]+ '@' ( !Newline !'>' . )+  '>';
           
 
 Reference : NonindentSpace !'[]' Label ':' Spnl RefSrc RefTitle BlankLine+;

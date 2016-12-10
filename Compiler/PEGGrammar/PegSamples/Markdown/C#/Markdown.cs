@@ -1,4 +1,4 @@
-/* created on 10/12/2016 16:06:09 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 10/12/2016 16:39:52 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -2244,10 +2244,11 @@ namespace Markdown
 
            var result=    AutoLinkUrl() || AutoLinkEmail(); return result;
 		}
-        public bool AutoLinkUrl()    /*AutoLinkUrl :   '<'  [A-Za-z]+ '://' ( !Newline !'>' . )+  '>' ;*/
+        public bool AutoLinkUrl()    /*^^AutoLinkUrl :   '<'  [A-Za-z]+ '://' ( !Newline !'>' . )+  '>' ;*/
         {
 
-           var result=And(()=>  
+           var result= TreeNT((int)EMarkdown.AutoLinkUrl,()=>
+                And(()=>  
                      Char('<')
                   && PlusRepeat(()=> In('A','Z', 'a','z') )
                   && Char(':','/','/')
@@ -2256,12 +2257,13 @@ namespace Markdown
                                Not(()=> Newline() )
                             && Not(()=> Char('>') )
                             && Any() ) )
-                  && Char('>') ); return result;
+                  && Char('>') ) ); return result;
 		}
-        public bool AutoLinkEmail()    /*AutoLinkEmail : '<' ( 'mailto:' )?  [-A-Za-z0-9+_./!%~$]+ '@' ( !Newline !'>' . )+  '>';*/
+        public bool AutoLinkEmail()    /*^^AutoLinkEmail : '<' ( 'mailto:' )?  [-A-Za-z0-9+_./!%~$]+ '@' ( !Newline !'>' . )+  '>';*/
         {
 
-           var result=And(()=>  
+           var result= TreeNT((int)EMarkdown.AutoLinkEmail,()=>
+                And(()=>  
                      Char('<')
                   && Option(()=> Char('m','a','i','l','t','o',':') )
                   && PlusRepeat(()=> OneOf(optimizedCharset1) )
@@ -2271,7 +2273,7 @@ namespace Markdown
                                Not(()=> Newline() )
                             && Not(()=> Char('>') )
                             && Any() ) )
-                  && Char('>') ); return result;
+                  && Char('>') ) ); return result;
 		}
         public bool Reference()    /*Reference : NonindentSpace !'[]' Label ':' Spnl RefSrc RefTitle BlankLine+;*/
         {
