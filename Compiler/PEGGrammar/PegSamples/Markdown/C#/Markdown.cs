@@ -1,4 +1,4 @@
-/* created on 10/12/2016 17:47:31 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 10/12/2016 17:59:38 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -60,17 +60,17 @@ namespace Markdown
                       RefTitleSingle= 183, RefTitleDouble= 184, RefTitleParens= 185, 
                       References= 186, CodeLanguage= 187, Code= 188, InnerCode= 189, 
                       RawHtml= 190, BlankLine= 191, Quoted= 192, HtmlAttribute= 193, 
-                      HtmlComment= 194, HtmlTag= 195, Eof= 196, Spacechar= 197, Nonspacechar= 198, 
-                      Newline= 199, Sp= 200, Spnl= 201, SpecialChar= 202, NormalChar= 203, 
-                      Alphanumeric= 204, AlphanumericAscii= 205, Digit= 206, BOM= 207, 
-                      HexEntity= 208, DecEntity= 209, CharEntity= 210, NonindentSpace= 211, 
-                      Indent= 212, IndentedLine= 213, OptionallyIndentedLine= 214, 
-                      StartList= 215, Line= 216, RawLine= 217, SkipBlock= 218, ExtendedSpecialChar= 219, 
-                      Smart= 220, Apostrophe= 221, Ellipsis= 222, Dash= 223, EnDash= 224, 
-                      EmDash= 225, SingleQuoteStart= 226, SingleQuoteEnd= 227, SingleQuoted= 228, 
-                      DoubleQuoteStart= 229, DoubleQuoteEnd= 230, DoubleQuoted= 231, 
-                      NoteReference= 232, RawNoteReference= 233, Note= 234, InlineNote= 235, 
-                      Notes= 236, RawNoteBlock= 237};
+                      HtmlComment= 194, HtmlTag= 195, Eof= 196, ExpectFileEnd= 197, 
+                      Spacechar= 198, Nonspacechar= 199, Newline= 200, Sp= 201, Spnl= 202, 
+                      SpecialChar= 203, NormalChar= 204, Alphanumeric= 205, AlphanumericAscii= 206, 
+                      Digit= 207, BOM= 208, HexEntity= 209, DecEntity= 210, CharEntity= 211, 
+                      NonindentSpace= 212, Indent= 213, IndentedLine= 214, OptionallyIndentedLine= 215, 
+                      StartList= 216, Line= 217, RawLine= 218, SkipBlock= 219, ExtendedSpecialChar= 220, 
+                      Smart= 221, Apostrophe= 222, Ellipsis= 223, Dash= 224, EnDash= 225, 
+                      EmDash= 226, SingleQuoteStart= 227, SingleQuoteEnd= 228, SingleQuoted= 229, 
+                      DoubleQuoteStart= 230, DoubleQuoteEnd= 231, DoubleQuoted= 232, 
+                      NoteReference= 233, RawNoteReference= 234, Note= 235, InlineNote= 236, 
+                      Notes= 237, RawNoteBlock= 238};
       public class Markdown : PegCharParser 
       {
         
@@ -116,11 +116,11 @@ namespace Markdown
         } 
         #endregion Overrides
 		#region Grammar Rules
-        public bool Doc()    /*^^Doc :      Block  *  Eof;*/
+        public bool Doc()    /*^^Doc :      Block  *  ;*/
         {
 
            var result= TreeNT((int)EMarkdown.Doc,()=>
-                And(()=>    OptRepeat(()=> Block() ) && Eof() ) ); return result;
+                OptRepeat(()=> Block() ) ); return result;
 		}
         public bool Block()    /*^^Block :     BlankLine*
             ( BlockQuote
@@ -213,17 +213,21 @@ namespace Markdown
            var result= TreeNT((int)EMarkdown.SetextHeading,()=>
                     SetextHeading1() || SetextHeading2() ); return result;
 		}
-        public bool SetextBottom1()    /*^^SetextBottom1 : ':'+ Newline;*/
+        public bool SetextBottom1()    /*^^SetextBottom1 : '='+ (Newline /Eof);*/
         {
 
            var result= TreeNT((int)EMarkdown.SetextBottom1,()=>
-                And(()=>    PlusRepeat(()=> Char(':') ) && Newline() ) ); return result;
+                And(()=>  
+                     PlusRepeat(()=> Char('=') )
+                  && (    Newline() || Eof()) ) ); return result;
 		}
-        public bool SetextBottom2()    /*^^SetextBottom2 : '-'+ Newline;*/
+        public bool SetextBottom2()    /*^^SetextBottom2 : '-'+ (Newline /Eof);*/
         {
 
            var result= TreeNT((int)EMarkdown.SetextBottom2,()=>
-                And(()=>    PlusRepeat(()=> Char('-') ) && Newline() ) ); return result;
+                And(()=>  
+                     PlusRepeat(()=> Char('-') )
+                  && (    Newline() || Eof()) ) ); return result;
 		}
         public bool SetextHeading1()    /*^^SetextHeading1 : & (RawLine SetextBottom1)
                   StartList ( !Endline Inline  )+ Sp Newline
@@ -2466,7 +2470,13 @@ namespace Markdown
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool Eof()    /*Eof :          !./ WARNING<" end of file">;*/
+        public bool Eof()    /*Eof :          !.; 
+//并不是所有语言都需要EFE*/
+        {
+
+           var result=Not(()=> Any() ); return result;
+		}
+        public bool ExpectFileEnd()    /*ExpectFileEnd	 :          !./ WARNING<" end of file">;*/
         {
 
            var result=    Not(()=> Any() ) || Warning(" end of file"); return result;

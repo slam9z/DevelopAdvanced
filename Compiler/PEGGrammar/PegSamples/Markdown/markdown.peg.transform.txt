@@ -1,6 +1,6 @@
 ﻿<<Grammar Name = 'Markdown'  encoding_class='utf8' >>
 
-^^Doc :      Block  *  Eof;
+^^Doc :      Block  *  ;
            
 
 ^^Block :     BlankLine*
@@ -35,9 +35,9 @@
 
 ^^SetextHeading : SetextHeading1 / SetextHeading2;
 
-^^SetextBottom1 : ':'+ Newline;
+^^SetextBottom1 : '='+ (Newline /Eof);
 
-^^SetextBottom2 : '-'+ Newline;
+^^SetextBottom2 : '-'+ (Newline /Eof);
 
 ^^SetextHeading1 : & (RawLine SetextBottom1)
                   StartList ( !Endline Inline  )+ Sp Newline
@@ -496,7 +496,9 @@ Quoted :        '\"' (!'\"' .)* '\"' / '\'' (!'\'' .)* '\'';
 ^^HtmlAttribute : (AlphanumericAscii / '-')+ Spnl (':' Spnl (Quoted / (!'>' Nonspacechar)+))? Spnl ;
 ^^HtmlComment :   '!--' (!'-->' .)* '-->';
 HtmlTag :       '<' Spnl '/'? AlphanumericAscii+ Spnl HtmlAttribute* '/'? Spnl '>';
-Eof :          !./ WARNING<" end of file">;   
+Eof :          !.; 
+//并不是所有语言都需要EFE
+ExpectFileEnd	 :          !./ WARNING<" end of file">;     
 Spacechar :     ' ' / '\t';
 Nonspacechar :  !Spacechar !Newline .;
 Newline :       '\n' / '\r' '\n'?;
