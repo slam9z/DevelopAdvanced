@@ -68,16 +68,10 @@
     <Compile Include="Json\json_check.cs" />
     <Compile Include="Json\json_fast.cs" />
     <Compile Include="Json\json_tree.cs" />
-    <Compile Include="Markdown\C#\Html.cs" />
-    <Compile Include="Markdown\C#\Markdown.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="python_2_5_2\python_2_5_2_i.cs" />
     <Compile Include="SamplesTester.cs" />
     <Compile Include="WikiSampleTree\C#\WikiSampleTree.cs" />
-    <Content Include="Markdown\html.peg.txt" />
-    <Content Include="Markdown\input\html.html" />
-    <Content Include="Markdown\markdown.peg.transform.txt" />
-    <Content Include="Markdown\markdown.peg.txt" />
     <Content Include="WikiSampleTree\WikiSample.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +82,10 @@
     <ProjectReference Include="..\PegGenerator\Peg Generator.csproj">
       <Project>{c21214b0-420d-44df-8664-9522d8cb0f34}</Project>
       <Name>Peg Generator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PegMarkdown\Peg Markdown.csproj">
+      <Project>{b0996a45-01ba-4746-abde-6c221b590112}</Project>
+      <Name>Peg Markdown</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -102,15 +100,6 @@
     <Content Include="Json\json_check_peg.txt" />
     <Content Include="Json\json_fast_peg.txt" />
     <Content Include="Json\json_tree_peg.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Markdown\input\code.md" />
-    <None Include="Markdown\input\orderedList.md" />
-    <None Include="Markdown\input\bulletList.md" />
-    <None Include="Markdown\input\link.md" />
-    <None Include="Markdown\input\markdown.md" />
-    <None Include="Markdown\markdown.peg.md" />
-    <None Include="Markdown\markdown_parser.leg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

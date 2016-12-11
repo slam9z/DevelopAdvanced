@@ -1,4 +1,4 @@
-kd/* created on 21.09.2008 19:02:14 from peg generator V1.0*/
+/* created on 21.09.2008 19:02:14 from peg generator V1.0*/
 
 using Peg.Base;
 using System;

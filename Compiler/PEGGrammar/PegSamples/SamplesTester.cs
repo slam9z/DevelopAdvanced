@@ -20,7 +20,7 @@ namespace Peg.Samples
         eParserGenerator, eKernighanAndRitchieC, eCSharp3, eCSharp3Fast, ePython_2_5_2
         , WikiSample, Markdown, Html
     };
-  
+
 
 
     public struct SampleInfo
@@ -97,7 +97,7 @@ namespace Peg.Samples
                (new Markdown.Markdown()).Doc,
                "Markdown (readable grammar)",
                "WikiSample",
-               @"PegSamples\Markdown\input",
+               @"PegMarkdown\Markdown\input",
                null));
 
             sampleGrammars.Add(
@@ -106,7 +106,7 @@ namespace Peg.Samples
         (new Html.Html()).Doc,
         "HTML (readable grammar)",
         "HTML",
-        @"PegSamples\Markdown\input",
+        @"PegMarkdown\Markdown\input",
         null));
 
             sampleGrammars.Add(
