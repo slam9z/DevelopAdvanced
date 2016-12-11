@@ -16,112 +16,117 @@ using System.Text.RegularExpressions;
 
 namespace Peg.Generator
 {
-    enum ECSharpKind{
-			Project,
-			MainImpl,
-			ModuleHead,
-			ModuleTail,
-			ParserHeader,
-            StaticConstructor,
-			ParserImpl,
-			GrammarHeader,
-			InterfaceFunc,
-			ErrHandler,
-			ErrTable,
-			And,
-			Or,
-			Option,
-			RuleRef,
-            RuleRefWithArgs,
-            Literals,
-            OptimizedCharset,
-			String,
-			StringCaseInsensitive,
-			Any,
-			Peek,
-			Not,
-			In,
-            NotIn,
-			OneOf,
-            NotOneOf,
-			TreeAnd,
-			TreePeek,
-			TreeNot,
-			Rule,
-			RuleTree,
-			RuleAst,
-            RuleCreaTree,
-            RuleCreaAst,
-			TreeChars,
-			OptRepeat,
-			PlusRepeat,
-			ForLoop,
+    enum ECSharpKind
+    {
+        Project,
+        MainImpl,
+        ModuleHead,
+        ModuleTail,
+        ParserHeader,
+        StaticConstructor,
+        ParserImpl,
+        GrammarHeader,
+        InterfaceFunc,
+        ErrHandler,
+        ErrTable,
+        And,
+        Or,
+        Option,
+        RuleRef,
+        RuleRefWithArgs,
+        Literals,
+        OptimizedCharset,
+        String,
+        StringCaseInsensitive,
+        Any,
+        Peek,
+        Not,
+        In,
+        NotIn,
+        OneOf,
+        NotOneOf,
+        TreeAnd,
+        TreePeek,
+        TreeNot,
+        Rule,
+        RuleTree,
+        RuleAst,
+        RuleCreaTree,
+        RuleCreaAst,
+        TreeChars,
+        OptRepeat,
+        PlusRepeat,
+        ForLoop,
         //{bit operations
-            Bits,
-            PeekBits,
-            NotBits,
-            MatchingBitsInto,
-            BitsInto,
-            Bit,
-            PeekBit,
-            BitNot,
-            Into,
-			Fatal,
-			Warning}
-    enum ETemplateKind{	
+        Bits,
+        PeekBits,
+        NotBits,
+        MatchingBitsInto,
+        BitsInto,
+        Bit,
+        PeekBit,
+        BitNot,
+        Into,
+        Fatal,
+        Warning
+    }
+    enum ETemplateKind
+    {
         TemplNone,
-		TemplNot,
-		TemplPeek,
-		TemplAnd,
-		TemplTreeNot,
-		TemplTreePeek,
-		TemplTreeSafeAnd,
-		TemplOr,
+        TemplNot,
+        TemplPeek,
+        TemplAnd,
+        TemplTreeNot,
+        TemplTreePeek,
+        TemplTreeSafeAnd,
+        TemplOr,
         TemplOptimizedCharset,
         TemplNegatedOptimizedCharset,
-		TemplCharset,
-		TemplNegatedCharset,
-		TemplRepetition,
-		TemplTreeNT,
-		TemplAstNT,
-		TemplTreeChars,
-		TemplRule,
-		TemplTreeRule,
-		TemplAstRule,
+        TemplCharset,
+        TemplNegatedCharset,
+        TemplRepetition,
+        TemplTreeNT,
+        TemplAstNT,
+        TemplTreeChars,
+        TemplRule,
+        TemplTreeRule,
+        TemplAstRule,
         TemplTreeCreateRule,
         TemplAstCreateRule,
-		TemplRuleRef,
-		TemplString,
+        TemplRuleRef,
+        TemplString,
         TemplIntoVariable,
-		TemplStringCaseInsensitive,
+        TemplStringCaseInsensitive,
         TemplLiterals,
-		TemplDots,
+        TemplDots,
         TemplBitAccess,
-		TemplFatal,
-		TemplWarning,
+        TemplFatal,
+        TemplWarning,
         TemplIntoVar,
-        TemplSemFuncCall}
-    struct CodeTemplate{
+        TemplSemFuncCall
+    }
+    struct CodeTemplate
+    {
         internal CodeTemplate(ECSharpKind eKind, string sCodeTemplate)
         {
             this.eKind = eKind;
             this.sCodeTemplate = sCodeTemplate;
         }
-	    internal ECSharpKind	eKind;
+        internal ECSharpKind eKind;
         internal string sCodeTemplate;
     }
     public class PegCSharpGenerator
     {
         #region Data Members
-        TextWriter  outFile_;
+        TextWriter outFile_;
         TreeContext context_;
-        string      moduleName_;
-        string      outputFileName_;
+        string moduleName_;
+        string outputFileName_;
         internal int literalsCount_;
         internal int optimizedCharsetCount_;
         internal StringBuilder optimizationStaticConstructor_;
-       static string mainImplCSharp=	
-	@"using System;
+        static string mainImplCSharp =
+     @"using System;
 	namespace ExprRecognizeProgram
 	{
 		using System.IO;
@@ -178,7 +183,7 @@ namespace Peg.Generator
 			}
 		}
 	}";
-        static string moduleHeadCSharp=
+        static string moduleHeadCSharp =
    @"
 using Peg.Base;
 using System;
@@ -233,11 +238,11 @@ namespace $(MODULE_NAME)
         } 
         #endregion Overrides
 ";
-    static string moduleTailCSharp=
-@"   }
+        static string moduleTailCSharp =
+    @"   }
 }";
-    static string staticConstructor=
-        @"
+        static string staticConstructor =
+            @"
         #region Optimization Data 
         $(OPTIMIZEDCHARSET_DECL)
         $(OPTIMIZEDLITERALS_DECL)
@@ -248,67 +253,69 @@ namespace $(MODULE_NAME)
         }
         #endregion Optimization Data 
         ";
-    static string argNReplace = "\n,()=>$(ARGN)$(ARGN1)";
-    CodeTemplate[] templates = {
-            new CodeTemplate(ECSharpKind.MainImpl,	    mainImplCSharp),
+        static string argNReplace = "\n,()=>$(ARGN)$(ARGN1)";
+        CodeTemplate[] templates = {
+            new CodeTemplate(ECSharpKind.MainImpl,      mainImplCSharp),
             new CodeTemplate(ECSharpKind.ModuleHead,   moduleHeadCSharp),
-	        new CodeTemplate(ECSharpKind.ModuleTail,   moduleTailCSharp),
+            new CodeTemplate(ECSharpKind.ModuleTail,   moduleTailCSharp),
             new CodeTemplate(ECSharpKind.StaticConstructor,staticConstructor),
-	        new CodeTemplate(ECSharpKind.And,           "And(()=>\n$(CONDITION) )"),
-	        new CodeTemplate(ECSharpKind.Or,		    "\n$(CONDITION)"),
-	        new CodeTemplate(ECSharpKind.Option,	    "Option(()=>\n$(CONDITION) )"),
-	        new CodeTemplate(ECSharpKind.Peek,			"Peek(()=>\n$(CONDITION) )"),
-	        new CodeTemplate(ECSharpKind.Not,			"Not(()=>\n$(CONDITION) )"),
-	        new CodeTemplate(ECSharpKind.In,			"In($(PAIRS))"),
+            new CodeTemplate(ECSharpKind.And,           "And(()=>\n$(CONDITION) )"),
+            new CodeTemplate(ECSharpKind.Or,            "\n$(CONDITION)"),
+            new CodeTemplate(ECSharpKind.Option,        "Option(()=>\n$(CONDITION) )"),
+            new CodeTemplate(ECSharpKind.Peek,          "Peek(()=>\n$(CONDITION) )"),
+            new CodeTemplate(ECSharpKind.Not,           "Not(()=>\n$(CONDITION) )"),
+            new CodeTemplate(ECSharpKind.In,            "In($(PAIRS))"),
             new CodeTemplate(ECSharpKind.NotIn,         "NotIn($(PAIRS))"),//NOTIN_MISSING_PAREN
-	        new CodeTemplate(ECSharpKind.OneOf,	        "OneOf($(CHARS))"),
+	        new CodeTemplate(ECSharpKind.OneOf,         "OneOf($(CHARS))"),
             new CodeTemplate(ECSharpKind.NotOneOf,      "NotOneOf($(CHARS))"),
-	        new CodeTemplate(ECSharpKind.TreeAnd,	    "And(()=>\n$(CONDITION) )"),
-	        new CodeTemplate(ECSharpKind.TreePeek,	    "Peek(()=>\n$(CONDITION) )"),
-	        new CodeTemplate(ECSharpKind.TreeNot,	    "Not(()=>\n$(CONDITION) )"),
-	        new CodeTemplate(ECSharpKind.RuleRef,       "$(NAME)()"),
+            new CodeTemplate(ECSharpKind.TreeAnd,       "And(()=>\n$(CONDITION) )"),
+            new CodeTemplate(ECSharpKind.TreePeek,      "Peek(()=>\n$(CONDITION) )"),
+            new CodeTemplate(ECSharpKind.TreeNot,       "Not(()=>\n$(CONDITION) )"),
+            new CodeTemplate(ECSharpKind.RuleRef,       "$(NAME)()"),
             new CodeTemplate(ECSharpKind.RuleRefWithArgs,"$(NAME)(()=>\n$(ARG0)$(ARGN) )"),
-	        new CodeTemplate(ECSharpKind.String,	    "Char($(CHARS))"),
-	        new CodeTemplate(ECSharpKind.StringCaseInsensitive,	
-								                        "IChar($(CHARS))"),
+            new CodeTemplate(ECSharpKind.String,        "Char($(CHARS))"),
+            new CodeTemplate(ECSharpKind.StringCaseInsensitive,
+                                                        "IChar($(CHARS))"),
             new CodeTemplate(ECSharpKind.Literals,      "OneOfLiterals($(LITERALS))"),
             new CodeTemplate(ECSharpKind.OptimizedCharset,"OneOf($(CHARSET))"),
-	        new CodeTemplate(ECSharpKind.Any,		    "Any()"),
-	        new CodeTemplate(ECSharpKind.RuleTree,      "var result= TreeNT((int)E$(MODULE_NAME).$(ENUMERATOR),()=>\n$(CONDITION) ); return result;"),
+            new CodeTemplate(ECSharpKind.Any,           "Any()"),
+            new CodeTemplate(ECSharpKind.RuleTree,      "var result= TreeNT((int)E$(MODULE_NAME).$(ENUMERATOR),()=>\n$(CONDITION) ); return result;"),
          // new CodeTemplate(ECSharpKind.RuleTree,      "return TreeNT((int)E$(MODULE_NAME).$(ENUMERATOR),()=>\n$(CONDITION) );"),
 
-            new CodeTemplate(ECSharpKind.RuleAst,	    "return TreeAST((int)E$(MODULE_NAME).$(ENUMERATOR),()=>\n$(CONDITION) );"),
-            new CodeTemplate(ECSharpKind.RuleCreaTree,	"return TreeNT($(CREATOR),(int)E$(MODULE_NAME).$(ENUMERATOR),()=>\n$(CONDITION) );"),
-	        new CodeTemplate(ECSharpKind.RuleCreaAst,	"return TreeAST($(CREATOR),int)E$(MODULE_NAME).$(ENUMERATOR),()=>\n$(CONDITION) );"),
-	        new CodeTemplate(ECSharpKind.TreeChars,     "TreeChars(()=>\n$(CONDITION) )"),
-	        new CodeTemplate(ECSharpKind.OptRepeat,     "OptRepeat(()=>\n$(CONDITION) )"),
-	        new CodeTemplate(ECSharpKind.PlusRepeat,    "PlusRepeat(()=>\n$(CONDITION) )"),
-	        new CodeTemplate(ECSharpKind.ForLoop,       "ForRepeat($(LOWER),$(UPPER),()=>\n$(CONDITION) )"),
-	        new CodeTemplate(ECSharpKind.Rule,          "var result=$(BODY); return result;"),
+            new CodeTemplate(ECSharpKind.RuleAst,       "return TreeAST((int)E$(MODULE_NAME).$(ENUMERATOR),()=>\n$(CONDITION) );"),
+            new CodeTemplate(ECSharpKind.RuleCreaTree,  "return TreeNT($(CREATOR),(int)E$(MODULE_NAME).$(ENUMERATOR),()=>\n$(CONDITION) );"),
+            new CodeTemplate(ECSharpKind.RuleCreaAst,   "return TreeAST($(CREATOR),int)E$(MODULE_NAME).$(ENUMERATOR),()=>\n$(CONDITION) );"),
+            new CodeTemplate(ECSharpKind.TreeChars,     "TreeChars(()=>\n$(CONDITION) )"),
+            new CodeTemplate(ECSharpKind.OptRepeat,     "OptRepeat(()=>\n$(CONDITION) )"),
+            new CodeTemplate(ECSharpKind.PlusRepeat,    "PlusRepeat(()=>\n$(CONDITION) )"),
+            new CodeTemplate(ECSharpKind.ForLoop,       "ForRepeat($(LOWER),$(UPPER),()=>\n$(CONDITION) )"),
+            new CodeTemplate(ECSharpKind.Rule,          "var result=$(BODY); return result;"),
           //  new CodeTemplate(ECSharpKind.Rule,        "return $(BODY);"),
 
             new CodeTemplate(ECSharpKind.Bits,          "Bits($(LOWER),$(UPPER),$(BYTE))"),
             new CodeTemplate(ECSharpKind.PeekBits,      "PeekBits($(LOWER),$(UPPER),$(BYTE))"),
             new CodeTemplate(ECSharpKind.NotBits,       "NotBits($(LOWER),$(UPPER),$(BYTE))"),
-            new CodeTemplate(ECSharpKind.MatchingBitsInto,      
+            new CodeTemplate(ECSharpKind.MatchingBitsInto,
                                                         "BitsInto($(LOWER),$(UPPER),$(BYTE),out $(INTO))"),
             new CodeTemplate(ECSharpKind.BitsInto,      "BitsInto($(LOWER),$(UPPER),out $(INTO))"),
             new CodeTemplate(ECSharpKind.Bit,           "Bit($(LOWER),$(BYTE))"),
             new CodeTemplate(ECSharpKind.PeekBit,       "PeekBit($(LOWER),$(BYTE))"),
             new CodeTemplate(ECSharpKind.BitNot,        "BitNot($(LOWER),$(BYTE))"),
             new CodeTemplate(ECSharpKind.Into,          "Into(()=>\n$(CONDITION),out $(INTO))"),
-	        new CodeTemplate(ECSharpKind.Fatal,		    "Fatal(\"$(ERROR)\")"),
-	        new CodeTemplate(ECSharpKind.Warning,		"Warning(\"$(ERROR)\")"),
+            new CodeTemplate(ECSharpKind.Fatal,         "Fatal(\"$(ERROR)\")"),
+            new CodeTemplate(ECSharpKind.Warning,       "Warning(\"$(ERROR)\")"),
         };
         #endregion Data Members
-        internal class CharsetInfo{//used to break up character ranges and character sets into chunks
+        internal class CharsetInfo
+        {//used to break up character ranges and character sets into chunks
 
-		   internal struct Range{internal string lower; internal string upper;}
-           internal List<List<Range>> range_;
-           internal List<List<string>> chars_;
+            internal struct Range { internal string lower; internal string upper; }
+            internal List<List<Range>> range_;
+            internal List<List<string>> chars_;
         }
         #region Template Classes (Code generation support)
-        internal class Template{
+        internal class Template
+        {
             internal ETemplateKind kind_;
             internal List<Template> subNodes_;
             internal string templateCode;
@@ -320,8 +327,8 @@ namespace $(MODULE_NAME)
                 subNodes_ = new List<Template>();
                 replacements = new Dictionary<string, string>();
             }
-		    Template():this(ETemplateKind.TemplNone)
-		    { 
+            Template() : this(ETemplateKind.TemplNone)
+            {
             }
 
         }
@@ -346,7 +353,7 @@ namespace $(MODULE_NAME)
         internal class TemplateStrings : Template
         {
             internal TemplateStrings(ETemplateKind kind, List<string> strings)
-                :base(kind)
+                : base(kind)
             {
                 strings_ = strings;
             }
@@ -372,7 +379,7 @@ namespace $(MODULE_NAME)
         }
         internal class TemplateContainer<T> : Template
         {
-            internal TemplateContainer(ETemplateKind kind,T t)
+            internal TemplateContainer(ETemplateKind kind, T t)
                 : base(kind)
             {
                 t_ = t;
@@ -408,7 +415,7 @@ namespace $(MODULE_NAME)
                 {
                     case (int)EPegGrammar.escape_char:
                         Debug.Assert(n.match_.Length == 1);
-                        char c= n.GetAsString(context_.src_)[0];
+                        char c = n.GetAsString(context_.src_)[0];
                         switch (c)
                         {
                             case 'n': return '\n';
@@ -419,8 +426,8 @@ namespace $(MODULE_NAME)
                     case (int)EPegGrammar.escape_int:
                         {
                             string octalNumber = n.GetAsString(context_.src_);
-                            return (char)Convert.ToInt32(octalNumber,8);
-                            
+                            return (char)Convert.ToInt32(octalNumber, 8);
+
                         }
                     default: Debug.Assert(false); return ' ';
                 }
@@ -471,7 +478,7 @@ namespace $(MODULE_NAME)
             }
             string GetCSharpChar(PegNode n)
             {
-                if (n== null) return "";
+                if (n == null) return "";
                 switch ((EPegGrammar)n.id_)
                 {
                     case EPegGrammar.escape_char:
@@ -511,9 +518,9 @@ namespace $(MODULE_NAME)
                 PegNode ruleId = PUtils.GetRuleId(rule, true);
                 ETemplateKind kind = ETemplateKind.TemplRule;
                 PUtils.TreeOrAstPresent(ruleId.next_, out bIsTree, out bIsAst);
-                PegNode create= PUtils.FindNode(rule.child_, EPegGrammar.create_spec);
+                PegNode create = PUtils.FindNode(rule.child_, EPegGrammar.create_spec);
                 Template templNode;
-                if (create!=null)
+                if (create != null)
                 {
                     if (bIsTree) kind = ETemplateKind.TemplTreeCreateRule;
                     else if (bIsAst) kind = ETemplateKind.TemplAstCreateRule;
@@ -544,16 +551,16 @@ namespace $(MODULE_NAME)
             Template TryGenTemplateForLiteralAlternatives(PegNode choice)
             {
                 int count;
-                List<string> literals= new List<string>();
-                for (count=0; choice != null; choice = choice.next_,++count)
+                List<string> literals = new List<string>();
+                for (count = 0; choice != null; choice = choice.next_, ++count)
                 {
-                    PegNode n= PUtils.GetByPath(choice,
+                    PegNode n = PUtils.GetByPath(choice,
                         (int)EPegGrammar.choice,
                         (int)EPegGrammar.term,
                         (int)EPegGrammar.atom,
                         (int)EPegGrammar.suffixed_literal,
                         (int)EPegGrammar.quoted_content);
-                    if( n==null || n.next_!=null || n.parent_.parent_.next_!=null || n.parent_.parent_.parent_.next_!=null) break;//case or atom_postfix or term
+                    if (n == null || n.next_ != null || n.parent_.parent_.next_ != null || n.parent_.parent_.parent_.next_ != null) break;//case or atom_postfix or term
                     string s = "";
                     for (PegNode c = n.child_; c != null; c = c.next_)
                     {
@@ -581,7 +588,7 @@ namespace $(MODULE_NAME)
                 if (count >= 8)
                 {
                     return new TemplateCharsetInfo(
-                                kind == ETemplateKind.TemplCharset? ETemplateKind.TemplOptimizedCharset: ETemplateKind.TemplNegatedOptimizedCharset, 
+                                kind == ETemplateKind.TemplCharset ? ETemplateKind.TemplOptimizedCharset : ETemplateKind.TemplNegatedOptimizedCharset,
                                 charsetInfo);
                 }
                 return null;
@@ -632,7 +639,7 @@ namespace $(MODULE_NAME)
                 if (templateNode != null)
                 {
                     templateNode.subNodes_.Add(AtomChildItem(atom.child_));
-                 //   HandleBitAccessOptimizations(ref templateNode);
+                    //   HandleBitAccessOptimizations(ref templateNode);
                     return templateNode;
                 }
                 else
@@ -713,7 +720,7 @@ namespace $(MODULE_NAME)
                     case (int)EPegGrammar.rule_ref:
                         {
                             string sRuleName = PUtils.GetRuleNameFromRuleRef(atomChild, context_.src_);
-                            Template templNode= new TemplateString(ETemplateKind.TemplRuleRef, sRuleName);
+                            Template templNode = new TemplateString(ETemplateKind.TemplRuleRef, sRuleName);
                             if (atomChild.next_ != null && atomChild.next_.id_ == (int)EPegGrammar.peg_args)
                             {
                                 for (PegNode rhs = atomChild.next_.child_; rhs != null; rhs = rhs.next_)
@@ -732,29 +739,29 @@ namespace $(MODULE_NAME)
                             return new TemplateString(ETemplateKind.TemplRuleRef, sRuleName);
                         }
                     case (int)EPegGeneratorNodes.SemanticFunctionWithContext:
-                            NormalizeTree.SemanticVarOrFuncWithContext semFuncCall = atomChild as NormalizeTree.SemanticVarOrFuncWithContext;
-                            Debug.Assert(semFuncCall != null);
-                            var templSemFuncCall = new TemplateContainer<NormalizeTree.SemanticVarOrFuncWithContext>(ETemplateKind.TemplSemFuncCall, semFuncCall);
-                            return templSemFuncCall;
+                        NormalizeTree.SemanticVarOrFuncWithContext semFuncCall = atomChild as NormalizeTree.SemanticVarOrFuncWithContext;
+                        Debug.Assert(semFuncCall != null);
+                        var templSemFuncCall = new TemplateContainer<NormalizeTree.SemanticVarOrFuncWithContext>(ETemplateKind.TemplSemFuncCall, semFuncCall);
+                        return templSemFuncCall;
                     case (int)EPegGrammar.suffixed_literal:
-                            Debug.Assert(atomChild.child_ != null);
-                            bool bCaseSensitive = context_.HasCaseSensitiveProperty() || atomChild.child_.next_ != null && atomChild.child_.next_.id_ == (int)EPegGrammar.case_insensitve;
-                            List<string> strings = new List<string>();
-                            for (PegNode n = atomChild.child_.child_; n != null; n = n.next_)
-                            {  
-                                    strings.Add(GetCSharpChar(n));
-                            }
-                            return new TemplateStrings(
-                                            bCaseSensitive
-                                                ? ETemplateKind.TemplStringCaseInsensitive
-                                                : ETemplateKind.TemplString,
-                                            strings);
+                        Debug.Assert(atomChild.child_ != null);
+                        bool bCaseSensitive = context_.HasCaseSensitiveProperty() || atomChild.child_.next_ != null && atomChild.child_.next_.id_ == (int)EPegGrammar.case_insensitve;
+                        List<string> strings = new List<string>();
+                        for (PegNode n = atomChild.child_.child_; n != null; n = n.next_)
+                        {
+                            strings.Add(GetCSharpChar(n));
+                        }
+                        return new TemplateStrings(
+                                        bCaseSensitive
+                                            ? ETemplateKind.TemplStringCaseInsensitive
+                                            : ETemplateKind.TemplString,
+                                        strings);
                     case (int)EPegGrammar.into_variable:
                         return new TemplateString(ETemplateKind.TemplIntoVariable, atomChild.GetAsString(context_.src_));
                     case (int)EPegGrammar.code_point:
-                            List<string> codePointValue = new List<string>();
-                            codePointValue.Add(GetCodePointValue(atomChild.child_));
-                            return new TemplateStrings(ETemplateKind.TemplString, codePointValue);
+                        List<string> codePointValue = new List<string>();
+                        codePointValue.Add(GetCodePointValue(atomChild.child_));
+                        return new TemplateStrings(ETemplateKind.TemplString, codePointValue);
                     case (int)EPegGrammar.character_set:
                         { /*^^character_set:    '[' set_negation? ((char_set_range/char_set_char)+ @']'*/
                             CharsetInfo charsetInfo = new CharsetInfo();
@@ -765,7 +772,8 @@ namespace $(MODULE_NAME)
                             {
                                 switch (n.id_)
                                 {
-                                    case (int)EPegGrammar.set_negation: kind = ETemplateKind.TemplNegatedCharset;
+                                    case (int)EPegGrammar.set_negation:
+                                        kind = ETemplateKind.TemplNegatedCharset;
                                         break;
                                     case (int)EPegGrammar.char_set_char:
                                         {
@@ -785,7 +793,7 @@ namespace $(MODULE_NAME)
                                             string sFirst = GetCSharpChar(n.child_.child_);
                                             string sLast = GetCSharpChar(n.child_.next_.child_);
                                             CharsetInfo.Range r;
-                                            r.lower= sFirst; r.upper = sLast;
+                                            r.lower = sFirst; r.upper = sLast;
                                             if (charsetInfo.range_.Count == 0 || charsetInfo.range_[charsetInfo.range_.Count - 1].Count % 4 == 0)
                                             {
                                                 charsetInfo.range_.Add(new List<CharsetInfo.Range>());
@@ -796,60 +804,60 @@ namespace $(MODULE_NAME)
                                 }
 
                             }
-                            Template template= TryGenTemplateForOptimizedCharsets(kind,charsetInfo);
+                            Template template = TryGenTemplateForOptimizedCharsets(kind, charsetInfo);
                             if (template != null) return template;
                             else
                                 return new TemplateCharsetInfo(kind, charsetInfo);
                         }
                     case (int)EPegGrammar.rhs_of_rule:
-                            Debug.Assert(atomChild.child_ != null && atomChild.child_.id_ == (int)EPegGrammar.choice);
-                            return GenTemplateForAlternatives(atomChild.child_, false);
+                        Debug.Assert(atomChild.child_ != null && atomChild.child_.id_ == (int)EPegGrammar.choice);
+                        return GenTemplateForAlternatives(atomChild.child_, false);
                     case (int)EPegGrammar.hexadecimal_digits:
-                            List<string> hexadecimal_digitsValue = new List<string>();
-                            hexadecimal_digitsValue.Add("\\s" + atomChild.GetAsString(context_.src_));
-                            return new TemplateStrings(ETemplateKind.TemplString, hexadecimal_digitsValue);
+                        List<string> hexadecimal_digitsValue = new List<string>();
+                        hexadecimal_digitsValue.Add("\\s" + atomChild.GetAsString(context_.src_));
+                        return new TemplateStrings(ETemplateKind.TemplString, hexadecimal_digitsValue);
                     case (int)EPegGrammar.any_char:
                         return new TemplateInt(ETemplateKind.TemplDots, 1);
                     case (int)EPegGeneratorNodes.FatalNode:
                     case (int)EPegGeneratorNodes.WarningNode:
-                            NormalizeTree.Message m = atomChild as NormalizeTree.Message;
-                            return new TemplateString(
-                                            atomChild.id_ == (int)EPegGeneratorNodes.FatalNode
-                                            ? ETemplateKind.TemplFatal
-                                            : ETemplateKind.TemplWarning,
-                                            m.message_);
+                        NormalizeTree.Message m = atomChild as NormalizeTree.Message;
+                        return new TemplateString(
+                                        atomChild.id_ == (int)EPegGeneratorNodes.FatalNode
+                                        ? ETemplateKind.TemplFatal
+                                        : ETemplateKind.TemplWarning,
+                                        m.message_);
                     case (int)EPegGrammar.message:
-                            bool isFatal = false;
-                            if ((isFatal = atomChild.child_.id_ == (int)EPegGrammar.fatal) || atomChild.child_.id_ == (int)EPegGrammar.warning)
+                        bool isFatal = false;
+                        if ((isFatal = atomChild.child_.id_ == (int)EPegGrammar.fatal) || atomChild.child_.id_ == (int)EPegGrammar.warning)
+                        {
+                            if (atomChild.child_.next_.id_ == (int)EPegGrammar.multiline_double_quote_literal)
                             {
-                                if (atomChild.child_.next_.id_ == (int)EPegGrammar.multiline_double_quote_literal)
-                                {
-                                    var multiDblQuoteNode = atomChild.child_.next_ as PegGrammarParser.MultiLineDblQuoteNode;
-                                    return new
-                                            TemplateString(isFatal ? ETemplateKind.TemplFatal : ETemplateKind.TemplWarning,
-                                            multiDblQuoteNode.quoted_);
-                                }
-                            }/*
+                                var multiDblQuoteNode = atomChild.child_.next_ as PegGrammarParser.MultiLineDblQuoteNode;
+                                return new
+                                        TemplateString(isFatal ? ETemplateKind.TemplFatal : ETemplateKind.TemplWarning,
+                                        multiDblQuoteNode.quoted_);
+                            }
+                        }/*
                         else if( nThrow.child_.next_.id_==(int)Epeg_generator.enumerator ){
 						    PegNode nEnum= nThrow.child_.next_;
                             templNode.name = nEnum.GetAsString(context_.src_);
 					    }*/
-                            Debug.Assert(false);
+                        Debug.Assert(false);
 
                         break;
                     case (int)EPegGrammar.bit_access:
-                            Debug.Assert(atomChild.child_ != null && atomChild.child_.id_ == (int)EPegGrammar.bit_range);
-                            PegGrammarParser.TRange bitRange = atomChild.child_ as PegGrammarParser.TRange;
-                            Template templBitAccess = new TemplateRepetition(ETemplateKind.TemplBitAccess, bitRange);
-                            Debug.Assert(atomChild.child_.next_!=null);
-                            templBitAccess.subNodes_.Add(AtomChildItem(atomChild.child_.next_));
-                            if (atomChild.child_.next_.next_ != null) templBitAccess.subNodes_.Add(AtomChildItem(atomChild.child_.next_.next_));
-                            return templBitAccess;
+                        Debug.Assert(atomChild.child_ != null && atomChild.child_.id_ == (int)EPegGrammar.bit_range);
+                        PegGrammarParser.TRange bitRange = atomChild.child_ as PegGrammarParser.TRange;
+                        Template templBitAccess = new TemplateRepetition(ETemplateKind.TemplBitAccess, bitRange);
+                        Debug.Assert(atomChild.child_.next_ != null);
+                        templBitAccess.subNodes_.Add(AtomChildItem(atomChild.child_.next_));
+                        if (atomChild.child_.next_.next_ != null) templBitAccess.subNodes_.Add(AtomChildItem(atomChild.child_.next_.next_));
+                        return templBitAccess;
                     case (int)EPegGeneratorNodes.IntoVarWithContext:
-                            NormalizeTree.SemanticVarOrFuncWithContext intoVarInfo = atomChild as NormalizeTree.SemanticVarOrFuncWithContext;
-                            Debug.Assert(intoVarInfo != null);
-                            var templInto = new TemplateContainer<NormalizeTree.SemanticVarOrFuncWithContext>(ETemplateKind.TemplIntoVar, intoVarInfo);
-                            return templInto;
+                        NormalizeTree.SemanticVarOrFuncWithContext intoVarInfo = atomChild as NormalizeTree.SemanticVarOrFuncWithContext;
+                        Debug.Assert(intoVarInfo != null);
+                        var templInto = new TemplateContainer<NormalizeTree.SemanticVarOrFuncWithContext>(ETemplateKind.TemplIntoVar, intoVarInfo);
+                        return templInto;
                     default:
                         Debug.Assert(false);
                         break;
@@ -927,7 +935,7 @@ namespace $(MODULE_NAME)
             string GetAsCharacterCode(string s)
             {
                 string result;
-                switch(s)
+                switch (s)
                 {
                     case "'": result = @"'\''"; break;
                     case "\\": result = @"'\\'"; break;
@@ -983,22 +991,22 @@ namespace $(MODULE_NAME)
                 switch (templNode.kind_)
                 {
                     case ETemplateKind.TemplRule:
-                            string ruleCode = parent_.FindCSharpTemplateCode(ECSharpKind.Rule);
-                            templNode.templateCode = ruleCode;
-                            string body;
-                            if (templNode.subNodes_.Count > 0)
-                            {
-                                body = GenMatchCodeForCSharp(templNode.subNodes_[0], 1);
-                                templNode.replacements.Add("$(BODY)", "$(0)");
-                            }
-                            else
-                            {
-                                body = "true";
-                                templNode.replacements.Add("$(BODY)", "true");
-                            }
-                            parent_.ReplaceMacro(ref ruleCode, "$(BODY)", body);
-                            ruleCode = DoAlignments(templNode, 0, false);
-                            Emit(ruleCode);
+                        string ruleCode = parent_.FindCSharpTemplateCode(ECSharpKind.Rule);
+                        templNode.templateCode = ruleCode;
+                        string body;
+                        if (templNode.subNodes_.Count > 0)
+                        {
+                            body = GenMatchCodeForCSharp(templNode.subNodes_[0], 1);
+                            templNode.replacements.Add("$(BODY)", "$(0)");
+                        }
+                        else
+                        {
+                            body = "true";
+                            templNode.replacements.Add("$(BODY)", "true");
+                        }
+                        parent_.ReplaceMacro(ref ruleCode, "$(BODY)", body);
+                        ruleCode = DoAlignments(templNode, 0, false);
+                        Emit(ruleCode);
                         break;
                     case ETemplateKind.TemplTreeRule:
                     case ETemplateKind.TemplAstRule:
@@ -1028,7 +1036,8 @@ namespace $(MODULE_NAME)
                             Emit(s);
                         }
                         break;
-                    default: Debug.Assert(false);//not yet implemented
+                    default:
+                        Debug.Assert(false);//not yet implemented
                         break;
                 }
             }
@@ -1081,8 +1090,8 @@ namespace $(MODULE_NAME)
             {
                 Debug.Assert(templRange.subNodes_.Count > 0);
                 Template templMatch = templRange.subNodes_[0];
-                Debug.Assert(   templMatch.kind_ == ETemplateKind.TemplString
-                            ||  templMatch.kind_ == ETemplateKind.TemplDots);//ETemplateKind.TemplCharset not yet handled
+                Debug.Assert(templMatch.kind_ == ETemplateKind.TemplString
+                            || templMatch.kind_ == ETemplateKind.TemplDots);//ETemplateKind.TemplCharset not yet handled
                 Template templInto = templRange.subNodes_.Count <= 1 ? null : templRange.subNodes_[1];
                 string value = "'\u0000'";
                 if (templMatch.kind_ == ETemplateKind.TemplDots)
@@ -1102,16 +1111,16 @@ namespace $(MODULE_NAME)
                 parent_.ReplaceMacro(ref cSharpTemplCode, "$(LOWER)", templRange.repetition_.lower.ToString());
                 parent_.ReplaceMacro(ref cSharpTemplCode, "$(UPPER)", templRange.repetition_.upper.ToString());
                 parent_.ReplaceMacro(ref cSharpTemplCode, "$(BYTE)", value);
-                if (templInto!=null)
+                if (templInto != null)
                 {
                     TemplateContainer<NormalizeTree.SemanticVarOrFuncWithContext> tc;
                     if ((tc = templInto as TemplateContainer<NormalizeTree.SemanticVarOrFuncWithContext>) != null)
                     {
                         NormalizeTree.SemanticVarOrFuncWithContext intoInfo = tc.t_;
-                        string intoName = 
-                                    GetObjectName(intoInfo.semBlock_,intoInfo.isLocal_) 
-                                +   "." 
-                                +   intoInfo.variableOrFunc_.GetAsString(context_.src_);
+                        string intoName =
+                                    GetObjectName(intoInfo.semBlock_, intoInfo.isLocal_)
+                                + "."
+                                + intoInfo.variableOrFunc_.GetAsString(context_.src_);
                         parent_.ReplaceMacro(ref cSharpTemplCode, "$(INTO)", intoName);
                     }
                 }
@@ -1120,8 +1129,8 @@ namespace $(MODULE_NAME)
             bool TryHandleBitaccessOptimization(Template templNode)
             {// try generate PeekBits,NotBits,PeekBit,NotBit ,:not yet handled: charsets as last parameter
                 Debug.Assert(templNode.kind_ == ETemplateKind.TemplPeek || templNode.kind_ == ETemplateKind.TemplNot);
-                if (    templNode.subNodes_.Count > 0 
-                    &&  templNode.subNodes_[0].kind_ == ETemplateKind.TemplBitAccess )
+                if (templNode.subNodes_.Count > 0
+                    && templNode.subNodes_[0].kind_ == ETemplateKind.TemplBitAccess)
                 {
                     TemplateRepetition templRange = templNode.subNodes_[0] as TemplateRepetition;
                     Debug.Assert(templRange.subNodes_.Count > 0);
@@ -1137,15 +1146,15 @@ namespace $(MODULE_NAME)
                         sCSharpCodeTemplate =
                               parent_.FindCSharpTemplateCode(templNode.kind_ == ETemplateKind.TemplPeek ? ECSharpKind.PeekBits : ECSharpKind.NotBits);
                     }
-                    sCSharpCodeTemplate= GetBitAccessCode(sCSharpCodeTemplate, templRange);
+                    sCSharpCodeTemplate = GetBitAccessCode(sCSharpCodeTemplate, templRange);
                     templNode.templateCode = sCSharpCodeTemplate;
                     return true;
                 }
                 return false;
             }
-            string InRangeCode(List<List<CharsetInfo.Range>> ranges,ETemplateKind kind,ref int elemCount)
+            string InRangeCode(List<List<CharsetInfo.Range>> ranges, ETemplateKind kind, ref int elemCount)
             {
-                string InTemplate = kind == ETemplateKind.TemplCharset 
+                string InTemplate = kind == ETemplateKind.TemplCharset
                                 ? parent_.FindCSharpTemplateCode(ECSharpKind.In)
                                 : parent_.FindCSharpTemplateCode(ECSharpKind.NotIn);
                 string condition = "";
@@ -1187,10 +1196,10 @@ namespace $(MODULE_NAME)
             string GetAsInDoubleQuotes(string s)
             {
                 return s.Replace("\"", "\\\"");
-            }           
-            string OneOfCharsCode(List<List<string>> chars, ETemplateKind kind,ref int elemCount)
+            }
+            string OneOfCharsCode(List<List<string>> chars, ETemplateKind kind, ref int elemCount)
             {
-                string OneOfCharsTemplate = kind == ETemplateKind.TemplCharset 
+                string OneOfCharsTemplate = kind == ETemplateKind.TemplCharset
                                 ? parent_.FindCSharpTemplateCode(ECSharpKind.OneOf)
                                 : parent_.FindCSharpTemplateCode(ECSharpKind.NotOneOf);
                 string condition = "";
@@ -1209,7 +1218,7 @@ namespace $(MODULE_NAME)
                 }
                 return condition;
             }
-            string GetLimitCode(int numericLimit,PegNode variableLimit)
+            string GetLimitCode(int numericLimit, PegNode variableLimit)
             {
                 if (variableLimit != null)
                 {
@@ -1229,7 +1238,7 @@ namespace $(MODULE_NAME)
                 {
                     case ETemplateKind.TemplNot:
                         {
-                            if( TryHandleBitaccessOptimization(templNode) ) return "";
+                            if (TryHandleBitaccessOptimization(templNode)) return "";
                             string s = parent_.FindCSharpTemplateCode(ECSharpKind.Not);
                             templNode.templateCode = s;
                             string sCondition = GenMatchCodeForCSharp(templNode.subNodes_[0], level + 1);
@@ -1268,19 +1277,19 @@ namespace $(MODULE_NAME)
                             string OneOfCharsTemplate = parent_.FindCSharpTemplateCode(ECSharpKind.OneOf);
                             TemplateCharsetInfo charsetNode = templNode as TemplateCharsetInfo;
                             int elemCount = 0;
-                            string condition = InRangeCode(charsetNode.charsetInfo_.range_, templNode.kind_,ref elemCount);
+                            string condition = InRangeCode(charsetNode.charsetInfo_.range_, templNode.kind_, ref elemCount);
                             string condition1 = OneOfCharsCode(charsetNode.charsetInfo_.chars_, templNode.kind_, ref elemCount);
-                            if( condition.Length > 0 && condition1.Length > 0) condition+= "||";
-                            condition+= condition1;
+                            if (condition.Length > 0 && condition1.Length > 0) condition += "||";
+                            condition += condition1;
                             if (elemCount > 1) condition = "(" + condition + ")";
-                            templNode.templateCode = condition; 
+                            templNode.templateCode = condition;
                             return condition;
                         }
                     case ETemplateKind.TemplIntoVariable:
                         { //provisonary implementation
                             TemplateString templInto = templNode as TemplateString;
                             Debug.Assert(templInto.subNodes_.Count > 0);
-                            templInto.replacements.Add("$(CONDITION)","$(0)");
+                            templInto.replacements.Add("$(CONDITION)", "$(0)");
                             templInto.replacements.Add("$(INTO)", templInto.name_);
                             templInto.templateCode = parent_.FindCSharpTemplateCode(ECSharpKind.Into);
                             GenMatchCodeForCSharp(templNode.subNodes_[0], level + 1);
@@ -1290,18 +1299,18 @@ namespace $(MODULE_NAME)
                         {
                             TemplateContainer<NormalizeTree.SemanticVarOrFuncWithContext> templIntoVar = templNode as TemplateContainer<NormalizeTree.SemanticVarOrFuncWithContext>;
                             NormalizeTree.SemanticVarOrFuncWithContext intoInfo = templIntoVar.t_;
-                             string intoName = GetObjectName(intoInfo.semBlock_, intoInfo.isLocal_)
-                                             + "." + intoInfo.variableOrFunc_.GetAsString(context_.src_);
-                             Debug.Assert(templIntoVar.subNodes_.Count > 0);
-                             templIntoVar.replacements.Add("$(CONDITION)", "$(0)");
-                             templIntoVar.replacements.Add("$(INTO)", intoName);
-                             templIntoVar.templateCode = parent_.FindCSharpTemplateCode(ECSharpKind.Into);
+                            string intoName = GetObjectName(intoInfo.semBlock_, intoInfo.isLocal_)
+                                            + "." + intoInfo.variableOrFunc_.GetAsString(context_.src_);
+                            Debug.Assert(templIntoVar.subNodes_.Count > 0);
+                            templIntoVar.replacements.Add("$(CONDITION)", "$(0)");
+                            templIntoVar.replacements.Add("$(INTO)", intoName);
+                            templIntoVar.templateCode = parent_.FindCSharpTemplateCode(ECSharpKind.Into);
                             GenMatchCodeForCSharp(templNode.subNodes_[0], level + 1);
                             return "";
                         }
                     case ETemplateKind.TemplSemFuncCall:
                         {
-                            TemplateContainer<NormalizeTree.SemanticVarOrFuncWithContext> templFuncCall= templNode as TemplateContainer<NormalizeTree.SemanticVarOrFuncWithContext>;
+                            TemplateContainer<NormalizeTree.SemanticVarOrFuncWithContext> templFuncCall = templNode as TemplateContainer<NormalizeTree.SemanticVarOrFuncWithContext>;
                             NormalizeTree.SemanticVarOrFuncWithContext intoInfo = templFuncCall.t_;
                             string callSem = GetObjectName(intoInfo.semBlock_, intoInfo.isLocal_)
                                             + "." + intoInfo.variableOrFunc_.GetAsString(context_.src_);
@@ -1346,29 +1355,29 @@ namespace $(MODULE_NAME)
                     case ETemplateKind.TemplRuleRef:
                         {
                             TemplateString templString = templNode as TemplateString;
-                            string s= parent_.FindCSharpTemplateCode(templString.subNodes_.Count > 0 
-                                                ? ECSharpKind.RuleRefWithArgs 
+                            string s = parent_.FindCSharpTemplateCode(templString.subNodes_.Count > 0
+                                                ? ECSharpKind.RuleRefWithArgs
                                                 : ECSharpKind.RuleRef);
                             templNode.templateCode = s;
                             string refName = parent_.GetCSharpPrefixed(templString.name_);
                             templNode.replacements.Add("$(NAME)", refName);
                             if (templString.subNodes_.Count > 0) //call rule having arguments
                             {
-                                for(int i=0;i<templNode.subNodes_.Count;++i)
+                                for (int i = 0; i < templNode.subNodes_.Count; ++i)
                                 {
-                                    GenMatchCodeForCSharp(templNode.subNodes_[i],level+1);
+                                    GenMatchCodeForCSharp(templNode.subNodes_[i], level + 1);
                                     templNode.replacements.Add("$(ARG" + i.ToString() + ")", "$(" + i.ToString() + ")");
                                     if (i + 1 < templNode.subNodes_.Count)
                                     {
                                         string continuation = argNReplace;
                                         string next = "$(ARG" + (i + 1).ToString() + ")";
-                                        continuation= continuation.Replace("$(ARGN)", next);
+                                        continuation = continuation.Replace("$(ARGN)", next);
                                         continuation = continuation.Replace("$(ARGN1)", "$(ARGN)");
-                                        s= s.Replace("$(ARGN)", continuation);
+                                        s = s.Replace("$(ARGN)", continuation);
                                     }
                                     else
                                     {
-                                        s= s.Replace("$(ARGN)", "");
+                                        s = s.Replace("$(ARGN)", "");
                                     }
                                 }
                                 templNode.templateCode = s;
@@ -1393,10 +1402,10 @@ namespace $(MODULE_NAME)
                             TemplateCharsetInfo charsetNode = templNode as TemplateCharsetInfo;
                             string s = parent_.FindCSharpTemplateCode(ECSharpKind.OptimizedCharset);
                             templNode.templateCode = s;
-                            string varName= "optimizedCharset" + parent_.optimizedCharsetCount_.ToString();
-                            templNode.replacements.Add("$(CHARSET)",varName);
+                            string varName = "optimizedCharset" + parent_.optimizedCharsetCount_.ToString();
+                            templNode.replacements.Add("$(CHARSET)", varName);
                             ++parent_.optimizedCharsetCount_;
-                            AddOptimizationInitialization(charsetNode, varName,templNode.kind_);
+                            AddOptimizationInitialization(charsetNode, varName, templNode.kind_);
                             return s;
                         }
                     case ETemplateKind.TemplString:
@@ -1408,14 +1417,17 @@ namespace $(MODULE_NAME)
                             string sChars = "";
                             if (templStrings.strings_.Count >= 8)
                             {
-                                 for (int i = 0; i < templStrings.strings_.Count; ++i){
-                                    string c= GetAsCharacterCode(templStrings.strings_[i]);
-                                    c= c.Substring(1,c.Length-2);
-                                    if( c.Length==1 && c[0]=='"' ) c= "\\" + c;
+                                for (int i = 0; i < templStrings.strings_.Count; ++i)
+                                {
+                                    string c = GetAsCharacterCode(templStrings.strings_[i]);
+                                    c = c.Substring(1, c.Length - 2);
+                                    if (c.Length == 1 && c[0] == '"') c = "\\" + c;
                                     sChars += c;
-                                 }
-                                 sChars = "\"" + sChars + "\"";
-                            }else{
+                                }
+                                sChars = "\"" + sChars + "\"";
+                            }
+                            else
+                            {
                                 for (int i = 0; i < templStrings.strings_.Count; ++i)
                                 {
                                     if (i > 0) sChars += ",";
@@ -1436,16 +1448,21 @@ namespace $(MODULE_NAME)
                             TemplateRepetition templRange = templNode as TemplateRepetition;
                             string cSharpTemplCode;
                             ECSharpKind kind;
-                            if( templRange.subNodes_.Count>=2 ){
+                            if (templRange.subNodes_.Count >= 2)
+                            {
                                 if (templRange.subNodes_[0].kind_ == ETemplateKind.TemplDots)
-                                     kind = ECSharpKind.BitsInto;
+                                    kind = ECSharpKind.BitsInto;
                                 else kind = ECSharpKind.MatchingBitsInto;
-                            }else if(  templRange.repetition_.lower == templRange.repetition_.upper ){
-                                kind= ECSharpKind.Bit;
-                            }else{
-                                kind= ECSharpKind.Bits;
                             }
-                            cSharpTemplCode= parent_.FindCSharpTemplateCode(kind);
+                            else if (templRange.repetition_.lower == templRange.repetition_.upper)
+                            {
+                                kind = ECSharpKind.Bit;
+                            }
+                            else
+                            {
+                                kind = ECSharpKind.Bits;
+                            }
+                            cSharpTemplCode = parent_.FindCSharpTemplateCode(kind);
                             templNode.templateCode = GetBitAccessCode(cSharpTemplCode, templRange);
                             return cSharpTemplCode;
                         }
@@ -1468,7 +1485,8 @@ namespace $(MODULE_NAME)
                             templNode.replacements.Add("$(CONDITION)", "$(0)");
                             return s;
                         }
-                    default: Debug.Assert(false);
+                    default:
+                        Debug.Assert(false);
                         return "";
                 }
             }
@@ -1510,7 +1528,7 @@ namespace $(MODULE_NAME)
                             "$(OPTIMIZEDLITERALS_IMPL)",
                             s.ToString() + "\n            $(OPTIMIZEDLITERALS_IMPL)");
             }
-            void AddOptimizationInitialization(TemplateCharsetInfo charset, string varName,ETemplateKind kind)
+            void AddOptimizationInitialization(TemplateCharsetInfo charset, string varName, ETemplateKind kind)
             {
                 CheckAddStaticConstructor();
                 StringBuilder s = new StringBuilder();
@@ -1519,7 +1537,7 @@ namespace $(MODULE_NAME)
                 if (charset.charsetInfo_.range_.Count > 0)
                 {
                     s.Append("OptimizedCharset.Range[] ranges = new OptimizedCharset.Range[]\n                  {");
-                    foreach(var r in charset.charsetInfo_.range_)
+                    foreach (var r in charset.charsetInfo_.range_)
                     {
                         foreach (var pair in r)
                         {
@@ -1552,8 +1570,8 @@ namespace $(MODULE_NAME)
                 }
                 s.Append(varName);
                 s.Append("= new OptimizedCharset(");
-                s.Append(charset.charsetInfo_.range_.Count > 0 ? "ranges,":"null,");
-                s.Append(charset.charsetInfo_.chars_.Count > 0 ? "oneOfChars":"null");
+                s.Append(charset.charsetInfo_.range_.Count > 0 ? "ranges," : "null,");
+                s.Append(charset.charsetInfo_.chars_.Count > 0 ? "oneOfChars" : "null");
                 if (kind == ETemplateKind.TemplNegatedOptimizedCharset) s.Append(", true");
                 s.Append(");");
                 s.Append("\n            }\n            ");
@@ -1563,7 +1581,7 @@ namespace $(MODULE_NAME)
                 parent_.ReplaceMacro(parent_.optimizationStaticConstructor_,
                             "$(OPTIMIZEDCHARSET_IMPL)",
                             s.ToString() + "\n            $(OPTIMIZEDCHARSET_IMPL)");
-                
+
 
             }
             #endregion Code Optimizations
@@ -1571,7 +1589,7 @@ namespace $(MODULE_NAME)
         internal class TopLevelCode
         {
             #region Local Types
-            struct InitializationTermination{public string initialization;public string termination;}
+            struct InitializationTermination { public string initialization; public string termination; }
             #endregion Local Types
             #region Data Members
             PegCSharpGenerator parent_;
@@ -1596,9 +1614,9 @@ namespace $(MODULE_NAME)
                     GenCodeForRulesCSharp();
                     GenCodeForOptimizations();
                     GenCodeForModuleEndCSharp();
-                    
+
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     throw;
                 }
@@ -1617,15 +1635,15 @@ namespace $(MODULE_NAME)
                 try
                 {
                     string cSharpDir =
-                        PUtils.MakeFileName("",context_.generatorParams_.outputDirectory_, sGenSubDirectory);
+                        PUtils.MakeFileName("", context_.generatorParams_.outputDirectory_, sGenSubDirectory);
                     parent_.outputFileName_ = PUtils.MakeFileName(
-                            parent_.moduleName_ + fileEnding,cSharpDir);
+                            parent_.moduleName_ + fileEnding, cSharpDir);
                     if (!Directory.Exists(cSharpDir))
                     {
                         Directory.CreateDirectory(cSharpDir);
                     }
                     parent_.outFile_ = new StreamWriter(parent_.outputFileName_);
-                    parent_.outFile_.WriteLine("/* created on {0} from peg generator V1.0 using '{1}' as input*/", DateTime.Now.ToString(),context_.generatorParams_.sourceFileTitle_);
+                    parent_.outFile_.WriteLine("/* created on {0} from peg generator V1.0 using '{1}' as input*/", DateTime.Now.ToString(), context_.generatorParams_.sourceFileTitle_);
                 }
                 catch (Exception e)
                 {
@@ -1649,7 +1667,7 @@ namespace $(MODULE_NAME)
                 return context_.dictProperties_.ContainsKey("encoding_class")
                     && context_.dictProperties_["encoding_class"].Equals("binary", StringComparison.InvariantCultureIgnoreCase);
             }
-            bool GetEncoding(out string  encoding_class,out string  encoding_detection)
+            bool GetEncoding(out string encoding_class, out string encoding_detection)
             {
                 encoding_class = EncodingClass.ascii.ToString();
                 encoding_detection = UnicodeDetection.notApplicable.ToString();
@@ -1678,17 +1696,17 @@ namespace $(MODULE_NAME)
                 }
                 return sEnumerators;
             }
-           
-            string GenSemanticBlockContent(PegNode semBlock, string className,bool isLocal,
-                                                out string initialization,out string termination)
+
+            string GenSemanticBlockContent(PegNode semBlock, string className, bool isLocal,
+                                                out string initialization, out string termination)
             {
-                string blockSrc="";
+                string blockSrc = "";
                 int begPos = semBlock.match_.posBeg_;
                 PegNode content = PUtils.FindNode(semBlock, EPegGrammar.semantic_block_content);
                 Debug.Assert(content != null);
                 bool constructorFound = false;
                 bool disposeFound;
-                bool destructorOrDisposableFound = FindDispose(content,out disposeFound);
+                bool destructorOrDisposableFound = FindDispose(content, out disposeFound);
                 if (isLocal && destructorOrDisposableFound)
                 {
                     if (semBlock.id_ == (int)EPegGrammar.anonymous_semantic_block) blockSrc += " : IDisposable";
@@ -1698,80 +1716,85 @@ namespace $(MODULE_NAME)
                         begPos = semBlock.child_.match_.posEnd_;
                         blockSrc += " : IDisposable";
                     }
-                } 
+                }
                 for (PegNode member = content.child_; member != null; member = member.next_)
                 {
                     switch ((EPegGrammar)member.id_)
                     {
-                        case EPegGrammar.into_declaration:{
-                            for( PegNode variable = PUtils.FindNode(member, EPegGrammar.variable);
-                                 variable!=null;
-                                 variable= PUtils.FindNodeNext(variable,EPegGrammar.variable))
+                        case EPegGrammar.into_declaration:
                             {
-                                if( IsUsedMember(variable)||(!isLocal&&IsAccessedInLocalClass(variable)))
+                                for (PegNode variable = PUtils.FindNode(member, EPegGrammar.variable);
+                                     variable != null;
+                                     variable = PUtils.FindNodeNext(variable, EPegGrammar.variable))
                                 {
-                                    if( !AccessModifierPresent(member.child_))
+                                    if (IsUsedMember(variable) || (!isLocal && IsAccessedInLocalClass(variable)))
                                     {
-                                        AddInternalModifier(ref blockSrc,ref begPos,member);
+                                        if (!AccessModifierPresent(member.child_))
+                                        {
+                                            AddInternalModifier(ref blockSrc, ref begPos, member);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            break;
+                        case EPegGrammar.field_declaration:
+                            {
+                                for (PegNode variable = PUtils.FindNode(member, EPegGrammar.variable);
+                                     variable != null;
+                                     variable = PUtils.FindNodeNext(variable, EPegGrammar.variable))
+                                {
+                                    if ((!isLocal && IsAccessedInLocalClass(variable)) && !AccessModifierPresent(member.child_))
+                                    {
+                                        AddInternalModifier(ref blockSrc, ref begPos, member);
                                         break;
                                     }
                                 }
                             }
-                        }
-                            break;
-                        case EPegGrammar.field_declaration:{
-                            for (PegNode variable = PUtils.FindNode(member, EPegGrammar.variable);
-                                 variable != null;
-                                 variable = PUtils.FindNodeNext(variable, EPegGrammar.variable))
-                            {
-                                if ((!isLocal && IsAccessedInLocalClass(variable)) && !AccessModifierPresent(member.child_))
-                                {
-                                    AddInternalModifier(ref blockSrc, ref begPos, member);
-                                    break;
-                                }
-                            }
-                        }
                             break;
                         case EPegGrammar.sem_func_declaration:
                         case EPegGrammar.creator_func_declaration:
-	                    {
-                            PegNode memberName= PUtils.FindNode(member, EPegGrammar.member_name);
-                            if (    IsUsedMember(memberName) ||  (!isLocal&&IsAccessedInLocalClass(memberName)))
                             {
-                                if (!AccessModifierPresent(member.child_.child_))
+                                PegNode memberName = PUtils.FindNode(member, EPegGrammar.member_name);
+                                if (IsUsedMember(memberName) || (!isLocal && IsAccessedInLocalClass(memberName)))
                                 {
-                                    AddInternalModifier(ref blockSrc,ref begPos,member);
+                                    if (!AccessModifierPresent(member.child_.child_))
+                                    {
+                                        AddInternalModifier(ref blockSrc, ref begPos, member);
+                                    }
+                                }
+                                if (isLocal)
+                                {
+                                    QualifyTopLevelMemberAccessInMethodBody(member.child_.next_, ref blockSrc, ref begPos);
                                 }
                             }
-                            if (isLocal)
+                            break;
+                        case EPegGrammar.func_declaration:
                             {
-                                QualifyTopLevelMemberAccessInMethodBody(member.child_.next_, ref blockSrc, ref begPos);
-                            } 
-	                    }
-                        break;
-                        case EPegGrammar.func_declaration:{
-                            PegNode memberName= PUtils.FindNode(member,EPegGrammar.member_name);
-                            if( memberName.GetAsString(context_.src_)=="Dispose" && !AccessModifierPresent(member.child_.child_))
-                            {
-                                AddPublicModifier(ref blockSrc,ref begPos,member);
-                            }else{
-                                if( (!isLocal&&IsAccessedInLocalClass(memberName)) && !AccessModifierPresent(member.child_.child_))
+                                PegNode memberName = PUtils.FindNode(member, EPegGrammar.member_name);
+                                if (memberName.GetAsString(context_.src_) == "Dispose" && !AccessModifierPresent(member.child_.child_))
                                 {
-                                    AddInternalModifier(ref blockSrc,ref begPos,member);
+                                    AddPublicModifier(ref blockSrc, ref begPos, member);
+                                }
+                                else
+                                {
+                                    if ((!isLocal && IsAccessedInLocalClass(memberName)) && !AccessModifierPresent(member.child_.child_))
+                                    {
+                                        AddInternalModifier(ref blockSrc, ref begPos, member);
+                                    }
+                                }
+                                if (isLocal)
+                                {
+                                    QualifyTopLevelMemberAccessInMethodBody(member.child_.next_, ref blockSrc, ref begPos);
                                 }
                             }
-                             if (isLocal)
-                            {
-                                QualifyTopLevelMemberAccessInMethodBody(member.child_.next_, ref blockSrc, ref begPos);
-                            } 
-                        }
                             break;
                         case EPegGrammar.destructor_decl:
                             {
                                 if (!disposeFound && isLocal)
                                 {
                                     blockSrc += context_.src_.Substring(begPos, member.match_.posBeg_ - begPos);
-                                    blockSrc += GetMinimumIndentation(blockSrc)+"public void Dispose()";
+                                    blockSrc += GetMinimumIndentation(blockSrc) + "public void Dispose()";
                                     begPos = member.child_.next_.match_.posBeg_;
                                     QualifyTopLevelMemberAccessInMethodBody(member.child_.next_, ref blockSrc, ref begPos);
                                 }
@@ -1791,10 +1814,10 @@ namespace $(MODULE_NAME)
                                 if (isLocal)
                                 {
                                     PegNode f = PUtils.FindNode(member.child_, EPegGrammar.formal_pars);
-                                    if (f!=null  && f.child_ == null)
+                                    if (f != null && f.child_ == null)
                                     {
-                                        AddParentParameterToConstructor(ref blockSrc,ref begPos,f);
-                                       
+                                        AddParentParameterToConstructor(ref blockSrc, ref begPos, f);
+
                                     }
                                     QualifyTopLevelMemberAccessInMethodBody(member.child_.next_, ref blockSrc, ref begPos);
                                     blockSrc += context_.src_.Substring(begPos, member.match_.posEnd_ - begPos);
@@ -1822,7 +1845,7 @@ namespace $(MODULE_NAME)
                         initialization = "var _sem= new " + className + "(this);\n";
                         if (destructorOrDisposableFound)
                         {
-                            initialization = "using(var _sem= new " + className +"(this)){";
+                            initialization = "using(var _sem= new " + className + "(this)){";
                             termination = "\n      }";
                         }
                     }
@@ -1835,22 +1858,22 @@ namespace $(MODULE_NAME)
                 }
                 return blockSrc;
             }
-            private void AddParentParameterToConstructor(ref string blockSrc,ref int begPos,PegNode formalPars)
+            private void AddParentParameterToConstructor(ref string blockSrc, ref int begPos, PegNode formalPars)
             {
-                AddSource(ref blockSrc, ref begPos,formalPars.match_.posBeg_+1);
+                AddSource(ref blockSrc, ref begPos, formalPars.match_.posBeg_ + 1);
                 blockSrc += parent_.moduleName_ + " parent";
                 PegNode methodBody = formalPars.parent_.next_;
                 AddSource(ref blockSrc, ref begPos, methodBody.match_.posBeg_ + 1);
-                blockSrc+= "parent_= parent; ";
+                blockSrc += "parent_= parent; ";
             }
 
-            private void AddSource(ref string src,ref int startPos,int endPos)
+            private void AddSource(ref string src, ref int startPos, int endPos)
             {
                 src += context_.src_.Substring(startPos, endPos - startPos);
                 startPos = endPos;
             }
 
-            private bool FindDispose(PegNode content,out bool disposeFound)
+            private bool FindDispose(PegNode content, out bool disposeFound)
             {
                 bool destructorFound = false;
                 disposeFound = false;
@@ -1865,12 +1888,12 @@ namespace $(MODULE_NAME)
                             break;
                     }
                 }
-                return disposeFound||destructorFound;
+                return disposeFound || destructorFound;
             }
 
             private string GetSingletonName(string className)
             {
-                Debug.Assert(className.Length>1);
+                Debug.Assert(className.Length > 1);
                 if (className[0] == '_') return "_" + className.Substring(1, 1).ToLower() + className.Substring(2);
                 else return className.Substring(0, 1).ToLower() + className.Substring(1);
             }
@@ -1896,18 +1919,18 @@ $(MODULE_NAME) parent_;
 
             private string GetMinimumIndentation(string blockSrc)//SEMBLOCK_INDENTATION
             {
-                int minIndentation=blockSrc.Length;
+                int minIndentation = blockSrc.Length;
                 for (int pos = 0; pos < blockSrc.Length && (pos = blockSrc.IndexOf('\n', pos)) != -1; ++pos)
                 {
                     int indent;
-                    for (indent = 1; pos + indent < blockSrc.Length && Char.IsWhiteSpace(blockSrc[pos+indent]); )
+                    for (indent = 1; pos + indent < blockSrc.Length && Char.IsWhiteSpace(blockSrc[pos + indent]);)
                     {
                         if (blockSrc[pos + indent] == '\t')
                             indent += context_.generatorParams_.spacesPerTap_;
                         else
                             indent += 1;
                     }
-                    if(--indent>0 && indent<minIndentation ) minIndentation=indent;
+                    if (--indent > 0 && indent < minIndentation) minIndentation = indent;
                 }
                 return new string(' ', minIndentation == blockSrc.Length ? 0 : minIndentation);
             }
@@ -1930,7 +1953,7 @@ $(MODULE_NAME) parent_;
                 if (pegNode == null) return false;
                 for (PegNode p = pegNode.child_; p != null; p = p.next_)
                 {
-                    if (IsUsedMember(p)||HasUsedMemberInChildren(p)) return true;
+                    if (IsUsedMember(p) || HasUsedMemberInChildren(p)) return true;
                 }
                 return false;
             }
@@ -1952,24 +1975,27 @@ $(MODULE_NAME) parent_;
                         string qualification = null;
                         if (semNode.id_ == (int)EPegGrammar.named_semantic_block)
                         {
-                            if( semNode.child_.match_.GetAsString(context_.src_).Equals("CREATE") ){
-                                qualification= "parent_.";
-                            }else{
+                            if (semNode.child_.match_.GetAsString(context_.src_).Equals("CREATE"))
+                            {
+                                qualification = "parent_.";
+                            }
+                            else
+                            {
                                 string className = semNode.child_.GetAsString(context_.src_);
-                                qualification= "parent_." + className.Substring(0,1).ToLower() + className.Substring(1) + ".";
+                                qualification = "parent_." + className.Substring(0, 1).ToLower() + className.Substring(1) + ".";
                             }
                         }
                         else if (semNode.id_ == (int)EPegGrammar.anonymous_semantic_block)
                         {
-                            qualification= "parent_._top.";
+                            qualification = "parent_._top.";
                         }
-                        if(qualification!=null )
+                        if (qualification != null)
                         {
                             blockSrc += context_.src_.Substring(begPos, pegNode.child_.match_.posBeg_ - begPos);
                             blockSrc += qualification;
-                            begPos= pegNode.child_.match_.posBeg_;
+                            begPos = pegNode.child_.match_.posBeg_;
                         }
-                         
+
                     }
                 }
                 QualifyTopLevelMemberAccessInMethodBody(pegNode.child_, ref blockSrc, ref begPos);
@@ -1995,15 +2021,15 @@ $(MODULE_NAME) parent_;
 
             private bool AccessModifierPresent(PegNode pegNode)
             {
-                if (pegNode == null ) return false;
-                for( 
-                    ;pegNode.id_==(int)EPegGrammar.field_modifier
-                    || pegNode.id_==(int)EPegGrammar.method_modifier;
-                    pegNode= pegNode.next_)
+                if (pegNode == null) return false;
+                for (
+                    ; pegNode.id_ == (int)EPegGrammar.field_modifier
+                    || pegNode.id_ == (int)EPegGrammar.method_modifier;
+                    pegNode = pegNode.next_)
                 {
-                    string s= pegNode.GetAsString(context_.src_);
-                    s= s.Trim();
-                    switch(s)
+                    string s = pegNode.GetAsString(context_.src_);
+                    s = s.Trim();
+                    switch (s)
                     {
                         case "protected":
                         case "private":
@@ -2013,21 +2039,21 @@ $(MODULE_NAME) parent_;
                 }
                 return false;
             }
-            string GenSemanticBlockInfo(string indent,out string initialization)
+            string GenSemanticBlockInfo(string indent, out string initialization)
             {
                 PegNode blockInfo = PUtils.FindNode(context_.root_, EPegGrammar.toplevel_semantic_blocks);
                 string srcCode = "";
-                initialization="";
-                string termination="";
-                if (blockInfo!=null )
+                initialization = "";
+                string termination = "";
+                if (blockInfo != null)
                 {
                     for (PegNode semanticBlock = blockInfo.child_; semanticBlock != null; semanticBlock = semanticBlock.next_)
                     {
                         if (semanticBlock.id_ == (int)EPegGrammar.anonymous_semantic_block)
                         {
-                            string blockSrcCode= "class _Top";
+                            string blockSrcCode = "class _Top";
                             string blockInitialization;
-                            blockSrcCode += GenSemanticBlockContent(semanticBlock,"_Top",false,
+                            blockSrcCode += GenSemanticBlockContent(semanticBlock, "_Top", false,
                                                                         out blockInitialization, out termination);
                             initialization += blockInitialization + "\n";
                             srcCode = blockSrcCode.Replace("\n", "\n" + indent);
@@ -2036,24 +2062,29 @@ $(MODULE_NAME) parent_;
                         {
                             Debug.Assert(semanticBlock.child_ != null && semanticBlock.child_.id_ == (int)EPegGrammar.sem_block_name);
                             string className = semanticBlock.child_.GetAsString(context_.src_);
-                            if( semanticBlock.child_.match_.GetAsString(context_.src_).Equals("CREATE") ){
-                               srcCode+= "#region CREATE\n";
-                               string blockInitialization;
-                               srcCode += GenSemanticBlockContent(semanticBlock.child_.next_.child_,"",false,
-                                                                                    out blockInitialization, out termination);
-                               srcCode+= "#endregion CREATE\n";
-                            }else if( IsUsedAsLocalBlock(className) ){
-                               string blockCode= "class ";
-                               string blockInitialization;
-                               blockCode+= GenSemanticBlockContent(semanticBlock, className, true,
-                                                        out blockInitialization, out termination);
-                               dictUsing_.Add(className, new InitializationTermination { initialization = blockInitialization, termination = termination });
-                               srcCode+= blockCode.Replace("\n", "\n" + indent);
-                            }else{
-                               string blockCode= "class ";
-                               blockCode+= GenSemanticBlockContent(semanticBlock, className, false,
-                                                        out initialization,out termination);
-                               srcCode+= blockCode.Replace("\n", "\n" + indent);
+                            if (semanticBlock.child_.match_.GetAsString(context_.src_).Equals("CREATE"))
+                            {
+                                srcCode += "#region CREATE\n";
+                                string blockInitialization;
+                                srcCode += GenSemanticBlockContent(semanticBlock.child_.next_.child_, "", false,
+                                                                                     out blockInitialization, out termination);
+                                srcCode += "#endregion CREATE\n";
+                            }
+                            else if (IsUsedAsLocalBlock(className))
+                            {
+                                string blockCode = "class ";
+                                string blockInitialization;
+                                blockCode += GenSemanticBlockContent(semanticBlock, className, true,
+                                                         out blockInitialization, out termination);
+                                dictUsing_.Add(className, new InitializationTermination { initialization = blockInitialization, termination = termination });
+                                srcCode += blockCode.Replace("\n", "\n" + indent);
+                            }
+                            else
+                            {
+                                string blockCode = "class ";
+                                blockCode += GenSemanticBlockContent(semanticBlock, className, false,
+                                                         out initialization, out termination);
+                                srcCode += blockCode.Replace("\n", "\n" + indent);
                             }
                         }
                     }
@@ -2071,21 +2102,21 @@ $(MODULE_NAME) parent_;
                 return false;
             }
             void GenCodeForModuleHeadCSharp()
-            { 
+            {
                 string moduleHead = parent_.FindCSharpTemplateCode(ECSharpKind.ModuleHead);
                 string encoding_class, encoding_detection;
-                GetEncoding(out encoding_class,out encoding_detection);
+                GetEncoding(out encoding_class, out encoding_detection);
                 parent_.ReplaceMacro(ref moduleHead, "$(ENCODING_CLASS)", encoding_class);
                 parent_.ReplaceMacro(ref moduleHead, "$(UNICODE_DETECTION)", encoding_detection);
                 parent_.ReplaceMacro(ref moduleHead, "$(MODULE_NAME)", parent_.moduleName_);
                 string enumerators = GenEnumeratorDefinition();
-                parent_.ReplaceMacro(ref moduleHead, "$(ENUMERATOR)", enumerators,true);
+                parent_.ReplaceMacro(ref moduleHead, "$(ENUMERATOR)", enumerators, true);
                 string parserName = IsGrammarForBinaryInput() ? "PegByteParser" : "PegCharParser";
                 parent_.ReplaceMacro(ref moduleHead, "$(PARSER)", parserName);
                 string srcType = context_.IsGrammarForBinaryInput() ? "byte[]" : "string";
                 parent_.ReplaceMacro(ref moduleHead, "$(SRC_TYPE)", srcType);
                 string initialization;
-                string semanticBlockInfo = GenSemanticBlockInfo("        ",out initialization);
+                string semanticBlockInfo = GenSemanticBlockInfo("        ", out initialization);
                 parent_.ReplaceMacro(ref moduleHead, "$(SEMANTIC_BLOCKS)", semanticBlockInfo);
                 parent_.ReplaceMacro(ref moduleHead, "$(INITIALIZATION)", initialization);
                 parent_.outFile_.Write(moduleHead);
@@ -2096,7 +2127,7 @@ $(MODULE_NAME) parent_;
                 PegNode firstRule = PUtils.GetRuleFromRoot(context_.root_);
                 for (PegNode q = firstRule; q != null; q = q.next_)
                 {
-                   
+
                     GenCodeForRuleCSharp(q);
                 }
                 parent_.outFile_.WriteLine("		#endregion Grammar Rules");
@@ -2110,18 +2141,18 @@ $(MODULE_NAME) parent_;
             {
                 if (semBlock.id_ == (int)EPegGrammar.anonymous_semantic_block)
                 {
-                    string className= "_" + sRuleName;
+                    string className = "_" + sRuleName;
                     string srcCode = "class " + className;
-                    srcCode += GenSemanticBlockContent(semBlock,className,true,out initialization,out termination);
+                    srcCode += GenSemanticBlockContent(semBlock, className, true, out initialization, out termination);
                     srcCode = srcCode.Replace("\n", "\n   ");
                     parent_.outFile_.WriteLine("   {0}", srcCode);
-                    
+
                 }
                 else if (semBlock.id_ == (int)EPegGrammar.named_semantic_block)
                 {
                     string srcCode = "class ";
                     string className = semBlock.child_.GetAsString(context_.src_);
-                    string blockCode = GenSemanticBlockContent(semBlock, className,true,out initialization,out termination);
+                    string blockCode = GenSemanticBlockContent(semBlock, className, true, out initialization, out termination);
                     srcCode += blockCode;
                     srcCode = srcCode.Replace("\n", "\n   ");
                     parent_.outFile_.WriteLine("   {0}", srcCode);
@@ -2151,9 +2182,9 @@ $(MODULE_NAME) parent_;
             {
                 PegNode ruleIdent = PUtils.FindNode(rule.child_, EPegGrammar.rule_name);
                 string sRuleFunc = parent_.GetCSharpPrefixed(ruleIdent.GetAsString(context_.src_));
-                PegNode sem_block = PUtils.FindNode(rule.child_, EPegGrammar.named_semantic_block,EPegGrammar.anonymous_semantic_block);
-                string initialization="";
-                string termination="";
+                PegNode sem_block = PUtils.FindNode(rule.child_, EPegGrammar.named_semantic_block, EPegGrammar.anonymous_semantic_block);
+                string initialization = "";
+                string termination = "";
                 if (sem_block != null) GenLocalSemanticBlock(sRuleFunc, sem_block, out initialization, out termination);
                 else
                 {
@@ -2161,10 +2192,10 @@ $(MODULE_NAME) parent_;
                     if (using_block != null)
                     {
                         string name = using_block.GetAsString(context_.src_);
-                        GenLocalBlockInitializationAndTermination(name,out initialization, out termination);
+                        GenLocalBlockInitializationAndTermination(name, out initialization, out termination);
                         if (initialization == "")
                         {
-                            FatalErrorOut("FATAL from <PEG_GENERATOR>: using class "+name+"; '"+name+"' not found");
+                            FatalErrorOut("FATAL from <PEG_GENERATOR>: using class " + name + "; '" + name + "' not found");
                         }
                     }
                 }
@@ -2193,15 +2224,17 @@ $(MODULE_NAME) parent_;
                 if (parent_.outFile_ != null) parent_.outFile_.WriteLine(p);
             }
 
-            private void GenLocalBlockInitializationAndTermination(string className,out string initialization, out string termination)
+            private void GenLocalBlockInitializationAndTermination(string className, out string initialization, out string termination)
             {//retrieve initialization and termination from map
-                if(dictUsing_.ContainsKey(className))
+                if (dictUsing_.ContainsKey(className))
                 {
-                    initialization= dictUsing_[className].initialization;
-                    termination= dictUsing_[className].termination;
-                }else{
-                    initialization="";
-                    termination="";
+                    initialization = dictUsing_[className].initialization;
+                    termination = dictUsing_[className].termination;
+                }
+                else
+                {
+                    initialization = "";
+                    termination = "";
                 }
             }
             void GenCodeForModuleEndCSharp()
@@ -2213,10 +2246,10 @@ $(MODULE_NAME) parent_;
             {
                 if (parent_.optimizationStaticConstructor_.Length > 0)
                 {
-                    parent_.ReplaceMacro(parent_.optimizationStaticConstructor_,"$(OPTIMIZEDCHARSET_DECL)","");
-                    parent_.ReplaceMacro(parent_.optimizationStaticConstructor_,"$(OPTIMIZEDLITERALS_DECL)","");
-                    parent_.ReplaceMacro(parent_.optimizationStaticConstructor_,"$(OPTIMIZEDCHARSET_IMPL)","");
-                    parent_.ReplaceMacro(parent_.optimizationStaticConstructor_,"$(OPTIMIZEDLITERALS_IMPL)","");
+                    parent_.ReplaceMacro(parent_.optimizationStaticConstructor_, "$(OPTIMIZEDCHARSET_DECL)", "");
+                    parent_.ReplaceMacro(parent_.optimizationStaticConstructor_, "$(OPTIMIZEDLITERALS_DECL)", "");
+                    parent_.ReplaceMacro(parent_.optimizationStaticConstructor_, "$(OPTIMIZEDCHARSET_IMPL)", "");
+                    parent_.ReplaceMacro(parent_.optimizationStaticConstructor_, "$(OPTIMIZEDLITERALS_IMPL)", "");
                     parent_.outFile_.Write(parent_.optimizationStaticConstructor_);
                 }
             }
@@ -2226,11 +2259,11 @@ $(MODULE_NAME) parent_;
         #region Constructors
         public PegCSharpGenerator(TreeContext context)
         {
-            context_=   context;
+            context_ = context;
             literalsCount_ = 0;
             optimizedCharsetCount_ = 0;
             optimizationStaticConstructor_ = new StringBuilder();
-            moduleName_= context.GetModuleName();
+            moduleName_ = context.GetModuleName();
             if (moduleName_.Length == 0)
             {
                 context_.generatorParams_.errOut_.WriteLine("FATAL from <PEG_GENERATOR>: grammarName in <<Grammar Name=\"<grammarName>\" ..>> missing");
@@ -2238,7 +2271,7 @@ $(MODULE_NAME) parent_;
             }
             else if (!IsCSharpIdentifier(moduleName_))
             {
-                context_.generatorParams_.errOut_.WriteLine("FATAL from <PEG_GENERATOR>: {0} in <<Grammar Name=\"{1}\" ..>> is not a correct identifier", moduleName_,moduleName_);
+                context_.generatorParams_.errOut_.WriteLine("FATAL from <PEG_GENERATOR>: {0} in <<Grammar Name=\"{1}\" ..>> is not a correct identifier", moduleName_, moduleName_);
                 return;
             }
             (new TopLevelCode(this, context_)).GenCodeCSharpForThisModule();
@@ -2251,119 +2284,120 @@ $(MODULE_NAME) parent_;
             return regex.Match(name).Success;
         }
         string FindCSharpTemplateCode(ECSharpKind eKind)
-		{
+        {
             for (int i = 0; i < templates.Length; ++i)
             {
                 if (templates[i].eKind == eKind) return templates[i].sCodeTemplate;
-			}
+            }
             Debug.Assert(false);
-			return "";
-		}
+            return "";
+        }
         void ReplaceMacro(ref string s, string macro, string replacement, bool doAlignement)
         {
-            int i= s.IndexOf(macro);
+            int i = s.IndexOf(macro);
             if (i == -1) return;
-            int lineBreak= s.Substring(0, i).LastIndexOf('\n');
+            int lineBreak = s.Substring(0, i).LastIndexOf('\n');
             if (lineBreak == -1) lineBreak = 0;
-            string align = new string(' ', i-lineBreak);
-            align=  "\n" + align;
-            replacement= replacement.Replace("\n", align);
-            s= s.Replace(macro,replacement);
+            string align = new string(' ', i - lineBreak);
+            align = "\n" + align;
+            replacement = replacement.Replace("\n", align);
+            s = s.Replace(macro, replacement);
         }
         void ReplaceMacro(ref string s, string macro, string replacement)
-		{
-            s= s.Replace(macro, replacement);
-		}
+        {
+            s = s.Replace(macro, replacement);
+        }
         void ReplaceMacro(StringBuilder s, string macro, string replacement)
         {
             s.Replace(macro, replacement);
         }
         string GetCSharpPrefixed(string s)
-		{
-			string[] keywords={
-				"abstract",
-				"as",
-				"base",
-				"bool",
-				"break",
-				"byte",
-				"case",
-				"catch",
-				"char",
-				"checked",
-				"class",
-				"const",
-				"continue",
-				"decimal",
-				"default",
-				"delegate",
-				"do",
-				"double",
-				"else",
-				"enum",
-				"event",
-				"explicit",
-				"extern",
-				"false",
-				"finally",
-				"fixed",
-				"float",
-				"for",
-				"foreach",
-				"goto",
-				"if",
-				"implicit",
-				"in",
-				"int",
-				"interface",
-				"internal",
-				"is",
-				"lock",
-				"long",
-				"namespace",
-				"new",
-				"null",
-				"object",
-				"operator",
-				"out",
-				"override",
-				"params",
-				"private",
-				"protected",
-				"public",
-				"readonly",
-				"ref",
-				"return",
-				"sbyte",
-				"sealed",
-				"short",
-				"sizeof",
-				"stackalloc",
-				"static",
-				"string",
-				"struct",
-				"switch",
-				"this",
-				"throw",
-				"true",
-				"try",
-				"typeof",
-				"uint",
-				"ulong",
-				"unchecked",
-				"unsafe",
-				"ushort",
-				"using",
-				"virtual",
-				"void",
-				"volatile",
-				"while"
+        {
+            string[] keywords ={
+                "abstract",
+                "as",
+                "base",
+                "bool",
+                "break",
+                "byte",
+                "case",
+                "catch",
+                "char",
+                "checked",
+                "class",
+                "const",
+                "continue",
+                "decimal",
+                "default",
+                "delegate",
+                "do",
+                "double",
+                "else",
+                "enum",
+                "event",
+                "explicit",
+                "extern",
+                "false",
+                "finally",
+                "fixed",
+                "float",
+                "for",
+                "foreach",
+                "goto",
+                "if",
+                "implicit",
+                "in",
+                "int",
+                "interface",
+                "internal",
+                "is",
+                "lock",
+                "long",
+                "namespace",
+                "new",
+                "null",
+                "object",
+                "operator",
+                "out",
+                "override",
+                "params",
+                "private",
+                "protected",
+                "public",
+                "readonly",
+                "ref",
+                "return",
+                "sbyte",
+                "sealed",
+                "short",
+                "sizeof",
+                "stackalloc",
+                "static",
+                "string",
+                "struct",
+                "switch",
+                "this",
+                "throw",
+                "true",
+                "try",
+                "typeof",
+                "uint",
+                "ulong",
+                "unchecked",
+                "unsafe",
+                "ushort",
+                "using",
+                "virtual",
+                "void",
+                "volatile",
+                "while"
             };
-				for(int i=0;i<keywords.Length;++i){
-					if( keywords[i]==s ) return "@"+s;
-				}
-				return s;
+            for (int i = 0; i < keywords.Length; ++i)
+            {
+                if (keywords[i] == s) return "@" + s;
+            }
+            return s;
         }
         #endregion Helper functions
-    }   
+    }
 }
