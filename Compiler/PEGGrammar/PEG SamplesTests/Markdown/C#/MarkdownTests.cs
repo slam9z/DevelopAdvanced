@@ -16,7 +16,7 @@ namespace Markdown.Tests
     [TestClass()]
     public class MarkdownTests
     {
-        private string _baseFolder = "..\\..\\..\\PegSamples\\Markdown\\";
+        private string _baseFolder = "..\\..\\..\\PegMarkdown\\Markdown\\";
 
         private string _inputBaseFolder;
 
@@ -40,31 +40,12 @@ namespace Markdown.Tests
 
 
 
-        public class OutputWriter : TextWriter
-        {
-            public override Encoding Encoding
-            {
-                get
-                {
-                    return Encoding.UTF8;
-                }
-            }
-
-            public override void WriteLine(string format, params object[] arg)
-            {
-                Console.WriteLine(format, arg);
-            }
-
-            public override void WriteLine(string message)
-            {
-                Console.WriteLine(message);
-            }
-        }
+    
 
         [TestInitialize()]
         public void Init()
         {
-            errOut = new OutputWriter();
+            errOut = Console.Out;
             _inputBaseFolder += _baseFolder + "input";
 
 

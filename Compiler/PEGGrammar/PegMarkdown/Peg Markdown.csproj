@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Markdown\html.peg.txt" />
+    <Content Include="Markdown\Html\header.html" />
     <Content Include="Markdown\input\html.html" />
     <Content Include="Markdown\markdown.peg.transform.txt" />
     <Content Include="Markdown\markdown.peg.txt" />
