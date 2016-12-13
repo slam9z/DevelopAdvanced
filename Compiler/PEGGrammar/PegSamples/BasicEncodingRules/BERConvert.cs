@@ -57,12 +57,12 @@ namespace BERTree
         void IParserPostProcessor.Postprocess(ParserPostProcessParams postProcessorParams)
         {
             context_ = new TreeContext(postProcessorParams);
-            string outDir =PUtils.MakeFileName("", context_.generatorParams_.outputDirectory_, "DefiniteLengthForm");
+            string outDir =PegUtils.MakeFileName("", context_.generatorParams_.outputDirectory_, "DefiniteLengthForm");
             if (!Directory.Exists(outDir))
             {
                 Directory.CreateDirectory(outDir);
             }
-            string outFile= PUtils.MakeFileName(context_.generatorParams_.sourceFileTitle_,outDir);
+            string outFile= PegUtils.MakeFileName(context_.generatorParams_.sourceFileTitle_,outDir);
             using (BinaryWriter rw = new BinaryWriter(File.Open(outFile, FileMode.Create)))
             {
                 WriteDefinite(rw, context_.generatorParams_.root_);
@@ -238,12 +238,12 @@ namespace BERTree
         void IParserPostProcessor.Postprocess(ParserPostProcessParams postProcessorParams)
         {
             context_ = new TreeContext(postProcessorParams);
-            string outDir = PUtils.MakeFileName("", context_.generatorParams_.outputDirectory_, "IndefiniteLengthForm");
+            string outDir = PegUtils.MakeFileName("", context_.generatorParams_.outputDirectory_, "IndefiniteLengthForm");
             if (!Directory.Exists(outDir))
             {
                 Directory.CreateDirectory(outDir);
             }
-            string outFile = PUtils.MakeFileName(context_.generatorParams_.sourceFileTitle_, outDir);
+            string outFile = PegUtils.MakeFileName(context_.generatorParams_.sourceFileTitle_, outDir);
             using (BinaryWriter rw = new BinaryWriter(File.Open(outFile, FileMode.Create)))
             {
                 WriteInDefinite(rw, context_.generatorParams_.root_);

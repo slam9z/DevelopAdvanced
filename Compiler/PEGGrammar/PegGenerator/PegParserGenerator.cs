@@ -20,7 +20,7 @@ namespace Peg.Generator
         IntoVarWithContext = 500, SemanticFunctionWithContext = 501,
         GenericCall = 600
     };
-    public class PUtils
+    internal class PUtils
     {
         public static void Trim(StringBuilder s)
         {

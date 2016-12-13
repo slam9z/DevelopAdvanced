@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Peg.Markdown
+namespace Markdown
 {
     enum MarkdownKind
     {

@@ -1,4 +1,4 @@
-/* created on 29.09.2008 15:09:08 from peg generator V1.0 using 'calc0_direct_peg.txt' as input*/
+/* created on 13/12/2016 21:57:45 from peg generator V1.0 using 'calc0_direct_peg.txt' as input*/
 
 using Peg.Base;
 using System;
@@ -8,14 +8,14 @@ namespace calc0_direct
 {
       
       enum Ecalc0_direct{Expr= 1, Sum= 2, Product= 3, Value= 4, Number= 5, S= 6};
-      class calc0_direct : PegCharParser 
+      public class calc0_direct : PegCharParser 
       {
         class Top{ // semantic top level block using C# as host language
           internal double result;
           internal bool print_(){Console.WriteLine("{0}",result);return true;}
         }
         Top top;
-
+        
          #region Input Properties
         public static EncodingClass encodingClass = EncodingClass.ascii;
         public static UnicodeDetection unicodeDetection = UnicodeDetection.notApplicable;
@@ -63,12 +63,12 @@ namespace calc0_direct
         public bool Expr()    /*Expr:    S Sum   (!. print_ / FATAL<"following code not recognized">);*/
         {
 
-           return And(()=>  
+           var result=And(()=>  
                      S()
                   && Sum()
                   && (    
                          And(()=>    Not(()=> Any() ) && top.print_() )
-                      || Fatal("following code not recognized")) );
+                      || Fatal("following code not recognized")) ); return result;
 		}
    class _Sum{  //semantic rule related block using C# as host language 
       double v;
@@ -94,7 +94,7 @@ namespace calc0_direct
 
              var _sem= new _Sum(this);
 
-           return And(()=>  
+           var result=And(()=>  
                      Product()
                   && _sem.save_()
                   && OptRepeat(()=>    
@@ -109,7 +109,7 @@ namespace calc0_direct
                                     && S()
                                     && Product()
                                     && _sem.sub_() ) )
-                  && _sem.store_() );
+                  && _sem.store_() ); return result;
 		}
    class _Product{ //semantic rule related block using C# as host language 
       double v;
@@ -135,7 +135,7 @@ namespace calc0_direct
 
              var _sem= new _Product(this);
 
-           return And(()=>  
+           var result=And(()=>  
                      Value()
                   && _sem.save_()
                   && OptRepeat(()=>    
@@ -150,19 +150,19 @@ namespace calc0_direct
                                     && S()
                                     && Value()
                                     && _sem.div_() ) )
-                  && _sem.store_() );
+                  && _sem.store_() ); return result;
 		}
         public bool Value()    /*Value:   Number S / '(' S Sum ')' S	;*/
         {
 
-           return   
+           var result=  
                      And(()=>    Number() && S() )
                   || And(()=>    
                          Char('(')
                       && S()
                       && Sum()
                       && Char(')')
-                      && S() );
+                      && S() ); return result;
 		}
    class _Number{ //semantic rule related block using C# as host language 
       internal string sNumber;
@@ -181,7 +181,7 @@ namespace calc0_direct
 
              var _sem= new _Number(this);
 
-           return And(()=>  
+           var result=And(()=>  
                      Into(()=>    
                       And(()=>      
                                PlusRepeat(()=> In('0','9') )
@@ -189,12 +189,12 @@ namespace calc0_direct
                                     And(()=>          
                                                  Char('.')
                                               && PlusRepeat(()=> In('0','9') ) ) ) ),out _sem.sNumber)
-                  && _sem.store_() );
+                  && _sem.store_() ); return result;
 		}
         public bool S()    /*S:	 [ \n\r\t\v]*					;*/
         {
 
-           return OptRepeat(()=> OneOf(" \n\r\t\v") );
+           var result=OptRepeat(()=> OneOf(" \n\r\t\v") ); return result;
 		}
 		#endregion Grammar Rules
    }
