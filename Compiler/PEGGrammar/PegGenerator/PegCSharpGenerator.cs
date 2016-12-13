@@ -2260,7 +2260,7 @@ $(MODULE_NAME) parent_;
         }
         #endregion Code Generator Classes
         #region Constructors
-        public PegCSharpGenerator(TreeContext context)
+        internal PegCSharpGenerator(TreeContext context)
         {
             context_ = context;
             literalsCount_ = 0;

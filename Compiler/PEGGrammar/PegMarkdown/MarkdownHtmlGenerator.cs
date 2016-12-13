@@ -27,14 +27,13 @@ namespace Peg.Markdown
 
     public class MarkdownHtmlGenerator
     {
-        private TreeContext _context;
 
 
         CodeTemplate[] templates = {
             new CodeTemplate( MarkdownKind.Heading,@"<h${HeaderLevel}>&{Html}<h${HeaderLevel}>"),
         };
 
-        public MarkdownHtmlGenerator(TreeContext context)
+        public MarkdownHtmlGenerator()
         {
 
 

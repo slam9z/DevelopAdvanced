@@ -1002,7 +1002,7 @@ namespace Peg.Generator
             NormalizeTree normalizeTree_;
         }
     }
-    public class TreeContext
+    internal class TreeContext
     {
         public PegNode root_;
         public string src_;
@@ -1226,7 +1226,7 @@ namespace Peg.Generator
             internal TreeContext c_;
             internal bool bOk_;
             #endregion Data Members
-            public CheckGrammar(TreeContext c)
+            internal CheckGrammar(TreeContext c)
             {
                 c_ = c;
                 bOk_ = true;
