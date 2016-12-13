@@ -1,10 +1,10 @@
-/* created on 13/12/2016 21:57:45 from peg generator V1.0 using 'calc0_direct_peg.txt' as input*/
+/* created on 13/12/2016 22:20:17 from peg generator V1.0 using 'calc0_direct_peg.txt' as input*/
 
 using Peg.Base;
 using System;
 using System.IO;
 using System.Text;
-namespace calc0_direct
+namespace 
 {
       
       enum Ecalc0_direct{Expr= 1, Sum= 2, Product= 3, Value= 4, Number= 5, S= 6};

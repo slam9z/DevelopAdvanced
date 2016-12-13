@@ -1,4 +1,4 @@
-﻿<<Grammar Name = 'Markdown'  encoding_class='utf8' >>
+﻿<<Grammar Name = 'Markdown'   Namespace = 'Peg.Markdown'  encoding_class='utf8' >>
 
 ^^Doc :      Block  *  ;
            

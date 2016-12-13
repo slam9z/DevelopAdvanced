@@ -1018,6 +1018,7 @@ namespace Peg.Generator
         public static string caseSensitivity = "caseSensitivity";
         public static string encoding_class = "encoding_class";
         public static string Name = "name";
+        public static string Namespace = "namespace";
 
         public TreeContext(ParserPostProcessParams generatorParams)
         {
@@ -1061,6 +1062,14 @@ namespace Peg.Generator
             string sName;
             return dictProperties_.TryGetValue(Name, out sName) ? sName : "";
         }
+
+        public string NamespaceProperty()
+        {
+            string sNamespace;
+            return dictProperties_.TryGetValue(Namespace, out sNamespace) ? sNamespace : "";
+        }
+
+
         void RegisterProperties()
         {
             PegNode attribute = PUtils.FindNode(root_, EPegGrammar.attribute);
@@ -1199,6 +1208,11 @@ namespace Peg.Generator
         public string GetModuleName()
         {
             return NameProperty();
+        }
+
+        public string GetNamespace()
+        {
+            return NamespaceProperty()??GetModuleName();
         }
     }
 

@@ -1,10 +1,10 @@
-/* created on 10/12/2016 23:12:36 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 13/12/2016 22:17:36 from peg generator V1.0 using 'markdown.peg.transform.txt' as input*/
 
 using Peg.Base;
 using System;
 using System.IO;
 using System.Text;
-namespace Markdown
+namespace Peg.Markdown
 {
       
       enum EMarkdown{Doc= 1, Block= 2, Plain= 3, AtxInline= 4, AtxStart= 5, AtxHeading= 6, 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Markdown;
+using Peg.Markdown;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -141,7 +142,7 @@ namespace Markdown.Tests
         public void LinkTest()
         {
             var markdownSrc = File.ReadAllText(Path.Combine(_inputBaseFolder, "link.md"));
-            var markdown = new Markdown(markdownSrc, errOut);
+            var markdown = new  Peg.Markdown.Markdown(markdownSrc, errOut);
             Console.WriteLine($"source length: {markdownSrc.Length}");
             Console.WriteLine($"source : {markdownSrc}");
             markdown.Doc();

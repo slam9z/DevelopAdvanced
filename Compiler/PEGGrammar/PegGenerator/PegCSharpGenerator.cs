@@ -121,6 +121,7 @@ namespace Peg.Generator
         TextWriter outFile_;
         TreeContext context_;
         string moduleName_;
+        string namespace_;
         string outputFileName_;
         internal int literalsCount_;
         internal int optimizedCharsetCount_;
@@ -189,7 +190,7 @@ using Peg.Base;
 using System;
 using System.IO;
 using System.Text;
-namespace $(MODULE_NAME)
+namespace $(MODULE_NAMESPACE)
 {
       
       enum E$(MODULE_NAME){$(ENUMERATOR)};
@@ -2109,6 +2110,8 @@ $(MODULE_NAME) parent_;
                 parent_.ReplaceMacro(ref moduleHead, "$(ENCODING_CLASS)", encoding_class);
                 parent_.ReplaceMacro(ref moduleHead, "$(UNICODE_DETECTION)", encoding_detection);
                 parent_.ReplaceMacro(ref moduleHead, "$(MODULE_NAME)", parent_.moduleName_);
+                parent_.ReplaceMacro(ref moduleHead, "$(MODULE_NAMESPACE)", parent_.namespace_);
+                
                 string enumerators = GenEnumeratorDefinition();
                 parent_.ReplaceMacro(ref moduleHead, "$(ENUMERATOR)", enumerators, true);
                 string parserName = IsGrammarForBinaryInput() ? "PegByteParser" : "PegCharParser";
@@ -2264,6 +2267,7 @@ $(MODULE_NAME) parent_;
             optimizedCharsetCount_ = 0;
             optimizationStaticConstructor_ = new StringBuilder();
             moduleName_ = context.GetModuleName();
+            namespace_ = context.GetNamespace();
             if (moduleName_.Length == 0)
             {
                 context_.generatorParams_.errOut_.WriteLine("FATAL from <PEG_GENERATOR>: grammarName in <<Grammar Name=\"<grammarName>\" ..>> missing");
