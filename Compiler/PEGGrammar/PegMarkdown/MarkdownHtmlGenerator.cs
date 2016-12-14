@@ -82,7 +82,7 @@ namespace Peg.Markdown
             _src = postProcessorParams.src_;
             _generatorParams = postProcessorParams;
 
-            OpenOutFile("Html", ".html");
+            OpenOutFile("", ".html");
             GenHtmlForBlock();
         }
 
@@ -124,8 +124,10 @@ namespace Peg.Markdown
 
             _outFile.Write(content);
 
-
         }
+
+
+        #region header
 
         string CreateHeading(int headerlevel, string html)
         {
@@ -143,26 +145,37 @@ namespace Peg.Markdown
                 var headerLevelStr = PegUtils.FindNode(heading.child_, (int)EMarkdown.AtxStart)
                     .GetAsString(_src);
                 var headerLevel = headerLevelStr.Length;
-                var headText = heading.GetAsString(_src).Replace(headerLevelStr, "").Trim();
+                var headText = heading.GetAsString(_src).Replace("#", "").Trim();
                 content = CreateHeading(headerLevel, headText);
             }
             else
             {
-                content = heading.GetAsString(_src);
+                var selectBottom = PegUtils.FindNode(heading, (int)EMarkdown.SetextBottom1, (int)EMarkdown.SetextBottom2);
+                var headText = PegUtils.GetAsString(_src, heading, selectBottom).Trim();
+                content = CreateHeading(2, headText);
             }
             return content;
         }
 
 
+        #endregion
 
         bool OpenOutFile(string sGenSubDirectory, string fileEnding)
         {
             try
             {
-                string htmlDir =
-                    PegUtils.MakeFileName("", _generatorParams.outputDirectory_, sGenSubDirectory);
+                var filename = _generatorParams.sourceFileTitle_;
+                if (!filename.EndsWith(fileEnding))
+                {
+                    filename = filename + fileEnding;
+                }
+
+                var htmlDir = PegUtils.MakeFileName(
+                    "", _generatorParams.outputDirectory_, sGenSubDirectory);
+
                 _outputFileName = PegUtils.MakeFileName(
-                       _generatorParams.sourceFileTitle_ + fileEnding, htmlDir);
+                       filename, htmlDir);
+
                 if (!Directory.Exists(htmlDir))
                 {
                     Directory.CreateDirectory(htmlDir);

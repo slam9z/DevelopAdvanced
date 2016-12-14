@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MarkdownHtmlConverter.cs" />
     <Compile Include="MarkdownHtmlGenerator.cs" />
     <Compile Include="Markdown\C#\Html.cs" />
     <Compile Include="Markdown\C#\Markdown.cs" />
@@ -55,8 +56,6 @@
     <Content Include="Markdown\github markdown html\js\github.css" />
     <Content Include="Markdown\github markdown html\js\github.js" />
     <Content Include="Markdown\html.peg.txt" />
-    <Content Include="Markdown\Html\header.html" />
-    <Content Include="Markdown\input\html.html" />
     <Content Include="Markdown\markdown.peg.transform.txt" />
     <Content Include="Markdown\markdown.peg.txt" />
   </ItemGroup>
@@ -79,6 +78,7 @@
       <Name>Peg Generator</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

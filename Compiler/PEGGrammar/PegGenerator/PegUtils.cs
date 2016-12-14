@@ -100,6 +100,29 @@ namespace Peg.Generator
             return n.match_.GetAsString(src);
         }
 
+        public static string GetAsString(string src, PegNode n, params PegNode[] removeNodes)
+        {
+            var nString = n.match_.GetAsString(src);
+
+            foreach (var removeNode in removeNodes)
+            {
+                if (n.match_.posBeg_ <= removeNode.match_.posBeg_
+                    && n.match_.posEnd_ >= removeNode.match_.posEnd_
+                    )
+                {
+
+                    nString = nString.Remove(removeNode.match_.posBeg_ - n.match_.posBeg_, removeNode.match_.Length);
+                }
+                else
+                {
+                    throw new NotSupportedException("removeNode out index");
+                }
+            }
+
+            return nString;
+
+        }
+
 
         public static string MakeFileName(string sFileTitle, params string[] directories)
         {
