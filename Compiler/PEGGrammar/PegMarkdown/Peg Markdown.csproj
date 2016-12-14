@@ -47,6 +47,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Markdown\github markdown html\DevelopAdvanced_syntax.htm" />
+    <Content Include="Markdown\github markdown html\js\10583650.png" />
+    <Content Include="Markdown\github markdown html\js\68747470733a2f2f302e67726176617461722e636f6d2f6176617461722f.png" />
+    <Content Include="Markdown\github markdown html\js\frameworks.css" />
+    <Content Include="Markdown\github markdown html\js\frameworks.js" />
+    <Content Include="Markdown\github markdown html\js\github.css" />
+    <Content Include="Markdown\github markdown html\js\github.js" />
     <Content Include="Markdown\html.peg.txt" />
     <Content Include="Markdown\Html\header.html" />
     <Content Include="Markdown\input\html.html" />
