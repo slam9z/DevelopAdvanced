@@ -56,6 +56,10 @@
     <Content Include="Markdown\github markdown html\js\github.css" />
     <Content Include="Markdown\github markdown html\js\github.js" />
     <Content Include="Markdown\html.peg.txt" />
+    <Content Include="Markdown\input\Html\bulletList.html" />
+    <Content Include="Markdown\input\Html\continueList.html" />
+    <Content Include="Markdown\input\Html\header.html" />
+    <Content Include="Markdown\input\Html\orderedList.html" />
     <Content Include="Markdown\markdown.peg.transform.txt" />
     <Content Include="Markdown\markdown.peg.txt" />
   </ItemGroup>

@@ -36,6 +36,16 @@ namespace Peg.Markdown.Tests
             converter.ConvertToFile(Path.Combine(_inputBaseFolder, "header.md"), Path.Combine(_inputBaseFolder, "Html", "header"));
         }
 
+        [TestMethod()]
+        public void CreateListTest()
+        {
+            var converter = new MarkdownHtmlConverter();
+         //   converter.ConvertToFile(Path.Combine(_inputBaseFolder, "bulletList.md"), Path.Combine(_inputBaseFolder, "Html", "bulletList"));
 
+          //  converter.ConvertToFile(Path.Combine(_inputBaseFolder, "orderedList.md"), Path.Combine(_inputBaseFolder, "Html", "orderedList"));
+
+            converter.ConvertToFile(Path.Combine(_inputBaseFolder, "continueList.md"), Path.Combine(_inputBaseFolder, "Html", "continueList"));
+
+        }
     }
 }

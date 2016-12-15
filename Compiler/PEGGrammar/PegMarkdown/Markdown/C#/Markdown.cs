@@ -1,4 +1,4 @@
-/* created on 13/12/2016 22:45:30 from peg generator V1.0 using 'Markdown' as input*/
+/* created on 15/12/2016 22:51:07 from peg generator V1.0 using 'Markdown' as input*/
 
 using Peg.Base;
 using System;
@@ -446,7 +446,7 @@ namespace Peg.Markdown
         public bool ListContinuationBlock()    /*^^ListContinuationBlock : StartList
                         ( BlankLine* 
                         )
-                        ( Indent ListBlock  )+;*/
+                        ( Indent  ListBlock  )+;*/
         {
 
            var result= TreeNT((int)EMarkdown.ListContinuationBlock,()=>

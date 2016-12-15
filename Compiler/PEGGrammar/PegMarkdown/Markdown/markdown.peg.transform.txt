@@ -112,7 +112,7 @@
 ^^ListContinuationBlock : StartList
                         ( BlankLine* 
                         )
-                        ( Indent ListBlock  )+;
+                        ( Indent  ListBlock  )+;
                         
 
 ^^Enumerator : NonindentSpace [0-9]+ '.' Spacechar+;
