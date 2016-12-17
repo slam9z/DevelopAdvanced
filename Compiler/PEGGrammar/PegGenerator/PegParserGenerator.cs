@@ -1066,7 +1066,7 @@ namespace Peg.Generator
         public string NamespaceProperty()
         {
             string sNamespace;
-            return dictProperties_.TryGetValue(Namespace, out sNamespace) ? sNamespace : "";
+            return dictProperties_.TryGetValue(Namespace, out sNamespace) ? sNamespace : null;
         }
 
 

@@ -300,7 +300,7 @@ HtmlBlockCloseHead : '<' Spnl '/' ('head' / 'HEAD') Spnl '>';
                 / HtmlBlockHead ;
 
 ^^HtmlBlock : ( HtmlBlockInTags / HtmlComment / HtmlBlockSelfClosing ) 
-            BlankLine+ ;
+            BlankLine* ;
 
 ^^HtmlBlockSelfClosing : '<' Spnl HtmlBlockType Spnl HtmlAttribute* '/' Spnl '>';
 

@@ -1,4 +1,4 @@
-/* created on 07/12/2016 20:30:56 from peg generator V1.0 using 'Html' as input*/
+/* created on 17/12/2016 22:22:02 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -1397,7 +1397,7 @@ namespace Html
                   || HtmlBlockHead() ); return result;
 		}
         public bool HtmlBlock()    /*^^HtmlBlock : ( HtmlBlockInTags / HtmlComment / HtmlBlockSelfClosing ) 
-            BlankLine+ ;*/
+            BlankLine* ;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlock,()=>
@@ -1406,7 +1406,7 @@ namespace Html
                          HtmlBlockInTags()
                       || HtmlComment()
                       || HtmlBlockSelfClosing())
-                  && PlusRepeat(()=> BlankLine() ) ) ); return result;
+                  && OptRepeat(()=> BlankLine() ) ) ); return result;
 		}
         public bool HtmlBlockSelfClosing()    /*^^HtmlBlockSelfClosing : '<' Spnl HtmlBlockType Spnl HtmlAttribute* '/' Spnl '>';*/
         {
