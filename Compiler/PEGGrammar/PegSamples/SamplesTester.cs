@@ -103,7 +103,7 @@ namespace Peg.Samples
             sampleGrammars.Add(
                  new SampleInfo(
         ESampleId.Html,
-        (new Html.Html()).Doc,
+        (new Peg.Html.Html()).Doc,
         "HTML (readable grammar)",
         "HTML",
         @"PegMarkdown\Markdown\input",

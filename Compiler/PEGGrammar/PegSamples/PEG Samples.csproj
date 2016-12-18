@@ -83,6 +83,10 @@
       <Project>{c21214b0-420d-44df-8664-9522d8cb0f34}</Project>
       <Name>Peg Generator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PegHtml\Peg Html.csproj">
+      <Project>{600e3d5b-9ec7-4099-ae0a-3b08fa5f60b5}</Project>
+      <Name>Peg Html</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PegMarkdown\Peg Markdown.csproj">
       <Project>{b0996a45-01ba-4746-abde-6c221b590112}</Project>
       <Name>Peg Markdown</Name>
