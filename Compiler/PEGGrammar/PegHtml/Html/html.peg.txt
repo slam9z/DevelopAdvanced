@@ -96,7 +96,7 @@ HtmlBlockCloseTable : '<' Spnl '/' ('table' / 'TABLE') Spnl '>';
 
 HtmlBlockOpenUl : '<' Spnl ('ul' / 'UL') Spnl HtmlAttribute* '>';
 HtmlBlockCloseUl : '<' Spnl '/' ('ul' / 'UL') Spnl '>';
-^^HtmlBlockUl : HtmlBlockOpenUl (HtmlBlockUl / !HtmlBlockCloseUl .)* HtmlBlockCloseUl;
+^^HtmlBlockUl : HtmlBlockOpenUl (&HtmlBlockCloseUl /HtmlBlock  !HtmlBlockCloseUl) HtmlBlockCloseUl;
 
 HtmlBlockOpenDd : '<' Spnl ('dd' / 'DD') Spnl HtmlAttribute* '>';
 HtmlBlockCloseDd : '<' Spnl '/' ('dd' / 'DD') Spnl '>';
@@ -112,7 +112,7 @@ HtmlBlockCloseFrameset : '<' Spnl '/' ('frameset' / 'FRAMESET') Spnl '>';
 
 HtmlBlockOpenLi : '<' Spnl ('li' / 'LI') Spnl HtmlAttribute* '>';
 HtmlBlockCloseLi : '<' Spnl '/' ('li' / 'LI') Spnl '>';
-^^HtmlBlockLi : HtmlBlockOpenLi (HtmlBlockLi / !HtmlBlockCloseLi .)* HtmlBlockCloseLi;
+^^HtmlBlockLi : HtmlBlockOpenLi (&HtmlBlockCloseLi/HtmlBlock !HtmlBlockCloseLi ) HtmlBlockCloseLi;
 
 HtmlBlockOpenTbody : '<' Spnl ('tbody' / 'TBODY') Spnl HtmlAttribute* '>';
 HtmlBlockCloseTbody : '<' Spnl '/' ('tbody' / 'TBODY') Spnl '>';
@@ -181,8 +181,8 @@ HtmlBlockCloseHead : '<' Spnl '/' ('head' / 'HEAD') Spnl '>';
                 / HtmlBlockScript
                 / HtmlBlockHead ;
 
-^^HtmlBlock : ( HtmlBlockInTags / HtmlComment / HtmlBlockSelfClosing ) 
-            BlankLine* ;
+^^HtmlBlock : Spnl (HtmlBlockInTags / HtmlComment / HtmlBlockSelfClosing /Str )
+            Spnl;
 
 ^^HtmlBlockSelfClosing : '<' Spnl HtmlBlockType Spnl HtmlAttribute* '/' Spnl '>';
 
@@ -218,6 +218,11 @@ Newline :       '\n' / '\r' '\n'?;
 Sp :            Spacechar*; 
 Spnl :          Sp (Newline Sp)? ;
 AlphanumericAscii : [A-Za-z0-9] ;
+
+SpecialChar :   '<' / '>' ;
+NormalChar :    !( SpecialChar / Spacechar / Newline ) .;
+
+^^Str :  NormalChar+  ;
 
 Eof :          !./ WARNING<" end of file">;   
 

@@ -56,6 +56,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Html\html.peg.txt" />
+    <Content Include="Html\input\Html\bulletList.html" />
+    <Content Include="Html\input\Html\continueList.html" />
+    <Content Include="Html\input\Html\header.html" />
+    <Content Include="Html\input\Html\orderedList.html" />
+    <Content Include="Html\input\ultest.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

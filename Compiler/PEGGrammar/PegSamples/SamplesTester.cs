@@ -92,7 +92,17 @@ namespace Peg.Samples
             sampleGrammars = new List<SampleInfo>();
 
             sampleGrammars.Add(
-       new SampleInfo(
+           new SampleInfo(
+             ESampleId.Html,
+             (new Peg.Html.Html()).Doc,
+             "HTML (readable grammar)",
+             "HTML",
+             @"PegHtml\Html\input",
+             null));
+
+            sampleGrammars.Add(
+
+             new SampleInfo(
                ESampleId.Markdown,
                (new Markdown.Markdown()).Doc,
                "Markdown (readable grammar)",
@@ -100,14 +110,7 @@ namespace Peg.Samples
                @"PegMarkdown\Markdown\input",
                null));
 
-            sampleGrammars.Add(
-                 new SampleInfo(
-        ESampleId.Html,
-        (new Peg.Html.Html()).Doc,
-        "HTML (readable grammar)",
-        "HTML",
-        @"PegMarkdown\Markdown\input",
-        null));
+
 
             sampleGrammars.Add(
                new SampleInfo(

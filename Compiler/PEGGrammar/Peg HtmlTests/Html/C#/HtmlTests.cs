@@ -17,7 +17,7 @@ namespace Peg.Html.Tests
     {
 
 
-        private string _inputFolder = "..\\..\\..\\PegMarkdown\\Markdown\\input\\";
+        private string _inputFolder = "..\\..\\..\\PegHtml\\Html\\input\\";
 
 
         private string _baseFolder = "..\\..\\..\\PegHtml\\Html\\";

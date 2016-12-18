@@ -60,6 +60,7 @@
     <Content Include="Markdown\input\Html\continueList.html" />
     <Content Include="Markdown\input\Html\header.html" />
     <Content Include="Markdown\input\Html\orderedList.html" />
+    <Content Include="Markdown\input\ultest.html" />
     <Content Include="Markdown\markdown.peg.transform.txt" />
     <Content Include="Markdown\markdown.peg.txt" />
   </ItemGroup>
