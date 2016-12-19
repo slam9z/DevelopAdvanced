@@ -1,4 +1,4 @@
-/* created on 18/12/2016 21:11:23 from peg generator V1.0 using 'Html' as input*/
+/* created on 19/12/2016 22:59:32 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -44,7 +44,7 @@ namespace Peg.Html
                   Space= 113, RawHtml= 114, BlankLine= 115, Quoted= 116, HtmlAttribute= 117, 
                   HtmlComment= 118, HtmlTag= 119, Spacechar= 120, Nonspacechar= 121, 
                   Newline= 122, Sp= 123, Spnl= 124, AlphanumericAscii= 125, SpecialChar= 126, 
-                  NormalChar= 127, Str= 128, Eof= 129};
+                  NormalChar= 127, Symbol= 128, Str= 129, Eof= 130};
       public class Html : PegCharParser 
       {
         
@@ -882,7 +882,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockUl()    /*^^HtmlBlockUl : HtmlBlockOpenUl (&HtmlBlockCloseUl /HtmlBlock  !HtmlBlockCloseUl) HtmlBlockCloseUl;*/
+        public bool HtmlBlockUl()    /*^^HtmlBlockUl : HtmlBlockOpenUl (&HtmlBlockCloseUl /  HtmlBlock+ ) HtmlBlockCloseUl;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockUl,()=>
@@ -890,9 +890,7 @@ namespace Peg.Html
                      HtmlBlockOpenUl()
                   && (    
                          Peek(()=> HtmlBlockCloseUl() )
-                      || And(()=>      
-                               HtmlBlock()
-                            && Not(()=> HtmlBlockCloseUl() ) ))
+                      || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseUl() ) ); return result;
 		}
         public bool HtmlBlockOpenDd()    /*HtmlBlockOpenDd : '<' Spnl ('dd' / 'DD') Spnl HtmlAttribute* '>';*/
@@ -1021,17 +1019,13 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockLi()    /*^^HtmlBlockLi : HtmlBlockOpenLi (&HtmlBlockCloseLi/HtmlBlock !HtmlBlockCloseLi ) HtmlBlockCloseLi;*/
+        public bool HtmlBlockLi()    /*^^HtmlBlockLi : HtmlBlockOpenLi (&HtmlBlockCloseLi/HtmlBlock  ) HtmlBlockCloseLi;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockLi,()=>
                 And(()=>  
                      HtmlBlockOpenLi()
-                  && (    
-                         Peek(()=> HtmlBlockCloseLi() )
-                      || And(()=>      
-                               HtmlBlock()
-                            && Not(()=> HtmlBlockCloseLi() ) ))
+                  && (    Peek(()=> HtmlBlockCloseLi() ) || HtmlBlock())
                   && HtmlBlockCloseLi() ) ); return result;
 		}
         public bool HtmlBlockOpenTbody()    /*HtmlBlockOpenTbody : '<' Spnl ('tbody' / 'TBODY') Spnl HtmlAttribute* '>';*/
@@ -1579,12 +1573,10 @@ namespace Peg.Html
 
            var result=OptRepeat(()=> Spacechar() ); return result;
 		}
-        public bool Spnl()    /*Spnl :          Sp (Newline Sp)? ;*/
+        public bool Spnl()    /*Spnl :          (Newline / Spacechar)*;*/
         {
 
-           var result=And(()=>  
-                     Sp()
-                  && Option(()=> And(()=>    Newline() && Sp() ) ) ); return result;
+           var result=OptRepeat(()=>     Newline() || Spacechar() ); return result;
 		}
         public bool AlphanumericAscii()    /*AlphanumericAscii : [A-Za-z0-9] ;*/
         {
@@ -1596,12 +1588,16 @@ namespace Peg.Html
 
            var result=    Char('<') || Char('>'); return result;
 		}
-        public bool NormalChar()    /*NormalChar :    !( SpecialChar / Spacechar / Newline ) .;*/
+        public bool NormalChar()    /*NormalChar :    !( SpecialChar) .;*/
         {
 
-           var result=And(()=>  
-                     Not(()=>     SpecialChar() || Spacechar() || Newline() )
-                  && Any() ); return result;
+           var result=And(()=>    Not(()=> SpecialChar() ) && Any() ); return result;
+		}
+        public bool Symbol()    /*^^Symbol :     SpecialChar  ;*/
+        {
+
+           var result= TreeNT((int)EHtml.Symbol,()=>
+                SpecialChar() ); return result;
 		}
         public bool Str()    /*^^Str :  NormalChar+  ;*/
         {

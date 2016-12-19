@@ -96,7 +96,7 @@ HtmlBlockCloseTable : '<' Spnl '/' ('table' / 'TABLE') Spnl '>';
 
 HtmlBlockOpenUl : '<' Spnl ('ul' / 'UL') Spnl HtmlAttribute* '>';
 HtmlBlockCloseUl : '<' Spnl '/' ('ul' / 'UL') Spnl '>';
-^^HtmlBlockUl : HtmlBlockOpenUl (&HtmlBlockCloseUl /HtmlBlock  !HtmlBlockCloseUl) HtmlBlockCloseUl;
+^^HtmlBlockUl : HtmlBlockOpenUl (&HtmlBlockCloseUl /  HtmlBlock+ ) HtmlBlockCloseUl;
 
 HtmlBlockOpenDd : '<' Spnl ('dd' / 'DD') Spnl HtmlAttribute* '>';
 HtmlBlockCloseDd : '<' Spnl '/' ('dd' / 'DD') Spnl '>';
@@ -112,7 +112,7 @@ HtmlBlockCloseFrameset : '<' Spnl '/' ('frameset' / 'FRAMESET') Spnl '>';
 
 HtmlBlockOpenLi : '<' Spnl ('li' / 'LI') Spnl HtmlAttribute* '>';
 HtmlBlockCloseLi : '<' Spnl '/' ('li' / 'LI') Spnl '>';
-^^HtmlBlockLi : HtmlBlockOpenLi (&HtmlBlockCloseLi/HtmlBlock !HtmlBlockCloseLi ) HtmlBlockCloseLi;
+^^HtmlBlockLi : HtmlBlockOpenLi (&HtmlBlockCloseLi/HtmlBlock  ) HtmlBlockCloseLi;
 
 HtmlBlockOpenTbody : '<' Spnl ('tbody' / 'TBODY') Spnl HtmlAttribute* '>';
 HtmlBlockCloseTbody : '<' Spnl '/' ('tbody' / 'TBODY') Spnl '>';
@@ -216,11 +216,13 @@ Spacechar :     ' ' / '\t';
 Nonspacechar :  !Spacechar !Newline .;
 Newline :       '\n' / '\r' '\n'?;
 Sp :            Spacechar*; 
-Spnl :          Sp (Newline Sp)? ;
+Spnl :          (Newline / Spacechar)*;
 AlphanumericAscii : [A-Za-z0-9] ;
 
 SpecialChar :   '<' / '>' ;
-NormalChar :    !( SpecialChar / Spacechar / Newline ) .;
+NormalChar :    !( SpecialChar) .;
+
+^^Symbol :     SpecialChar  ;
 
 ^^Str :  NormalChar+  ;
 
