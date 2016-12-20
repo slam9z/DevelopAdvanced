@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Html\C#\Html.cs" />
+    <Content Include="Html\input\div.html" />
+    <Content Include="Html\input\span.html" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Html\input\unknown.html" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PegBase\PEG Base.csproj">
@@ -56,12 +59,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Html\html.peg.txt" />
+    <Content Include="Html\input\code.html" />
     <Content Include="Html\input\Html\bulletList.html" />
     <Content Include="Html\input\Html\continueList.html" />
     <Content Include="Html\input\Html\header.html" />
     <Content Include="Html\input\Html\orderedList.html" />
+    <Content Include="Html\input\link.html" />
     <Content Include="Html\input\litest.html" />
     <Content Include="Html\input\ultest.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Html\html.peg.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
