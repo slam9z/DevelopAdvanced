@@ -1,4 +1,4 @@
-/* created on 20/12/2016 23:20:15 from peg generator V1.0 using 'Html' as input*/
+/* created on 20/12/2016 23:40:56 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -1372,33 +1372,27 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseSpan() ) ); return result;
 		}
-        public bool HtmlBlockOpenUnknown()    /*HtmlBlockOpenUnknown : '<' Spnl (!'>' !HtmlBlockType LiteralChar)* Spnl  HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenUnknown()    /*HtmlBlockOpenUnknown : '<' Spnl ![>/] (LiteralChar)* Spnl  HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && OptRepeat(()=>    
-                      And(()=>      
-                               Not(()=> Char('>') )
-                            && Not(()=> HtmlBlockType() )
-                            && LiteralChar() ) )
+                  && Not(()=> OneOf(">/") )
+                  && OptRepeat(()=> LiteralChar() )
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseUnknown()    /*HtmlBlockCloseUnknown : '<' Spnl '/'  (!'>' !HtmlBlockType  LiteralChar)*  Spnl '>';*/
+        public bool HtmlBlockCloseUnknown()    /*HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  (LiteralChar)*  Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && OptRepeat(()=>    
-                      And(()=>      
-                               Not(()=> Char('>') )
-                            && Not(()=> HtmlBlockType() )
-                            && LiteralChar() ) )
+                  && Not(()=> Char('>') )
+                  && OptRepeat(()=> LiteralChar() )
                   && Spnl()
                   && Char('>') ); return result;
 		}
