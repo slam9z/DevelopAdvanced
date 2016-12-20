@@ -159,8 +159,8 @@ HtmlBlockOpenSpan : '<' Spnl ('span' / 'SPAN') Spnl  '>';
 HtmlBlockCloseSpan  : '<' Spnl '/' ('span' / 'SPAN') Spnl '>';
 ^^HtmlBlockSpan : HtmlBlockOpenSpan ( &HtmlBlockCloseSpan /HtmlBlock+) HtmlBlockCloseSpan ;
 
-HtmlBlockOpenUnknown : '<' Spnl (!'>' .)* Spnl  '>';
-HtmlBlockCloseUnknown : '<' Spnl '/'  (!'>' .)*  Spnl '>';
+HtmlBlockOpenUnknown : '<' Spnl (!'>' !HtmlBlockType LiteralChar)* Spnl  HtmlAttribute* '>';
+HtmlBlockCloseUnknown : '<' Spnl '/'  (!'>' !HtmlBlockType  LiteralChar)*  Spnl '>';
 ^^HtmlBlockUnknown : HtmlBlockOpenUnknown ( &HtmlBlockCloseUnknown /HtmlBlock+) HtmlBlockCloseUnknown ;
 
 
@@ -201,11 +201,12 @@ HtmlBlockCloseUnknown : '<' Spnl '/'  (!'>' .)*  Spnl '>';
 				/ HtmlBlockA
 				/ HtmlBlockCode
 				/ HtmlBlockSpan
-		//      / HtmlBlockUnknown
+		        / HtmlBlockUnknown
 				;
 
-^^HtmlBlock :Spnl (HtmlBlockInTags / HtmlComment / HtmlBlockSelfClosing /InnerPlain )
-            Spnl;
+^^HtmlBlock :(Spnl (HtmlBlockInTags / HtmlComment / HtmlBlockSelfClosing )Spnl)/InnerPlain ;
+
+
 
 ^^HtmlBlockSelfClosing : '<' Spnl HtmlBlockType Spnl HtmlAttribute* '/' Spnl '>';
 
@@ -245,6 +246,8 @@ AlphanumericAscii : [A-Za-z0-9] ;
 
 SpecialChar :   '<' / '>' ;
 NormalChar :    !( SpecialChar) .;
+
+LiteralChar :    !( SpecialChar/Spacechar/Newline) .;
 
 ^^Symbol :     SpecialChar  ;
 

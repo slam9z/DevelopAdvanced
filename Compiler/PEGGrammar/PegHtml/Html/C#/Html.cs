@@ -1,4 +1,4 @@
-/* created on 20/12/2016 23:00:40 from peg generator V1.0 using 'Html' as input*/
+/* created on 20/12/2016 23:20:15 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -48,7 +48,8 @@ namespace Peg.Html
                   Space= 125, RawHtml= 126, BlankLine= 127, Quoted= 128, HtmlAttribute= 129, 
                   HtmlComment= 130, HtmlTag= 131, Spacechar= 132, Nonspacechar= 133, 
                   Newline= 134, Sp= 135, Spnl= 136, AlphanumericAscii= 137, SpecialChar= 138, 
-                  NormalChar= 139, Symbol= 140, InnerPlain= 141, Eof= 142};
+                  NormalChar= 139, LiteralChar= 140, Symbol= 141, InnerPlain= 142, 
+                  Eof= 143};
       public class Html : PegCharParser 
       {
         
@@ -1371,18 +1372,22 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseSpan() ) ); return result;
 		}
-        public bool HtmlBlockOpenUnknown()    /*HtmlBlockOpenUnknown : '<' Spnl (!'>' .)* Spnl  '>';*/
+        public bool HtmlBlockOpenUnknown()    /*HtmlBlockOpenUnknown : '<' Spnl (!'>' !HtmlBlockType LiteralChar)* Spnl  HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && OptRepeat(()=>    
-                      And(()=>    Not(()=> Char('>') ) && Any() ) )
+                      And(()=>      
+                               Not(()=> Char('>') )
+                            && Not(()=> HtmlBlockType() )
+                            && LiteralChar() ) )
                   && Spnl()
+                  && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseUnknown()    /*HtmlBlockCloseUnknown : '<' Spnl '/'  (!'>' .)*  Spnl '>';*/
+        public bool HtmlBlockCloseUnknown()    /*HtmlBlockCloseUnknown : '<' Spnl '/'  (!'>' !HtmlBlockType  LiteralChar)*  Spnl '>';*/
         {
 
            var result=And(()=>  
@@ -1390,7 +1395,10 @@ namespace Peg.Html
                   && Spnl()
                   && Char('/')
                   && OptRepeat(()=>    
-                      And(()=>    Not(()=> Char('>') ) && Any() ) )
+                      And(()=>      
+                               Not(()=> Char('>') )
+                            && Not(()=> HtmlBlockType() )
+                            && LiteralChar() ) )
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1442,7 +1450,7 @@ namespace Peg.Html
 				/ HtmlBlockA
 				/ HtmlBlockCode
 				/ HtmlBlockSpan
-		//      / HtmlBlockUnknown
+		        / HtmlBlockUnknown
 				;*/
         {
 
@@ -1484,21 +1492,22 @@ namespace Peg.Html
                   || HtmlBlockHead()
                   || HtmlBlockA()
                   || HtmlBlockCode()
-                  || HtmlBlockSpan() ); return result;
+                  || HtmlBlockSpan()
+                  || HtmlBlockUnknown() ); return result;
 		}
-        public bool HtmlBlock()    /*^^HtmlBlock :Spnl (HtmlBlockInTags / HtmlComment / HtmlBlockSelfClosing /InnerPlain )
-            Spnl;*/
+        public bool HtmlBlock()    /*^^HtmlBlock :(Spnl (HtmlBlockInTags / HtmlComment / HtmlBlockSelfClosing )Spnl)/InnerPlain ;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlock,()=>
-                And(()=>  
-                     Spnl()
-                  && (    
-                         HtmlBlockInTags()
-                      || HtmlComment()
-                      || HtmlBlockSelfClosing()
-                      || InnerPlain())
-                  && Spnl() ) ); return result;
+                  
+                     And(()=>    
+                         Spnl()
+                      && (      
+                               HtmlBlockInTags()
+                            || HtmlComment()
+                            || HtmlBlockSelfClosing())
+                      && Spnl() )
+                  || InnerPlain() ); return result;
 		}
         public bool HtmlBlockSelfClosing()    /*^^HtmlBlockSelfClosing : '<' Spnl HtmlBlockType Spnl HtmlAttribute* '/' Spnl '>';*/
         {
@@ -1686,6 +1695,13 @@ namespace Peg.Html
         {
 
            var result=And(()=>    Not(()=> SpecialChar() ) && Any() ); return result;
+		}
+        public bool LiteralChar()    /*LiteralChar :    !( SpecialChar/Spacechar/Newline) .;*/
+        {
+
+           var result=And(()=>  
+                     Not(()=>     SpecialChar() || Spacechar() || Newline() )
+                  && Any() ); return result;
 		}
         public bool Symbol()    /*^^Symbol :     SpecialChar  ;*/
         {
