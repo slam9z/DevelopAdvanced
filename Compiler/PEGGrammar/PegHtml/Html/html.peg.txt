@@ -159,10 +159,11 @@ HtmlBlockOpenSpan : '<' Spnl ('span' / 'SPAN') Spnl  '>';
 HtmlBlockCloseSpan  : '<' Spnl '/' ('span' / 'SPAN') Spnl '>';
 ^^HtmlBlockSpan : HtmlBlockOpenSpan ( &HtmlBlockCloseSpan /HtmlBlock+) HtmlBlockCloseSpan ;
 
-HtmlBlockOpenUnknown : '<' Spnl ![>/] (LiteralChar)* Spnl  HtmlAttribute* '>';
-HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  (LiteralChar)*  Spnl '>';
+HtmlBlockOpenUnknown : '<' Spnl ![>/]  UnknownTagName Spnl  HtmlAttribute* '>';
+HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
 ^^HtmlBlockUnknown : HtmlBlockOpenUnknown ( &HtmlBlockCloseUnknown /HtmlBlock+) HtmlBlockCloseUnknown ;
 
+^^UnknownTagName:(LiteralChar)*;
 
 ^^HtmlBlockInTags : HtmlBlockAddress
                 / HtmlBlockBlockquote

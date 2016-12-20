@@ -1,4 +1,4 @@
-/* created on 20/12/2016 23:40:56 from peg generator V1.0 using 'Html' as input*/
+/* created on 20/12/2016 23:45:51 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -42,14 +42,14 @@ namespace Peg.Html
                   HtmlBlockCloseA= 106, HtmlBlockA= 107, HtmlBlockOpenCode= 108, 
                   HtmlBlockCloseCode= 109, HtmlBlockCode= 110, HtmlBlockOpenSpan= 111, 
                   HtmlBlockCloseSpan= 112, HtmlBlockSpan= 113, HtmlBlockOpenUnknown= 114, 
-                  HtmlBlockCloseUnknown= 115, HtmlBlockUnknown= 116, HtmlBlockInTags= 117, 
-                  HtmlBlock= 118, HtmlBlockSelfClosing= 119, HtmlBlockType= 120, 
-                  StyleOpen= 121, StyleClose= 122, InStyleTags= 123, StyleBlock= 124, 
-                  Space= 125, RawHtml= 126, BlankLine= 127, Quoted= 128, HtmlAttribute= 129, 
-                  HtmlComment= 130, HtmlTag= 131, Spacechar= 132, Nonspacechar= 133, 
-                  Newline= 134, Sp= 135, Spnl= 136, AlphanumericAscii= 137, SpecialChar= 138, 
-                  NormalChar= 139, LiteralChar= 140, Symbol= 141, InnerPlain= 142, 
-                  Eof= 143};
+                  HtmlBlockCloseUnknown= 115, HtmlBlockUnknown= 116, UnknownTagName= 117, 
+                  HtmlBlockInTags= 118, HtmlBlock= 119, HtmlBlockSelfClosing= 120, 
+                  HtmlBlockType= 121, StyleOpen= 122, StyleClose= 123, InStyleTags= 124, 
+                  StyleBlock= 125, Space= 126, RawHtml= 127, BlankLine= 128, Quoted= 129, 
+                  HtmlAttribute= 130, HtmlComment= 131, HtmlTag= 132, Spacechar= 133, 
+                  Nonspacechar= 134, Newline= 135, Sp= 136, Spnl= 137, AlphanumericAscii= 138, 
+                  SpecialChar= 139, NormalChar= 140, LiteralChar= 141, Symbol= 142, 
+                  InnerPlain= 143, Eof= 144};
       public class Html : PegCharParser 
       {
         
@@ -1372,19 +1372,19 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseSpan() ) ); return result;
 		}
-        public bool HtmlBlockOpenUnknown()    /*HtmlBlockOpenUnknown : '<' Spnl ![>/] (LiteralChar)* Spnl  HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenUnknown()    /*HtmlBlockOpenUnknown : '<' Spnl ![>/]  UnknownTagName Spnl  HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Not(()=> OneOf(">/") )
-                  && OptRepeat(()=> LiteralChar() )
+                  && UnknownTagName()
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseUnknown()    /*HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  (LiteralChar)*  Spnl '>';*/
+        public bool HtmlBlockCloseUnknown()    /*HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';*/
         {
 
            var result=And(()=>  
@@ -1392,7 +1392,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('/')
                   && Not(()=> Char('>') )
-                  && OptRepeat(()=> LiteralChar() )
+                  && UnknownTagName()
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1406,6 +1406,12 @@ namespace Peg.Html
                          Peek(()=> HtmlBlockCloseUnknown() )
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseUnknown() ) ); return result;
+		}
+        public bool UnknownTagName()    /*^^UnknownTagName:(LiteralChar)*;*/
+        {
+
+           var result= TreeNT((int)EHtml.UnknownTagName,()=>
+                OptRepeat(()=> LiteralChar() ) ); return result;
 		}
         public bool HtmlBlockInTags()    /*^^HtmlBlockInTags : HtmlBlockAddress
                 / HtmlBlockBlockquote
