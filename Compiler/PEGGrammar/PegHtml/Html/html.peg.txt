@@ -1,11 +1,12 @@
 ﻿<<Grammar Name = 'Html' namespace="Peg.Html" encoding_class='utf8' >>
 
-^^Doc :      Block  *  Eof;
+^^Doc :    Doctype  Block  *  Eof;
            
 
 ^^Block :     BlankLine*
             ( HtmlBlock / StyleBlock);
 
+^^Doctype: Spnl '<' Spnl '!DOCTYPE' Spnl 'html'\i  (!'>' .)* '>' Spnl ;
 
 // Parsers for different kinds of block-level HTML content.
 // This is repetitive due to constraints of PEG grammar.

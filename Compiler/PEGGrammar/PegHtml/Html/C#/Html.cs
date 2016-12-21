@@ -1,4 +1,4 @@
-/* created on 21/12/2016 23:00:23 from peg generator V1.0 using 'Html' as input*/
+/* created on 21/12/2016 23:11:40 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -7,51 +7,51 @@ using System.Text;
 namespace Peg.Html
 {
       
-      enum EHtml{Doc= 1, Block= 2, HtmlBlockOpenAddress= 3, HtmlBlockCloseAddress= 4, 
-                  HtmlBlockAddress= 5, HtmlBlockOpenBlockquote= 6, HtmlBlockCloseBlockquote= 7, 
-                  HtmlBlockBlockquote= 8, HtmlBlockOpenCenter= 9, HtmlBlockCloseCenter= 10, 
-                  HtmlBlockCenter= 11, HtmlBlockOpenDir= 12, HtmlBlockCloseDir= 13, 
-                  HtmlBlockDir= 14, HtmlBlockOpenDiv= 15, HtmlBlockCloseDiv= 16, 
-                  HtmlBlockDiv= 17, HtmlBlockOpenDl= 18, HtmlBlockCloseDl= 19, 
-                  HtmlBlockDl= 20, HtmlBlockOpenFieldset= 21, HtmlBlockCloseFieldset= 22, 
-                  HtmlBlockFieldset= 23, HtmlBlockOpenForm= 24, HtmlBlockCloseForm= 25, 
-                  HtmlBlockForm= 26, HtmlBlockOpenH1= 27, HtmlBlockCloseH1= 28, 
-                  HtmlBlockH1= 29, HtmlBlockOpenH2= 30, HtmlBlockCloseH2= 31, HtmlBlockH2= 32, 
-                  HtmlBlockOpenH3= 33, HtmlBlockCloseH3= 34, HtmlBlockH3= 35, HtmlBlockOpenH4= 36, 
-                  HtmlBlockCloseH4= 37, HtmlBlockH4= 38, HtmlBlockOpenH5= 39, HtmlBlockCloseH5= 40, 
-                  HtmlBlockH5= 41, HtmlBlockOpenH6= 42, HtmlBlockCloseH6= 43, HtmlBlockH6= 44, 
-                  HtmlBlockOpenMenu= 45, HtmlBlockCloseMenu= 46, HtmlBlockMenu= 47, 
-                  HtmlBlockOpenNoframes= 48, HtmlBlockCloseNoframes= 49, HtmlBlockNoframes= 50, 
-                  HtmlBlockOpenNoscript= 51, HtmlBlockCloseNoscript= 52, HtmlBlockNoscript= 53, 
-                  HtmlBlockOpenOl= 54, HtmlBlockCloseOl= 55, HtmlBlockOl= 56, HtmlBlockOpenP= 57, 
-                  HtmlBlockCloseP= 58, HtmlBlockP= 59, HtmlBlockOpenPre= 60, HtmlBlockClosePre= 61, 
-                  HtmlBlockPre= 62, HtmlBlockOpenTable= 63, HtmlBlockCloseTable= 64, 
-                  HtmlBlockTable= 65, HtmlBlockOpenUl= 66, HtmlBlockCloseUl= 67, 
-                  HtmlBlockUl= 68, HtmlBlockOpenDd= 69, HtmlBlockCloseDd= 70, HtmlBlockDd= 71, 
-                  HtmlBlockOpenDt= 72, HtmlBlockCloseDt= 73, HtmlBlockDt= 74, HtmlBlockOpenFrameset= 75, 
-                  HtmlBlockCloseFrameset= 76, HtmlBlockFrameset= 77, HtmlBlockOpenLi= 78, 
-                  HtmlBlockCloseLi= 79, HtmlBlockLi= 80, HtmlBlockOpenTbody= 81, 
-                  HtmlBlockCloseTbody= 82, HtmlBlockTbody= 83, HtmlBlockOpenTd= 84, 
-                  HtmlBlockCloseTd= 85, HtmlBlockTd= 86, HtmlBlockOpenTfoot= 87, 
-                  HtmlBlockCloseTfoot= 88, HtmlBlockTfoot= 89, HtmlBlockOpenTh= 90, 
-                  HtmlBlockCloseTh= 91, HtmlBlockTh= 92, HtmlBlockOpenThead= 93, 
-                  HtmlBlockCloseThead= 94, HtmlBlockThead= 95, HtmlBlockOpenTr= 96, 
-                  HtmlBlockCloseTr= 97, HtmlBlockTr= 98, HtmlBlockOpenScript= 99, 
-                  HtmlBlockCloseScript= 100, HtmlBlockScript= 101, HtmlBlockOpenHead= 102, 
-                  HtmlBlockCloseHead= 103, HtmlBlockHead= 104, HtmlBlockOpenA= 105, 
-                  HtmlBlockCloseA= 106, HtmlBlockA= 107, HtmlBlockOpenCode= 108, 
-                  HtmlBlockCloseCode= 109, HtmlBlockCode= 110, HtmlBlockOpenSpan= 111, 
-                  HtmlBlockCloseSpan= 112, HtmlBlockSpan= 113, HtmlBlockOpenHtml= 114, 
-                  HtmlBlockCloseHtml= 115, HtmlBlockHtml= 116, HtmlBlockOpenUnknown= 117, 
-                  HtmlBlockCloseUnknown= 118, HtmlBlockUnknown= 119, UnknownTagName= 120, 
-                  HtmlBlockInTags= 121, HtmlBlock= 122, HtmlBlockSelfClosing= 123, 
-                  HtmlBlockType= 124, HtmlBlockSelfClosingType= 125, StyleOpen= 126, 
-                  StyleClose= 127, InStyleTags= 128, StyleBlock= 129, Space= 130, 
-                  RawHtml= 131, BlankLine= 132, Quoted= 133, HtmlAttribute= 134, 
-                  HtmlComment= 135, HtmlTag= 136, Spacechar= 137, Nonspacechar= 138, 
-                  Newline= 139, Sp= 140, Spnl= 141, AlphanumericAscii= 142, SpecialChar= 143, 
-                  NormalChar= 144, LiteralChar= 145, Symbol= 146, InnerPlain= 147, 
-                  Eof= 148};
+      enum EHtml{Doc= 1, Block= 2, Doctype= 3, HtmlBlockOpenAddress= 4, HtmlBlockCloseAddress= 5, 
+                  HtmlBlockAddress= 6, HtmlBlockOpenBlockquote= 7, HtmlBlockCloseBlockquote= 8, 
+                  HtmlBlockBlockquote= 9, HtmlBlockOpenCenter= 10, HtmlBlockCloseCenter= 11, 
+                  HtmlBlockCenter= 12, HtmlBlockOpenDir= 13, HtmlBlockCloseDir= 14, 
+                  HtmlBlockDir= 15, HtmlBlockOpenDiv= 16, HtmlBlockCloseDiv= 17, 
+                  HtmlBlockDiv= 18, HtmlBlockOpenDl= 19, HtmlBlockCloseDl= 20, 
+                  HtmlBlockDl= 21, HtmlBlockOpenFieldset= 22, HtmlBlockCloseFieldset= 23, 
+                  HtmlBlockFieldset= 24, HtmlBlockOpenForm= 25, HtmlBlockCloseForm= 26, 
+                  HtmlBlockForm= 27, HtmlBlockOpenH1= 28, HtmlBlockCloseH1= 29, 
+                  HtmlBlockH1= 30, HtmlBlockOpenH2= 31, HtmlBlockCloseH2= 32, HtmlBlockH2= 33, 
+                  HtmlBlockOpenH3= 34, HtmlBlockCloseH3= 35, HtmlBlockH3= 36, HtmlBlockOpenH4= 37, 
+                  HtmlBlockCloseH4= 38, HtmlBlockH4= 39, HtmlBlockOpenH5= 40, HtmlBlockCloseH5= 41, 
+                  HtmlBlockH5= 42, HtmlBlockOpenH6= 43, HtmlBlockCloseH6= 44, HtmlBlockH6= 45, 
+                  HtmlBlockOpenMenu= 46, HtmlBlockCloseMenu= 47, HtmlBlockMenu= 48, 
+                  HtmlBlockOpenNoframes= 49, HtmlBlockCloseNoframes= 50, HtmlBlockNoframes= 51, 
+                  HtmlBlockOpenNoscript= 52, HtmlBlockCloseNoscript= 53, HtmlBlockNoscript= 54, 
+                  HtmlBlockOpenOl= 55, HtmlBlockCloseOl= 56, HtmlBlockOl= 57, HtmlBlockOpenP= 58, 
+                  HtmlBlockCloseP= 59, HtmlBlockP= 60, HtmlBlockOpenPre= 61, HtmlBlockClosePre= 62, 
+                  HtmlBlockPre= 63, HtmlBlockOpenTable= 64, HtmlBlockCloseTable= 65, 
+                  HtmlBlockTable= 66, HtmlBlockOpenUl= 67, HtmlBlockCloseUl= 68, 
+                  HtmlBlockUl= 69, HtmlBlockOpenDd= 70, HtmlBlockCloseDd= 71, HtmlBlockDd= 72, 
+                  HtmlBlockOpenDt= 73, HtmlBlockCloseDt= 74, HtmlBlockDt= 75, HtmlBlockOpenFrameset= 76, 
+                  HtmlBlockCloseFrameset= 77, HtmlBlockFrameset= 78, HtmlBlockOpenLi= 79, 
+                  HtmlBlockCloseLi= 80, HtmlBlockLi= 81, HtmlBlockOpenTbody= 82, 
+                  HtmlBlockCloseTbody= 83, HtmlBlockTbody= 84, HtmlBlockOpenTd= 85, 
+                  HtmlBlockCloseTd= 86, HtmlBlockTd= 87, HtmlBlockOpenTfoot= 88, 
+                  HtmlBlockCloseTfoot= 89, HtmlBlockTfoot= 90, HtmlBlockOpenTh= 91, 
+                  HtmlBlockCloseTh= 92, HtmlBlockTh= 93, HtmlBlockOpenThead= 94, 
+                  HtmlBlockCloseThead= 95, HtmlBlockThead= 96, HtmlBlockOpenTr= 97, 
+                  HtmlBlockCloseTr= 98, HtmlBlockTr= 99, HtmlBlockOpenScript= 100, 
+                  HtmlBlockCloseScript= 101, HtmlBlockScript= 102, HtmlBlockOpenHead= 103, 
+                  HtmlBlockCloseHead= 104, HtmlBlockHead= 105, HtmlBlockOpenA= 106, 
+                  HtmlBlockCloseA= 107, HtmlBlockA= 108, HtmlBlockOpenCode= 109, 
+                  HtmlBlockCloseCode= 110, HtmlBlockCode= 111, HtmlBlockOpenSpan= 112, 
+                  HtmlBlockCloseSpan= 113, HtmlBlockSpan= 114, HtmlBlockOpenHtml= 115, 
+                  HtmlBlockCloseHtml= 116, HtmlBlockHtml= 117, HtmlBlockOpenUnknown= 118, 
+                  HtmlBlockCloseUnknown= 119, HtmlBlockUnknown= 120, UnknownTagName= 121, 
+                  HtmlBlockInTags= 122, HtmlBlock= 123, HtmlBlockSelfClosing= 124, 
+                  HtmlBlockType= 125, HtmlBlockSelfClosingType= 126, StyleOpen= 127, 
+                  StyleClose= 128, InStyleTags= 129, StyleBlock= 130, Space= 131, 
+                  RawHtml= 132, BlankLine= 133, Quoted= 134, HtmlAttribute= 135, 
+                  HtmlComment= 136, HtmlTag= 137, Spacechar= 138, Nonspacechar= 139, 
+                  Newline= 140, Sp= 141, Spnl= 142, AlphanumericAscii= 143, SpecialChar= 144, 
+                  NormalChar= 145, LiteralChar= 146, Symbol= 147, InnerPlain= 148, 
+                  Eof= 149};
       public class Html : PegCharParser 
       {
         
@@ -97,24 +97,42 @@ namespace Peg.Html
         } 
         #endregion Overrides
 		#region Grammar Rules
-        public bool Doc()    /*^^Doc :      Block  *  Eof;*/
+        public bool Doc()    /*^^Doc :    Doctype  Block  *  Eof;*/
         {
 
            var result= TreeNT((int)EHtml.Doc,()=>
-                And(()=>    OptRepeat(()=> Block() ) && Eof() ) ); return result;
+                And(()=>  
+                     Doctype()
+                  && OptRepeat(()=> Block() )
+                  && Eof() ) ); return result;
 		}
         public bool Block()    /*^^Block :     BlankLine*
-            ( HtmlBlock / StyleBlock);
-
-
-// Parsers for different kinds of block-level HTML content.
-// This is repetitive due to constraints of PEG grammar.*/
+            ( HtmlBlock / StyleBlock);*/
         {
 
            var result= TreeNT((int)EHtml.Block,()=>
                 And(()=>  
                      OptRepeat(()=> BlankLine() )
                   && (    HtmlBlock() || StyleBlock()) ) ); return result;
+		}
+        public bool Doctype()    /*^^Doctype: Spnl '<' Spnl '!DOCTYPE' Spnl 'html'\i  (!'>' .)* '>' Spnl ;
+
+// Parsers for different kinds of block-level HTML content.
+// This is repetitive due to constraints of PEG grammar.*/
+        {
+
+           var result= TreeNT((int)EHtml.Doctype,()=>
+                And(()=>  
+                     Spnl()
+                  && Char('<')
+                  && Spnl()
+                  && Char("!DOCTYPE")
+                  && Spnl()
+                  && IChar('h','t','m','l')
+                  && OptRepeat(()=>    
+                      And(()=>    Not(()=> Char('>') ) && Any() ) )
+                  && Char('>')
+                  && Spnl() ) ); return result;
 		}
         public bool HtmlBlockOpenAddress()    /*HtmlBlockOpenAddress : '<' Spnl ('address'  \i ) Spnl HtmlAttribute* '>';*/
         {
