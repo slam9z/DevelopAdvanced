@@ -1,4 +1,4 @@
-/* created on 21/12/2016 23:11:40 from peg generator V1.0 using 'Html' as input*/
+/* created on 21/12/2016 23:26:20 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -45,13 +45,13 @@ namespace Peg.Html
                   HtmlBlockCloseHtml= 116, HtmlBlockHtml= 117, HtmlBlockOpenUnknown= 118, 
                   HtmlBlockCloseUnknown= 119, HtmlBlockUnknown= 120, UnknownTagName= 121, 
                   HtmlBlockInTags= 122, HtmlBlock= 123, HtmlBlockSelfClosing= 124, 
-                  HtmlBlockType= 125, HtmlBlockSelfClosingType= 126, StyleOpen= 127, 
-                  StyleClose= 128, InStyleTags= 129, StyleBlock= 130, Space= 131, 
-                  RawHtml= 132, BlankLine= 133, Quoted= 134, HtmlAttribute= 135, 
-                  HtmlComment= 136, HtmlTag= 137, Spacechar= 138, Nonspacechar= 139, 
-                  Newline= 140, Sp= 141, Spnl= 142, AlphanumericAscii= 143, SpecialChar= 144, 
-                  NormalChar= 145, LiteralChar= 146, Symbol= 147, InnerPlain= 148, 
-                  Eof= 149};
+                  HtmlBlockType= 125, HtmlBlockSelfClosingType= 126, PreHtmlBlockSelfClosingType= 127, 
+                  StyleOpen= 128, StyleClose= 129, InStyleTags= 130, StyleBlock= 131, 
+                  Space= 132, RawHtml= 133, BlankLine= 134, Quoted= 135, HtmlAttribute= 136, 
+                  HtmlComment= 137, HtmlTag= 138, Spacechar= 139, Nonspacechar= 140, 
+                  Newline= 141, Sp= 142, Spnl= 143, AlphanumericAscii= 144, SpecialChar= 145, 
+                  NormalChar= 146, LiteralChar= 147, Symbol= 148, InnerPlain= 149, 
+                  Eof= 150};
       public class Html : PegCharParser 
       {
         
@@ -97,12 +97,12 @@ namespace Peg.Html
         } 
         #endregion Overrides
 		#region Grammar Rules
-        public bool Doc()    /*^^Doc :    Doctype  Block  *  Eof;*/
+        public bool Doc()    /*^^Doc :    Doctype?  Block  *  Eof;*/
         {
 
            var result= TreeNT((int)EHtml.Doc,()=>
                 And(()=>  
-                     Doctype()
+                     Option(()=> Doctype() )
                   && OptRepeat(()=> Block() )
                   && Eof() ) ); return result;
 		}
@@ -1258,14 +1258,15 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockHead()    /*^^HtmlBlockHead : HtmlBlockOpenHead (!HtmlBlockCloseHead .)* HtmlBlockCloseHead ;*/
+        public bool HtmlBlockHead()    /*^^HtmlBlockHead : HtmlBlockOpenHead (&HtmlBlockCloseHead/ HtmlBlock+) HtmlBlockCloseHead ;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockHead,()=>
                 And(()=>  
                      HtmlBlockOpenHead()
-                  && OptRepeat(()=>    
-                      And(()=>    Not(()=> HtmlBlockCloseHead() ) && Any() ) )
+                  && (    
+                         Peek(()=> HtmlBlockCloseHead() )
+                      || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseHead() ) ); return result;
 		}
         public bool HtmlBlockOpenA()    /*HtmlBlockOpenA : '<' Spnl ('a'  \i ) Spnl HtmlAttribute* '>';*/
@@ -1536,7 +1537,7 @@ namespace Peg.Html
                       && Spnl() )
                   || InnerPlain() ); return result;
 		}
-        public bool HtmlBlockSelfClosing()    /*^^HtmlBlockSelfClosing : '<' Spnl ((HtmlBlockType  Spnl HtmlAttribute* '/')/ (HtmlBlockSelfClosingType  Spnl HtmlAttribute* '/'?)) Spnl '>';*/
+        public bool HtmlBlockSelfClosing()    /*^^HtmlBlockSelfClosing : '<' Spnl ( (PreHtmlBlockSelfClosingType  Spnl HtmlAttribute* '/'?) /(HtmlBlockType  Spnl HtmlAttribute* '/')/ (HtmlBlockSelfClosingType  Spnl HtmlAttribute* '/'?) ) Spnl '>';*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockSelfClosing,()=>
@@ -1545,6 +1546,11 @@ namespace Peg.Html
                   && Spnl()
                   && (    
                          And(()=>      
+                               PreHtmlBlockSelfClosingType()
+                            && Spnl()
+                            && OptRepeat(()=> HtmlAttribute() )
+                            && Option(()=> Char('/') ) )
+                      || And(()=>      
                                HtmlBlockType()
                             && Spnl()
                             && OptRepeat(()=> HtmlAttribute() )
@@ -1558,8 +1564,8 @@ namespace Peg.Html
                   && Char('>') ) ); return result;
 		}
         public bool HtmlBlockType()    /*^^HtmlBlockType : 'address'\i / 'blockquote'\i / 'center' \i/ 'dir'\i / 'div'\i / 'dl' \i/ 'fieldset' \i/ 'form'\i / 'h1'\i / 'h2'\i / 'h3' \i/
-                'h4' \i/ 'h5' \i/ 'h6' \i/ 'hr'\i / 'isindex'\i / 'menu' \i/ 'noframes' \i/ 'noscript'\i / 'ol' \i/ 'p'\i / 'pre' \i/ 'table'\i /
-                'ul' \i/ 'dd'\i / 'dt'\i / 'frameset' \i/  'link' \i / 'li' \i/ 'tbody'\i / 'td' \i/ 'tfoot' \i/ 'th'\i / 'thead'\i / 'tr'\i / 'script'\i /
+                'h4' \i/ 'h5' \i/ 'h6' \i/ 'isindex'\i / 'menu' \i/ 'noframes' \i/ 'noscript'\i / 'ol' \i/ 'p'\i / 'pre' \i/ 'table'\i /
+                'ul' \i/ 'dd'\i / 'dt'\i / 'frameset' \i/ 'li' \i/ 'tbody'\i / 'td' \i/ 'tfoot' \i/ 'th'\i / 'thead'\i / 'tr'\i / 'script'\i /
                  'a' \i ;*/
         {
 
@@ -1579,7 +1585,6 @@ namespace Peg.Html
                   || IChar('h','4')
                   || IChar('h','5')
                   || IChar('h','6')
-                  || IChar('h','r')
                   || IChar('i','s','i','n','d','e','x')
                   || IChar('m','e','n','u')
                   || IChar("noframes")
@@ -1592,7 +1597,6 @@ namespace Peg.Html
                   || IChar('d','d')
                   || IChar('d','t')
                   || IChar("frameset")
-                  || IChar('l','i','n','k')
                   || IChar('l','i')
                   || IChar('t','b','o','d','y')
                   || IChar('t','d')
@@ -1603,7 +1607,7 @@ namespace Peg.Html
                   || IChar('s','c','r','i','p','t')
                   || IChar('a') ); return result;
 		}
-        public bool HtmlBlockSelfClosingType()    /*^^HtmlBlockSelfClosingType:  'br' \i / 'hr'  /'meta' \i /'input' \i / 'img' \i /'image' \i ;*/
+        public bool HtmlBlockSelfClosingType()    /*^^HtmlBlockSelfClosingType:  'br' \i / 'hr'  /'meta' \i /'input' \i / 'img' \i /'image' \i  /PreHtmlBlockSelfClosingType;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockSelfClosingType,()=>
@@ -1613,7 +1617,14 @@ namespace Peg.Html
                   || IChar('m','e','t','a')
                   || IChar('i','n','p','u','t')
                   || IChar('i','m','g')
-                  || IChar('i','m','a','g','e') ); return result;
+                  || IChar('i','m','a','g','e')
+                  || PreHtmlBlockSelfClosingType() ); return result;
+		}
+        public bool PreHtmlBlockSelfClosingType()    /*^^PreHtmlBlockSelfClosingType:  'link' \i ;*/
+        {
+
+           var result= TreeNT((int)EHtml.PreHtmlBlockSelfClosingType,()=>
+                IChar('l','i','n','k') ); return result;
 		}
         public bool StyleOpen()    /*StyleOpen :     '<' Spnl ('style'  \i ) Spnl HtmlAttribute* '>'  ;*/
         {

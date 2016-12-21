@@ -1,6 +1,6 @@
 ﻿<<Grammar Name = 'Html' namespace="Peg.Html" encoding_class='utf8' >>
 
-^^Doc :    Doctype  Block  *  Eof;
+^^Doc :    Doctype?  Block  *  Eof;
            
 
 ^^Block :     BlankLine*
@@ -145,7 +145,7 @@ HtmlBlockCloseScript : '<' Spnl '/' ('script'   \i ) Spnl '>';
 
 HtmlBlockOpenHead : '<' Spnl ('head'  \i ) Spnl HtmlAttribute* '>';
 HtmlBlockCloseHead : '<' Spnl '/' ('head'  \i ) Spnl '>';
-^^HtmlBlockHead : HtmlBlockOpenHead (!HtmlBlockCloseHead .)* HtmlBlockCloseHead ;
+^^HtmlBlockHead : HtmlBlockOpenHead (&HtmlBlockCloseHead/ HtmlBlock+) HtmlBlockCloseHead ;
 
 
 HtmlBlockOpenA : '<' Spnl ('a'  \i ) Spnl HtmlAttribute* '>';
@@ -217,14 +217,16 @@ HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
 
 
 
-^^HtmlBlockSelfClosing : '<' Spnl ((HtmlBlockType  Spnl HtmlAttribute* '/')/ (HtmlBlockSelfClosingType  Spnl HtmlAttribute* '/'?)) Spnl '>';
+^^HtmlBlockSelfClosing : '<' Spnl ( (PreHtmlBlockSelfClosingType  Spnl HtmlAttribute* '/'?) /(HtmlBlockType  Spnl HtmlAttribute* '/')/ (HtmlBlockSelfClosingType  Spnl HtmlAttribute* '/'?) ) Spnl '>';
 
 ^^HtmlBlockType : 'address'\i / 'blockquote'\i / 'center' \i/ 'dir'\i / 'div'\i / 'dl' \i/ 'fieldset' \i/ 'form'\i / 'h1'\i / 'h2'\i / 'h3' \i/
-                'h4' \i/ 'h5' \i/ 'h6' \i/ 'hr'\i / 'isindex'\i / 'menu' \i/ 'noframes' \i/ 'noscript'\i / 'ol' \i/ 'p'\i / 'pre' \i/ 'table'\i /
-                'ul' \i/ 'dd'\i / 'dt'\i / 'frameset' \i/  'link' \i / 'li' \i/ 'tbody'\i / 'td' \i/ 'tfoot' \i/ 'th'\i / 'thead'\i / 'tr'\i / 'script'\i /
+                'h4' \i/ 'h5' \i/ 'h6' \i/ 'isindex'\i / 'menu' \i/ 'noframes' \i/ 'noscript'\i / 'ol' \i/ 'p'\i / 'pre' \i/ 'table'\i /
+                'ul' \i/ 'dd'\i / 'dt'\i / 'frameset' \i/ 'li' \i/ 'tbody'\i / 'td' \i/ 'tfoot' \i/ 'th'\i / 'thead'\i / 'tr'\i / 'script'\i /
                  'a' \i ;
 
-^^HtmlBlockSelfClosingType:  'br' \i / 'hr'  /'meta' \i /'input' \i / 'img' \i /'image' \i ;
+^^HtmlBlockSelfClosingType:  'br' \i / 'hr'  /'meta' \i /'input' \i / 'img' \i /'image' \i  /PreHtmlBlockSelfClosingType;
+
+^^PreHtmlBlockSelfClosingType:  'link' \i ;
 
 
 StyleOpen :     '<' Spnl ('style'  \i ) Spnl HtmlAttribute* '>'  ;

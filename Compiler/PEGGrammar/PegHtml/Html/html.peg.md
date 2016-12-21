@@ -15,3 +15,5 @@
 
 * VS连ul没有end都可以解析，怎么做到的, 浏览器会自动补全。
 
+*  `<div id="answer-21123191" class="answer" data-answerid="21123191" itemscope itemtype="http://schema.org/Answer"></div>`
+itemscope怎么这么坑
