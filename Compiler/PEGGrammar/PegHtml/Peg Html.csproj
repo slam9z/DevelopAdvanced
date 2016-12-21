@@ -42,12 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Html\C#\Html.cs" />
+    <Content Include="Html\input\image.html" />
     <Content Include="Html\input\div.html" />
+    <Content Include="Html\input\input.html" />
+    <Content Include="Html\input\nestinput.html" />
     <Content Include="Html\input\Other\十万个冷笑话手游雷轰塔怎么过 雷轰塔通关攻略 - 8477手游网.html" />
     <Content Include="Html\input\p.html" />
     <Content Include="Html\input\span.html" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Html\input\unknown.html" />
+    <Content Include="Html\input\link.html" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PegBase\PEG Base.csproj">
@@ -66,7 +70,7 @@
     <Content Include="Html\input\Html\continueList.html" />
     <Content Include="Html\input\Html\header.html" />
     <Content Include="Html\input\Html\orderedList.html" />
-    <Content Include="Html\input\link.html" />
+    <Content Include="Html\input\a.html" />
     <Content Include="Html\input\litest.html" />
     <Content Include="Html\input\ultest.html" />
   </ItemGroup>

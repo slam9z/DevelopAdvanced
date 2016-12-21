@@ -149,7 +149,7 @@ HtmlBlockCloseHead : '<' Spnl '/' ('head'  \i ) Spnl '>';
 
 HtmlBlockOpenA : '<' Spnl ('a'  \i ) Spnl HtmlAttribute* '>';
 HtmlBlockCloseA : '<' Spnl '/' ('a'  \i ) Spnl '>';
-^^HtmlBlockA : HtmlBlockOpenA (&HtmlBlockCloseA / HtmlBlock+) HtmlBlockCloseA ;
+^^HtmlBlockA : HtmlBlockOpenA (!HtmlBlockCloseA .)* HtmlBlockCloseA ;
 
 HtmlBlockOpenCode : '<' Spnl ('code'  \i ) Spnl  '>';
 HtmlBlockCloseCode  : '<' Spnl '/' ('code'  \i ) Spnl '>';
@@ -159,7 +159,7 @@ HtmlBlockOpenSpan : '<' Spnl ('span'  \i ) Spnl  '>';
 HtmlBlockCloseSpan  : '<' Spnl '/' ('span' \i) Spnl '>';
 ^^HtmlBlockSpan : HtmlBlockOpenSpan ( &HtmlBlockCloseSpan /HtmlBlock+) HtmlBlockCloseSpan ;
 
-HtmlBlockOpenUnknown : '<' Spnl ![>/]  UnknownTagName Spnl  HtmlAttribute* '>';
+HtmlBlockOpenUnknown : '<' Spnl ![>/] !HtmlBlockSelfClosingType UnknownTagName Spnl  HtmlAttribute* '>';
 HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
 ^^HtmlBlockUnknown : HtmlBlockOpenUnknown ( &HtmlBlockCloseUnknown /HtmlBlock+) HtmlBlockCloseUnknown ;
 
@@ -209,12 +209,15 @@ HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
 
 
 
-^^HtmlBlockSelfClosing : '<' Spnl HtmlBlockType Spnl HtmlAttribute* '/' Spnl '>';
+^^HtmlBlockSelfClosing : '<' Spnl ((HtmlBlockType  Spnl HtmlAttribute* '/')/ (HtmlBlockSelfClosingType  Spnl HtmlAttribute* '/'?)) Spnl '>';
 
-HtmlBlockType : 'address'\i / 'blockquote'\i / 'center' \i/ 'dir'\i / 'div'\i / 'dl' \i/ 'fieldset' \i/ 'form'\i / 'h1'\i / 'h2'\i / 'h3' \i/
+^^HtmlBlockType : 'address'\i / 'blockquote'\i / 'center' \i/ 'dir'\i / 'div'\i / 'dl' \i/ 'fieldset' \i/ 'form'\i / 'h1'\i / 'h2'\i / 'h3' \i/
                 'h4' \i/ 'h5' \i/ 'h6' \i/ 'hr'\i / 'isindex'\i / 'menu' \i/ 'noframes' \i/ 'noscript'\i / 'ol' \i/ 'p'\i / 'pre' \i/ 'table'\i /
-                'ul' \i/ 'dd'\i / 'dt'\i / 'frameset' \i/ 'li' \i/ 'tbody'\i / 'td' \i/ 'tfoot' \i/ 'th'\i / 'thead'\i / 'tr'\i / 'script'\i /
-                 'br' \i /'a' \i;
+                'ul' \i/ 'dd'\i / 'dt'\i / 'frameset' \i/  'link' \i / 'li' \i/ 'tbody'\i / 'td' \i/ 'tfoot' \i/ 'th'\i / 'thead'\i / 'tr'\i / 'script'\i /
+                 'a' \i ;
+
+^^HtmlBlockSelfClosingType:  'br' \i / 'hr'  /'meta' \i /'input' \i / 'img' \i /'image' \i ;
+
 
 StyleOpen :     '<' Spnl ('style'  \i ) Spnl HtmlAttribute* '>'  ;
 StyleClose :    '<' Spnl '/' ('style'  \i ) Spnl '>' ;
