@@ -1,0 +1,3 @@
+[side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science))
+
+In computer science, a function or expression is said to have a **side effect if** it modifies some state outside its scope or has an observable interaction with its calling functions or the outside world. (Except, by convention, returning a value: returning a value has an effect on the calling function, but this is usually not considered as a side effect.
