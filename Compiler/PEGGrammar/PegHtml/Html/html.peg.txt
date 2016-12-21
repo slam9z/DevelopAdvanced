@@ -156,11 +156,11 @@ HtmlBlockOpenCode : '<' Spnl ('code'  \i ) Spnl  '>';
 HtmlBlockCloseCode  : '<' Spnl '/' ('code'  \i ) Spnl '>';
 ^^HtmlBlockCode : HtmlBlockOpenCode ( !HtmlBlockCloseCode .)* HtmlBlockCloseCode ;
 
-HtmlBlockOpenSpan : '<' Spnl ('span'  \i ) Spnl  '>';
+HtmlBlockOpenSpan : '<' Spnl ('span'  \i ) Spnl HtmlAttribute*   '>';
 HtmlBlockCloseSpan  : '<' Spnl '/' ('span' \i) Spnl '>';
 ^^HtmlBlockSpan : HtmlBlockOpenSpan ( &HtmlBlockCloseSpan /HtmlBlock+) HtmlBlockCloseSpan ;
 
-HtmlBlockOpenHtml : '<' Spnl ('html'  \i ) Spnl  '>';
+HtmlBlockOpenHtml : '<' Spnl ('html'  \i ) Spnl  HtmlAttribute*  '>';
 HtmlBlockCloseHtml  : '<' Spnl '/' ('html' \i) Spnl '>';
 ^^HtmlBlockHtml : HtmlBlockOpenHtml ( &HtmlBlockCloseHtml /HtmlBlock+) HtmlBlockCloseHtml ;
 
@@ -245,7 +245,10 @@ RawHtml :    (HtmlComment / HtmlBlockScript / HtmlTag) ;
 
 BlankLine :     Sp Newline;
 ^^Quoted :         '\'' (!'\'' .)* '\''  /    '\"' (!'\"' .)* '\"';
-^^HtmlAttribute : (AlphanumericAscii / '-')+ Spnl ('=' Spnl (Quoted / (!'>' Nonspacechar)+)) Spnl ;
+
+^^GlobalAttributes :  'itemscope' ; 
+
+^^HtmlAttribute : ( (AlphanumericAscii / '-')+ Spnl ('=' Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;
 ^^HtmlComment :   '<!--' (!'-->' .)* '-->';
 HtmlTag :       '<' Spnl '/'? AlphanumericAscii+ Spnl HtmlAttribute* '/'? Spnl '>';
 Spacechar :     ' ' / '\t';

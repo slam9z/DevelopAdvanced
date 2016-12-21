@@ -1,4 +1,4 @@
-/* created on 21/12/2016 23:26:20 from peg generator V1.0 using 'Html' as input*/
+/* created on 21/12/2016 23:50:34 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -47,11 +47,11 @@ namespace Peg.Html
                   HtmlBlockInTags= 122, HtmlBlock= 123, HtmlBlockSelfClosing= 124, 
                   HtmlBlockType= 125, HtmlBlockSelfClosingType= 126, PreHtmlBlockSelfClosingType= 127, 
                   StyleOpen= 128, StyleClose= 129, InStyleTags= 130, StyleBlock= 131, 
-                  Space= 132, RawHtml= 133, BlankLine= 134, Quoted= 135, HtmlAttribute= 136, 
-                  HtmlComment= 137, HtmlTag= 138, Spacechar= 139, Nonspacechar= 140, 
-                  Newline= 141, Sp= 142, Spnl= 143, AlphanumericAscii= 144, SpecialChar= 145, 
-                  NormalChar= 146, LiteralChar= 147, Symbol= 148, InnerPlain= 149, 
-                  Eof= 150};
+                  Space= 132, RawHtml= 133, BlankLine= 134, Quoted= 135, GlobalAttributes= 136, 
+                  HtmlAttribute= 137, HtmlComment= 138, HtmlTag= 139, Spacechar= 140, 
+                  Nonspacechar= 141, Newline= 142, Sp= 143, Spnl= 144, AlphanumericAscii= 145, 
+                  SpecialChar= 146, NormalChar= 147, LiteralChar= 148, Symbol= 149, 
+                  InnerPlain= 150, Eof= 151};
       public class Html : PegCharParser 
       {
         
@@ -1332,7 +1332,7 @@ namespace Peg.Html
                       And(()=>    Not(()=> HtmlBlockCloseCode() ) && Any() ) )
                   && HtmlBlockCloseCode() ) ); return result;
 		}
-        public bool HtmlBlockOpenSpan()    /*HtmlBlockOpenSpan : '<' Spnl ('span'  \i ) Spnl  '>';*/
+        public bool HtmlBlockOpenSpan()    /*HtmlBlockOpenSpan : '<' Spnl ('span'  \i ) Spnl HtmlAttribute*   '>';*/
         {
 
            var result=And(()=>  
@@ -1340,6 +1340,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('s','p','a','n')
                   && Spnl()
+                  && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseSpan()    /*HtmlBlockCloseSpan  : '<' Spnl '/' ('span' \i) Spnl '>';*/
@@ -1364,7 +1365,7 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseSpan() ) ); return result;
 		}
-        public bool HtmlBlockOpenHtml()    /*HtmlBlockOpenHtml : '<' Spnl ('html'  \i ) Spnl  '>';*/
+        public bool HtmlBlockOpenHtml()    /*HtmlBlockOpenHtml : '<' Spnl ('html'  \i ) Spnl  HtmlAttribute*  '>';*/
         {
 
            var result=And(()=>  
@@ -1372,6 +1373,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('h','t','m','l')
                   && Spnl()
+                  && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseHtml()    /*HtmlBlockCloseHtml  : '<' Spnl '/' ('html' \i) Spnl '>';*/
@@ -1697,22 +1699,32 @@ namespace Peg.Html
                             And(()=>    Not(()=> Char('\"') ) && Any() ) )
                       && Char('\"') ) ); return result;
 		}
-        public bool HtmlAttribute()    /*^^HtmlAttribute : (AlphanumericAscii / '-')+ Spnl ('=' Spnl (Quoted / (!'>' Nonspacechar)+)) Spnl ;*/
+        public bool GlobalAttributes()    /*^^GlobalAttributes :  'itemscope' ;*/
+        {
+
+           var result= TreeNT((int)EHtml.GlobalAttributes,()=>
+                Char("itemscope") ); return result;
+		}
+        public bool HtmlAttribute()    /*^^HtmlAttribute : ( (AlphanumericAscii / '-')+ Spnl ('=' Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlAttribute,()=>
                 And(()=>  
-                     PlusRepeat(()=>     AlphanumericAscii() || Char('-') )
-                  && Spnl()
-                  && And(()=>    
-                         Char('=')
-                      && Spnl()
-                      && (      
-                               Quoted()
-                            || PlusRepeat(()=>        
-                                    And(()=>          
-                                                 Not(()=> Char('>') )
-                                              && Nonspacechar() ) )) )
+                     (    
+                         And(()=>      
+                               PlusRepeat(()=>        
+                                        AlphanumericAscii() || Char('-') )
+                            && Spnl()
+                            && And(()=>        
+                                       Char('=')
+                                    && Spnl()
+                                    && (          
+                                                 Quoted()
+                                              || PlusRepeat(()=>            
+                                                          And(()=>              
+                                                                           Not(()=> Char('>') )
+                                                                        && Nonspacechar() ) )) ) )
+                      || GlobalAttributes())
                   && Spnl() ) ); return result;
 		}
         public bool HtmlComment()    /*^^HtmlComment :   '<!--' (!'-->' .)* '-->';*/
