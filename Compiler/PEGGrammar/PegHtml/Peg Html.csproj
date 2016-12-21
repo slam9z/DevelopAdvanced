@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Html\C#\Html.cs" />
     <Content Include="Html\input\div.html" />
+    <Content Include="Html\input\p.html" />
     <Content Include="Html\input\span.html" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Html\input\unknown.html" />

@@ -1,4 +1,4 @@
-/* created on 20/12/2016 23:45:51 from peg generator V1.0 using 'Html' as input*/
+/* created on 21/12/2016 20:59:49 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -114,29 +114,25 @@ namespace Peg.Html
                      OptRepeat(()=> BlankLine() )
                   && (    HtmlBlock() || StyleBlock()) ) ); return result;
 		}
-        public bool HtmlBlockOpenAddress()    /*HtmlBlockOpenAddress : '<' Spnl ('address' / 'ADDRESS') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenAddress()    /*HtmlBlockOpenAddress : '<' Spnl ('address'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    
-                         Char('a','d','d','r','e','s','s')
-                      || Char('A','D','D','R','E','S','S'))
+                  && IChar('a','d','d','r','e','s','s')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseAddress()    /*HtmlBlockCloseAddress : '<' Spnl '/' ('address' / 'ADDRESS') Spnl '>' ;*/
+        public bool HtmlBlockCloseAddress()    /*HtmlBlockCloseAddress : '<' Spnl '/' ('address'  \i ) Spnl '>' ;*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    
-                         Char('a','d','d','r','e','s','s')
-                      || Char('A','D','D','R','E','S','S'))
+                  && IChar('a','d','d','r','e','s','s')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -151,25 +147,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseAddress() ) ); return result;
 		}
-        public bool HtmlBlockOpenBlockquote()    /*HtmlBlockOpenBlockquote : '<' Spnl ('blockquote' / 'BLOCKQUOTE') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenBlockquote()    /*HtmlBlockOpenBlockquote : '<' Spnl ('blockquote'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char("blockquote") || Char("BLOCKQUOTE"))
+                  && IChar("blockquote")
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseBlockquote()    /*HtmlBlockCloseBlockquote : '<' Spnl '/' ('blockquote' / 'BLOCKQUOTE') Spnl '>';*/
+        public bool HtmlBlockCloseBlockquote()    /*HtmlBlockCloseBlockquote : '<' Spnl '/' ('blockquote'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char("blockquote") || Char("BLOCKQUOTE"))
+                  && IChar("blockquote")
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -184,29 +180,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseBlockquote() ) ); return result;
 		}
-        public bool HtmlBlockOpenCenter()    /*HtmlBlockOpenCenter : '<' Spnl ('center' / 'CENTER') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenCenter()    /*HtmlBlockOpenCenter : '<' Spnl ('center'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    
-                         Char('c','e','n','t','e','r')
-                      || Char('C','E','N','T','E','R'))
+                  && IChar('c','e','n','t','e','r')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseCenter()    /*HtmlBlockCloseCenter : '<' Spnl '/' ('center' / 'CENTER') Spnl '>';*/
+        public bool HtmlBlockCloseCenter()    /*HtmlBlockCloseCenter : '<' Spnl '/' ('center'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    
-                         Char('c','e','n','t','e','r')
-                      || Char('C','E','N','T','E','R'))
+                  && IChar('c','e','n','t','e','r')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -221,25 +213,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseCenter() ) ); return result;
 		}
-        public bool HtmlBlockOpenDir()    /*HtmlBlockOpenDir : '<' Spnl ('dir' / 'DIR') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenDir()    /*HtmlBlockOpenDir : '<' Spnl ('dir'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('d','i','r') || Char('D','I','R'))
+                  && IChar('d','i','r')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseDir()    /*HtmlBlockCloseDir : '<' Spnl '/' ('dir' / 'DIR') Spnl '>';*/
+        public bool HtmlBlockCloseDir()    /*HtmlBlockCloseDir : '<' Spnl '/' ('dir'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('d','i','r') || Char('D','I','R'))
+                  && IChar('d','i','r')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -254,19 +246,19 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseDir() ) ); return result;
 		}
-        public bool HtmlBlockOpenDiv()    /*^^HtmlBlockOpenDiv : '<' Spnl ('div' / 'DIV') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenDiv()    /*^^HtmlBlockOpenDiv : '<' Spnl ('div'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockOpenDiv,()=>
                 And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('d','i','v') || Char('D','I','V'))
+                  && IChar('d','i','v')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ) ); return result;
 		}
-        public bool HtmlBlockCloseDiv()    /*^^HtmlBlockCloseDiv : '<' Spnl '/' ('div' / 'DIV') Spnl '>';*/
+        public bool HtmlBlockCloseDiv()    /*^^HtmlBlockCloseDiv : '<' Spnl '/' ('div'  \i ) Spnl '>';*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockCloseDiv,()=>
@@ -274,7 +266,7 @@ namespace Peg.Html
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('d','i','v') || Char('D','I','V'))
+                  && IChar('d','i','v')
                   && Spnl()
                   && Char('>') ) ); return result;
 		}
@@ -289,25 +281,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseDiv() ) ); return result;
 		}
-        public bool HtmlBlockOpenDl()    /*HtmlBlockOpenDl : '<' Spnl ('dl' / 'DL') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenDl()    /*HtmlBlockOpenDl : '<' Spnl ('dl'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('d','l') || Char('D','L'))
+                  && IChar('d','l')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseDl()    /*HtmlBlockCloseDl : '<' Spnl '/' ('dl' / 'DL') Spnl '>';*/
+        public bool HtmlBlockCloseDl()    /*HtmlBlockCloseDl : '<' Spnl '/' ('dl'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('d','l') || Char('D','L'))
+                  && IChar('d','l')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -322,25 +314,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseDl() ) ); return result;
 		}
-        public bool HtmlBlockOpenFieldset()    /*HtmlBlockOpenFieldset : '<' Spnl ('fieldset' / 'FIELDSET') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenFieldset()    /*HtmlBlockOpenFieldset : '<' Spnl ('fieldset'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char("fieldset") || Char("FIELDSET"))
+                  && IChar("fieldset")
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseFieldset()    /*HtmlBlockCloseFieldset : '<' Spnl '/' ('fieldset' / 'FIELDSET') Spnl '>';*/
+        public bool HtmlBlockCloseFieldset()    /*HtmlBlockCloseFieldset : '<' Spnl '/' ('fieldset'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char("fieldset") || Char("FIELDSET"))
+                  && IChar("fieldset")
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -355,25 +347,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseFieldset() ) ); return result;
 		}
-        public bool HtmlBlockOpenForm()    /*HtmlBlockOpenForm : '<' Spnl ('form' / 'FORM') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenForm()    /*HtmlBlockOpenForm : '<' Spnl ('form'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('f','o','r','m') || Char('F','O','R','M'))
+                  && IChar('f','o','r','m')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseForm()    /*HtmlBlockCloseForm : '<' Spnl '/' ('form' / 'FORM') Spnl '>';*/
+        public bool HtmlBlockCloseForm()    /*HtmlBlockCloseForm : '<' Spnl '/' ('form'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('f','o','r','m') || Char('F','O','R','M'))
+                  && IChar('f','o','r','m')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -585,25 +577,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseH6() ) ); return result;
 		}
-        public bool HtmlBlockOpenMenu()    /*HtmlBlockOpenMenu : '<' Spnl ('menu' / 'MENU') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenMenu()    /*HtmlBlockOpenMenu : '<' Spnl ('menu'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('m','e','n','u') || Char('M','E','N','U'))
+                  && IChar('m','e','n','u')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseMenu()    /*HtmlBlockCloseMenu : '<' Spnl '/' ('menu' / 'MENU') Spnl '>';*/
+        public bool HtmlBlockCloseMenu()    /*HtmlBlockCloseMenu : '<' Spnl '/' ('menu'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('m','e','n','u') || Char('M','E','N','U'))
+                  && IChar('m','e','n','u')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -618,25 +610,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseMenu() ) ); return result;
 		}
-        public bool HtmlBlockOpenNoframes()    /*HtmlBlockOpenNoframes : '<' Spnl ('noframes' / 'NOFRAMES') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenNoframes()    /*HtmlBlockOpenNoframes : '<' Spnl ('noframes'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char("noframes") || Char("NOFRAMES"))
+                  && IChar("noframes")
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseNoframes()    /*HtmlBlockCloseNoframes : '<' Spnl '/' ('noframes' / 'NOFRAMES') Spnl '>';*/
+        public bool HtmlBlockCloseNoframes()    /*HtmlBlockCloseNoframes : '<' Spnl '/' ('noframes'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char("noframes") || Char("NOFRAMES"))
+                  && IChar("noframes")
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -654,25 +646,25 @@ namespace Peg.Html
                                     && Any() ) )
                   && HtmlBlockCloseNoframes() ) ); return result;
 		}
-        public bool HtmlBlockOpenNoscript()    /*HtmlBlockOpenNoscript : '<' Spnl ('noscript' / 'NOSCRIPT') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenNoscript()    /*HtmlBlockOpenNoscript : '<' Spnl ('noscript'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char("noscript") || Char("NOSCRIPT"))
+                  && IChar("noscript")
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseNoscript()    /*HtmlBlockCloseNoscript : '<' Spnl '/' ('noscript' / 'NOSCRIPT') Spnl '>';*/
+        public bool HtmlBlockCloseNoscript()    /*HtmlBlockCloseNoscript : '<' Spnl '/' ('noscript'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char("noscript") || Char("NOSCRIPT"))
+                  && IChar("noscript")
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -690,25 +682,25 @@ namespace Peg.Html
                                     && Any() ) )
                   && HtmlBlockCloseNoscript() ) ); return result;
 		}
-        public bool HtmlBlockOpenOl()    /*HtmlBlockOpenOl : '<' Spnl ('ol' / 'OL') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenOl()    /*HtmlBlockOpenOl : '<' Spnl ('ol'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('o','l') || Char('O','L'))
+                  && IChar('o','l')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseOl()    /*HtmlBlockCloseOl : '<' Spnl '/' ('ol' / 'OL') Spnl '>';*/
+        public bool HtmlBlockCloseOl()    /*HtmlBlockCloseOl : '<' Spnl '/' ('ol'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('o','l') || Char('O','L'))
+                  && IChar('o','l')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -723,25 +715,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseOl() ) ); return result;
 		}
-        public bool HtmlBlockOpenP()    /*HtmlBlockOpenP : '<' Spnl ('p' / 'P') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenP()    /*HtmlBlockOpenP : '<' Spnl ('p'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('p') || Char('P'))
+                  && IChar('p')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseP()    /*HtmlBlockCloseP : '<' Spnl '/' ('p' / 'P') Spnl '>';*/
+        public bool HtmlBlockCloseP()    /*HtmlBlockCloseP : '<' Spnl '/' ('p'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('p') || Char('P'))
+                  && IChar('p')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -756,25 +748,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseP() ) ); return result;
 		}
-        public bool HtmlBlockOpenPre()    /*HtmlBlockOpenPre : '<' Spnl ('pre' / 'PRE') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenPre()    /*HtmlBlockOpenPre : '<' Spnl ('pre'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('p','r','e') || Char('P','R','E'))
+                  && IChar('p','r','e')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockClosePre()    /*HtmlBlockClosePre : '<' Spnl '/' ('pre' / 'PRE') Spnl '>';*/
+        public bool HtmlBlockClosePre()    /*HtmlBlockClosePre : '<' Spnl '/' ('pre'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('p','r','e') || Char('P','R','E'))
+                  && IChar('p','r','e')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -794,29 +786,25 @@ namespace Peg.Html
                                               && Any() ) ))
                   && HtmlBlockClosePre() ) ); return result;
 		}
-        public bool HtmlBlockOpenTable()    /*HtmlBlockOpenTable : '<' Spnl ('table' / 'TABLE') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenTable()    /*HtmlBlockOpenTable : '<' Spnl ('table'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    
-                         Char('t','a','b','l','e')
-                      || Char('T','A','B','L','E'))
+                  && IChar('t','a','b','l','e')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseTable()    /*HtmlBlockCloseTable : '<' Spnl '/' ('table' / 'TABLE') Spnl '>';*/
+        public bool HtmlBlockCloseTable()    /*HtmlBlockCloseTable : '<' Spnl '/' ('table'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    
-                         Char('t','a','b','l','e')
-                      || Char('T','A','B','L','E'))
+                  && IChar('t','a','b','l','e')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -831,25 +819,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseTable() ) ); return result;
 		}
-        public bool HtmlBlockOpenUl()    /*HtmlBlockOpenUl : '<' Spnl ('ul' / 'UL') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenUl()    /*HtmlBlockOpenUl : '<' Spnl ('ul'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('u','l') || Char('U','L'))
+                  && IChar('u','l')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseUl()    /*HtmlBlockCloseUl : '<' Spnl '/' ('ul' / 'UL') Spnl '>';*/
+        public bool HtmlBlockCloseUl()    /*HtmlBlockCloseUl : '<' Spnl '/' ('ul'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('u','l') || Char('U','L'))
+                  && IChar('u','l')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -864,25 +852,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseUl() ) ); return result;
 		}
-        public bool HtmlBlockOpenDd()    /*HtmlBlockOpenDd : '<' Spnl ('dd' / 'DD') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenDd()    /*HtmlBlockOpenDd : '<' Spnl ('dd'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('d','d') || Char('D','D'))
+                  && IChar('d','d')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseDd()    /*HtmlBlockCloseDd : '<' Spnl '/' ('dd' / 'DD') Spnl '>';*/
+        public bool HtmlBlockCloseDd()    /*HtmlBlockCloseDd : '<' Spnl '/' ('dd'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('d','d') || Char('D','D'))
+                  && IChar('d','d')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -897,25 +885,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseDd() ) ); return result;
 		}
-        public bool HtmlBlockOpenDt()    /*HtmlBlockOpenDt : '<' Spnl ('dt' / 'DT') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenDt()    /*HtmlBlockOpenDt : '<' Spnl ('dt'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('d','t') || Char('D','T'))
+                  && IChar('d','t')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseDt()    /*HtmlBlockCloseDt : '<' Spnl '/' ('dt' / 'DT') Spnl '>';*/
+        public bool HtmlBlockCloseDt()    /*HtmlBlockCloseDt : '<' Spnl '/' ('dt'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('d','t') || Char('D','T'))
+                  && IChar('d','t')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -930,25 +918,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseDt() ) ); return result;
 		}
-        public bool HtmlBlockOpenFrameset()    /*HtmlBlockOpenFrameset : '<' Spnl ('frameset' / 'FRAMESET') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenFrameset()    /*HtmlBlockOpenFrameset : '<' Spnl ('frameset'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char("frameset") || Char("FRAMESET"))
+                  && IChar("frameset")
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseFrameset()    /*HtmlBlockCloseFrameset : '<' Spnl '/' ('frameset' / 'FRAMESET') Spnl '>';*/
+        public bool HtmlBlockCloseFrameset()    /*HtmlBlockCloseFrameset : '<' Spnl '/' ('frameset'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char("frameset") || Char("FRAMESET"))
+                  && IChar("frameset")
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -963,25 +951,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseFrameset() ) ); return result;
 		}
-        public bool HtmlBlockOpenLi()    /*HtmlBlockOpenLi : '<' Spnl ('li' / 'LI') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenLi()    /*HtmlBlockOpenLi : '<' Spnl ('li'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('l','i') || Char('L','I'))
+                  && IChar('l','i')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseLi()    /*HtmlBlockCloseLi : '<' Spnl '/' ('li' / 'LI') Spnl '>';*/
+        public bool HtmlBlockCloseLi()    /*HtmlBlockCloseLi : '<' Spnl '/' ('li'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('l','i') || Char('L','I'))
+                  && IChar('l','i')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -996,29 +984,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseLi() ) ); return result;
 		}
-        public bool HtmlBlockOpenTbody()    /*HtmlBlockOpenTbody : '<' Spnl ('tbody' / 'TBODY') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenTbody()    /*HtmlBlockOpenTbody : '<' Spnl ('tbody'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    
-                         Char('t','b','o','d','y')
-                      || Char('T','B','O','D','Y'))
+                  && IChar('t','b','o','d','y')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseTbody()    /*HtmlBlockCloseTbody : '<' Spnl '/' ('tbody' / 'TBODY') Spnl '>';*/
+        public bool HtmlBlockCloseTbody()    /*HtmlBlockCloseTbody : '<' Spnl '/' ('tbody' \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    
-                         Char('t','b','o','d','y')
-                      || Char('T','B','O','D','Y'))
+                  && IChar('t','b','o','d','y')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1033,25 +1017,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseTbody() ) ); return result;
 		}
-        public bool HtmlBlockOpenTd()    /*HtmlBlockOpenTd : '<' Spnl ('td' / 'TD') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenTd()    /*HtmlBlockOpenTd : '<' Spnl ('td'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('t','d') || Char('T','D'))
+                  && IChar('t','d')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseTd()    /*HtmlBlockCloseTd : '<' Spnl '/' ('td' / 'TD') Spnl '>';*/
+        public bool HtmlBlockCloseTd()    /*HtmlBlockCloseTd : '<' Spnl '/' ('td'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('t','d') || Char('T','D'))
+                  && IChar('t','d')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1066,29 +1050,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseTd() ) ); return result;
 		}
-        public bool HtmlBlockOpenTfoot()    /*HtmlBlockOpenTfoot : '<' Spnl ('tfoot' / 'TFOOT') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenTfoot()    /*HtmlBlockOpenTfoot : '<' Spnl ('tfoot'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    
-                         Char('t','f','o','o','t')
-                      || Char('T','F','O','O','T'))
+                  && IChar('t','f','o','o','t')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseTfoot()    /*HtmlBlockCloseTfoot : '<' Spnl '/' ('tfoot' / 'TFOOT') Spnl '>';*/
+        public bool HtmlBlockCloseTfoot()    /*HtmlBlockCloseTfoot : '<' Spnl '/' ('tfoot'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    
-                         Char('t','f','o','o','t')
-                      || Char('T','F','O','O','T'))
+                  && IChar('t','f','o','o','t')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1103,25 +1083,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseTfoot() ) ); return result;
 		}
-        public bool HtmlBlockOpenTh()    /*HtmlBlockOpenTh : '<' Spnl ('th' / 'TH') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenTh()    /*HtmlBlockOpenTh : '<' Spnl ('th'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('t','h') || Char('T','H'))
+                  && IChar('t','h')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseTh()    /*HtmlBlockCloseTh : '<' Spnl '/' ('th' / 'TH') Spnl '>';*/
+        public bool HtmlBlockCloseTh()    /*HtmlBlockCloseTh : '<' Spnl '/' ('th'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('t','h') || Char('T','H'))
+                  && IChar('t','h')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1136,29 +1116,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseTh() ) ); return result;
 		}
-        public bool HtmlBlockOpenThead()    /*HtmlBlockOpenThead : '<' Spnl ('thead' / 'THEAD') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenThead()    /*HtmlBlockOpenThead : '<' Spnl ('thead'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    
-                         Char('t','h','e','a','d')
-                      || Char('T','H','E','A','D'))
+                  && IChar('t','h','e','a','d')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseThead()    /*HtmlBlockCloseThead : '<' Spnl '/' ('thead' / 'THEAD') Spnl '>';*/
+        public bool HtmlBlockCloseThead()    /*HtmlBlockCloseThead : '<' Spnl '/' ('thead' \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    
-                         Char('t','h','e','a','d')
-                      || Char('T','H','E','A','D'))
+                  && IChar('t','h','e','a','d')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1173,25 +1149,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlockTr() ))
                   && HtmlBlockCloseThead() ) ); return result;
 		}
-        public bool HtmlBlockOpenTr()    /*HtmlBlockOpenTr : '<' Spnl ('tr' / 'TR') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenTr()    /*HtmlBlockOpenTr : '<' Spnl ('tr'   \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('t','r') || Char('T','R'))
+                  && IChar('t','r')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseTr()    /*HtmlBlockCloseTr : '<' Spnl '/' ('tr' / 'TR') Spnl '>';*/
+        public bool HtmlBlockCloseTr()    /*HtmlBlockCloseTr : '<' Spnl '/' ('tr'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('t','r') || Char('T','R'))
+                  && IChar('t','r')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1206,29 +1182,25 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseTr() ) ); return result;
 		}
-        public bool HtmlBlockOpenScript()    /*HtmlBlockOpenScript : '<' Spnl ('script' / 'SCRIPT') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenScript()    /*HtmlBlockOpenScript : '<' Spnl ('script'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    
-                         Char('s','c','r','i','p','t')
-                      || Char('S','C','R','I','P','T'))
+                  && IChar('s','c','r','i','p','t')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseScript()    /*HtmlBlockCloseScript : '<' Spnl '/' ('script' / 'SCRIPT') Spnl '>';*/
+        public bool HtmlBlockCloseScript()    /*HtmlBlockCloseScript : '<' Spnl '/' ('script'   \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    
-                         Char('s','c','r','i','p','t')
-                      || Char('S','C','R','I','P','T'))
+                  && IChar('s','c','r','i','p','t')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1244,25 +1216,25 @@ namespace Peg.Html
                             && Any() ) )
                   && HtmlBlockCloseScript() ) ); return result;
 		}
-        public bool HtmlBlockOpenHead()    /*HtmlBlockOpenHead : '<' Spnl ('head' / 'HEAD') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenHead()    /*HtmlBlockOpenHead : '<' Spnl ('head'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('h','e','a','d') || Char('H','E','A','D'))
+                  && IChar('h','e','a','d')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseHead()    /*HtmlBlockCloseHead : '<' Spnl '/' ('head' / 'HEAD') Spnl '>';*/
+        public bool HtmlBlockCloseHead()    /*HtmlBlockCloseHead : '<' Spnl '/' ('head'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('h','e','a','d') || Char('H','E','A','D'))
+                  && IChar('h','e','a','d')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1276,25 +1248,25 @@ namespace Peg.Html
                       And(()=>    Not(()=> HtmlBlockCloseHead() ) && Any() ) )
                   && HtmlBlockCloseHead() ) ); return result;
 		}
-        public bool HtmlBlockOpenA()    /*HtmlBlockOpenA : '<' Spnl ('a' / 'A') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenA()    /*HtmlBlockOpenA : '<' Spnl ('a'  \i ) Spnl HtmlAttribute* '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('a') || Char('A'))
+                  && IChar('a')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseA()    /*HtmlBlockCloseA : '<' Spnl '/' ('a' / 'A') Spnl '>';*/
+        public bool HtmlBlockCloseA()    /*HtmlBlockCloseA : '<' Spnl '/' ('a'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('a') || Char('A'))
+                  && IChar('a')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1309,24 +1281,24 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseA() ) ); return result;
 		}
-        public bool HtmlBlockOpenCode()    /*HtmlBlockOpenCode : '<' Spnl ('code' / 'CODE') Spnl  '>';*/
+        public bool HtmlBlockOpenCode()    /*HtmlBlockOpenCode : '<' Spnl ('code'  \i ) Spnl  '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('c','o','d','e') || Char('C','O','D','E'))
+                  && IChar('c','o','d','e')
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseCode()    /*HtmlBlockCloseCode  : '<' Spnl '/' ('code' / 'CODE') Spnl '>';*/
+        public bool HtmlBlockCloseCode()    /*HtmlBlockCloseCode  : '<' Spnl '/' ('code'  \i ) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('c','o','d','e') || Char('C','O','D','E'))
+                  && IChar('c','o','d','e')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1340,24 +1312,24 @@ namespace Peg.Html
                       And(()=>    Not(()=> HtmlBlockCloseCode() ) && Any() ) )
                   && HtmlBlockCloseCode() ) ); return result;
 		}
-        public bool HtmlBlockOpenSpan()    /*HtmlBlockOpenSpan : '<' Spnl ('span' / 'SPAN') Spnl  '>';*/
+        public bool HtmlBlockOpenSpan()    /*HtmlBlockOpenSpan : '<' Spnl ('span'  \i ) Spnl  '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    Char('s','p','a','n') || Char('S','P','A','N'))
+                  && IChar('s','p','a','n')
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCloseSpan()    /*HtmlBlockCloseSpan  : '<' Spnl '/' ('span' / 'SPAN') Spnl '>';*/
+        public bool HtmlBlockCloseSpan()    /*HtmlBlockCloseSpan  : '<' Spnl '/' ('span' \i) Spnl '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    Char('s','p','a','n') || Char('S','P','A','N'))
+                  && IChar('s','p','a','n')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1523,40 +1495,70 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ) ); return result;
 		}
-        public bool HtmlBlockType()    /*HtmlBlockType : 'address' / 'blockquote' / 'center' / 'dir' / 'div' / 'dl' / 'fieldset' / 'form' / 'h1' / 'h2' / 'h3' /
-                'h4' / 'h5' / 'h6' / 'hr' / 'isindex' / 'menu' / 'noframes' / 'noscript' / 'ol' / 'p' / 'pre' / 'table' /
-                'ul' / 'dd' / 'dt' / 'frameset' / 'li' / 'tbody' / 'td' / 'tfoot' / 'th' / 'thead' / 'tr' / 'script' /
-                'ADDRESS' / 'BLOCKQUOTE' / 'CENTER' / 'DIR' / 'DIV' / 'DL' / 'FIELDSET' / 'FORM' / 'H1' / 'H2' / 'H3' /
-                'H4' / 'H5' / 'H6' / 'HR' / 'ISINDEX' / 'MENU' / 'NOFRAMES' / 'NOSCRIPT' / 'OL' / 'P' / 'PRE' / 'TABLE' /
-                'UL' / 'DD' / 'DT' / 'FRAMESET' / 'LI' / 'TBODY' / 'TD' / 'TFOOT' / 'TH' / 'THEAD' / 'TR' / 'SCRIPT'/'br'/'BR'/
-				'a'/'A';*/
+        public bool HtmlBlockType()    /*HtmlBlockType : 'address'\i / 'blockquote'\i / 'center' \i/ 'dir'\i / 'div'\i / 'dl' \i/ 'fieldset' \i/ 'form'\i / 'h1'\i / 'h2'\i / 'h3' \i/
+                'h4' \i/ 'h5' \i/ 'h6' \i/ 'hr'\i / 'isindex'\i / 'menu' \i/ 'noframes' \i/ 'noscript'\i / 'ol' \i/ 'p'\i / 'pre' \i/ 'table'\i /
+                'ul' \i/ 'dd'\i / 'dt'\i / 'frameset' \i/ 'li' \i/ 'tbody'\i / 'td' \i/ 'tfoot' \i/ 'th'\i / 'thead'\i / 'tr'\i / 'script'\i /
+                 'br' \i /'a' \i;*/
         {
 
-           var result=OneOfLiterals(optimizedLiterals0); return result;
+           var result=  
+                     IChar('a','d','d','r','e','s','s')
+                  || IChar("blockquote")
+                  || IChar('c','e','n','t','e','r')
+                  || IChar('d','i','r')
+                  || IChar('d','i','v')
+                  || IChar('d','l')
+                  || IChar("fieldset")
+                  || IChar('f','o','r','m')
+                  || IChar('h','1')
+                  || IChar('h','2')
+                  || IChar('h','3')
+                  || IChar('h','4')
+                  || IChar('h','5')
+                  || IChar('h','6')
+                  || IChar('h','r')
+                  || IChar('i','s','i','n','d','e','x')
+                  || IChar('m','e','n','u')
+                  || IChar("noframes")
+                  || IChar("noscript")
+                  || IChar('o','l')
+                  || IChar('p')
+                  || IChar('p','r','e')
+                  || IChar('t','a','b','l','e')
+                  || IChar('u','l')
+                  || IChar('d','d')
+                  || IChar('d','t')
+                  || IChar("frameset")
+                  || IChar('l','i')
+                  || IChar('t','b','o','d','y')
+                  || IChar('t','d')
+                  || IChar('t','f','o','o','t')
+                  || IChar('t','h')
+                  || IChar('t','h','e','a','d')
+                  || IChar('t','r')
+                  || IChar('s','c','r','i','p','t')
+                  || IChar('b','r')
+                  || IChar('a'); return result;
 		}
-        public bool StyleOpen()    /*StyleOpen :     '<' Spnl ('style' / 'STYLE') Spnl HtmlAttribute* '>'  ;*/
+        public bool StyleOpen()    /*StyleOpen :     '<' Spnl ('style'  \i ) Spnl HtmlAttribute* '>'  ;*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
-                  && (    
-                         Char('s','t','y','l','e')
-                      || Char('S','T','Y','L','E'))
+                  && IChar('s','t','y','l','e')
                   && Spnl()
                   && OptRepeat(()=> HtmlAttribute() )
                   && Char('>') ); return result;
 		}
-        public bool StyleClose()    /*StyleClose :    '<' Spnl '/' ('style' / 'STYLE') Spnl '>' ;*/
+        public bool StyleClose()    /*StyleClose :    '<' Spnl '/' ('style'  \i ) Spnl '>' ;*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && Char('/')
-                  && (    
-                         Char('s','t','y','l','e')
-                      || Char('S','T','Y','L','E'))
+                  && IChar('s','t','y','l','e')
                   && Spnl()
                   && Char('>') ); return result;
 		}
@@ -1721,31 +1723,5 @@ namespace Peg.Html
            var result=    Not(()=> Any() ) || Warning(" end of file"); return result;
 		}
 		#endregion Grammar Rules
-
-        #region Optimization Data 
-        
-        internal static OptimizedLiterals optimizedLiterals0;
-        
-        static Html()
-        {
-            
-            {
-               string[] literals=
-               { "address","blockquote","center","dir","div","dl","fieldset","form",
-                  "h1","h2","h3","h4","h5","h6","hr","isindex",
-                  "menu","noframes","noscript","ol","p","pre","table","ul",
-                  "dd","dt","frameset","li","tbody","td","tfoot","th",
-                  "thead","tr","script","ADDRESS","BLOCKQUOTE","CENTER","DIR","DIV",
-                  "DL","FIELDSET","FORM","H1","H2","H3","H4","H5",
-                  "H6","HR","ISINDEX","MENU","NOFRAMES","NOSCRIPT","OL","P",
-                  "PRE","TABLE","UL","DD","DT","FRAMESET","LI","TBODY",
-                  "TD","TFOOT","TH","THEAD","TR","SCRIPT","br","BR",
-                  "a","A" };
-               optimizedLiterals0= new OptimizedLiterals(literals);
-            }
-
-            
-        }
-        #endregion Optimization Data 
-           }
+   }
 }
