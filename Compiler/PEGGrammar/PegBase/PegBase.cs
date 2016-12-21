@@ -1795,7 +1795,7 @@ namespace Peg.Base
         }
         public bool IChar(char c1)
         {
-            if (pos_ < srcLen_ && System.Char.ToUpper(src_[pos_]) == c1)
+            if (pos_ < srcLen_ && System.Char.ToUpper(src_[pos_]) == System.Char.ToUpper(c1))
             { ++pos_; return true; }
             return false;
         }
@@ -1868,7 +1868,7 @@ namespace Peg.Base
             if (pos_ + sLength > srcLen_) return false;
             for (int i = 0; i < sLength; ++i)
             {
-                if (s[i] != System.Char.ToUpper(src_[pos_ + i])) return false;
+                if (System.Char.ToUpper(s[i]) != System.Char.ToUpper(src_[pos_ + i])) return false;
             }
             pos_ += sLength;
             return true;
