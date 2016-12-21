@@ -13,4 +13,5 @@
 
 * HtmlBlockUnknown 把 可以不写 end tag 的忽略掉了
 
-* VS连ul没有end都可以解析，怎么做到的
+* VS连ul没有end都可以解析，怎么做到的, 浏览器会自动补全。
+

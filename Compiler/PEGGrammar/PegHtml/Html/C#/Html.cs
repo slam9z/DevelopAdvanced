@@ -1,4 +1,4 @@
-/* created on 21/12/2016 22:40:18 from peg generator V1.0 using 'Html' as input*/
+/* created on 21/12/2016 23:00:23 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -41,16 +41,17 @@ namespace Peg.Html
                   HtmlBlockCloseHead= 103, HtmlBlockHead= 104, HtmlBlockOpenA= 105, 
                   HtmlBlockCloseA= 106, HtmlBlockA= 107, HtmlBlockOpenCode= 108, 
                   HtmlBlockCloseCode= 109, HtmlBlockCode= 110, HtmlBlockOpenSpan= 111, 
-                  HtmlBlockCloseSpan= 112, HtmlBlockSpan= 113, HtmlBlockOpenUnknown= 114, 
-                  HtmlBlockCloseUnknown= 115, HtmlBlockUnknown= 116, UnknownTagName= 117, 
-                  HtmlBlockInTags= 118, HtmlBlock= 119, HtmlBlockSelfClosing= 120, 
-                  HtmlBlockType= 121, HtmlBlockSelfClosingType= 122, StyleOpen= 123, 
-                  StyleClose= 124, InStyleTags= 125, StyleBlock= 126, Space= 127, 
-                  RawHtml= 128, BlankLine= 129, Quoted= 130, HtmlAttribute= 131, 
-                  HtmlComment= 132, HtmlTag= 133, Spacechar= 134, Nonspacechar= 135, 
-                  Newline= 136, Sp= 137, Spnl= 138, AlphanumericAscii= 139, SpecialChar= 140, 
-                  NormalChar= 141, LiteralChar= 142, Symbol= 143, InnerPlain= 144, 
-                  Eof= 145};
+                  HtmlBlockCloseSpan= 112, HtmlBlockSpan= 113, HtmlBlockOpenHtml= 114, 
+                  HtmlBlockCloseHtml= 115, HtmlBlockHtml= 116, HtmlBlockOpenUnknown= 117, 
+                  HtmlBlockCloseUnknown= 118, HtmlBlockUnknown= 119, UnknownTagName= 120, 
+                  HtmlBlockInTags= 121, HtmlBlock= 122, HtmlBlockSelfClosing= 123, 
+                  HtmlBlockType= 124, HtmlBlockSelfClosingType= 125, StyleOpen= 126, 
+                  StyleClose= 127, InStyleTags= 128, StyleBlock= 129, Space= 130, 
+                  RawHtml= 131, BlankLine= 132, Quoted= 133, HtmlAttribute= 134, 
+                  HtmlComment= 135, HtmlTag= 136, Spacechar= 137, Nonspacechar= 138, 
+                  Newline= 139, Sp= 140, Spnl= 141, AlphanumericAscii= 142, SpecialChar= 143, 
+                  NormalChar= 144, LiteralChar= 145, Symbol= 146, InnerPlain= 147, 
+                  Eof= 148};
       public class Html : PegCharParser 
       {
         
@@ -1344,6 +1345,38 @@ namespace Peg.Html
                       || PlusRepeat(()=> HtmlBlock() ))
                   && HtmlBlockCloseSpan() ) ); return result;
 		}
+        public bool HtmlBlockOpenHtml()    /*HtmlBlockOpenHtml : '<' Spnl ('html'  \i ) Spnl  '>';*/
+        {
+
+           var result=And(()=>  
+                     Char('<')
+                  && Spnl()
+                  && IChar('h','t','m','l')
+                  && Spnl()
+                  && Char('>') ); return result;
+		}
+        public bool HtmlBlockCloseHtml()    /*HtmlBlockCloseHtml  : '<' Spnl '/' ('html' \i) Spnl '>';*/
+        {
+
+           var result=And(()=>  
+                     Char('<')
+                  && Spnl()
+                  && Char('/')
+                  && IChar('h','t','m','l')
+                  && Spnl()
+                  && Char('>') ); return result;
+		}
+        public bool HtmlBlockHtml()    /*^^HtmlBlockHtml : HtmlBlockOpenHtml ( &HtmlBlockCloseHtml /HtmlBlock+) HtmlBlockCloseHtml ;*/
+        {
+
+           var result= TreeNT((int)EHtml.HtmlBlockHtml,()=>
+                And(()=>  
+                     HtmlBlockOpenHtml()
+                  && (    
+                         Peek(()=> HtmlBlockCloseHtml() )
+                      || PlusRepeat(()=> HtmlBlock() ))
+                  && HtmlBlockCloseHtml() ) ); return result;
+		}
         public bool HtmlBlockOpenUnknown()    /*HtmlBlockOpenUnknown : '<' Spnl ![>/] !HtmlBlockSelfClosingType UnknownTagName Spnl  HtmlAttribute* '>';*/
         {
 
@@ -1386,7 +1419,9 @@ namespace Peg.Html
            var result= TreeNT((int)EHtml.UnknownTagName,()=>
                 OptRepeat(()=> LiteralChar() ) ); return result;
 		}
-        public bool HtmlBlockInTags()    /*^^HtmlBlockInTags : HtmlBlockAddress
+        public bool HtmlBlockInTags()    /*^^HtmlBlockInTags : 
+				HtmlBlockHtml
+				/HtmlBlockAddress
                 / HtmlBlockBlockquote
                 / HtmlBlockCenter
                 / HtmlBlockDir
@@ -1429,7 +1464,8 @@ namespace Peg.Html
 
            var result= TreeNT((int)EHtml.HtmlBlockInTags,()=>
                   
-                     HtmlBlockAddress()
+                     HtmlBlockHtml()
+                  || HtmlBlockAddress()
                   || HtmlBlockBlockquote()
                   || HtmlBlockCenter()
                   || HtmlBlockDir()
