@@ -53,6 +53,7 @@
     <Content Include="Html\input\span.html" />
     <Content Include="Html\input\DOCTYPE.html" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Html\input\specialchar.html" />
     <Content Include="Html\input\unknown.html" />
     <Content Include="Html\input\link.html" />
   </ItemGroup>

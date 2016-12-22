@@ -1,4 +1,4 @@
-/* created on 21/12/2016 23:50:34 from peg generator V1.0 using 'Html' as input*/
+/* created on 22/12/2016 21:41:14 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -51,7 +51,8 @@ namespace Peg.Html
                   HtmlAttribute= 137, HtmlComment= 138, HtmlTag= 139, Spacechar= 140, 
                   Nonspacechar= 141, Newline= 142, Sp= 143, Spnl= 144, AlphanumericAscii= 145, 
                   SpecialChar= 146, NormalChar= 147, LiteralChar= 148, Symbol= 149, 
-                  InnerPlain= 150, Eof= 151};
+                  InnerPlain= 150, PurePlainContents= 151, LeftPlainContents= 152, 
+                  RightPlainContents= 153, Eof= 154};
       public class Html : PegCharParser 
       {
         
@@ -1809,11 +1810,40 @@ namespace Peg.Html
            var result= TreeNT((int)EHtml.Symbol,()=>
                 SpecialChar() ); return result;
 		}
-        public bool InnerPlain()    /*^^InnerPlain :  NormalChar+  ;*/
+        public bool InnerPlain()    /*^^InnerPlain :  PurePlainContents/LeftPlainContents/RightPlainContents ;*/
         {
 
            var result= TreeNT((int)EHtml.InnerPlain,()=>
-                PlusRepeat(()=> NormalChar() ) ); return result;
+                  
+                     PurePlainContents()
+                  || LeftPlainContents()
+                  || RightPlainContents() ); return result;
+		}
+        public bool PurePlainContents()    /*^^PurePlainContents :  ( ![<>] .)+ ;*/
+        {
+
+           var result= TreeNT((int)EHtml.PurePlainContents,()=>
+                PlusRepeat(()=>  
+                  And(()=>    Not(()=> OneOf("<>") ) && Any() ) ) ); return result;
+		}
+        public bool LeftPlainContents()    /*^^LeftPlainContents : PurePlainContents?'<' PurePlainContents? !'>' ;*/
+        {
+
+           var result= TreeNT((int)EHtml.LeftPlainContents,()=>
+                And(()=>  
+                     Option(()=> PurePlainContents() )
+                  && Char('<')
+                  && Option(()=> PurePlainContents() )
+                  && Not(()=> Char('>') ) ) ); return result;
+		}
+        public bool RightPlainContents()    /*^^RightPlainContents : PurePlainContents? '>' PurePlainContents?  ;*/
+        {
+
+           var result= TreeNT((int)EHtml.RightPlainContents,()=>
+                And(()=>  
+                     Option(()=> PurePlainContents() )
+                  && Char('>')
+                  && Option(()=> PurePlainContents() ) ) ); return result;
 		}
         public bool Eof()    /*Eof :          !./ WARNING<" end of file">;*/
         {

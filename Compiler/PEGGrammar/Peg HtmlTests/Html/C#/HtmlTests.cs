@@ -107,5 +107,16 @@ namespace Peg.Html.Tests
             Console.WriteLine($"source : {markdownSrc}");
             markdown.Doc();
         }
+
+
+        [TestMethod()]
+        public void SpecialCharTest()
+        {
+            var markdownSrc = File.ReadAllText(Path.Combine(_inputFolder, "specialchar.html"));
+            var markdown = new Peg.Html.Html(markdownSrc, errOut);
+            Console.WriteLine($"source length: {markdownSrc.Length}");
+            Console.WriteLine($"source : {markdownSrc}");
+            markdown.Doc();
+        }
     }
 }

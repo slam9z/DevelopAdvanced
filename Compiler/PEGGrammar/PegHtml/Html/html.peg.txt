@@ -265,7 +265,11 @@ LiteralChar :    !( SpecialChar/Spacechar/Newline) .;
 
 ^^Symbol :     SpecialChar  ;
 
-^^InnerPlain :  NormalChar+  ;
+^^InnerPlain :  PurePlainContents/LeftPlainContents/RightPlainContents ;
+
+^^PurePlainContents :  ( ![<>] .)+ ;
+^^LeftPlainContents : PurePlainContents?'<' PurePlainContents? !'>' ;
+^^RightPlainContents : PurePlainContents? '>' PurePlainContents?  ;
 
 Eof :          !./ WARNING<" end of file">;   
 
