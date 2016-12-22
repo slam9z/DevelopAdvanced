@@ -1,0 +1,1964 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script type="text/javascript" src="http://c.csdnimg.cn/pubfooter/js/tracking.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </script>
+
+    <script id="allmobilize" charset="utf-8" src="http://a.yunshipei.com/46aae4d1e2371e4aa769798941cef698/allmobilize.min.js"></script>
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="alternate" media="handheld" href="#" />
+
+    <title>
+        c#集合类的线程安全（整理） - 蓝叶菱的专栏
+        - 博客频道 - CSDN.NET
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="QueueT&gt; 类MSDN的说法线程安全此类型的公共静态（在 Visual Basic 中为 Shared）成员是线程安全的。但不能保证任何实例成员是线程安全的。只要不修改该集合，QueueT&gt; 就可以同时支持多个阅读器。即便如此，从头到尾对一个集合进行枚举本质上并不是一个线程安全的过程。若要确保枚举过程中的线程安全，可以在整个枚举过程中锁定" />
+    <script src="http://static.blog.csdn.net/scripts/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://static.blog.csdn.net/scripts/ad.js?v=1.1"></script>
+    <!--new top-->
+
+    <link rel="stylesheet" href="http://static.csdn.net/public/common/toolbar/css/index.css">
+    <!--new top-->
+
+    <link rel="Stylesheet" type="text/css" href="http://static.blog.csdn.net/skin/default/css/style.css?v=1.1" />
+    <link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="/wlanye/rss/list" />
+    <link rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/blue.css" />
+
+
+
+</head>
+<body>
+
+
+    <!--new top-->
+    <script id="toolbar-tpl-scriptId" fixed="true" prod="blog" skin="black" src="http://static.csdn.net/public/common/toolbar/js/html.js" type="text/javascript"></script>
+    <!--new top-->
+    <div id="container">
+        <div id="header">
+            <div class="header">
+                <div id="blog_title">
+                    <h2>
+                        <a href="http://blog.csdn.net/wlanye">蓝叶菱的专栏</a>
+                    </h2>
+                    <h3>自己用代码播种，每次种出的东西有很多，但是没有一件是自己的。</h3>
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        <div id="navigator">
+            <div class="navigator_bg">
+            </div>
+            <div class="navigator">
+                <ul>
+
+                    <li id="btnContents">
+                        <a href="http://blog.csdn.net/wlanye?viewmode=contents">
+                            <span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])">
+                                <img src="http://static.blog.csdn.net/images/ico_list.gif">目录视图
+                            </span>
+                        </a>
+                    </li>
+                    <li id="btnView">
+                        <a href="http://blog.csdn.net/wlanye?viewmode=list">
+                            <span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])">
+                                <img src="http://static.blog.csdn.net/images/ico_summary.gif">摘要视图
+                            </span>
+                        </a>
+                    </li>
+                    <li id="btnRss">
+                        <a href="http://blog.csdn.net/wlanye/rss/list">
+                            <span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])">
+                                <img src="http://static.blog.csdn.net/images/ico_rss.gif">订阅
+                            </span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var username = "wlanye";
+            var _blogger = username;
+            var blog_address = "http://blog.csdn.net/wlanye";
+            var static_host = "http://static.blog.csdn.net";
+            var currentUserName = "chiyuezhixing";
+        </script>
+
+        <div id="body">
+            <div id="main">
+                <div class="main">
+                    <div class="ad_class">
+                        <div class="notice tracking-ad" data-mod='popu_3'>
+
+                            <a href="http://www.csdn.net/article/2015-04-13/2824462-web">
+                                <font color=blue>社区之星王海庆：速度激情，学习极客</font>
+                            </a>
+                            &nbsp;&nbsp;&nbsp;
+
+
+
+                            <a href="http://blog.csdn.net/csdnproduct/article/details/43561659">
+                                <font color=red>Markdown轻松写博文</font>
+                            </a>
+                            &nbsp;&nbsp;&nbsp;
+
+
+
+                            <a href="http://edu.csdn.net/course?t=%E8%BD%AF%E8%80%83&c_id=399">
+                                <font color=blue>
+                                    软考你过了吗？
+                                </font>
+                            </a>
+                            &nbsp;&nbsp;&nbsp;
+
+
+
+                            <a href="http://bbs.csdn.net/topics/391008139">
+                                <font color=red>
+                                    天天爱答题 一大波C币袭来
+                                </font>
+                            </a>
+                            &nbsp;&nbsp;&nbsp;
+
+
+
+                            <a href="http://blog.csdn.net/blogdevteam/article/details/44561379">
+                                <font color=blue>
+                                    读文章送好书
+                                </font>
+                            </a>
+                            &nbsp;&nbsp;&nbsp;
+
+
+                        </div>
+                    </div>
+
+
+
+                    <link href="http://static.blog.csdn.net/css/comment1.css" type="text/css" rel="stylesheet" />
+                    <link href="http://static.blog.csdn.net/css/style1.css" type="text/css" rel="stylesheet" />
+                    <script language='JavaScript' type='text/javascript' src='http://download.csdn.net/js/jquery.cookie.js'></script>
+                    <script type="text/javascript" src="http://c.csdnimg.cn/rabbit/search-service/main.js"></script>
+
+
+                    <link rel="stylesheet" href="http://static.blog.csdn.net/public/res-min/markdown_views.css?v=1.0" />
+
+                    <script type="text/javascript" src="http://static.blog.csdn.net/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+
+
+
+
+
+
+
+
+
+                    <script type="text/ecmascript">
+                        window.quickReplyflag = true;
+                    </script>
+                    <div id="article_details" class="details">
+                        <div class="article_title">
+                            <span class="ico ico_type_Repost"></span>
+
+
+                            <h1>
+                                <span class="link_title">
+                                    <a href="/wlanye/article/details/8668089">
+                                        c#集合类的线程安全（整理）
+                                    </a>
+                                </span>
+                            </h1>
+                        </div>
+
+                        <div class="article_manage">
+                            <span class="link_categories">
+                                分类：
+                                <a href="/wlanye/article/category/945848" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">C#/VS.Net/Mono</a>
+                            </span>
+                            <span class="link_postdate">2013-03-13 13:52</span>
+                            <span class="link_view" title="阅读次数">2358人阅读</span>
+                            <span class="link_comments" title="评论次数"><a href="#comments" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])">评论</a>(0)</span>
+                            <span class="link_collect"><a href="javascript:void(0);" onclick="javascript:_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shoucang']);collectArticle('c#集合类的线程安全（整理）','8668089');return false;" title="收藏">收藏</a></span>
+                            <span class="link_report"><a href="#report" onclick="javascript:_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_jubao']);report(8668089,2);return false;" title="举报">举报</a></span>
+
+                        </div>
+
+
+
+                        <div id="article_content" class="article_content">
+
+                            <h1 class="title">Queue<span>&lt;</span><span class="typeparameter">T</span><span>&gt;</span> 类</h1>
+                            <div>MSDN的说法</div>
+                            <div>
+                                <div>
+                                    <div class="LW_CollapsibleArea_TitleDiv">
+                                        <div>
+                                            <a class="LW_CollapsibleArea_TitleAhref" title="折叠" href="http://msdn.microsoft.com/query/dev10.query?appId=Dev10IDEF1&amp;l=ZH-CN&amp;k=k(%22SYSTEM.COLLECTIONS.GENERIC.QUEUE%601%22);k(QUEUE);k(SOLUTIONITEMSPROJECT)&amp;rd=true"><span class="LW_CollapsibleArea_Title">线程安全</span></a>
+                                            <div class="LW_CollapsibleArea_HrDiv">
+                                                <hr class="LW_CollapsibleArea_Hr">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sectionblock">
+                                        <a id="threadSafetyToggle"></a>
+                                        <p><span id="mt190" class="sentence">此类型的公共静态（在 Visual Basic 中为 <span><span class="input">Shared</span></span>）成员是线程安全的。</span><span id="mt191" class="sentence">但不能保证任何实例成员是线程安全的。</span></p>
+                                        <p><strong><span id="mt192" class="sentence">只要不修改该集合，<span><span class="selflink">Queue<span class="mtpsTagOuterHtml">&lt;</span>T<span class="mtpsTagOuterHtml">&gt;</span></span></span> 就可以同时支持多个阅读器。</span><span id="mt193" class="sentence">即便如此，从头到尾对一个集合进行枚举本质上并不是一个线程安全的过程。</span></strong></p>
+                                        <p><strong><span style="color:#ff6666"><span id="mt194" class="sentence">若要确保枚举过程中的线程安全，可以在整个枚举过程中锁定集合。</span><span id="mt195" class="sentence">若要允许多个线程访问集合以进行读写操作，则必须实现自己的同步。</span></span></strong></p>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                            <div><span style="font-size:18px">.NET在4.0里面提供了专门的并行类，来弥补相关集合类的线程安全性。</span></div>
+                            <div>
+                                <span id="mt1" class="sentence"><span style="font-size:18px">System.Collections.Concurrent：</span></span><br>
+                            </div>
+                            <div>
+                                <span class="sentence"><span style="font-size:18px"></span></span>
+                                <div>
+                                    <div class="summary">
+                                        <p>
+                                            <span id="mt1" class="sentence">
+                                                <span>
+                                                    <span class="input">System.Collections.Concurrent</span>
+                                                </span>命名空间提供多个线程安全集合类。当有多个线程并发访问集合时，应使用这些类代替 <span><a href="http://msdn.microsoft.com/zh-cn/library/system.collections(v=vs.100).aspx">System.Collections</a></span> 和
+                                                <span><a href="http://msdn.microsoft.com/zh-cn/library/system.collections.generic(v=vs.100).aspx">System.Collections.Generic</a></span> 命名空间中的对应类型。
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="LW_CollapsibleArea_TitleDiv">
+                                        <div>
+                                            <a class="LW_CollapsibleArea_TitleAhref" title="折叠" href="http://msdn.microsoft.com/zh-cn/library/system.collections.concurrent(v=vs.100).aspx"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">类</span></a>
+                                            <div class="LW_CollapsibleArea_HrDiv">
+                                                <hr class="LW_CollapsibleArea_Hr">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sectionblock">
+                                        <a id="classToggle"></a>
+                                        <table id="typeList" class="members ">
+                                            <tbody>
+                                                <tr>
+                                                    <th class="iconColumn">&nbsp;</th>
+                                                    <th class="nameColumn">类</th>
+                                                    <th class="descriptionColumn">说明</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><img id="pubclass" class="cl_IC29808" title="公共类" alt="公共类" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif"></td>
+                                                    <td><a href="http://msdn.microsoft.com/zh-cn/library/dd267312(v=vs.100).aspx">BlockingCollection<span>&lt;</span>T<span>&gt;</span></a></td>
+                                                    <td><span id="mt2" class="sentence">为实现 <span><a href="http://msdn.microsoft.com/zh-cn/library/dd287147(v=vs.100).aspx">IProducerConsumerCollection<span>&lt;</span>T<span>&gt;</span></a></span> 的线程安全集合提供阻塞和限制功能。</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><img id="pubclass" class="cl_IC29808" title="公共类" alt="公共类" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif"></td>
+                                                    <td><a href="http://msdn.microsoft.com/zh-cn/library/dd381779(v=vs.100).aspx">ConcurrentBag<span>&lt;</span>T<span>&gt;</span></a></td>
+                                                    <td><span id="mt3" class="sentence">表示对象的线程安全的无序集合。</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><img id="pubclass" class="cl_IC29808" title="公共类" alt="公共类" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif"></td>
+                                                    <td><a href="http://msdn.microsoft.com/zh-cn/library/dd287191(v=vs.100).aspx">ConcurrentDictionary<span>&lt;</span>TKey, TValue<span>&gt;</span></a></td>
+                                                    <td><span id="mt4" class="sentence">表示可由多个线程同时访问的键&#20540;对的线程安全集合。</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><img id="pubclass" class="cl_IC29808" title="公共类" alt="公共类" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif"></td>
+                                                    <td><a href="http://msdn.microsoft.com/zh-cn/library/dd267265(v=vs.100).aspx">ConcurrentQueue<span>&lt;</span>T<span>&gt;</span></a></td>
+                                                    <td><span id="mt5" class="sentence">表示线程安全的先进先出 (FIFO) 集合。</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><img id="pubclass" class="cl_IC29808" title="公共类" alt="公共类" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif"></td>
+                                                    <td><a href="http://msdn.microsoft.com/zh-cn/library/dd267331(v=vs.100).aspx">ConcurrentStack<span>&lt;</span>T<span>&gt;</span></a></td>
+                                                    <td><span id="mt6" class="sentence">表示线程安全的后进先出 (LIFO) 集合。</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><img id="pubclass" class="cl_IC29808" title="公共类" alt="公共类" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif"></td>
+                                                    <td><a href="http://msdn.microsoft.com/zh-cn/library/dd394988(v=vs.100).aspx">OrderablePartitioner<span>&lt;</span>TSource<span>&gt;</span></a></td>
+                                                    <td><span id="mt7" class="sentence">表示将一个可排序数据源拆分成多个分区的特定方式。</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><img id="pubclass" class="cl_IC29808" title="公共类" alt="公共类" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif"></td>
+                                                    <td><a href="http://msdn.microsoft.com/zh-cn/library/system.collections.concurrent.partitioner(v=vs.100).aspx">Partitioner</a></td>
+                                                    <td><span id="mt8" class="sentence">提供针对数组、列表和可枚举项的常见分区策略。</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><img id="pubclass" class="cl_IC29808" title="公共类" alt="公共类" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif"></td>
+                                                    <td><a href="http://msdn.microsoft.com/zh-cn/library/dd381768(v=vs.100).aspx">Partitioner<span>&lt;</span>TSource<span>&gt;</span></a></td>
+                                                    <td><span id="mt9" class="sentence">表示将一个数据源拆分成多个分区的特定方式。</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="LW_CollapsibleArea_TitleDiv">
+                                        <div>
+                                            <a class="LW_CollapsibleArea_TitleAhref" title="折叠" href="http://msdn.microsoft.com/zh-cn/library/system.collections.concurrent(v=vs.100).aspx"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">接口</span></a>
+                                            <div class="LW_CollapsibleArea_HrDiv">
+                                                <hr class="LW_CollapsibleArea_Hr">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sectionblock">
+                                        <a id="interfaceToggle"></a>
+                                        <table id="typeList1" class="members ">
+                                            <tbody>
+                                                <tr>
+                                                    <th class="iconColumn">&nbsp;</th>
+                                                    <th class="nameColumn">接口</th>
+                                                    <th class="descriptionColumn">说明</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><img id="pubinterface" class="cl_IC141795" title="公共接口" alt="公共接口" src="http://i.msdn.microsoft.com/areas/global/content/clear.gif"></td>
+                                                    <td><a href="http://msdn.microsoft.com/zh-cn/library/dd287147(v=vs.100).aspx">IProducerConsumerCollection<span>&lt;</span>T<span>&gt;</span></a></td>
+                                                    <td>
+                                                        <span id="mt10" class="sentence">定义供制造者/使用者用来操作线程安全集合的方法。</span><span id="mt11" class="sentence">
+                                                            此接口提供一个统一的表示（为生产者/消费者集合），从而更高级别抽象如
+                                                            <span><a href="http://msdn.microsoft.com/zh-cn/library/dd267312(v=vs.100).aspx">System.Collections.Concurrent<span>.</span>BlockingCollection<span>&lt;</span>T<span>&gt;</span></a></span> 可以使用集合作为基础的存储机制。
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div><span style="font-size:18px; color:#ff0000"><strong>这里包含，字典类，队列和栈，对应的相关集合均不是安全的。</strong></span></div>
+                            <div><span style="font-size:18px; color:#ff0000"><strong style="background-color:rgb(51,255,51)">============================================================================</strong></span></div>
+                            <div><span style="font-size:18px; color:#ff0000"><strong>微软提供了一种线程安全的扩展手段：</strong></span></div>
+                            <div>
+                                <span style="font-size:18px; color:#ff0000"><strong></strong></span>
+                                <p style="line-height:25px; margin:12px auto; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px">
+                                    即位于System.Collections命名空间下的集合,如Hashtable,ArrayList,Stack,Queue等.其均提供了线程同步的一个实现
+                                </p>
+                                <h1 style="font-size:26px; font-weight:normal; margin-top:24px; margin-bottom:12px; padding:5px; color:white; background-color:gray; font-family:Georgia,'Times New Roman',Times,sans-serif">
+                                    集合线程同步的问题
+                                </h1>
+<pre class="code" style="margin-top:0px; margin-bottom:0px; white-space:pre-wrap; word-wrap:break-word; line-height:16px; border-color:rgb(192,192,192) rgb(192,192,192) rgb(192,192,192) rgb(108,226,108); border-width:1px 1px 1px 5px; border-style:dashed dashed dashed solid; padding:8px; font-family:Consolas,'Courier New',宋体,Courier,mono,serif; color:rgb(51,51,51); background-color:rgb(255,255,255)"><span style="color:blue">public class </span><span style="color:rgb(43,145,175)">Demo8
+</span>{
+                                <span style="color:rgb(43,145,175)">ArrayList </span>list = <span style="color:blue">new </span><span style="color:rgb(43,145,175)">ArrayList</span>(1000000);
+                                <span style="color:blue">public </span>Demo8()
+    {
+                                <span style="color:rgb(43,145,175)">ThreadPool</span>.QueueUserWorkItem(<span style="color:blue">new </span><span style="color:rgb(43,145,175)">WaitCallback</span>(Task1));
+                                <span style="color:rgb(43,145,175)">ThreadPool</span>.QueueUserWorkItem(<span style="color:blue">new </span><span style="color:rgb(43,145,175)">WaitCallback</span>(Task2));
+    }
+                                <span style="color:blue">public void </span>Task1(<span style="color:blue">object </span>obj)
+    {
+                                <span style="color:blue">for </span>(<span style="color:blue">int </span>i = 0; i &lt; 500000; i&#43;&#43;)
+        {
+            list.Add(i);
+        }
+                                <span style="color:rgb(43,145,175)">Console</span>.WriteLine(<span style="color:rgb(43,145,175)">DateTime</span>.Now);
+                                <span style="color:rgb(43,145,175)">Console</span>.WriteLine(<span style="color:rgb(163,21,21)">&quot;Task1 count {0}&quot;</span>, list.Count);
+    }
+                                <span style="color:blue">public void </span>Task2(<span style="color:blue">object </span>obj)
+    {
+                                <span style="color:blue">for </span>(<span style="color:blue">int </span>i = 0; i &lt; 500000; i&#43;&#43;)
+        {
+            list.Add(i);
+        }
+                                <span style="color:rgb(43,145,175)">Console</span>.WriteLine(<span style="color:rgb(163,21,21)">&quot;Task2 count {0}&quot;</span>, list.Count);
+    }
+}</pre>
+                                <p style="line-height:25px; margin:12px auto; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px">
+                                    <a href="http://images.cnblogs.com/cnblogs_com/Clingingboy/Windows-Live-Writer/c_97F4/image_2.png" style="outline-style:none; text-decoration:none; color:rgb(61,129,238); border-bottom-width:1px; border-bottom-style:dashed"><img title="image" border="0" alt="image" src="http://images.cnblogs.com/cnblogs_com/Clingingboy/Windows-Live-Writer/c_97F4/image_thumb.png" width="244" height="82" style="border:0px rgb(221,221,221); padding-left:0px; padding-right:0px; display:inline; padding-top:0px"></a>
+                                </p>
+                                <p style="line-height:25px; margin:12px auto; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px">
+                                    与预期结果不同
+                                </p>
+                                <h1 style="font-size:26px; font-weight:normal; margin-top:24px; margin-bottom:12px; padding:5px; color:white; background-color:gray; font-family:Georgia,'Times New Roman',Times,sans-serif">
+                                    调整为线程同步的集合
+                                </h1>
+                                <p style="line-height:25px; margin:12px auto; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px">
+                                    每种数据类型都包含一个静态的Synchronized方法,如
+                                </p>
+<pre class="code" style="margin-top:0px; margin-bottom:0px; white-space:pre-wrap; word-wrap:break-word; line-height:16px; border-color:rgb(192,192,192) rgb(192,192,192) rgb(192,192,192) rgb(108,226,108); border-width:1px 1px 1px 5px; border-style:dashed dashed dashed solid; padding:8px; font-family:Consolas,'Courier New',宋体,Courier,mono,serif; color:rgb(51,51,51); background-color:rgb(255,255,255)"><span style="color:rgb(43,145,175)">ArrayList </span>list = <span style="color:rgb(43,145,175)">ArrayList</span>.Synchronized(<span style="color:blue">new </span><span style="color:rgb(43,145,175)">ArrayList</span>(1000000));</pre>
+                                <p style="line-height:25px; margin:12px auto; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px">
+                                    调整后的结果
+                                </p>
+                                <p style="line-height:25px; margin:12px auto; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px">
+                                    <a href="http://images.cnblogs.com/cnblogs_com/Clingingboy/Windows-Live-Writer/c_97F4/image_4.png" style="outline-style:none; text-decoration:none; color:rgb(61,129,238); border-bottom-width:1px; border-bottom-style:dashed"><img title="image" border="0" alt="image" src="http://images.cnblogs.com/cnblogs_com/Clingingboy/Windows-Live-Writer/c_97F4/image_thumb_1.png" width="223" height="99" style="border:0px rgb(221,221,221); padding-left:0px; padding-right:0px; display:inline; padding-top:0px"></a>&nbsp;<br>
+                                    以下为注意点：
+                                </p>
+                                <ol style="padding-left:50px; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px; line-height:25px">
+                                    <li style="padding:0px; list-style-type:decimal">IsSynchronized判断集合是否为线程同步</li>
+                                    <li style="padding:0px; list-style-type:decimal">其内部通过给SyncRoot属性加锁进行同步(即Monitor.Enter)</li>
+                                </ol>
+                                <h1 style="font-size:26px; font-weight:normal; margin-top:24px; margin-bottom:12px; padding:5px; color:white; background-color:gray; font-family:Georgia,'Times New Roman',Times,sans-serif">
+                                    自己控制锁
+                                </h1>
+<pre class="code" style="margin-top:0px; margin-bottom:0px; white-space:pre-wrap; word-wrap:break-word; line-height:16px; border-color:rgb(192,192,192) rgb(192,192,192) rgb(192,192,192) rgb(108,226,108); border-width:1px 1px 1px 5px; border-style:dashed dashed dashed solid; padding:8px; font-family:Consolas,'Courier New',宋体,Courier,mono,serif; color:rgb(51,51,51); background-color:rgb(255,255,255)"><span style="color:blue">public class </span><span style="color:rgb(43,145,175)">Demo8
+</span>{
+                                <span style="color:rgb(43,145,175)">ArrayList </span>list = <span style="color:blue">new </span><span style="color:rgb(43,145,175)">ArrayList</span>(1000000);
+                                <span style="color:blue">public </span>Demo8()
+    {
+                                <span style="color:rgb(43,145,175)">ThreadPool</span>.QueueUserWorkItem(<span style="color:blue">new </span><span style="color:rgb(43,145,175)">WaitCallback</span>(Task1));
+                                <span style="color:rgb(43,145,175)">ThreadPool</span>.QueueUserWorkItem(<span style="color:blue">new </span><span style="color:rgb(43,145,175)">WaitCallback</span>(Task2));
+    }
+                                <span style="color:blue">public void </span>Task1(<span style="color:blue">object </span>obj)
+    {
+                                <span style="color:blue">lock </span>(list.SyncRoot)
+        {
+                                <span style="color:blue">for </span>(<span style="color:blue">int </span>i = 0; i &lt; 500000; i&#43;&#43;)
+            {
+                list.Add(i);
+            }
+        } 
+       
+                                <span style="color:rgb(43,145,175)">Console</span>.WriteLine(<span style="color:rgb(43,145,175)">DateTime</span>.Now);
+                                <span style="color:rgb(43,145,175)">Console</span>.WriteLine(<span style="color:rgb(163,21,21)">&quot;Task1 count {0}&quot;</span>, list.Count);
+    }
+                                <span style="color:blue">public void </span>Task2(<span style="color:blue">object </span>obj)
+    {
+                                <span style="color:blue">lock </span>(list.SyncRoot)
+        {
+                                <span style="color:blue">for </span>(<span style="color:blue">int </span>i = 0; i &lt; 500000; i&#43;&#43;)
+            {
+                list.Add(i);
+            }
+        }
+                                <span style="color:rgb(43,145,175)">Console</span>.WriteLine(<span style="color:rgb(163,21,21)">&quot;Task2 count {0}&quot;</span>, list.Count);
+    }
+}</pre>
+                                <p style="line-height:25px; margin:12px auto; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px">
+                                    <a href="http://images.cnblogs.com/cnblogs_com/Clingingboy/Windows-Live-Writer/c_97F4/image_6.png" style="outline-style:none; text-decoration:none; color:rgb(61,129,238); border-bottom-width:1px; border-bottom-style:dashed"><img title="image" border="0" alt="image" src="http://images.cnblogs.com/cnblogs_com/Clingingboy/Windows-Live-Writer/c_97F4/image_thumb_2.png" width="224" height="97" style="border:0px rgb(221,221,221); padding-left:0px; padding-right:0px; display:inline; padding-top:0px"></a>
+                                </p>
+                                <p style="line-height:25px; margin:12px auto; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px">
+                                    这样的结果显然好看点.内部实现是在Add方法中做锁定.效果自然不是很好.
+                                </p>
+                                <p style="line-height:25px; margin:12px auto; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px">
+                                    其他集合类也是类&#20284;的操作
+                                </p>
+                                <p style="line-height:25px; margin:12px auto; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px">
+                                    参考:&nbsp;<br>
+                                    <a href="http://www.cnblogs.com/Mainz/archive/2008/04/06/CSharp_HashTable_Dictionary_ArrayList_Threadsafe.html" style="outline-style:none; text-decoration:none; color:rgb(61,129,238); border-bottom-width:1px; border-bottom-style:dashed">http://www.cnblogs.com/Mainz/archive/2008/04/06/CSharp_HashTable_Dictionary_ArrayList_Threadsafe.html</a>
+                                </p>
+                                <h1 style="font-size:26px; font-weight:normal; margin-top:24px; margin-bottom:12px; padding:5px; color:white; background-color:gray; font-family:Georgia,'Times New Roman',Times,sans-serif">
+                                    泛型集合
+                                </h1>
+                                <p style="line-height:25px; margin:12px auto; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px">
+                                    可以看到原非泛型集合内部的线程同步集合,在每次操作均采用锁操作,但我们并非每个操作都需要锁,比如上面的2个线程操作.只需要2个锁就可以了，但使用内部集合的话则需要锁很多次,带来了性能问题.在.net 2.0泛型集合中,内部不再支持线程同步的集合,即使内部实现了线程同步的集合如List&lt;T&gt;的实现也为开发出来,即把lock的这个操作转嫁给开发者上面了.其实这样反而可以让我们更加了解线程同步的问题,如果真有需要的话,也可以自己实现一个了...
+                                </p>
+                                <p style="line-height:25px; margin:12px auto; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px">
+                                    <br>
+                                </p>
+                                <p style="line-height:25px; margin:12px auto; color:rgb(51,51,51); font-family:Georgia,'Times New Roman',Times,sans-serif; font-size:14px">
+                                </p>
+                                <div class="tn-text-heading" style="margin:0px; padding:0px; font-family:arial,helvetica,clean,sans-serif,����; line-height:14px">
+                                    <h2 class="tn-title" style="margin:0.67em 0px; padding:0px; font-size:2em; word-wrap:break-word; overflow:hidden; text-align:center">
+                                        NET Framework 4 中的并行编程9---线程安全集合类
+                                    </h2>
+                                </div>
+                                <div class="tn-info-part tn-text-note tn-border-gray tn-border-top tn-detail-info" style="margin:0px; padding:5px; border-style:solid; border-color:rgb(221,217,208); border-width:1px 0px 0px; color:rgb(153,153,153); font-family:arial,helvetica,clean,sans-serif,����; line-height:14px">
+                                    <dl style="margin:0px; padding:5px 10px 5px 5px; overflow:hidden; zoom:1; display:inline">
+                                        <dt style="margin:0px; padding:0px; display:inline">作者：&nbsp;</dt>
+                                        <dd style="margin:0px; padding:0px; display:inline; word-wrap:break-word; overflow:hidden">
+                                            <a href="http://c.spacebuilder.cn/u/lijialiang/Blog" style="color:rgb(140,104,6); text-decoration:none; outline:none">李嘉良</a>&nbsp;
+                                        </dd>
+                                    </dl>
+                                    <dl style="margin:0px; padding:5px 10px 5px 5px; overflow:hidden; zoom:1; display:inline">
+                                        <dt style="margin:0px; padding:0px; display:inline">发表于：&nbsp;</dt>
+                                        <dd style="margin:0px; padding:0px; display:inline; word-wrap:break-word; overflow:hidden">
+                                            2012-02-29, 18:14&nbsp;
+                                        </dd>
+                                    </dl>
+                                    <dl style="margin:0px; padding:5px 10px 5px 5px; overflow:hidden; zoom:1; display:inline">
+                                        <dt style="margin:0px; padding:0px; display:inline">评论：&nbsp;</dt>
+                                        <dd style="margin:0px; padding:0px; display:inline; word-wrap:break-word; overflow:hidden">
+                                            0&nbsp;
+                                        </dd>
+                                    </dl>
+                                    <dl style="margin:0px; padding:5px 10px 5px 5px; overflow:hidden; zoom:1; display:inline">
+                                        <dt style="margin:0px; padding:0px; display:inline">浏览：&nbsp;</dt>
+                                        <dd style="margin:0px; padding:0px; display:inline; word-wrap:break-word; overflow:hidden">
+                                            414&nbsp;
+                                        </dd>
+                                    </dl>
+                                    <dl style="margin:0px; padding:5px 10px 5px 5px; overflow:hidden; zoom:1; display:inline">
+                                        <dt style="margin:0px; padding:0px; display:inline">RSS：&nbsp;</dt>
+                                        <dd style="margin:0px; padding:0px; display:inline; word-wrap:break-word; overflow:hidden">
+                                            0
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="tn-detail-text" style="margin:20px 0px; padding:0px; font-size:14px; word-wrap:break-word; overflow:hidden; width:668px; font-family:arial,helvetica,clean,sans-serif,����">
+                                    <div id="cnblogs_post_body" style="margin:0px; padding:0px; font-family:verdana; word-wrap:break-word">
+                                        <p style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:21pt">
+                                            <span style="font-family:宋体">在.Net 4中,新增System.Collections.Concurrent 命名空间中提供多个线程安全集合类,这些类提供了很多有用的方法用于访问集合中的元素,从而可以避免使用传统的锁(lock)机制等方式来处理并发访问集合.因此当有多个线程并发访问集合时，应首先考虑使用这些类代替 System.Collections 和 System.Collections.Generic 命名空间中的对应类型.具体如下:</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 21pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <strong><span style="line-height:40px; font-family:宋体; font-size:15pt">1.&nbsp;</span><span style="line-height:40px; font-family:宋体; font-size:15pt">ConcurrentQueue</span></strong>
+                                        </p>
+                                        <p style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:21pt">
+                                            <span style="font-family:宋体">表示线程安全的先进先出(FIFO)队列.代码如下:</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; color:rgb(43,145,175); font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ConcurrentQueue</span><span style="font-family:NSimSun; font-size:9.5pt">&lt;<span style="color:blue">int</span>&gt; sharedQueue =&nbsp;<span style="color:blue">new</span>&nbsp;<span style="color:rgb(43,145,175)">ConcurrentQueue</span>&lt;<span style="color:blue">int</span>&gt;();</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">for</span>&nbsp;(<span style="color:blue">int</span>&nbsp;i = 0; i &lt; 1000; i&#43;&#43;)</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sharedQueue.Enqueue(i);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            &nbsp;
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">int</span>&nbsp;itemCount = 0;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            &nbsp;
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Task</span>[] tasks =&nbsp;<span style="color:blue">new</span>&nbsp;<span style="color:rgb(43,145,175)">Task</span>[10];</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">for</span>&nbsp;(<span style="color:blue">int</span>&nbsp;i = 0; i &lt; tasks.Length; i&#43;&#43;)</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tasks[i] =&nbsp;<span style="color:blue">new</span>&nbsp;<span style="color:rgb(43,145,175)">Task</span>(() =&gt;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">while</span>&nbsp;(sharedQueue.Count &gt; 0)</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">int</span>&nbsp;queueElement;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">bool</span>&nbsp;gotElement = sharedQueue.TryDequeue(<span style="color:blue">out</span>&nbsp;queueElement);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">if</span>&nbsp;(gotElement)</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Interlocked</span>.Increment(<span style="color:blue">ref</span>&nbsp;itemCount);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            &nbsp;
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; });</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tasks[i].Start();</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            &nbsp;
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Task</span>.WaitAll(tasks);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            &nbsp;
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Console</span>.WriteLine(<span style="color:rgb(163,21,21)">&quot;Items processed:{0}&quot;</span>, itemCount);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Console</span>.WriteLine(<span style="color:rgb(163,21,21)">&quot;Press Enter to finish&quot;</span>);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Console</span>.ReadLine();</span>
+                                        </p>
+                                        <p style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:21pt">
+                                            <span style="font-family:宋体">该类有两个重要的方法用来访问队列中的元素.分别是:</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 42pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <span style="font-family:Wingdings">Ø&nbsp;</span><span style="font-family:宋体">TryDequeue&nbsp;</span><span style="font-family:宋体">尝试移除并返回位于队列头开始处的对象.</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 42pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <span style="font-family:Wingdings">Ø&nbsp;</span><span style="font-family:宋体">TryPeek</span><span style="font-family:宋体">尝试返回位于队列头开始处的对象但不将其移除.</span>
+                                        </p>
+                                        <p style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:21pt">
+                                            <span style="font-family:宋体">现在,在多任务访问集合元素时,我们只需要使用TryDequeue或TryPeek方法,就可以安全的访问集合中的元素了.</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 21pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <strong><span style="line-height:40px; font-family:宋体; font-size:15pt">2.&nbsp;</span><span style="line-height:40px; font-family:宋体; font-size:15pt">ConcurrentStack</span></strong>
+                                        </p>
+                                        <p style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:21pt">
+                                            <span style="font-family:宋体">表示线程安全的后进先出(LIFO)栈.它也有几个有用的方法,分别是:</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 42pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <span style="font-family:Wingdings">Ø&nbsp;</span><span style="font-family:宋体">TryPeek:</span><span style="font-family:宋体">尝试返回栈顶处的元素,但不移除.</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 42pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <span style="font-family:Wingdings">Ø&nbsp;</span><span style="font-family:宋体">TryPop:&nbsp;</span><span style="font-family:宋体">尝试返回栈顶处的元素并移除.</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 42pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <span style="font-family:Wingdings">Ø&nbsp;</span><span style="font-family:宋体">TryPopRange:&nbsp;</span><span style="font-family:宋体">尝试返回栈顶处开始指定范围的元素并移除.</span>
+                                        </p>
+                                        <p style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:21pt">
+                                            <span style="font-family:宋体">在访问集合中的元素时,我们就可以上述方法.具体代码实例于上面的ConcurrentQueue类&#20284;,就不重复了.</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 21pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <strong><span style="line-height:40px; font-family:宋体; font-size:15pt">3.&nbsp;</span><span style="line-height:40px; font-family:宋体; font-size:15pt">ConcurrentBag</span></strong>
+                                        </p>
+                                        <p style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:21pt">
+                                            <span style="font-family:宋体">实现的是一个无序的集合类.代码如下:</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; color:rgb(43,145,175); font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ConcurrentBag</span><span style="font-family:NSimSun; font-size:9.5pt">&lt;<span style="color:blue">int</span>&gt; sharedBag =&nbsp;<span style="color:blue">new</span>&nbsp;<span style="color:rgb(43,145,175)">ConcurrentBag</span>&lt;<span style="color:blue">int</span>&gt;();</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">for</span>&nbsp;(<span style="color:blue">int</span>&nbsp;i = 0; i &lt; 1000; i&#43;&#43;)</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sharedBag.Add(i);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            &nbsp;
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">int</span>&nbsp;itemCount = 0;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Task</span>[] tasks =&nbsp;<span style="color:blue">new</span>&nbsp;<span style="color:rgb(43,145,175)">Task</span>[10];</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">for</span>&nbsp;(<span style="color:blue">int</span>&nbsp;i = 0; i &lt; tasks.Length; i&#43;&#43;)</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tasks[i] =&nbsp;<span style="color:blue">new</span>&nbsp;<span style="color:rgb(43,145,175)">Task</span>(() =&gt;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">while</span>(sharedBag.Count&gt;0)</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">int</span>&nbsp;queueElement;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">bool</span>&nbsp;gotElement = sharedBag.TryTake(<span style="color:blue">out</span>&nbsp;queueElement);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">if</span>&nbsp;(gotElement)</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Interlocked</span>.Increment(<span style="color:blue">ref</span>&nbsp;itemCount);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; });</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            &nbsp;
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tasks[i].Start();</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            &nbsp;
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Task</span>.WaitAll(tasks);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            &nbsp;
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Console</span>.WriteLine(<span style="color:rgb(163,21,21)">&quot;Items processed:{0}&quot;</span>, itemCount);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Console</span>.WriteLine(<span style="color:rgb(163,21,21)">&quot;Press Enter to finish&quot;</span>);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Console</span>.ReadLine();</span>
+                                        </p>
+                                        <p style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:21pt">
+                                            <span style="font-family:宋体">该类有两个重要的方法用来访问队列中的元素.分别是:</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 42pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <span style="font-family:Wingdings">Ø&nbsp;</span><span style="font-family:宋体">TryTake&nbsp;</span><span style="font-family:宋体">尝试移除并返回位于队列头开始处的对象.</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 42pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <span style="font-family:Wingdings">Ø&nbsp;</span><span style="font-family:宋体">TryPeek</span><span style="font-family:宋体">尝试返回位于队列头开始处的对象但不将其移除.</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 21pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <strong><span style="line-height:40px; font-family:宋体; font-size:15pt">4.&nbsp;</span><span style="line-height:40px; font-family:宋体; font-size:15pt">ConcurrentDictionary</span></strong>
+                                        </p>
+                                        <p style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:21pt">
+                                            <span style="font-family:宋体">实现的是一个键-&#20540;集合类.它提供的方法有:</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 42pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <span style="font-family:Wingdings">Ø&nbsp;</span><span style="font-family:宋体">TryAdd:</span><span style="font-family:宋体">尝试向集合添加一个键-&#20540;</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 42pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <span style="font-family:Wingdings">Ø&nbsp;</span><span style="font-family:宋体">TryGetValue:</span><span style="font-family:宋体">尝试返回指定键的&#20540;.</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 42pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <span style="font-family:Wingdings">Ø&nbsp;</span><span style="font-family:宋体">TryRemove:</span><span style="font-family:宋体">尝试移除指定键处的元素.</span>
+                                        </p>
+                                        <p style="margin:0cm 0cm 0pt 42pt; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:-21pt">
+                                            <span style="font-family:Wingdings">Ø&nbsp;</span><span style="font-family:宋体">TryUpdate:</span><span style="font-family:宋体">尝试更新指定键的&#20540;.</span>
+                                        </p>
+                                        <p style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:21pt">
+                                            <span style="font-family:宋体">代码如下:</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; color:blue; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; class</span><span style="font-family:NSimSun; font-size:9.5pt">&nbsp;<span style="color:rgb(43,145,175)">BankAccount</span></span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">public</span>&nbsp;<span style="color:blue">int</span>&nbsp;Balance</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">get</span>;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">set</span>;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:21pt">
+                                            &nbsp;
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;<span style="color:blue">static</span>&nbsp;<span style="color:blue">void</span>&nbsp;DictTest()</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; color:rgb(43,145,175); font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BankAccount</span><span style="font-family:NSimSun; font-size:9.5pt">&nbsp;account =&nbsp;<span style="color:blue">new</span>&nbsp;<span style="color:rgb(43,145,175)">BankAccount</span>();</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">ConcurrentDictionary</span>&lt;<span style="color:blue">object</span>,&nbsp;<span style="color:blue">int</span>&gt; sharedDict =&nbsp;<span style="color:blue">new</span>&nbsp;<span style="color:rgb(43,145,175)">ConcurrentDictionary</span>&lt;<span style="color:blue">object</span>,&nbsp;<span style="color:blue">int</span>&gt;();</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            &nbsp;
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Task</span>&lt;<span style="color:blue">int</span>&gt;[] tasks =&nbsp;<span style="color:blue">new</span>&nbsp;<span style="color:rgb(43,145,175)">Task</span>&lt;<span style="color:blue">int</span>&gt;[10];</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">for</span>&nbsp;(<span style="color:blue">int</span>&nbsp;i = 0; i &lt; tasks.Length; i&#43;&#43;)</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sharedDict.TryAdd(i, account.Balance);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tasks[i] =&nbsp;<span style="color:blue">new</span>&nbsp;<span style="color:rgb(43,145,175)">Task</span>&lt;<span style="color:blue">int</span>&gt;((keyObj) =&gt;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">int</span>&nbsp;currentValue;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">bool</span>&nbsp;gotValue;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">for</span>&nbsp;(<span style="color:blue">int</span>&nbsp;j = 0; j &lt; 1000; j&#43;&#43;)</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gotValue = sharedDict.TryGetValue(keyObj,&nbsp;<span style="color:blue">out</span>&nbsp;currentValue);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;sharedDict.TryUpdate(keyObj, currentValue &#43; 1, currentValue);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">int</span>&nbsp;result;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gotValue = sharedDict.TryGetValue(keyObj,&nbsp;<span style="color:blue">out</span>&nbsp;result);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">if</span>&nbsp;(gotValue)</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">return</span>&nbsp;result;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">else</span></span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">throw</span>&nbsp;<span style="color:blue">new</span>&nbsp;<span style="color:rgb(43,145,175)">Exception</span>(<span style="color:rgb(43,145,175)">String</span>.Format(<span style="color:rgb(163,21,21)">
+                                                    &quot;No
+                                                    data item available for key {0}&quot;
+                                                </span>, keyObj));
+                                            </span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }, i);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tasks[i].Start();</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue">for</span>&nbsp;(<span style="color:blue">int</span>&nbsp;i = 0; i &lt; tasks.Length; i&#43;&#43;)</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account.Balance &#43;= tasks[i].Result;</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            &nbsp;
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Console</span>.WriteLine(<span style="color:rgb(163,21,21)">&quot;Expected value {0}, Balance: {1}&quot;</span>, 10000, account.Balance);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<span style="color:rgb(43,145,175)">Console</span>.WriteLine(<span style="color:rgb(163,21,21)">&quot;Press enter to finish&quot;</span>);</span>
+                                        </p>
+                                        <p align="left" style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:1.5">
+                                            <span style="font-family:NSimSun; font-size:9.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgb(43,145,175)">Console</span>.ReadLine();</span>
+                                        </p>
+                                        <p style="margin:5px auto; padding-top:0px; padding-bottom:0px; line-height:28px; text-indent:21pt">
+                                            <span style="font-family:宋体">}</span>
+                                        </p>
+                                        <span style="font-family:宋体; font-size:10.5pt">通过上述提供的安全类,我们可以方便的并发访问集合中的元素,而不需要以前的Synchronized方法或者lock(SyncRoot)等处理方式</span>
+                                    </div>
+                                    <div id="cnblogs_post_body" style="margin:0px; padding:0px; font-family:verdana; word-wrap:break-word">
+                                        <span style="font-family:宋体; font-size:10.5pt">
+                                            <br>
+                                        </span>
+                                    </div>
+                                    <div id="cnblogs_post_body" style="margin:0px; padding:0px; font-family:verdana; word-wrap:break-word">
+                                        <span style="font-family:宋体; font-size:10.5pt">http://blog.csdn.net/web718/article/details/5105578.</span>
+                                    </div>
+                                    <div id="MySignature" style="margin:10px 0px 0px; padding:0px; font-family:verdana; word-wrap:break-word">
+                                        <div style="margin:0px; padding:0px; word-wrap:break-word; color:green">
+                                            &nbsp;
+                                            <p style="color:rgb(51,51,51)"><strong>HashTable</strong>&nbsp;中的&nbsp;key/value均为&nbsp;object类型，由包含集合元素的存储桶组成。存储桶是&nbsp;HashTable中各元素的虚拟子组，与大多数集合中进行的搜索和检索相比，存储桶可令搜索和检索更为便捷。每一存储桶都与一个哈希代码关联，该哈希代码是使用哈希函数生成的并基于该元素的键。&nbsp;HashTable的优点就在于其索引的方式，速度非常快。如果以任意类型键&#20540;访问其中元素会快于其他集合，特别是当数据量特别大的时候，效率差别尤其大。</p>
+                                            <p style="color:rgb(51,51,51)">HashTable的应用场合有：做对象缓存，树递归算法的替代，和各种需提升效率的场合。</p>
+                                            <div style="color:rgb(51,51,51)">
+                                                <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;<span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">Hashtable sample</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp; System.Collections.Hashtable ht&nbsp;</span><span style="color:rgb(0,0,0)">=</span>&nbsp;<span style="color:rgb(0,0,0)">&nbsp;</span>&nbsp;<span style="color:rgb(0,0,255)">new</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    System.Collections.Hashtable();<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">--Be careful: Keys can't be duplicated, and can't be null----</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp; ht.Add(</span>&nbsp;<span style="color:rgb(128,0,128)">1</span>&nbsp;<span style="color:rgb(0,0,0)">,&nbsp;</span><span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(128,0,0)">apple</span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    );<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp; ht.Add(
+                                                </span>&nbsp;<span style="color:rgb(128,0,128)">2</span>&nbsp;<span style="color:rgb(0,0,0)">,&nbsp;</span><span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(128,0,0)">banana</span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    );<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp; ht.Add(
+                                                </span>&nbsp;<span style="color:rgb(128,0,128)">3</span>&nbsp;<span style="color:rgb(0,0,0)">,&nbsp;</span><span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(128,0,0)">orange</span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    );<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">Modify item value:</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:rgb(0,0,255)">if</span>&nbsp;<span style="color:rgb(0,0,0)">(ht.ContainsKey(</span>&nbsp;<span style="color:rgb(128,0,128)">1</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    ))<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ht[
+                                                </span>&nbsp;<span style="color:rgb(128,0,128)">1</span>&nbsp;<span style="color:rgb(0,0,0)">]&nbsp;</span><span style="color:rgb(0,0,0)">=</span>&nbsp;<span style="color:rgb(0,0,0)">&nbsp;</span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(128,0,0)">appleBad</span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    ;<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">The following code will return null oValue, no exception</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:rgb(0,0,255)">object</span>&nbsp;<span style="color:rgb(0,0,0)">oValue&nbsp;</span><span style="color:rgb(0,0,0)">=</span>&nbsp;<span style="color:rgb(0,0,0)">ht[</span>&nbsp;<span style="color:rgb(128,0,128)">5</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    ];&nbsp;&nbsp;<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">traversal 1:</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:rgb(0,0,255)">foreach</span>&nbsp;<span style="color:rgb(0,0,0)">(DictionaryEntry de&nbsp;</span><span style="color:rgb(0,0,255)">in</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    ht)<br>
+                                                    <img id="Codehighlighter1_484_563_Open_Image" src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span id="Codehighlighter1_484_563_Open_Text">
+                                                    <span style="color:rgb(0,0,0)">
+                                                        {<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(de.Key);<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(de.Value);<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp; }
+                                                    </span>&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">traversal 2:</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp; System.Collections.IDictionaryEnumerator d&nbsp;</span><span style="color:rgb(0,0,0)">=</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    ht.GetEnumerator();<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span style="color:rgb(0,0,255)">while</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    (d.MoveNext())<br>
+                                                    <img id="Codehighlighter1_682_765_Open_Image" src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span id="Codehighlighter1_682_765_Open_Text">
+                                                    <span style="color:rgb(0,0,0)">
+                                                        {<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(
+                                                    </span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(128,0,0)">key：{0} value：{1}</span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                        ,
+                                                        d.Entry.Key, d.Entry.Value);<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp; }
+                                                    </span>&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">Clear items</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp; ht.Clear();</span>
+                                            </div>
+                                            <p style="color:rgb(51,51,51)">
+                                                <br>
+                                                <strong>Dictionary</strong>&nbsp;和&nbsp;HashTable内部实现差不多，但前者无需装箱拆箱操作，效率略高一点。<br>
+                                            </p>
+                                            <div style="color:rgb(51,51,51)">
+                                                <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;<span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">Dictionary sample</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp; System.Collections.Generic.Dictionary</span>&nbsp;<span style="color:rgb(0,0,0)">&lt;</span>&nbsp;<span style="color:rgb(0,0,255)">int</span>&nbsp;<span style="color:rgb(0,0,0)">,&nbsp;</span><span style="color:rgb(0,0,255)">string</span>&nbsp;<span style="color:rgb(0,0,0)">&gt;</span>&nbsp;<span style="color:rgb(0,0,0)">fruits&nbsp;</span><span style="color:rgb(0,0,0)">=</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    &nbsp;<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span style="color:rgb(0,0,255)">new</span>&nbsp;<span style="color:rgb(0,0,0)">System.Collections.Generic.Dictionary</span>&nbsp;<span style="color:rgb(0,0,0)">&lt;</span>&nbsp;<span style="color:rgb(0,0,255)">int</span>&nbsp;<span style="color:rgb(0,0,0)">,&nbsp;</span><span style="color:rgb(0,0,255)">string</span>&nbsp;<span style="color:rgb(0,0,0)">&gt;</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    ();<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp; fruits.Add(
+                                                </span>&nbsp;<span style="color:rgb(128,0,128)">1</span>&nbsp;<span style="color:rgb(0,0,0)">,&nbsp;</span><span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(128,0,0)">apple</span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    );<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp; fruits.Add(
+                                                </span>&nbsp;<span style="color:rgb(128,0,128)">2</span>&nbsp;<span style="color:rgb(0,0,0)">,&nbsp;</span><span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(128,0,0)">banana</span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    );<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp; fruits.Add(
+                                                </span>&nbsp;<span style="color:rgb(128,0,128)">3</span>&nbsp;<span style="color:rgb(0,0,0)">,&nbsp;</span><span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(128,0,0)">orange</span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    );<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span style="color:rgb(0,0,255)">foreach</span>&nbsp;<span style="color:rgb(0,0,0)">(</span>&nbsp;<span style="color:rgb(0,0,255)">int</span>&nbsp;<span style="color:rgb(0,0,0)">i&nbsp;</span><span style="color:rgb(0,0,255)">in</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    fruits.Keys)<br>
+                                                    <img id="Codehighlighter1_282_348_Open_Image" src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span id="Codehighlighter1_282_348_Open_Text">
+                                                    <span style="color:rgb(0,0,0)">
+                                                        {<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(
+                                                    </span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(128,0,0)">key：{0} value：{1}</span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                        ,
+                                                        i, fruits);<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp; }
+                                                    </span>&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span style="color:rgb(0,0,255)">if</span>&nbsp;<span style="color:rgb(0,0,0)">(fruits.ContainsKey(</span>&nbsp;<span style="color:rgb(128,0,128)">1</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    ))<br>
+                                                    <img id="Codehighlighter1_385_440_Open_Image" src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span id="Codehighlighter1_385_440_Open_Text">
+                                                    <span style="color:rgb(0,0,0)">
+                                                        {<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(
+                                                    </span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(128,0,0)">contain this key.</span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                        );<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp; }
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <p style="color:rgb(51,51,51)">&nbsp;</p>
+                                            <p style="color:rgb(51,51,51)">
+                                                <strong>ArrayList</strong>&nbsp;是一维变长数组，内部&#20540;为&nbsp;object类型，效率一般：<br>
+                                            </p>
+                                            <p style="color:rgb(51,51,51)">&nbsp;</p>
+                                            <div style="color:rgb(51,51,51)">
+                                                <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;<span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">ArrayList</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp; System.Collections.ArrayList list&nbsp;</span><span style="color:rgb(0,0,0)">=</span>&nbsp;<span style="color:rgb(0,0,0)">&nbsp;</span>&nbsp;<span style="color:rgb(0,0,255)">new</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    System.Collections.ArrayList();<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp; list.Add(
+                                                </span>&nbsp;<span style="color:rgb(128,0,128)">1</span>&nbsp;<span style="color:rgb(0,0,0)">);</span>&nbsp;<span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    object
+                                                    type
+                                                </span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp; list.Add(</span>&nbsp;<span style="color:rgb(128,0,128)">2</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    );<br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span style="color:rgb(0,0,255)">for</span>&nbsp;<span style="color:rgb(0,0,0)">(</span>&nbsp;<span style="color:rgb(0,0,255)">int</span>&nbsp;<span style="color:rgb(0,0,0)">i&nbsp;</span><span style="color:rgb(0,0,0)">=</span>&nbsp;<span style="color:rgb(0,0,0)">&nbsp;</span>&nbsp;<span style="color:rgb(128,0,128)">0</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    ;
+                                                    i&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&lt;</span>&nbsp;<span style="color:rgb(0,0,0)">list.Count; i</span>&nbsp;<span style="color:rgb(0,0,0)">&#43;&#43;</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    )<br>
+                                                    <img id="Codehighlighter1_184_227_Open_Image" src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span id="Codehighlighter1_184_227_Open_Text">
+                                                    <span style="color:rgb(0,0,0)">
+                                                        {<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(list[i]);<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp; }
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <p style="color:rgb(51,51,51)">
+                                                <br>
+                                                <br>
+                                                HashTable是经过优化的，访问下标的对象先散列过，所以内部是无序散列的，保证了高效率，也就是说，其输出不是按照开始加入的顺序，而&nbsp;Dictionary遍历输出的顺序，就是加入的顺序，这点与&nbsp;Hashtable不同。如果一定要排序&nbsp;HashTable输出，只能自己实现：<br>
+                                                <br>
+                                            </p>
+                                            <div style="color:rgb(51,51,51)">
+                                                <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;<span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">Hashtable sorting</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp; System.Collections.ArrayList akeys&nbsp;</span><span style="color:rgb(0,0,0)">=</span>&nbsp;<span style="color:rgb(0,0,0)">&nbsp;</span>&nbsp;<span style="color:rgb(0,0,255)">new</span>&nbsp;<span style="color:rgb(0,0,0)">System.Collections.ArrayList(ht.Keys);&nbsp;</span><span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    from
+                                                    Hashtable
+                                                </span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp; akeys.Sort();&nbsp;</span><span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">Sort by leading letter</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:rgb(0,0,255)">foreach</span>&nbsp;<span style="color:rgb(0,0,0)">(</span>&nbsp;<span style="color:rgb(0,0,255)">string</span>&nbsp;<span style="color:rgb(0,0,0)">skey&nbsp;</span><span style="color:rgb(0,0,255)">in</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                    akeys)<br>
+                                                    <img id="Codehighlighter1_207_286_Open_Image" src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockStart.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </span><span id="Codehighlighter1_207_286_Open_Text">
+                                                    <span style="color:rgb(0,0,0)">
+                                                        {<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write(skey&nbsp;
+                                                    </span><span style="color:rgb(0,0,0)">&#43;</span>&nbsp;<span style="color:rgb(0,0,0)">&nbsp;</span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(128,0,0)">:</span>&nbsp;<span style="color:rgb(128,0,0)">&quot;</span>&nbsp;<span style="color:rgb(0,0,0)">
+                                                        );<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/InBlock.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(ht[skey]);<br>
+                                                        <img src="http://www.cnblogs.com/Images/OutliningIndicators/ExpandedBlockEnd.gif" alt="" align="top">&nbsp;&nbsp;&nbsp;&nbsp; }
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <p style="color:rgb(51,51,51)">&nbsp;</p>
+                                            <p style="color:rgb(51,51,51)"><strong>HashTable&nbsp;与线程安全&nbsp;</strong>：</p>
+                                            <p style="color:rgb(51,51,51)">为了保证在多线程的情况下的线程同步访问安全，微软提供了自动线程同步的&nbsp;HashTable:</p>
+                                            <p style="color:rgb(51,51,51)"></p>
+                                            <p style="color:rgb(51,51,51)">如果&nbsp;<span id="highlight_tag">HashTable</span>&nbsp;要允许并发读但只能一个线程写&nbsp;,&nbsp;要这么创建&nbsp;<span id="highlight_tag">HashTable</span>&nbsp;实例&nbsp;:</p>
+                                            <p style="color:rgb(51,51,51)"></p>
+                                            <div style="color:rgb(51,51,51)">
+                                                <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;<span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color:rgb(0,128,0)">//</span>&nbsp;<span style="color:rgb(0,128,0)">Thread safe HashTable</span>&nbsp;<span style="color:rgb(0,128,0)">
+                                                    <br>
+                                                    <img src="http://www.cnblogs.com/Images/OutliningIndicators/None.gif" alt="" align="top">&nbsp;
+                                                </span><span style="color:rgb(0,0,0)">&nbsp;&nbsp;&nbsp; System.Collections.Hashtable htSyn&nbsp;</span><span style="color:rgb(0,0,0)">=</span>&nbsp;<span style="color:rgb(0,0,0)">System.Collections.Hashtable.Synchronized(</span>&nbsp;<span style="color:rgb(0,0,255)">new</span><span style="color:rgb(0,0,0)">System.Collections.Hashtable());</span>
+                                            </div>
+                                            <p style="color:rgb(51,51,51)">这样&nbsp;,&nbsp;如果有多个线程并发的企图写&nbsp;HashTable&nbsp;里面的&nbsp;item,&nbsp;则同一时刻只能有一个线程写&nbsp;,&nbsp;其余阻塞&nbsp;;&nbsp;对读的线程则不受影响。</p>
+                                            <p style="color:rgb(51,51,51)">&nbsp;</p>
+                                            <p style="color:rgb(51,51,51)">另外一种方法就是使用&nbsp;lock&nbsp;语句，但要&nbsp;lock&nbsp;的不是&nbsp;HashTable&nbsp;，而是其&nbsp;SyncRoot&nbsp;；虽然不推荐这种方法，但效果一样的，因为源代码就是这样实现的&nbsp;:</p>
+                                            <div style="color:rgb(51,51,51)">
+                                                <div style="color:black">
+<pre><span style="color:rgb(0,128,0)">//Thread safe</span></pre>
+<pre><span style="color:rgb(0,0,255)">private</span> <span style="color:rgb(0,0,255)">static</span> System.Collections.Hashtable htCache = <span style="color:rgb(0,0,255)">new</span> System.Collections.Hashtable ();</pre>
+<pre>&nbsp;</pre>
+<pre><span style="color:rgb(0,0,255)">public</span> <span style="color:rgb(0,0,255)">static</span> <span style="color:rgb(0,0,255)">void</span> AccessCache ()</pre>
+<pre>{</pre>
+<pre>    <span style="color:rgb(0,0,255)">lock</span> ( htCache.SyncRoot )</pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <p></p>
+                                <br>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- Baidu Button BEGIN -->
+
+                        <div class="bdsharebuttonbox" style="float: right;">
+                            <a href="#" class="bds_more" data-cmd="more" style="background-position:0 0 !important; background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important"></a>
+                            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间" style="background-position:0 -52px !important"></a>
+                            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博" style="background-position:0 -104px !important"></a>
+                            <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博" style="background-position:0 -260px !important"></a>
+                            <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网" style="background-position:0 -208px !important"></a>
+                            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信" style="background-position:0 -1612px !important"></a>
+                        </div>
+                        <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+                        <!-- Baidu Button END -->
+                        <!--192.168.100.36-->
+                        <ul class="article_next_prev">
+                            <li class="prev_article"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/wlanye/article/details/8663479';">上一篇</span><a href="/wlanye/article/details/8663479" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])">C#多线程处理多个队列的数据</a></li>
+                            <li class="next_article"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/wlanye/article/details/8669134';">下一篇</span><a href="/wlanye/article/details/8669134" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])">在 System.FormatException 中第一次偶然出现的“mscorlib.dll”类型的异常，如何调试呢。</a></li>
+                        </ul>
+
+                        <!-- Baidu Button BEGIN -->
+                        <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1536434"></script>
+                        <script type="text/javascript" id="bdshell_js"></script>
+                        <script type="text/javascript">
+                            document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000)
+                        </script>
+                        <!-- Baidu Button END -->
+
+
+                    </div>
+                    <dl class="blog-associat-tag">
+                        <dt>主题推荐</dt>
+                        <dd>
+                            <a href="http://www.csdn.net/tag/线程安全" target="_blank" class="blog-tage-red">线程安全</a>
+                            <a href="http://www.csdn.net/tag/类" target="_blank" class="blog-tage-red">类</a>
+                            <a href="http://www.csdn.net/tag/visual basic" target="_blank" class="blog-tage-red">visual basic</a>
+                            <a href="http://www.csdn.net/tag/并行编程" target="_blank" class="blog-tage-red">并行编程</a>
+                            <a href="http://www.csdn.net/tag/递归算法" target="_blank" class="blog-tage-red">递归算法</a>
+                        </dd>
+                    </dl>
+
+                    <style>
+                        .blog-ass-articl dd {
+                            color: #369;
+                            width: 99%; /*修改行*/
+                            float: left;
+                            overflow: hidden;
+                            font: normal normal 12px/23px "SimSun";
+                            height: 23px;
+                            margin: 0;
+                            padding: 0 0 0 10px;
+                            margin-right: 30px;
+                            background: url(../images/blog-dot-red3.gif) no-repeat 0 10px;
+                        }
+                    </style>
+
+                    <dl class="blog-ass-articl tracking-ad" data-mod="popu_36" id="res-relatived" style="height:  160px;">
+                        <dt><span>猜你在找</span></dt>
+
+                        <div id="res" style="width: 42%;float: left;margin-right: 30px;"></div>
+
+                        <div id="adCollege" style="width: 42%;float: left;">
+                            <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;">
+                                <a href="http://edu.csdn.net/course/detail/559" title="【精品课程】iOS开发Swift语言学习教程" strategy="SearchAlgorithm" target="_blank">【精品课程】iOS开发Swift语言学习教程</a>
+                            </dd>
+                            <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;">
+                                <a href="http://edu.csdn.net/course/detail/586" title="【精品课程】J2SE轻松入门第二季" strategy="SearchAlgorithm" target="_blank">【精品课程】J2SE轻松入门第二季</a>
+                            </dd>
+                            <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;">
+                                <a href="http://edu.csdn.net/course/detail/570" title="【精品课程】马哥Linux企业级 Yum软件管理" strategy="SearchAlgorithm" target="_blank">【精品课程】马哥Linux企业级 Yum软件管理</a>
+                            </dd>
+                            <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;">
+                                <a href="http://edu.csdn.net/course/detail/545" title="【精品课程】Android入门实战教程" strategy="SearchAlgorithm" target="_blank">【精品课程】Android入门实战教程</a>
+                            </dd>
+                            <dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;">
+                                <a href="http://edu.csdn.net/course/detail/538" title="【精品课程】大众点评的吃包子小人等待效果的实现" strategy="SearchAlgorithm" target="_blank">【精品课程】大众点评的吃包子小人等待效果的实现</a>
+                            </dd>
+                        </div>
+
+                    </dl>
+
+
+                    <div id="job_blog_reco">
+                        <script src="http://c.csdnimg.cn/jobreco/job_reco.js" type="text/javascript"></script>
+
+                        <script type="text/javascript">
+                            csdn.position.show({
+                                sourceType: "blog",
+                                tplType: "blogDetail",
+                                searchType: "detail",
+                                searchKey: "8668089",
+                                username: "chiyuezhixing",
+                                containerId: "job_blog_reco"
+                            });
+                        </script>
+
+                    </div>
+
+                    <script type="text/javascript">
+                        var searchtitletags = 'c#集合类的线程安全（整理）' + ',' + '线程安全,类,visual basic,并行编程,递归算法';
+                        searchService({
+                            index: 'blog',
+                            query: searchtitletags,
+                            from: 5,
+                            size: 5,
+                            appendTo: '#res',
+                            url: 'recommend',
+                            his: 2,
+                            client: "blog_cf_enhance",
+                            tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+                        });
+
+                    </script>
+
+
+
+                    <div id="ad_cen">
+
+                        <script type="text/javascript">
+                            new Ad(4, 'ad_cen');
+                        </script>
+                    </div>
+                    <div class="comment_class">
+                        <div id="comment_title" class="panel_head">
+                            <span class="see_comment">查看评论</span><a name="comments"></a>
+                        </div>
+                        <div id="comment_list">
+                        </div>
+                        <div id="comment_bar">
+                        </div>
+                        <div id="comment_form">
+                        </div>
+
+                        <div class="announce">
+                            * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a>
+                        </div>
+                    </div>
+
+                    <script type="text/javascript">
+                        var fileName = '8668089';
+                        var commentscount = 0;
+                        var islock = false
+                    </script>
+                    <script type="text/javascript" src="http://static.blog.csdn.net/scripts/comment.js"></script>
+                    <div id="ad_bot">
+                    </div>
+                    <script type="text/javascript">
+                        new Ad(5, 'ad_bot');
+                    </script>
+                    <div id="report_dialog">
+                    </div>
+
+                    <div id="d-top" style="bottom:60px;">
+                        <a id="quick-reply" class="btn btn-top q-reply" title="快速回复" style="display:none;">
+                            <img src="http://static.blog.csdn.net/images/blog-icon-reply.png" alt="快速回复">
+                        </a>
+
+                        <a id="d-top-a" class="btn btn-top backtop" style="display: none;" title="返回顶部" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])" style="">
+                            <img src="http://static.blog.csdn.net/images/top.png" alt="TOP">
+                        </a>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $("#ad_frm_0").height("90px");
+
+                            setTimeout(function () {
+                                $("#ad_frm_2").height("200px");
+                            }, 1000);
+
+                            /*
+                            if($("#comment_content").length>0)
+                            {
+                                $("#quick-reply").show();
+
+                                $("#quick-reply").click(function(){
+                                    setEditorFocus();
+                                });
+                            }
+
+                            var d_top = $('#d-top-a');
+
+                            document.onscroll = function ()
+                            {
+                                var scrTop = (document.body.scrollTop || document.documentElement.scrollTop);
+                                if (scrTop > 500)
+                                {
+                                    d_top.show();
+                                } else
+                                {
+                                    d_top.hide();
+                                }
+                            }
+                            $('#d-top-a').click(function ()
+                            {
+                                scrollTo(0, 0);
+                                this.blur();
+                                return false;
+                            });
+                            */
+                        });
+
+                    </script>
+                    <style type="text/css">
+                        .tag_list {
+                            background: none repeat scroll 0 0 #FFFFFF;
+                            border: 1px solid #D7CBC1;
+                            color: #000000;
+                            font-size: 12px;
+                            line-height: 20px;
+                            list-style: none outside none;
+                            margin: 10px 2% 0 1%;
+                            padding: 1px;
+                        }
+
+                            .tag_list h5 {
+                                background: none repeat scroll 0 0 #E0DBD3;
+                                color: #47381C;
+                                font-size: 12px;
+                                height: 24px;
+                                line-height: 24px;
+                                padding: 0 5px;
+                                margin: 0;
+                            }
+
+                                .tag_list h5 a {
+                                    color: #47381C;
+                                }
+
+                        .classify {
+                            margin: 10px 0;
+                            padding: 4px 12px 8px;
+                        }
+
+                            .classify a {
+                                margin-right: 20px;
+                                white-space: nowrap;
+                            }
+                    </style>
+                    <div class="tag_list">
+                        <h5>
+                            <a href="http://www.csdn.net/tag/" target="_blank">核心技术类目</a>
+                        </h5>
+                        <div class="classify">
+                            <a title="全部主题" href="http://www.csdn.net/tag" target="_blank" onclick="LogClickCount(this,336);">全部主题</a>
+                            <a title="Hadoop" href="http://g.csdn.net/5272865" target="_blank" onclick="LogClickCount(this,336);">Hadoop</a>
+                            <a title="AWS" href="http://g.csdn.net/5272866" target="_blank" onclick="LogClickCount(this,336);">AWS</a>
+                            <a title="移动游戏" href="http://g.csdn.net/5272870" target="_blank" onclick="LogClickCount(this,336);">移动游戏</a>
+                            <a title="Java" href="http://g.csdn.net/5272871" target="_blank" onclick="LogClickCount(this,336);">Java</a>
+                            <a title="Android" href="http://g.csdn.net/5272872" target="_blank" onclick="LogClickCount(this,336);">Android</a>
+                            <a title="iOS" href="http://g.csdn.net/5272873" target="_blank" onclick="LogClickCount(this,336);">iOS</a>
+                            <a title="Swift" href="http://g.csdn.net/5272868" target="_blank" onclick="LogClickCount(this,336);">Swift</a>
+                            <a title="智能硬件" href="http://g.csdn.net/5272869" target="_blank" onclick="LogClickCount(this,336);">智能硬件</a>
+                            <a title="Docker" href="http://g.csdn.net/5272867" target="_blank" onclick="LogClickCount(this,336);">Docker</a>
+                            <a title="OpenStack" href="http://g.csdn.net/5272925" target="_blank" onclick="LogClickCount(this,336);">OpenStack</a>
+                            <a title="VPN" href="http://www.csdn.net/tag/vpn" target="_blank" onclick="LogClickCount(this,336);">VPN</a>
+                            <a title="Spark" href="http://g.csdn.net/5272924" target="_blank" onclick="LogClickCount(this,336);">Spark</a>
+                            <a title="ERP" href="http://www.csdn.net/tag/erp" target="_blank" onclick="LogClickCount(this,336);">ERP</a>
+                            <a title="IE10" href="http://www.csdn.net/tag/ie10" target="_blank" onclick="LogClickCount(this,336);">IE10</a>
+                            <a title="Eclipse" href="http://www.csdn.net/tag/eclipse" target="_blank" onclick="LogClickCount(this,336);">Eclipse</a>
+                            <a title="CRM" href="http://www.csdn.net/tag/crm" target="_blank" onclick="LogClickCount(this,336);">CRM</a>
+                            <a title="JavaScript" href="http://www.csdn.net/tag/javascript" target="_blank" onclick="LogClickCount(this,336);">JavaScript</a>
+                            <a title="数据库" href="http://www.csdn.net/tag/数据库" target="_blank" onclick="LogClickCount(this,336);">数据库</a>
+                            <a title="Ubuntu" href="http://www.csdn.net/tag/ubuntu" target="_blank" onclick="LogClickCount(this,336);">Ubuntu</a>
+                            <a title="NFC" href="http://www.csdn.net/tag/nfc" target="_blank" onclick="LogClickCount(this,336);">NFC</a>
+                            <a title="WAP" href="http://www.csdn.net/tag/wap" target="_blank" onclick="LogClickCount(this,336);">WAP</a>
+                            <a title="jQuery" href="http://www.csdn.net/tag/jquery" target="_blank" onclick="LogClickCount(this,336);">jQuery</a>
+                            <a title="BI" href="http://www.csdn.net/tag/bi" target="_blank" onclick="LogClickCount(this,336);">BI</a>
+                            <a title="HTML5" href="http://www.csdn.net/tag/html5" target="_blank" onclick="LogClickCount(this,336);">HTML5</a>
+                            <a title="Spring" href="http://www.csdn.net/tag/spring" target="_blank" onclick="LogClickCount(this,336);">Spring</a>
+                            <a title="Apache" href="http://www.csdn.net/tag/apache" target="_blank" onclick="LogClickCount(this,336);">Apache</a>
+                            <a title=".NET" href="http://www.csdn.net/tag/.net" target="_blank" onclick="LogClickCount(this,336);">.NET</a>
+                            <a title="API" href="http://www.csdn.net/tag/api" target="_blank" onclick="LogClickCount(this,336);">API</a>
+                            <a title="HTML" href="http://www.csdn.net/tag/html" target="_blank" onclick="LogClickCount(this,336);">HTML</a>
+                            <a title="SDK" href="http://www.csdn.net/tag/sdk" target="_blank" onclick="LogClickCount(this,336);">SDK</a>
+                            <a title="IIS" href="http://www.csdn.net/tag/iis" target="_blank" onclick="LogClickCount(this,336);">IIS</a>
+                            <a title="Fedora" href="http://www.csdn.net/tag/fedora" target="_blank" onclick="LogClickCount(this,336);">Fedora</a>
+                            <a title="XML" href="http://www.csdn.net/tag/xml" target="_blank" onclick="LogClickCount(this,336);">XML</a>
+                            <a title="LBS" href="http://www.csdn.net/tag/lbs" target="_blank" onclick="LogClickCount(this,336);">LBS</a>
+                            <a title="Unity" href="http://www.csdn.net/tag/unity" target="_blank" onclick="LogClickCount(this,336);">Unity</a>
+                            <a title="Splashtop" href="http://www.csdn.net/tag/splashtop" target="_blank" onclick="LogClickCount(this,336);">Splashtop</a>
+                            <a title="UML" href="http://www.csdn.net/tag/uml" target="_blank" onclick="LogClickCount(this,336);">UML</a>
+                            <a title="components" href="http://www.csdn.net/tag/components" target="_blank" onclick="LogClickCount(this,336);">components</a>
+                            <a title="Windows Mobile" href="http://www.csdn.net/tag/windowsmobile" target="_blank" onclick="LogClickCount(this,336);">Windows Mobile</a>
+                            <a title="Rails" href="http://www.csdn.net/tag/rails" target="_blank" onclick="LogClickCount(this,336);">Rails</a>
+                            <a title="QEMU" href="http://www.csdn.net/tag/qemu" target="_blank" onclick="LogClickCount(this,336);">QEMU</a>
+                            <a title="KDE" href="http://www.csdn.net/tag/kde" target="_blank" onclick="LogClickCount(this,336);">KDE</a>
+                            <a title="Cassandra" href="http://www.csdn.net/tag/cassandra" target="_blank" onclick="LogClickCount(this,336);">Cassandra</a>
+                            <a title="CloudStack" href="http://www.csdn.net/tag/cloudstack" target="_blank" onclick="LogClickCount(this,336);">CloudStack</a>
+                            <a title="FTC" href="http://www.csdn.net/tag/ftc" target="_blank" onclick="LogClickCount(this,336);">FTC</a>
+                            <a title="coremail" href="http://www.csdn.net/tag/coremail" target="_blank" onclick="LogClickCount(this,336);">coremail</a>
+                            <a title="OPhone " href="http://www.csdn.net/tag/ophone " target="_blank" onclick="LogClickCount(this,336);">OPhone </a>
+                            <a title="CouchBase" href="http://www.csdn.net/tag/couchbase" target="_blank" onclick="LogClickCount(this,336);">CouchBase</a>
+                            <a title="云计算" href="http://www.csdn.net/tag/云计算" target="_blank" onclick="LogClickCount(this,336);">云计算</a>
+                            <a title="iOS6" href="http://www.csdn.net/tag/iOS6" target="_blank" onclick="LogClickCount(this,336);">iOS6</a>
+                            <a title="Rackspace " href="http://www.csdn.net/tag/rackspace " target="_blank" onclick="LogClickCount(this,336);">Rackspace </a>
+                            <a title="Web App" href="http://www.csdn.net/tag/webapp" target="_blank" onclick="LogClickCount(this,336);">Web App</a>
+                            <a title="SpringSide" href="http://www.csdn.net/tag/springside" target="_blank" onclick="LogClickCount(this,336);">SpringSide</a>
+                            <a title="Maemo" href="http://www.csdn.net/tag/maemo" target="_blank" onclick="LogClickCount(this,336);">Maemo</a>
+                            <a title="Compuware" href="http://www.csdn.net/tag/compuware" target="_blank" onclick="LogClickCount(this,336);">Compuware</a>
+                            <a title="大数据" href="http://www.csdn.net/tag/大数据" target="_blank" onclick="LogClickCount(this,336);">大数据</a>
+                            <a title="aptech" href="http://www.csdn.net/tag/aptech" target="_blank" onclick="LogClickCount(this,336);">aptech</a>
+                            <a title="Perl" href="http://www.csdn.net/tag/perl" target="_blank" onclick="LogClickCount(this,336);">Perl</a>
+                            <a title="Tornado" href="http://www.csdn.net/tag/tornado" target="_blank" onclick="LogClickCount(this,336);">Tornado</a>
+                            <a title="Ruby" href="http://www.csdn.net/tag/ruby" target="_blank" onclick="LogClickCount(this,336);">Ruby</a>
+                            <a title="Hibernate" href="http://www.csdn.net/hibernate" target="_blank" onclick="LogClickCount(this,336);">Hibernate</a>
+                            <a title="ThinkPHP" href="http://www.csdn.net/tag/thinkphp" target="_blank" onclick="LogClickCount(this,336);">ThinkPHP</a>
+                            <a title="HBase" href="http://www.csdn.net/tag/hbase" target="_blank" onclick="LogClickCount(this,336);">HBase</a>
+                            <a title="Pure" href="http://www.csdn.net/tag/pure" target="_blank" onclick="LogClickCount(this,336);">Pure</a>
+                            <a title="Solr" href="http://www.csdn.net/tag/solr" target="_blank" onclick="LogClickCount(this,336);">Solr</a>
+                            <a title="Angular" href="http://www.csdn.net/tag/angular" target="_blank" onclick="LogClickCount(this,336);">Angular</a>
+                            <a title="Cloud Foundry" href="http://www.csdn.net/tag/cloudfoundry" target="_blank" onclick="LogClickCount(this,336);">Cloud Foundry</a>
+                            <a title="Redis" href="http://www.csdn.net/tag/redis" target="_blank" onclick="LogClickCount(this,336);">Redis</a>
+                            <a title="Scala" href="http://www.csdn.net/tag/scala" target="_blank" onclick="LogClickCount(this,336);">Scala</a>
+                            <a title="Django" href="http://www.csdn.net/tag/django" target="_blank" onclick="LogClickCount(this,336);">Django</a>
+                            <a title="Bootstrap" href="http://www.csdn.net/tag/bootstrap" target="_blank" onclick="LogClickCount(this,336);">Bootstrap</a>
+                        </div>
+                    </div>
+
+                    <div id="pop_win" style="display:none ;position: absolute; z-index: 10000; border: 1px solid rgb(220, 220, 220); top: 222.5px; left: 630px; opacity: 1; background: none 0px 0px repeat scroll rgb(255, 255, 255);">
+
+                    </div>
+                    <div id="popup_mask"></div>
+                    <style>
+                        #popup_mask {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            background: #000;
+                            z-index: 9999;
+                            left: 0px;
+                            top: 0px;
+                            opacity: 0.3;
+                            filter: alpha(opacity=30);
+                            display: none;
+                        }
+                    </style>
+
+
+
+
+                    <script type="text/javascript">
+                        $(function () {
+                            setTimeout(function () {
+                                $(".comment_body:contains('回复')").each(function (index, item) {
+                                    var u = $(this).text().split('：')[0].toString().replace("回复", "")
+                                    var thisComment = $(this);
+                                    if (u) {
+                                        $.getJSON("https://passport.csdn.net/get/nick?callback=?", { users: u }, function (a) {
+                                            if (a != null && a.data != null && a.data.length > 0) {
+                                                nick = a.data[0].n;
+                                                if (u != nick) {
+                                                    thisComment.text(thisComment.text().replace(u, nick));
+                                                }
+                                            }
+                                        });
+                                    }
+                                });
+                            }, 200);
+
+                            setTimeout(function () {
+                                $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({ "position": "absolute", "left": "50%" });
+                            }, 300);
+                        });
+
+                        function loginbox() {
+                            var $logpop = $("#pop_win");
+                            $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+                            $('#popup_mask').css({
+                                opacity: 0.5,
+                                width: $(document).width() + 'px',
+                                height: $(document).height() + 'px'
+                            });
+                            $('#popup_mask').css("display", "block");
+
+                            $logpop.css({
+                                top: ($(window).height() - $logpop.height()) / 2 + $(window
+                           ).scrollTop() + 'px',
+                                left: ($(window).width() - $logpop.width()) / 2
+                            });
+
+                            setTimeout(function () {
+                                $logpop.show();
+                                $logpop.css({
+                                    opacity: 1
+                                });
+                            }, 200);
+
+                            $('#popup_mask').unbind("click");
+                            $('#popup_mask').bind("click", function () {
+                                $('#popup_mask').hide();
+                                var $clopop = $("#pop_win");
+                                $("#common_ask_div_sc").css("display", "none");
+                                $clopop.css({
+                                    opacity: 0
+                                });
+                                setTimeout(function () {
+                                    $clopop.hide();
+                                }, 350);
+                                return false;
+                            });
+                        }
+
+                    </script>
+                    <div class="clear">
+                    </div>
+                </div>
+
+            </div>
+            <div id="side">
+                <div class="side">
+                    <div id="panel_Profile" class="panel">
+                        <ul class="panel_head"><span>个人资料</span></ul>
+                        <ul class="panel_body profile">
+                            <div id="blog_userface">
+                                <a href="http://my.csdn.net/wlanye" target="_blank">
+                                    <img src="http://avatar.csdn.net/C/A/9/1_wlanye.jpg" title="访问我的空间" style="max-width:90%" />
+                                </a>
+                                <br />
+                                <span><a href="http://my.csdn.net/wlanye" class="user_name" target="_blank">wlanye</a></span>
+                            </div>
+                            <div class="interact">
+                                <a href="javascript:void(0);" class="attent" id="span_add_follow" title="[加关注]" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_guanzhu'])"></a>
+
+                                <a href="javascript:void(0);" class="letter" title="[发私信]" onclick="window.open('http://msg.csdn.net/letters/model?receiver=wlanye','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])"></a>
+                            </div>
+                            <div id="blog_medal">
+                                <div id="bms_box">
+                                </div>
+                            </div>
+                            <ul id="blog_rank">
+                                <li>访问：<span>446750次</span></li>
+                                <li>积分：<span>6174</span> </li>
+                                <li>
+                                    等级： <span style="position:relative;display:inline-block;z-index:1">
+                                        <img src="http://c.csdnimg.cn/jifen/images/xunzhang/jianzhang/blog6.png" alt="" style="vertical-align: middle;" id="leveImg">
+                                        <div id="smallTittle" style=" position absolute; left -24px; top 25px; text-align center; width 101px; height 32px; background-color #fff; line-height 32px; border 2px #DDDDDD solid; box-shadow 0px 2px 2px rgba (0,0,0,0.1); display none; z-index 999;">
+                                            <div style="left: 42%;  top: -8px;  position: absolute;  width: 0;  height: 0;  border-left: 10px solid transparent;  border-right: 10px solid transparent;  border-bottom: 8px solid #EAEAEA;"></div>
+                                            积分：6174
+                                        </div>
+                                    </span>
+                                </li>
+                                <li>排名：<span>第1495名</span></li>
+                            </ul>
+                            <ul id="blog_statistics">
+                                <li>原创：<span>74篇</span></li>
+                                <li>转载：<span>530篇</span></li>
+                                <li>译文：<span>13篇</span></li>
+                                <li>评论：<span>71条</span></li>
+                            </ul>
+                        </ul>
+                    </div>
+
+
+
+
+
+                    <div class="panel" id="panel_Search">
+                        <ul class="panel_head"><span>文章搜索</span></ul>
+                        <ul class="panel_body">
+                            <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+                                <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字" /></span>
+                                <input id="btnSubmit" type="button" value="搜索" title="search in blog" />
+                                <input type="hidden" name="q" id="inputQ" />
+                                <input type="hidden" name="t" value="blog" />
+                                <a id="btnSearchBlog" target="_blank"></a>
+                            </form>
+                        </ul>
+                    </div>
+
+                    <script type="text/javascript">
+                        $(function () {
+                            $("#btnSubmit").click(function () {
+                                search();
+                            });
+
+                            $("#frmSearch").submit(function () {
+                                search();
+                                return false;
+                            });
+
+                            function search() {
+                                var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+                                window.location.href = url;
+                            }
+                        });
+                    </script>
+                    <div id="panel_Category" class="panel">
+                        <ul class="panel_head"><span>文章分类</span></ul>
+                        <ul class="panel_body">
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1075760" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">我的笔记收集</a><span>(7)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/882613" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">项目管理</a><span>(9)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/941572" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">多平台前沿</a><span>(13)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1068549" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">IT行业管理学</a><span>(5)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/884983" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">系统/服务器/工具</a><span>(25)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1067680" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">团队管理与心理学</a><span>(9)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1937031" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">基础理论/基础数学</a><span>(0)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1937029" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">MATLAB/人工智能</a><span>(1)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1074903" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">敏捷开发过程</a><span>(27)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1075759" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">多核并行性能优化</a><span>(8)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1260209" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">术语和面向对象</a><span>(10)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/941581" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">杂七杂八</a><span>(13)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1343731" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Eclipse/JFace/SWT</a><span>(5)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1118937" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">C/C++/Cygwin</a><span>(20)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1129727" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Linux/os/Developer</a><span>(13)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1064043" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Java/J2SE</a><span>(48)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1064044" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">J2EE/Open</a><span>(11)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1145499" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">C++/OpenGL/DX</a><span>(8)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1074228" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">HTML5/CSS3/JS/JQUERY</a><span>(30)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/941573" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Android/OS/ARM</a><span>(61)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1074993" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Phone/Pad/CE</a><span>(14)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/214629" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">SQL/Oracle/DB</a><span>(19)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1076100" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Mac/iOS/Obj-c</a><span>(42)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/945848" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">C#/VS.Net/Mono</a><span>(119)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1056892" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Delphi/BCB/XE</a><span>(10)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/941576" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">SL/WPF/WP8</a><span>(66)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1117490" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Flash/Flex/ActionScript</a><span>(10)</span>
+                            </li>
+                            <li>
+                                <a href="http://blog.csdn.net/wlanye/article/category/1117489" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">QT/Mobile/XPower</a><span>(3)</span>
+                            </li>
+                        </ul>
+                    </div><div id="panel_Archive" class="panel">
+                        <ul class="panel_head"><span>文章存档</span></ul>
+                        <ul class="panel_body">
+                            <div id="archive_list">
+                                <!--归档统计-->
+                                <li><a href="http://blog.csdn.net/wlanye/article/month/2015/04">2015年04月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2015/03">2015年03月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2015/02">2015年02月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2015/01">2015年01月</a><span>(7)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2014/12">2014年12月</a><span>(28)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2014/11">2014年11月</a><span>(14)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2014/10">2014年10月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2014/09">2014年09月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2014/08">2014年08月</a><span>(13)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2014/07">2014年07月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2014/06">2014年06月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2014/04">2014年04月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2014/03">2014年03月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2014/02">2014年02月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2014/01">2014年01月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2013/12">2013年12月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2013/11">2013年11月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2013/09">2013年09月</a><span>(6)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2013/08">2013年08月</a><span>(8)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2013/07">2013年07月</a><span>(8)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2013/06">2013年06月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2013/05">2013年05月</a><span>(10)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2013/04">2013年04月</a><span>(19)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2013/03">2013年03月</a><span>(36)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2013/02">2013年02月</a><span>(41)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2013/01">2013年01月</a><span>(47)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2012/12">2012年12月</a><span>(6)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2012/11">2012年11月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2012/10">2012年10月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2012/09">2012年09月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2012/08">2012年08月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2012/07">2012年07月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2012/06">2012年06月</a><span>(10)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2012/05">2012年05月</a><span>(19)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2012/04">2012年04月</a><span>(84)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2012/03">2012年03月</a><span>(35)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2012/02">2012年02月</a><span>(100)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2012/01">2012年01月</a><span>(42)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2011/12">2011年12月</a><span>(32)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2011/11">2011年11月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2011/10">2011年10月</a><span>(7)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2011/09">2011年09月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/wlanye/article/month/2006/06">2006年06月</a><span>(1)</span></li>
+                            </div>
+                        </ul>
+                    </div>
+                    <div id="hotarticls" class="panel">
+                        <ul class="panel_head">
+                            <span>
+                                阅读排行
+                            </span>
+                        </ul>
+
+                        <ul class="panel_body itemlist">
+                            <li>
+                                <a href="/wlanye/article/details/7252903" title="C#/mono开发Android应用程序入门（一）-（配置Mono for Android环境）">C#/mono开发Android应用程序入门（一）-（配置Mono for Android环境）</a><span>(10884)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7420121" title="Android项目--团购类客户端">Android项目--团购类客户端</a><span>(9360)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7536315" title="为什么IT白领生命如此短暂--猝死！！！  让所谓的PMP和IT项目管理见鬼吧。">为什么IT白领生命如此短暂--猝死！！！  让所谓的PMP和IT项目管理见鬼吧。</a><span>(8277)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7411133" title="html5+Jquery mobile+phoneGAP开发混合程序实战记录（及疑难）">html5+Jquery mobile+phoneGAP开发混合程序实战记录（及疑难）</a><span>(5885)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7252981" title="C#/mono开发Android应用程序入门（二）-第一个应用程序(Hello World)">C#/mono开发Android应用程序入门（二）-第一个应用程序(Hello World)</a><span>(4955)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7393956" title="搭建 Android X86 系统，替代AVD模拟器，解决运行效率慢的问题（整理）====大全">搭建 Android X86 系统，替代AVD模拟器，解决运行效率慢的问题（整理）====大全</a><span>(4724)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7561559" title="Visual Studio 2010/WIN7配置openGL">Visual Studio 2010/WIN7配置openGL</a><span>(4429)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7243634" title="如何区分是手机访问网站，还是PC访问网站？">如何区分是手机访问网站，还是PC访问网站？</a><span>(4309)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7436794" title="Objective C的编译器有哪些，如何搭建Windows/linxu下OBJ-C环境（大全）">Objective C的编译器有哪些，如何搭建Windows/linxu下OBJ-C环境（大全）</a><span>(4207)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7251349" title="Firemonkey开发说明，Deploying to Android">Firemonkey开发说明，Deploying to Android</a><span>(3829)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="hotarticls2" class="panel">
+                        <ul class="panel_head"><span>评论排行</span></ul>
+                        <ul class="panel_body itemlist">
+                            <li>
+                                <a href="/wlanye/article/details/7252903" title="C#/mono开发Android应用程序入门（一）-（配置Mono for Android环境）">C#/mono开发Android应用程序入门（一）-（配置Mono for Android环境）</a><span>(9)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7252981" title="C#/mono开发Android应用程序入门（二）-第一个应用程序(Hello World)">C#/mono开发Android应用程序入门（二）-第一个应用程序(Hello World)</a><span>(9)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7199875" title="Silverlight企业应用框架(Richwork.framework beta 1)修正版">Silverlight企业应用框架(Richwork.framework beta 1)修正版</a><span>(5)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7253050" title="C#/mono开发Android应用程序入门（三）-平台的意义和思考">C#/mono开发Android应用程序入门（三）-平台的意义和思考</a><span>(3)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7755933" title="delphi真的穷途末路了！ 不变程序员的苦难和热爱的精神。">delphi真的穷途末路了！ 不变程序员的苦难和热爱的精神。</a><span>(3)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7221473" title="Infragistics NetAdvantage 介绍">Infragistics NetAdvantage 介绍</a><span>(2)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7411133" title="html5+Jquery mobile+phoneGAP开发混合程序实战记录（及疑难）">html5+Jquery mobile+phoneGAP开发混合程序实战记录（及疑难）</a><span>(2)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7251484" title="HTML5相关资料下载">HTML5相关资料下载</a><span>(2)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7224754" title="水晶报表各版本比较及相关释疑">水晶报表各版本比较及相关释疑</a><span>(2)</span>
+                            </li>
+                            <li>
+                                <a href="/wlanye/article/details/7251349" title="Firemonkey开发说明，Deploying to Android">Firemonkey开发说明，Deploying to Android</a><span>(2)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="homepageArticles" class="panel tracking-ad" data-mod="popu_4">
+                        <ul class="panel_head"><span>推荐文章</span></ul>
+                        <ul class="panel_body" id="ad_commend"></ul>
+                    </div>
+                    <script type="text/javascript">
+                        new Ad(12, 'ad_commend');
+                    </script><div id="newcomments" class="panel">
+                        <ul class="panel_head"><span>最新评论</span></ul>
+                        <ul class="panel_body itemlist">
+                            <li>
+
+                                <a href="/wlanye/article/details/7265894#comments">如何学好Android?我的经验献给各位朋友。</a>
+                                <p style="margin:0px;">
+                                    <a href="/fang323619" class="user_name">fang323619</a>:
+                                    好
+                                </p>
+                            </li>
+                            <li>
+
+                                <a href="/wlanye/article/details/42058515#comments">VMware Workstation 11 或者 VMware Player 7安装MAC OS X 10.10 Yosemite</a>
+                                <p style="margin:0px;">
+                                    <a href="/wwlhz" class="user_name">wwlhz</a>:
+                                    非常感谢，写的十分详细，帮助很大。谢谢。
+                                </p>
+                            </li>
+                            <li>
+
+                                <a href="/wlanye/article/details/42058515#comments">VMware Workstation 11 或者 VMware Player 7安装MAC OS X 10.10 Yosemite</a>
+                                <p style="margin:0px;">
+                                    <a href="/unlunk2" class="user_name">unlunk2</a>:
+                                    感谢分享，VM11顺利开始安装了。
+                                </p>
+                            </li>
+                            <li>
+
+                                <a href="/wlanye/article/details/7252903#comments">C#/mono开发Android应用程序入门（一）-（配置Mono for Android环境）</a>
+                                <p style="margin:0px;">
+                                    <a href="/wlanye" class="user_name">wlanye</a>:
+                                    是否开发Android应用没有什么限制？   回答：开发那个是免费的，没有什么限制。主要是API都是...
+                                </p>
+                            </li>
+                            <li>
+
+                                <a href="/wlanye/article/details/7252903#comments">C#/mono开发Android应用程序入门（一）-（配置Mono for Android环境）</a>
+                                <p style="margin:0px;">
+                                    <a href="/wlanye" class="user_name">wlanye</a>:
+                                    参考：http://blog.csdn.net/wlanye/article/details/410...
+                                </p>
+                            </li>
+                            <li>
+
+                                <a href="/wlanye/article/details/14230539#comments">文本编辑软件UltraEdit v16.20官方简/繁体中文版下载+注册码和破解方法 - ...</a>
+                                <p style="margin:0px;">
+                                    <a href="/shigui_2002" class="user_name">shigui_2002</a>:
+                                    谢谢分享
+                                </p>
+                            </li>
+                            <li>
+
+                                <a href="/wlanye/article/details/7420963#comments">VMware 8虚拟机安装Mac OS X 10.7 Lion正式版教程(VMware 8准备)</a>
+                                <p style="margin:0px;">
+                                    <a href="/u010298414" class="user_name">u010298414</a>:
+                                    有个问题想问下楼主，我完全按照教程进行安装，但是由于我的电脑是32位机，那个版本选择应该选择哪个？我...
+                                </p>
+                            </li>
+                            <li>
+
+                                <a href="/wlanye/article/details/7420963#comments">C#/mono开发Android应用程序入门（一）-（配置Mono for Android环境）</a>
+                                <p style="margin:0px;">
+                                    <a href="/wlanye" class="user_name">wlanye</a>:
+                                    基本上 绝大部分图片都挂了。。MONO的地址更新了，地图引用就挂了，此文章仅了解，MONO开发AND...
+                                </p>
+                            </li>
+                            <li>
+
+                                <a href="/wlanye/article/details/7420963#comments">C#/mono开发Android应用程序入门（一）-（配置Mono for Android环境）</a>
+                                <p style="margin:0px;">
+                                    <a href="/ojocce" class="user_name">ojocce</a>:
+                                    没有图片啊！大哥！
+                                </p>
+                            </li>
+                            <li>
+
+                                <a href="/wlanye/article/details/8576518#comments">swing/swt可视化开发工具windowbuilder免费了</a>
+                                <p style="margin:0px;">
+                                    <a href="/pennsylxy" class="user_name">pennsylxy</a>:
+                                    这个Google developer的repo貌似早就关了（难道是墙内的原因？），不过大家可以去这里...
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+
+            <div class="clear">
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="http://csdnimg.cn/rabbit/cnick/cnick.js"></script>
+        <script type="text/javascript" src="http://static.blog.csdn.net/scripts/newblog.min.js"></script>
+
+
+        <script type="text/javascript" src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=137139"></script>
+        <script type="text/javascript" src="http://static.blog.csdn.net/scripts/JavaScript1.js"></script>
+
+        <script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</script>
+        <script type="text/javascript" src="http://www.csdn.net/ui/scripts/Csdn/counter.js"></script>
+        <script type="text/javascript" src="http://ad.csdn.net/scripts/ad-blog.js"></script>
+        <script type="text/javascript" src="http://zz.csdn.net/js/count.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                function __get_code_toolbar(snippet_id) {
+                    return $("<a href='https://code.csdn.net/snippets/"
+                            + snippet_id
+                            + "' target='_blank' title='在CODE上查看代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a>"
+                            + "<a href='https://code.csdn.net/snippets/"
+                            + snippet_id
+                            + "/fork' target='_blank' title='派生到我的代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a>");
+                }
+
+                $("[code_snippet_id]").each(function () {
+                    __s_id = $(this).attr("code_snippet_id");
+                    if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                        __code_tool = __get_code_toolbar(__s_id);
+                        $(this).prev().find(".tools").append(__code_tool);
+                    }
+                });
+            });
+        </script>
+
+    </div>
+    <!--new top-->
+
+    <script id="csdn-toolbar-id" btnId="header_notice_num" wrapId="note1" count="5" subCount="5" type="text/javascript" src="http://static.csdn.net/public/common/toolbar/js/toolbar.js"></script>
+    <!--new top-->
+
+    <link href="http://c.csdnimg.cn/comm_ask/css/ask_float_block.css" type="text/css" rel="stylesheet" />
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/wmd.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/showdown.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/prettify.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/apps/ask_float_block.js'></script>
+
+</body>
+</html>

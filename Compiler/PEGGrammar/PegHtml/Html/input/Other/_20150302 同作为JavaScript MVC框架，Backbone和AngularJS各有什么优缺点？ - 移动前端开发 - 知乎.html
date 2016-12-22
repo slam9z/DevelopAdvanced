@@ -1,0 +1,1343 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js no-auth">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <title>
+
+        同作为JavaScript MVC框架，Backbone和AngularJS各有什么优缺点？ - 移动前端开发 - 知乎
+
+
+    </title>
+    <meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/21170137">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/21170137">
+    <meta id="znonce" name="znonce" content="35ab27e06474495db24542b3171cfa2d">
+    <link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+    <link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+    <link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+    <link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+    <link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+    <link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+    <link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+    <link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+    <link rel="stylesheet" href="http://static.zhihu.com/static/ver/012ee17a8ea33a674d13f13fa97cffb4.z.css">
+    <meta name="google-site-verification" content="FTeR0c8arOPKh8c5DYh_9uu98_zJbaWw53J-Sch9MTg" />
+    <meta property="qc:admins" content="14414345146201056375" />
+
+    <!--[if lt IE 9]>
+    <script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+    <link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+    <link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+    <script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+    <![endif]-->
+    <script src="http://static.zhihu.com/static/ver/c9815c35381b57c0fdc44e8d89dc4327.instant.min.js"></script>
+
+
+</head>
+<body class="zhi">
+    <div role="navigation" class="zu-top">
+        <div class="zg-wrap" id="zh-top-inner">
+            <a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+            <div role="search" id="zh-top-search" class="zu-top-search">
+                <form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+                    <input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+                    <input type="hidden" name="type" value="question" />
+                    <label for="q" class="hide-text">知乎搜索</label>
+                    <button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+                </form>
+                <button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+            </div>
+
+            <div id="zg-top-nav" class="zu-top-nav">
+                <ul class="zu-top-nav-ul zg-clear">
+                    <li class="zu-top-nav-li " id="zh-top-home-link">
+                        <a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+                    </li>
+                    <li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+                        <a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+                    </li>
+                    <li class="zu-top-nav-li ">
+                        <a class="zu-top-nav-link" href="/explore">发现</a>
+                    </li>
+
+                </ul>
+                <div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+                    <div class="zu-top-nav-live-inner zg-r5px">
+                        <div class="zu-top-live-icon">&nbsp;</div>
+                        <div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+                            <div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+                                <button class="zm-noti7-popup-tab-item message">
+                                    <span class="icon">消息</span>
+                                    <span class="new-noti" style="display:none;">0</span>
+                                </button>
+                                <button class="zm-noti7-popup-tab-item user">
+                                    <span class="icon">用户</span>
+                                    <span class="new-noti" style="display:none;">0</span>
+                                </button>
+                                <button class="zm-noti7-popup-tab-item thanks">
+                                    <span class="icon">赞同和感谢</span>
+                                    <span class="new-noti" style="display:none;">0</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="zm-noti7-frame-border top"></div>
+                        <div class="zm-noti7-frame">
+                            <div class="zm-noti7-content">
+                                <div class="zm-noti7-content-inner">
+                                    <div class="zm-noti7-popup-refresh" style="display:none;">
+                                        <img class="noti-spinner" src="/static/img/spinner2.gif" />
+                                    </div>
+                                    <div class="zm-noti7-content-body">
+                                        <div class="zm-noti7-popup-loading">
+                                            <img class="noti-spinner" src="/static/img/noti-loading.gif" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="zm-noti7-content" style="display:none;">
+                                <div class="zm-noti7-content-inner">
+                                    <div class="zm-noti7-popup-refresh" style="display:none;">
+                                        <img class="noti-spinner" src="/static/img/spinner2.gif" />
+                                    </div>
+                                    <div class="zm-noti7-content-body">
+                                        <div class="zm-noti7-popup-loading">
+                                            <img class="noti-spinner" src="/static/img/noti-loading.gif" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="zm-noti7-content" style="display:none;">
+                                <div class="zm-noti7-content-inner">
+                                    <div class="zm-noti7-popup-refresh" style="display:none;">
+                                        <img class="noti-spinner" src="/static/img/spinner2.gif" />
+                                    </div>
+                                    <div class="zm-noti7-content-body">
+                                        <div class="zm-noti7-popup-loading">
+                                            <img class="noti-spinner" src="/static/img/noti-loading.gif" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zm-noti7-frame-border bottom"></div>
+                        <div class="zm-noti7-popup-footer">
+                            <a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+                            <a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置"><i class="zg-icon zg-icon-settings"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="topnav-noauth clearfix">
+                <li>
+                    <a href="javascript:;" class="js-signup-noauth"><i class="zg-icon zg-icon-dd-home"></i>注册知乎</a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="js-signin-noauth">登录</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="zu-global-notify" id="zh-global-message" style="display:none">
+        <div class="zg-wrap">
+            <div class="zu-global-nitify-inner">
+                <a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+                <span class="zu-global-notify-icon"></span>
+                <span class="zu-global-notify-msg"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="zu-global-notify zu-global-notify-info">
+        <div class="zg-wrap">
+            <div class="zu-global-nitify-inner">
+                <span class="zu-global-notify-icon"></span>
+                从问题 <a href="/question/21235411?nr=1">AngularJS 和 BackBoneJS 之间到底有什么优劣啊?</a> 跳转而来
+            </div>
+        </div>
+    </div>
+
+    <div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+    <div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+        <div class="zg-wrap">
+            <div class="zu-global-nitify-inner">
+                <span class="zu-global-notify-icon"></span>
+                <ul class="zu-question-notify-wrap"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+         data-urltoken="21170137">
+        <meta itemprop="isTopQuestion" content="true" />
+        <meta itemprop="visitsCount" content="24148" />
+        <div class="zu-main-content">
+            <div class="zu-main-content-inner with-indention-votebar">
+
+                <div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+                <div class="zm-tag-editor zg-section">
+                    <div class="zm-tag-editor-labels zg-clear">
+                        <a class="zm-item-tag"
+                           href="/topic/19552521"
+                           data-tip="t$b$19552521" data-token="19552521" data-topicid="769">
+                            JavaScript
+                        </a>
+                        <a class="zm-item-tag"
+                           href="/topic/19619072"
+                           data-tip="t$b$19619072" data-token="19619072" data-topicid="23011">
+                            Backbone.js
+                        </a>
+                        <a class="zm-item-tag"
+                           href="/topic/19621319"
+                           data-tip="t$b$19621319" data-token="19621319" data-topicid="23778">
+                            移动前端开发
+                        </a>
+                        <a class="zm-item-tag"
+                           href="/topic/19837063"
+                           data-tip="t$b$19837063" data-token="19837063" data-topicid="97743">
+                            AngularJS
+                        </a>
+                    </div>
+                </div>
+                <div id="zh-question-title" data-editable="true">
+                    <h2 class="zm-item-title zm-editable-content">
+                        同作为JavaScript MVC框架，Backbone和AngularJS各有什么优缺点？
+
+                    </h2>
+                </div>
+                <div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="648792" data-action="/question/detail">
+                    <div class="zm-editable-content"></div>
+
+                </div>
+                <div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+                    <div class="zm-meta-panel">
+                        <a href="#" name="addcomment" class="toggle-comment meta-item">
+                            <i class="z-icon-comment"></i>添加评论
+                        </a>
+                        <a href="#" name="share" class="share meta-item">
+                            <i class="z-icon-share"></i>分享
+                        </a>
+                    </div>
+                    <div class="panel-container">
+                    </div>
+                </div>
+                <div class="zh-answers-title clearfix">
+                    <div id="zh-answers-filter" class="answers-sorter">
+                        <span class="lbl">按投票排序</span>
+                        <a class="lbl" href="/question/21170137?sort=created">按时间排序</a>
+                        <i class="zg-icon zg-icon-double-arrow"></i>
+                    </div>
+                    <h3 data-num="10" id="zh-question-answer-num">10 个回答</h3>
+                </div>
+                <div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+                    <h3>
+                        <a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+                        答案总结
+                    </h3>
+                    <div id="zh-question-answer-summary" class="zg-section"
+                         data-resourceid="648792" data-action="/question/summary">
+                        <div class="zm-editable-content"></div>
+                    </div>
+                </div>
+                <div id="zh-question-answer-wrap" data-pagesize="20" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 21170137, &quot;pagesize&quot;: 20, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+                    <div tabindex="-1" class="zm-item-answer "
+                         itemprop="topAnswer"
+                         itemscope itemtype="http://schema.org/Answer"
+                         data-aid="2589508"
+                         data-atoken="18589858"
+                         data-collapsed="0"
+                         data-created="1377601468"
+                         data-deleted="0"
+                         data-helpful="1"
+                         data-isowner="0"
+                         data-score="103.126127326">
+                        <a class="zg-anchor-hidden" name="answer-2589508"></a>
+
+                        <div class="zm-votebar">
+                            <button class="up ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">赞同</span>
+                                <span class="count">56</span>
+                            </button>
+                            <button class="down ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">反对</span>
+                            </button>
+                        </div>
+
+                        <div class="answer-head">
+                            <div class="zm-item-answer-author-info">
+                                <h3 class="zm-item-answer-author-wrap">
+
+                                    <a data-tip="p$t$zensh"
+                                       class="zm-item-link-avatar"
+                                       href="/people/zensh">
+                                        <img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+                                             class="zm-list-avatar"
+                                             data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+                                    </a>
+
+                                    <a data-tip="p$t$zensh" href="/people/zensh">严清</a>，<strong title="AngularJS中文社区" class="zu-question-my-bio">AngularJS中文社区</strong>
+                                </h3>
+                                <a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+                            </div>
+                            <div class="zm-item-vote-info " data-votecount="56">
+                                <span class="voters">
+                                    <span class="user-block"><a data-tip="p$t$anchen-lee" href="http://www.zhihu.com/people/anchen-lee" class="zg-link" title="anchen Lee">anchen Lee</a>、</span><span class="user-block"><a data-tip="p$t$jeffen" href="http://www.zhihu.com/people/jeffen" class="zg-link" title="Jeffen">Jeffen</a>、</span><span class="user-block"><a data-tip="p$t$youngbye" href="http://www.zhihu.com/people/youngbye" class="zg-link" title="杨柏">杨柏</a></span>
+                                </span>
+
+                                <a href="javascript:;" class="more"> 等人赞同</a>
+
+                            </div>
+                        </div>
+                        <div class="zm-item-rich-text" data-resourceid="648792" data-action="/answer/content">
+                            <div class="fixed-summary zm-editable-content clearfix">
+                                <p>写了这么多AngularJS代码，可以说我对AngularJS了解比较深入了。Backbone也是一个很热门的JS框架，我通读了一下它的API文档，大概了解了他的运行机制。</p><p>Backbone很精巧，很强大。但对比AngularJS，我说说我看到的Backbone的缺点，由于接触时间短，可能会存在误解，见谅。</p><p>Backbone的Model把服务器端的数据模型映射到浏览器端，绑定数据验证机制，并与相应的REST操作绑定，这样每个数据模型都变成了独立体，方便REST操作，却限制REST的灵活性。比如我要将10个todo批量标记成已完成，它会发出10个REST请求。</p><p>Backbone的Model没有与UI视图数据绑定，而是需要在View中自行操作DOM来更新或读取UI数据，这点很奇怪。AngularJS与此相反，Model直接与UI视图绑定，Model与UI视图的关系，通过directive封装，AngularJS内置的通用directive，就能实现大部分操作了，也就是说，基本不必关心Model与UI视图的关系，直接操作Model就行了，UI视图自动更新。而Model数据验证、与服务器端的数据交互都是非常简单而自由的。</p><p>AngularJS的directive，你输入特定数据，他就能输出相应UI视图，这样的directive可以变成了一个html通用组件，比如文章编辑器组件、分页导航组件、madal组件等，在不同应用中可以直接拿来用，减少重复开发。我想，Backbone大概很难实现这样的通用组件。</p><p>Backbone的View没有把html与JavaScript解耦，要控制UI视图，实际上就是用JavaScript控制DOM，或者通过第三方模板引擎控制HTML字符串，而这些，都需要程序员在代码中用JavaScript自行实现。</p><p>AngularJS不同，写UI视图就是写正常的HTML/CSS，写逻辑控制代码就是用JavaScript操控数据（不是DOM），不同的就是增加了directive，实现DOM与数据的互动，如上所述，directive是通用组件。AngularJS只是定义了一个环境和一个数据与视图交互的机制，并提供了若干通用组件和服务，所以AngularJS开发很简单，很高效，很“原生态”。</p><p>虽然我没有真正写过桌面应用程序，但我觉得AngularJS的理念就是把WEB当作应用程序来写——Web App。反观Backbone，对于数据与UI视图的互动并没有大的改进，仅仅提供了数据变更事件通知，它侧重于REST数据交互了，而REST数据交互本来是很容易处理的。</p><br><p>注：<a href="http://www.teambition.com" class=" wrap external" target="_blank" rel="nofollow noreferrer">http://www.teambition.com/<i class="icon-external"></i></a> 使有用Backbone，以上内容也算我与teambition团队的一次交流，有关注Backbone的同学可以可以与他们交流</p>
+
+                            </div>
+                        </div>
+                        <a class="zg-anchor-hidden ac" name="2589508-comment"></a>
+                        <div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+                            <div class="zm-meta-panel">
+                                <span class="answer-date-link-wrap">
+                                    <a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-08-27" target="_blank" href="/question/21170137/answer/18589858">编辑于 2013-08-27</a>
+                                </span>
+                                <a href="#" name="addcomment" class=" meta-item toggle-comment">
+                                    <i class="z-icon-comment"></i>10 条评论
+                                </a>
+
+                                <a href="#" class="meta-item zu-autohide" name="thanks"><i class="z-icon-thank"></i>感谢</a>
+
+                                <a href="#" class="meta-item zu-autohide" name="share">
+                                    <i class="z-icon-share"></i>分享
+                                </a>
+                                <a href="#" class="meta-item zu-autohide" name="favo">
+                                    <i class="z-icon-collect"></i>收藏
+                                </a>
+
+
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+                                <span class="copyright zu-autohide"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div tabindex="-1" class="zm-item-answer "
+                         itemscope itemtype="http://schema.org/Answer"
+                         data-aid="2098033"
+                         data-atoken="17407030"
+                         data-collapsed="0"
+                         data-created="1370598508"
+                         data-deleted="0"
+                         data-helpful="1"
+                         data-isowner="0"
+                         data-score="20.1267259669">
+                        <a class="zg-anchor-hidden" name="answer-2098033"></a>
+
+                        <div class="zm-votebar">
+                            <button class="up ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">赞同</span>
+                                <span class="count">10</span>
+                            </button>
+                            <button class="down ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">反对</span>
+                            </button>
+                        </div>
+
+                        <div class="answer-head">
+                            <div class="zm-item-answer-author-info">
+                                <h3 class="zm-item-answer-author-wrap">
+
+                                    <a data-tip="p$t$morlay"
+                                       class="zm-item-link-avatar"
+                                       href="/people/morlay">
+                                        <img src="http://pic3.zhimg.com/f81e1f3e6_s.jpg"
+                                             class="zm-list-avatar"
+                                             data-source="http://pic3.zhimg.com/f81e1f3e6_s.jpg" />
+                                    </a>
+
+                                    <a data-tip="p$t$morlay" href="/people/morlay">墨磊</a>，<strong title="不折腾会死星人 // github.com/morlay" class="zu-question-my-bio">不折腾会死星人 // <a href="http://github.com/morlay" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">github.com/morlay</span><span class="invisible"></span><i class="icon-external"></i></a></strong>
+                                </h3>
+                                <a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+                            </div>
+                            <div class="zm-item-vote-info " data-votecount="10">
+                                <span class="voters">
+                                    <span class="user-block"><a data-tip="p$t$times" href="http://www.zhihu.com/people/times" class="zg-link" title="仲大骏">仲大骏</a>、</span><span class="user-block"><a data-tip="p$t$tommy-fok" href="http://www.zhihu.com/people/tommy-fok" class="zg-link" title="Tommy Fok">Tommy Fok</a>、</span><span class="user-block"><a data-tip="p$t$dmyang" href="http://www.zhihu.com/people/dmyang" class="zg-link" title="dmyang">dmyang</a></span>
+                                </span>
+
+                                <a href="javascript:;" class="more"> 等人赞同</a>
+
+                            </div>
+                        </div>
+                        <div class="zm-item-rich-text" data-resourceid="648792" data-action="/answer/content">
+                            <div class="fixed-summary zm-editable-content clearfix">
+                                问题好大，简单的说说折腾的感受吧。<br>至于优缺点，其实是双刃剑吧。<br><br><b># Backbone</b><br><b><br>## 轻量、随性</b><br><br>可以更自由的和其他类库搭配使用，不太要求特别固定的模式，<br>但要实现完整应用，需要写更多代码或者三方库的依赖。<br><blockquote>Backbone's only hard dependency is <a href="http://underscorejs.org/" class=" wrap external" target="_blank" rel="nofollow noreferrer">Underscore.js<i class="icon-external"></i></a> ( &gt;= 1.4.3). <br>For RESTful persistence, history support via <a href="http://backbonejs.org/#Router" class=" wrap external" target="_blank" rel="nofollow noreferrer">Backbone.Router<i class="icon-external"></i></a> and DOM manipulation with <a href="http://backbonejs.org/#View" class=" wrap external" target="_blank" rel="nofollow noreferrer">Backbone.View<i class="icon-external"></i></a>, include <a href="https://github.com/douglascrockford/JSON-js" class=" wrap external" target="_blank" rel="nofollow noreferrer">json2.js<i class="icon-external"></i></a>, and either <a href="http://jquery.com/" class=" wrap external" target="_blank" rel="nofollow noreferrer">jQuery<i class="icon-external"></i></a> ( &gt;= 1.7.0) or <a href="http://zeptojs.com/" class=" wrap external" target="_blank" rel="nofollow noreferrer">Zepto<i class="icon-external"></i></a>.</blockquote>—— <a href="http://backbonejs.org/" class=" wrap external" target="_blank" rel="nofollow noreferrer">Backbone.js<i class="icon-external"></i></a><br><br><br><b># AngularJS</b><br><br><b>## 功能全面</b><br><br>更快的开发，<br>unstable 版本带有 angular.mobile ，<br>开发移动应用也就多引用个很小的 js 文件<br>（夸张了，不过这个直接把 ng-click ng-mousedown ng-mouseup 等换成了 touch 事件，<br>省去了很多事。）<br><br>而且，自带了一个 jQLite，常用的 DOM 方法可以同 jQurey 那样使用。<br>在 directive 的自定义中使用非常多。<br><br>虽然块头更大，但能写更少的代码。<br><br><b>## 模式化</b><br><div class="highlight">
+                                    <pre><code class="language-text">.value(name, value) 
+.constant(name, value)
+.factory(name, providerFunction)
+.service(name, constructor)
+.provider(name, providerType)
+</code></pre>
+                                </div><br>让人很容易联系到设计模式里的东西。<br>用上面这些建立好不同的模型或者方法库，以供 .directive 和 .controller 使用。<div class="highlight">
+                                    <pre><code class="language-text">function TestCtrl($scope,name) {};
+</code></pre>
+                                </div><br><b>## directive</b><br><br>不得不说这是 AngularJS 的一大特色， 用自己想用的任何方式来构建 HTML，而且高度复用。<br>更多参考：<a href="http://angular-ui.github.io/bootstrap/" class=" wrap external" target="_blank" rel="nofollow noreferrer">Angular directives for Twitter's Bootstrap<i class="icon-external"></i></a><br><br><b>## 填料箱</b><br><br>虽然提供了不错的模式，但是依然允许混搭。<br>自由度虽然也有，但是否利于维护就不好说了。<br><a href="http://angularjs.org/#todo-js" class=" wrap external" target="_blank" rel="nofollow noreferrer">AngularJS — Superheroic JavaScript MVW Framework<i class="icon-external"></i></a><br>比如首页给的这方式，<br><div class="highlight">
+                                    <pre><code class="language-text">function TodoCtrl($scope) {};
+</code></pre>
+                                </div>直接这么写，压缩的时候就得报错了。除非：<br><div class="highlight">
+                                    <pre><code class="language-text">function TodoCtrl($scope) {};
+TodoCtrl.$inject = ['$scope'];
+</code></pre>
+                                </div>或者（用于模块化开发，参考 <a href="https://github.com/angular-ui/bootstrap" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">github.com/angular-ui/b</span><span class="invisible">ootstrap</span><span class="ellipsis"></span><i class="icon-external"></i></a> 的源码）<br><div class="highlight">
+                                    <pre><code class="language-text">angular.module('appModOne',[])
+.controller('TodoCtrl',['$scope',function($scope){
+}]);
+</code></pre>
+                                </div><br>相比从全局里去找接口，用 AngularJS 给的这些方法管理更方便点。<br><br><b>## 兼容性</b><br><br>部分方法 IE 不支持（嗯，又是 IE），比如这样<br><a href="http://angular-ui.github.io/bootstrap/#/progressbar" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">angular-ui.github.io/bo</span><span class="invisible">otstrap/#/progressbar</span><span class="ellipsis"></span><i class="icon-external"></i></a><br><br>还有别的，其实都差不多了。感觉上。<br><br>AngularJS 写得挺多，也许是折腾的时间比 Backbone 长吧，更多关于 Backbone 由前辈们补充吧。<br>总之，这两者都颠覆了我对前端的理解。<br>还是有太多的东西要折腾。
+                                <a href="/question/21170137/answer/17407030" class="toggle-expand">显示全部</a>
+                                <div class="fixed-summary-mask"></div>
+                            </div>
+                        </div>
+                        <a class="zg-anchor-hidden ac" name="2098033-comment"></a>
+                        <div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+                            <div class="zm-meta-panel">
+                                <span class="answer-date-link-wrap">
+                                    <a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-06-07" target="_blank" href="/question/21170137/answer/17407030">编辑于 2013-06-07</a>
+                                </span>
+                                <a href="#" name="addcomment" class=" meta-item toggle-comment">
+                                    <i class="z-icon-comment"></i>1 条评论
+                                </a>
+
+                                <a href="#" class="meta-item zu-autohide" name="thanks"><i class="z-icon-thank"></i>感谢</a>
+
+                                <a href="#" class="meta-item zu-autohide" name="share">
+                                    <i class="z-icon-share"></i>分享
+                                </a>
+                                <a href="#" class="meta-item zu-autohide" name="favo">
+                                    <i class="z-icon-collect"></i>收藏
+                                </a>
+
+
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+                                <span class="copyright zu-autohide"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div tabindex="-1" class="zm-item-answer "
+                         itemscope itemtype="http://schema.org/Answer"
+                         data-aid="7244258"
+                         data-atoken="29651359"
+                         data-collapsed="0"
+                         data-created="1408901204"
+                         data-deleted="0"
+                         data-helpful="1"
+                         data-isowner="0"
+                         data-score="12.123992531">
+                        <a class="zg-anchor-hidden" name="answer-7244258"></a>
+
+                        <div class="zm-votebar">
+                            <button class="up ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">赞同</span>
+                                <span class="count">6</span>
+                            </button>
+                            <button class="down ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">反对</span>
+                            </button>
+                        </div>
+
+                        <div class="answer-head">
+                            <div class="zm-item-answer-author-info">
+                                <h3 class="zm-item-answer-author-wrap">
+
+                                    <a data-tip="p$t$inaugust"
+                                       class="zm-item-link-avatar"
+                                       href="/people/inaugust">
+                                        <img src="http://pic1.zhimg.com/09eb1cd00_s.jpg"
+                                             class="zm-list-avatar"
+                                             data-source="http://pic1.zhimg.com/09eb1cd00_s.jpg" />
+                                    </a>
+
+                                    <a data-tip="p$t$inaugust" href="/people/inaugust">董航</a>，<strong title="我是一朵云，飘啊飘！" class="zu-question-my-bio">我是一朵云，飘啊飘！</strong>
+                                </h3>
+                                <a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+                            </div>
+                            <div class="zm-item-vote-info " data-votecount="6">
+                                <span class="voters">
+                                    <span class="user-block"><a data-tip="p$t$xu-da-xiong" href="http://www.zhihu.com/people/xu-da-xiong" class="zg-link" title="许大熊">许大熊</a>、</span><span class="user-block"><a data-tip="p$t$lrain" href="http://www.zhihu.com/people/lrain" class="zg-link" title="LRain">LRain</a>、</span><span class="user-block">知乎用户</span>
+                                </span>
+
+                                <a href="javascript:;" class="more"> 等人赞同</a>
+
+                            </div>
+                        </div>
+                        <div class="zm-item-rich-text" data-resourceid="648792" data-action="/answer/content">
+                            <div class="fixed-summary zm-editable-content clearfix">
+                                很多人觉得AngularJS要先进于Backbone，我不认同。<br><br>Backbone正如他的名字-”脊椎“，他是一个小巧灵活的库，是个不错的工具，适合那些有一定Web基础，喜欢原生JS，自己去操作DOM（因为它没有DOM Binding），写一些框架、库、插件的童鞋。它的特点是灵活，并不全包。只是帮你实现一个MVC模式的框架，更多的还需要自己去实现。但是我并不认为这是落后。<br><br>而AngularJS，真的很强大，可以方便我们快速开发大型Web APP。他的很多概念（比如双向绑定、依赖注入等），也很流行。因此，我更习惯称作它为一个工具集，它把什么都给你”承包“了。是的，你专心写逻辑就可以了。很适合快速搭建应用，学习曲线也较为平缓。但是问题是，你要受制于整个框架。如果你觉得你的程序，使用AngularJS完全可以实现，那么AngularJS确实可以帮你省很多力气。<br><br>Backbone工具，AngularJS（Ember.js）工具集。看你的需求。
+
+
+                            </div>
+                        </div>
+                        <a class="zg-anchor-hidden ac" name="7244258-comment"></a>
+                        <div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+                            <div class="zm-meta-panel">
+                                <span class="answer-date-link-wrap">
+                                    <a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-08-25" target="_blank" href="/question/21170137/answer/29651359">编辑于 2014-08-25</a>
+                                </span>
+                                <a href="#" name="addcomment" class=" meta-item toggle-comment">
+                                    <i class="z-icon-comment"></i>添加评论
+                                </a>
+
+                                <a href="#" class="meta-item zu-autohide" name="thanks"><i class="z-icon-thank"></i>感谢</a>
+
+                                <a href="#" class="meta-item zu-autohide" name="share">
+                                    <i class="z-icon-share"></i>分享
+                                </a>
+                                <a href="#" class="meta-item zu-autohide" name="favo">
+                                    <i class="z-icon-collect"></i>收藏
+                                </a>
+
+
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+                                <span class="copyright zu-autohide"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div tabindex="-1" class="zm-item-answer "
+                         itemscope itemtype="http://schema.org/Answer"
+                         data-aid="4165068"
+                         data-atoken="22407024"
+                         data-collapsed="0"
+                         data-created="1392201427"
+                         data-deleted="0"
+                         data-helpful="1"
+                         data-isowner="0"
+                         data-score="6.12503850725">
+                        <a class="zg-anchor-hidden" name="answer-4165068"></a>
+
+                        <div class="zm-votebar">
+                            <button class="up ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">赞同</span>
+                                <span class="count">5</span>
+                            </button>
+                            <button class="down ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">反对</span>
+                            </button>
+                        </div>
+
+                        <div class="answer-head">
+                            <div class="zm-item-answer-author-info">
+                                <h3 class="zm-item-answer-author-wrap">
+
+                                    <a data-tip="p$t$wuvist"
+                                       class="zm-item-link-avatar"
+                                       href="/people/wuvist">
+                                        <img src="http://pic3.zhimg.com/9af924a9da8e098aac686f579ca96b36_s.jpg"
+                                             class="zm-list-avatar"
+                                             data-source="http://pic3.zhimg.com/9af924a9da8e098aac686f579ca96b36_s.jpg" />
+                                    </a>
+
+                                    <a data-tip="p$t$wuvist" href="/people/wuvist">翁伟</a>，<strong title="热爱美食的程序员" class="zu-question-my-bio">热爱美食的程序员</strong>
+                                </h3>
+                                <a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+                            </div>
+                            <div class="zm-item-vote-info " data-votecount="5">
+                                <span class="voters">
+                                    <span class="user-block">知乎用户、</span><span class="user-block"><a data-tip="p$t$tsingson" href="http://www.zhihu.com/people/tsingson" class="zg-link" title="tsingson qin">tsingson qin</a>、</span><span class="user-block"><a data-tip="p$t$vincent_lui" href="http://www.zhihu.com/people/vincent_lui" class="zg-link" title="Lui Vincent">Lui Vincent</a></span>
+                                </span>
+
+                                <a href="javascript:;" class="more"> 等人赞同</a>
+
+                            </div>
+                        </div>
+                        <div class="zm-item-rich-text" data-resourceid="648792" data-action="/answer/content">
+                            <div class="fixed-summary zm-editable-content clearfix">
+                                读过两者的源码，各做过一小项目。<br><br>backbone简单，明显没有bug。angular庞大，没有明显bug（我做项目的时候遇到了好几个bug）。<br><br>我说backbone简单，是贬义的，它只是提供了核心的玩意，要完成项目需要的其它很多很多东西它都没有，需要另外找解决方案，烦死了。<br><br>我说angular庞大，是褒义的，它提供了要完成一个项目所需的几乎所有东西，用angular就可以，不用再找别的。<br><br>但是，angular有一个致命缺点：它几乎无法与别的方案并存，往往必须angular到底。（这是由angular独特的模板系统决定的。）<br><br>猜想这也是angular庞大的原因。<br><br>所以，如果项目的需求都可以用angular解决，那么我会推荐angular。<br><br>我不喜欢angular的模板，如果有什么框架是把angular的模板剥离掉，而剩下 routing / DI / $q等等东西，我会很喜欢。<br><br>backbone能做的事情虽然做得很好，但它做的事情实在是太少了，给我感觉是“上个世纪”的技术，除非已经用得很熟，否则还是尽量考虑别的方案吧～比方说：<a href="http://facebook.github.io/react/" class=" wrap external" target="_blank" rel="nofollow noreferrer">React | A JavaScript library for building user interfaces<i class="icon-external"></i></a><br><br>当然，backbone跟react也是可以一起使用的。
+
+
+                            </div>
+                        </div>
+                        <a class="zg-anchor-hidden ac" name="4165068-comment"></a>
+                        <div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+                            <div class="zm-meta-panel">
+                                <span class="answer-date-link-wrap">
+                                    <a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-02-12" target="_blank" href="/question/21170137/answer/22407024">编辑于 2014-02-13</a>
+                                </span>
+                                <a href="#" name="addcomment" class=" meta-item toggle-comment">
+                                    <i class="z-icon-comment"></i>4 条评论
+                                </a>
+
+                                <a href="#" class="meta-item zu-autohide" name="thanks"><i class="z-icon-thank"></i>感谢</a>
+
+                                <a href="#" class="meta-item zu-autohide" name="share">
+                                    <i class="z-icon-share"></i>分享
+                                </a>
+                                <a href="#" class="meta-item zu-autohide" name="favo">
+                                    <i class="z-icon-collect"></i>收藏
+                                </a>
+
+
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+                                <span class="copyright zu-autohide"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div tabindex="-1" class="zm-item-answer "
+                         itemscope itemtype="http://schema.org/Answer"
+                         data-aid="7553409"
+                         data-atoken="30422654"
+                         data-collapsed="0"
+                         data-created="1410442458"
+                         data-deleted="0"
+                         data-helpful="1"
+                         data-isowner="0"
+                         data-score="-0.876093634967">
+                        <a class="zg-anchor-hidden" name="answer-7553409"></a>
+
+                        <div class="zm-votebar">
+                            <button class="up ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">赞同</span>
+                                <span class="count">0</span>
+                            </button>
+                            <button class="down ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">反对</span>
+                            </button>
+                        </div>
+
+                        <div class="answer-head">
+                            <div class="zm-item-answer-author-info">
+                                <h3 class="zm-item-answer-author-wrap">
+
+                                    <a data-tip="p$t$suhaotian"
+                                       class="zm-item-link-avatar"
+                                       href="/people/suhaotian">
+                                        <img src="http://pic2.zhimg.com/80d2d6881_s.jpg"
+                                             class="zm-list-avatar"
+                                             data-source="http://pic2.zhimg.com/80d2d6881_s.jpg" />
+                                    </a>
+
+                                    <a data-tip="p$t$suhaotian" href="/people/suhaotian">suhaotian</a>，<strong title="逛Quora，长姿势" class="zu-question-my-bio">逛Quora，长姿势</strong>
+                                </h3>
+                                <a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+                            </div>
+                            <div class="zm-item-vote-info empty" data-votecount="0">
+
+                            </div>
+                        </div>
+                        <div class="zm-item-rich-text" data-resourceid="648792" data-action="/answer/content">
+                            <div class="fixed-summary zm-editable-content clearfix">
+                                angularJS就像google的polymer,backbone.js就像facebook的react.js  <br>大而杂 .推荐backbone.js,他给你最大的选择 .不限制你的思维.
+
+
+                            </div>
+                        </div>
+                        <a class="zg-anchor-hidden ac" name="7553409-comment"></a>
+                        <div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+                            <div class="zm-meta-panel">
+                                <span class="answer-date-link-wrap">
+                                    <a class="answer-date-link meta-item" target="_blank" href="/question/21170137/answer/30422654">发布于 2014-09-11</a>
+                                </span>
+                                <a href="#" name="addcomment" class=" meta-item toggle-comment">
+                                    <i class="z-icon-comment"></i>添加评论
+                                </a>
+
+                                <a href="#" class="meta-item zu-autohide" name="thanks"><i class="z-icon-thank"></i>感谢</a>
+
+                                <a href="#" class="meta-item zu-autohide" name="share">
+                                    <i class="z-icon-share"></i>分享
+                                </a>
+                                <a href="#" class="meta-item zu-autohide" name="favo">
+                                    <i class="z-icon-collect"></i>收藏
+                                </a>
+
+
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+                                <span class="copyright zu-autohide"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div tabindex="-1" class="zm-item-answer "
+                         itemscope itemtype="http://schema.org/Answer"
+                         data-aid="7852897"
+                         data-atoken="31169821"
+                         data-collapsed="0"
+                         data-created="1411954091"
+                         data-deleted="0"
+                         data-helpful="1"
+                         data-isowner="0"
+                         data-score="0.123821303313">
+                        <a class="zg-anchor-hidden" name="answer-7852897"></a>
+
+                        <div class="zm-votebar">
+                            <button class="up ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">赞同</span>
+                                <span class="count">2</span>
+                            </button>
+                            <button class="down ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">反对</span>
+                            </button>
+                        </div>
+
+                        <div class="answer-head">
+                            <div class="zm-item-answer-author-info">
+                                <h3 class="zm-item-answer-author-wrap">
+
+                                    <a data-tip="p$t$uojo"
+                                       class="zm-item-link-avatar"
+                                       href="/people/uojo">
+                                        <img src="http://pic1.zhimg.com/b026ad47c_s.jpg"
+                                             class="zm-list-avatar"
+                                             data-source="http://pic1.zhimg.com/b026ad47c_s.jpg" />
+                                    </a>
+
+                                    <a data-tip="p$t$uojo" href="/people/uojo">王翀</a>，<strong title="有志之士" class="zu-question-my-bio">有志之士</strong>
+                                </h3>
+                                <a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+                            </div>
+                            <div class="zm-item-vote-info " data-votecount="2">
+                                <span class="voters">
+                                    <span class="user-block"><a data-tip="p$t$cloud-demon-19" href="http://www.zhihu.com/people/cloud-demon-19" class="zg-link" title="亦俊">亦俊</a>、</span><span class="user-block"><a data-tip="p$t$du-gu-qiu-dao" href="http://www.zhihu.com/people/du-gu-qiu-dao" class="zg-link" title="独孤求道">独孤求道</a></span>
+                                </span>
+
+                                <span>赞同</span>
+
+                            </div>
+                        </div>
+                        <div class="zm-item-rich-text" data-resourceid="648792" data-action="/answer/content">
+                            <div class="fixed-summary zm-editable-content clearfix">
+                                听了大家的回答，给你们总结下！<br>用A的人表示你是个懒人，技术员不写工具集，写逻辑写成产品经理呀！<br>用B的表示你是一个程序员！
+
+
+                            </div>
+                        </div>
+                        <a class="zg-anchor-hidden ac" name="7852897-comment"></a>
+                        <div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+                            <div class="zm-meta-panel">
+                                <span class="answer-date-link-wrap">
+                                    <a class="answer-date-link meta-item" target="_blank" href="/question/21170137/answer/31169821">发布于 2014-09-29</a>
+                                </span>
+                                <a href="#" name="addcomment" class=" meta-item toggle-comment">
+                                    <i class="z-icon-comment"></i>2 条评论
+                                </a>
+
+                                <a href="#" class="meta-item zu-autohide" name="thanks"><i class="z-icon-thank"></i>感谢</a>
+
+                                <a href="#" class="meta-item zu-autohide" name="share">
+                                    <i class="z-icon-share"></i>分享
+                                </a>
+                                <a href="#" class="meta-item zu-autohide" name="favo">
+                                    <i class="z-icon-collect"></i>收藏
+                                </a>
+
+
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+                                <span class="copyright zu-autohide"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div tabindex="-1" class="zm-item-answer "
+                         itemscope itemtype="http://schema.org/Answer"
+                         data-aid="6018974"
+                         data-atoken="26758502"
+                         data-collapsed="0"
+                         data-created="1402581702"
+                         data-deleted="0"
+                         data-helpful="1"
+                         data-isowner="0"
+                         data-score="47.1236807428">
+                        <a class="zg-anchor-hidden" name="answer-6018974"></a>
+
+                        <div class="zm-votebar">
+                            <button class="up ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">赞同</span>
+                                <span class="count">25</span>
+                            </button>
+                            <button class="down ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">反对</span>
+                            </button>
+                        </div>
+
+                        <div class="answer-head">
+                            <div class="zm-item-answer-author-info">
+                                <h3 class="zm-item-answer-author-wrap">
+
+                                    <a data-tip="p$t$cloud-demon-19"
+                                       class="zm-item-link-avatar"
+                                       href="/people/cloud-demon-19">
+                                        <img src="http://pic2.zhimg.com/715a6dd686b5daa423ee5ca13dd06549_s.jpg"
+                                             class="zm-list-avatar"
+                                             data-source="http://pic2.zhimg.com/715a6dd686b5daa423ee5ca13dd06549_s.jpg" />
+                                    </a>
+
+                                    <a data-tip="p$t$cloud-demon-19" href="/people/cloud-demon-19">亦俊</a>，<strong title="Programmer http://demonc.com" class="zu-question-my-bio">Programmer <a href="http://demonc.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">demonc.com</span><span class="invisible"></span><i class="icon-external"></i></a></strong>
+                                </h3>
+                                <a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+                            </div>
+                            <div class="zm-item-vote-info " data-votecount="25">
+                                <span class="voters">
+                                    <span class="user-block"><a data-tip="p$t$lance-john" href="http://www.zhihu.com/people/lance-john" class="zg-link" title="Lance John">Lance John</a>、</span><span class="user-block"><a data-tip="p$t$zhaoyistyle" href="http://www.zhihu.com/people/zhaoyistyle" class="zg-link" title="孟祥路">孟祥路</a>、</span><span class="user-block"><a data-tip="p$t$matt-lin-89" href="http://www.zhihu.com/people/matt-lin-89" class="zg-link" title="matt lin">matt lin</a></span>
+                                </span>
+
+                                <a href="javascript:;" class="more"> 等人赞同</a>
+
+                            </div>
+                        </div>
+                        <div class="zm-item-rich-text" data-resourceid="648792" data-action="/answer/content">
+                            <div class="fixed-summary zm-editable-content clearfix">
+                                首先 <b>Backbone</b> 没有<b> AngularJS </b>那么容易上手. 而且作者并没有想让Backbone草根化的意思.<br><br><b>Backbone 比喻成战斗机</b>. 看上去更像是真正的MVC框架, model-views-controller(collection).<br>书写Backbone的时候模型, 集合数据, 视图都是分开的, 逻辑很清晰. js模版的好处自然不用多说.Backbone实际上是<b> (( 为了去除掉以往 jQuery 过分依赖DOM来写业务逻辑, 导致后期代码逻辑混乱,DOM和JS上紧耦合. 函数内部层层调用, 甚至还会出现各种夸多个文件层层调用.使得业务最终变得难以维护,越来越臃肿,功能耦合度越高.修改起来就越容易导致其他功能出现难以预料的BUG . )), 而Backbone则很大程度上解除DOM和JavaScript的耦合关系. 更接近MVC的真谛. </b>但是Backbone只提供基本的工具. 没有进行更加复杂的封装.<br><b>Backbone 的优势 </b>:<br><ol><li> 体积小, 制定性很强.<br></li><li>提供underscore工具函数, 按照每个程序员不同的Style来处理数据, 或者你自己封装</li><li>提供自定义模版引擎, 也就是说, 你想怎么渲染, 就怎么渲染</li><li>提供完整的RESTful 风格API.想怎么写就怎么写. </li><li>模型 , 集合, 视图分离. 逻辑清晰. 只要是个稍微懂规范的程序员, 都可以写出不错的逻辑结构. </li></ol><br><b>AngularJS 比喻成坦克.  </b>看上去更加像是弥补HTML构建应用的不足(官方自己这样描述的).把JS逻辑和HTML标签紧密结合在一起, 通过依赖注入, 来实现开发模块化. AngularJS的确提供了很多的遍历, 封装了很多复杂逻辑, 双向数据绑定. 逻辑区域划分. 所以它是重武器.<br><b>------------------------------------- 插入 写在这里 -------------------------------------------</b><br><b>Pass :  关于Google 为什么力推 AngularJS? 而不推MVC的鼻祖Backbone</b><br>  首先是兼容性方便, <b>Backbone</b> 坚持支持IE6以上的浏览器, 原则就是希望大部分浏览器都可以跑Backbone. Angular 在这方面就截然相反了. Angular 由于库本身非常庞大, 模块很多, 为了不让库变的臃肿, 在 <b>AngularJS</b> 1.3 之后就不支持IE9以下的浏览器了( IE9上也有很多问题 ). 也就是说, AngularJS 开发就是针对一些高端的APP. 高端的应用, 换而言之, 一般来说 一些懂一点电脑的用户都知道升级浏览器, 而其中Google 的体验最好.<br>所以Google 首先力推Angular , 你看不了网站, 被提示版本过低,要么不以后都不看, 要么你会选择升级浏览器, 或者换浏览器, 我想大多数都会升浏览器.<br>AngularJS 对一些技术含量比较低的搜索引擎来说非常不友好, 没有什么原因. 像Google 的搜索技术已经摇摇领先全世界了, 而且爬虫可以识别JS渲染之后的数据. 这也是为什么Google力推Angular的原因之一/<br><b>------------------------------------- 小段结束 -------------------------------------------</b><b><br>AngularJS 的优势:</b><br><ol><li>容易上手, 必须了解依赖注入</li><li>少量代码就可以完成双向数据绑定. 自动同步改变数据. Backbone需要自己手动</li><li>和HTML结合在一起写逻辑. HTML结构有清晰的划分. </li><li>脏值检测. </li><li>不依赖其他第三方库</li></ol><br><b>1.Backbone 和 AngularJS 比实际上主要优势是在移动端</b>，<b>还有它的兼容性</b>， <b>Backbone 组合兼容IE6 - IE11 后现代浏览器都没问题。 AngularJS 撑死就兼容到了IE8</b>，还有很多功能在IE8上都有问题。 而且AngularJS通过对标签添加自定义属性 和 混入模板 来执行操作。所以对于搜索引擎而言， 非常不友好， <b>无论你是通过混入模板的方式 如{{ item.data }}  还是通过自定义属性 ng-model = “item.data” 来给你标签绑定模型。搜索引擎都无法读取到你标签内部真实渲染后的数据。而读取到{{ item.data }} 这样的模板.(大多数爬虫都是忽略掉页面js的影响的.) . 对SEO很不利。</b><br><br><br><b>2.Backbone 和 AngularJS 体积上来看， 并没有什么优势可言，</b>（不算站点开启了gzip） 一个表面上<b>压缩过的AngularJS 大概是101k -120k </b>（没有压缩的开发者版是800K以上，1.2.X版本）. 不需要依赖什么其他的js库。<br>而Backbone 依赖 Underscore.js  压缩后 Backbone + Underscore = 20k + 14k = 34k ～ 36k的样子。 别高兴的太早的， Backbone 还需要引入一个核心库。类似于jQuery这样的。 PC开发时，引入一个压缩过的jQuery1.11.1 是101k～105k，不兼容IE6 7 8 引入压缩后的 jQuery 2.0以上版本是 89K ～ 94k。 所以大小加起来 <b>Backbone + Underscore + jQuery = 130k ～ 145k 。</b><br>如果是移动端的开发，不需要引入jQuery ，而是使用Zepto的话。Backbone组合的大小就骤降到了 44k～50k. 这个时候Backbone在移动端的优势就体现出来了。<br><b>而这样一来. Backbone + Underscore + jQuery(or Zepto) 就比一个AngularJS 多出了2 次HTTP请求.</b><br><br><br><b>3. 这里注意一下, Backbone自己描述是非必要! 非必要!依赖jQuery 和 Zepto. 实际上它没了jQuery 它的View视图就会各种出错, 所以说白了, 他自己就跟jQuery绑在了一起. 要换其他DOM库你还得自己操作,老版本的Backbone还根本就没有提供你改库的权利.</b><br><b>Backbone 表面说不依赖jQuery. 实际上.... 呵呵, 你懂的, 没有jQuery你视图怎么绑定在DOM上? el 根本就不支持类似于 document.getElementByxxxx这样的获取DOM节点.所以我想说, 你如果不想在项目里搞太多库, 找AngularJS. Backbone进去了你就必须用个jQuery!<br></b><br><b>如果有Ruby开发经验的人就知道, Backbone实际上是把Ruby on Rails给放到前端来了,Ruby程序员对Backbone的结构会是再了解不过了.</b><br><br><b>1.Backbone</b>的实例非常少.冰山一角.<br><b>2.Backbone</b>是一个Framework,而不是个Library.<br><b>3.Backbone</b>只提供了工具函数 small、simple、flexible , make sense. 也就是它和jQuery不太一样的地方,不是<b>"write less , do more"</b><br><b>4.Backbone</b>并没有减少代码的编写量,用不好反而增加不少工作量, 一个原本看似简单的功能,用Backbone现实起来看起来总感觉会很别扭. 所以用不好的人就是会<b>"write more. do less"</b><br><b>5.Backbone能不能发挥它的极致完全取决于使用者的水平, 所以作者对FrameWork理解是: "a framework calls you, you call a library"</b><br><br><br><b>对于一个新手而言, 不具备一定的原生JavaScript功底是很难驾驭Backbone, 仅仅局限于会用几个$符号来是完全不能理解Backbone的哲学的.<br></b><br><b>Backbone</b>到目前为止都没有完整的中文文档, 之前有个人翻译了0.5版本的中文文档(基本可以说他没有翻译...), 但是目前Backbone已经是1.0版本以上了. 比之前新增了不少的功能.  可以说, 想学的人,就算你看得懂英文, 看得懂API, 没有实例, 你也不知道怎么样应用. 市面上的书籍也非常少.\<br>而能把Backbone发挥到极致的, 一般都是老外, 比如说,著名的USATODAY就使用了Backbone. 你很难想象一个全美大型的新闻网站是一个Backbone打造的<b>SPA (注: SPA在国外的应用已经非常普遍了, 见怪不怪,反观国内Web技术可以说还是落后人家5-6年</b><b>)</b><br><a href="http://www.usatoday.com/" class=" wrap external" target="_blank" rel="nofollow noreferrer">USA TODAY: Latest World and US News<i class="icon-external"></i></a><br><br><b>从 Backbone在GitHub 上的18258个Star就足够证明它在国外的地位. (注:</b><b><a href="https://github.com/jashkenas" class=" wrap external" target="_blank" rel="nofollow noreferrer">Jeremy Ashkenas<i class="icon-external"></i></a> 08年入驻GitHub. 非常深厚的原生JavaScript背景.</b><b>)</b><br><br>反观<b> AngularJS , </b>中文文档不少, 网上也有不少实例, 上手较Backbone来说要容易一些.<b> 而且AngularJS 没有必要强制依赖其他库.而Backbone本身就依赖作者<a href="https://github.com/jashkenas" class=" wrap external" target="_blank" rel="nofollow noreferrer"> Jeremy Ashkenas<i class="icon-external"></i></a> 自己开发的另外一个JS工具包UnderScore 可以说你想要学好Backbone, 就不得不去了解和学习UnderScore. 而UnderScore总共有60多个针对数组,集合,函数操作的Method. 只有在项目中实践了才可以说真正理解了UnderScore的用途. 这也造成了 Backbone 学习曲线陡峭</b>, 尤其是对于那些本身对MVC就不了解的新手来说, Model, Collection 理解起来可以说是晦涩难懂.
+                                <a href="/question/21170137/answer/26758502" class="toggle-expand">显示全部</a>
+                                <div class="fixed-summary-mask"></div>
+                            </div>
+                        </div>
+                        <a class="zg-anchor-hidden ac" name="6018974-comment"></a>
+                        <div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+                            <div class="zm-meta-panel">
+                                <span class="answer-date-link-wrap">
+                                    <a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-06-12" target="_blank" href="/question/21170137/answer/26758502">编辑于 2014-10-28</a>
+                                </span>
+                                <a href="#" name="addcomment" class=" meta-item toggle-comment">
+                                    <i class="z-icon-comment"></i>7 条评论
+                                </a>
+
+                                <a href="#" class="meta-item zu-autohide" name="thanks"><i class="z-icon-thank"></i>感谢</a>
+
+                                <a href="#" class="meta-item zu-autohide" name="share">
+                                    <i class="z-icon-share"></i>分享
+                                </a>
+                                <a href="#" class="meta-item zu-autohide" name="favo">
+                                    <i class="z-icon-collect"></i>收藏
+                                </a>
+
+
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+                                <span class="copyright zu-autohide"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div tabindex="-1" class="zm-item-answer "
+                         itemscope itemtype="http://schema.org/Answer"
+                         data-aid="10428280"
+                         data-atoken="37593322"
+                         data-collapsed="0"
+                         data-created="1421679753"
+                         data-deleted="0"
+                         data-helpful="1"
+                         data-isowner="0"
+                         data-score="6.12330111135">
+                        <a class="zg-anchor-hidden" name="answer-10428280"></a>
+
+                        <div class="zm-votebar">
+                            <button class="up ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">赞同</span>
+                                <span class="count">3</span>
+                            </button>
+                            <button class="down ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">反对</span>
+                            </button>
+                        </div>
+
+                        <div class="answer-head">
+                            <div class="zm-item-answer-author-info">
+                                <h3 class="zm-item-answer-author-wrap">
+
+                                    <a data-tip="p$t$heziqiang"
+                                       class="zm-item-link-avatar"
+                                       href="/people/heziqiang">
+                                        <img src="http://pic1.zhimg.com/6053228dbcd1aa4d5d36978e26b50d80_s.jpg"
+                                             class="zm-list-avatar"
+                                             data-source="http://pic1.zhimg.com/6053228dbcd1aa4d5d36978e26b50d80_s.jpg" />
+                                    </a>
+
+                                    <a data-tip="p$t$heziqiang" href="/people/heziqiang">何自强</a>
+                                </h3>
+                                <a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+                            </div>
+                            <div class="zm-item-vote-info " data-votecount="3">
+                                <span class="voters">
+                                    <span class="user-block">知乎用户、</span><span class="user-block"><a data-tip="p$t$zhang-bei-11-57" href="http://www.zhihu.com/people/zhang-bei-11-57" class="zg-link" title="张北">张北</a>、</span><span class="user-block">知乎用户</span>
+                                </span>
+
+                                <span>赞同</span>
+
+                            </div>
+                        </div>
+                        <div class="zm-item-rich-text" data-resourceid="648792" data-action="/answer/content">
+                            <div class="fixed-summary zm-editable-content clearfix">
+                                <b>关于这个话题，我知道大家说的也累了，随便上几张图吧：</b><br><br><noscript><img src="http://pic3.zhimg.com/a8858cefeb0c7cd6b8431becf5bc7a3e_b.jpg" data-rawwidth="736" data-rawheight="298" class="origin_image zh-lightbox-thumb" width="736" data-original="http://pic3.zhimg.com/a8858cefeb0c7cd6b8431becf5bc7a3e_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="736" data-rawheight="298" class="origin_image zh-lightbox-thumb lazy" width="736" data-original="http://pic3.zhimg.com/a8858cefeb0c7cd6b8431becf5bc7a3e_r.jpg" data-actualsrc="http://pic3.zhimg.com/a8858cefeb0c7cd6b8431becf5bc7a3e_b.jpg"><noscript><img src="http://pic1.zhimg.com/e6a0975fb61ac27923e6bda137833d38_b.jpg" data-rawwidth="787" data-rawheight="277" class="origin_image zh-lightbox-thumb" width="787" data-original="http://pic1.zhimg.com/e6a0975fb61ac27923e6bda137833d38_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="787" data-rawheight="277" class="origin_image zh-lightbox-thumb lazy" width="787" data-original="http://pic1.zhimg.com/e6a0975fb61ac27923e6bda137833d38_r.jpg" data-actualsrc="http://pic1.zhimg.com/e6a0975fb61ac27923e6bda137833d38_b.jpg"><noscript><img src="http://pic2.zhimg.com/c225f3e619f12978196d979db78f8b49_b.jpg" data-rawwidth="618" data-rawheight="204" class="origin_image zh-lightbox-thumb" width="618" data-original="http://pic2.zhimg.com/c225f3e619f12978196d979db78f8b49_r.jpg">----------------------------------------------------------------</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="618" data-rawheight="204" class="origin_image zh-lightbox-thumb lazy" width="618" data-original="http://pic2.zhimg.com/c225f3e619f12978196d979db78f8b49_r.jpg" data-actualsrc="http://pic2.zhimg.com/c225f3e619f12978196d979db78f8b49_b.jpg">----------------------------------------------------------------<br>资料摘自：<a href="https://www.airpair.com/js/javascript-framework-comparison" class=" wrap external" target="_blank" rel="nofollow noreferrer">AngularJS vs. Backbone.js vs. Ember.js<i class="icon-external"></i></a>
+
+                            </div>
+                        </div>
+                        <a class="zg-anchor-hidden ac" name="10428280-comment"></a>
+                        <div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+                            <div class="zm-meta-panel">
+                                <span class="answer-date-link-wrap">
+                                    <a class="answer-date-link meta-item" target="_blank" href="/question/21170137/answer/37593322">发布于 2015-01-19</a>
+                                </span>
+                                <a href="#" name="addcomment" class=" meta-item toggle-comment">
+                                    <i class="z-icon-comment"></i>添加评论
+                                </a>
+
+                                <a href="#" class="meta-item zu-autohide" name="thanks"><i class="z-icon-thank"></i>感谢</a>
+
+                                <a href="#" class="meta-item zu-autohide" name="share">
+                                    <i class="z-icon-share"></i>分享
+                                </a>
+                                <a href="#" class="meta-item zu-autohide" name="favo">
+                                    <i class="z-icon-collect"></i>收藏
+                                </a>
+
+
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+                                <span class="copyright zu-autohide"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div tabindex="-1" class="zm-item-answer "
+                         itemscope itemtype="http://schema.org/Answer"
+                         data-aid="7834499"
+                         data-atoken="31123961"
+                         data-collapsed="0"
+                         data-created="1411869089"
+                         data-deleted="0"
+                         data-helpful="1"
+                         data-isowner="0"
+                         data-score="4.12363081932">
+                        <a class="zg-anchor-hidden" name="answer-7834499"></a>
+
+                        <div class="zm-votebar">
+                            <button class="up ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">赞同</span>
+                                <span class="count">2</span>
+                            </button>
+                            <button class="down ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">反对</span>
+                            </button>
+                        </div>
+
+                        <div class="answer-head">
+                            <div class="zm-item-answer-author-info">
+                                <h3 class="zm-item-answer-author-wrap">
+
+                                    <a data-tip="p$t$taoism"
+                                       class="zm-item-link-avatar"
+                                       href="/people/taoism">
+                                        <img src="http://pic3.zhimg.com/bc0152c42_s.jpg"
+                                             class="zm-list-avatar"
+                                             data-source="http://pic3.zhimg.com/bc0152c42_s.jpg" />
+                                    </a>
+
+                                    <a data-tip="p$t$taoism" href="/people/taoism">李运韬</a>，<strong title="从事web开发" class="zu-question-my-bio">从事web开发</strong>
+                                </h3>
+                                <a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+                            </div>
+                            <div class="zm-item-vote-info " data-votecount="2">
+                                <span class="voters">
+                                    <span class="user-block">知乎用户、</span><span class="user-block"><a data-tip="p$t$uojo" href="http://www.zhihu.com/people/uojo" class="zg-link" title="王翀">王翀</a></span>
+                                </span>
+
+                                <span>赞同</span>
+
+                            </div>
+                        </div>
+                        <div class="zm-item-rich-text" data-resourceid="648792" data-action="/answer/content">
+                            <div class="fixed-summary zm-editable-content clearfix">
+                                个人观点，仅供参考<br>他们都是为解决<b>代码组织</b>而生的框架<br>当你写了一个几千行以上代码js单页面后就会自然的感觉到代码组织，比代码实现更加的重要.<br>-----<br>backbone是完全按照mvc思想设计的，并没有什么<b>约定俗成的概念，</b>这是我觉得backbone最大的优点和缺点。你可以用任何东西来与这种思想集成，更接近原始的概念，就是<b>以数据和操作流程为代码设计核心。</b>用户修改了输入框的内容，好更新其中的一个变量，变量有update事件，事件注册到好几个地方。缺点也很明显，<b>就是除了mvc一切都得你自己去实现，自由度很高，开发效率有很大的提高的空间</b>，emberjs就是这样的框架，它<b>集成了很多需要的功能也制定了很多惯例</b>，降低了自由度却很大的提高了效率。<br>angularJS：angularJS一出生就有两个目的：开发大型高交互程序，提高开发效率。它引入了很多概念，我认为更像是compnent，但<b>以数据和操作流程为代码设计核心</b>这个核心概念，仍然是angularJS的设计基础<br><br>总结：<br>如果你想要自由度，或者项目本身的复杂度并不是很高，不是以数据和操作为主导的，更多的是页面设计的东西，或者你想将已有的代码集成mvc组织结构，backbone。<br>如果你一开始就是要设计一个单页面，且复杂到像c/s架构一样的程序（gamil），你可以提前放弃backbone了，开发效率是个问题。<br>虽然，我是支持angular的，但是我还是会在许多前台页面中使用backbone，甚至只使用underscore.js，原因很简单，没必要。至于更复杂的应用，我往往使用extjs，而不是angular。
+
+
+                            </div>
+                        </div>
+                        <a class="zg-anchor-hidden ac" name="7834499-comment"></a>
+                        <div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+                            <div class="zm-meta-panel">
+                                <span class="answer-date-link-wrap">
+                                    <a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-09-28" target="_blank" href="/question/21170137/answer/31123961">编辑于 2014-11-08</a>
+                                </span>
+                                <a href="#" name="addcomment" class=" meta-item toggle-comment">
+                                    <i class="z-icon-comment"></i>添加评论
+                                </a>
+
+                                <a href="#" class="meta-item zu-autohide" name="thanks"><i class="z-icon-thank"></i>感谢</a>
+
+                                <a href="#" class="meta-item zu-autohide" name="share">
+                                    <i class="z-icon-share"></i>分享
+                                </a>
+                                <a href="#" class="meta-item zu-autohide" name="favo">
+                                    <i class="z-icon-collect"></i>收藏
+                                </a>
+
+
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+                                <span class="copyright zu-autohide"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div tabindex="-1" class="zm-item-answer "
+                         itemscope itemtype="http://schema.org/Answer"
+                         data-aid="10672713"
+                         data-atoken="38203240"
+                         data-collapsed="0"
+                         data-created="1422342134"
+                         data-deleted="0"
+                         data-helpful="1"
+                         data-isowner="0"
+                         data-score="0.123267276334">
+                        <a class="zg-anchor-hidden" name="answer-10672713"></a>
+
+                        <div class="zm-votebar">
+                            <button class="up ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">赞同</span>
+                                <span class="count">0</span>
+                            </button>
+                            <button class="down ">
+                                <i class="icon vote-arrow"></i>
+                                <span class="label">反对</span>
+                            </button>
+                        </div>
+
+                        <div class="answer-head">
+                            <div class="zm-item-answer-author-info">
+                                <h3 class="zm-item-answer-author-wrap">
+
+                                    <a data-tip="p$t$duan-mu-xi"
+                                       class="zm-item-link-avatar"
+                                       href="/people/duan-mu-xi">
+                                        <img src="http://pic3.zhimg.com/76b6d52c600d625dfeff72090e065c9a_s.jpg"
+                                             class="zm-list-avatar"
+                                             data-source="http://pic3.zhimg.com/76b6d52c600d625dfeff72090e065c9a_s.jpg" />
+                                    </a>
+
+                                    <a data-tip="p$t$duan-mu-xi" href="/people/duan-mu-xi">端木夕</a>，<strong title="avalon.js爱好者，.net，爱高科技" class="zu-question-my-bio">avalon.js爱好者，.net，爱高科技</strong>
+                                </h3>
+                                <a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+                            </div>
+                            <div class="zm-item-vote-info empty" data-votecount="0">
+
+                            </div>
+                        </div>
+                        <div class="zm-item-rich-text" data-resourceid="648792" data-action="/answer/content">
+                            <div class="fixed-summary zm-editable-content clearfix">
+                                backbone根本不用考虑，他不会帮助你降低代码量，不减反增，而且用得越多代码越多。。。
+
+
+                            </div>
+                        </div>
+                        <a class="zg-anchor-hidden ac" name="10672713-comment"></a>
+                        <div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+                            <div class="zm-meta-panel">
+                                <span class="answer-date-link-wrap">
+                                    <a class="answer-date-link meta-item" target="_blank" href="/question/21170137/answer/38203240">发布于 2015-01-27</a>
+                                </span>
+                                <a href="#" name="addcomment" class=" meta-item toggle-comment">
+                                    <i class="z-icon-comment"></i>添加评论
+                                </a>
+
+                                <a href="#" class="meta-item zu-autohide" name="thanks"><i class="z-icon-thank"></i>感谢</a>
+
+                                <a href="#" class="meta-item zu-autohide" name="share">
+                                    <i class="z-icon-share"></i>分享
+                                </a>
+                                <a href="#" class="meta-item zu-autohide" name="favo">
+                                    <i class="z-icon-collect"></i>收藏
+                                </a>
+
+
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+                                <span class="zg-bull zu-autohide">&bull;</span>
+                                <a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+                                <span class="copyright zu-autohide"></span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:none">
+                    <a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+                        <span id="zh-question-collapsed-num">3</span> 个回答被折叠
+                    </a>
+                    （<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+                </div>
+                <div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+                <a name="draft"></a>
+                <div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+                    <div class="zm-editable-tip"></div>
+                    <div class="zm-editable-content"></div>
+                </div>
+
+                <!-- end of content -->
+            </div>
+        </div>
+        <div class="zu-main-sidebar">
+
+            <div class="zm-side-section">
+                <div class="zm-side-section-inner">
+                    <div class="well login-reg-box">
+                        <span>
+                            知乎是一个真实的问答社区，在这里分享知识、经验和见解，发现更大的世界。<br>
+                            <a id="js-reg-with-mail-in-top" href="javascript:;">使用邮箱注册 &raquo;</a>
+                        </span>
+                        <div class="clearfix">
+                            <a id="js-reg-with-sina-in-top" target="_blank" class="zg-btn-red"><span class="icon-big-white-sina"></span>使用微博登录</a>
+                            <a id="js-reg-with-qq-in-top" target="_blank" class="zg-btn-blue"><span class="icon-big-white-qq" style="margin-right: 10px;"></span>使用 QQ 登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="zm-side-section">
+                <div class="zm-side-section-inner zg-gray-normal" id="zh-question-side-header-wrap">
+                    <button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="648792">关注问题</button>
+                    355
+                    人关注该问题
+
+                </div>
+            </div>
+
+            <div class="zm-side-section">
+                <div class="zm-side-section-inner">
+                    <div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+                        <a class="zg-right next">换一换</a>
+                        <h3>相关问题</h3>
+                        <ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19884733">如何设计大型网站的前端 JavaScript 框架？</a> <span class="num">8 个回答</span><meta itemprop="followerCount" content="705" /></li>
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19843529">Backbone.js 的 MVC 中 C 所指的 collection 和传统 MVC 框架中的 controller 的关系是什么？</a> <span class="num">6 个回答</span><meta itemprop="followerCount" content="22" /></li>
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20381805">对于比较流行的 Javascript MVC 框架应该如何选择？</a> <span class="num">11 个回答</span><meta itemprop="followerCount" content="118" /></li>
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19823404">百度为什么会开发两套不同的 JavaScript 框架呢？</a> <span class="num">7 个回答</span><meta itemprop="followerCount" content="58" /></li>
+                            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19793863">哪些 JavaScript 框架（库）的源代码最值得阅读和学习？</a> <span class="num">6 个回答</span><meta itemprop="followerCount" content="192" /></li>
+                            <li hidden itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19720745">Backbone.js 的最佳应用场景有哪些？</a> <span class="num">15 个回答</span><meta itemprop="followerCount" content="647" /></li>
+                            <li hidden itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19877156">如何设计一个用 Backbone.js 做前端框架，Rails 做后端框架的 web app？</a> <span class="num">3 个回答</span><meta itemprop="followerCount" content="18" /></li>
+                            <li hidden itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20099586">为什么很多国内公司不使用 jQuery 等开源 JS 框架（库），而选择自己开发 JavaScript 框架？</a> <span class="num">34 个回答</span><meta itemprop="followerCount" content="946" /></li>
+                            <li hidden itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20298345">JavaScript 语句后应该加分号么？</a> <span class="num">56 个回答</span><meta itemprop="followerCount" content="529" /></li>
+                            <li hidden itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20361456">JavaScript 原生代码和像 jQuery 这样的 JS 框架来比，哪种执行效率更高？</a> <span class="num">10 个回答</span><meta itemprop="followerCount" content="43" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="zg-clear"></div>
+    </div>
+    <div id="zh-footer" class="zh-footer">
+        <div class="zg-wrap clearfix">
+            <ul>
+                <li><a href="/app" target='_blank'>移动应用</a></li>
+                <li><a href="/careers">加入知乎</a></li>
+                <li><a href="/terms" target="_blank">知乎协议</a></li>
+                <li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+            </ul>
+            <span class="copy">&copy; 2015 知乎</span>
+        </div>
+    </div>
+    <script type="template/text" id="sign-flow-template">
+        <div id="js-sign-flow" class="sign-flow">
+            <div class="view view-signin">
+                <form method="post" action="/login" class="zu-side-login-box">
+                    <div class="input-wrap">
+                        <input required class="zg-form-text-input" name="email" type="email" placeholder="邮箱">
+                    </div>
+                    <div class="input-wrap password-wrap">
+                        <input required class="zg-form-text-input" maxlength="128" name="password" type="password" placeholder="密码">
+                        <div class="z-ico-show-password"></div>
+                    </div>
+                    <div class="input-wrap js-captcha captcha-wrap" style="display:none;">
+                        <input id="captcha" class="zg-form-text-input" autocomplete="off" name="captcha" placeholder="验证码" required>
+                        <div class="captcha js-refresh-captcha" data-tip="s$b$看不清楚？换一张">
+                            <img class="js-captcha-img" />
+                        </div>
+                    </div>
+                    <div class="captcha-holder"></div>
+                    <div class="command">
+                        <div class="zg-left actions">
+                            <label class="remember_me"><input type="checkbox" name="rememberme" checked value="y"> 记住我</label>
+                            <span class="middot">·</span>
+                            <a class="js-resetpassword" href="#">忘记密码?</a>
+                        </div>
+                        <input type="submit" class="zg-right zg-btn-blue" value="登录">
+                    </div>
+                    <div class="sns">
+                        <a class="js-bindweibo" href="#">
+                            <span class="icon z-ico-sina-weibo"></span>微博登录
+                        </a>
+                        <a class="js-bindqq" href="#">
+                            <span class="icon z-ico-qq"></span>QQ 登录
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="view view-signup">
+                <form action="/register/account" method="post" class="zu-side-login-box" id="sign-form-1">
+                    <div class="input-wrap realname-wrap js-weibo-bind-name-transfer">
+                        <span>
+                            <input required class="zg-form-text-input first" aria-label="姓" name="last_name" placeholder="姓" type="text">
+                        </span>
+                        <span>
+                            <input required class="zg-form-text-input" aria-label="名" name="first_name" placeholder="名" type="text">
+                        </span>
+                    </div>
+                    <div class="input-wrap">
+                        <input required class="zg-form-text-input" name="email" type="email" placeholder="邮箱">
+                    </div>
+                    <div class="input-wrap password-wrap">
+                        <input data-rule-strongpassword="true" required class="zg-form-text-input" maxlength="128" name="password" type="password" placeholder="密码">
+                        <div class="z-ico-show-password"></div>
+                    </div>
+                    <div class="captcha-holder"></div>
+                    <div class="command">
+                        <a class="js-signin signin-switch" href="#">已有账号？</i></a>
+                        <input type="submit" class="zg-btn-blue zg-right" value="注册">
+                    </div>
+                    <div class="sns">
+                        <a class="js-bindweibo" href="#">
+                            <span class="icon z-ico-sina-weibo"></span>微博登录
+                        </a>
+                        <a class="js-bindqq" href="#">
+                            <span class="icon z-ico-qq"></span>QQ 登录
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="view view-info">
+                <form class="login" method="post" action="/register/account">
+                    <div class="input-wrap realname-wrap">
+                        <span>
+                            <input required class="zg-form-text-input first" aria-label="姓" name="last_name" placeholder="姓" type="text">
+                        </span>
+                        <span>
+                            <input required class="zg-form-text-input" aria-label="名" name="first_name" placeholder="名" type="text">
+                        </span>
+                    </div>
+                    <div class="input-wrap">
+                        <input required class="zg-form-text-input" aria-label="邮箱" name="email" placeholder="邮 箱" spellcheck="false" type="email" value="">
+                    </div>
+                    <div class="command">
+                        <input class="zg-btn-blue" type="submit" value="完成注册">
+                    </div>
+                </form>
+            </div>
+            <div class="view view-resetpassword">
+                <form class="resetpassword" method="post" action="/resetpassword">
+                    <div class="input-wrap">
+                        <input required class="zg-form-text-input" aria-label="邮箱" name="email" placeholder="邮 箱" spellcheck="false" type="email" value="">
+                    </div>
+                    <div class="command">
+                        <input class="zg-btn-blue" type="submit" value="重设密码">
+                        <span class="reset-success" style="display:none">邮件发送成功</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </script>
+    <script type="text/json" class="json-inline" data-name="current_user">
+        ["","","","-1","",0,0]
+    </script>
+    <script type="text/json" class="json-inline" data-name="env">
+        ["zhihu.com","comet.zhihu.com",false,null]
+    </script>
+    <script type="text/json" class="json-inline" data-name="permissions">
+        []
+    </script>
+
+    <script type="text/json" class="json-inline" data-name="ga_vars">
+        {"user_created":0,"now":1425191201000,"abtest_mask":"------------------------------","user_attr":[0,0,0,"-","-"],"user_hash":0}
+    </script>
+    <script type="text/json" class="json-inline" data-name="current_question">
+        {"status":"normal","isLocked":0,"detailEditReasonRequired":false,"editPermission":false,"isAnon":0,"qid":648792,"urlToken":21170137,"showInvitePanel":false,"askAboutMember":0}
+    </script>
+    <script type="text/json" class="json-inline" data-name="current_question_owner">
+        false
+    </script>
+    <script type="text/json" class="json-inline" data-name="draft">
+        []
+    </script>
+    <script type="text/json" class="json-inline" data-name="my_answer">
+        {}
+    </script>
+    <script type="text/json" class="json-inline" data-name="need_first_answer_guide">
+        false
+    </script>
+    <script type="text/json" class="json-inline" data-name="redirect_to">
+        ""
+    </script>
+
+    <script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+    <script src="http://static.zhihu.com/static/ver/fe716e6c6b85de6569dc2bdb9c26765c.app_core.js"></script>
+    <script src="http://static.zhihu.com/static/ver/f6ddbf3143053a0abe68322eb5e83c1a.sign.js"></script>
+    <script src="http://static.zhihu.com/static/ver/fb5de7f9c692330967002016c74dbb2e.app.js"></script>
+    <script src="http://static.zhihu.com/static/ver/afc41ea0351eb5f7f397c0c25a4749a5.rich_text_editor.js"></script>
+    <script type="text/zscript" znonce="35ab27e06474495db24542b3171cfa2d">
+        ZH.entrySQ();
+    </script>
+    <input type="hidden" name="_xsrf" value="e6bd49eb1428398231e1c927f26bb4b6" />
+</body>
+</html>

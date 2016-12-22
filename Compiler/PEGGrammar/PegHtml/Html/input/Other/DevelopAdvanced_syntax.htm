@@ -1,0 +1,1947 @@
+﻿p<!DOCTYPE html>
+<html class=" is-copy-enabled" lang="en">
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+
+    <link crossorigin="anonymous" href="js/frameworks.css"
+          integrity="sha256-QVc5HTPEaQXuwvnfG1YUz5jQLCton0BD8OkgLiczNwM=" media="all" rel="stylesheet">
+    <link crossorigin="anonymous" href="js/github.css"
+          integrity="sha256-xIPp1o9LkIhMK/0+3+mV2XAottENHVVA9Pqlw1DIrTA=" media="all" rel="stylesheet">
+
+
+
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width">
+
+    <title>DevelopAdvanced/syntax.md at master · wei772/DevelopAdvanced</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" href="https://github.com/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://github.com/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://github.com/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://github.com/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://github.com/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://github.com/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://github.com/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://github.com/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://github.com/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://github.com/apple-touch-icon-180x180.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+    <meta content="https://avatars2.githubusercontent.com/u/10583650?v=3&amp;s=400" name="twitter:image:src">
+    <meta content="@github" name="twitter:site">
+    <meta content="summary" name="twitter:card">
+    <meta content="wei772/DevelopAdvanced" name="twitter:title">
+    <meta content="Contribute to DevelopAdvanced development by creating an account on GitHub." name="twitter:description">
+    <meta content="https://avatars2.githubusercontent.com/u/10583650?v=3&amp;s=400" property="og:image">
+    <meta content="GitHub" property="og:site_name">
+    <meta content="object" property="og:type">
+    <meta content="wei772/DevelopAdvanced" property="og:title">
+    <meta content="https://github.com/wei772/DevelopAdvanced" property="og:url">
+    <meta content="Contribute to DevelopAdvanced development by creating an account on GitHub." property="og:description">
+    <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    <link rel="web-socket" href="wss://live.github.com/_sockets/MTA1ODM2NTA6NjZmNzEwMjEyM2UzY2E5YjVlNTcwMjRmZjQ1OTE0YWI6NzlhOGIyODA5MzczYTE2ZmRhZDVjNjBlMzFmMzMyNDFmZTJjNWUxNGYxN2MwZDFiNWVjZGRhMzk1ZTU1NTRlNQ==--ecd3192ba07b32e64803167e0b8b0f934941805f">
+    <meta name="pjax-timeout" content="1000">
+    <link rel="sudo-modal" href="https://github.com/sessions/sudo_modal">
+
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+
+
+    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+    <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+    <meta name="google-analytics" content="UA-3769691-2">
+
+    <meta content="collector.githubapp.com" name="octolytics-host">
+    <meta content="github" name="octolytics-app-id">
+    <meta content="B7039032:2AE03:244FE2B:5850EBD2" name="octolytics-dimension-request_id">
+    <meta content="10583650" name="octolytics-actor-id">
+    <meta content="wei772" name="octolytics-actor-login">
+    <meta content="dfabe886d0352ece1798d98d37b92d5a6d64468d6d268b0dc20c52259d419468" name="octolytics-actor-hash">
+
+
+
+
+    <meta class="js-ga-set" name="dimension1" content="Logged In">
+
+
+
+    <meta name="hostname" content="github.com">
+    <meta name="user-login" content="wei772">
+
+    <meta name="expected-hostname" content="github.com">
+    <meta name="js-proxy-site-detection-payload" content="MmFiNTgxZWYwYWIxNDFhZmZlMjVjNmI3Zjk4YzlkZTQ1NTAxZDE2NWE1YzkwOThiY2VkMWY2NmVlNWQ0M2Y0OHx7InJlbW90ZV9hZGRyZXNzIjoiMTgzLjMuMTQ0LjUwIiwicmVxdWVzdF9pZCI6IkI3MDM5MDMyOjJBRTAzOjI0NEZFMkI6NTg1MEVCRDIiLCJ0aW1lc3RhbXAiOjE0ODE2OTgyNTgsImhvc3QiOiJnaXRodWIuY29tIn0=">
+
+
+    <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#000000">
+    <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+    <meta name="html-safe-nonce" content="9dd8041c092169d9af6ef8e8cd9d3e68ffe4918a">
+    <meta content="8b28f2153ad628ddb141d9e2a1988fda1e8218e6" name="form-nonce">
+
+    <meta http-equiv="x-pjax-version" content="2a6dd3960e1a9d54c08f13da013baf5a">
+
+
+
+    <meta name="description" content="Contribute to DevelopAdvanced development by creating an account on GitHub.">
+    <meta name="go-import" content="github.com/wei772/DevelopAdvanced git https://github.com/wei772/DevelopAdvanced.git">
+
+    <meta content="10583650" name="octolytics-dimension-user_id">
+    <meta content="wei772" name="octolytics-dimension-user_login">
+    <meta content="59351085" name="octolytics-dimension-repository_id">
+    <meta content="wei772/DevelopAdvanced" name="octolytics-dimension-repository_nwo">
+    <meta content="true" name="octolytics-dimension-repository_public">
+    <meta content="false" name="octolytics-dimension-repository_is_fork">
+    <meta content="59351085" name="octolytics-dimension-repository_network_root_id">
+    <meta content="wei772/DevelopAdvanced" name="octolytics-dimension-repository_network_root_nwo">
+    <link href="https://github.com/wei772/DevelopAdvanced/commits/master.atom" rel="alternate" title="Recent Commits to DevelopAdvanced:master"
+          type="application/atom+xml">
+
+
+
+    <meta name="selected-link" value="repo_source" data-pjax-transient="true">
+    <meta content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" name="analytics-location">
+    <meta name="request-id" content="B7039032:2AE03:2450C8F:5850EBE0" data-pjax-transient="true">
+    <link rel="canonical" href="https://github.com/wei772/DevelopAdvanced/blob/master/AdvancedDocument/Tool/Markdown/Official%20website/syntax.md"
+          data-pjax-transient="true">
+    <link href="https://github.com/wei772/DevelopAdvanced/commits/master.atom" rel="alternate" title="Recent Commits to DevelopAdvanced:master"
+          type="application/atom+xml" data-pjax-transient="true">
+</head>
+
+
+<body class="logged-in  env-production windows vis-public">
+    <div id="js-pjax-loader-bar" class="pjax-loader-bar">
+        <div class="progress" style="width: 100%;"></div>
+    </div>
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+
+
+
+
+
+
+
+    <div class="header header-logged-in true" role="banner">
+        <div class="container clearfix">
+
+            <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+                <svg aria-hidden="true" class="octicon octicon-mark-github" height="28" version="1.1" viewBox="0 0 16 16" width="28">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+
+
+            <div class="header-search scoped-search site-scoped-search js-site-search" role="search">
+                <!-- '"` -->
+                <!-- </textarea></xmp> -->
+                <form accept-charset="UTF-8" action="/wei772/DevelopAdvanced/search" class="js-site-search-form" data-scoped-search-url="/wei772/DevelopAdvanced/search"
+                      data-unscoped-search-url="/search" method="get">
+                    <div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+                    <label class="form-control header-search-wrapper js-chromeless-input-container">
+                        <div class="header-search-scope">This repository</div>
+                        <input class="form-control header-search-input js-site-search-focus js-site-search-field is-clearable" data-hotkey="s" name="q" placeholder="Search" aria-label="Search this repository" data-unscoped-placeholder="Search GitHub" data-scoped-placeholder="Search" autocapitalize="off" type="text">
+                    </label>
+                </form>
+            </div>
+
+
+            <ul class="header-nav float-left" role="navigation">
+                <li class="header-nav-item">
+                    <a href="https://github.com/pulls" aria-label="Pull requests you created" class="js-selected-navigation-item header-nav-link"
+                       data-ga-click="Header, click, Nav menu - item:pulls context:user" data-hotkey="g p" data-selected-links="/pulls /pulls/assigned /pulls/mentioned /pulls">
+                        Pull requests
+                    </a>
+                </li>
+                <li class="header-nav-item">
+                    <a href="https://github.com/issues" aria-label="Issues you created" class="js-selected-navigation-item header-nav-link" data-ga-click="Header, click, Nav menu - item:issues context:user"
+                       data-hotkey="g i" data-selected-links="/issues /issues/assigned /issues/mentioned /issues">
+                        Issues
+                    </a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header-nav-link" href="https://gist.github.com/" data-ga-click="Header, go to gist, text:gist">Gist</a>
+                </li>
+            </ul>
+
+
+            <ul class="header-nav user-nav float-right" id="user-links">
+                <li class="header-nav-item">
+
+                    <a href="https://github.com/notifications" aria-label="You have unread notifications" class="header-nav-link notification-indicator tooltipped tooltipped-s js-socket-channel js-notification-indicator"
+                       data-channel="tenant:1:notification-changed:10583650" data-ga-click="Header, go to notifications, icon:unread" data-hotkey="g n">
+                        <span class="mail-status unread"></span>
+                        <svg aria-hidden="true" class="octicon octicon-bell" height="16" version="1.1" viewBox="0 0 14 16" width="14">
+                            <path fill-rule="evenodd" d="M14 12v1H0v-1l.73-.58c.77-.77.81-2.55 1.19-4.42C2.69 3.23 6 2 6 2c0-.55.45-1 1-1s1 .45 1 1c0 0 3.39 1.23 4.16 5 .38 1.88.42 3.66 1.19 4.42l.66.58H14zm-7 4c1.11 0 2-.89 2-2H5c0 1.11.89 2 2 2z"></path>
+                        </svg>
+                    </a>
+                </li>
+
+                <li class="header-nav-item dropdown js-menu-container">
+                    <a class="header-nav-link tooltipped tooltipped-s js-menu-target" href="https://github.com/new" aria-label="Create new…"
+                       data-ga-click="Header, create new, icon:add">
+                        <svg aria-hidden="true" class="octicon octicon-plus float-left" height="16" version="1.1" viewBox="0 0 12 16" width="12">
+                            <path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5z"></path>
+                        </svg>
+                        <span class="dropdown-caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu-content js-menu-content">
+                        <ul class="dropdown-menu dropdown-menu-sw">
+
+                            <a class="dropdown-item" href="https://github.com/new" data-ga-click="Header, create new repository">
+                                New repository
+                            </a>
+
+                            <a class="dropdown-item" href="https://github.com/new/import" data-ga-click="Header, import a repository">
+                                Import repository
+                            </a>
+
+                            <a class="dropdown-item" href="https://gist.github.com/" data-ga-click="Header, create new gist">
+                                New gist
+                            </a>
+
+                            <a class="dropdown-item" href="https://github.com/organizations/new" data-ga-click="Header, create new organization">
+                                New organization
+                            </a>
+
+
+
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-header">
+                                <span title="wei772/DevelopAdvanced">This repository</span>
+                            </div>
+                            <a class="dropdown-item" href="https://github.com/wei772/DevelopAdvanced/issues/new" data-ga-click="Header, create new issue">
+                                New issue
+                            </a>
+                            <a class="dropdown-item" href="https://github.com/wei772/DevelopAdvanced/settings/collaboration" data-ga-click="Header, create new collaborator">
+                                New collaborator
+                            </a>
+
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="header-nav-item dropdown js-menu-container">
+                    <a class="header-nav-link name tooltipped tooltipped-sw js-menu-target" href="https://github.com/wei772" aria-label="View profile and more"
+                       data-ga-click="Header, show menu, icon:avatar">
+                        <img alt="@wei772" class="avatar" src="js/10583650.png"
+                             width="20" height="20">
+                        <span class="dropdown-caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu-content js-menu-content">
+                        <div class="dropdown-menu dropdown-menu-sw">
+                            <div class="dropdown-header header-nav-current-user css-truncate">
+                                Signed in as <strong class="css-truncate-target">wei772</strong>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item" href="https://github.com/wei772" data-ga-click="Header, go to profile, text:your profile">
+                                Your profile
+                            </a>
+                            <a class="dropdown-item" href="https://github.com/wei772?tab=stars" data-ga-click="Header, go to starred repos, text:your stars">
+                                Your stars
+                            </a>
+                            <a class="dropdown-item" href="https://github.com/explore" data-ga-click="Header, go to explore, text:explore">
+                                Explore
+                            </a>
+                            <a class="dropdown-item" href="https://github.com/integrations" data-ga-click="Header, go to integrations, text:integrations">
+                                Integrations
+                            </a>
+                            <a class="dropdown-item" href="https://help.github.com/" data-ga-click="Header, go to help, text:help">
+                                Help
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item" href="https://github.com/settings/profile" data-ga-click="Header, go to settings, icon:settings">
+                                Settings
+                            </a>
+
+                            <!-- '"` -->
+                            <!-- </textarea></xmp> -->
+                            <form accept-charset="UTF-8" action="/logout" class="logout-form" data-form-nonce="8b28f2153ad628ddb141d9e2a1988fda1e8218e6"
+                                  method="post">
+                                <div style="margin:0;padding:0;display:inline">
+                                    <input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="fGL+xV3o0BrgMVfPY5IrF8SK59dGGuwmpBbkejnP2Yj1k4lh5r7NPSQ0spUWt9WKDFXB6TvYUm5aiWP8j/lwKA=="
+                                                                                      type="hidden">
+                                </div>
+                                <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
+                                    Sign out
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+    <div id="start-of-content" class="accessibility-aid"></div>
+
+    <div id="js-flash-container">
+    </div>
+
+
+    <div role="main">
+        <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode">
+            <div id="js-repo-pjax-container" data-pjax-container="">
+                <div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav">
+                    <div class="container repohead-details-container">
+
+
+
+                        <ul class="pagehead-actions">
+
+                            <li>
+                                <!-- '"` -->
+                                <!-- </textarea></xmp> -->
+                                <form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-form-nonce="8b28f2153ad628ddb141d9e2a1988fda1e8218e6"
+                                      data-remote="true" method="post">
+                                    <div style="margin:0;padding:0;display:inline">
+                                        <input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="qQWrYGmTFuJM+TKiBM2aulK1ccUVPn39X6XU5b1jdzsg9NzE0sULxYj81/hx6GQnmmpX+2j8w7WhOlNjC1Xemw=="
+                                                                                          type="hidden">
+                                    </div> <input class="form-control" id="repository_id" name="repository_id" value="59351085" type="hidden">
+
+                                    <div class="select-menu js-menu-container js-select-menu">
+                                        <a href="https://github.com/wei772/DevelopAdvanced/subscription" class="btn btn-sm btn-with-count select-menu-button js-menu-target"
+                                           role="button" tabindex="0" aria-haspopup="true" data-ga-click="Repository, click Watch settings, action:blob#show">
+                                            <span class="js-select-button">
+                                                <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+                                                Unwatch
+                                            </span>
+                                        </a>
+                                        <a class="social-count js-social-count" href="https://github.com/wei772/DevelopAdvanced/watchers" aria-label="1 user is watching this repository">
+                                            1
+                                        </a>
+
+                                        <div class="select-menu-modal-holder">
+                                            <div class="select-menu-modal subscription-menu-modal js-menu-content" aria-hidden="true">
+                                                <div class="select-menu-header js-navigation-enable" tabindex="-1">
+                                                    <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16"
+                                                         width="12">
+                                                        <path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path>
+                                                    </svg>
+                                                    <span class="select-menu-title">Notifications</span>
+                                                </div>
+
+                                                <div class="select-menu-list js-navigation-container" role="menu">
+
+                                                    <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                                                        <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16"
+                                                             width="12">
+                                                            <path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path>
+                                                        </svg>
+                                                        <div class="select-menu-item-text">
+                                                            <input id="do_included" name="do" value="included" type="radio">
+                                                            <span class="select-menu-item-heading">Not watching</span>
+                                                            <span class="description">Be notified when participating or @mentioned.</span>
+                                                            <span class="js-select-button-text hidden-select-button-text">
+                                                                <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+                                                                Watch
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                                                        <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16"
+                                                             width="12">
+                                                            <path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path>
+                                                        </svg>
+                                                        <div class="select-menu-item-text">
+                                                            <input checked="checked" id="do_subscribed" name="do" value="subscribed" type="radio">
+                                                            <span class="select-menu-item-heading">Watching</span>
+                                                            <span class="description">Be notified of all conversations.</span>
+                                                            <span class="js-select-button-text hidden-select-button-text">
+                                                                <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+                                                                Unwatch
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                                                        <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16"
+                                                             width="12">
+                                                            <path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path>
+                                                        </svg>
+                                                        <div class="select-menu-item-text">
+                                                            <input id="do_ignore" name="do" value="ignore" type="radio">
+                                                            <span class="select-menu-item-heading">Ignoring</span>
+                                                            <span class="description">Never be notified.</span>
+                                                            <span class="js-select-button-text hidden-select-button-text">
+                                                                <svg aria-hidden="true" class="octicon octicon-mute" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8 2.81v10.38c0 .67-.81 1-1.28.53L3 10H1c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h2l3.72-3.72C7.19 1.81 8 2.14 8 2.81zm7.53 3.22l-1.06-1.06-1.97 1.97-1.97-1.97-1.06 1.06L11.44 8 9.47 9.97l1.06 1.06 1.97-1.97 1.97 1.97 1.06-1.06L13.56 8l1.97-1.97z"></path></svg>
+                                                                Stop ignoring
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+
+                            <li>
+
+                                <div class="js-toggler-container js-social-container starring-container ">
+
+                                    <!-- '"` -->
+                                    <!-- </textarea></xmp> -->
+                                    <form accept-charset="UTF-8" action="/wei772/DevelopAdvanced/unstar" class="starred" data-form-nonce="8b28f2153ad628ddb141d9e2a1988fda1e8218e6"
+                                          data-remote="true" method="post">
+                                        <div style="margin:0;padding:0;display:inline">
+                                            <input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="Svn25Hnd5hHVyh8ikVh41JCwm1sTUrAdtZnBGhQJU7XDCIFAwov7NhHP+njkfYZJWG+9ZW6QDlVLBkacoj/6FQ=="
+                                                                                              type="hidden">
+                                        </div>
+                                        <button type="submit" class="btn btn-sm btn-with-count js-toggler-target" aria-label="Unstar this repository" title="Unstar wei772/DevelopAdvanced"
+                                                data-ga-click="Repository, click unstar button, action:blob#show; text:Unstar">
+                                            <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
+                                            Unstar
+                                        </button>
+                                        <a class="social-count js-social-count" href="https://github.com/wei772/DevelopAdvanced/stargazers" aria-label="0 users starred this repository">
+                                            0
+                                        </a>
+                                    </form>
+                                    <!-- '"` -->
+                                    <!-- </textarea></xmp> -->
+                                    <form accept-charset="UTF-8" action="/wei772/DevelopAdvanced/star" class="unstarred" data-form-nonce="8b28f2153ad628ddb141d9e2a1988fda1e8218e6"
+                                          data-remote="true" method="post">
+                                        <div style="margin:0;padding:0;display:inline">
+                                            <input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="ObE4y6gVLS1oCxsYVzGbDGQWeRJPuuK7PvMkDp5narewQE9vE0MwCqwO/kIiFGWRrMlfLDJ4XPPAbKOIKFHDFw=="
+                                                                                              type="hidden">
+                                        </div>
+                                        <button type="submit" class="btn btn-sm btn-with-count js-toggler-target" aria-label="Star this repository" title="Star wei772/DevelopAdvanced"
+                                                data-ga-click="Repository, click star button, action:blob#show; text:Star">
+                                            <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"></path></svg>
+                                            Star
+                                        </button>
+                                        <a class="social-count js-social-count" href="https://github.com/wei772/DevelopAdvanced/stargazers" aria-label="0 users starred this repository">
+                                            0
+                                        </a>
+                                    </form>
+                                </div>
+
+                            </li>
+
+                            <li>
+                                <!-- '"` -->
+                                <!-- </textarea></xmp> -->
+                                <form accept-charset="UTF-8" action="/wei772/DevelopAdvanced/fork" class="btn-with-count" data-form-nonce="8b28f2153ad628ddb141d9e2a1988fda1e8218e6"
+                                      method="post">
+                                    <div style="margin:0;padding:0;display:inline">
+                                        <input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="laIHZHl5TrHtCTAGDzu5ygaz55cCzYHWg7dFubn1hBocU3DAwi9TlikM1Vx6HkdXzmzBqX8PP559KMI/D8Mtug=="
+                                                                                          type="hidden">
+                                    </div>
+                                    <button type="submit" class="btn btn-sm btn-with-count" data-ga-click="Repository, show fork modal, action:blob#show; text:Fork"
+                                            title="Fork your own copy of wei772/DevelopAdvanced to your account" aria-label="Fork your own copy of wei772/DevelopAdvanced to your account">
+                                        <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+                                        Fork
+                                    </button>
+                                </form>
+                                <a href="https://github.com/wei772/DevelopAdvanced/network" class="social-count" aria-label="0 users forked this repository">
+                                    0
+                                </a>
+                            </li>
+                        </ul>
+
+                        <h1 class="public ">
+                            <svg aria-hidden="true" class="octicon octicon-repo" height="16" version="1.1" viewBox="0 0 12 16" width="12">
+                                <path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path>
+                            </svg>
+                            <span class="author" itemprop="author"><a href="https://github.com/wei772" class="url fn" rel="author">wei772</a></span>
+                            <!--
+                            -->
+                            <span class="path-divider">/</span>
+                            <!--
+                            -->
+                            <strong itemprop="name"><a href="https://github.com/wei772/DevelopAdvanced" data-pjax="#js-repo-pjax-container">DevelopAdvanced</a></strong>
+
+                        </h1>
+
+                    </div>
+                    <div class="container">
+
+                        <nav class="reponav js-repo-nav js-sidenav-container-pjax" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation"
+                             data-pjax="#js-repo-pjax-container">
+
+                            <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+                                <a href="https://github.com/wei772/DevelopAdvanced" class="js-selected-navigation-item reponav-item selected" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /wei772/DevelopAdvanced" itemprop="url">
+                                    <svg aria-hidden="true" class="octicon octicon-code" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"></path></svg>
+                                    <span itemprop="name">Code</span>
+                                    <meta itemprop="position" content="1">
+                                </a>
+                            </span>
+
+                            <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+                                <a href="https://github.com/wei772/DevelopAdvanced/issues" class="js-selected-navigation-item reponav-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /wei772/DevelopAdvanced/issues" itemprop="url">
+                                    <svg aria-hidden="true" class="octicon octicon-issue-opened" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+                                    <span itemprop="name">Issues</span>
+                                    <span class="counter">0</span>
+                                    <meta itemprop="position" content="2">
+                                </a>
+                            </span>
+
+                            <span itemscope="" itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+                                <a href="https://github.com/wei772/DevelopAdvanced/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /wei772/DevelopAdvanced/pulls" itemprop="url">
+                                    <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+                                    <span itemprop="name">Pull requests</span>
+                                    <span class="counter">0</span>
+                                    <meta itemprop="position" content="3">
+                                </a>
+                            </span>
+
+                            <a href="https://github.com/wei772/DevelopAdvanced/projects" class="js-selected-navigation-item reponav-item" data-selected-links="repo_projects new_repo_project repo_project /wei772/DevelopAdvanced/projects">
+                                <svg aria-hidden="true" class="octicon octicon-project" height="16" version="1.1" viewBox="0 0 15 16" width="15">
+                                    <path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"></path>
+                                </svg>
+                                Projects
+                                <span class="counter">0</span>
+                            </a>
+                            <a href="https://github.com/wei772/DevelopAdvanced/wiki" class="js-selected-navigation-item reponav-item" data-hotkey="g w"
+                               data-selected-links="repo_wiki /wei772/DevelopAdvanced/wiki">
+                                <svg aria-hidden="true" class="octicon octicon-book" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                    <path fill-rule="evenodd" d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"></path>
+                                </svg>
+                                Wiki
+                            </a>
+
+                            <a href="https://github.com/wei772/DevelopAdvanced/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="pulse /wei772/DevelopAdvanced/pulse">
+                                <svg aria-hidden="true" class="octicon octicon-pulse" height="16" version="1.1" viewBox="0 0 14 16" width="14">
+                                    <path fill-rule="evenodd" d="M11.5 8L8.8 5.4 6.6 8.5 5.5 1.6 2.38 8H0v2h3.6l.9-1.8.9 5.4L9 8.5l1.6 1.5H14V8z"></path>
+                                </svg>
+                                Pulse
+                            </a>
+                            <a href="https://github.com/wei772/DevelopAdvanced/graphs" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors /wei772/DevelopAdvanced/graphs">
+                                <svg aria-hidden="true" class="octicon octicon-graph" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                    <path fill-rule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"></path>
+                                </svg>
+                                Graphs
+                            </a>
+                            <a href="https://github.com/wei772/DevelopAdvanced/settings" class="js-selected-navigation-item reponav-item" data-selected-links="repo_settings repo_branch_settings hooks integration_installations /wei772/DevelopAdvanced/settings">
+                                <svg aria-hidden="true" class="octicon octicon-gear" height="16" version="1.1" viewBox="0 0 14 16" width="14">
+                                    <path fill-rule="evenodd" d="M14 8.77v-1.6l-1.94-.64-.45-1.09.88-1.84-1.13-1.13-1.81.91-1.09-.45-.69-1.92h-1.6l-.63 1.94-1.11.45-1.84-.88-1.13 1.13.91 1.81-.45 1.09L0 7.23v1.59l1.94.64.45 1.09-.88 1.84 1.13 1.13 1.81-.91 1.09.45.69 1.92h1.59l.63-1.94 1.11-.45 1.84.88 1.13-1.13-.92-1.81.47-1.09L14 8.75v.02zM7 11c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"></path>
+                                </svg>
+                                Settings
+                            </a>
+                        </nav>
+
+                    </div>
+                </div>
+                <div class="container new-discussion-timeline experiment-repo-nav">
+                    <div class="repository-content">
+
+
+
+                        <a href="https://github.com/wei772/DevelopAdvanced/blob/2893d8cb08c4c58ca23e7f6d24133ef46f758240/AdvancedDocument/Tool/Markdown/Official%20website/syntax.md"
+                           class="d-none js-permalink-shortcut" data-hotkey="y">Permalink</a>
+
+                        <!-- blob contrib key: blob_contributors:v21:74cdc7c02d61e789bc3ae595e25f9710 -->
+
+                        <div class="file-navigation js-zeroclipboard-container">
+
+                            <div class="select-menu branch-select-menu js-menu-container js-select-menu float-left">
+                                <button class="btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w" type="button" aria-label="Switch branches or tags"
+                                        tabindex="0" aria-haspopup="true">
+                                    <i>Branch:</i>
+                                    <span class="js-select-button css-truncate-target">master</span>
+                                </button>
+
+                                <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax="" aria-hidden="true">
+
+                                    <div class="select-menu-modal">
+                                        <div class="select-menu-header">
+                                            <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16"
+                                                 width="12">
+                                                <path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path>
+                                            </svg>
+                                            <span class="select-menu-title">Switch branches/tags</span>
+                                        </div>
+
+                                        <div class="select-menu-filters">
+                                            <div class="select-menu-text-filter">
+                                                <input aria-label="Find or create a branch…" id="context-commitish-filter-field" class="form-control js-filterable-field js-navigation-enable"
+                                                       placeholder="Find or create a branch…" type="text">
+                                            </div>
+                                            <div class="select-menu-tabs">
+                                                <ul>
+                                                    <li class="select-menu-tab">
+                                                        <a href="#" data-tab-filter="branches" data-filter-placeholder="Find or create a branch…" class="js-select-menu-tab" role="tab">Branches</a>
+                                                    </li>
+                                                    <li class="select-menu-tab">
+                                                        <a href="#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab" role="tab">Tags</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches" role="menu">
+
+                                            <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+                                                <a class="select-menu-item js-navigation-item js-navigation-open selected" href="https://github.com/wei772/DevelopAdvanced/blob/master/AdvancedDocument/Tool/Markdown/Official%20website/syntax.md"
+                                                   data-name="master" data-skip-pjax="true" rel="nofollow">
+                                                    <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16"
+                                                         width="12">
+                                                        <path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path>
+                                                    </svg>
+                                                    <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                                                        master
+                                                    </span>
+                                                </a>
+                                            </div>
+
+                                            <!-- '"` -->
+                                            <!-- </textarea></xmp> -->
+                                            <form accept-charset="UTF-8" action="/wei772/DevelopAdvanced/branches" class="js-create-branch select-menu-item select-menu-new-item-form js-navigation-item js-new-item-form"
+                                                  data-form-nonce="8b28f2153ad628ddb141d9e2a1988fda1e8218e6" method="post">
+                                                <div style="margin:0;padding:0;display:inline">
+                                                    <input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="eqHdNlwOll3oMBVectJqKzWkj9j78tBqBvO4lMztlN/zUKqS51iLeiw18AQH95S2/Xup5oYwbiL4bD8Sets9fw=="
+                                                                                                      type="hidden">
+                                                </div>
+                                                <svg aria-hidden="true" class="octicon octicon-git-branch select-menu-item-icon" height="16" version="1.1" viewBox="0 0 10 16"
+                                                     width="10">
+                                                    <path fill-rule="evenodd" d="M10 5c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v.3c-.02.52-.23.98-.63 1.38-.4.4-.86.61-1.38.63-.83.02-1.48.16-2 .45V4.72a1.993 1.993 0 0 0-1-3.72C.88 1 0 1.89 0 3a2 2 0 0 0 1 1.72v6.56c-.59.35-1 .99-1 1.72 0 1.11.89 2 2 2 1.11 0 2-.89 2-2 0-.53-.2-1-.53-1.36.09-.06.48-.41.59-.47.25-.11.56-.17.94-.17 1.05-.05 1.95-.45 2.75-1.25S8.95 7.77 9 6.73h-.02C9.59 6.37 10 5.73 10 5zM2 1.8c.66 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2C1.35 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2zm0 12.41c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm6-8c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path>
+                                                </svg>
+                                                <div class="select-menu-item-text">
+                                                    <span class="select-menu-item-heading">Create branch: <span class="js-new-item-name"></span></span>
+                                                    <span class="description">from ‘master’</span>
+                                                </div>
+                                                <input name="name" id="name" class="js-new-item-value" type="hidden">
+                                                <input name="branch" id="branch" value="master" type="hidden">
+                                                <input name="path" id="path" value="AdvancedDocument/Tool/Markdown/Official%20website/syntax.md" type="hidden">
+                                            </form>
+                                        </div>
+
+                                        <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+                                            <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+                                            </div>
+
+                                            <div class="select-menu-no-results">Nothing to show</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="BtnGroup float-right">
+                                <a href="https://github.com/wei772/DevelopAdvanced/find/master" class="js-pjax-capture-input btn btn-sm BtnGroup-item" data-pjax=""
+                                   data-hotkey="t">
+                                    Find file
+                                </a>
+                                <button aria-label="Copy file path to clipboard" class="js-zeroclipboard btn btn-sm BtnGroup-item tooltipped tooltipped-s"
+                                        data-copied-hint="Copied!" type="button">
+                                    Copy path
+                                </button>
+                            </div>
+                            <div class="breadcrumb js-zeroclipboard-target">
+                                <span class="repo-root js-repo-root">
+                                    <span class="js-path-segment">
+                                        <a href="https://github.com/wei772/DevelopAdvanced"><span>DevelopAdvanced</span></a>
+                                    </span>
+                                </span><span class="separator">/</span><span class="js-path-segment">
+                                    <a href="https://github.com/wei772/DevelopAdvanced/tree/master/AdvancedDocument"><span>AdvancedDocument</span></a>
+                                </span><span class="separator">/</span><span class="js-path-segment">
+                                    <a href="https://github.com/wei772/DevelopAdvanced/tree/master/AdvancedDocument/Tool"><span>Tool</span></a>
+                                </span><span class="separator">/</span><span class="js-path-segment">
+                                    <a href="https://github.com/wei772/DevelopAdvanced/tree/master/AdvancedDocument/Tool/Markdown"><span>Markdown</span></a>
+                                </span><span class="separator">/</span><span class="js-path-segment">
+                                    <a href="https://github.com/wei772/DevelopAdvanced/tree/master/AdvancedDocument/Tool/Markdown/Official%20website"><span>Official website</span></a>
+                                </span><span class="separator">/</span><strong class="final-path">syntax.md</strong>
+                            </div>
+                        </div>
+
+
+
+                        <div class="commit-tease">
+                            <span class="float-right">
+                                <a class="commit-tease-sha" href="https://github.com/wei772/DevelopAdvanced/commit/26fe1dfa303cf4eb496c7ed7dab3ddc75c102641" data-pjax="">
+                                    26fe1df
+                                </a>
+                                <relative-time datetime="2016-12-02T02:56:18Z" title="Dec 2, 2016, 10:56 AM GMT+8">12 days ago</relative-time>
+                            </span>
+                            <div>
+                                <img alt="" class="avatar" data-canonical-src="https://0.gravatar.com/avatar/5a5916761fb9812763d3f9dcf6dbed94?d=https%3A%2F%2Fassets-cdn.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=x&amp;s=140"
+                                     src="js/68747470733a2f2f302e67726176617461722e636f6d2f6176617461722f.png"
+                                     width="20" height="20">
+                                <span class="user-mention">ucs_liwei</span>
+                                <a href="https://github.com/wei772/DevelopAdvanced/commit/26fe1dfa303cf4eb496c7ed7dab3ddc75c102641" class="message" data-pjax="true"
+                                   title="add  markdown  official">add markdown official</a>
+                            </div>
+
+                            <div class="commit-tease-contributors">
+                                <button type="button" class="btn-link muted-link contributors-toggle" data-facebox="#blob_contributors_box">
+                                    <strong>0</strong>
+                                    contributors
+                                </button>
+
+                            </div>
+
+                            <div id="blob_contributors_box" style="display:none">
+                                <h2 class="facebox-header" data-facebox-id="facebox-header">Users who have contributed to this file</h2>
+                                <ul class="facebox-user-list" data-facebox-id="facebox-description"></ul>
+                            </div>
+                        </div>
+
+
+                        <div class="file">
+                            <div class="file-header">
+                                <div class="file-actions">
+
+                                    <div class="BtnGroup">
+                                        <a href="https://github.com/wei772/DevelopAdvanced/raw/master/AdvancedDocument/Tool/Markdown/Official%20website/syntax.md"
+                                           class="btn btn-sm BtnGroup-item" id="raw-url">Raw</a>
+                                        <a href="https://github.com/wei772/DevelopAdvanced/blame/master/AdvancedDocument/Tool/Markdown/Official%20website/syntax.md"
+                                           class="btn btn-sm js-update-url-with-hash BtnGroup-item">Blame</a>
+                                        <a href="https://github.com/wei772/DevelopAdvanced/commits/master/AdvancedDocument/Tool/Markdown/Official%20website/syntax.md"
+                                           class="btn btn-sm BtnGroup-item" rel="nofollow">History</a>
+                                    </div>
+
+                                    <a class="btn-octicon tooltipped tooltipped-nw" href="https://windows.github.com/" aria-label="Open this file in GitHub Desktop"
+                                       data-ga-click="Repository, open with desktop, type:windows">
+                                        <svg aria-hidden="true" class="octicon octicon-device-desktop" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                            <path fill-rule="evenodd" d="M15 2H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5.34c-.25.61-.86 1.39-2.34 2h8c-1.48-.61-2.09-1.39-2.34-2H15c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 9H1V3h14v8z"></path>
+                                        </svg>
+                                    </a>
+
+                                    <!-- '"` -->
+                                    <!-- </textarea></xmp> -->
+                                    <form accept-charset="UTF-8" action="/wei772/DevelopAdvanced/edit/master/AdvancedDocument/Tool/Markdown/Official%20website/syntax.md"
+                                          class="inline-form js-update-url-with-hash" data-form-nonce="8b28f2153ad628ddb141d9e2a1988fda1e8218e6" method="post">
+                                        <div style="margin:0;padding:0;display:inline">
+                                            <input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="V48p2QcDpU1T4BKiR033qduKGCOqWZSQ50FYD+hotbvefl59vFW4apfl9/gyaAk0E1U+HdebKtgZ3t+JXl4cGw=="
+                                                                                              type="hidden">
+                                        </div>
+                                        <button class="btn-octicon tooltipped tooltipped-nw" type="submit" aria-label="Edit this file" data-hotkey="e" data-disable-with="">
+                                            <svg aria-hidden="true" class="octicon octicon-pencil" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"></path></svg>
+                                        </button>
+                                    </form>
+                                    <!-- '"` -->
+                                    <!-- </textarea></xmp> -->
+                                    <form accept-charset="UTF-8" action="/wei772/DevelopAdvanced/delete/master/AdvancedDocument/Tool/Markdown/Official%20website/syntax.md"
+                                          class="inline-form" data-form-nonce="8b28f2153ad628ddb141d9e2a1988fda1e8218e6" method="post">
+                                        <div style="margin:0;padding:0;display:inline">
+                                            <input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="l5bOK/2fBcaUAx+gUcPTWKg51Bg00fAZZObq81qYYkoeZ7mPRskY4VAG+vok5i3FYObyJkkTTlGaeW117K7L6g=="
+                                                                                              type="hidden">
+                                        </div>
+                                        <button class="btn-octicon btn-octicon-danger tooltipped tooltipped-nw" type="submit" aria-label="Delete this file" data-disable-with="">
+                                            <svg aria-hidden="true" class="octicon octicon-trashcan" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"></path></svg>
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <div class="file-info">
+                                    898 lines (593 sloc)
+                                    <span class="file-info-divider"></span> 27.1 KB
+                                </div>
+                            </div>
+
+
+                            <div id="readme" class="readme blob instapaper_body">
+                                <article class="markdown-body entry-content" itemprop="text">
+                                    <h1>
+                                        <a id="user-content-markdown-syntax" class="anchor" href="#markdown-syntax" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Markdown: Syntax
+                                    </h1>
+
+                                    <ul id="user-content-ProjectSubmenu">
+                                        <li><a href="https://github.com/wei772/DevelopAdvanced/blob/master/projects/markdown" title="Markdown Project Page">Main</a></li>
+                                        <li><a href="https://github.com/wei772/DevelopAdvanced/blob/master/projects/markdown/basics" title="Markdown Basics">Basics</a></li>
+                                        <li>Syntax</li>
+                                        <li><a href="https://github.com/wei772/DevelopAdvanced/blob/master/projects/markdown/license" title="Pricing and License Information">License</a></li>
+                                        <li><a href="https://github.com/wei772/DevelopAdvanced/blob/master/projects/markdown/dingus" title="Online Markdown Web Form">Dingus</a></li>
+                                    </ul>
+
+                                    <ul>
+                                        <li>
+                                            <a href="#overview">Overview</a>
+
+                                            <ul>
+                                                <li> <a href="#philosophy">Philosophy</a></li>
+                                                <li> <a href="#html">Inline HTML</a></li>
+                                                <li> <a href="#autoescape">Automatic Escaping for Special Characters</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#block">Block Elements</a>
+
+                                            <ul>
+                                                <li> <a href="#p">Paragraphs and Line Breaks</a></li>
+                                                <li> <a href="#header">Headers</a></li>
+                                                <li> <a href="#blockquote">Blockquotes</a></li>
+                                                <li> <a href="#list">Lists</a></li>
+                                                <li> <a href="#precode">Code Blocks</a></li>
+                                                <li> <a href="#hr">Horizontal Rules</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#span">Span Elements</a>
+
+                                            <ul>
+                                                <li> <a href="#link">Links</a></li>
+                                                <li> <a href="#em">Emphasis</a></li>
+                                                <li> <a href="#code">Code</a></li>
+                                                <li> <a href="#img">Images</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#misc">Miscellaneous</a>
+
+                                            <ul>
+                                                <li> <a href="#backslash">Backslash Escapes</a></li>
+                                                <li> <a href="#autolink">Automatic Links</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                    <p><strong>Note:</strong> This document is itself written using Markdown; you can <a href="https://github.com/wei772/DevelopAdvanced/blob/master/projects/markdown/syntax.text">see the source for it by adding '.text' to the URL</a>.</p>
+
+                                    <hr>
+
+                                    <h2 id="user-content-overview">
+                                        <a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Overview
+                                    </h2>
+
+                                    <h3 id="user-content-philosophy">
+                                        <a id="user-content-philosophy" class="anchor" href="#philosophy" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Philosophy
+                                    </h3>
+
+                                    <p>Markdown is intended to be as easy-to-read and easy-to-write as is feasible.</p>
+
+                                    <p>
+                                        Readability, however, is emphasized above all else. A Markdown-formatted document should be publishable as-is, as
+                                        plain text, without looking like it's been marked up with tags or formatting instructions. While Markdown's syntax
+                                        has been influenced by several existing text-to-HTML filters -- including <a href="http://docutils.sourceforge.net/mirror/setext.html">Setext</a>,
+                                        <a href="http://www.aaronsw.com/2002/atx/">atx</a>, <a href="http://textism.com/tools/textile/">Textile</a>,
+                                        <a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>,
+                                        <a href="http://www.triptico.com/software/grutatxt.html">Grutatext</a>, and <a href="http://ettext.taint.org/doc/">EtText</a>										-- the single biggest source of inspiration for Markdown's syntax is the format of plain text email.
+                                    </p>
+
+                                    <p>
+                                        To this end, Markdown's syntax is comprised entirely of punctuation characters, which punctuation characters have
+                                        been carefully chosen so as to look like what they mean. E.g., asterisks around a word actually look like *emphasis*.
+                                        Markdown lists look like, well, lists. Even blockquotes look like quoted passages of text, assuming you've ever
+                                        used email.
+                                    </p>
+
+                                    <h3 id="user-content-html">
+                                        <a id="user-content-inline-html" class="anchor" href="#inline-html" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Inline HTML
+                                    </h3>
+
+                                    <p>Markdown's syntax is intended for one purpose: to be used as a format for <em>writing</em> for the web.</p>
+
+                                    <p>
+                                        Markdown is not a replacement for HTML, or even close to it. Its syntax is very small, corresponding only to a very
+                                        small subset of HTML tags. The idea is <em>not</em> to create a syntax that makes it easier to insert HTML tags.
+                                        In my opinion, HTML tags are already easy to insert. The idea for Markdown is to make it easy to read, write, and
+                                        edit prose. HTML is a <em>publishing</em> format; Markdown is a <em>writing</em> format. Thus, Markdown's formatting
+                                        syntax only addresses issues that can be conveyed in plain text.
+                                    </p>
+
+                                    <p>
+                                        For any markup that is not covered by Markdown's syntax, you simply use HTML itself. There's no need to preface
+                                        it or delimit it to indicate that you're switching from Markdown to HTML; you just use the tags.
+                                    </p>
+
+                                    <p>
+                                        The only restrictions are that block-level HTML elements -- e.g. <code>&lt;div&gt;</code>,
+                                        <code>&lt;table&gt;</code>, <code>&lt;pre&gt;</code>, <code>&lt;p&gt;</code>, etc. -- must be separated from surrounding
+                                        content by blank lines, and the start and end tags of the block should not be indented with tabs or spaces. Markdown
+                                        is smart enough not to add extra (unwanted) <code>&lt;p&gt;</code> tags around HTML block-level tags.
+                                    </p>
+
+                                    <p>For example, to add an HTML table to a Markdown article:</p>
+
+                                    <pre><code>This is a regular paragraph.
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Foo&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+This is another regular paragraph.
+</code></pre>
+
+                                    <p>
+                                        Note that Markdown formatting syntax is not processed within block-level HTML tags. E.g., you can't use Markdown-style
+                                        <code>*emphasis*</code> inside an HTML block.
+                                    </p>
+
+                                    <p>
+                                        Span-level HTML tags -- e.g. <code>&lt;span&gt;</code>, <code>&lt;cite&gt;</code>, or <code>&lt;del&gt;</code> --
+                                        can be used anywhere in a Markdown paragraph, list item, or header. If you want, you can even use HTML tags instead
+                                        of Markdown formatting; e.g. if you'd prefer to use HTML <code>&lt;a&gt;</code> or <code>&lt;img&gt;</code> tags
+                                        instead of Markdown's link or image syntax, go right ahead.
+                                    </p>
+
+                                    <p>Unlike block-level HTML tags, Markdown syntax <em>is</em> processed within span-level tags.</p>
+
+                                    <h3 id="user-content-autoescape">
+                                        <a id="user-content-automatic-escaping-for-special-characters" class="anchor" href="#automatic-escaping-for-special-characters"
+                                           aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Automatic Escaping for Special Characters
+                                    </h3>
+
+                                    <p>
+                                        In HTML, there are two characters that demand special treatment: <code>&lt;</code> and <code>&amp;</code>. Left
+                                        angle brackets are used to start tags; ampersands are used to denote HTML entities. If you want to use them as
+                                        literal characters, you must escape them as entities, e.g. <code>&amp;lt;</code>, and
+                                        <code>&amp;amp;</code>.
+                                    </p>
+
+                                    <p>
+                                        Ampersands in particular are bedeviling for web writers. If you want to write about 'AT&amp;T', you need to write
+                                        '
+                                        <code>AT&amp;amp;T</code>'. You even need to escape ampersands within URLs. Thus, if you want to link to:
+                                    </p>
+
+                                    <pre><code>http://images.google.com/images?num=30&amp;q=larry+bird
+</code></pre>
+
+                                    <p>you need to encode the URL as:</p>
+
+                                    <pre><code>http://images.google.com/images?num=30&amp;amp;q=larry+bird
+</code></pre>
+
+                                    <p>
+                                        in your anchor tag <code>href</code> attribute. Needless to say, this is easy to forget, and is probably the single
+                                        most common source of HTML validation errors in otherwise well-marked-up web sites.
+                                    </p>
+
+                                    <p>
+                                        Markdown allows you to use these characters naturally, taking care of all the necessary escaping for you. If you
+                                        use an ampersand as part of an HTML entity, it remains unchanged; otherwise it will be translated into <code>&amp;amp;</code>.
+                                    </p>
+
+                                    <p>So, if you want to include a copyright symbol in your article, you can write:</p>
+
+                                    <pre><code>&amp;copy;
+</code></pre>
+
+                                    <p>and Markdown will leave it alone. But if you write:</p>
+
+                                    <pre><code>AT&amp;T
+</code></pre>
+
+                                    <p>Markdown will translate it to:</p>
+
+                                    <pre><code>AT&amp;amp;T
+</code></pre>
+
+                                    <p>
+                                        Similarly, because Markdown supports <a href="#html">inline HTML</a>, if you use angle brackets as delimiters for
+                                        HTML tags, Markdown will treat them as such. But if you write:
+                                    </p>
+
+                                    <pre><code>4 &lt; 5
+</code></pre>
+
+                                    <p>Markdown will translate it to:</p>
+
+                                    <pre><code>4 &amp;lt; 5
+</code></pre>
+
+                                    <p>
+                                        However, inside Markdown code spans and blocks, angle brackets and ampersands are <em>always</em> encoded automatically.
+                                        This makes it easy to use Markdown to write about HTML code. (As opposed to raw HTML, which is a terrible format
+                                        for writing about HTML syntax, because every single <code>&lt;</code> and <code>&amp;</code> in your example code
+                                        needs to be escaped.)
+                                    </p>
+
+                                    <hr>
+
+                                    <h2 id="user-content-block">
+                                        <a id="user-content-block-elements" class="anchor" href="#block-elements" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Block Elements
+                                    </h2>
+
+                                    <h3 id="user-content-p">
+                                        <a id="user-content-paragraphs-and-line-breaks" class="anchor" href="#paragraphs-and-line-breaks" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Paragraphs and Line Breaks
+                                    </h3>
+
+                                    <p>
+                                        A paragraph is simply one or more consecutive lines of text, separated by one or more blank lines. (A blank line
+                                        is any line that looks like a blank line -- a line containing nothing but spaces or tabs is considered blank.)
+                                        Normal paragraphs should not be indented with spaces or tabs.
+                                    </p>
+
+                                    <p>
+                                        The implication of the "one or more consecutive lines of text" rule is that Markdown supports "hard-wrapped" text
+                                        paragraphs. This differs significantly from most other text-to-HTML formatters (including Movable Type's "Convert
+                                        Line Breaks" option) which translate every line break character in a paragraph into a <code>&lt;br /&gt;</code>										tag.
+                                    </p>
+
+                                    <p>
+                                        When you <em>do</em> want to insert a <code>&lt;br /&gt;</code> break tag using Markdown, you end a line with two
+                                        or more spaces, then type return.
+                                    </p>
+
+                                    <p>
+                                        Yes, this takes a tad more effort to create a <code>&lt;br /&gt;</code>, but a simplistic "every line break is a
+                                        <code>&lt;br /&gt;</code>" rule wouldn't work for Markdown. Markdown's email-style <a href="#blockquote">blockquoting</a>										and multi-paragraph <a href="#list">list items</a> work best -- and look better -- when you format them with hard
+                                        breaks.
+                                    </p>
+
+                                    <h3 id="user-content-header">
+                                        <a id="user-content-headers" class="anchor" href="#headers" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Headers
+                                    </h3>
+
+                                    <p>Markdown supports two styles of headers, <a href="http://docutils.sourceforge.net/mirror/setext.html">Setext</a>										and <a href="http://www.aaronsw.com/2002/atx/">atx</a>.</p>
+
+                                    <p>
+                                        Setext-style headers are "underlined" using equal signs (for first-level headers) and dashes (for second-level headers).
+                                        For example:
+                                    </p>
+
+                                    <pre><code>This is an H1
+=============
+This is an H2
+-------------
+</code></pre>
+
+                                    <p>Any number of underlining <code>=</code>'s or <code>-</code>'s will work.</p>
+
+                                    <p>Atx-style headers use 1-6 hash characters at the start of the line, corresponding to header levels 1-6. For example:</p>
+
+                                    <pre><code># This is an H1
+## This is an H2
+###### This is an H6
+</code></pre>
+
+                                    <p>
+                                        Optionally, you may "close" atx-style headers. This is purely cosmetic -- you can use this if you think it looks
+                                        better. The closing hashes don't even need to match the number of hashes used to open the header. (The number of
+                                        opening hashes determines the header level.) :
+                                    </p>
+
+                                    <pre><code># This is an H1 #
+## This is an H2 ##
+### This is an H3 ######
+</code></pre>
+
+                                    <h3 id="user-content-blockquote">
+                                        <a id="user-content-blockquotes" class="anchor" href="#blockquotes" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Blockquotes
+                                    </h3>
+
+                                    <p>
+                                        Markdown uses email-style <code>&gt;</code> characters for blockquoting. If you're familiar with quoting passages
+                                        of text in an email message, then you know how to create a blockquote in Markdown. It looks best if you hard wrap
+                                        the text and put a <code>&gt;</code> before every line:
+                                    </p>
+
+                                    <pre><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+&gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&gt; 
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+&gt; id sem consectetuer libero luctus adipiscing.
+</code></pre>
+
+                                    <p>Markdown allows you to be lazy and only put the <code>&gt;</code> before the first line of a hard-wrapped paragraph:</p>
+
+                                    <pre><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.
+</code></pre>
+
+                                    <p>Blockquotes can be nested (i.e. a blockquote-in-a-blockquote) by adding additional levels of <code>&gt;</code>:</p>
+
+                                    <pre><code>&gt; This is the first level of quoting.
+&gt;
+&gt; &gt; This is nested blockquote.
+&gt;
+&gt; Back to the first level.
+</code></pre>
+
+                                    <p>Blockquotes can contain other Markdown elements, including headers, lists, and code blocks:</p>
+
+                                    <pre><code>&gt; ## This is a header.
+&gt; 
+&gt; 1.   This is the first list item.
+&gt; 2.   This is the second list item.
+&gt; 
+&gt; Here's some example code:
+&gt; 
+&gt;     return shell_exec("echo $input | $markdown_script");
+</code></pre>
+
+                                    <p>
+                                        Any decent text editor should make email-style quoting easy. For example, with BBEdit, you can make a selection
+                                        and choose Increase Quote Level from the Text menu.
+                                    </p>
+
+                                    <h3 id="user-content-list">
+                                        <a id="user-content-lists" class="anchor" href="#lists" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Lists
+                                    </h3>
+
+                                    <p>Markdown supports ordered (numbered) and unordered (bulleted) lists.</p>
+
+                                    <p>Unordered lists use asterisks, pluses, and hyphens -- interchangably -- as list markers:</p>
+
+                                    <pre><code>*   Red
+*   Green
+*   Blue
+</code></pre>
+
+                                    <p>is equivalent to:</p>
+
+                                    <pre><code>+   Red
++   Green
++   Blue
+</code></pre>
+
+                                    <p>and:</p>
+
+                                    <pre><code>-   Red
+-   Green
+-   Blue
+</code></pre>
+
+                                    <p>Ordered lists use numbers followed by periods:</p>
+
+                                    <pre><code>1.  Bird
+2.  McHale
+3.  Parish
+</code></pre>
+
+                                    <p>
+                                        It's important to note that the actual numbers you use to mark the list have no effect on the HTML output Markdown
+                                        produces. The HTML Markdown produces from the above list is:
+                                    </p>
+
+                                    <pre><code>&lt;ol&gt;
+&lt;li&gt;Bird&lt;/li&gt;
+&lt;li&gt;McHale&lt;/li&gt;
+&lt;li&gt;Parish&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+
+                                    <p>If you instead wrote the list in Markdown like this:</p>
+
+                                    <pre><code>1.  Bird
+1.  McHale
+1.  Parish
+</code></pre>
+
+                                    <p>or even:</p>
+
+                                    <pre><code>3. Bird
+1. McHale
+8. Parish
+</code></pre>
+
+                                    <p>
+                                        you'd get the exact same HTML output. The point is, if you want to, you can use ordinal numbers in your ordered
+                                        Markdown lists, so that the numbers in your source match the numbers in your published HTML. But if you want to
+                                        be lazy, you don't have to.
+                                    </p>
+
+                                    <p>
+                                        If you do use lazy list numbering, however, you should still start the list with the number 1. At some point in
+                                        the future, Markdown may support starting ordered lists at an arbitrary number.
+                                    </p>
+
+                                    <p>
+                                        List markers typically start at the left margin, but may be indented by up to three spaces. List markers must be
+                                        followed by one or more spaces or a tab.
+                                    </p>
+
+                                    <p>To make lists look nice, you can wrap items with hanging indents:</p>
+
+                                    <pre><code>*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+    viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+    Suspendisse id sem consectetuer libero luctus adipiscing.
+</code></pre>
+
+                                    <p>But if you want to be lazy, you don't have to:</p>
+
+                                    <pre><code>*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.
+</code></pre>
+
+                                    <p>
+                                        If list items are separated by blank lines, Markdown will wrap the items in <code>&lt;p&gt;</code> tags in the HTML
+                                        output. For example, this input:
+                                    </p>
+
+                                    <pre><code>*   Bird
+*   Magic
+</code></pre>
+
+                                    <p>will turn into:</p>
+
+                                    <pre><code>&lt;ul&gt;
+&lt;li&gt;Bird&lt;/li&gt;
+&lt;li&gt;Magic&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+                                    <p>But this:</p>
+
+                                    <pre><code>*   Bird
+*   Magic
+</code></pre>
+
+                                    <p>will turn into:</p>
+
+                                    <pre><code>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Bird&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Magic&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+                                    <p>
+                                        List items may consist of multiple paragraphs. Each subsequent paragraph in a list item must be indented by either
+                                        4 spaces or one tab:
+                                    </p>
+
+                                    <pre><code>1.  This is a list item with two paragraphs. Lorem ipsum dolor
+    sit amet, consectetuer adipiscing elit. Aliquam hendrerit
+    mi posuere lectus.
+    Vestibulum enim wisi, viverra nec, fringilla in, laoreet
+    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
+    sit amet velit.
+2.  Suspendisse id sem consectetuer libero luctus adipiscing.
+</code></pre>
+
+                                    <p>
+                                        It looks nice if you indent every line of the subsequent paragraphs, but here again, Markdown will allow you to
+                                        be lazy:
+                                    </p>
+
+                                    <pre><code>*   This is a list item with two paragraphs.
+    This is the second paragraph in the list item. You're
+only required to indent the first line. Lorem ipsum dolor
+sit amet, consectetuer adipiscing elit.
+*   Another item in the same list.
+</code></pre>
+
+                                    <p>To put a blockquote within a list item, the blockquote's <code>&gt;</code> delimiters need to be indented:</p>
+
+                                    <pre><code>*   A list item with a blockquote:
+    &gt; This is a blockquote
+    &gt; inside a list item.
+</code></pre>
+
+                                    <p>To put a code block within a list item, the code block needs to be indented <em>twice</em> -- 8 spaces or two tabs:</p>
+
+                                    <pre><code>*   A list item with a code block:
+        &lt;code goes here&gt;
+</code></pre>
+
+                                    <p>It's worth noting that it's possible to trigger an ordered list by accident, by writing something like this:</p>
+
+                                    <pre><code>1986. What a great season.
+</code></pre>
+
+                                    <p>
+                                        In other words, a <em>number-period-space</em> sequence at the beginning of a line. To avoid this, you can backslash-escape
+                                        the period:
+                                    </p>
+
+                                    <pre><code>1986\. What a great season.
+</code></pre>
+
+                                    <h3 id="user-content-precode">
+                                        <a id="user-content-code-blocks" class="anchor" href="#code-blocks" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Code Blocks
+                                    </h3>
+
+                                    <p>
+                                        Pre-formatted code blocks are used for writing about programming or markup source code. Rather than forming normal
+                                        paragraphs, the lines of a code block are interpreted literally. Markdown wraps a code block in both <code>&lt;pre&gt;</code>										and <code>&lt;code&gt;</code> tags.
+                                    </p>
+
+                                    <p>
+                                        To produce a code block in Markdown, simply indent every line of the block by at least 4 spaces or 1 tab. For example,
+                                        given this input:
+                                    </p>
+
+                                    <pre><code>This is a normal paragraph:
+    This is a code block.
+</code></pre>
+
+                                    <p>Markdown will generate:</p>
+
+                                    <pre><code>&lt;p&gt;This is a normal paragraph:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;This is a code block.
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+
+                                    <p>One level of indentation -- 4 spaces or 1 tab -- is removed from each line of the code block. For example, this:</p>
+
+                                    <pre><code>Here is an example of AppleScript:
+    tell application "Foo"
+        beep
+    end tell
+</code></pre>
+
+                                    <p>will turn into:</p>
+
+                                    <pre><code>&lt;p&gt;Here is an example of AppleScript:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tell application "Foo"
+    beep
+end tell
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+
+                                    <p>A code block continues until it reaches a line that is not indented (or the end of the article).</p>
+
+                                    <p>
+                                        Within a code block, ampersands (<code>&amp;</code>) and angle brackets (<code>&lt;</code> and <code>&gt;</code>)
+                                        are automatically converted into HTML entities. This makes it very easy to include example HTML source code using
+                                        Markdown -- just paste it and indent it, and Markdown will handle the hassle of encoding the ampersands and angle
+                                        brackets. For example, this:
+                                    </p>
+
+                                    <pre><code>    &lt;div class="footer"&gt;
+        &amp;copy; 2004 Foo Corporation
+    &lt;/div&gt;
+</code></pre>
+
+                                    <p>will turn into:</p>
+
+                                    <pre><code>&lt;pre&gt;&lt;code&gt;&amp;lt;div class="footer"&amp;gt;
+    &amp;amp;copy; 2004 Foo Corporation
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+
+                                    <p>
+                                        Regular Markdown syntax is not processed within code blocks. E.g., asterisks are just literal asterisks within a
+                                        code block. This means it's also easy to use Markdown to write about Markdown's own syntax.
+                                    </p>
+
+                                    <h3 id="user-content-hr">
+                                        <a id="user-content-horizontal-rules" class="anchor" href="#horizontal-rules" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Horizontal Rules
+                                    </h3>
+
+                                    <p>
+                                        You can produce a horizontal rule tag (<code>&lt;hr /&gt;</code>) by placing three or more hyphens, asterisks, or
+                                        underscores on a line by themselves. If you wish, you may use spaces between the hyphens or asterisks. Each of
+                                        the following lines will produce a horizontal rule:
+                                    </p>
+
+                                    <pre><code>* * *
+***
+*****
+- - -
+---------------------------------------
+</code></pre>
+
+                                    <hr>
+
+                                    <h2 id="user-content-span">
+                                        <a id="user-content-span-elements" class="anchor" href="#span-elements" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Span Elements
+                                    </h2>
+
+                                    <h3 id="user-content-link">
+                                        <a id="user-content-links" class="anchor" href="#links" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Links
+                                    </h3>
+
+                                    <p>Markdown supports two style of links: <em>inline</em> and <em>reference</em>.</p>
+
+                                    <p>In both styles, the link text is delimited by [square brackets].</p>
+
+                                    <p>
+                                        To create an inline link, use a set of regular parentheses immediately after the link text's closing square bracket.
+                                        Inside the parentheses, put the URL where you want the link to point, along with an <em>optional</em> title for
+                                        the link, surrounded in quotes. For example:
+                                    </p>
+
+                                    <pre><code>This is [an example](http://example.com/ "Title") inline link.
+[This link](http://example.net/) has no title attribute.
+</code></pre>
+
+                                    <p>Will produce:</p>
+
+                                    <pre><code>&lt;p&gt;This is &lt;a href="http://example.com/" title="Title"&gt;
+an example&lt;/a&gt; inline link.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://example.net/"&gt;This link&lt;/a&gt; has no
+title attribute.&lt;/p&gt;
+</code></pre>
+
+                                    <p>If you're referring to a local resource on the same server, you can use relative paths:</p>
+
+                                    <pre><code>See my [About](/about/) page for details.   
+</code></pre>
+
+                                    <p>
+                                        Reference-style links use a second set of square brackets, inside which you place a label of your choosing to identify
+                                        the link:
+                                    </p>
+
+                                    <pre><code>This is [an example][id] reference-style link.
+</code></pre>
+
+                                    <p>You can optionally use a space to separate the sets of brackets:</p>
+
+                                    <pre><code>This is [an example] [id] reference-style link.
+</code></pre>
+
+                                    <p>Then, anywhere in the document, you define your link label like this, on a line by itself:</p>
+
+                                    <pre><code>[id]: http://example.com/  "Optional Title Here"
+</code></pre>
+
+                                    <p>That is:</p>
+
+                                    <ul>
+                                        <li> Square brackets containing the link identifier (optionally indented from the left margin using up to three spaces);</li>
+                                        <li> followed by a colon;</li>
+                                        <li> followed by one or more spaces (or tabs);</li>
+                                        <li> followed by the URL for the link;</li>
+                                        <li> optionally followed by a title attribute for the link, enclosed in double or single quotes, or enclosed in parentheses.</li>
+                                    </ul>
+
+                                    <p>The following three link definitions are equivalent:</p>
+
+                                    <pre><code>[foo]: http://example.com/  "Optional Title Here"
+[foo]: http://example.com/  'Optional Title Here'
+[foo]: http://example.com/  (Optional Title Here)
+</code></pre>
+
+                                    <p>
+                                        <strong>Note:</strong> There is a known bug in Markdown.pl 1.0.1 which prevents single quotes from being used to
+                                        delimit link titles.
+                                    </p>
+
+                                    <p>The link URL may, optionally, be surrounded by angle brackets:</p>
+
+                                    <pre><code>[id]: &lt;http://example.com/&gt;  "Optional Title Here"
+</code></pre>
+
+                                    <p>
+                                        You can put the title attribute on the next line and use extra spaces or tabs for padding, which tends to look better
+                                        with longer URLs:
+                                    </p>
+
+                                    <pre><code>[id]: http://example.com/longish/path/to/resource/here
+    "Optional Title Here"
+</code></pre>
+
+                                    <p>
+                                        Link definitions are only used for creating links during Markdown processing, and are stripped from your document
+                                        in the HTML output.
+                                    </p>
+
+                                    <p>
+                                        Link definition names may consist of letters, numbers, spaces, and punctuation -- but they are <em>not</em> case
+                                        sensitive. E.g. these two links:
+                                    </p>
+
+                                    <pre><code>[link text][a]
+[link text][A]
+</code></pre>
+
+                                    <p>are equivalent.</p>
+
+                                    <p>
+                                        The <em>implicit link name</em> shortcut allows you to omit the name of the link, in which case the link text itself
+                                        is used as the name. Just use an empty set of square brackets -- e.g., to link the word "Google" to the google.com
+                                        web site, you could simply write:
+                                    </p>
+
+                                    <pre><code>[Google][]
+</code></pre>
+
+                                    <p>And then define the link:</p>
+
+                                    <pre><code>[Google]: http://google.com/
+</code></pre>
+
+                                    <p>Because link names may contain spaces, this shortcut even works for multiple words in the link text:</p>
+
+                                    <pre><code>Visit [Daring Fireball][] for more information.
+</code></pre>
+
+                                    <p>And then define the link:</p>
+
+                                    <pre><code>[Daring Fireball]: http://daringfireball.net/
+</code></pre>
+
+                                    <p>
+                                        Link definitions can be placed anywhere in your Markdown document. I tend to put them immediately after each paragraph
+                                        in which they're used, but if you want, you can put them all at the end of your document, sort of like footnotes.
+                                    </p>
+
+                                    <p>Here's an example of reference links in action:</p>
+
+                                    <pre><code>I get 10 times more traffic from [Google] [1] than from
+[Yahoo] [2] or [MSN] [3].
+  [1]: http://google.com/        "Google"
+  [2]: http://search.yahoo.com/  "Yahoo Search"
+  [3]: http://search.msn.com/    "MSN Search"
+</code></pre>
+
+                                    <p>Using the implicit link name shortcut, you could instead write:</p>
+
+                                    <pre><code>I get 10 times more traffic from [Google][] than from
+[Yahoo][] or [MSN][].
+  [google]: http://google.com/        "Google"
+  [yahoo]:  http://search.yahoo.com/  "Yahoo Search"
+  [msn]:    http://search.msn.com/    "MSN Search"
+</code></pre>
+
+                                    <p>Both of the above examples will produce the following HTML output:</p>
+
+                                    <pre><code>&lt;p&gt;I get 10 times more traffic from &lt;a href="http://google.com/"
+title="Google"&gt;Google&lt;/a&gt; than from
+&lt;a href="http://search.yahoo.com/" title="Yahoo Search"&gt;Yahoo&lt;/a&gt;
+or &lt;a href="http://search.msn.com/" title="MSN Search"&gt;MSN&lt;/a&gt;.&lt;/p&gt;
+</code></pre>
+
+                                    <p>For comparison, here is the same paragraph written using Markdown's inline link style:</p>
+
+                                    <pre><code>I get 10 times more traffic from [Google](http://google.com/ "Google")
+than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
+[MSN](http://search.msn.com/ "MSN Search").
+</code></pre>
+
+                                    <p>
+                                        The point of reference-style links is not that they're easier to write. The point is that with reference-style links,
+                                        your document source is vastly more readable. Compare the above examples: using reference-style links, the paragraph
+                                        itself is only 81 characters long; with inline-style links, it's 176 characters; and as raw HTML, it's 234 characters.
+                                        In the raw HTML, there's more markup than there is text.
+                                    </p>
+
+                                    <p>
+                                        With Markdown's reference-style links, a source document much more closely resembles the final output, as rendered
+                                        in a browser. By allowing you to move the markup-related metadata out of the paragraph, you can add links without
+                                        interrupting the narrative flow of your prose.
+                                    </p>
+
+                                    <h3 id="user-content-em">
+                                        <a id="user-content-emphasis" class="anchor" href="#emphasis" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Emphasis
+                                    </h3>
+
+                                    <p>
+                                        Markdown treats asterisks (<code>*</code>) and underscores (<code>_</code>) as indicators of emphasis. Text wrapped
+                                        with one <code>*</code> or <code>_</code> will be wrapped with an HTML <code>&lt;em&gt;</code> tag; double <code>*</code>'s
+                                        or <code>_</code>'s will be wrapped with an HTML
+                                        <code>&lt;strong&gt;</code> tag. E.g., this input:
+                                    </p>
+
+                                    <pre><code>*single asterisks*
+_single underscores_
+**double asterisks**
+__double underscores__
+</code></pre>
+
+                                    <p>will produce:</p>
+
+                                    <pre><code>&lt;em&gt;single asterisks&lt;/em&gt;
+&lt;em&gt;single underscores&lt;/em&gt;
+&lt;strong&gt;double asterisks&lt;/strong&gt;
+&lt;strong&gt;double underscores&lt;/strong&gt;
+</code></pre>
+
+                                    <p>
+                                        You can use whichever style you prefer; the lone restriction is that the same character must be used to open and
+                                        close an emphasis span.
+                                    </p>
+
+                                    <p>Emphasis can be used in the middle of a word:</p>
+
+                                    <pre><code>un*frigging*believable
+</code></pre>
+
+                                    <p>But if you surround an <code>*</code> or <code>_</code> with spaces, it'll be treated as a literal asterisk or underscore.</p>
+
+                                    <p>
+                                        To produce a literal asterisk or underscore at a position where it would otherwise be used as an emphasis delimiter,
+                                        you can backslash escape it:
+                                    </p>
+
+                                    <pre><code>\*this text is surrounded by literal asterisks\*
+</code></pre>
+
+                                    <h3 id="user-content-code">
+                                        <a id="user-content-code" class="anchor" href="#code" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Code
+                                    </h3>
+
+                                    <p>
+                                        To indicate a span of code, wrap it with backtick quotes (<code>`</code>). Unlike a pre-formatted code block, a
+                                        code span indicates code within a normal paragraph. For example:
+                                    </p>
+
+                                    <pre><code>Use the `printf()` function.
+</code></pre>
+
+                                    <p>will produce:</p>
+
+                                    <pre><code>&lt;p&gt;Use the &lt;code&gt;printf()&lt;/code&gt; function.&lt;/p&gt;
+</code></pre>
+
+                                    <p>
+                                        To include a literal backtick character within a code span, you can use multiple backticks as the opening and closing
+                                        delimiters:
+                                    </p>
+
+                                    <pre><code>``There is a literal backtick (`) here.``
+</code></pre>
+
+                                    <p>which will produce this:</p>
+
+                                    <pre><code>&lt;p&gt;&lt;code&gt;There is a literal backtick (`) here.&lt;/code&gt;&lt;/p&gt;
+</code></pre>
+
+                                    <p>
+                                        The backtick delimiters surrounding a code span may include spaces -- one after the opening, one before the closing.
+                                        This allows you to place literal backtick characters at the beginning or end of a code span:
+                                    </p>
+
+                                    <pre><code>A single backtick in a code span: `` ` ``
+A backtick-delimited string in a code span: `` `foo` ``
+</code></pre>
+
+                                    <p>will produce:</p>
+
+                                    <pre><code>&lt;p&gt;A single backtick in a code span: &lt;code&gt;`&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;A backtick-delimited string in a code span: &lt;code&gt;`foo`&lt;/code&gt;&lt;/p&gt;
+</code></pre>
+
+                                    <p>
+                                        With a code span, ampersands and angle brackets are encoded as HTML entities automatically, which makes it easy
+                                        to include example HTML tags. Markdown will turn this:
+                                    </p>
+
+                                    <pre><code>Please don't use any `&lt;blink&gt;` tags.
+</code></pre>
+
+                                    <p>into:</p>
+
+                                    <pre><code>&lt;p&gt;Please don't use any &lt;code&gt;&amp;lt;blink&amp;gt;&lt;/code&gt; tags.&lt;/p&gt;
+</code></pre>
+
+                                    <p>You can write this:</p>
+
+                                    <pre><code>`&amp;#8212;` is the decimal-encoded equivalent of `&amp;mdash;`.
+</code></pre>
+
+                                    <p>to produce:</p>
+
+                                    <pre><code>&lt;p&gt;&lt;code&gt;&amp;amp;#8212;&lt;/code&gt; is the decimal-encoded
+equivalent of &lt;code&gt;&amp;amp;mdash;&lt;/code&gt;.&lt;/p&gt;
+</code></pre>
+
+                                    <h3 id="user-content-img">
+                                        <a id="user-content-images" class="anchor" href="#images" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Images
+                                    </h3>
+
+                                    <p>Admittedly, it's fairly difficult to devise a "natural" syntax for placing images into a plain text document format.</p>
+
+                                    <p>Markdown uses an image syntax that is intended to resemble the syntax for links, allowing for two styles: <em>inline</em>										and <em>reference</em>.</p>
+
+                                    <p>Inline image syntax looks like this:</p>
+
+                                    <pre><code>![Alt text](/path/to/img.jpg)
+![Alt text](/path/to/img.jpg "Optional title")
+</code></pre>
+
+                                    <p>That is:</p>
+
+                                    <ul>
+                                        <li> An exclamation mark: <code>!</code>;</li>
+                                        <li> followed by a set of square brackets, containing the <code>alt</code> attribute text for the image;</li>
+                                        <li>
+                                            followed by a set of parentheses, containing the URL or path to the image, and an optional <code>title</code> attribute
+                                            enclosed in double or single quotes.
+                                        </li>
+                                    </ul>
+
+                                    <p>Reference-style image syntax looks like this:</p>
+
+                                    <pre><code>![Alt text][id]
+</code></pre>
+
+                                    <p>
+                                        Where "id" is the name of a defined image reference. Image references are defined using syntax identical to link
+                                        references:
+                                    </p>
+
+                                    <pre><code>[id]: url/to/image  "Optional title attribute"
+</code></pre>
+
+                                    <p>
+                                        As of this writing, Markdown has no syntax for specifying the dimensions of an image; if this is important to you,
+                                        you can simply use regular HTML <code>&lt;img&gt;</code> tags.
+                                    </p>
+
+                                    <hr>
+
+                                    <h2 id="user-content-misc">
+                                        <a id="user-content-miscellaneous" class="anchor" href="#miscellaneous" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Miscellaneous
+                                    </h2>
+
+                                    <h3 id="user-content-autolink">
+                                        <a id="user-content-automatic-links" class="anchor" href="#automatic-links" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Automatic Links
+                                    </h3>
+
+                                    <p>
+                                        Markdown supports a shortcut style for creating "automatic" links for URLs and email addresses: simply surround
+                                        the URL or email address with angle brackets. What this means is that if you want to show the actual text of a
+                                        URL or email address, and also have it be a clickable link, you can do this:
+                                    </p>
+
+                                    <pre><code>&lt;http://example.com/&gt;
+</code></pre>
+
+                                    <p>Markdown will turn this into:</p>
+
+                                    <pre><code>&lt;a href="http://example.com/"&gt;http://example.com/&lt;/a&gt;
+</code></pre>
+
+                                    <p>
+                                        Automatic links for email addresses work similarly, except that Markdown will also perform a bit of randomized decimal
+                                        and hex entity-encoding to help obscure your address from address-harvesting spambots. For example, Markdown will
+                                        turn this:
+                                    </p>
+
+                                    <pre><code>&lt;address@example.com&gt;
+</code></pre>
+
+                                    <p>into something like this:</p>
+
+                                    <pre><code>&lt;a href="&amp;#x6D;&amp;#x61;i&amp;#x6C;&amp;#x74;&amp;#x6F;:&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;
+&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;
+&amp;#109;"&gt;&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;
+&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;
+</code></pre>
+
+                                    <p>which will render in a browser as a clickable link to "<a href="mailto:address@example.com">address@example.com</a>".</p>
+
+                                    <p>
+                                        (This sort of entity-encoding trick will indeed fool many, if not most, address-harvesting bots, but it definitely
+                                        won't fool all of them. It's better than nothing, but an address published in this way will probably eventually
+                                        start receiving spam.)
+                                    </p>
+
+                                    <h3 id="user-content-backslash">
+                                        <a id="user-content-backslash-escapes" class="anchor" href="#backslash-escapes" aria-hidden="true">
+                                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+                                                <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                            </svg>
+                                        </a>Backslash Escapes
+                                    </h3>
+
+                                    <p>
+                                        Markdown allows you to use backslash escapes to generate literal characters which would otherwise have special meaning
+                                        in Markdown's formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead
+                                        of an HTML <code>&lt;em&gt;</code> tag), you can use backslashes before the asterisks, like this:
+                                    </p>
+
+                                    <pre><code>\*literal asterisks\*
+</code></pre>
+
+                                    <p>Markdown provides backslash escapes for the following characters:</p>
+
+                                    <pre><code>\   backslash
+`   backtick
+*   asterisk
+_   underscore
+{}  curly braces
+[]  square brackets
+()  parentheses
+#   hash mark
++   plus sign
+-   minus sign (hyphen)
+.   dot
+!   exclamation mark
+</code></pre>
+                                </article>
+                            </div>
+
+                        </div>
+
+                        <button type="button" data-facebox="#jump-to-line" data-facebox-class="linejump" data-hotkey="l" class="d-none">Jump to Line</button>
+                        <div id="jump-to-line" style="display:none">
+                            <!-- '"` -->
+                            <!-- </textarea></xmp> -->
+                            <form accept-charset="UTF-8" action="" class="js-jump-to-line-form" method="get">
+                                <div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+                                <input class="form-control linejump-input js-jump-to-line-field" placeholder="Jump to line…" aria-label="Jump to line" autofocus=""
+                                       type="text">
+                                <button type="submit" class="btn">Go</button>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-backdrop js-touch-events"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container site-footer-container">
+        <div class="site-footer" role="contentinfo">
+            <ul class="site-footer-links float-right">
+                <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact GitHub</a></li>
+                <li><a href="https://developer.github.com/" data-ga-click="Footer, go to api, text:api">API</a></li>
+                <li><a href="https://training.github.com/" data-ga-click="Footer, go to training, text:training">Training</a></li>
+                <li><a href="https://shop.github.com/" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+                <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+                <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+
+            </ul>
+
+            <a href="https://github.com/" aria-label="Homepage" class="site-footer-mark" title="GitHub">
+                <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+            <ul class="site-footer-links">
+                <li>© 2016 <span title="0.09943s from github-fe-83bc574.cp1-iad.github.net">GitHub</span>, Inc.</li>
+                <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+                <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+                <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+                <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+                <li><a href="https://help.github.com/" data-ga-click="Footer, go to help, text:help">Help</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+    <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+        <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path>
+        </svg>
+        <button type="button" class="flash-close js-flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+            <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+        </button> You can't perform that action at this time.
+    </div>
+
+
+
+    <script crossorigin="anonymous" integrity="sha256-eGrxxkowQBvwoW6v7VFBW5vLA/cv8xg6H6YAfXyw+Xk=" src="js/frameworks.js"></script>
+    <script async="async" crossorigin="anonymous" integrity="sha256-8AVESM9QH4qXx/5+oJOf8LVXUEJdy6dO4DNy3/VFP4I=" src="js/github.js"></script>
+
+
+
+
+    <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner d-none">
+        <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+            <path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path>
+        </svg>
+        <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
+        <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
+    </div>
+    <div class="facebox" id="facebox" style="display:none;">
+        <div class="facebox-popup">
+            <div class="facebox-content" role="dialog" aria-labelledby="facebox-header" aria-describedby="facebox-description">
+            </div>
+            <button type="button" class="facebox-close js-facebox-close" aria-label="Close modal">
+                <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+            </button>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

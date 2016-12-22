@@ -1,0 +1,1396 @@
+﻿
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta name="robots" content="index,follow" />
+    <meta name="keywords" content="JavaScript, Windows 库, WinJS, 自定义控件" />
+    <meta name="GENERATOR" content="Telligent Evolution Platform Developer Build (Build: 5.6.50428.7875)" />
+    <link rel="pingback" href="http://blogs.msdn.com/b/windowsappdev_cn/pingback.aspx" />
+    <link href="http://i1.blogs.msdn.com/rrcontent/e8ef9a0f5baf04c5b72689852bedf1f8-3cca145f259b38265dcb26477a5f3c2c-RequestReducedStyle.css" rel="Stylesheet" type="text/css" />
+    <link rel="alternate" type="application/rss+xml" title="Site Home (RSS 2.0)" href="http://blogs.msdn.com/rss.aspx" />
+    <link rel="alternate" type="application/rss+xml" title="Windows 8 Team&#39;s Comments (RSS 2.0)" href="/members/win8apps_4000_live.com/comments/rss.aspx" />
+    <link rel="alternate" type="application/rss+xml" title="Windows 8 Team&#39;s Activities (RSS 2.0)" href="/members/win8apps_4000_live.com/activities/rss.aspx" />
+    <link rel="alternate" type="application/rss+xml" title="Activities of People Windows 8 Team Follows (RSS 2.0)" href="/members/win8apps_4000_live.com/activities/followersrss.aspx" />
+    <link rel="alternate" type="application/rss+xml" title="Windows 8 Team&#39;s Groups Activities (RSS 2.0)" href="/members/win8apps_4000_live.com/activities/groupsrss.aspx" />
+    <link rel="alternate" type="application/rss+xml" title="Windows 8 应用程序开发人员博客 (RSS 2.0)" href="http://blogs.msdn.com/b/windowsappdev_cn/rss.aspx" />
+    <link rel="alternate" type="application/atom+xml" title="Windows 8 应用程序开发人员博客 (Atom 1.0)" href="http://blogs.msdn.com/b/windowsappdev_cn/atom.aspx" />
+    <link rel="alternate" type="application/rss+xml" title="Windows 8 应用程序开发人员博客 - All Comments (RSS 2.0)" href="http://blogs.msdn.com/b/windowsappdev_cn/rsscomments.aspx" />
+    <link rel="alternate" type="application/rss+xml" title="采用 Windows JavaScript 库 (WinJS) 构建自定义控件 - Comments for this post (RSS 2.0)" href="http://blogs.msdn.com/b/windowsappdev_cn/rsscomments.aspx?WeblogPostID=10360195" />
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" type="image/ico" href="/themes/wireframe/favicon.ico" />
+    <!--
+      Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx.
+    -->
+    <link href="http://i1.blogs.msdn.com/rrcontent/1eae160ea2c1e5cb3196f8c18470cca1-9728b852b1bb5db880b4edfc37d5eac6-RequestReducedStyle.css" rel="Stylesheet" type="text/css" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.5.2.min.js" type="text/javascript" language="javascript"></script>
+
+
+    <link type="text/css" rel="stylesheet" href="/themes/wireframe/css/DynamicStyle.aspx?PreviewKey=0" media="screen,print" />
+    <link type="text/css" rel="stylesheet" href="/themes/blogs/wireframe/css/DynamicStyle.aspx?WeblogID=15134&PreviewKey=0" media="screen,print" />
+
+    <!--[if lte IE 6]>
+        <link type="text/css" rel="stylesheet" href="/themes/wireframe/css/ie6.css" media="screen,print" />
+    <![endif]-->
+    <meta name="msvalidate.01" content="B717AD6FC29D3A844832AF011B5F9E4C" />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blogs.msdn.com/b/windowsappdev_cn/rsd.ashx" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href="http://blogs.msdn.com/b/windowsappdev_cn/wlwmanifest.ashx" />
+
+    <!--
+        Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx.
+      -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.5.2.min.js" type="text/javascript" language="javascript"></script>
+    <title>
+        采用 Windows JavaScript 库 (WinJS) 构建自定义控件 - Windows 8 应用程序开发人员博客 - Site Home - MSDN Blogs
+    </title>
+</head>
+<body spellcheck="true">
+    <form name="aspnetForm" method="post" action="/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+        <div>
+            <input type="hidden" name="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_answer" id="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_answer" value="" />
+            <input type="hidden" name="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_encrypted" id="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_encrypted" value="UBMHtRGWBwgyOWguKL+JUP1ZiX68+/KiLC12Z12947I=" />
+            <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+            <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM5OTAxNDYyNWRkvI787cXLvh9XHlDReEjVejxzcZ4=" />
+        </div>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            var theForm = document.forms['aspnetForm'];
+            if (!theForm) {
+                theForm = document.aspnetForm;
+            }
+            function __doPostBack(eventTarget, eventArgument) {
+                if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                    theForm.__EVENTTARGET.value = eventTarget;
+                    theForm.__EVENTARGUMENT.value = eventArgument;
+                    theForm.submit();
+                }
+            }
+            //]]>
+        </script>
+
+
+        <script src="http://i1.blogs.msdn.com/rrcontent/2fa949eac4cbb4c7af6c06f1e990ea36-03fb75ba2c49c59f0efbe1b8b0bfc9c5-RequestReducedScript.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            function WebForm_OnSubmit() {
+                if (typeof (ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+                return true;
+            }
+            //]]>
+        </script>
+
+        <div>
+
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="84C00179" />
+        </div>
+
+
+
+
+        <div class="header-fragments-header"></div>
+        <div class="header-fragments">
+            <div class="header-fragment-outer top-bar wireframe-header-fragment-outer wireframe-top-bar">
+                <div class="header-fragment-inner top-bar wireframe-header-fragment-inner wireframe-top-bar">
+                    <div class="header-fragment welcome-message" id="header-fragment-247403536">
+
+
+                        <!-- always render -->
+                    </div><div class="header-fragment login-logout" id="header-fragment-247403537">
+
+
+
+
+
+                        <div class="navigation-list-header"></div>
+                        <ul class="navigation-list">
+
+                            <li class="navigation-item">
+                                <span id="ctl00_header_fragment_247403537__ae1a35_ctl00_ctl02_ctl05_WLIDLoginButton1" class="internal-link live-id-button"><a href="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=12&ct=1425697107&rver=6.0.5286.0&wp=MBI&wreply=http:%2F%2Fblogs.msdn.com%2Fb%2Fwindowsappdev_cn%2Farchive%2F2012%2F10%2F16%2Fwindows-javascript-winjs.aspx&lc=1033&id=271611">Sign in</a></span>
+                            </li>
+                        </ul>
+                        <div class="navigation-list-footer"></div>
+                    </div><div class="header-fragment user-welcome-without-login" id="header-fragment-247403538">
+
+                        &nbsp;<!-- always render -->
+
+                    </div>
+                </div>
+            </div><div class="header-fragment-outer wireframe-header-fragment-outer site-banner">
+                <div class="header-fragment-inner wireframe-header-fragment-inner site-banner">
+                    <div class="header-fragment site-banner" id="header-fragment-247403539">
+
+
+                        <div class="site-banner-header"></div>
+                        <div class="site-banner">
+
+
+
+                            <div class="site-logo">
+                                <a href="/">
+                                    <img src="/themes/MSDN2/images/MSDN/logo_msdn.png" alt="" style="border-width:0px;" />
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="site-banner-footer"></div>
+                    </div>
+                </div>
+            </div><div class="header-fragment-outer wireframe-header-fragment-outer search">
+                <div class="header-fragment-inner wireframe-header-fragment-inner search">
+                    <div class="header-fragment search" id="header-fragment-247403540">
+
+                        <div class="field-list-header">
+                        </div>
+                        <fieldset class="field-list">
+                            <ul class="field-list">
+                                <li class="field-item">
+                                    <span class="field-item-input">
+                                        <input id="SearchTextBox_Header" name="SearchTextBox_Header" type="text" class="search empty"
+                                               autocomplete="off" />
+                                        <input id="SearchButton_Header" name="SearchButton_Header" type="image" class="search-button"
+                                               src="/Utility/images/MSDNTechnet/trans.gif" />
+                                    </span>
+                                </li>
+                                <li id="ctl00_header_fragment_247403540__ae1a35_ctl00_SearchOptionsButtonWrapper" class="field-item">
+                                    <span class="field-item-input">
+                                        <a class="internal-link search-options" title="Change Search Scope">
+                                            &nbsp;
+                                        </a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </fieldset>
+                        <div class="field-list-footer">
+                        </div>
+                        <script src="http://i4.services.social.microsoft.com/Search/Widgets/SearchBox.jss?boxid=SearchTextBox_Header&btnid=SearchButton_Header&brand=MSDN&refinement=109&resref=&addEnglish=&rn=&rq=&watermark=&focusOnInit=false&beta=0&iroot=&overrideWatermark=false" type="text/javascript" language="javascript"></script>
+
+                        <script type="text/javascript" language="javascript">
+                            if ($.browser && $.browser.mozilla) {
+                                $('#SearchButton_Header').parent().append('<span style="background: white url(/Utility/images/MSDNTechnet/common.png) 0 -20px no-repeat;display:block;height:22px;overflow:hidden;width:47px;position:absolute;right:22px"></span>');
+                            } else {
+                                $('#SearchButton_Header').parent().append('<span style="background: white url(/Utility/images/MSDNTechnet/common.png) 0 -20px no-repeat;display:block;height:22px;overflow:hidden;width:47px;position:absolute;right:-17px"></span>');
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div><div class="header-fragment-outer wireframe-header-fragment-outer group-navigation">
+                <div class="header-fragment-inner wireframe-header-fragment-inner group-navigation">
+                    <div class="header-fragment group-navigation" id="header-fragment-247403541">
+
+                        <script src="http://i1.blogs.msdn.com/rrcontent/44a500773671f30bd4ba3b0c7bba2359-14e0c332a84e56b6d37629b4d8cac65a-RequestReducedScript.js" type="text/javascript"></script>
+
+                        <div id="ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_ParentGroupListContainer" class="parent-container" style="width: 100%">
+                            <div class="parent-sub-container">
+
+                                <div class="navigation-list-header"></div>
+                                <ul class="navigation-list parent">
+                                    <li class="navigation-item" style="display: none;">
+                                        <a href="/">MSDN Blogs</a>
+                                    </li>
+
+                                    <li class="navigation-item entry" style="display: none;">
+
+                                        <a class="internal-link view-group" href="/Microsoft_Blog_Images/"><span></span>Microsoft Blog Images</a>
+
+                                    </li>
+
+
+                                    <li class="navigation-item last">
+                                        <a id="MoreLink" style="display:none;" onmouseover="Core_GroupNavigation_MoreShowNav(ctl00_header_fragment_247403541, true, this)" onmouseout="Core_GroupNavigation_MoreMouseOutPopup(ctl00_header_fragment_247403541, true, this)" href="#">More ...</a>
+                                    </li>
+                                </ul>
+                                <div class="navigation-list-footer"></div>
+
+                            </div>
+                        </div>
+                        <div id="ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_GroupNavigationPopup" style="position:absolute;visibility:hidden;left:-5000px;"></div>
+                        <div id="ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_ParentMore" style="display: none;">
+                            <div class="content-list-header"></div>
+                            <ul id="ParentMoreListheader-fragment-247403541" class="content-list"></ul>
+                            <div class="content-list-footer"></div>
+                        </div>
+                        <div id="ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_ChildMore" style="display: none;">
+                            <div class="content-list-header"></div>
+                            <ul id="ChildMoreListheader-fragment-247403541" class="content-list"></ul>
+                            <div class="content-list-footer"></div>
+                        </div>
+
+                        <script type="text/javascript">
+                            // <![CDATA[
+
+                            var Core_GroupNavigation_AjaxEndpoint = '/Utility/HeaderFragments/Core/GroupNavigationAjax.asmx';
+
+                            var ctl00_header_fragment_247403541 = { "wrapperId": "header-fragment-247403541", "variableName": "ctl00_header_fragment_247403541", "parameter": { "currentGroupId": 0, "popupMenuId": "ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_GroupNavigationPopup", "popupParentMoreId": "ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_ParentMore", "popupChildMoreId": "ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_ChildMore", "popupWrapperID": "popup-ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_GroupNavigationPopup", "mouseInPopup": false, "popupPopulated": false, "errorHtml": "<div class=\"message error\">An error occured while attempting to load groups.</div>", "loadingHtml": "<div class=\"message loading\">Loading...</div>", "groupNavigationContentWrapperHtmlBlock": "<div id=\"popup-ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_GroupNavigationPopup\">{GroupNavigationContent}</div>", "groupNavigationListHtmlBlock": "<div class=\"multiple-column-list-header\"></div>\n<div class=\"multiple-column-list columns-{ColumnsCount}\">{Columns}</div>\n<div class=\"multiple-column-list-footer\"></div>", "columnWrapperHtmlBlock": "<div class=\"multiple-column-item column-{ColumnId}\">{T1GroupsData}</div>", "t1GroupHtmlBlock": "\r\n\t\t<div class=\"content-list-header\"></div>\r\n\t\t<div class=\"content-list-name{NameClass}\">{Name}</div>\r\n\t\t<ul class=\"content-list\">\r\n\t\t\t{Groups}\r\n\t\t</ul>\r\n\t\t<div class=\"content-list-footer\"></div>\r\n\t", "t2GroupHtmlBlock": "<li class=\"content-item{ItemClass}\">{Item}</li>", "viewAllHtmlBlock": "<a href=\"{Url}\" class=\"internal-link view-all\">{Text}</a>", "linkHtmlBlock": "<a href=\"{Url}\" class=\"{MoreClass}\">{Name}</a>", "searchResultItemHtmlBlock": "<li class=\"content-item\"><a href=\"{Url}\">{Name}</a></li>", "viewMoreText": "and {MoreText} more..." } };
+
+                            $(document).ready(function () {
+                                Core_GroupNavigation_SetMenuItems("#ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_ParentGroupListContainer", true, "ParentMoreListheader-fragment-247403541");
+                                Core_GroupNavigation_SetMenuItems("#ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_ChildGroupListContainer", false, "ChildMoreListheader-fragment-247403541");
+                            });
+
+                            $(window).resize(function () {
+                                Core_GroupNavigation_SetMenuItems("#ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_ParentGroupListContainer", true, "ParentMoreListheader-fragment-247403541");
+                                Core_GroupNavigation_SetMenuItems("#ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_ChildGroupListContainer", false, "ChildMoreListheader-fragment-247403541");
+                            });
+                            // ]]>
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-fragments-footer"></div>
+
+        <div class="content-fragment-page post" id="ctl00_content_ctl00_page">
+            <div class="layout">
+                <div class="layout-header"></div>
+                <div class="layout-content header-top-content-left-sidebar-right" id="ctl00_content_ctl00_layout">
+                    <div class="layout-region header" id="ctl00_content_ctl00_header">
+                        <div class="layout-region-inner header">
+                            <div class="content-fragment blog-title full-border" id="fragment-76841">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+                                        <h1 class="title">
+
+
+
+                                            采用 Windows JavaScript 库 (WinJS) 构建自定义控件
+
+                                        </h1>
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                            <div class="content-fragment blog-banner no-wrapper-with-spacing" id="fragment-76842">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+
+
+                                        <div class="application-banner-header"></div>
+                                        <div class="application-banner">
+                                            <h3 class="application-name"><a class="internal-link view-application weblog" href="/b/windowsappdev_cn/"><span></span>Windows 8 应用程序开发人员博客</a></h3>
+                                            <div class="application-description">
+                                                有关为 Windows 8 生成 Metro 风格应用程序的见解，来自 Windows 8 工程团队
+                                            </div>
+                                            <div class="application-banner-actions">
+                                                <div class="navigation-list-header"></div>
+                                                <ul class="navigation-list">
+
+
+                                                    <li class="navigation-item rss"><a class="internal-link rss" href="/b/windowsappdev_cn/rss.aspx"><span></span>RSS for posts</a></li>
+
+
+                                                </ul>
+                                                <div class="navigation-list-footer"></div>
+                                            </div>
+                                        </div>
+                                        <div class="application-banner-footer"></div>
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layout-region right-sidebar" id="ctl00_content_ctl00_right-sidebar">
+                        <div class="layout-region-inner right-sidebar">
+                            <div class="content-fragment html-content no-wrapper-with-spacing with-header" id="fragment-76843">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-header"><div>语言</div></div>
+                                    <div class="content-fragment-content">
+                                        <div class="user-defined-markup">
+                                            <ul class="content-list">
+                                                <li class="content-item"><a href="/b/windowsappdev">English</a></li>
+                                                <li class="content-item"><a href="/b/windowsappdev_fr">Fran&ccedil;ais</a></li>
+                                                <li class="content-item"><a href="/b/windowsappdev_de">Deutsch</a></li>
+                                                <li class="content-item"><a href="/b/windowsappdev_br">Portugu&ecirc;s (Brasil)</a></li>
+                                                <li class="content-item"><a href="/b/windowsappdev_ko">한국어</a></li>
+                                                <li class="content-item"><a href="/b/windowsappdev_ja">日本語</a></li>
+                                                <li class="content-item"><a href="/b/windowsappdev_cn">简体中文</a></li>
+                                                <li class="content-item"><a href="/b/windowsappdev_ru">Русский</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                            <div class="content-fragment blog-links no-wrapper-with-spacing with-header" id="fragment-76844">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-header"><div>反馈及更多内容</div></div>
+                                    <div class="content-fragment-content">
+
+                                        <div class="navigation-list-header"></div>
+                                        <ul class="navigation-list">
+                                            <li class="navigation-item"><a class="internal-link view-application" href="/b/windowsappdev_cn/"><span></span>Blog Home</a></li>
+                                            <li id="" RssComments"""=RssComments""" class="navigation-item"><a class="internal-link rss" href="/b/windowsappdev_cn/rsscomments.aspx"><span></span>RSS for comments</a></li>
+                                            <li class="navigation-item"><a class="internal-link rss" href="/b/windowsappdev_cn/rss.aspx"><span></span>RSS for posts</a></li>
+                                            <li class="navigation-item"><a class="internal-link rss" href="/b/windowsappdev_cn/atom.aspx"><span></span>Atom</a></li>
+                                        </ul>
+                                        <div class="navigation-list-footer"></div>
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                            <div class="content-fragment search-form no-wrapper-with-spacing with-header" id="fragment-76845">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-header"><div>搜索</div></div>
+                                    <div class="content-fragment-content">
+
+                                        <div class="field-list-header">
+                                        </div>
+                                        <fieldset class="field-list">
+                                            <ul class="field-list">
+                                                <li class="field-item search">
+                                                    <div id="search-allblogs-container">
+                                                        <span class="field-item-input">
+                                                            <input id="SearchTextBox_AllBlogs" name="SearchTextBox_AllBlogs" type="text" class="searchField"
+                                                                   maxlength="64" size="45" autocomplete="off" />
+                                                            <input id="SearchButton_AllBlogs" name="SearchButton_AllBlogs" type="button" class="search-button" />
+                                                        </span>
+                                                    </div>
+                                                    <div id="search-thisblog-container">
+                                                        <span class="field-item-input">
+                                                            <input id="SearchTextBox_ThisBlog" name="SearchTextBox_ThisBlog" type="text" class="searchField"
+                                                                   maxlength="64" size="45" autocomplete="off" />
+                                                            <input id="SearchButton_ThisBlog" name="SearchButton_ThisBlog" type="button" class="search-button" />
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                        <div class="field-list-footer">
+                                            <div id="search-switch-container">
+                                                <span style="display: inline-block">
+                                                    <input type="radio" name="SearchTypeRadio" value="ThisBlog" id="ThisBlog" checked="checked" /><label for="ThisBlog" id="ThisBlogText">Search this blog</label>
+                                                </span>
+                                                <span style="display: inline-block">
+                                                    <input type="radio" name="SearchTypeRadio" value="AllBlogs" id="AllBlogs" /><label for="AllBlogs" id="AllBlogsText">Search all blogs</label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <script type="text/javascript">
+                                            var elmSearchAll = $('#search-allblogs-container').hide();
+                                            var elmSearchThis = $('#search-thisblog-container');
+
+                                            // try to get the blog id, if we fail, then we aren't on a blog and just use the regular search approach
+                                            (15134 === -1) && $('#search-switch-container').hide();
+
+                                            $(document).ready(function () {
+                                                $('#ThisBlog').click(function () {
+                                                    var self = $(this);
+                                                    if (self.is(':checked')) {
+                                                        elmSearchAll.hide();
+                                                        elmSearchThis.show();
+                                                    }
+                                                });
+
+                                                $('#AllBlogs').click(function () {
+                                                    var self = $(this);
+                                                    if (self.is(':checked')) {
+                                                        elmSearchThis.hide();
+                                                        elmSearchAll.show();
+                                                    }
+                                                });
+                                            });
+                                        </script>
+                                        <script src="http://i4.services.social.microsoft.com/Search/Widgets/SearchBox.jss?boxid=SearchTextBox_AllBlogs&btnid=SearchButton_AllBlogs&brand=MSDN&refinement=109&resref=&addEnglish=&rn=&rq=&watermark=&focusOnInit=false&beta=0&iroot=&overrideWatermark=false" type="text/javascript" language="javascript"></script>
+                                        <script src="http://i4.services.social.microsoft.com/Search/Widgets/SearchBox.jss?boxid=SearchTextBox_ThisBlog&btnid=SearchButton_ThisBlog&brand=MSDN&refinement=&resref=&addEnglish=&watermark=&focusOnInit=false&beta=0&iroot=&overrideWatermark=false&rn=Windows%2b8%2b%25e5%25ba%2594%25e7%2594%25a8%25e7%25a8%258b%25e5%25ba%258f%25e5%25bc%2580%25e5%258f%2591%25e4%25ba%25ba%25e5%2591%2598%25e5%258d%259a%25e5%25ae%25a2&rq=site:blogs.msdn.com/b/windowsappdev_cn/" type="text/javascript" language="javascript"></script>
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                            <div class="content-fragment blog-archive-list no-wrapper-with-spacing with-header" id="fragment-76846">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-header"><div>每月存档</div></div>
+                                    <div class="content-fragment-content">
+
+                                        <div class="content-list-header"></div>
+                                        <div class="content-list-name">Archives</div>
+                                        <ul class="content-list">
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2013/06.aspx">June 2013</a> (4)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2013/05.aspx">May 2013</a> (3)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2013/04.aspx">April 2013</a> (4)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2013/03.aspx">March 2013</a> (4)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2013/02.aspx">February 2013</a> (1)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2013/01.aspx">January 2013</a> (2)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2012/12.aspx">December 2012</a> (3)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2012/11.aspx">November 2012</a> (2)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2012/10.aspx">October 2012</a> (5)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2012/09.aspx">September 2012</a> (5)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2012/08.aspx">August 2012</a> (7)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2012/07.aspx">July 2012</a> (5)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2012/06.aspx">June 2012</a> (4)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2012/05.aspx">May 2012</a> (4)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2012/04.aspx">April 2012</a> (7)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2012/03.aspx">March 2012</a> (8)</li>
+
+                                            <li class="content-item"><a class="internal-link view-post-archive-list" href="/b/windowsappdev_cn/archive/2012/02.aspx">February 2012</a> (1)</li>
+
+                                        </ul>
+                                        <div class="content-list-footer"></div>
+
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                            <div class="content-fragment html-content no-wrapper-with-spacing with-header" id="fragment-76847">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-header"><div>博客</div></div>
+                                    <div class="content-fragment-content">
+                                        <div class="user-defined-markup">
+                                            <p><a title="Building Windows 8 博客" href="/b/b8_cn">Building Windows 8 博客</a></p>
+                                            <p><a title="面向开发人员的 Windows 应用商店博客" href="/b/windowsstore_cn">面向开发人员的 Windows 应用商店博客</a></p>
+                                            <p><a title="Visual Studio 博客" href="http://blogs.msdn.com/b/visualstudio/">Visual Studio 博客</a></p>
+                                            <p><a title="IEBlog 简体中文" href="/b/ie_cn/">IEBlog 简体中文</a></p>
+                                            <p><a title="Windows 团队博客" href="http://windowsteamblog.com">Windows 团队博客</a></p>
+                                            <p><a title="Inside Windows Live 博客" href="http://windowsteamblog.com/windows_live/b/windowslive/default.aspx">Inside Windows Live 博客</a></p>
+                                        </div>
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                            <div class="content-fragment html-content no-wrapper-with-spacing with-header" id="fragment-76848">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-header"><div>相关网站</div></div>
+                                    <div class="content-fragment-content">
+                                        <div class="user-defined-markup">
+                                            <p><a title="下载 Windows 8 Release Preview" href="http://windows.microsoft.com/zh-cn/windows-8/download?ocid=W_MSC_W8P_DevCenter_MetroApps_zh-cn" target="_blank">下载 Windows 8 Release Preview</a></p>
+                                            <p><a title="开发中心 - Metro 风格的应用程序" href="http://msdn.microsoft.com/windows/apps/" target="_blank">开发中心 - Metro 风格的应用程序</a></p>
+                                            <p><a title="关注 @windevs" href="https://twitter.com/windevs" target="_blank">关注 @windevs</a></p>
+                                            <p><a title="//build/ 会议" href="http://www.buildwindows.com/" target="_blank">//build/ 会议</a></p>
+                                            <p><a title="Windows Metro 风格应用程序论坛" href="http://social.msdn.microsoft.com/forums/zh-cn/metroappzhcn/" target="_blank">Windows Metro 风格应用程序论坛</a></p>
+                                        </div>
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layout-region content" id="ctl00_content_ctl00_content">
+                        <div class="layout-region-inner content">
+                            <div class="content-fragment blog-bread-crumbs no-wrapper-with-spacing" id="fragment-76849">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+
+
+                                        <div class="breadcrumb-list-header"></div>
+                                        <div class="breadcrumb-list">
+                                            <span class="breadcrumb-item"><a class="internal-link view-home" href="/">MSDN Blogs</a></span>
+
+
+
+
+                                            <span class="separator"> > </span>
+                                            <span class="breadcrumb-item">
+                                                <a href="/b/windowsappdev_cn/">Windows 8 应用程序开发人员博客</a>
+                                            </span>
+
+
+
+                                            <span class="separator"> > </span>
+                                            <span class="breadcrumb-item">
+                                                <a href="/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx">采用 Windows JavaScript 库 (WinJS) 构建自定义控件</a>
+                                            </span>
+
+
+
+                                        </div>
+                                        <div class="breadcrumb-list-footer"></div>
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                            <div class="content-fragment blog-post no-wrapper-with-spacing" id="fragment-76850">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+
+                                        <div class="full-post-header"></div>
+                                        <div class="full-post">
+                                            <h3 class="post-name">采用 Windows JavaScript 库 (WinJS) 构建自定义控件</h3>
+
+                                            <div class="post-author">
+                                                <span class="avatar"><a href="/414389/ProfileUrlRedirect.ashx"><img src="http://i1.social.s-msft.com/profile/u/avatar.jpg?displayname=windows+8+team&amp;size=large" alt="" style="border-width:0px;max-height:32px;max-width:32px;" /></a></span>
+
+                                                <span class="profile-usercard-hover" data-profile-userid="f97abecb-b843-4300-b87f-854c1ed878fb">
+                                                    <span class="user-name"><a class="internal-link view-user-profile" href="/414389/ProfileUrlRedirect.ashx"><span></span>Windows 8 Team</a></span>
+
+
+                                                </span>
+                                            </div>
+                                            <div class="post-date">
+                                                <span class="value">
+                                                    16 Oct 2012 4:35 PM
+                                                </span>
+                                            </div>
+                                            <div class="post-attributes">
+                                                <div class="attribute-list-header"></div>
+                                                <ul class="attribute-list">
+                                                    <li class="attribute-item post-reply-count">
+                                                        <span class="attribute-name">Comments</span>
+                                                        <span class="attribute-value"><a href="#comments" class="internal-link view-replies"><span></span>0</a></span>
+                                                    </li>
+                                                </ul>
+                                                <div class="attribute-list-footer"></div>
+                                            </div>
+                                            <div class="post-content user-defined-markup">
+                                                <div class="PostContent">
+                                                    <p>如果您曾使用 JavaScript 开发过 Windows 应用商店应用，那么您很可能已经遇到过 <a href="http://msdn.microsoft.com/zh-cn/library/windows/apps/Hh967792.aspx" target="_blank">Windows JavaScript 库</a> (WinJS)。该库为您提供了一系列 CSS 样式、JavaScript 控件和实用工具，以帮助您迅速构建符合 Windows 应用商店 UX 基准要求的应用。WinJS 所提供的实用工具包含一系列功能，您可使用这些功能来在您的应用中创建自定义的控件。</p>  <p>您可使用任何您所喜欢的模式或库来编写 JavaScript 控件，WinJS 中所提供的库功能仅是其中一个选项。使用 WinJS 构建控件的一个主要优势在于其可让您创建您自己的控件，且该控件能与库中的其他控件一致地运行。开发与使用您的控件的模式与 WinJS.UI 命名空间中的任何控件完全一样。</p>  <p>在本篇博文中，我将向您介绍如何构建您自己的控件，并在其中包含对可配置选项、事件和公共方法的支持。对于那些对 XAML 控件开发同样感兴趣的读者，敬请期待即将发布的有关该内容的博文。</p>  <h2>在 HTML 页面中包含基于 JavaScript 的控件</h2>  <p>首先，让我们回顾一下您在页面中包含 WinJS 控件的方式。进行该操作有两种不同的方法：命令性操作（以非介入的方式单独使用 JavaScript）或声明性操作（在 HTML 元素上使用额外的属性来在 HTML 页面中包含控件）。后者可让工具提供设计时体验，例如从工具箱中拖动控件。详情请查看<a href="http://msdn.microsoft.com/zh-cn/library/windows/apps/hh465493" target="_blank">添加 WinJS 控件和样式的 MSDN 快速入门</a><u></u>一文。</p>  <p>在本文中，我将向您展示如何利用 WinJS 中的声明性处理模型来生成 JavaScript 控件。要在您的页面中采用声明性的方式包含一个控件，请完成下面的一系列步骤：</p>  <ol>
+                                                        <li>
+                                                            在您的 HTML 页面中包含 WinJS 引用，这是因为您的控件将从这些<a></a><a>文件</a>中使用 API。<br />      <div id="codeSnippetWrapper">
+                                                                <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet"><span style="color: rgb(0, 0, 255);">&lt;</span><span style="color: rgb(128, 0, 0);">script</span> <span style="color: rgb(255, 0, 0);">src</span><span style="color: rgb(0, 0, 255);">=&quot;//Microsoft.WinJS.1.0/js/base.js&quot;</span><span style="color: rgb(0, 0, 255);">&gt;&lt;/</span><span style="color: rgb(128, 0, 0);">script&gt;<br /></span><span style="color: rgb(0, 0, 255);">&lt;</span><span style="color: rgb(128, 0, 0);">script</span> <span style="color: rgb(255, 0, 0);">src</span><span style="color: rgb(0, 0, 255);">=&quot;//Microsoft.WinJS.1.0/js/ui.js&quot;</span><span style="color: rgb(0, 0, 255);">&gt;&lt;/</span><span style="color: rgb(128, 0, 0);">script&gt;</span><br /></pre>
+                                                            </div>
+                                                        </li>
+
+                                                        <li>
+                                                            <div>
+                                                                在上述脚本标记引用之后，包含带有您的控件的脚本文件引用。<br />
+
+                                                                <div id="codeSnippetWrapper">
+                                                                    <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet"><span style="color: rgb(0, 0, 255);">&lt;</span><span style="color: rgb(128, 0, 0);">script</span> <span style="color: rgb(255, 0, 0);">src</span><span style="color: rgb(0, 0, 255);">=&quot;js/hello-world-control.js&quot;</span><span style="color: rgb(0, 0, 255);">&gt;&lt;/</span><span style="color: rgb(128, 0, 0);">script</span><span style="color: rgb(0, 0, 255);">&gt;</span></pre>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                        <li>
+                                                            <div>在您的应用的 JavaScript 代码中调用 <a href="http://msdn.microsoft.com/zh-CN/library/windows/apps/hh440975">WinJS.UI.processAll()</a>；该函数将分析您的 HTML 并实例化其查找到的任何声明性控件。如果您在 Visual Studio 中使用应用模板，那么 WinJS.UI.processAll() 将在 default.js 中为您调用。</div>
+                                                        </li>
+
+                                                        <li>
+                                                            <div>
+                                                                在您的页面中以声明性的方式包含控件。<br />
+
+                                                                <div id="codeSnippetWrapper">
+                                                                    <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet"><span style="color: rgb(0, 0, 255);">&lt;</span><span style="color: rgb(128, 0, 0);">div</span> <span style="color: rgb(255, 0, 0);">data-win-control</span><span style="color: rgb(0, 0, 255);">=&quot;Contoso.UI.HelloWorld&quot;</span> <span style="color: rgb(255, 0, 0);">data-win-options</span><span style="color: rgb(0, 0, 255);">=&quot;{blink: true}&quot;</span><span style="color: rgb(0, 0, 255);">&gt;&lt;/</span><span style="color: rgb(128, 0, 0);">div</span><span style="color: rgb(0, 0, 255);">&gt;</span></pre>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ol>
+
+                                                    <h2>简单的 JavaScript 控件</h2>
+
+                                                    <p>现在，我们将构建一个非常简单的控件：“Hello World”的控件。以下是定义该控件所使用的 JavaScript。使用以下<a></a><a>代码</a>在名为 hello-world-control.js 的项目中创建一个新文件：</p>
+
+                                                    <blockquote>
+                                                        <div id="codeSnippetWrapper">
+                                                            <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet"><span style="color: rgb(0, 0, 255);">function</span> HelloWorld(element) {<br />    <span style="color: rgb(0, 0, 255);">if</span> (element) {<br />        element.textContent = <span style="color: rgb(0, 96, 128);">&quot;Hello, World!&quot;</span>;<br />    }<br />};<br /><br />WinJS.Utilities.markSupportedForProcessing(HelloWorld);<br /></pre>
+                                                        </div>
+                                                    </blockquote>
+
+                                                    <p>随后，在您的页面的主体中使用以下标记来包含控件：</p>
+
+                                                    <blockquote>
+                                                        <div id="codeSnippetWrapper">
+                                                            <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet">&lt;div data-win-control=<span style="color: rgb(0, 96, 128);">&quot;HelloWorld&quot;</span>&gt;&lt;/div&gt;</pre>
+                                                        </div>
+                                                    </blockquote>
+
+                                                    <p>当您运行应用时，您将看到该控件已经加载，而且其将在页面主体部分显示文本“Hello, World!”。</p>
+
+                                                    <p>本代码中唯一的 WinJS 特定的部分在于对 <a href="http://msdn.microsoft.com/zh-cn/library/windows/apps/Hh967819.aspx" target="_blank">WinJS.Utilities.markSupportedForProcessing</a> 的调用，其将代码标记为与声明性处理的使用相兼容。这是您告知 WinJS 您信任此代码来将内容注入您的页面的方式。有关该内容的详细信息，请参阅有关 <a href="http://msdn.microsoft.com/zh-cn/library/windows/apps/Hh967819.aspx" target="_blank">WinJS.Utilities.markSupportedForProcessing</a> 函数的 MSDN 文档。</p>
+
+                                                    <h2>为什么要使用 WinJS 实用工具或任意库来创建控件？</h2>
+
+                                                    <p>我刚刚向您展示了您可以如何在不真正使用 WinJS 的前提下创建声明性控件。现在，我们将看看以下代码段，该代码段仍未使用 WinJS 来进行其大部分的实现。这是一个较为复杂的控件，其中包含事件、可配置选项和公共方法：</p>
+
+                                                    <blockquote>
+                                                        <div id="codeSnippetWrapper">
+                                                            <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet">(<span style="color: rgb(0, 0, 255);">function</span> (Contoso) {<br />    Contoso.UI = Contoso.UI || {};<br /><br />    Contoso.UI.HelloWorld = <span style="color: rgb(0, 0, 255);">function</span> (element, options) {<br />        <span style="color: rgb(0, 0, 255);">this</span>.element = element;<br />        <span style="color: rgb(0, 0, 255);">this</span>.element.winControl = <span style="color: rgb(0, 0, 255);">this</span>;<br /><br />        <span style="color: rgb(0, 0, 255);">this</span>.blink = (options &amp;&amp; options.blink) ? <span style="color: rgb(0, 0, 255);">true</span> : <span style="color: rgb(0, 0, 255);">false</span>;<br />        <span style="color: rgb(0, 0, 255);">this</span>._onblink = <span style="color: rgb(0, 0, 255);">null</span>;<br />        <span style="color: rgb(0, 0, 255);">this</span>._blinking = 0;<br /><br />        element.textContent = <span style="color: rgb(0, 96, 128);">&quot;Hello, World!&quot;</span>;<br />    };<br /><br />    <span style="color: rgb(0, 0, 255);">var</span> proto = Contoso.UI.HelloWorld.prototype;<br /><br />    proto.doBlink = <span style="color: rgb(0, 0, 255);">function</span> () {<br />        <span style="color: rgb(0, 0, 255);">var</span> customEvent = document.createEvent(<span style="color: rgb(0, 96, 128);">&quot;Event&quot;</span>);<br />        customEvent.initEvent(<span style="color: rgb(0, 96, 128);">&quot;blink&quot;</span>, <span style="color: rgb(0, 0, 255);">false</span>, <span style="color: rgb(0, 0, 255);">false</span>);<br /><br />        <span style="color: rgb(0, 0, 255);">if</span> (<span style="color: rgb(0, 0, 255);">this</span>.element.style.display === <span style="color: rgb(0, 96, 128);">&quot;none&quot;</span>) {<br />            <span style="color: rgb(0, 0, 255);">this</span>.element.style.display = <span style="color: rgb(0, 96, 128);">&quot;block&quot;</span>;<br />        } <span style="color: rgb(0, 0, 255);">else</span> {<br />            <span style="color: rgb(0, 0, 255);">this</span>.element.style.display = <span style="color: rgb(0, 96, 128);">&quot;none&quot;</span>;<br />        }<br /><br />        <span style="color: rgb(0, 0, 255);">this</span>.element.dispatchEvent(customEvent);<br />    };<br /><br />    proto.addEventListener = <span style="color: rgb(0, 0, 255);">function</span> (type, listener, useCapture) {<br />        <span style="color: rgb(0, 0, 255);">this</span>.element.addEventListener(type, listener, useCapture);<br />    };<br /><br />    proto.removeEventListener = <span style="color: rgb(0, 0, 255);">function</span> (type, listener, useCapture) {<br />        <span style="color: rgb(0, 0, 255);">this</span>.element.removeEventListener(type, listener, useCapture);<br />    };<br /><br />    Object.defineProperties(proto, {<br />        blink: {<br />            get: <span style="color: rgb(0, 0, 255);">function</span> () {<br />                <span style="color: rgb(0, 0, 255);">return</span> <span style="color: rgb(0, 0, 255);">this</span>._blink;<br />            },<br /><br />            set: <span style="color: rgb(0, 0, 255);">function</span> (value) {<br />                <span style="color: rgb(0, 0, 255);">if</span> (<span style="color: rgb(0, 0, 255);">this</span>._blinking) {<br />                    clearInterval(<span style="color: rgb(0, 0, 255);">this</span>._blinking);<br />                    <span style="color: rgb(0, 0, 255);">this</span>._blinking = 0;<br />                }<br />                <span style="color: rgb(0, 0, 255);">this</span>._blink = value;<br />                <span style="color: rgb(0, 0, 255);">if</span> (<span style="color: rgb(0, 0, 255);">this</span>._blink) {<br />                    <span style="color: rgb(0, 0, 255);">this</span>._blinking = setInterval(<span style="color: rgb(0, 0, 255);">this</span>.doBlink.bind(<span style="color: rgb(0, 0, 255);">this</span>), 500);<br />                }<br />            },<br />            enumerable: <span style="color: rgb(0, 0, 255);">true</span>,<br />            configurable: <span style="color: rgb(0, 0, 255);">true</span><br />        },<br /><br />        onblink: {<br />            get: <span style="color: rgb(0, 0, 255);">function</span> () {<br />                <span style="color: rgb(0, 0, 255);">return</span> <span style="color: rgb(0, 0, 255);">this</span>._onblink;<br />            },<br />            set: <span style="color: rgb(0, 0, 255);">function</span> (eventHandler) {<br />                <span style="color: rgb(0, 0, 255);">if</span> (<span style="color: rgb(0, 0, 255);">this</span>._onblink) {<br />                    <span style="color: rgb(0, 0, 255);">this</span>.removeEventListener(<span style="color: rgb(0, 96, 128);">&quot;blink&quot;</span>, <span style="color: rgb(0, 0, 255);">this</span>._onblink);<br />                    <span style="color: rgb(0, 0, 255);">this</span>._onblink = <span style="color: rgb(0, 0, 255);">null</span>;<br />                }<br />                <span style="color: rgb(0, 0, 255);">this</span>._onblink = eventHandler;<br />                <span style="color: rgb(0, 0, 255);">this</span>.addEventListener(<span style="color: rgb(0, 96, 128);">&quot;blink&quot;</span>, <span style="color: rgb(0, 0, 255);">this</span>._onblink);<br />            }<br />        }<br />    });<br /><br />    WinJS.Utilities.markSupportedForProcessing(Contoso.UI.HelloWorld);<br />})(window.Contoso = window.Contoso || {}); <br /></pre>
+                                                        </div>
+                                                    </blockquote>
+
+                                                    <p>许多开发人员采用这种方式（即使用匿名函数、构造函数、属性和自定义事件）来构建控件，如果您的团队也认为这是一个不错的方式，那么也请采用该方式！然而许多开发人员可能有些难于理解这一代码。许多 Web 开发人员并不熟悉其所采用的技术。而各种库却恰好能在这种情况下帮上您大忙，它们能够消除您对编写此代码的困惑。</p>
+
+                                                    <p>除了改进可读性以外，WinJS 和其他库能够处理许多细微的问题，因而（您可以高效使用原型、属性和自定义事件），而不必思考这些问题。这优化了内存的使用并有助于您避免常见错误。WinJS 就是其中一个例子，但是最终还是将由您进行选择。如果您想了解一个有关库将如何有助于您的具体例子，我建议您在阅读完本文后再次查看本部分的代码，并在阅读完本文后采用 WinJS 实用工具将此前的实现与采用了相同控件的实现进行比较。</p>
+
+                                                    <h2>WinJS 中 JavaScript 控件的基本模式</h2>
+
+                                                    <p>以下是利用 WinJS 创建 JavaScript 控件的最低要求的最佳做法模式。</p>
+
+                                                    <blockquote>
+                                                        <div id="codeSnippetWrapper">
+                                                            <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet">(<span style="color: rgb(0, 0, 255);">function</span> () {<br />    <span style="color: rgb(0, 96, 128);">&quot;use strict&quot;</span>;<br /><br />    <span style="color: rgb(0, 0, 255);">var</span> controlClass = WinJS.Class.define(<br />            <span style="color: rgb(0, 0, 255);">function</span> Control_ctor(element) {<br />                <span style="color: rgb(0, 0, 255);">this</span>.element = element || document.createElement(<span style="color: rgb(0, 96, 128);">&quot;div&quot;</span>);<br />                <span style="color: rgb(0, 0, 255);">this</span>.element.winControl = <span style="color: rgb(0, 0, 255);">this</span>;<br /><br />                <span style="color: rgb(0, 0, 255);">this</span>.element.textContent = <span style="color: rgb(0, 96, 128);">&quot;Hello, World!&quot;</span><br />            });<br />    WinJS.Namespace.define(<span style="color: rgb(0, 96, 128);">&quot;Contoso.UI&quot;</span>, {<br />        HelloWorld: controlClass<br />    });<br />})();<br /></pre>
+                                                        </div>
+                                                    </blockquote>
+
+                                                    <p>在此页面中您将采用声明性的方式包含控件：</p>
+
+                                                    <blockquote>
+                                                        <div id="codeSnippetWrapper">
+                                                            <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet"><span style="color: rgb(0, 0, 255);">&lt;</span><span style="color: rgb(128, 0, 0);">div</span> <span style="color: rgb(255, 0, 0);">data-win-control</span><span style="color: rgb(0, 0, 255);">=&quot;Contoso.UI.HelloWorld&quot;</span><span style="color: rgb(0, 0, 255);">&gt;&lt;/</span><span style="color: rgb(128, 0, 0);">div</span><span style="color: rgb(0, 0, 255);">&gt;</span></pre>
+                                                        </div>
+                                                    </blockquote>
+
+                                                    <p>您也许对其中一些部分并不熟悉，特别是如果您还是第一次接触 WinJS，因此让我们一同来看看其中的情况。</p>
+
+                                                    <ol>
+                                                        <li>
+                                                            我们利用 JavaScript 中一个常见模式来在本示例中包装该代码，该模式也就是我们熟知的<b>立即执行函数</b>。<br />
+
+                                                            <div id="codeSnippetWrapper">
+                                                                <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet">(<span style="color: rgb(0, 0, 255);">function</span> () {<br />…<br />})();</pre>
+                                                            </div>
+
+                                                            <br />进行该操作的目的在于确保我们的函数是自包含的，且不会留下任何意外的变量/全局分配。值得注意是，这是一个通用的最佳做法，同时也是我们对原始源所希望进行的一项变更。
+                                                        </li>
+
+                                                        <li><a href="http://msdn.microsoft.com/zh-cn/library/ie/hh673540(v=vs.85).aspx" target="_blank">ECMAScript 5 严格模式</a>将在我们函数启动之时通过采用<b>“使用严格”</b>的声明而得以启用。我们在整个 Windows 应用商店应用模板中都进行了这一操作，并将其作为最佳做法，以此来改善错误检查以及与 JavaScript 未来版本的兼容性。再次提醒您，这是一个通用的最佳做法，同时也是我们对原始源所希望进行的操作。</li>
+
+                                                        <li>现在，让我们来看看 WinJS 特定的一些代码。系统将调用 <b>WinJS.Class.define()</b> 以为控件创建一个类，除了其他操作以外，该控件将为我们调用 markSupportedForProcessing()，并降低今后在控件中创建属性的难度。这确实能为标准 Object.defineProperties 函数提供不少帮助。</li>
+
+                                                        <li><b>名为 Control_ctor 的构造函数得以定义</b>。当 WinJS.UI.processAll() 从 default.js 中得以调用时，其将为采用 data-win-control 属性而引用的任何控件扫描页面中的标记，查找我们的控件，并调用此构造函数。</li>
+
+                                                        <li>在此构造函数内，<b>页面中元素的引用将得以与控件对象一同保存</b>，而控件对象的引用将得以与元素一同保存。</li>
+
+                                                        <ul>
+                                                            <li>如果您还想了解 <b>element || document.createElement("div")</b> 部分的内容，那么让我来告诉您这过去曾用于支持命令性模型。这可让用户在此后将某一控件附加到页面中某一元素内。</li>
+
+                                                            <li>采用该方式将引用保留到页面中的元素，并通过设置 <b>element.winControl</b> 将元素中的引用保留到控件对象将是个不错的主意。当像事件一样添加功能时，这可让一些库函数恰到好处地运行。不用担心循环对象/DOM 元素引用导致的内存泄露，Internet Explorer 10 将帮您处理这一问题。</li>
+
+                                                            <li><b>构造函数将修改控件的文本内容</b>，以将设置“Hello, World!”文本显示于屏幕中。</li>
+                                                        </ul>
+
+                                                        <li>最后，<b>WinJS.Namespace.define()</b> 将用于发布控件类，并揭示应用中的任何代码均可公开访问控件。如果没有 WinJS.Namespace.define()，我们将需要采取另一解决方案来为我们正在使用的内联函数以外的代码而使用全局命名空间，进而显示我们的控件。</li>
+                                                    </ol>
+
+                                                    <h2>定义控件选项</h2>
+
+                                                    <p>为了让我们的示例变得更为有趣，让我们为控件添加对可配置选项的支持。在该情形中，我们将添加一个选项让用户闪烁内容。</p>
+
+                                                    <blockquote>
+                                                        <div id="codeSnippetWrapper">
+                                                            <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet"><span style="color: rgb(0, 0, 255);">var</span> controlClass = WinJS.Class.define(<br />            <span style="color: rgb(0, 0, 255);">function</span> Control_ctor(element, options) {<br />                <span style="color: rgb(0, 0, 255);">this</span>.element = element || document.createElement(<span style="color: rgb(0, 96, 128);">&quot;div&quot;</span>);<br />                <span style="color: rgb(0, 0, 255);">this</span>.element.winControl = <span style="color: rgb(0, 0, 255);">this</span>;<br /><br />                <span style="color: rgb(0, 128, 0);"><mark>// Set option defaults</mark></span><br />                <span style="color: rgb(0, 0, 255);"><mark>this</mark></span><mark>._blink = <span style="color: rgb(0, 0, 255);">false</span></mark>;<br /><br />                <span style="color: rgb(0, 128, 0);"><mark>// Set user-defined options</mark></span><br />                <mark>WinJS.UI.setOptions(<span style="color: rgb(0, 0, 255);">this</span>, options);</mark><br /><br />                element.textContent = <span style="color: rgb(0, 96, 128);">&quot;Hello, World!&quot;</span><br />  <mark>          },</mark><br />           <mark> {</mark><br />             <mark>   _blinking: 0,</mark><br /><br />    <mark>            blink: {</mark><br />                   <mark> get: <span style="color: rgb(0, 0, 255);">function</span> () {</mark><br />                        <span style="color: rgb(0, 0, 255);"><mark>return</mark></span><mark> <span style="color: rgb(0, 0, 255);">this</span>._blink;</mark><br />                  <mark>  },</mark><br /><br />                    <mark>set: <span style="color: rgb(0, 0, 255);">function</span> (value) {</mark><br />                        <span style="color: rgb(0, 0, 255);"><mark>if</mark></span><mark> (<span style="color: rgb(0, 0, 255);">this</span>._blinking) {</mark><br />                            <mark>clearInterval(<span style="color: rgb(0, 0, 255);">this</span>._blinking);</mark><br />                            <span style="color: rgb(0, 0, 255);"><mark>this</mark></span><mark>._blinking = 0;</mark><br />                       <mark> }</mark><br />                        <span style="color: rgb(0, 0, 255);"><mark>this</mark></span><mark>._blink = value;</mark><br />                        <span style="color: rgb(0, 0, 255);"><mark>if</mark></span><mark> (<span style="color: rgb(0, 0, 255);">this</span>._blink) {</mark><br />                            <span style="color: rgb(0, 0, 255);"><mark>this</mark></span><mark>._blinking = setInterval(<span style="color: rgb(0, 0, 255);">this</span>._doBlink.bind(<span style="color: rgb(0, 0, 255);">this</span>), 500);</mark><br />                        <mark>}</mark><br />                 <mark>   }</mark><br />                <mark>},</mark><br /><br />                <mark>_doBlink: <span style="color: rgb(0, 0, 255);">function</span> () {</mark><br />                    <span style="color: rgb(0, 0, 255);"><mark>if</mark></span><mark> (<span style="color: rgb(0, 0, 255);">this</span>.element.style.display === <span style="color: rgb(0, 96, 128);">&quot;none&quot;</span>) {</mark><br />                        <span style="color: rgb(0, 0, 255);"><mark>this</mark></span><mark>.element.style.display = <span style="color: rgb(0, 96, 128);">&quot;block&quot;</span>;</mark><br />                    <mark>} <span style="color: rgb(0, 0, 255);">else</span> {</mark><br />                        <span style="color: rgb(0, 0, 255);"><mark>this</mark></span><mark>.element.style.display = <span style="color: rgb(0, 96, 128);">&quot;none&quot;</span></mark>;<br />                    <mark>}</mark><br />               <mark> },</mark><br />            <mark>}</mark>);<br /><br />    WinJS.Namespace.define(<span style="color: rgb(0, 96, 128);">&quot;Contoso.UI&quot;</span>, {<br />        HelloWorld: controlClass<br />    });<br /></pre>
+                                                        </div>
+                                                    </blockquote>
+
+                                                    <p>这次，当在您的页面中包含控件时，可以采用 data-win-options 属性配置闪烁选项：</p>
+
+                                                    <blockquote>
+                                                        <div id="codeSnippetWrapper">
+                                                            <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet"><span style="color: rgb(0, 0, 255);">&lt;</span><span style="color: rgb(128, 0, 0);">div</span> <span style="color: rgb(255, 0, 0);">data-win-control</span><span style="color: rgb(0, 0, 255);">=&quot;Contoso.UI.HelloWorld&quot;</span> <span style="color: rgb(255, 0, 0);"><mark>data-win-options</mark></span><mark><span style="color: rgb(0, 0, 255);">=&quot;{blink: true}&quot;</span></mark><span style="color: rgb(0, 0, 255);">&gt;</span><br /><span style="color: rgb(0, 0, 255);">&lt;/</span><span style="color: rgb(128, 0, 0);">div</span><span style="color: rgb(0, 0, 255);">&gt;</span><br /></pre>
+                                                        </div>
+                                                    </blockquote>
+
+                                                    <p>为了添加选项支持，我们对代码进行如下变更：</p>
+
+                                                    <ol>
+                                                        <li><b>选项</b>通过构造函数上（名为选项）的参数传递至控件。</li>
+
+                                                        <li><b>默认设置</b>采用类中的私有属性进行配置。</li>
+
+                                                        <li><b>WinJS.UI.setOptions() 得以调用</b>，并在您的控件对象中传递。该调用将覆盖控件中可配置选项的默认值。</li>
+
+                                                        <li><b>（名为 blink 的）公共属性添加至</b>新选项。</li>
+
+                                                        <li><b>我们</b>通过闪烁屏幕中的文本而添加了此功能（在实际操作中，您最好不要在此处对样式进行硬编码，而是切换一个 CSS 类）！</li>
+                                                    </ol>
+
+                                                    <p>本示例中最重要的环节在于对 <a href="http://msdn.microsoft.com/zh-cn/library/windows/apps/hh440978.aspx" target="_blank">WinJS.UI.setOptions()</a><u></u> 的调用。实用工具函数 setOptions 将在选项对象中的每个字段间循环，并将其值分配到目标对象中相同名称的字段内，而这也是 setOptions 的首个参数。</p>
+
+                                                    <p>在我们的示例中，我们通过 data-win-options 参数为我们的 win-control 配置了选项对象，为“blink”字段传递了“true”值。对我们构造函数中 setOptions() 的调用随后将查看名为“blink”的字段，并将其值复制到我们控件对象中相同名称的字段内。我们已经定义了名为“blink”的属性，而且其提供了一个 setter 函数；我们资源库函数是 setOptions() 所调用的函数，而且这将设置我们控件中的 _blink 成员。</p>
+
+                                                    <h2>为事件添加支持</h2>
+
+                                                    <p>现在我们已经实现了用处如此之大的闪烁选项，接下来让我们添加事件支持，因而我们可在闪烁的时候做出响应：</p>
+
+                                                    <blockquote>
+                                                        <div id="codeSnippetWrapper">
+                                                            <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet"><span style="color: rgb(0, 0, 255);">var</span> controlClass = WinJS.Class.define(<br />            <span style="color: rgb(0, 0, 255);">function</span> Control_ctor(element, options) {<br />                <span style="color: rgb(0, 0, 255);">this</span>.element = element || document.createElement(<span style="color: rgb(0, 96, 128);">&quot;div&quot;</span>);<br />                <span style="color: rgb(0, 0, 255);">this</span>.element.winControl = <span style="color: rgb(0, 0, 255);">this</span>;<br /><br />                <span style="color: rgb(0, 128, 0);">// Set option defaults</span><br />                <span style="color: rgb(0, 0, 255);">this</span>._blink = <span style="color: rgb(0, 0, 255);">false</span>;<br /><br />                <span style="color: rgb(0, 128, 0);">// Set user-defined options</span><br />                WinJS.UI.setOptions(<span style="color: rgb(0, 0, 255);">this</span>, options);<br /><br />                element.textContent = <span style="color: rgb(0, 96, 128);">&quot;Hello, World!&quot;</span><br />            },<br />            {<br />                _blinking: 0,<br />                <mark>_blinkCount: 0,</mark><br /><br />                blink: {<br />                    get: <span style="color: rgb(0, 0, 255);">function</span> () {<br />                        <span style="color: rgb(0, 0, 255);">return</span> <span style="color: rgb(0, 0, 255);">this</span>._blink;<br />                    },<br /><br />                    set: <span style="color: rgb(0, 0, 255);">function</span> (value) {<br />                        <span style="color: rgb(0, 0, 255);">if</span> (<span style="color: rgb(0, 0, 255);">this</span>._blinking) {<br />                            clearInterval(<span style="color: rgb(0, 0, 255);">this</span>._blinking);<br />                            <span style="color: rgb(0, 0, 255);">this</span>._blinking = 0;<br />                        }<br />                        <span style="color: rgb(0, 0, 255);">this</span>._blink = value;<br />                        <span style="color: rgb(0, 0, 255);">if</span> (<span style="color: rgb(0, 0, 255);">this</span>._blink) {<br />                            <span style="color: rgb(0, 0, 255);">this</span>._blinking = setInterval(<span style="color: rgb(0, 0, 255);">this</span>._doBlink.bind(<span style="color: rgb(0, 0, 255);">this</span>), 500);<br />                        }<br />                    }<br />                },<br /><br />                _doBlink: <span style="color: rgb(0, 0, 255);">function</span> () {<br />                    <span style="color: rgb(0, 0, 255);">if</span> (<span style="color: rgb(0, 0, 255);">this</span>.element.style.display === <span style="color: rgb(0, 96, 128);">&quot;none&quot;</span>) {<br />                        <span style="color: rgb(0, 0, 255);">this</span>.element.style.display = <span style="color: rgb(0, 96, 128);">&quot;block&quot;</span>;<br />                    } <span style="color: rgb(0, 0, 255);">else</span> {<br />                        <span style="color: rgb(0, 0, 255);">this</span>.element.style.display = <span style="color: rgb(0, 96, 128);">&quot;none&quot;</span>;<br />                    }<br />                    <span style="color: rgb(0, 0, 255);"><mark>this</mark></span><mark>._blinkCount++;</mark><br />                    <span style="color: rgb(0, 0, 255);"><mark>this</mark></span><mark>.dispatchEvent(<span style="color: rgb(0, 96, 128);">&quot;blink&quot;</span>, {</mark><br />                        <mark>count: <span style="color: rgb(0, 0, 255);">this</span>._blinkCount</mark><br />                  <mark>  });</mark><br />                },<br />            });<br /><br />    WinJS.Namespace.define(<span style="color: rgb(0, 96, 128);">&quot;Contoso.UI&quot;</span>, {<br />        HelloWorld: controlClass<br />    });<br /><br />    <span style="color: rgb(0, 128, 0);"><mark>// Set up event handlers for the control</mark></span><br /> <mark>   WinJS.Class.mix(Contoso.UI.HelloWorld,</mark><br />       <mark> WinJS.Utilities.createEventProperties(<span style="color: rgb(0, 96, 128);">&quot;blink&quot;</span>),</mark><br />     <mark>   WinJS.UI.DOMEventMixin);</mark><br /></pre>
+                                                        </div>
+                                                    </blockquote>
+
+                                                    <p>像以前一样，在页面中包含控件。请注意我们已经为元素添加了一个 ID，因此我们可在稍后检索该元素：</p>
+
+                                                    <blockquote>
+                                                        <div id="codeSnippetWrapper">
+                                                            <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet"><span style="color: rgb(0, 0, 255);">&lt;</span><span style="color: rgb(128, 0, 0);">div</span> <span style="color: rgb(255, 0, 0);">id</span><span style="color: rgb(0, 0, 255);">=&quot;hello-world-with-events&quot;</span><br />    <span style="color: rgb(255, 0, 0);">data-win-control</span><span style="color: rgb(0, 0, 255);">=&quot;Contoso.UI.HelloWorld&quot;</span><br />    <span style="color: rgb(255, 0, 0);">data-win-options</span><span style="color: rgb(0, 0, 255);">=&quot;{blink: true}&quot;</span><span style="color: rgb(0, 0, 255);">&gt;&lt;/</span><span style="color: rgb(128, 0, 0);">div</span><span style="color: rgb(0, 0, 255);">&gt;</span><br /></pre>
+                                                        </div>
+                                                    </blockquote>
+
+                                                    <p>通过准备好这些变更，现在我们可附加一个事件侦听器以侦听“闪烁”事件（请注意：本示例中，我已为 document.getElementById 命名别名为 $）：</p>
+
+                                                    <blockquote>
+                                                        <div id="codeSnippetWrapper">
+                                                            <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet">$(<span style="color: rgb(0, 96, 128);">&quot;hello-world-with-events&quot;</span>).addEventListener(<span style="color: rgb(0, 96, 128);">&quot;blink&quot;</span>,<br />        <span style="color: rgb(0, 0, 255);">function</span> (<span style="color: rgb(0, 0, 255);">event</span>) {<br />            console.log(<span style="color: rgb(0, 96, 128);">&quot;blinked element this many times: &quot;</span> + <span style="color: rgb(0, 0, 255);">event</span>.count);<br />        });<br /></pre>
+                                                        </div>
+                                                    </blockquote>
+
+                                                    <p>当运行该代码时，您每 500 毫秒将在 Visual Studio 内的 JS 控制台窗口中看到一条写出的消息。</p>
+
+                                                    <p>为支持该行为，控件共进行了 3 处变更：</p>
+
+                                                    <ol>
+                                                        <li><b></b><b>WinJS.Class.mix</b> 得以调用（Contoso.UI.HelloWorld、WinJS.Utilities.createEventProperties("blink")）；这创建了一个“onblink”属性，用户能以编程的方式进行设置，或者用户可在 HTML 页面中以声明性的方式闪烁。</li>
+
+                                                        <li><b>对 </b><b>WinJS.Class.mix(Contoso.UI.HelloWorld, WinJS.UI.DOMEventMixin)</b> 的调用为控件添加了 addEventListener、removeEventListener 和 dispatchEvent 函数。</li>
+
+                                                        <li><b>闪烁事件得以触发，</b>其触发的方式是通过调用 that.dispatchEvent("blink", {element:that.element}) 得以实现；而且一个包含元素字段的自定义事件对象也得以创建。</li>
+
+                                                        <li><b>系统附加了一个事件处理程序，以侦听闪烁事件</b>；在响应过程中，该处理程序将访问自定义事件对象的元素字段。</li>
+                                                    </ol>
+
+                                                    <p>在这里我要指出，仅当您已在控件的构造函数中设置了 this.element 时，才能对 dispatchEvent() 的进行调用；事件混合的内部项需要其访问 DOM 中的元素。这是我在此前提到的情形之一，在此情形中，控件对象需要一个元素成员。这可让事件以 <a href="http://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture" target="_blank">DOM 第 3 级事件</a>的模式升至页面中父级元素。</p>
+
+                                                    <h2>揭示公共方法</h2>
+
+                                                    <p>作为对我们控件的最后一项变更，让我们添加一项公共 doBlink() 函数，该函数可随时调用，从而强制执行闪烁。</p>
+
+                                                    <blockquote>
+                                                        <div id="codeSnippetWrapper">
+                                                            <pre style="margin: 0em; padding: 0px; width: 100%; text-align: left; color: black; line-height: 12pt; overflow: visible; font-family: &quot;Courier New&quot;, courier, monospace; font-size: 8pt; direction: ltr; background-color: rgb(244, 244, 244);" id="codeSnippet"><span style="color: rgb(0, 0, 255);">var</span> controlClass = WinJS.Class.define(<br />            <span style="color: rgb(0, 0, 255);">function</span> Control_ctor(element, options) {<br />                <span style="color: rgb(0, 0, 255);">this</span>.element = element || document.createElement(<span style="color: rgb(0, 96, 128);">&quot;div&quot;</span>);<br />                <span style="color: rgb(0, 0, 255);">this</span>.element.winControl = <span style="color: rgb(0, 0, 255);">this</span>;<br /><br />                <span style="color: rgb(0, 128, 0);">// Set option defaults</span><br />                <span style="color: rgb(0, 0, 255);">this</span>._blink = <span style="color: rgb(0, 0, 255);">false</span>;<br /><br />                <span style="color: rgb(0, 128, 0);">// Set user-defined options</span><br />                WinJS.UI.setOptions(<span style="color: rgb(0, 0, 255);">this</span>, options);<br /><br />                element.textContent = <span style="color: rgb(0, 96, 128);">&quot;Hello, World!&quot;</span><br />            },<br />            {<br />                _blinking: 0,<br />                _blinkCount: 0,<br /><br />                blink: {<br />                    get: <span style="color: rgb(0, 0, 255);">function</span> () {<br />                        <span style="color: rgb(0, 0, 255);">return</span> <span style="color: rgb(0, 0, 255);">this</span>._blink;<br />                    },<br /><br />                    set: <span style="color: rgb(0, 0, 255);">function</span> (value) {<br />                        <span style="color: rgb(0, 0, 255);">if</span> (<span style="color: rgb(0, 0, 255);">this</span>._blinking) {<br />                            clearInterval(<span style="color: rgb(0, 0, 255);">this</span>._blinking);<br />                            <span style="color: rgb(0, 0, 255);">this</span>._blinking = 0;<br />                        }<br />                        <span style="color: rgb(0, 0, 255);">this</span>._blink = value;<br />                        <span style="color: rgb(0, 0, 255);">if</span> (<span style="color: rgb(0, 0, 255);">this</span>._blink) {<br />                            <span style="color: rgb(0, 0, 255);">this</span>._blinking = setInterval(<span style="color: rgb(0, 0, 255);"><mark>this</mark></span><mark>.doBlink</mark>.bind(<span style="color: rgb(0, 0, 255);">this</span>), 500);<br />                        }<br />                    }<br />                },<br /><br />                <mark>doBlink:</mark> <span style="color: rgb(0, 0, 255);">function</span> () {<br />                    <span style="color: rgb(0, 0, 255);">if</span> (<span style="color: rgb(0, 0, 255);">this</span>.element.style.display === <span style="color: rgb(0, 96, 128);">&quot;none&quot;</span>) {<br />                        <span style="color: rgb(0, 0, 255);">this</span>.element.style.display = <span style="color: rgb(0, 96, 128);">&quot;block&quot;</span>;<br />                    } <span style="color: rgb(0, 0, 255);">else</span> {<br />                        <span style="color: rgb(0, 0, 255);">this</span>.element.style.display = <span style="color: rgb(0, 96, 128);">&quot;none&quot;</span>;<br />                    }<br />                    <span style="color: rgb(0, 0, 255);">this</span>._blinkCount++;<br />                    <span style="color: rgb(0, 0, 255);">this</span>.dispatchEvent(<span style="color: rgb(0, 96, 128);">&quot;blink&quot;</span>, {<br />                        count: <span style="color: rgb(0, 0, 255);">this</span>._blinkCount<br />                    });<br />                },<br />            });<br />    WinJS.Namespace.define(<span style="color: rgb(0, 96, 128);">&quot;Contoso.UI&quot;</span>, {<br />        HelloWorld: controlClass<br />    });<br /><br />    <span style="color: rgb(0, 128, 0);">// Set up event handlers for the control</span><br />    WinJS.Class.mix(Contoso.UI.HelloWorld,<br />        WinJS.Utilities.createEventProperties(<span style="color: rgb(0, 96, 128);">&quot;blink&quot;</span>),<br />        WinJS.UI.DOMEventMixin);<br /></pre>
+                                                        </div>
+                                                    </blockquote>
+
+                                                    <p>这仅仅是一个约定变化，我们可将 our _doBlink 函数的名称变为 doBlink。</p>
+
+                                                    <p>为了通过 JavaScript 调用 doBlink() 函数，您需要为您的控件准备一个对对象的引用。如果您采用命令性的方式创建控件，您可能已经拥有一个引用；如果您采用声明性的处理方式，您可使用 HTML 元素中的 winControl 属性为您的控件访问控件对象。例如，假设标记与此前相同，您可通过以下函数访问控件对象：</p>
+
+                                                    <p>$(&quot;hello-world-with-events&quot;).winControl.doBlink();</p>
+
+                                                    <h2>兼收并蓄</h2>
+
+                                                    <p>我们已经向您介绍了您希望在一个控件中实现的最常见的方面：</p>
+
+                                                    <ol>
+                                                        <li>在页面中包含控件。</li>
+
+                                                        <li>传递配置选项。</li>
+
+                                                        <li>分派并响应事件。</li>
+
+                                                        <li>通过公共方法揭示功能。</li>
+                                                    </ol>
+
+                                                    <p>我希望这一教程对您有所帮助，并让您了解如何构建一个简单的基于 JavaScript 的自定义控件！如果您在构建自己的控件时遇到了任何疑问，请联系 Windows 开发中心，并在<a href="http://social.msdn.microsoft.com/Forums/zh-CN/winappswithhtml5/threads" target="_blank">论坛</a>中提问。此外，如果您是一名 XAML 开发人员，敬请期待即将发布的有关 XAML 控件开发的博文。</p>
+
+                                                    <p>Jordan Matthiesen  <br />Microsoft Visual Studio 项目经理</p>
+                                                    <!-- Title: “采用 Windows JavaScript 库 (WinJS) 构建自定义控件” Tags: “JavaScript, Windows 库, WinJS, 自定义控件” -->
+                                                </div><div style="clear:both;"></div>
+                                            </div>
+                                            <div class="post-attachment-viewer">
+
+                                            </div>
+                                            <div class="post-actions">
+                                                <div class="navigation-list-header"></div>
+                                                <ul class="navigation-list">
+                                                    <!---->
+                                                    <li class="navigation-item"><a class="internal-link view-replies" href="/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx#comments"><span></span>0 Comments</a></li>
+
+
+                                                </ul>
+                                                <div class="navigation-list-footer"></div>
+                                            </div>
+                                            <div class="post-tags"><div id="ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_Container" style="display: none;"><div class="tags-editor"><textarea id="ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_Tags" style="width: 97%; height: 100%;" rows="2" cols="30"></textarea><div style="white-space: nowrap; padding-top: 4px;"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td align="left"><input type="button" onclick="Telligent_Modal.Open('\/utility\/TagSelector.aspx?TagEditor=ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_TagEditor',400,300,null);;return false;" value="Select Tags..." /></td><td align="right"><input type="button" onclick="ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01.Save(); return false;" value="Save" /><input type="button" onclick="ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01.Close(); return false;" value="Cancel" /></td></tr></table></div></div></div><span id="ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl02"><a href="http://blogs.msdn.com/b/windowsappdev_cn/archive/tags/JavaScript/" rel="tag">JavaScript</a>, <a href="http://blogs.msdn.com/b/windowsappdev_cn/archive/tags/Windows+_935E_/" rel="tag">Windows 库</a>, <a href="http://blogs.msdn.com/b/windowsappdev_cn/archive/tags/WinJS/" rel="tag">WinJS</a>, <a href="http://blogs.msdn.com/b/windowsappdev_cn/archive/tags/_EA819A5B494EA763F64E_/" rel="tag">自定义控件</a></span><input type="hidden" name="ctl00$content$ctl00$w_76850$_ae1a35$ctl00$ctl15$ctl02" id="ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl02_State" value="nochange" /></div>
+                                        </div>
+                                        <div class="full-post-footer"></div>
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                            <div class="content-fragment social-media-sharing no-wrapper-with-spacing" id="fragment-76851">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+
+                                        <script src="http://i1.blogs.msdn.com/rrcontent/47499858c4077d6e043f7add14000981-e99ec8f3b45f97b38095df2708dc5898-RequestReducedScript.js" type="text/javascript"></script>
+                                        <div class="ShareThisMainPanel">
+                                            <div id="ctl00_content_ctl00_w_76851__ae1a35_ctl00_c459a638_67cd_4d39_b97a_28d8f76423ae" class="ShareThis_ChildRootPanel" onmouseover="ShareThisChildRootPanelOnmouseOver(this.id);" onmouseout="ShareThisChildRootPanelOnmouseOut(this.id);">
+                                                <div id="ctl00_content_ctl00_w_76851__ae1a35_ctl00_ShareThisBtnCollPanel_be962a157b7045018d341684ae195cd5" class="tierOnePanel">
+                                                    <div class="buttonPanel">
+                                                        <a title="Share on Facebook" class="iconsOnPanel" href="http://www.facebook.com/sharer.php?u=http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx&amp;t=%e9%87%87%e7%94%a8+Windows+JavaScript+%e5%ba%93+(WinJS)+%e6%9e%84%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%a7%e4%bb%b6" target="_blank"><img title="Share on Facebook" src="/CustomWidgets/SocialMediaSharingUC/Resources/facebook.gif" style="border-width:0px;" /></a>
+                                                    </div><div class="buttonPanel">
+                                                        <a title="Share on Twitter" class="iconsOnPanel" href="http://twitter.com/home?status=%e9%87%87%e7%94%a8+Windows+JavaScript+%e5%ba%93+(WinJS)+%e6%9e%84%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%a7%e4%bb%b6 : http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx" target="_blank"><img title="Share on Twitter" src="/CustomWidgets/SocialMediaSharingUC/Resources/twitter.gif" style="border-width:0px;" /></a>
+                                                    </div><div class="buttonPanel">
+                                                        <a title="Share on Digg" class="iconsOnPanel" href="http://digg.com/submit?url=http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx&amp;title=%e9%87%87%e7%94%a8+Windows+JavaScript+%e5%ba%93+(WinJS)+%e6%9e%84%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%a7%e4%bb%b6" target="_blank"><img title="Share on Digg" src="/CustomWidgets/SocialMediaSharingUC/Resources/digg.gif" style="border-width:0px;" /></a>
+                                                    </div><div class="buttonPanel">
+                                                        <a title="Share on del.icio.us" class="iconsOnPanel" href="http://del.icio.us/post?url=http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx&amp;title=%e9%87%87%e7%94%a8+Windows+JavaScript+%e5%ba%93+(WinJS)+%e6%9e%84%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%a7%e4%bb%b6" target="_blank"><img title="Share on del.icio.us" src="/CustomWidgets/SocialMediaSharingUC/Resources/delicious.gif" style="border-width:0px;" /></a>
+                                                    </div>
+                                                </div><div id="ctl00_content_ctl00_w_76851__ae1a35_ctl00_ShareThisBtnCollPanel_2bddb476112d4ac197e65b98c569a2fb" class="tierTwoPanel" onclick="TierTwoPanelOnclick(this.id);" onkeypress="if (event.keyCode == 13) TierTwoPanelOnclick(this.id);" onmouseover="TierTwoPanelOnmouseOver(this.id);" onmouseout="TierTwoPanelOnmouseOut(this.id);">
+                                                    <div id="ctl00_content_ctl00_w_76851__ae1a35_ctl00_ShareThisBtnCollPanel_2893f51696464118b392384a6d4ef85c" class="tierTwoRowPanel">
+                                                        <div class="buttonPanel">
+                                                            <a title="Share on Reddit" class="iconsOnPanel" href="http://www.reddit.com/submit?url=http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx&amp;title=%e9%87%87%e7%94%a8+Windows+JavaScript+%e5%ba%93+(WinJS)+%e6%9e%84%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%a7%e4%bb%b6" target="_blank"><img title="Share on Reddit" src="/CustomWidgets/SocialMediaSharingUC/Resources/reddit.gif" style="border-width:0px;" /></a>
+                                                        </div><div class="buttonPanel">
+                                                            <a title="Share on LinkedIn" class="iconsOnPanel" href="http://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;url=http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx&amp;title=%e9%87%87%e7%94%a8+Windows+JavaScript+%e5%ba%93+(WinJS)+%e6%9e%84%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%a7%e4%bb%b6&amp;summary=&amp;source=Microsoft&amp;armin=armin" target="_blank"><img title="Share on LinkedIn" src="/CustomWidgets/SocialMediaSharingUC/Resources/linkedin.gif" style="border-width:0px;" /></a>
+                                                        </div><div class="buttonPanel">
+                                                            <a title="Share on Slashdot" class="iconsOnPanel" href="http://slashdot.org/bookmark.pl?url=http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx&amp;title=%e9%87%87%e7%94%a8+Windows+JavaScript+%e5%ba%93+(WinJS)+%e6%9e%84%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%a7%e4%bb%b6" target="_blank"><img title="Share on Slashdot" src="/CustomWidgets/SocialMediaSharingUC/Resources/slashdot.gif" style="border-width:0px;" /></a>
+                                                        </div><div class="buttonPanel">
+                                                            <a title="Share on MySpace" class="iconsOnPanel" href="http://www.myspace.com/Modules/PostTo/Pages/?u=http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx&amp;t=%e9%87%87%e7%94%a8+Windows+JavaScript+%e5%ba%93+(WinJS)+%e6%9e%84%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%a7%e4%bb%b6" target="_blank"><img title="Share on MySpace" src="/CustomWidgets/SocialMediaSharingUC/Resources/myspace.gif" style="border-width:0px;" /></a>
+                                                        </div>
+                                                    </div><div id="ctl00_content_ctl00_w_76851__ae1a35_ctl00_ShareThisBtnCollPanel_6ac0ded6929d489b9c54cddbee12554a" class="tierTwoRowPanel">
+                                                        <div class="buttonPanel">
+                                                            <a title="Share on Technorati" class="iconsOnPanel" href="http://technorati.com/faves/?add=http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx" target="_blank"><img title="Share on Technorati" src="/CustomWidgets/SocialMediaSharingUC/Resources/technorati.gif" style="border-width:0px;" /></a>
+                                                        </div><div class="buttonPanel">
+                                                            <a title="Share on FriendFeed" class="iconsOnPanel" href="http://friendfeed.com/?url=http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx&amp;title=%e9%87%87%e7%94%a8+Windows+JavaScript+%e5%ba%93+(WinJS)+%e6%9e%84%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%a7%e4%bb%b6" target="_blank"><img title="Share on FriendFeed" src="/CustomWidgets/SocialMediaSharingUC/Resources/friendfeed.gif" style="border-width:0px;" /></a>
+                                                        </div><div class="buttonPanel">
+                                                            <a title="Share on Messenger" class="iconsOnPanel" href="http://profile.live.com/badge?url=http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx&amp;title=%e9%87%87%e7%94%a8+Windows+JavaScript+%e5%ba%93+(WinJS)+%e6%9e%84%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%a7%e4%bb%b6" target="_blank"><img title="Share on Messenger" src="/CustomWidgets/SocialMediaSharingUC/Resources/messenger.png" style="border-width:0px;" /></a>
+                                                        </div><div class="buttonPanel">
+                                                            <a title="Share on StumbleUpon" class="iconsOnPanel" href="http://www.stumbleupon.com/submit?url=http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx&amp;title=%e9%87%87%e7%94%a8+Windows+JavaScript+%e5%ba%93+(WinJS)+%e6%9e%84%e5%bb%ba%e8%87%aa%e5%ae%9a%e4%b9%89%e6%8e%a7%e4%bb%b6" target="_blank"><img title="Share on StumbleUpon" src="/CustomWidgets/SocialMediaSharingUC/Resources/stumbleupon.gif" style="border-width:0px;" /></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><div id="ctl00_content_ctl00_w_76851__ae1a35_ctl00_ShowMoreLessButtonsPanel_27c1d117_dc52_4d20_9220_fcd7f62096ac" tabindex="1" class="ShowMoreLessButtonsPanel" onclick="ShowMoreLessButtonsPanelOnClick(this.id);" onkeypress="if (event.keyCode == 13) ShowMoreLessButtonsPanelOnClick(this.id);" onmouseover="ShowMoreLessButtonsPanelOnmouseOver(this.id);" onmouseout="ShowMoreLessButtonsPanelOnmouseOut(this.id);">
+                                                <a class="buttonMoreLess" id="btn_more"><img title="More" src="/CustomWidgets/SocialMediaSharingUC/Resources/more.gif" src="" style="border-width:0px;" /></a><a class="buttonMoreLess" id="btn_less"><img title="Less" src="/CustomWidgets/SocialMediaSharingUC/Resources/less.gif" src="" style="border-width:0px;" /></a>
+                                            </div>
+                                        </div><div class="ShareClearFloatsPanel">
+
+                                        </div>
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                            <div class="content-fragment blog-feedback-list no-wrapper-with-spacing" id="fragment-76852">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+
+                                        <script src="http://i1.blogs.msdn.com/rrcontent/c6cf9e2cff3f0bfc0a1a8c20bf243544-5882c0bb1c3252f4238afcfee921f6f5-RequestReducedScript.js" type="text/javascript"></script>
+                                        <script type="text/javascript">
+                                            // <![CDATA[
+                                            (function ($) {
+                                                $.extend(jQuery.tmpl.tag, {
+                                                    "for": {
+                                                        _default: { $2: "var i=1;i<=1;i++" },
+                                                        open: 'for ($2){',
+                                                        close: '};'
+                                                    }
+                                                });
+                                            })(jQuery);
+
+                                            function findYPos(obj) {
+                                                var curtop = 0;
+                                                if (obj.offsetParent) {
+                                                    do {
+                                                        curtop += obj.offsetTop;
+                                                    } while (obj = obj.offsetParent);
+                                                    return [curtop];
+                                                }
+                                            }
+
+                                            var endpoint = '/b/windowsappdev_cn/listComments.aspx';
+                                            var deleteendpoint = '/Utility/ContentFragments/Blogs/FeedbackListAjax.asmx';
+                                            $(document).ready(function () {
+                                                if (window.location.hash) {
+                                                    var commentHash = parseInt(window.location.hash.substring(1, window.location.hash.length));
+                                                    if (!isNaN(commentHash)) {
+                                                        loadComments(0, commentHash, true);
+                                                        return;
+                                                    }
+                                                }
+
+                                                loadComments(0, 0, true);
+                                            });
+
+                                            function loadComments(page, anchorId, isFirstLoad) {
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    async: false,
+                                                    contentType: 'application/json',
+                                                    dataType: 'json',
+                                                    url: endpoint + '?blogId=15134&postId=10360195&page=' + page + '&commentId=' + anchorId + '&pageSize=0&firstLoad=' + isFirstLoad + "&time=" + new Date().getTime(),
+                                                    success: function (data) {
+                                                        var pager = $('#pagerContainer');
+
+                                                        $('#commentList').html('');
+                                                        $('#commentList').html($('#commentTemplate').tmpl(data.Comments));
+                                                        $('#pagerContainer').html($('#pagerTemplate').tmpl(data));
+
+                                                        $('.pagingLink').click(function (e) {
+                                                            e.preventDefault();
+                                                            loadComments($(this).data('page'), 0, false);
+                                                            window.scroll(0, findYPos(document.getElementById('commentList')) - 50);
+                                                            return false;
+                                                        });
+
+                                                        $('.pagingLink').removeClass('selected');
+                                                        $('#pager' + data.CurrentPage).addClass('selected');
+
+
+                                                    }
+                                                });
+                                            }
+                                            // ]]>
+                                        </script>
+
+
+                                        <a name="comments"></a>
+                                        <div class="content-list-header"></div>
+                                        <div class="content-list-name">
+
+                                            <a class="internal-link rss" href="/b/windowsappdev_cn/rsscomments.aspx?WeblogPostID=10360195"><span></span>Comments</a>
+
+                                        </div>
+
+
+
+                                        <ul id="commentList" class="content-list">
+                                            <li class="content-item">Loading...</li>
+                                        </ul>
+                                        <div id="pagerContainer" class="pager"></div>
+                                        <div class="content-list-footer"></div>
+
+                                        <script id="commentTemplate" type="text/html">
+                                            {{if Author}}
+                                            <li id="commentItem${Id}" class="content-item">
+                                                <div class="full-post-outer fiji-full-post-outer">
+                                                    <div class="full-post-header"><div class="r fiji-r"></div></div>
+                                                    <div class="full-post">
+                                                        <div class="full-post-inner fiji-full-post-inner">
+                                                            <div class="post-author">
+                                                                <span class="avatar">
+                                                                    {{if !Author.IsAnonymous}}
+                                                                    <a href="${Author.ProfileUrl}">
+                                                                        <img src="${Author.AvatarUrl}" style="border-width:0;max-height:32px;max-width:32px;" />
+                                                                    </a>
+                                                                    {{else}}
+                                                                    <img src="${Author.AvatarUrl}" style="border-width:0;max-height:32px;max-width:32px;" />
+                                                                    {{/if}}
+                                                                </span>
+                                                                <span class="profile-usercard-hover" data-profile-userid="${Author.ProfileId}">
+                                                                    <span class="user-name">
+                                                                        {{if !Author.IsAnonymous}}
+                                                                        <a href="${Author.ProfileUrl}">
+                                                                            ${Author.DisplayName}
+                                                                        </a>
+                                                                        {{else}}
+                                                                        ${Author.DisplayName}
+                                                                        {{/if}}
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                            <div class="post-date">
+                                                                <span class="value">${PublishedDate}</span>
+                                                            </div>
+                                                            <a name="${Id}" style="padding-left:5px;" href="#${Id}">#</a>
+                                                            <div class="post-content user-defined-markup">
+                                                                {{html Body}}
+                                                            </div>
+                                                            <div class="post-actions">
+
+                                                            </div>
+                                                        </div>
+                                                        {{if !Author.IsAnonymous && Author.Id == 414389}}
+                                                        <div class="full-post-footer user-is-author">
+                                                            {{else}}
+                                                            <div class="full-post-footer">
+                                                                {{/if}}
+                                                                <div class="r wireframe-r"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            {{/if}}
+                                        </script>
+
+
+                                        <script id="pagerTemplate" type="text/html">
+                                            {{if TotalPages}}
+                                            {{if TotalPages > 1}}
+                                            <span class="summary">Page 1 of 3 (39 items)</span>
+
+                                            {{for(i=1;i<=TotalPages;i++)}}
+                                            <a id="pager${i}" data-page="${i}" href="javascript:void(0);" class="pagingLink">
+                                                <span>${i}</span>
+                                            </a>
+                                            <span class="separator"></span>
+                                            {{/for }}
+                                            {{else}}
+                                            {{/if}}
+                                            {{else}}
+                                            {{/if}}
+                                        </script>
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                            <div class="content-fragment captcha-blog-post-comment-form no-wrapper-with-spacing" id="fragment-76853">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+                                        <input type="hidden" name="ctl00$content$ctl00$w_76853$_ae1a35$ctl00$ctl00$postCommentUrl" id="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_postCommentUrl" />
+
+
+                                        <div class="field-list-header"></div>
+                                        <fieldset class="field-list">
+                                            <legend class="field-list-description">Leave a Comment</legend>
+                                            <ul class="field-list">
+                                                <li id="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_NameField" class="field-item">
+                                                    <label for="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName" class="field-item-header">Name</label>
+                                                    <span class="field-item-input"><input name="ctl00$content$ctl00$w_76853$_ae1a35$ctl00$ctl00$PlaceHolder1$ctl04$bpCommentForm$ctl04$tbName" type="text" size="60" id="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName" /></span>
+                                                    <span id="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV" style="color:Red;display:none;"><span class="field-item-validation">*</span></span>
+                                                </li>
+                                                <li class="field-item post-body">
+                                                    <label for="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment" class="field-item-header">Comment</label>
+                                                    <span class="field-item-input"><textarea name="ctl00$content$ctl00$w_76853$_ae1a35$ctl00$ctl00$PlaceHolder1$ctl04$bpCommentForm$ctl04$tbComment" rows="2" cols="20" id="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment" style="height:100px;"></textarea></span>
+                                                    <span id="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV" style="color:Red;display:none;"><span class="field-item-validation">* Please enter a comment</span></span>
+                                                    <span id="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV" style="color:Red;display:none;"><span class="field-item-validation">Please shorten the content to 3072 or less</span></span>
+                                                </li>
+                                                <li class="field-item">
+
+                                                    <span id="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha" style="color:Red;display:none;">*</span><span id="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_subtext_captcha">Please add 5 and 3 and type the answer here: <input type="text" name="ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_visibleanswer" value="" /></span>
+
+
+                                                </li>
+                                                <li class="field-item">
+                                                    <script type="text/javascript">
+                                                        // <![CDATA[
+
+                                                        $(document).ready(function () {
+                                                            $('a.add-reply.post').click(function (e) {
+                                                                e.preventDefault();
+                                                                postComment(this);
+                                                                return false;
+                                                            });
+
+                                                            $('#ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment').keyup(function (e) {
+                                                                $('#errorOnPosting').hide();
+                                                            });
+                                                            var nameBox = $('#ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName');
+                                                            if (nameBox.length > 0) {
+                                                                $(nameBox).keyup(function (e) {
+                                                                    $('#errorOnPosting').hide();
+                                                                });
+                                                            }
+                                                        });
+
+                                                        function postComment(anchor) {
+                                                            if (Page_ClientValidate('BlogPostCommentForm-ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00')) {
+                                                                togglePostAndPublishing();
+
+                                                                var Core_CreateBlogComment_AjaxEndpoint = '/Utility/ContentFragments/Core/CreateBlogComment.asmx' + "/PostComment";
+                                                                var name = '';
+                                                                var nameBox = $('#ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName');
+                                                                if (nameBox.length > 0) {
+                                                                    name = $(nameBox).val();
+                                                                }
+                                                                var body = $('#ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment').val();
+                                                                var weblogPostId = '10360195';
+
+                                                                $.ajax({
+                                                                    type: "POST",
+                                                                    async: false,
+                                                                    url: Core_CreateBlogComment_AjaxEndpoint,
+                                                                    beforeSend: function (xhr) { TelligentUtility.WriteAuthorizationHeader(xhr); },
+                                                                    data: { weblogPostId: weblogPostId, url: '', subject: '', message: body, name: name, remember: false },
+                                                                    success: function (results) {
+                                                                        var responseVal = $(results.firstChild).text();
+                                                                        if (responseVal === "-1" || responseVal === "-2") {
+                                                                            togglePostAndPublishing();
+                                                                            if (responseVal == "-2")
+                                                                                $('#errorOnPosting').html('Your comment has been flagged as spam! The blog administrator has been notified.');
+                                                                            $('#errorOnPosting').show();
+                                                                            return;
+                                                                        }
+                                                                        var redirectUrl = window.location.href;
+                                                                        if (redirectUrl.indexOf("?") > -1) {
+                                                                            redirectUrl = redirectUrl.replace(/\?.*/, "");
+                                                                        } else if (redirectUrl.indexOf("#") > -1) {
+                                                                            redirectUrl = redirectUrl.replace(/\#.*/, "");
+                                                                        }
+
+                                                                        redirectUrl += '?CommentPosted=true#commentmessage';
+                                                                        if (window.location.href == redirectUrl) {
+                                                                            location.reload(true);
+                                                                        }
+                                                                        else {
+                                                                            window.location.href = redirectUrl;
+                                                                        }
+                                                                    },
+                                                                    error: function (xhr, textStatus, errorThrown) {
+                                                                        togglePostAndPublishing();
+                                                                        $('#errorOnPosting').show();
+                                                                    }
+                                                                });
+
+                                                            }
+                                                        }
+
+                                                        function togglePostAndPublishing() {
+                                                            $('a.add-reply.post').toggle();
+                                                            $('a.publishing').toggle();
+                                                        }
+                                                        // ]]>
+                                                    </script>
+                                                    <span class="field-item-input">
+
+                                                        <a class="internal-link add-reply post" style="cursor: pointer;"><span></span>Post</a>
+                                                        <a class="internal-link add-reply publishing" style="color:#c7c7c7; display: none;cursor: pointer;"><span></span>Publishing</a>
+                                                        <span id="errorOnPosting" style="color: white; background-color: red; padding: 5px; margin-left: 10px; display: none;">An error occurred while posting! Please retry posting your comment.</span>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                        <div class="field-list-footer"></div>
+
+
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                            <div class="content-fragment raw-html no-wrapper" id="fragment-76854">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+                                        <div class="user-defined-markup">
+                                            <script type='text/javascript'>
+var DaysOfWeekNames = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+                                            var MonthNames = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+                                            var AmPmNames = ["", ""];
+                                            var dateFormatPattern = " yyyy年M月d日 H:mm"
+                                            </script>
+                                            <script type="text/javascript">
+                                            (function () {
+                                                function FormatDate(dt, pattern) { return pattern.replace(/\bHH\b/, (dt.getHours() < 10 ? "0" : "") + dt.getHours().toString()).replace(/\bH\b/, dt.getHours().toString()).replace(/\bh\b/, (dt.getHours() % 12) == 0 ? "12" : (dt.getHours() % 12).toString()).replace(/\bmm\b/, (dt.getMinutes() < 10 ? "0" : "") + dt.getMinutes().toString()).replace(/\btt\b/, AmPmNames[Math.floor(dt.getHours() / 12)]).replace(/\bdddd\b/, DaysOfWeekNames[dt.getDay()]).replace(/\bdd\b/, (dt.getDate() < 10 ? "0" : "") + dt.getDate().toString()).replace(/\bd\b/, dt.getDate().toString()).replace(/\byyyy\b/, dt.getFullYear().toString()).replace(/\bMMMM\b/, MonthNames[dt.getMonth()]).replace(/\bM\b/, (dt.getMonth() + 1).toString()); } var DSTDates = { '2004': { start: '14 Mar 2004 2:00 GMT-0800', end: '7 Nov 2004 2:00 GMT-0700' }, '2005': { start: '13 Mar 2005 2:00 GMT-0800', end: '6 Nov 2005 2:00 GMT-0700' }, '2006': { start: '12 Mar 2006 2:00 GMT-0800', end: '5 Nov 2006 2:00 GMT-0700' }, '2007': { start: '11 Mar 2007 2:00 GMT-0800', end: '4 Nov 2007 2:00 GMT-0700' }, '2008': { start: '9 Mar 2008 2:00 GMT-0800', end: '2 Nov 2008 2:00 GMT-0700' }, '2009': { start: '8 Mar 2009 2:00 GMT-0800', end: '1 Nov 2009 2:00 GMT-0700' }, '2010': { start: '14 Mar 2010 2:00 GMT-0800', end: '7 Nov 2010 2:00 GMT-0700' }, '2011': { start: '13 Mar 2011 2:00 GMT-0800', end: '6 Nov 2011 2:00 GMT-0700' }, '2012': { start: '11 Mar 2012 2:00 GMT-0800', end: '4 Nov 2012 2:00 GMT-0700' }, '2013': { start: '10 Mar 2013 2:00 GMT-0800', end: '3 Nov 2013 2:00 GMT-0700' }, '2014': { start: '9 Mar 2014 2:00 GMT-0800', end: '2 Nov 2014 2:00 GMT-0700' }, '2015': { start: '8 Mar 2015 2:00 GMT-0800', end: '1 Nov 2015 2:00 GMT-0700' }, '2016': { start: '13 Mar 2016 2:00 GMT-0800', end: '6 Nov 2016 2:00 GMT-0700' }, '2017': { start: '12 Mar 2017 2:00 GMT-0800', end: '5 Nov 2017 2:00 GMT-0700' }, '2018': { start: '11 Mar 2018 2:00 GMT-0800', end: '4 Nov 2018 2:00 GMT-0700' }, '2019': { start: '10 Mar 2019 2:00 GMT-0800', end: '3 Nov 2019 2:00 GMT-0700' }, '2020': { start: '8 Mar 2020 2:00 GMT-0800', end: '1 Nov 2020 2:00 GMT-0700' } }; function LocalizeDatesInBlog(query) {
+                                                    $(query).each(function () {
+                                                        try {
+                                                            var ds = $(this).text(); var noTime = (ds.match(/\s+\d+:\d+\s+[AP]M\s*$/) == null); if (noTime) ds = ds + " 12:00 PM";
+                                                            var postedDate = new Date(ds); if (typeof DSTDates[postedDate.getFullYear()] != 'undefined') { var pdtStart = new Date(DSTDates[postedDate.getFullYear()].start); var pdtEnd = new Date(DSTDates[postedDate.getFullYear()].end); var postedDuringDaylightTime = pdtStart.getTime() <= postedDate.getTime() && postedDate.getTime() < pdtEnd.getTime(); var postedUTC = new Date(ds + (postedDuringDaylightTime ? " GMT-0700" : " GMT-0800")); $(this).text(FormatDate(postedUTC, noTime ? dateFormatPattern.replace(/[Hhmt:\s]+$/, "") : dateFormatPattern)); }
+                                                        } catch (e) { }
+                                                    });
+                                                } LocalizeDatesInBlog(".content-fragment.blog-post .full-post .post-date .value, .content-fragment-page.taglist .abbreviated-post .post-date .value"); $(document).ready(function () { window.setTimeout(function () { LocalizeDatesInBlog(".content-fragment.blog-feedback-list .full-post .post-date"); }, 1000); });
+                                            })(); </script>
+                                        </div>
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                            <div class="content-fragment raw-html no-wrapper" id="fragment-76855">
+                                <div class="content-fragment-inner wireframe-content-fragment-inner">
+                                    <div class="content-fragment-top wireframe-content-fragment-top"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div><div class="content-fragment-content">
+                                        <div class="user-defined-markup">
+                                            <script type="text/javascript">
+                                            var excerptViewText = "摘要视图"; var fullViewText = "全文视图"; var viewLinksLineHeight = "13px"; var dateUnitsTranslation = { "a few seconds ago": "几秒钟前", "minute": "分钟", "minutes": "分钟", "hour": "小时", "hours": "小时", "day": "天", "days": "天", "month": "个月", "months": "个月", "year": "年", "years": "年", "over ": "超过", "format": "{over} {n} {units}前" }; $('li a.internal-link.view-application').html("<span></span>博客主页");
+                                            $('li a.internal-link.view-contact').html("<span></span>向博客作者发送电子邮件"); $('li a[href="/b/windowsappdev_cn/rsscomments.aspx"]').html("<span></span>评论 RSS"); $('li a[href="/b/windowsappdev_cn/rss.aspx"]').html("<span></span>博文 RSS"); $("#ThisBlogText").text("搜索本博客"); $("#AllBlogsText").text("搜索所有博客");
+                                            $(".content-fragment-page.taglist .breadcrumb-item:nth-child(5) a").text("所有类别");
+                                            if ($(".content-fragment-page.post").length == 1) {
+                                                $('.blog-feedback-list .content-list-name a.internal-link').html('<span></span>评论');
+                                                $('.captcha-blog-post-comment-form legend.field-list-description').text("留言");
+                                                $('#commentmessage').text('谢谢你的分享您的想法。这可能需要几分钟，您要显示的注释。');
+                                                $(".captcha-blog-post-comment-form .field-item:first-child label").text("姓名");
+                                                $(".captcha-blog-post-comment-form .field-item.post-body label").text("评论");
+                                                $(".content-fragment.captcha-blog-post-comment-form .internal-link.add-reply").text("提交");
+                                            }
+                                            if ($(".content-fragment-page.contact").length == 1) {
+                                                $("span.breadcrumb-item:last-child a, .content-fragment.contact-blog .field-list-description").text("向博客作者发送电子邮件");
+                                                $(".content-fragment.contact-blog .field-item:first-child label").text("姓名");
+                                                $(".content-fragment.contact-blog .field-item:nth-child(2) label").text("电子邮件");
+                                                $(".content-fragment.contact-blog .field-item:nth-child(3) label").text("主题");
+                                                $(".content-fragment.contact-blog .field-item:nth-child(4) label").text("消息");
+                                                $(".content-fragment.contact-blog .field-item:nth-child(5) a").text("发送");
+                                            }</script>
+                                            <script type="text/javascript">
+                                            function PatchCommentCount() { if (typeof commentsSingularPluralFive != 'undefined' && commentsSingularPluralFive.length > 0) { $(".content-fragment.blog-post-list .content-list.standard .content-item .post-attributes .attribute-list .post-reply-count .attribute-value, .post-reply-count .attribute-value a").each(function () { var t = $(this).text(); if (t.match(/^\d+$/)) { var nComments = parseInt(t); var pattern = commentsSingularPluralFive[0]; switch (commentsSingularPluralFive.length) { case 2: pattern = commentsSingularPluralFive[nComments == 1 ? 0 : 1]; break; case 3: pattern = commentsSingularPluralFive[nComments == 1 ? 0 : 2 <= nComments && nComments <= 4 ? 1 : 2]; break; } $(this).text(pattern.replace("{0}", nComments.toString())); } }); } } PatchCommentCount();
+                                            function PatchDeltaPostDates(translations) { $(".content-list .post-date .value").each(function () { var t = $(this).text(); if (typeof translations[t] != 'undefined') { $(this).text(translations[t]); } else { var m = t.match(/^(over )?(\d+) (\w+) ago$/); if (m && m.length == 4) { var val = parseInt(m[2]); var units = m[3]; if (typeof translations[units] != 'undefined') { if (val >= 5 && typeof translations["5" + units] != 'undefined') units = translations["5" + units]; else units = translations[units]; $(this).text(translations["format"].replace("{over}", m[1] ? translations[m[1]] : "").replace("{n}", val).replace("{units}", units)); } } } }); } function PatchViewLinks() {
+                                                if (typeof excerptViewText == 'undefined') return; var ev = $("[title='Excerpt View']"); if (ev.length == 1) {
+                                                    if (typeof excerptViewText != 'undefined') ev.text(excerptViewText).attr("title", ""); if (typeof viewLinksFontSize != 'undefined') ev.css("font-size", viewLinksFontSize); if (typeof viewLinksLineHeight != 'undefined') ev.css("line-height", viewLinksLineHeight); ev.get(0).setAttribute("onclick", "window.setTimeout(PatchViewLinks, 100);" + ev.get(0).getAttribute("onclick")); var fv = $("[title='Full Post View']"); if (fv.length == 1) { if (typeof fullViewText != 'undefined') fv.text(fullViewText).attr("title", ""); if (typeof viewLinksFontSize != 'undefined') fv.css("font-size", viewLinksFontSize); if (typeof viewLinksLineHeight != 'undefined') fv.css("line-height", viewLinksLineHeight); fv.get(0).setAttribute("onclick", "window.setTimeout(PatchViewLinks, 100); " + fv.get(0).getAttribute("onclick")); }
+                                                    if (typeof dateUnitsTranslation != 'undefined') PatchDeltaPostDates(dateUnitsTranslation);
+                                                    PatchCommentCount();
+                                                } else {
+                                                    if ($(".content-fragment-page.postlist").length > 0) window.setTimeout(PatchViewLinks, 100);
+                                                }
+                                            } PatchViewLinks();</script>
+                                            <script type='text/javascript'>                                            $(".content-fragment-page.postlist .breadcrumb-item:nth-child(5) a, .blog-archive-list li a").each(function () { $(this).text($(this).text().replace(/January,?\s+(\d+)/, '$1年一月').replace(/February,?\s+(\d+)/, '$1年二月').replace(/March,?\s+(\d+)/, '$1年三月').replace(/April,?\s+(\d+)/, '$1年四月').replace(/May,?\s+(\d+)/, '$1年五月').replace(/June,?\s+(\d+)/, '$1年六月').replace(/July,?\s+(\d+)/, '$1年七月').replace(/August,?\s+(\d+)/, '$1年八月').replace(/September,?\s+(\d+)/, '$1年九月').replace(/October,?\s+(\d+)/, '$1年十月').replace(/November,?\s+(\d+)/, '$1年十一月').replace(/December,?\s+(\d+)/, '$1年十二月')); }); </script>
+                                        </div>
+                                    </div>
+                                    <div class="content-fragment-footer"></div>
+                                    <div class="content-fragment-bottom wireframe-content-fragment-bottom"><div class="r1 wireframe-r1"></div><div class="r2 wireframe-r2"></div><div class="r3 wireframe-r3"></div><div class="r4 wireframe-r4"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layout-footer"></div>
+            </div>
+        </div>
+
+        <div class="footer-fragments-header"></div>
+        <div class="footer-fragments">
+            <div class="footer-fragment copyright-info" id="footer-fragment-247403536">
+
+                <ul class="footer-fragment-links">
+                    <li class="message copyright">© 2014 Microsoft Corporation.</li>
+                    <li class="message termsOfService"><a href="http://msdn.microsoft.com/cc300389">Terms of Use</a> </li>
+                    <li class="message trademarks"><a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx">Trademarks</a> </li>
+                    <li class="message privacy"><a href="http://go.microsoft.com/fwlink/?LinkId=248681">Privacy &amp; Cookies</a> </li>
+                    <li class="message abuse">
+
+                        <a id="ctl00_footer_fragment_247403536__ae1a35_ctl00_ctl00_ctl01_lnkAbuse" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$footer_fragment_247403536$_ae1a35$ctl00$ctl00$ctl01$lnkAbuse&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))">Report Abuse</a>
+
+                    </li>
+
+                    <li class="message version">5.6.426.415</li>
+                </ul>
+            </div><div class="footer-fragment omniture-footer-fragment" id="footer-fragment-247403537">
+
+
+                <script src="http://i1.blogs.msdn.com/rrcontent/2569210a296af7a76a1f0a41cafcfd42-2e0c141b75ad92888490f6154505d4c2-RequestReducedScript.js" type="text/javascript"></script>        <noscript>
+                    <a href="http://www.omniture.com" title="Web Analytics">
+                        <img src="http://msstomsdnblogs.112.2O7.net/b/ss/msstomsdnblogs/1/H.20.2--NS/0"
+                             height="1" width="1" border="0" alt="" />
+                    </a>
+                </noscript>
+
+            </div><div class="footer-fragment app-insights-footer-fragment" id="footer-fragment-247403538">
+
+                <script type="text/javascript" language="javascript">
+                    $(document).ready(function () {
+                        window.appInsights = { queue: [], start: function (n) { function r(n, t) { n[t] = function () { var i = arguments; n.queue.push(function () { n[t].apply(n, i) }) } } var t, i; this.applicationInsightsId = n; this.accountId = null; this.appUserId = null; r(this, "logEvent"); r(this, "logPageView"); t = document.createElement("script"); t.type = "text/javascript"; t.src = "//az416426.vo.msecnd.net/scripts/ai.js"; t.async = !0; i = document.getElementsByTagName("script")[0]; i.parentNode.insertBefore(t, i) } };
+                        window.appInsights.start("b4d65b72-ce61-486e-b07c-969cef6675f6");
+                        window.appInsights.logPageView();
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="footer-fragments-footer"></div>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            var Page_Validators = new Array(document.getElementById("ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV"), document.getElementById("ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV"), document.getElementById("ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV"), document.getElementById("ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha"));
+            //]]>
+        </script>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            var ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV = document.all ? document.all["ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV"] : document.getElementById("ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV");
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV.controltovalidate = "ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbName";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV.display = "Dynamic";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV.validationGroup = "BlogPostCommentForm-ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbNameRFV.initialvalue = "";
+            var ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV = document.all ? document.all["ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV"] : document.getElementById("ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV");
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV.controltovalidate = "ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV.display = "Dynamic";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV.validationGroup = "BlogPostCommentForm-ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentRFV.initialvalue = "";
+            var ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV = document.all ? document.all["ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV"] : document.getElementById("ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV");
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV.controltovalidate = "ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV.display = "Dynamic";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV.validationGroup = "BlogPostCommentForm-ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbCommentREV.validationexpression = "^[\\s\\S]{0,3072}$";
+            var ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha = document.all ? document.all["ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha"] : document.getElementById("ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha");
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha.errormessage = "*";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha.display = "Dynamic";
+            ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha.validationGroup = "BlogPostCommentForm-ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00";
+            //]]>
+        </script>
+
+        <script type="text/javascript">
+            // <![CDATA[
+            ctl00_content_ctl00 = new ContentFragmentPageCustomCallback('ctl00_content_ctl00', new Function('mode', 'parameters', 'callback', 'errorCallback', 'context', 'ctl00_content_ctl00_ctl00._doCallback(mode+\':\'+parameters,callback,context,errorCallback);'));
+            // ]]>
+        </script>
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+        <rdf:Description
+        rdf:about="http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx"
+        dc:identifier="http://blogs.msdn.com/b/windowsappdev_cn/archive/2012/10/16/windows-javascript-winjs.aspx"
+        dc:title="采用 Windows JavaScript 库 (WinJS) 构建自定义控件"
+        trackback:ping="http://blogs.msdn.com/b/windowsappdev_cn/trackback.ashx?WeblogPostID=10360195" />
+        </rdf:RDF>
+        -->
+        <script type="text/javascript">
+            // <![CDATA[
+            Telligent_Modal.Configure('\/utility\/loading.htm', ['modal'], ['modal-title', 'modal-title-2', 'modal-title-3', 'modal-title-4'], ['modal-close'], ['modal-content', 'modal-content-2'], ['modal-footer', 'modal-footer-2', 'modal-footer-3'], ['modal-resize'], ['modal-mask'], 10000, false, true, true);
+            // ]]>
+        </script>
+        <script type="text/javascript">
+            // <![CDATA[
+            window.ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_GroupNavigationPopup = new Telligent_PopupPanel('ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_GroupNavigationPopup', 'menu group-navigation-content', 'down', 100, null, null, false, 'ctl00_header_fragment_247403541__ae1a35_ctl00_ctl00_GroupNavigationPopup', new Function('Core_GroupNavigation_MouseOverPopup(ctl00_header_fragment_247403541)'), new Function('Core_GroupNavigation_MouseOutPopup(ctl00_header_fragment_247403541)'));
+            // ]]>
+        </script>
+        <script type="text/javascript">
+            // <![CDATA[
+            window.ctl00_content_ctl00_ctl00 = new Telligent_CallbackManager('ctl00_content_ctl00_ctl00', 'ctl00$content$ctl00$ctl00', 'aspnetForm');
+            // ]]>
+        </script>
+        <script type="text/javascript">
+            // <![CDATA[
+            $('#ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_Container input[value="Save"]').attr('onclick', '').removeAttr('onclick').click(function () { try { var tagText = $('#ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_Tags').val(); if (!tagText) return false; var tagList = tagText.replace(';', ',').split(','); var isValid = true; for (var i = 0, l = tagList.length; i < l; i++) { isValid = /^[ -~]{0,100}$/ig.test(tagList[i]); if (!isValid) { alert(tagList[i] + ' : is not valide'); return false; } } ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01.Save(); } catch (ex) { } return false; });
+            // ]]>
+        </script>
+        <script type="text/javascript">
+            // <![CDATA[
+            window.ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01 = new Telligent_InlineEditor('ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01', 'ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_Container', new Function('id', 'p', 'ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_InlineTagEditor.SetInlineEditorPanelAndParameter(id,p);'), new Function('return ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_InlineTagEditor.GetContent();'), new Function('c', 'ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_InlineTagEditor.SetContent(c);'), null, new Function('ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_InlineTagEditor.Focus();'), new Function('w', 'h', 'ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_InlineTagEditor.Resize(w,h);'), 300, 90);
+            // ]]>
+        </script>
+        <script type="text/javascript">
+            // <![CDATA[
+            var ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_TagEditor = new TagEditor('ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_TagEditor', [['async', 'async'], ['await', 'await'], ['C#', 'C#'], ['Consumer Preview', 'Consumer Preview'], ['DirectX', 'DirectX'], ['HTML 控件', 'HTML 控件'], ['HTML\/JavaScript 应用程序', 'HTML\/JavaScript 应用程序'], ['HttpClient', 'HttpClient'], ['IXHR2', 'IXHR2'], ['JavaScript', 'JavaScript'], ['JavaScript 应用', 'JavaScript 应用'], ['jQuery', 'jQuery'], ['ListView', 'ListView'], ['Live', 'Live'], ['Live SDK', 'Live SDK'], ['Live SDK，Metro 风格应用程序，单一登录', 'Live SDK，Metro 风格应用程序，单一登录'], ['MAT', 'MAT'], ['Metro', 'Metro'], ['Metro 风格应用', 'Metro 风格应用'], ['Metro 风格应用程序', 'Metro 风格应用程序'], ['Metro 风格设计', 'Metro 风格设计'], ['Metro 风格设计、UI、用户界面、UX、差异化、用户体验', 'Metro 风格设计、UI、用户界面、UX、差异化、用户体验'], ['Metro 风格设计中心', 'Metro 风格设计中心'], ['NFC', 'NFC'], ['PhotoJournal', 'PhotoJournal'], ['promise', 'promise'], ['SkyDrive', 'SkyDrive'], ['StorageDataSource', 'StorageDataSource'], ['Toast', 'Toast'], ['Visual Basic', 'Visual Basic'], ['Visual Studio', 'Visual Studio'], ['Visual Studio 模板', 'Visual Studio 模板'], ['Visual Studio 设计器', 'Visual Studio 设计器'], ['Windows 8', 'Windows 8'], ['Windows 8 Toast', 'Windows 8 Toast'], ['Windows 8 XAML 平台', 'Windows 8 XAML 平台'], ['Windows 8 动态磁贴', 'Windows 8 动态磁贴'], ['Windows 8 合约', 'Windows 8 合约'], ['Windows 8 应用', 'Windows 8 应用'], ['Windows 8 应用测试', 'Windows 8 应用测试'], ['Windows 8 应用程序打印', 'Windows 8 应用程序打印'], ['Windows 8 徽章', 'Windows 8 徽章'], ['Windows 8 打印', 'Windows 8 打印'], ['Windows 8 游戏', 'Windows 8 游戏'], ['Windows 8 磁贴', 'Windows 8 磁贴'], ['Windows 8 辅助功能', 'Windows 8 辅助功能'], ['Windows Azure', 'Windows Azure'], ['Windows Azure 移动服务', 'Windows Azure 移动服务'], ['Windows 库', 'Windows 库'], ['Windows 应用', 'Windows 应用'], ['Windows 应用商店应用', 'Windows 应用商店应用'], ['Windows 应用商店应用程序', 'Windows 应用商店应用程序'], ['Windows 应用商店应用认证', 'Windows 应用商店应用认证'], ['Windows 应用商店游戏', 'Windows 应用商店游戏'], ['Windows 开发人员中心', 'Windows 开发人员中心'], ['Windows 游戏', 'Windows 游戏'], ['Windows 运行时', 'Windows 运行时'], ['Windows.设备。地理位置', 'Windows.设备。地理位置'], ['WinJS', 'WinJS'], ['WinJS.xhr', 'WinJS.xhr'], ['WinRT', 'WinRT'], ['WNS', 'WNS'], ['XAML', 'XAML'], ['XAML 控件', 'XAML 控件'], ['XML HTTP Request 2', 'XML HTTP Request 2'], ['XMLHTTPRequest', 'XMLHTTPRequest'], ['云', '云'], ['云服务', '云服务'], ['传感器', '传感器'], ['位置', '位置'], ['位置服务', '位置服务'], ['共享', '共享'], ['共享内容', '共享内容'], ['共享应用', '共享应用'], ['共享数据', '共享数据'], ['共享文件', '共享文件'], ['共享目标', '共享目标'], ['共享目标应用', '共享目标应用'], ['凭据保险箱', '凭据保险箱'], ['创建应用栏', '创建应用栏'], ['初始屏幕', '初始屏幕'], ['动态磁贴', '动态磁贴'], ['动画', '动画'], ['包含辅助功能的应用', '包含辅助功能的应用'], ['合约', '合约'], ['后台', '后台'], ['呈现', '呈现'], ['呈现器', '呈现器'], ['固定', '固定'], ['图像', '图像'], ['多语言', '多语言'], ['应用', '应用'], ['应用构建', '应用构建'], ['应用程序', '应用程序'], ['开发人员', '开发人员'], ['性能', '性能'], ['激活', '激活'], ['磁贴', '磁贴'], ['移动服务', '移动服务'], ['自定义控件', '自定义控件']], 'ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_Tags');
+            // ]]>
+        </script>
+        <script type="text/javascript">
+            // <![CDATA[
+            var ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_InlineTagEditor = new InlineTagEditor('ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_InlineTagEditor', 'ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01', 'ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_Container', 'ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01_Tags');
+            // ]]>
+        </script>
+        <script type="text/javascript">
+            // <![CDATA[
+            window.ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl02 = new Telligent_InlineEditorPanel('ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl02', 'ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl02', 'ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl02_State', 'ctl00_content_ctl00_w_76850__ae1a35_ctl00_ctl15_ctl01', false, null, null, null);
+            // ]]>
+        </script>
+        <script type="text/javascript">
+            //<![CDATA[
+
+            var Page_ValidationActive = false;
+            if (typeof (ValidatorOnLoad) == "function") {
+                ValidatorOnLoad();
+            }
+
+            function ValidatorOnSubmit() {
+                if (Page_ValidationActive) {
+                    return ValidatorCommonOnSubmit();
+                }
+                else {
+                    return true;
+                }
+            }
+            $('#ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_tbComment').autoResize({ animate: false, extraSpace: 0, limit: 3000 });//]]>
+        </script>
+        <script type="text/javascript">
+            subtext_invisible_captcha_hideFromJavascriptEnabledBrowsers('ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_subtext_captcha');
+        </script>
+        <script type="text/javascript">
+            subtext_invisible_captcha_setAnswer(5, 3, 'ctl00_content_ctl00_w_76853__ae1a35_ctl00_ctl00_PlaceHolder1_ctl04_bpCommentForm_ctl04_invisibleCaptcha_answer');
+        </script>
+    </form>
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            $.getScript('http://widgets.membership.s-msft.com/v1/loader.js?brand=msdn&lang=en-US', function () {
+            });
+        });
+    </script>
+
+</body>
+</html>

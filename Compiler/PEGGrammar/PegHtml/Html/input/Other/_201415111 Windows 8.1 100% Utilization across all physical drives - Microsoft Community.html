@@ -1,0 +1,1475 @@
+﻿<!DOCTYPE html>
+
+<!-- SI01 -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+    <title>Windows 8.1 100&#37; Utilization across all physical drives - Microsoft Community</title>
+    <link href="http://i.answers.microsoft.com/static/css/core.css?ver=5.2.0.65" rel="stylesheet" type="text/css" />
+    <link href="http://i2.answers.microsoft.com/static/css/viewthread.css?ver=5.2.0.65" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+    <meta name="keywords" content="Windows,Windows 8.1,Performance and Maintenance" />
+    <meta name="description" content="Recently, I have been having trouble with the performance on my laptop. When I go to the task manager, the Disk reading is usually about 99&#37;-100&#37; full which is causing performance issues. I ran a" />
+    <meta name="search.title" content="Windows 8.1 100&#37; Utilization across all physical drives" />
+    <meta name="search.description" content="Recently, I have been having trouble with the performance on my laptop. When I go to the task manager, the Disk reading is usually about 99&#37;-100&#37; full which is causing performance issues. I ran a" />
+    <meta name="search.threadId" content="12645ad4-922e-455f-afcc-334036a32e3d" />
+    <meta name="search.authorId" content="b7f3e38c-306b-46a3-8136-395d1d9fdf3f" />
+    <meta name="search.authorName" content="Czar05" />
+    <meta name="search.dateCreated" content="2014-05-23T03&#58;29&#58;18" />
+    <meta name="search.dateModified" content="2014-10-04T17&#58;13&#58;28" />
+    <meta name="search.dateLastReply" content="2014-10-04T17&#58;13&#58;28" />
+    <meta name="search.language" content="en-US" />
+    <meta name="search.answerCount" content="000000" />
+    <meta name="search.answered" content="false" />
+    <meta name="search.helpfulVoteCount" content="000000" />
+    <meta name="search.meTooCount" content="000002" />
+    <meta name="search.pageType" content="qna" />
+    <meta name="search.lastRepliedUserId" content="b03392fb-be23-4f00-b7f1-f497388ffdfa" />
+    <meta name="search.lastRepliedUserName" content="PaulSalinas" />
+    <meta name="search.replyCount" content="000008" />
+    <meta name="search.isSolutionAsset" content="false" />
+    <meta name="search.firstReplyPage" content="true" />
+    <meta name="search.forum" content="Windows" />
+    <meta name="search.windowsversion" content="windows8_1" />
+    <meta name="search.windowstopic" content="performance" />
+    <meta name="search.appMetadata" content="forum&#61;Windows&#59;windowsversion&#61;windows8_1&#59;windowstopic&#61;performance" />
+    <meta property="og:title" content="Windows 8.1 100&#37; Utilization across all physical drives" />
+    <meta property="og:description" content="Recently, I have been having trouble with the performance on my laptop. When I go to the task manager, the Disk reading is usually about 99&#37;-100&#37; full which is causing performance issues. I ran a" />
+    <meta property="og:image" content="http://answers.microsoft.com/static/images/icon_fb_answers3.png" />
+
+
+    <script type="text/javascript">
+        window.appInsights = { queue: [], applicationInsightsId: null, accountId: null, appUserId: null, configUrl: null, start: function (n) { function u(n) { t[n] = function () { var i = arguments; t.queue.push(function () { t[n].apply(t, i) }) } } function f(n, t) { if (n) { var u = r.createElement(i); u.type = "text/javascript"; u.src = n; u.async = !0; u.onload = t; u.onerror = t; r.getElementsByTagName(i)[0].parentNode.appendChild(u) } else t() } var r = document, t = this, i; t.applicationInsightsId = n; u("logEvent"); u("logPageView"); i = "script"; f(t.configUrl, function () { f("//az416426.vo.msecnd.net/scripts/v/ai.0.7.js") }); t.start = function () { } } };
+
+        appInsights.start("bf91f2f3-98d4-4e20-93d9-4739c52057fc");
+        appInsights.logPageView();
+    </script>
+
+    <script type="text/javascript">
+
+        document.createElement("header");
+        document.createElement("nav");
+        document.createElement("section");
+        document.createElement("footer");
+        if (!window.location.origin) {
+            window.location.origin = window.location.protocol + "//" + window.location.host;
+        }
+
+        if (typeof (Answers) === "undefined") { Answers = {}; }
+        Answers.IsRtl = false;
+        Answers.Locale = "en-US";
+        var siteStartDate = new Date();
+    </script>
+</head>
+<body class="ltr">
+    <header id="Header" class="clearFix">
+
+
+        <div id="PrivacyBanner" class="contentChannel">
+            <div class="positionLeft">By using this site you agree to the use of cookies for analytics, personalized content and ads.</div>
+            <div class="positionRight">
+                <div class="learnMore positionLeft">
+                    <a href="http&#58;&#47;&#47;go.microsoft.com&#47;fwlink&#47;&#63;LinkId&#61;248681">Learn More</a>
+                </div>
+                <button id="PrivacyBanner_Close" title="Close" aria-label="Close" class="positionRight">
+                    <img alt="Close" src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;icon_closeicon.png&#63;ver&#61;5.2.0.65" />
+                </button>
+            </div>
+        </div>
+
+        <div id="Masthead" class="contentChannel">
+
+            <span id="MsaSignIn" class="positionRight">
+                <a href="https&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;site&#47;startsignin&#63;pageUrl&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fen-us&#37;2Fwindows&#37;2Fforum&#37;2Fwindows8_1-performance&#37;2Fwindows-81-100-utilization-across-all-physical&#37;2F12645ad4-922e-455f-afcc-334036a32e3d" id="siteSignIn" rel="nofollow">Sign in</a>
+            </span>
+
+            <div>
+                <a id="MSHeaderLogoLink" href="http&#58;&#47;&#47;www.microsoft.com&#47;en-us&#47;" title="Microsoft Home Page" aria-label="Microsoft Home Page">
+                    <img src="http&#58;&#47;&#47;i.answers.microsoft.com&#47;static&#47;images&#47;msheader.png&#63;ver&#61;5.2.0.65" alt="Microsoft" />
+                </a>
+            </div>
+            <span id="MastheadBigTitle">
+                <a id="communityLogoLink" title="Community" href="&#47;en-us">
+                    Community
+                </a>
+            </span>
+
+
+            <div id="SearchBox" class="positionRight">
+                <form action="&#47;en-us&#47;search&#47;search" autocomplete="off" id="SearchForm" method="get">
+                    <input id="SearchTerm" name="SearchTerm" title="Enter&#32;your&#32;search&#32;term" type="search" value="" />
+                    <div id="SearchButtons" class="positionRight" containerid="MPC003">
+                        <input type="image" value="" id="SearchNavBtn" title="Click to find answers" linkid="MPSL002" class="positionLeft" src="http&#58;&#47;&#47;i3.answers.microsoft.com&#47;static&#47;images&#47;search.png&#63;ver&#61;5.2.0.65" />
+                        <div class="dropNav positionRight">
+                            <div id="SearchScoping" class="dropNavRight">
+                                <ul id="dropNavSearch">
+                                    <li><a href="#" class="forumSelect" data-forum="" data-filter="">Search all categories</a></li>
+                                    <li><a href="#Windows" class="forumSelect" data-forum="Windows" data-filter="windows8_1-performance">Windows 8.1</a></li>
+                                    <li><a href="#Windows" class="forumSelect" data-forum="Windows" data-filter="">Windows</a></li>
+
+                                    <li class="topNavLink"><div class="seperatorPadding"><div class="horizontalLine"></div></div></li>
+                                    <li><a href="#" class="forumSelect" data-forum="" data-filter="member">Search Community member</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <input id="CurrentScope_ForumName" name="CurrentScope.ForumName" type="hidden" value="Windows" />
+                    <input id="CurrentScope_Filter" name="CurrentScope.Filter" type="hidden" value="windows8_1-performance" />
+                    <input id="ContentTypeScope" name="ContentTypeScope" type="hidden" value="" />
+                </form>
+            </div>
+        </div>
+
+        <nav id="NavigationContainer" role="navigation">
+            <ul id="TopNav" class="contentChannel dropNav" role="menubar" containerid="MPC001">
+
+                <li class="topNavLink">
+                    <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us" class="topNavLinkItem  homepage" linkid="MPHL001">Home</a>
+                </li>
+                <li class="topNavLinkGroup">
+                    <button id="forum1" class="msaActionText">Categories</button>
+                    <ul class="topNavLinkGroupContainer">
+
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;bing" class="topNavLinkItem  Bing" linkid="MPHL002">Bing</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;ie" class="topNavLinkItem  ie" linkid="MPHL003">Internet Explorer</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;newmsn" class="topNavLinkItem  newmsn" linkid="MPHL004">MSN</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;office" class="topNavLinkItem  Office" linkid="MPHL005">Office</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;mac" class="topNavLinkItem  mac" linkid="MPHL006">Office for Mac</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;onedrive" class="topNavLinkItem  OneDrive" linkid="MPHL007">OneDrive &#40;formerly SkyDrive&#41;</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;outlook_com" class="topNavLinkItem  outlook_com" linkid="MPHL008">Outlook.com</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;surface" class="topNavLinkItem  Surface" linkid="MPHL009">Surface</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;protect" class="topNavLinkItem  Protect" linkid="MPHL010">Virus and Malware</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;windows" class="topNavLinkItem  Windows" linkid="MPHL011">Windows</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;windowslive" class="topNavLinkItem  windowslive" linkid="MPHL012">Windows Essentials</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;winphone" class="topNavLinkItem  WinPhone" linkid="MPHL013">Windows Phone</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;musicandvideo" class="topNavLinkItem  musicandvideo" linkid="MPHL014">Xbox Music and Video</a>
+                        </li>
+                        <li class="topNavLink">
+                            <div class="seperatorPadding">
+                                <div class="horizontalLine"></div>
+                            </div>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;feedback&#47;forum" class="topNavLinkItem  Community Participation Center" linkid="MPHL016">Community Participation Center</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="topNavLinkGroup">
+                    <button id="participate2" class="msaActionText">Participate</button>
+                    <ul class="topNavLinkGroupContainer">
+
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;newthread&#63;forum&#61;windows&#38;threadtype&#61;Questions&#38;filter&#61;windows8_1-performance&#38;cancelurl&#61;&#37;2Fen-us&#37;2Fwindows&#37;2Fforum&#37;2Fwindows8_1-performance&#37;2Fwindows-81-100-utilization-across-all-physical&#37;2F12645ad4-922e-455f-afcc-334036a32e3d" class="topNavLinkItem  askaquestion" linkid="MPHL017">Ask a Question</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;newthread&#63;forum&#61;windows&#38;threadtype&#61;Discussions&#38;filter&#61;windows8_1-performance&#38;cancelurl&#61;&#37;2Fen-us&#37;2Fwindows&#37;2Fforum&#37;2Fwindows8_1-performance&#37;2Fwindows-81-100-utilization-across-all-physical&#37;2F12645ad4-922e-455f-afcc-334036a32e3d" class="topNavLinkItem  startadiscussion" linkid="MPHL018">Start a Discussion</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;wiki&#47;newsuggestwiki&#63;forum&#61;windows&#38;cancelurl&#61;&#37;2Fen-us&#37;2Fwindows&#37;2Fforum&#37;2Fwindows8_1-performance&#37;2Fwindows-81-100-utilization-across-all-physical&#37;2F12645ad4-922e-455f-afcc-334036a32e3d" class="topNavLinkItem  suggestawikiarticle" linkid="MPHL019">Suggest a Wiki Article</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;feedback&#47;forum&#47;fdbk_wikiauthor" class="topNavLinkItem  becomeawikiauthor" linkid="MPHL020">Become a Wiki Author</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;feedback&#47;forum&#47;fdbk_moderator" class="topNavLinkItem  becomeamoderator" linkid="MPHL021">Become a Community Moderator</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;feedback&#47;forum&#47;fdbk_commsite" class="topNavLinkItem  discusscommunitysite" linkid="MPHL022">Discuss the Microsoft Community Site</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;feedback&#47;forum&#47;fdbk_reputation" class="topNavLinkItem  learnmoreaboutreputation" linkid="MPHL023">Learn More about Site Badges and Reputation</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;badges&#47;community-leaders" class="topNavLinkItem  viewcommunityleaders" linkid="MPHL024">Meet Our Community Leaders</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;page&#47;gettingstarted" class="topNavLinkItem  gettingstarted" linkid="MPHL025">Getting Started</a>
+                        </li>
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;page&#47;faq" class="topNavLinkItem  faq" linkid="MPHL026">FAQ</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="topNavLinkGroup">
+                    <button id="additionalsupport3" class="msaActionText">Additional Support</button>
+                    <ul class="topNavLinkGroupContainer">
+
+                        <li class="topNavLink">
+                            <a href="http&#58;&#47;&#47;go.microsoft.com&#47;&#63;linkid&#61;9844901" class="topNavLinkItem  moresupport-tracked" linkid="MPHL027">Find Additional Support</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="contentChannel clearFix" id="ContentCreationWrapper">
+
+
+        </div>
+
+
+        <div id="AnnouncementsContent">
+            <div id="Announcements" class="alignLeft dropNav dropNavNoKeyAction contentChannel contentChannelShift">
+                <button id="ShowAnnouncement" class="msaActionText" title="See announcements from category owners." data-opennow="false">
+                    Announcements&#58; <span>1</span>
+                </button>
+                <div id="CloseAnnouncement">
+                    <button id="Ann-Close" class="dropNavClose msaActionText positionRight" title="Close">
+                        <img src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;closediag.png&#63;ver&#61;5.2.0.65" alt="Close" />
+                    </button>
+                </div>
+                <ul id="AnnouncementsPanel" class="dropNavNoNav">
+                    <li class="announcement clearFix" announcementid="fc193c87a7be46b6a5b607434bc967d3" scope="Windows&#58;" expiredate="2014,11,30,22,5,5">
+                        <div class="ann-date positionLeft alignRight">October 23, 2014</div>
+                        <div class="ann-body positionLeft">
+                            <h6 class="announcmentTitle">
+                                Protect yourself from scams
+                            </h6>
+                            <div class="announcementBody">
+
+                                <p>
+                                    Getting help and advice from one of the many experts here at Microsoft Community does not cost anything.
+                                    <span>
+                                        Whenever you receive a phone number as an answer and feel uncertain whether it is from someone at Microsoft, don’t take the risk,
+                                        <a href="http://support.microsoft.com/contactus" target="_blank">confirm the number is for official Microsoft Support</a>. &nbsp;
+                                    </span>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <section id="SearchAndTheme" class="contentChannel clearFix">
+            <div id="ForumLogo" class="positionLeft annForumLogo">
+                <a id="ForumLink" href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;windows">Windows</a>
+            </div>
+        </section>
+
+
+    </header>
+    <section id="Main" class="clearFix">
+        <div id="PageContent" class="contentChannel">
+
+
+
+            <input type="hidden" id="varForumId" value="cacb25ef-5e2a-e011-8a67-d8d385dcbb12" />
+            <input type="hidden" id="varLocaleName" value="en-us" />
+            <input type="hidden" id="varThreadId" value="12645ad4-922e-455f-afcc-334036a32e3d" />
+            <input type="hidden" id="varThreadType" value="QnA" />
+            <div class="Thread clearFix" pagetype="TV" threadid="12645ad4-922e-455f-afcc-334036a32e3d">
+                <div id="ThreadContent" class="positionLeft">
+
+                    <div id="ThreadSummary">
+
+
+                        <div class="qMeta">
+                            <span>Applies to&#58;</span>
+                            <ul>
+                                <li><a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;windows&#47;forum&#63;tab&#61;Threads">Windows</a></li>
+                                <li><a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;windows&#47;forum&#47;windows8_1&#63;tab&#61;Threads">Windows 8.1</a></li>
+                                <li><a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;windows&#47;forum&#47;performance&#63;tab&#61;Threads">Performance and Maintenance</a></li>
+                            </ul>
+                        </div>
+
+
+
+
+                        <div id="questioncontainer" class="contentWrapper" msgid="5292b450-c697-4a7e-9209-9e910d62fbcb">
+
+
+                            <a title="Czar05" class="messageUserImage positionLeft" href="&#47;en-us&#47;profile&#47;b7f3e38c-306b-46a3-8136-395d1d9fdf3f">
+                                <img src="http&#58;&#47;&#47;i.answers.microsoft.com&#47;static&#47;images&#47;defaultuser75.png&#63;ver&#61;5.2.0.65" alt="Czar05" class="userPanelImage" />
+                            </a>
+                            <div class="message">
+                                <div id="qMeTooBox" class="positionRight">
+                                    <span class="qMeToo positionRight">
+                                        <span class="qChild">Had this question</span>
+                                        <button class="msaActionText thdJoinBtn thdJoin" title="Sign in to get an email any time someone posts to this thread" aria-label="I have this question">Me Too</button>
+                                    </span>
+                                    <span class="qChildCount positionRight" title="The number of people who had this question before it was answered. The more people who follow a question, the greater the chance it will get answered.">2</span> <span class="downNub"></span>
+                                </div>
+                                <div class="messageType">
+                                    <span class="messageQuestion">Question</span>
+
+
+                                    <ul class="threadStatusIcons">
+                                        <li class="positionLeft sprite2" title=''>
+                                        </li>
+                                        <li class="positionLeft sprite2" title=''>
+                                        </li>
+                                        <li class="positionLeft sprite2" title=''>
+                                        </li>
+                                        <li class="positionLeft sprite2" title=''>
+                                        </li>
+                                        <li class="positionLeft sprite2" title=''>
+                                        </li>
+                                        <li class="positionLeft sprite2" title=''>
+                                        </li>
+                                        <li class="positionLeft sprite2" title=''>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="userInfo">
+                                    <a class="userNameShowWhiteSpace" href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;profile&#47;b7f3e38c-306b-46a3-8136-395d1d9fdf3f" title="Czar05">Czar05</a>
+
+                                    asked on
+                                    <span class="history dropNav dropNavNoKeyAction dropNavDelayShow">
+                                        <button class="msaActionText msgHistoryBtn" title="See&#32;post&#32;history" aria-label="Date">May 23, 2014<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="See&#32;post&#32;history" class="verticalAlignMiddle" /></button>
+
+                                        <ul class="msgHistoryShow">
+                                            <li>
+                                                <button class="msaActionText msgHistoryClose dropNavClose placeRight" title="Close">
+                                                    <img src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;icon_closeicon.png&#63;ver&#61;5.2.0.65" alt="Close" />
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </span>
+
+                                    <span>|</span>
+                                    <span class="viewsCount">
+                                        333 views
+                                    </span>
+
+
+
+                                    <div class="userTags">
+
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+                                <h1 id="threadTitle" class="wrapWord">
+                                    Windows 8.1 100&#37; Utilization across all physical drives
+                                </h1>
+                                <div class="msgBody wrapWord fullMessage">
+
+                                    <p>
+                                        Recently, I have been having trouble with the performance on my laptop. When I go to the task manager, the Disk reading is usually about 99%-100% full which is causing performance issues. I ran a Mal-ware scan on my computer and I found nothing. I even tried
+                                        defragging and cleaning unnecessary files, but the problem still persists. I have looked around the internet for a solution and still can't find any. What can possibly be the problem?
+                                    </p>
+                                    <p />
+                                    <p />
+
+                                </div>
+
+
+
+
+                                <ul class="messageControls dropNav">
+                                    <li>
+                                        <button class="msaActionText msgReplyBtn" title="Sign&#32;in&#32;to&#32;reply">Reply</button>
+                                    </li>
+                                    <li>
+                                        <button class="msaActionText msgReplyQtBtn" title="Sign&#32;in&#32;to&#32;reply">Reply with quote</button>
+                                    </li>
+                                    <li class="dropNavDelayShow">
+                                        <button class="msaActionText msgAbuseBtn" title="Report&#32;inappropriate&#32;content">Report abuse<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="Report&#32;inappropriate&#32;content" class="verticalAlignMiddle" /></button>
+                                    </li>
+                                    <li>
+                                        <button class="msaActionText" id="subscribeThreadBtn" title="Click&#32;to&#32;get&#32;notified&#32;of&#32;replies&#32;and&#32;answers&#32;on&#32;this&#32;thread">Subscribe to updates</button>
+                                    </li>
+
+
+                                </ul>
+
+
+
+                            </div>
+                        </div>
+                        <!-- Question end -->
+
+
+                    </div>
+
+                    <div class="tabs">
+                        <a name="tabs"></a>
+                        <ul id="subNav" role="tablist">
+                            <li class="" id="tab_AllReplies" role="tab" aria-labelledby="tab0" aria-selected="false" tabindex="-1">
+                                <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;windows&#47;forum&#47;windows8_1-performance&#47;windows-81-100-utilization-across-all-physical&#47;12645ad4-922e-455f-afcc-334036a32e3d&#63;tab&#61;AllReplies&#35;tabs" id="tab0" role="presentation">All Replies &#40;8&#41;</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="allReplies">
+
+
+                        <div class="contentWrapper" msgId="31685480-9e0e-4de2-b923-3e958635cd80" msgParentId="5292b450-c697-4a7e-9209-9e910d62fbcb">
+
+
+
+                            <a title="Ganesh Achar B" class="messageUserImage positionLeft" href="&#47;en-us&#47;profile&#47;f2708e37-b6af-4365-923d-161bfebfdd43">
+                                <img src="http&#58;&#47;&#47;FUD.COMMUNITY.SERVICES.SUPPORT.MICROSOFT.COM&#47;Fud&#47;ImageDownloadHandler.ashx&#63;fid&#61;a5f08aad-2349-478d-b13b-5e31b731465b&#38;sid&#61;f2708e37-b6af-4365-923d-161bfebfdd43&#38;sz&#61;50" alt="Ganesh Achar B" class="userPanelImage" />
+                            </a>
+
+                            <div class="ratingPanel positionRight">
+                                <span class="ratingArea positionRight">
+                                    <span class="voteText" title="Sign in to vote this post as helpful">Found this helpful</span>
+                                    <button class="msaActionText ratingYBtn" title="Sign in to vote this post as helpful">Me Too</button>
+                                </span>
+                                <span class="ratingCount positionRight" title="Number of users who found this reply helpful.">
+                                    0
+                                </span>
+                                <span class="downNub"></span>
+                            </div>
+                            <div class="message">
+
+
+                                <div class="userInfo">
+                                    <a class="userNameShowWhiteSpace" href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;profile&#47;f2708e37-b6af-4365-923d-161bfebfdd43" title="Ganesh&#32;Achar&#32;B">Ganesh Achar B</a>
+
+                                    replied on
+                                    <span class="history dropNav dropNavNoKeyAction dropNavDelayShow">
+                                        <button class="msaActionText msgHistoryBtn" title="See&#32;post&#32;history" aria-label="Date">May 23, 2014<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="See&#32;post&#32;history" class="verticalAlignMiddle" /></button>
+
+                                        <ul class="msgHistoryShow">
+                                            <li>
+                                                <button class="msaActionText msgHistoryClose dropNavClose placeRight" title="Close">
+                                                    <img src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;icon_closeicon.png&#63;ver&#61;5.2.0.65" alt="Close" />
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </span>
+
+
+
+
+                                    <div class="userTags">
+
+
+
+                                        <span class="userAffiliation" title="Microsoft">Microsoft</span>
+
+
+                                        <a class="noUnderline nonMsUserAffiliation" aria-label="Support Engineer" title="Support Engineer" href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;page&#47;faq&#35;faqWhosWho1">Support Engineer</a>
+
+
+
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div class="msgContent">
+
+                                    <div class="msgBody wrapWord fullMessage">
+
+                                        <p>Hi Czar05,,</p>
+                                        <p />
+                                        <p style="text-align:justify"><span style="color:black">Please answer these questions.</span></p>
+                                        <ol>
+                                            <li><span style="color:black">Do you use a 3<sup>rd</sup> party antivirus application on your computer?</span></li>
+                                            <li><span style="color:black">What is the make and model of the computer?</span></li>
+                                            <li>
+                                                <span style="color:black">Did you make any changes to the computer prior to this issue</span>
+                                            </li>
+                                        </ol>
+                                        <p />
+                                        <p style="text-align:justify">You have to diagnose the issue to find the issue cause and right resolution. Refer to the following information and check.</p>
+                                        <p style="text-align:justify" />
+                                        <p style="text-align:justify"><span style="color:black">I would recommend you to run the Process Explorer and check the applications causing high CPU usage.</span></p>
+                                        <p style="text-align:justify"><span style="color:black">Process Explorer v16.02.</span></p>
+                                        <p style="text-align:justify"><a href="http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx" target="_blank"><span>http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx</span></a></p>
+                                        <p style="text-align:justify" />
+                                        <p style="text-align:justify"><span style="color:black">You can also try this:</span></p>
+                                        <p style="text-align:justify">
+                                            <span style="color:black">
+                                                Keep the computer in a clean boot status and check. If everything works fine after a clean boot, you can infer that some third party services are causing the issue. Proceed with the remaining steps to
+                                                pin-point out the third party service. Once you figure out the issue causing program, you may have to update or install a latest version of the program.
+                                            </span>
+                                        </p>
+                                        <p style="text-align:justify"><span>How to perform a clean boot to troubleshoot a problem in Windows Vista, Windows 7, or Windows 8.</span></p>
+                                        <p style="text-align:justify"><a href="http://support.microsoft.com/kb/929135" target="_blank"><span>http://support.microsoft.com/kb/929135</span></a></p>
+                                        <p style="text-align:justify">
+                                            <strong>Note</strong>: Please refer to the section: “<strong>How to reset the computer to start as usual after troubleshooting with clean boot”</strong> of the Kb article to boot the computer in normal startup after fixing the
+                                            issue.
+                                        </p>
+                                        <p />
+                                        <p><span>Ensure that you have installed available Windows updates, including Optional updates. I would also suggest you to install latest chipset drivers by downloading from the computer manufacturer’s website.</span></p>
+                                        <p />
+                                        <p>
+                                            <span style="color:#333333">
+                                                Frequently asked questions <a href="http://windows.microsoft.com/en-us/windows-8/windows-update-faq" target="_blank">
+                                                    http://windows.microsoft.com/en-us/windows-8/windows-update-faq
+                                                </a>
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span style="color:#333333">
+                                                Download and install drivers: <a href="http://windows.microsoft.com/en-us/windows-8/all-drivers" target="_blank">
+                                                    http://windows.microsoft.com/en-us/windows-8/all-drivers
+                                                </a>
+                                            </span>
+                                        </p>
+                                        <p />
+                                        <p><span style="color:black">Hope this helps you. Please do let us know if you need further help, we’ll be happy to assist you.</span></p>
+
+                                    </div>
+
+
+
+
+                                    <ul class="messageControls dropNav">
+                                        <li>
+                                            <button class="msaActionText msgReplyBtn" title="Sign&#32;in&#32;to&#32;reply">Reply</button>
+                                        </li>
+                                        <li>
+                                            <button class="msaActionText msgReplyQtBtn" title="Sign&#32;in&#32;to&#32;reply">Reply with quote</button>
+                                        </li>
+                                        <li class="dropNavDelayShow">
+                                            <button class="msaActionText msgAbuseBtn" title="Report&#32;inappropriate&#32;content">Report abuse<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="Report&#32;inappropriate&#32;content" class="verticalAlignMiddle" /></button>
+                                        </li>
+
+
+                                    </ul>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="contentWrapper" msgId="221a4cab-0922-49ca-9895-a1779332d707" msgParentId="31685480-9e0e-4de2-b923-3e958635cd80">
+
+
+
+                            <a title="Czar05" class="messageUserImage positionLeft" href="&#47;en-us&#47;profile&#47;b7f3e38c-306b-46a3-8136-395d1d9fdf3f">
+                                <img src="http&#58;&#47;&#47;i3.answers.microsoft.com&#47;static&#47;images&#47;defaultuser50.png&#63;ver&#61;5.2.0.65" alt="Czar05" class="userPanelImage" />
+                            </a>
+
+                            <div class="ratingPanel positionRight">
+                                <span class="ratingArea positionRight">
+                                    <span class="voteText" title="Sign in to vote this post as helpful">Found this helpful</span>
+                                    <button class="msaActionText ratingYBtn" title="Sign in to vote this post as helpful">Me Too</button>
+                                </span>
+                                <span class="ratingCount positionRight" title="Number of users who found this reply helpful.">
+                                    0
+                                </span>
+                                <span class="downNub"></span>
+                            </div>
+                            <div class="message">
+
+
+                                <div class="userInfo">
+                                    <a class="userNameShowWhiteSpace" href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;profile&#47;b7f3e38c-306b-46a3-8136-395d1d9fdf3f" title="Czar05">Czar05</a>
+
+                                    replied on
+                                    <span class="history dropNav dropNavNoKeyAction dropNavDelayShow">
+                                        <button class="msaActionText msgHistoryBtn" title="See&#32;post&#32;history" aria-label="Date">May 24, 2014<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="See&#32;post&#32;history" class="verticalAlignMiddle" /></button>
+
+                                        <ul class="msgHistoryShow">
+                                            <li>
+                                                <button class="msaActionText msgHistoryClose dropNavClose placeRight" title="Close">
+                                                    <img src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;icon_closeicon.png&#63;ver&#61;5.2.0.65" alt="Close" />
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </span>
+
+
+
+
+                                    <div class="userTags">
+
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="messageInfo">
+                                    <div class="inReplyTo ">
+                                        <p class="replyMeta">
+                                            <span><img src="http&#58;&#47;&#47;i.answers.microsoft.com&#47;static&#47;images&#47;icon_reply.png&#63;ver&#61;5.2.0.65" alt="Reply" /></span>
+                                            <button class="msaActionText userNameShowWhiteSpace">In reply to Ganesh Achar B's post on May 23, 2014</button>
+                                        </p>
+                                        <div class="replyToMsg wrapWord">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="msgContent">
+
+                                    <div class="msgBody wrapWord fullMessage">
+
+                                        <p>1) Yes I do, Malwarebytes and AVG</p>
+                                        <p>2) Mine is a Samsung ATIV Book 4</p>
+                                        <p>
+                                            3) Don't know by what you mean by changes. I changed my status to administrator several weeks ago.
+                                        </p>
+
+                                    </div>
+
+
+
+
+                                    <ul class="messageControls dropNav">
+                                        <li>
+                                            <button class="msaActionText msgReplyBtn" title="Sign&#32;in&#32;to&#32;reply">Reply</button>
+                                        </li>
+                                        <li>
+                                            <button class="msaActionText msgReplyQtBtn" title="Sign&#32;in&#32;to&#32;reply">Reply with quote</button>
+                                        </li>
+                                        <li class="dropNavDelayShow">
+                                            <button class="msaActionText msgAbuseBtn" title="Report&#32;inappropriate&#32;content">Report abuse<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="Report&#32;inappropriate&#32;content" class="verticalAlignMiddle" /></button>
+                                        </li>
+
+
+                                    </ul>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="contentWrapper" msgId="89c31d0b-4c92-4182-aae2-7fa116c8dbb4" msgParentId="221a4cab-0922-49ca-9895-a1779332d707">
+
+
+
+                            <a title="Ganesh Achar B" class="messageUserImage positionLeft" href="&#47;en-us&#47;profile&#47;f2708e37-b6af-4365-923d-161bfebfdd43">
+                                <img src="http&#58;&#47;&#47;FUD.COMMUNITY.SERVICES.SUPPORT.MICROSOFT.COM&#47;Fud&#47;ImageDownloadHandler.ashx&#63;fid&#61;a5f08aad-2349-478d-b13b-5e31b731465b&#38;sid&#61;f2708e37-b6af-4365-923d-161bfebfdd43&#38;sz&#61;50" alt="Ganesh Achar B" class="userPanelImage" />
+                            </a>
+
+                            <div class="ratingPanel positionRight">
+                                <span class="ratingArea positionRight">
+                                    <span class="voteText" title="Sign in to vote this post as helpful">Found this helpful</span>
+                                    <button class="msaActionText ratingYBtn" title="Sign in to vote this post as helpful">Me Too</button>
+                                </span>
+                                <span class="ratingCount positionRight" title="Number of users who found this reply helpful.">
+                                    0
+                                </span>
+                                <span class="downNub"></span>
+                            </div>
+                            <div class="message">
+
+
+                                <div class="userInfo">
+                                    <a class="userNameShowWhiteSpace" href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;profile&#47;f2708e37-b6af-4365-923d-161bfebfdd43" title="Ganesh&#32;Achar&#32;B">Ganesh Achar B</a>
+
+                                    replied on
+                                    <span class="history dropNav dropNavNoKeyAction dropNavDelayShow">
+                                        <button class="msaActionText msgHistoryBtn" title="See&#32;post&#32;history" aria-label="Date">May 24, 2014<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="See&#32;post&#32;history" class="verticalAlignMiddle" /></button>
+
+                                        <ul class="msgHistoryShow">
+                                            <li>
+                                                <button class="msaActionText msgHistoryClose dropNavClose placeRight" title="Close">
+                                                    <img src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;icon_closeicon.png&#63;ver&#61;5.2.0.65" alt="Close" />
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </span>
+
+
+
+
+                                    <div class="userTags">
+
+
+
+                                        <span class="userAffiliation" title="Microsoft">Microsoft</span>
+
+
+                                        <a class="noUnderline nonMsUserAffiliation" aria-label="Support Engineer" title="Support Engineer" href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;page&#47;faq&#35;faqWhosWho1">Support Engineer</a>
+
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="messageInfo">
+                                    <div class="inReplyTo ">
+                                        <p class="replyMeta">
+                                            <span><img src="http&#58;&#47;&#47;i.answers.microsoft.com&#47;static&#47;images&#47;icon_reply.png&#63;ver&#61;5.2.0.65" alt="Reply" /></span>
+                                            <button class="msaActionText userNameShowWhiteSpace">In reply to Czar05's post on May 24, 2014</button>
+                                        </p>
+                                        <div class="replyToMsg wrapWord">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="msgContent">
+
+                                    <div class="msgBody wrapWord fullMessage">
+
+                                        <p>Hi,</p>
+                                        <p />
+                                        <p>Thank you for the reply.</p>
+                                        <p />
+                                        <p>Please go through the diagnosing methods provided in the previous response and update the result to assist you further.</p>
+
+                                    </div>
+
+
+
+
+                                    <ul class="messageControls dropNav">
+                                        <li>
+                                            <button class="msaActionText msgReplyBtn" title="Sign&#32;in&#32;to&#32;reply">Reply</button>
+                                        </li>
+                                        <li>
+                                            <button class="msaActionText msgReplyQtBtn" title="Sign&#32;in&#32;to&#32;reply">Reply with quote</button>
+                                        </li>
+                                        <li class="dropNavDelayShow">
+                                            <button class="msaActionText msgAbuseBtn" title="Report&#32;inappropriate&#32;content">Report abuse<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="Report&#32;inappropriate&#32;content" class="verticalAlignMiddle" /></button>
+                                        </li>
+
+
+                                    </ul>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="contentWrapper" msgId="2565224a-8ffd-4df9-a0f0-f6b617ab9591" msgParentId="89c31d0b-4c92-4182-aae2-7fa116c8dbb4">
+
+
+
+                            <a title="Czar05" class="messageUserImage positionLeft" href="&#47;en-us&#47;profile&#47;b7f3e38c-306b-46a3-8136-395d1d9fdf3f">
+                                <img src="http&#58;&#47;&#47;i3.answers.microsoft.com&#47;static&#47;images&#47;defaultuser50.png&#63;ver&#61;5.2.0.65" alt="Czar05" class="userPanelImage" />
+                            </a>
+
+                            <div class="ratingPanel positionRight">
+                                <span class="ratingArea positionRight">
+                                    <span class="voteText" title="Sign in to vote this post as helpful">Found this helpful</span>
+                                    <button class="msaActionText ratingYBtn" title="Sign in to vote this post as helpful">Me Too</button>
+                                </span>
+                                <span class="ratingCount positionRight" title="Number of users who found this reply helpful.">
+                                    0
+                                </span>
+                                <span class="downNub"></span>
+                            </div>
+                            <div class="message">
+
+
+                                <div class="userInfo">
+                                    <a class="userNameShowWhiteSpace" href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;profile&#47;b7f3e38c-306b-46a3-8136-395d1d9fdf3f" title="Czar05">Czar05</a>
+
+                                    replied on
+                                    <span class="history dropNav dropNavNoKeyAction dropNavDelayShow">
+                                        <button class="msaActionText msgHistoryBtn" title="See&#32;post&#32;history" aria-label="Date">May 24, 2014<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="See&#32;post&#32;history" class="verticalAlignMiddle" /></button>
+
+                                        <ul class="msgHistoryShow">
+                                            <li>
+                                                <button class="msaActionText msgHistoryClose dropNavClose placeRight" title="Close">
+                                                    <img src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;icon_closeicon.png&#63;ver&#61;5.2.0.65" alt="Close" />
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </span>
+
+
+
+
+                                    <div class="userTags">
+
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="messageInfo">
+                                    <div class="inReplyTo ">
+                                        <p class="replyMeta">
+                                            <span><img src="http&#58;&#47;&#47;i.answers.microsoft.com&#47;static&#47;images&#47;icon_reply.png&#63;ver&#61;5.2.0.65" alt="Reply" /></span>
+                                            <button class="msaActionText userNameShowWhiteSpace">In reply to Ganesh Achar B's post on May 24, 2014</button>
+                                        </p>
+                                        <div class="replyToMsg wrapWord">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="msgContent">
+
+                                    <div class="msgBody wrapWord fullMessage">
+
+                                        <p>
+                                            I followed the instructions on the page. I disabled the necessary programs and restarted the computer. Now I am not sure what I should be doing. When I restarted my computer and returned to my desktop, and started to run my browser again, the problem came
+                                            back. My disk was around 99%-100%, what does this mean exactly? Is it a third party service that is causing this?
+                                        </p>
+                                        <p />
+                                        <p>
+                                            The page that you posted about clean booting talks about installing or uninstalling a program that was being uncooperative before, it also writes about how if I couldn't run the program before clean boot then I should try it now. The problem is neither of
+                                            these apply to my situation. Should I go to the next bullet point then that reads "How to reset the computer to start normally after clean boot troubleshooting".
+                                        </p>
+                                        <p />
+                                        <p>Also I am not quite sure what I should do with the process explorer executable. I know its similar to the task manager, but I am not familiar with its interface. What should I be looking for exactly on that interface to find my problem?</p>
+                                        <p />
+                                        <p />
+
+                                    </div>
+
+
+
+
+                                    <ul class="messageControls dropNav">
+                                        <li>
+                                            <button class="msaActionText msgReplyBtn" title="Sign&#32;in&#32;to&#32;reply">Reply</button>
+                                        </li>
+                                        <li>
+                                            <button class="msaActionText msgReplyQtBtn" title="Sign&#32;in&#32;to&#32;reply">Reply with quote</button>
+                                        </li>
+                                        <li class="dropNavDelayShow">
+                                            <button class="msaActionText msgAbuseBtn" title="Report&#32;inappropriate&#32;content">Report abuse<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="Report&#32;inappropriate&#32;content" class="verticalAlignMiddle" /></button>
+                                        </li>
+
+
+                                    </ul>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="contentWrapper" msgId="cb86a3d6-658b-49e7-8993-af04fe64bdf2" msgParentId="2565224a-8ffd-4df9-a0f0-f6b617ab9591">
+
+
+
+                            <a title="Ganesh Achar B" class="messageUserImage positionLeft" href="&#47;en-us&#47;profile&#47;f2708e37-b6af-4365-923d-161bfebfdd43">
+                                <img src="http&#58;&#47;&#47;FUD.COMMUNITY.SERVICES.SUPPORT.MICROSOFT.COM&#47;Fud&#47;ImageDownloadHandler.ashx&#63;fid&#61;a5f08aad-2349-478d-b13b-5e31b731465b&#38;sid&#61;f2708e37-b6af-4365-923d-161bfebfdd43&#38;sz&#61;50" alt="Ganesh Achar B" class="userPanelImage" />
+                            </a>
+
+                            <div class="ratingPanel positionRight">
+                                <span class="ratingArea positionRight">
+                                    <span class="voteText" title="Sign in to vote this post as helpful">Found this helpful</span>
+                                    <button class="msaActionText ratingYBtn" title="Sign in to vote this post as helpful">Me Too</button>
+                                </span>
+                                <span class="ratingCount positionRight" title="Number of users who found this reply helpful.">
+                                    0
+                                </span>
+                                <span class="downNub"></span>
+                            </div>
+                            <div class="message">
+
+
+                                <div class="userInfo">
+                                    <a class="userNameShowWhiteSpace" href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;profile&#47;f2708e37-b6af-4365-923d-161bfebfdd43" title="Ganesh&#32;Achar&#32;B">Ganesh Achar B</a>
+
+                                    replied on
+                                    <span class="history dropNav dropNavNoKeyAction dropNavDelayShow">
+                                        <button class="msaActionText msgHistoryBtn" title="See&#32;post&#32;history" aria-label="Date">May 26, 2014<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="See&#32;post&#32;history" class="verticalAlignMiddle" /></button>
+
+                                        <ul class="msgHistoryShow">
+                                            <li>
+                                                <button class="msaActionText msgHistoryClose dropNavClose placeRight" title="Close">
+                                                    <img src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;icon_closeicon.png&#63;ver&#61;5.2.0.65" alt="Close" />
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </span>
+
+
+
+
+                                    <div class="userTags">
+
+
+
+                                        <span class="userAffiliation" title="Microsoft">Microsoft</span>
+
+
+                                        <a class="noUnderline nonMsUserAffiliation" aria-label="Support Engineer" title="Support Engineer" href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;page&#47;faq&#35;faqWhosWho1">Support Engineer</a>
+
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="messageInfo">
+                                    <div class="inReplyTo ">
+                                        <p class="replyMeta">
+                                            <span><img src="http&#58;&#47;&#47;i.answers.microsoft.com&#47;static&#47;images&#47;icon_reply.png&#63;ver&#61;5.2.0.65" alt="Reply" /></span>
+                                            <button class="msaActionText userNameShowWhiteSpace">In reply to Czar05's post on May 24, 2014</button>
+                                        </p>
+                                        <div class="replyToMsg wrapWord">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="msgContent">
+
+                                    <div class="msgBody wrapWord fullMessage">
+
+                                        <p>Hi,</p>
+                                        <p />
+                                        <p style="text-align:justify">
+                                            <span style="color:black">
+                                                I would recommend you to run the Process Explorer and check the applications causing high CPU usage. This will help you issue causing applications.
+                                            </span>The unique capabilities of <em>Process Explorer</em> make it useful for tracking down DLL-version problems or handle leaks, and provide insight into the way Windows and applications work.
+                                        </p>
+                                        <p style="text-align:justify" />
+                                        <p style="text-align:justify"><span style="color:black">Process Explorer v16.02.</span></p>
+                                        <p style="text-align:justify"><a href="http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx" target="_blank"><span>http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx</span></a></p>
+
+                                    </div>
+
+
+
+
+                                    <ul class="messageControls dropNav">
+                                        <li>
+                                            <button class="msaActionText msgReplyBtn" title="Sign&#32;in&#32;to&#32;reply">Reply</button>
+                                        </li>
+                                        <li>
+                                            <button class="msaActionText msgReplyQtBtn" title="Sign&#32;in&#32;to&#32;reply">Reply with quote</button>
+                                        </li>
+                                        <li class="dropNavDelayShow">
+                                            <button class="msaActionText msgAbuseBtn" title="Report&#32;inappropriate&#32;content">Report abuse<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="Report&#32;inappropriate&#32;content" class="verticalAlignMiddle" /></button>
+                                        </li>
+
+
+                                    </ul>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="contentWrapper" msgId="5053c7c7-f72a-4e30-986d-3a6a4790913a" msgParentId="89c31d0b-4c92-4182-aae2-7fa116c8dbb4">
+
+
+
+                            <a title="Dazza1964" class="messageUserImage positionLeft" href="&#47;en-us&#47;profile&#47;f1a4640a-5ae2-4c16-add7-46a61a7ec415">
+                                <img src="http&#58;&#47;&#47;i3.answers.microsoft.com&#47;static&#47;images&#47;defaultuser50.png&#63;ver&#61;5.2.0.65" alt="Dazza1964" class="userPanelImage" />
+                            </a>
+
+                            <div class="ratingPanel positionRight">
+                                <span class="ratingArea positionRight">
+                                    <span class="voteText" title="Sign in to vote this post as helpful">Found this helpful</span>
+                                    <button class="msaActionText ratingYBtn" title="Sign in to vote this post as helpful">Me Too</button>
+                                </span>
+                                <span class="ratingCount positionRight" title="Number of users who found this reply helpful.">
+                                    0
+                                </span>
+                                <span class="downNub"></span>
+                            </div>
+                            <div class="message">
+
+
+                                <div class="userInfo">
+                                    <a class="userNameShowWhiteSpace" href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;profile&#47;f1a4640a-5ae2-4c16-add7-46a61a7ec415" title="Dazza1964">Dazza1964</a>
+
+                                    replied on
+                                    <span class="history dropNav dropNavNoKeyAction dropNavDelayShow">
+                                        <button class="msaActionText msgHistoryBtn" title="See&#32;post&#32;history" aria-label="Date">May 27, 2014<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="See&#32;post&#32;history" class="verticalAlignMiddle" /></button>
+
+                                        <ul class="msgHistoryShow">
+                                            <li>
+                                                <button class="msaActionText msgHistoryClose dropNavClose placeRight" title="Close">
+                                                    <img src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;icon_closeicon.png&#63;ver&#61;5.2.0.65" alt="Close" />
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </span>
+
+
+
+
+                                    <div class="userTags">
+
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="messageInfo">
+                                    <div class="inReplyTo ">
+                                        <p class="replyMeta">
+                                            <span><img src="http&#58;&#47;&#47;i.answers.microsoft.com&#47;static&#47;images&#47;icon_reply.png&#63;ver&#61;5.2.0.65" alt="Reply" /></span>
+                                            <button class="msaActionText userNameShowWhiteSpace">In reply to Ganesh Achar B's post on May 24, 2014</button>
+                                        </p>
+                                        <div class="replyToMsg wrapWord">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="msgContent">
+
+                                    <div class="msgBody wrapWord fullMessage">
+
+                                        <p>What is the difference between the process explorer and the task manager? &nbsp; The prior looks so complicated to my non-novice but inadequate knowledge/eyes ?</p>
+                                        <p />
+                                        <p>I only have a 280gb hard drive and what was happening was because i did not allow my files to be synced over metered connections (laST MONTH STOOPID onedrive used up 50gb ( uploads) of my monthly 70 gb quota.</p>
+                                        <p />
+                                        <p>
+                                            So what was happening was &nbsp;that i had so many duplicates of hundred of photos and files which chewed all but 5mg of my 270gbs. &nbsp; HOW RIDICULOUS IS ONEDRIVE. &nbsp; &nbsp;It will not allow me to upload anymore to Onedrive as i have used my allotted 30gb of data already.
+                                            &nbsp; This situation is insane - i wish this new HP notebook HP 275, &nbsp;(had windows 7 installed and not windows 8.1 . &nbsp;&nbsp;
+                                        </p>
+                                        <p />
+                                        <p>The only way i can forsee this not to keep this continuing is for Microsoft to increase my free allowance of 30gb. &nbsp; Please microsoft increase it to 200gb.</p>
+                                        <p />
+
+                                    </div>
+
+
+
+
+                                    <ul class="messageControls dropNav">
+                                        <li>
+                                            <button class="msaActionText msgReplyBtn" title="Sign&#32;in&#32;to&#32;reply">Reply</button>
+                                        </li>
+                                        <li>
+                                            <button class="msaActionText msgReplyQtBtn" title="Sign&#32;in&#32;to&#32;reply">Reply with quote</button>
+                                        </li>
+                                        <li class="dropNavDelayShow">
+                                            <button class="msaActionText msgAbuseBtn" title="Report&#32;inappropriate&#32;content">Report abuse<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="Report&#32;inappropriate&#32;content" class="verticalAlignMiddle" /></button>
+                                        </li>
+
+
+                                    </ul>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="contentWrapper" msgId="36b1f9cd-cf00-4d7e-8d17-ee1dbd83a6b0" msgParentId="cb86a3d6-658b-49e7-8993-af04fe64bdf2">
+
+
+
+                            <a title="Aznpanda25" class="messageUserImage positionLeft" href="&#47;en-us&#47;profile&#47;5525937f-dd26-47f1-ae32-239df75135b0">
+                                <img src="http&#58;&#47;&#47;i3.answers.microsoft.com&#47;static&#47;images&#47;defaultuser50.png&#63;ver&#61;5.2.0.65" alt="Aznpanda25" class="userPanelImage" />
+                            </a>
+
+                            <div class="ratingPanel positionRight">
+                                <span class="ratingArea positionRight">
+                                    <span class="voteText" title="Sign in to vote this post as helpful">Found this helpful</span>
+                                    <button class="msaActionText ratingYBtn" title="Sign in to vote this post as helpful">Me Too</button>
+                                </span>
+                                <span class="ratingCount positionRight" title="Number of users who found this reply helpful.">
+                                    0
+                                </span>
+                                <span class="downNub"></span>
+                            </div>
+                            <div class="message">
+
+
+                                <div class="userInfo">
+                                    <a class="userNameShowWhiteSpace" href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;profile&#47;5525937f-dd26-47f1-ae32-239df75135b0" title="Aznpanda25">Aznpanda25</a>
+
+                                    replied on
+                                    <span class="history dropNav dropNavNoKeyAction dropNavDelayShow">
+                                        <button class="msaActionText msgHistoryBtn" title="See&#32;post&#32;history" aria-label="Date">May 27, 2014<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="See&#32;post&#32;history" class="verticalAlignMiddle" /></button>
+
+                                        <ul class="msgHistoryShow">
+                                            <li>
+                                                <button class="msaActionText msgHistoryClose dropNavClose placeRight" title="Close">
+                                                    <img src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;icon_closeicon.png&#63;ver&#61;5.2.0.65" alt="Close" />
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </span>
+
+
+
+
+                                    <div class="userTags">
+
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="messageInfo">
+                                    <div class="inReplyTo ">
+                                        <p class="replyMeta">
+                                            <span><img src="http&#58;&#47;&#47;i.answers.microsoft.com&#47;static&#47;images&#47;icon_reply.png&#63;ver&#61;5.2.0.65" alt="Reply" /></span>
+                                            <button class="msaActionText userNameShowWhiteSpace">In reply to Ganesh Achar B's post on May 26, 2014</button>
+                                        </p>
+                                        <div class="replyToMsg wrapWord">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="msgContent">
+
+                                    <div class="msgBody wrapWord fullMessage">
+
+                                        <p>I believe the problem is coming from some of the services provided by the system host. &nbsp;I have disabled and stopped the two programs called Superfetch and BITS, and that works, but then they will randomly start up again despite me disabling them. &nbsp;</p>
+
+                                    </div>
+
+
+
+
+                                    <ul class="messageControls dropNav">
+                                        <li>
+                                            <button class="msaActionText msgReplyBtn" title="Sign&#32;in&#32;to&#32;reply">Reply</button>
+                                        </li>
+                                        <li>
+                                            <button class="msaActionText msgReplyQtBtn" title="Sign&#32;in&#32;to&#32;reply">Reply with quote</button>
+                                        </li>
+                                        <li class="dropNavDelayShow">
+                                            <button class="msaActionText msgAbuseBtn" title="Report&#32;inappropriate&#32;content">Report abuse<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="Report&#32;inappropriate&#32;content" class="verticalAlignMiddle" /></button>
+                                        </li>
+
+
+                                    </ul>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="LastReply" class="contentWrapper" msgId="c6dfcbcf-f342-45e0-8f5f-8e02cc28e854" msgParentId="cb86a3d6-658b-49e7-8993-af04fe64bdf2">
+
+
+
+                            <a title="PaulSalinas" class="messageUserImage positionLeft" href="&#47;en-us&#47;profile&#47;b03392fb-be23-4f00-b7f1-f497388ffdfa">
+                                <img src="http&#58;&#47;&#47;i3.answers.microsoft.com&#47;static&#47;images&#47;defaultuser50.png&#63;ver&#61;5.2.0.65" alt="PaulSalinas" class="userPanelImage" />
+                            </a>
+
+                            <div class="ratingPanel positionRight">
+                                <span class="ratingArea positionRight">
+                                    <span class="voteText" title="Sign in to vote this post as helpful">Found this helpful</span>
+                                    <button class="msaActionText ratingYBtn" title="Sign in to vote this post as helpful">Me Too</button>
+                                </span>
+                                <span class="ratingCount positionRight" title="Number of users who found this reply helpful.">
+                                    0
+                                </span>
+                                <span class="downNub"></span>
+                            </div>
+                            <div class="message">
+
+
+                                <div class="userInfo">
+                                    <a class="userNameShowWhiteSpace" href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;profile&#47;b03392fb-be23-4f00-b7f1-f497388ffdfa" title="PaulSalinas">PaulSalinas</a>
+
+                                    replied on
+                                    <span class="history dropNav dropNavNoKeyAction dropNavDelayShow">
+                                        <button class="msaActionText msgHistoryBtn" title="See&#32;post&#32;history" aria-label="Date">October 4, 2014<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="See&#32;post&#32;history" class="verticalAlignMiddle" /></button>
+
+                                        <ul class="msgHistoryShow">
+                                            <li>
+                                                <button class="msaActionText msgHistoryClose dropNavClose placeRight" title="Close">
+                                                    <img src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;icon_closeicon.png&#63;ver&#61;5.2.0.65" alt="Close" />
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </span>
+
+
+
+
+                                    <div class="userTags">
+
+
+
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="messageInfo">
+                                    <div class="inReplyTo ">
+                                        <p class="replyMeta">
+                                            <span><img src="http&#58;&#47;&#47;i.answers.microsoft.com&#47;static&#47;images&#47;icon_reply.png&#63;ver&#61;5.2.0.65" alt="Reply" /></span>
+                                            <button class="msaActionText userNameShowWhiteSpace">In reply to Ganesh Achar B's post on May 26, 2014</button>
+                                        </p>
+                                        <div class="replyToMsg wrapWord">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="msgContent">
+
+                                    <div class="msgBody wrapWord fullMessage">
+                                        Ganesh, his question was about the physical drive utilization... not cpu...
+                                    </div>
+
+
+
+
+                                    <ul class="messageControls dropNav">
+                                        <li>
+                                            <button class="msaActionText msgReplyBtn" title="Sign&#32;in&#32;to&#32;reply">Reply</button>
+                                        </li>
+                                        <li>
+                                            <button class="msaActionText msgReplyQtBtn" title="Sign&#32;in&#32;to&#32;reply">Reply with quote</button>
+                                        </li>
+                                        <li class="dropNavDelayShow">
+                                            <button class="msaActionText msgAbuseBtn" title="Report&#32;inappropriate&#32;content">Report abuse<img src="http://i2.answers.microsoft.com/static/images/icon_down.png?ver=5.2.0.65" alt="Report&#32;inappropriate&#32;content" class="verticalAlignMiddle" /></button>
+                                        </li>
+
+
+                                    </ul>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="SideBar" class="positionRight">
+                    <div id="MoreHelpPanel">
+
+                        <ul id="RelatedThreads" class="moreHelpBox">
+                            <li class="heading">
+                                Related Content
+                            </li>
+                            <li class="indicator"><img alt="" src="http&#58;&#47;&#47;i3.answers.microsoft.com&#47;static&#47;images&#47;indicator.gif&#63;ver&#61;5.2.0.65" /></li>
+                        </ul>
+                    </div>
+
+                    <div id="SocialIcons">
+                        <a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;feed&#47;t&#47;12645ad4-922e-455f-afcc-334036a32e3d" aria-label="Subscribe to this thread" title="Subscribe to this thread" class="socialIcon sprite2 icon_rssbig">
+                            <img alt="Subscribe to this thread" src="http&#58;&#47;&#47;i3.answers.microsoft.com&#47;static&#47;images&#47;icon_rssbig.png&#63;ver&#61;5.2.0.65" />
+                        </a>
+                        <a href="http://twitter.com/share?url=http&#37;3a&#37;2f&#37;2fanswers.microsoft.com&#37;2fthread&#37;2f12645ad4-922e-455f-afcc-334036a32e3d&text=Microsoft&#43;Community&#37;3a&#43;Windows&#43;8.1&#43;100&#37;25&#43;Utilization&#43;across&#43;all&#43;physical&#43;drives" aria-label="Tweet this question&#10;      " title="Tweet this question&#10;      " target="_blank" class="socialIcon sprite2 icon_twitter">
+                            <img alt="Tweet this question&#10;      " src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;icon_twitter.png&#63;ver&#61;5.2.0.65" />
+                        </a>
+                        <a href="http://www.facebook.com/share.php?u=http&#37;3a&#37;2f&#37;2fanswers.microsoft.com&#37;2fthread&#37;2f12645ad4-922e-455f-afcc-334036a32e3d" aria-label="Share to Facebook&#10;      " title="Share to Facebook&#10;      " target="_blank" class="socialIcon sprite2 icon_facebook">
+                            <img alt="Share to Facebook&#10;      " src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;icon_facebook.png&#63;ver&#61;5.2.0.65" />
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <span id="HiddenTextForHtmlCleanup" class="hidden"></span>
+            <div id="SimpleMsgDialog" class="dialogPanel " role="dialog" aria-labeledby="dialogTitle">
+                <div class="dialogBox">
+                    <h4 class="dialogTitle"><input type="image" src="http://i2.answers.microsoft.com/static/images/icon_closeicon.png?ver=5.2.0.65" class="msaActionText dlgCloseBtn sprite2 icon_closeIcon positionRight" title="Cancel" id="confirmExitBtn" /><span class="dialogTitleText" id="dialogTitleText"></span></h4><div class="dialogBody">
+                        <span id="SimpleMsgDialogContent"></span>
+                    </div><div class="dialogBtnContainer">
+                        <button type="button" class="msaButton msaBlueButton dlgCloseBtn" id="SimpleMsgDialogOkBtn" title="OK">OK</button>
+                    </div>
+                </div>
+            </div>
+
+            <img class="hidden" alt="" src="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;pagestatistics&#47;addthreadviewcount&#63;id&#61;12645ad4-922e-455f-afcc-334036a32e3d" />
+
+
+        </div>
+    </section>
+    <footer id="Footer" containerid="MPC002">
+        <div id="LocalePopup">
+            <div class="dropNav dropNavUp">
+                <button id="LocaleChanger" class="msaActionText contentChannelShift" title="Change Region" aria-label="Change Region Link">
+                    <img src="http&#58;&#47;&#47;i.answers.microsoft.com&#47;static&#47;images&#47;regionglobe.png&#63;ver&#61;5.2.0.65" alt="Change Region" />English
+                </button>
+
+                <ul class="dropNavColumn">
+                    <li>
+                        <div id="ChangeRegionTitle">
+                            This site in other countries&#47;regions
+                            <button id="RegionClose" class="dropNavClose msaActionText positionRight" title="Cancel">
+                                <img src="http&#58;&#47;&#47;i2.answers.microsoft.com&#47;static&#47;images&#47;closediag.png&#63;ver&#61;5.2.0.65" alt="Cancel" />
+                            </button>
+                        </div>
+                        <div id="RegionList" class="clearFix">
+                            <ul class="alignLeft positionLeft">
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;cs-cz&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fcs-cz&#37;2Fwindows&#37;2Fforum" rel="nofollow">Čeština</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;da-dk&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fda-dk&#37;2Fwindows&#37;2Fforum" rel="nofollow">Dansk</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;de-de&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fde-de&#37;2Fwindows&#37;2Fforum" rel="nofollow">Deutsch</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;et-ee&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fet-ee&#37;2Fwindows&#37;2Fforum" rel="nofollow">Eesti</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;es-es&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fes-es&#37;2Fwindows&#37;2Fforum" rel="nofollow">Espa&#241;ol</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;fr-fr&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Ffr-fr&#37;2Fwindows&#37;2Fforum" rel="nofollow">Fran&#231;ais</a></li>
+                            </ul>
+                            <ul class="alignLeft positionLeft">
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;it-it&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fit-it&#37;2Fwindows&#37;2Fforum" rel="nofollow">Italiano</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;hu-hu&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fhu-hu&#37;2Fwindows&#37;2Fforum" rel="nofollow">Magyar</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;nl-nl&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fnl-nl&#37;2Fwindows&#37;2Fforum" rel="nofollow">Nederlands</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;nb-no&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fnb-no&#37;2Fwindows&#37;2Fforum" rel="nofollow">Norsk, Bokm&#229;l</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;pl-pl&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fpl-pl&#37;2Fwindows&#37;2Fforum" rel="nofollow">Polski</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;pt-br&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fpt-br&#37;2Fwindows&#37;2Fforum" rel="nofollow">Portugu&#234;s</a></li>
+                            </ul>
+                            <ul class="alignLeft positionLeft">
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;fi-fi&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Ffi-fi&#37;2Fwindows&#37;2Fforum" rel="nofollow">Suomi</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;sv-se&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fsv-se&#37;2Fwindows&#37;2Fforum" rel="nofollow">Svenska</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;tr-tr&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Ftr-tr&#37;2Fwindows&#37;2Fforum" rel="nofollow">T&#252;rk&#231;e</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;el-gr&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fel-gr&#37;2Fwindows&#37;2Fforum" rel="nofollow">Ελληνικά</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;ru-ru&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fru-ru&#37;2Fwindows&#37;2Fforum" rel="nofollow">Русский</a></li>
+                                <li><a class="rtl" href="http&#58;&#47;&#47;answers.microsoft.com&#47;he-il&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fhe-il&#37;2Fwindows&#37;2Fforum" rel="nofollow">עברית</a></li>
+                            </ul>
+                            <ul class="alignLeft positionLeft">
+                                <li><a class="rtl" href="http&#58;&#47;&#47;answers.microsoft.com&#47;ar-sa&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Far-sa&#37;2Fwindows&#37;2Fforum" rel="nofollow">العربية</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;th-th&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fth-th&#37;2Fwindows&#37;2Fforum" rel="nofollow">ไทย</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;ko-kr&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fko-kr&#37;2Fwindows&#37;2Fforum" rel="nofollow">한국어</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;zh-hans&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fzh-hans&#37;2Fwindows&#37;2Fforum" rel="nofollow">中文&#40;简体&#41;</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;zh-hant&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fzh-hant&#37;2Fwindows&#37;2Fforum" rel="nofollow">中文&#40;繁體&#41;</a></li>
+                                <li><a class="ltr" href="http&#58;&#47;&#47;answers.microsoft.com&#47;ja-jp&#47;site&#47;setlocale&#63;url&#61;http&#37;3A&#37;2F&#37;2Fanswers.microsoft.com&#37;2Fja-jp&#37;2Fwindows&#37;2Fforum" rel="nofollow">日本語</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="FooterLinks" class="contentChannel alignRight">
+            <div class="positionRight">
+                <span id="MSLogo" class="placeRight">
+                    <a href="http&#58;&#47;&#47;www.microsoft.com&#47;en-us&#47;" title="Microsoft Home Page" aria-label="Microsoft Home Page">
+                        <img src="http&#58;&#47;&#47;i.answers.microsoft.com&#47;static&#47;images&#47;footerv3.png&#63;ver&#61;5.2.0.65" alt="Microsoft">
+                    </a>
+                </span>
+                <span>&copy; <span id="copyrightyear">2014</span> Microsoft</span>
+            </div>
+            <ul class="footerLinks">
+                <li><a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;page&#47;faq&#35;faqCodeConduct" linkId="MPFL001">Microsoft Community Code of Conduct</a></li>
+                <li><a href="http&#58;&#47;&#47;answers.microsoft.com&#47;en-us&#47;feedback&#47;forum" linkId="MPFL002">Community Participation Center</a></li>
+            </ul>
+            <ul class="footerLinks brandLinks">
+                <li><a href="http&#58;&#47;&#47;go.microsoft.com&#47;&#63;linkid&#61;4412893" linkId="MPFL003">Trademarks</a></li>
+                <li><a href="http&#58;&#47;&#47;go.microsoft.com&#47;fwlink&#47;p&#47;&#63;LinkId&#61;248685" linkId="MPFL004">Privacy &#38; Cookies</a></li>
+                <li><a href="http&#58;&#47;&#47;go.microsoft.com&#47;fwlink&#47;&#63;LinkID&#61;268110" linkId="MPFL005">Terms of Use</a></li>
+            </ul>
+        </div>
+
+
+        <script type="text/javascript" src="http&#58;&#47;&#47;ajax.aspnetcdn.com&#47;ajax&#47;jQuery&#47;jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="&#47;&#47;nexus.ensighten.com&#47;MSFTsupport&#47;Bootstrap.js"></script>
+
+        <script type="text/javascript">
+            var scriptfiles = ['http\x3a\x2f\x2fi2.answers.microsoft.com\x2fstatic\x2fjs\x2fcore.js\x3fver\x3d5.2.0.65', '\x2fen-us\x2fsite\x2fresources\x3fver\x3d5.2.0.65', 'http\x3a\x2f\x2fi.answers.microsoft.com\x2fstatic\x2fjs\x2flogging.js\x3fver\x3d5.2.0.65', 'http\x3a\x2f\x2fi3.answers.microsoft.com\x2fstatic\x2fjs\x2fviewthread.js\x3fver\x3d5.2.0.65'];
+            for (var i = 0; i < scriptfiles.length; i++) {
+                document.write('<script type="text/javascript" src="' + scriptfiles[i] + '"></' + 'script>');
+            }
+
+            window.isSiteReadOnly = false;
+        </script>
+
+        <script type="text/javascript">
+            var DataCollectionObjParams = { siteLn: 'en-US', delayOnLoad: 'False', host: 'support.microsoft.com\x2flts\x2f', ssVersion: '1.0', flexValue1: '', ltsIdleTimeout: '5000', brandId: '361', flexId: '21', };
+        </script>
+        <noscript>
+            <img id="dataCollectionImg" alt="" src="http://support.microsoft.com&#47;lts&#47;?SSID=29&EventCollectionId=1&URL=%2fen-us%2fwindows%2fforum%2fwindows8_1-performance%2fwindows-81-100-utilization-across-all-physical%2f12645ad4-922e-455f-afcc-334036a32e3d" />
+        </noscript>
+
+
+        <script type="text/javascript">
+            var fms_site_culture = "en-US";
+            var fms_site_lcid = "1033";
+            var fms_host = 'support.microsoft.com';
+        </script>
+        <script src="http://i.answers.microsoft.com/static/js/plugintriggersnippet.js?ver=5.2.0.65" type="text/javascript"></script>
+        <script>
+            $.getScript("http://support.microsoft.com/common/script/fx/PluginTriggerStrapper.js");
+        </script>
+
+
+        <input type="hidden" id="_AntiForgeryKey" value="ipX2I3oxlDx5UqPbWoQ55Hboqnr9kz7KKp8ymY2/MEafbNdoOzpmfdfS4CP4mhEEVfbLweFSvH59NTc4BkEpXlXISyuvK+cmxuDD2DlQTCY=" />
+        <input type="hidden" id="SignedIn" value="false" />
+
+        <div id="readOnlyError" class="dialogPanel " role="dialog" aria-labeledby="dialogTitle">
+            <div class="dialogBox">
+                <h4 class="dialogTitle"><input type="image" src="http://i2.answers.microsoft.com/static/images/icon_closeicon.png?ver=5.2.0.65" class="msaActionText dlgCloseBtn sprite2 icon_closeIcon positionRight" title="Cancel" id="confirmExitBtn" /><span class="dialogTitleText" id="dialogTitleText"></span></h4><div class="dialogBody">
+                    <div id="readOnlyErrorMessage"></div>
+                </div><div class="dialogBtnContainer">
+                    <button type="button" class="msaButton msaBlueButton" id="readOnlyWarningOK" title="OK">OK</button>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            document.write('<script type="text/javascript" src="&#47;&#47;www.microsoft.com&#47;library&#47;svy&#47;answers&#47;broker.js"></' + 'script>');
+        </script>
+
+    </footer>
+    <!--Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft. See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx.-->
+</body>
+</html>

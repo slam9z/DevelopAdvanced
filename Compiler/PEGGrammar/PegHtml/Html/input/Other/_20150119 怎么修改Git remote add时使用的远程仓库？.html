@@ -1,0 +1,1514 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" class="ua-windows ua-webkit">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit">
+
+    <title>
+        怎么修改Git remote add时使用的远程仓库？
+    </title>
+
+
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="Sun, 6 Mar 2005 01:00:00 GMT">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+
+
+
+    <script>var _head_start = new Date();</script>
+    <script src="http://s.doubanio.com/f/shire/8033e1c2528bb6402c478e00176afb3562abbc21/js/jquery.min.js"></script>
+    <script src="http://s.doubanio.com/f/shire/6072cbd9e3d56db50f819890f57164950110117c/js/douban.js"></script>
+    <link href="http://s.doubanio.com/f/shire/0871af7d2592184d4baf45938ff09da21aa53ccd/css/douban.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+
+
+
+
+
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="http://s.doubanio.com/f/shire/ae32cb8310a09ba836b958b79d2cd1e706db2fed/css/ui/dialog.css" />
+    <script type="text/javascript" src="http://s.doubanio.com/f/shire/4b3bad5e25de78678d700dd5353570dce3e6bbcc/js/ui/dialog.js"></script>
+    <style type="text/css">
+        .dui-dialog .bd {
+            padding: 40px;
+            font-size: 10pt;
+        }
+
+        .dui-dialog .ft {
+            background: #e4e4e4;
+            height: 40px;
+        }
+
+            .dui-dialog .ft div {
+                padding-top: 15px;
+            }
+
+        .dui-dialog .dui-dialog-prompt {
+            float: left;
+        }
+
+        .dui-dialog .bn-flat {
+            color: #ffffff;
+            float: right;
+            width: 50px;
+            cursor: pointer;
+        }
+
+        .dui-dialog .btn-ok {
+            background: #6fb45d;
+        }
+
+        .dui-dialog .btn-cancel {
+            background: #999999;
+        }
+
+        .aside .mod {
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="http://s.doubanio.com/misc/mixed_static/379944798fd36969.css">
+    <script></script>
+
+
+    <link rel="shortcut icon" href="http://img3.douban.com/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+
+    <script type="text/javascript">var _body_start = new Date();</script>
+
+
+
+
+
+
+
+
+
+    <div id="db-global-nav" class="global-nav">
+        <div class="bd">
+
+
+
+
+
+
+
+            <div class="top-nav-info">
+
+                <a href="http://www.douban.com/accounts/login?source=group" class="nav-login" rel="nofollow">登录</a>
+                <a href="http://www.douban.com/accounts/register?source=group" class="nav-register" rel="nofollow">注册</a>
+            </div>
+
+
+
+            <div class="top-nav-doubanapp">
+
+                <a href="http://www.douban.com/doubanapp/app?channel=top-nav" class="lnk-doubanapp">下载豆瓣客户端</a>
+                <div id="top-nav-appintro" class="more-items">
+                    <p class="slogan">汇集一亿人的生活趣味</p>
+                    <p class="qrcode">
+                        扫码直接下载
+                    </p>
+                    <div class="download">
+                        <a href="http://www.douban.com/doubanapp/redirect?channel=top-nav&amp;direct_dl=1&amp;download=iOS">Download on the App Store</a>
+                        <a href="http://www.douban.com/doubanapp/redirect?channel=top-nav&amp;direct_dl=1&amp;download=Android" class="download-android">Download Android</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="global-nav-items">
+                <ul>
+
+
+                    <li>
+                        <a href="http://www.douban.com/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-main&#34;,&#34;uid&#34;:&#34;0&#34;}">豆瓣</a>
+                    </li>
+
+
+                    <li>
+                        <a href="http://book.douban.com/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-book&#34;,&#34;uid&#34;:&#34;0&#34;}">读书</a>
+                    </li>
+
+
+                    <li>
+                        <a href="http://movie.douban.com/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-movie&#34;,&#34;uid&#34;:&#34;0&#34;}">电影</a>
+                    </li>
+
+
+                    <li>
+                        <a href="http://music.douban.com/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-music&#34;,&#34;uid&#34;:&#34;0&#34;}">音乐</a>
+                    </li>
+
+
+                    <li>
+                        <a href="http://www.douban.com/location/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-location&#34;,&#34;uid&#34;:&#34;0&#34;}">同城</a>
+                    </li>
+
+
+                    <li class="on">
+                        <a href="http://www.douban.com/group/" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-group&#34;,&#34;uid&#34;:&#34;0&#34;}">小组</a>
+                    </li>
+
+
+                    <li>
+                        <a href="http://read.douban.com/?dcs=top-nav&amp;dcm=douban" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-read&#34;,&#34;uid&#34;:&#34;0&#34;}">阅读</a>
+                    </li>
+
+
+                    <li>
+                        <a href="http://douban.fm/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-fm&#34;,&#34;uid&#34;:&#34;0&#34;}">豆瓣FM</a>
+                    </li>
+
+
+                    <li>
+                        <a href="http://dongxi.douban.com/?dcs=top-nav&amp;dcm=douban" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-commodity&#34;,&#34;uid&#34;:&#34;0&#34;}">东西</a>
+                    </li>
+
+                    <li>
+                        <a href="#more" class="bn-more"><span>更多</span></a>
+                        <div class="more-items">
+                            <table cellpadding="0" cellspacing="0">
+
+                                <tr><td><a href="http://9.douban.com" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-9&#34;,&#34;uid&#34;:&#34;0&#34;}">九点</a></td></tr>
+
+                                <tr><td><a href="http://alphatown.com" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-town&#34;,&#34;uid&#34;:&#34;0&#34;}">阿尔法城</a></td></tr>
+
+                                <tr><td><a href="http://www.douban.com/mobile/" target="_blank" data-moreurl-dict="{&#34;from&#34;:&#34;top-nav-click-mobile&#34;,&#34;uid&#34;:&#34;0&#34;}">移动应用</a></td></tr>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="db-nav-group" class="nav">
+        <div class="nav-wrap">
+            <div class="nav-primary clearfix">
+                <div class="nav-logo">
+                    <a href="http://www.douban.com/group/">豆瓣小组</a>
+                </div>
+
+                <div class="nav-items">
+                    <ul>
+                        <li><a href="http://www.douban.com/group/explore">精选</a></li>
+                        <li><a href="http://www.douban.com/group/explore/culture">文化</a></li>
+                        <li><a href="http://www.douban.com/group/explore/travel">行摄</a></li>
+                        <li><a href="http://www.douban.com/group/explore/ent">娱乐</a></li>
+                        <li><a href="http://www.douban.com/group/explore/fashion">时尚</a></li>
+                        <li><a href="http://www.douban.com/group/explore/life">生活</a></li>
+                        <li><a href="http://www.douban.com/group/explore/tech">科技</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-search">
+                    <form id='form' action="http://www.douban.com/group/search" method="get">
+                        <fieldset>
+                            <legend>搜索：</legend>
+
+                            <input type="hidden" name="cat" value="1019" />
+                            <label for="inp-query">小组、话题</label>
+                            <div class="inp"><input id="inp-query" name="q" size="22" maxlength="60" value=""></div>
+                            <div class="inp-btn"><input type="submit" value="搜索"></div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        Do(function () {
+            var nav = $('#db-nav-group');
+            var inp = $("#inp-query"), label = inp.closest(".nav-search").find("label"); if ("placeholder" in inp[0]) { label.hide(); inp.attr("placeholder", label.text()) } else { if (inp.val() !== "") { label.hide() } inp.parent().click(function () { inp.focus(); label.hide() }).end().focusin(function () { label.hide() }).focusout(function () { if ($.trim(this.value) === "") { label.show() } else { label.hide() } }).keydown(function () { label.hide() }) } inp.parents("form").submit(function () { if (!$.trim(inp.val()).length) { return false } }); nav.find(".lnk-more, .lnk-account").click(function (b) { b.preventDefault(); var d, a = $(this), c = a.hasClass("lnk-more") ? $("#db-productions") : $("#db-usr-setting"); if (!c.data("init")) { d = a.offset(); c.css({ "margin-left": (d.left - $(window).width() / 2 - c.width() + a.width() + parseInt(a.css("padding-right"), 10)) + "px", left: "50%", top: d.top + a.height() + "px" }); c.data("init", 1); c.hide(); $("body").click(function (g) { var f = $(g.target); if (f.hasClass("lnk-more") || f.hasClass("lnk-account") || f.closest("#db-usr-setting").length || f.closest("#db-productions").length) { return } c.hide() }) } if (c.css("display") === "none") { $(".dropdown").hide(); c.show() } else { $(".dropdown").hide() } });
+        });
+    </script>
+
+
+
+
+    <div id="wrapper">
+
+
+
+        <div id="content">
+
+            <h1>
+                怎么修改Git remote add时使用的远程仓库？
+            </h1>
+
+            <div class="grid-16-8 clearfix">
+
+
+                <div class="article">
+
+
+                    <input type="hidden" id="start" value="0" />
+                    <div class="topic-content clearfix">
+                        <div class="user-face">
+                            <a href="http://www.douban.com/group/people/53265493/"><img class="pil" src="http://img3.douban.com/icon/u53265493-32.jpg" alt="233-Liutos" /></a>
+                        </div>
+                        <div class="topic-doc">
+                            <h3>
+                                <span class="from">来自: <a href="http://www.douban.com/group/people/53265493/">233-Liutos</a>(LING Is Not a Girl)</span>
+                                <span class="color-green">2012-10-21 16:00:32</span>
+                            </h3>
+
+
+                            <div id="link-report" class="">
+
+                                <div class="topic-content">
+
+                                    <p>例如我之前弄了个git remote add git@github.com:Liutos/blabla.git，现在想改成在foobar仓库下，应该怎么弄呢？就是说，我希望一开始就是写git remote add git@github.com:Liutos/foobar.git这样子的。</p>
+                                </div>
+
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="sns-bar" id="sep">
+                            <div class="sns-bar-rec">
+                            </div>
+                            <div class="sns-bar-fav">
+
+
+
+
+
+
+
+                                <span class="fav-num" data-tid="33666661" data-tkind="1013">
+                                    <a href="http://www.douban.com/group/topic/33666661/?type=like#sep">1人</a>
+                                    喜欢
+                                </span>
+
+                                <a class="fav-add btn-fav j a_show_login" title="标为喜欢？" href="http://www.douban.com/accounts/register?reason=like" data-tid="33666661" data-tkind="1013">喜欢</a>
+
+
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div class="tabs" id='reviews'>
+                        <a href="http://www.douban.com/group/topic/33666661/#sep" class=on>回应</a>
+                        <a href="http://www.douban.com/group/topic/33666661/?type=rec#sep">推荐</a>
+                        <a href="http://www.douban.com/group/topic/33666661/?type=like#sep">喜欢</a>
+
+                        <span style="float:right">
+                            <a href="http://www.douban.com/group/topic/33666661/?author=1#sep">只看楼主</a>
+                        </span>
+                    </div>
+
+
+
+                    <h3 class="popular-hd">最赞回应</h3>
+                    <ul class="topic-reply popular-bd">
+
+
+                        <li class="clearfix comment-item" id="522557610" data-cid="522557610">
+                            <div class="user-face">
+                                <a href="http://www.douban.com/group/people/3577490/"><img class="pil" src="http://img3.douban.com/icon/u3577490-1.jpg" alt="洞感超人" /></a>
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/3577490/" class="">洞感超人</a> (有钱了不起啊长得帅能当饭吃吗！)
+                                        <span class="pubtime">2013-08-15 15:42:22</span>
+                                    </h4>
+                                </div>
+                                <p class="">
+                                    上面全错，动手才是真理
+                                    <br />
+                                    <br />git remote set-url origin URL
+                                    <br />
+                                    <br />git remote set-branches [--add] &lt;name&gt; &lt;branch&gt;...
+                                    <br />git remote set-url [--push] &lt;name&gt; &lt;newurl&gt; [&lt;oldurl&gt;]
+                                    <br />git remote set-url --add &lt;name&gt; &lt;newurl&gt;
+                                    <br />git remote set-url --delete &lt;name&gt; &lt;url&gt;
+                                </p>
+
+                                <div class="operation_div" id="3577490">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="522557610" class="lnk-delete-comment" title="真的要删除洞感超人的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=522557610#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+
+
+                    <ul class="topic-reply" id="comments">
+
+
+                        <li class="clearfix comment-item" id="392777514" data-cid="392777514">
+                            <div class="user-face">
+                                <a href="http://www.douban.com/group/people/wyt/"><img class="pil" src="http://img3.douban.com/icon/u1139389-37.jpg" alt="wu yuntao" /></a>
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/wyt/" class="">wu yuntao</a>
+                                        <span class="pubtime">2012-10-21 16:36:55</span>
+                                    </h4>
+                                </div>
+                                <p class="">
+                                    git remote rm origin
+                                    <br />git remote add origin git@github.com:Liutos/foobar.git
+                                </p>
+
+                                <div class="operation_div" id="1139389">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="392777514" class="lnk-delete-comment" title="真的要删除wu yuntao的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=392777514#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="clearfix comment-item" id="392778527" data-cid="392778527">
+                            <div class="user-face">
+                                <a href="http://www.douban.com/group/people/53265493/"><img class="pil" src="http://img3.douban.com/icon/u53265493-32.jpg" alt="233-Liutos" /></a>
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/53265493/" class="">233-Liutos</a> (LING Is Not a Girl)
+                                        <span class="pubtime">2012-10-21 16:41:33</span>
+                                    </h4>
+                                </div>
+
+                                <div class="reply-quote">
+                                    <span class="short">
+                                        git remote rm origin
+                                        git remote add origin git@github.com:Liutos/foobar.git
+                                    </span>
+                                    <span class="all">
+                                        git remote rm origin
+                                        git remote add origin git@github.com:Liutos/foobar.git
+                                    </span>
+                                    <a href="#" class="toggle-reply">
+                                    </a><span class="pubdate"><a href="http://www.douban.com/group/people/wyt/">wu yuntao</a></span>
+                                </div>
+                                <p class="">我刚刚找到了办法，就是直接修改.git/config文件了，居然成功了，不过还是谢谢你的建议，之前一直失败，原来是git remote rm的参数写错了～</p>
+
+                                <div class="operation_div" id="53265493">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="392778527" class="lnk-delete-comment" title="真的要删除233-Liutos的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=392778527#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="clearfix comment-item" id="408204618" data-cid="408204618">
+                            <div class="user-face">
+                                <a href="http://www.douban.com/group/people/60131752/"><img class="pil" src="http://img3.douban.com/icon/u60131752-2.jpg" alt="crazygit" /></a>
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/60131752/" class="">crazygit</a>
+                                        <span class="pubtime">2012-12-06 20:41:15</span>
+                                    </h4>
+                                </div>
+                                <p class="">git remte origin set-url URL</p>
+
+                                <div class="operation_div" id="60131752">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="408204618" class="lnk-delete-comment" title="真的要删除crazygit的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=408204618#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="clearfix comment-item" id="409314626" data-cid="409314626">
+                            <div class="user-face">
+                                <a href="http://www.douban.com/group/people/54941496/"><img class="pil" src="http://img3.douban.com/icon/u54941496-2.jpg" alt="刘项.linux.cpp" /></a>
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/54941496/" class="">刘项.linux.cpp</a> (签名档有啥用？)
+                                        <span class="pubtime">2012-12-10 10:18:33</span>
+                                    </h4>
+                                </div>
+
+                                <div class="reply-quote">
+                                    <span class="short">git remte origin set-url URL</span>
+                                    <span class="all">git remte origin set-url URL</span>
+                                    <a href="#" class="toggle-reply">
+                                    </a><span class="pubdate"><a href="http://www.douban.com/group/people/60131752/">crazygit</a></span>
+                                </div>
+                                <p class="">我觉得这个是正解。</p>
+
+                                <div class="operation_div" id="54941496">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="409314626" class="lnk-delete-comment" title="真的要删除刘项.linux.cpp的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=409314626#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="clearfix comment-item" id="409315835" data-cid="409315835">
+                            <div class="user-face">
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/66978884/" class="">noah</a>
+                                        <span class="pubtime">2012-12-10 10:22:28</span>
+                                    </h4>
+                                </div>
+                                <p class="">我昨天刚碰到这个问题。<br />有两种办法。<br />一种是手动到.git/config里面去改。<br />另一种是删除当前的remote: $ git rm remote xxx 再重新add</p>
+
+                                <div class="operation_div" id="66978884">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="409315835" class="lnk-delete-comment" title="真的要删除noah的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=409315835#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="clearfix comment-item" id="409726966" data-cid="409726966">
+                            <div class="user-face">
+                                <a href="http://www.douban.com/group/people/54941496/"><img class="pil" src="http://img3.douban.com/icon/u54941496-2.jpg" alt="刘项.linux.cpp" /></a>
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/54941496/" class="">刘项.linux.cpp</a> (签名档有啥用？)
+                                        <span class="pubtime">2012-12-11 13:13:16</span>
+                                    </h4>
+                                </div>
+                                <p class="">
+                                    git remote origin set-url &lt;URL&gt;
+                                    <br />把&lt;URL&gt;替换成新的url地址。
+                                </p>
+
+                                <div class="operation_div" id="54941496">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="409726966" class="lnk-delete-comment" title="真的要删除刘项.linux.cpp的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=409726966#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="clearfix comment-item" id="506769481" data-cid="506769481">
+                            <div class="user-face">
+                                <a href="http://www.douban.com/group/people/webpy/"><img class="pil" src="http://img3.douban.com/icon/u58372048-2.jpg" alt="Robot" /></a>
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/webpy/" class="">Robot</a>
+                                        <span class="pubtime">2013-07-16 16:56:51</span>
+                                    </h4>
+                                </div>
+
+                                <div class="reply-quote">
+                                    <span class="short">
+                                        git remote rm origin
+                                        git remote add origin git@github.com:Liutos/foobar.git
+                                    </span>
+                                    <span class="all">
+                                        git remote rm origin
+                                        git remote add origin git@github.com:Liutos/foobar.git
+                                    </span>
+                                    <a href="#" class="toggle-reply">
+                                    </a><span class="pubdate"><a href="http://www.douban.com/group/people/wyt/">wu yuntao</a></span>
+                                </div>
+                                <p class="">一楼正解</p>
+
+                                <div class="operation_div" id="58372048">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="506769481" class="lnk-delete-comment" title="真的要删除Robot的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=506769481#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="clearfix comment-item" id="511772520" data-cid="511772520">
+                            <div class="user-face">
+                                <a href="http://www.douban.com/group/people/webpy/"><img class="pil" src="http://img3.douban.com/icon/u58372048-2.jpg" alt="Robot" /></a>
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/webpy/" class="">Robot</a>
+                                        <span class="pubtime">2013-07-25 20:46:27</span>
+                                    </h4>
+                                </div>
+
+                                <div class="reply-quote">
+                                    <span class="short">git remte origin set-url URL</span>
+                                    <span class="all">git remte origin set-url URL</span>
+                                    <a href="#" class="toggle-reply">
+                                    </a><span class="pubdate"><a href="http://www.douban.com/group/people/60131752/">crazygit</a></span>
+                                </div>
+                                <p class="">
+                                    三种方式都可以。
+                                    <br />1. 修改命令
+                                    <br />git remte origin set-url URL
+                                    <br />
+                                    <br />2.先删后加
+                                    <br />git remote rm origin
+                                    <br />git remote add origin git@github.com:Liutos/foobar.git
+                                    <br />
+                                    <br />3. 直接修改config文件
+                                </p>
+
+                                <div class="operation_div" id="58372048">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="511772520" class="lnk-delete-comment" title="真的要删除Robot的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=511772520#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="clearfix comment-item" id="522557610" data-cid="522557610">
+                            <div class="user-face">
+                                <a href="http://www.douban.com/group/people/3577490/"><img class="pil" src="http://img3.douban.com/icon/u3577490-1.jpg" alt="洞感超人" /></a>
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/3577490/" class="">洞感超人</a> (有钱了不起啊长得帅能当饭吃吗！)
+                                        <span class="pubtime">2013-08-15 15:42:22</span>
+                                    </h4>
+                                </div>
+                                <p class="">
+                                    上面全错，动手才是真理
+                                    <br />
+                                    <br />git remote set-url origin URL
+                                    <br />
+                                    <br />git remote set-branches [--add] &lt;name&gt; &lt;branch&gt;...
+                                    <br />git remote set-url [--push] &lt;name&gt; &lt;newurl&gt; [&lt;oldurl&gt;]
+                                    <br />git remote set-url --add &lt;name&gt; &lt;newurl&gt;
+                                    <br />git remote set-url --delete &lt;name&gt; &lt;url&gt;
+                                </p>
+
+                                <div class="operation_div" id="3577490">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="522557610" class="lnk-delete-comment" title="真的要删除洞感超人的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=522557610#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="clearfix comment-item" id="555292589" data-cid="555292589">
+                            <div class="user-face">
+                                <a href="http://www.douban.com/group/people/79238346/"><img class="pil" src="http://img3.douban.com/icon/u79238346-1.jpg" alt="左岸" /></a>
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/79238346/" class="">左岸</a>
+                                        <span class="pubtime">2013-10-21 23:20:44</span>
+                                    </h4>
+                                </div>
+
+                                <div class="reply-quote">
+                                    <span class="short">
+                                        上面全错，动手才是真理
+
+                                        git remote set-url origin URL
+
+                                        git remote set-branches [--add]
+                                    </span>
+                                    <span class="all">
+                                        上面全错，动手才是真理
+
+                                        git remote set-url origin URL
+
+                                        git remote set-branches [--add] &lt;name&gt; &lt;branch&gt;...
+                                        git remote set-url [--push] &lt;name&gt; &lt;newurl&gt; [&lt;oldurl&gt;]
+                                        git remote set-url --add &lt;name&gt; &lt;newurl&gt;
+                                        git remote set-url --delete &lt;name&gt; &lt;url&gt;
+                                    </span>
+                                    <a href="#" class="toggle-reply">
+                                        <span class="expaned">...</span>
+                                    </a><span class="pubdate"><a href="http://www.douban.com/group/people/3577490/">洞感超人</a></span>
+                                </div>
+                                <p class="">
+                                    楼上 git remote set-url origin URL git remote
+                                    <br />正确
+                                </p>
+
+                                <div class="operation_div" id="79238346">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="555292589" class="lnk-delete-comment" title="真的要删除左岸的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=555292589#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="clearfix comment-item" id="569956953" data-cid="569956953">
+                            <div class="user-face">
+                                <a href="http://www.douban.com/group/people/codepiano/"><img class="pil" src="http://img3.douban.com/icon/u2560922-2.jpg" alt="codepiano" /></a>
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/codepiano/" class="">codepiano</a>
+                                        <span class="pubtime">2013-11-22 11:13:54</span>
+                                    </h4>
+                                </div>
+
+                                <div class="reply-quote">
+                                    <span class="short">我刚刚找到了办法，就是直接修改.git/config文件了，居然成功了，不过还是谢谢你的建议，之前一</span>
+                                    <span class="all">我刚刚找到了办法，就是直接修改.git/config文件了，居然成功了，不过还是谢谢你的建议，之前一直失败，原来是git remote rm的参数写错了～</span>
+                                    <a href="#" class="toggle-reply">
+                                        <span class="expaned">...</span>
+                                    </a><span class="pubdate"><a href="http://www.douban.com/group/people/53265493/">233-Liutos</a></span>
+                                </div>
+                                <p class="">捕获野生liutos</p>
+
+                                <div class="operation_div" id="2560922">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="569956953" class="lnk-delete-comment" title="真的要删除codepiano的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=569956953#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="clearfix comment-item" id="570002413" data-cid="570002413">
+                            <div class="user-face">
+                                <a href="http://www.douban.com/group/people/53265493/"><img class="pil" src="http://img3.douban.com/icon/u53265493-32.jpg" alt="233-Liutos" /></a>
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/53265493/" class="">233-Liutos</a> (LING Is Not a Girl)
+                                        <span class="pubtime">2013-11-22 12:56:35</span>
+                                    </h4>
+                                </div>
+
+                                <div class="reply-quote">
+                                    <span class="short">捕获野生liutos</span>
+                                    <span class="all">捕获野生liutos</span>
+                                    <a href="#" class="toggle-reply">
+                                    </a><span class="pubdate"><a href="http://www.douban.com/group/people/codepiano/">codepiano</a></span>
+                                </div>
+                                <p class="">野生的Liutos跳出来了</p>
+
+                                <div class="operation_div" id="53265493">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="570002413" class="lnk-delete-comment" title="真的要删除233-Liutos的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=570002413#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="clearfix comment-item" id="579615707" data-cid="579615707">
+                            <div class="user-face">
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/56557371/" class="">Try</a>
+                                        <span class="pubtime">2013-12-11 23:45:02</span>
+                                    </h4>
+                                </div>
+                                <p class="">git remote set-url origin url 是对的,上面的拼写都错了</p>
+
+                                <div class="operation_div" id="56557371">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="579615707" class="lnk-delete-comment" title="真的要删除Try的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=579615707#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+
+
+                        <li class="clearfix comment-item" id="659360904" data-cid="659360904">
+                            <div class="user-face">
+                            </div>
+                            <div class="reply-doc content" style="padding-left:0px;">
+                                <div class="bg-img-green">
+                                    <h4>
+                                        <a href="http://www.douban.com/group/people/55471369/" class="">Zjmainstay</a>
+                                        <span class="pubtime">2014-05-04 00:27:18</span>
+                                    </h4>
+                                </div>
+                                <p class="">git remote --help 可以看到所有用法。</p>
+
+                                <div class="operation_div" id="55471369">
+                                    <div class="operation-more">
+                                        <a rel="nofollow" href="javascript:void(0);" data-cid="659360904" class="lnk-delete-comment" title="真的要删除Zjmainstay的发言?">删除</a>
+                                    </div>
+                                    <a rel="nofollow" href="javascript:void(0);" class="comment-vote lnk-fav">赞</a>
+                                    <a href="http://www.douban.com/group/topic/33666661/?cid=659360904#last" class="lnk-reply">回应</a>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+
+
+
+
+
+
+                    <h2>
+                        你的回应
+
+                    </h2>
+
+                    <span class="pl3" align="right">
+                        回应请先
+                        <a class="j a_show_login" href="/accounts/register?reason=discuss">登录</a>
+                        , 或
+                        <a class="j a_show_register" href="/accounts/register?reason=discuss">注册</a>
+                    </span>
+                    <div class="txd">
+                        <form action="no_where_to_go">
+                            <textarea readonly id="last" class="j a_show_login" name="rv_comment" rows="8" cols="54"></textarea><br />
+                            <span class="bn-flat-hot rr">
+                                <input name="submit_btn" type="submit" class="j a_show_login" value="加上去" />
+                            </span>
+
+                            <span>
+                                <label class="pl share-label share-shuo">
+                                    <input type="checkbox" name="sync_to_mb" />推荐到广播
+                                </label>
+                            </span>
+
+                        </form>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <script>var POPUP_REG = true;</script>
+
+                    <script>
+                        Do(function () {
+                            if (get_cookie('ck')) {
+                                $.each($(".popular-bd .operation-more"), function (i, el) {
+                                    if ($(el).find(".comment-report").length == 0) {
+                                        $(el).append('<div class="comment-report"><a rel="nofollow" href="javascript:void(0)">举报</a></div>');
+                                    }
+                                });
+                                $(".popular-bd").delegate(".comment-item", 'hover',
+                                    function () {
+                                        $(this).find(".comment-report").css('visibility', 'visible');
+                                    },
+                                    function () {
+                                        $(this).find(".comment-report").css('visibility', 'hidden');
+                                    }
+                                ).delegate(".comment-report a", 'click', function (e) {
+                                    e.preventDefault();
+                                    var auditUrl = "http://www.douban.com/misc/audit_report?url=",
+                                        opt = "comment_id";
+                                    var obj = $(e.target).closest('.comment-item');
+                                    var cid = obj.data("cid");
+                                    var url = "http://www.douban.com/group/topic/33666661/?".concat(opt, '=', cid);
+                                    generate_report_dialog({ report_url: url });
+                                });
+                            }
+                        });
+                    </script>
+
+                </div>
+                <div class="aside">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div id="g-side-info" class="side-reg">
+                        <div class="bd">
+                            <div class="group-item">
+                                <div class="pic">
+                                    <a href="http://www.douban.com/group/git/?ref=sidebar"><img src="http://img3.douban.com/icon/g88491-1.jpg"></a>
+                                </div>
+                                <div class="info">
+                                    <div class="title">
+                                        <a href="http://www.douban.com/group/git/?ref=sidebar">git</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ft">
+                            <div class="member-status">
+                                <div class="ft-members">
+                                    <i>2429</i> 人聚集在这个小组<br>
+                                </div>
+                                <a href="#" class="j a_show_login lnk-selection">加入小组</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="mod">
+
+                        <h2>
+                            最新话题
+
+                            <span class="pl">
+                                &nbsp;(
+
+                                <a href="http://www.douban.com/group/git/#topics" target="_self">更多</a>
+                                )
+                            </span>
+                        </h2>
+
+                        <div class="topic-list">
+                            <ul>
+                                <li>
+                                    <a href="http://www.douban.com/group/topic/64756973/" title="git gpg key">git gpg key</a> &nbsp;
+                                    <span class="pl">(拈花一笑) </span>
+                                </li>
+                                <li>
+                                    <a href="http://www.douban.com/group/topic/65590205/" title="求助：如何用git管理测试文件？">求助：如何用git管理测试文件？</a> &nbsp;
+                                    <span class="pl">(Li_Taozi) </span>
+                                </li>
+                                <li>
+                                    <a href="http://www.douban.com/group/topic/35757419/" title="mirror的git仓库怎么合并远程更新与本地提交？">mirror的git仓库怎么合并远程更新与本地提交？</a> &nbsp;
+                                    <span class="pl">(younghawk) </span>
+                                </li>
+                                <li>
+                                    <a href="http://www.douban.com/group/topic/46797173/" title="Git管理多个远程仓库">Git管理多个远程仓库</a> &nbsp;
+                                    <span class="pl">(watson) </span>
+                                </li>
+                                <li>
+                                    <a href="http://www.douban.com/group/topic/59873278/" title="北京英国家教老师Jonny,现就读于北京大学。">北京英国家教老师Jonny,现就读于北京大学。</a> &nbsp;
+                                    <span class="pl">(Z) </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <!-- douban ad begin -->
+                    <div id="dale_group_topic_new_top_right"></div>
+                    <div id="dale_group_topic_new_top_right_large"></div>
+                    <div id="dale_group_topic_new_top_right2"></div>
+                    <!-- douban ad end -->
+                    <!-- douban app begin -->
+
+
+                    <div class="mod mod-app-entrance">
+                        <h3>手机扫描二维码，把小组装进口袋</h3>
+                        <div class="bd">
+                            <div class="pic">
+                                <img src="http://img3.douban.com/pics/group/app_qr1.png" width="80" height="80">
+                            </div>
+                            <div class="content">
+                                <a href="http://www.douban.com/mobile/ipa?app_name=group" target="_blank" class="lnk-app-download lnk-app-iphone">iPhone</a>
+                                <a href="http://www.douban.com/mobile/ipa?app_name=group-ipad" target="_blank" class="lnk-app-download lnk-app-ipad">iPad</a>
+                                <a href="http://andariel.douban.com/d/com.douban.group" target="_blank" class="lnk-app-download lnk-app-android">Android</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- douban app end -->
+                    <!-- douban ad begin -->
+                    <div id="dale_group_topic_doublemint"></div>
+
+                    <!-- douban ad begin -->
+                    <div id="dale_group_topic_new_bottom_right"></div>
+                    <script type="text/javascript">
+                        (function (global) {
+                            if (!document.getElementsByClassName) {
+                                document.getElementsByClassName = function (className) {
+                                    return this.querySelectorAll("." + className);
+                                };
+                                Element.prototype.getElementsByClassName = document.getElementsByClassName;
+
+                            }
+                            var articles = global.document.getElementsByClassName('article'),
+                                asides = global.document.getElementsByClassName('aside');
+
+                            if (articles.length > 0 && asides.length > 0 && articles[0].offsetHeight >= asides[0].offsetHeight) {
+                                (global.DoubanAdSlots = global.DoubanAdSlots || []).push('dale_group_topic_new_bottom_right');
+                            }
+                        })(this);
+                    </script>
+                    <!-- douban ad end -->
+                    <!-- douban ad end -->
+
+                </div>
+                <div class="extra">
+
+
+                    <!-- douban ad begin -->
+                    <div id="dale_group_topic_bottom_super_banner"></div>
+                    <script type="text/javascript">
+                        (function (global) {
+                            var body = global.document.body,
+                                html = global.document.documentElement;
+
+                            var height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+                            if (height >= 2000) {
+                                (global.DoubanAdSlots = global.DoubanAdSlots || []).push('dale_group_topic_bottom_super_banner');
+                            }
+                        })(this);
+                    </script>
+                    <!-- douban ad end -->
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div id="footer">
+
+
+            <span id="icp" class="fleft gray-link">
+                &copy; 2005－2015 douban.com, all rights reserved
+            </span>
+
+            <a href="http://www.douban.com/hnypt/variformcyst.py" style="display: none;"></a>
+
+            <span class="fright">
+                <a href="http://www.douban.com/about">关于豆瓣</a>
+                · <a href="http://www.douban.com/jobs">在豆瓣工作</a>
+                · <a href="http://www.douban.com/about?topic=contactus">联系我们</a>
+                · <a href="http://www.douban.com/about?policy=disclaimer">免责声明</a>
+
+                · <a href="http://www.douban.com/help/group">帮助中心</a>
+                · <a href="http://developers.douban.com/" target="_blank">开发者</a>
+                · <a href="http://www.douban.com/mobile/group">手机小组</a>
+                · <a href="http://www.douban.com/partner/">豆瓣广告</a>
+            </span>
+
+
+        </div>
+
+    </div>
+    <script type="text/javascript" src="http://s.doubanio.com/misc/mixed_static/455b92504229c6a0.js"></script>
+    <script type="text/javascript">
+        var login_url = 'http://www.douban.com/accounts/popup/group_login?group_id=88491';
+        var reg_url = 'http://www.douban.com/accounts/popup/group_register?group_id=88491';
+        ; (function () {
+            var mask;
+            var popup;
+            var current = '';
+
+
+            var init_popup = function () {
+                mask = $('<div class="popup-reg-mask"></div>').appendTo('body');
+                mask.css('height', $(document).height());
+                popup = $('#g-popup-reg');
+                popup.find('.lnk-close').click(function (e) {
+                    e.preventDefault();
+                    popup.hide();
+                    mask.hide();
+                });
+
+                if ($.browser.msie && ($.browser.version | 0) === 6) {
+                    var win = $(window).scroll((function () {
+                        var timer;
+                        var doc = document.body;
+                        return function () {
+                            if (timer) {
+                                window.clearTimeout(timer);
+                            }
+                            timer = window.setTimeout(function () {
+                                popup.css({
+                                    top: (doc.scrollTop + win.height() / 2 - popup.height() / 2) + 'px'
+                                });
+                            }, 20);
+                        };
+                    })()).trigger('scroll');
+                }
+            };
+
+            var show_popup = function () {
+                if (popup) {
+                    popup.show();
+                    mask.show();
+                } else {
+                    $('#g-popup-reg').show();
+                    init_popup();
+                }
+            };
+
+            Douban.init_show_register = function (e) {
+                var node = $(e);
+                node.click(function (e) {
+                    e.preventDefault();
+                    show_popup();
+                    if (current !== 'register') {
+                        popup.find('iframe').attr('src', reg_url);
+                    }
+                    current = 'register';
+                });
+            };
+
+            Douban.init_show_login = function (e) {
+                var node = $(e);
+                node.click(function (e) {
+                    e.preventDefault();
+                    show_popup();
+                    if (current !== 'login') {
+                        popup.find('iframe').attr('src', login_url);
+                    }
+                    current = 'login';
+                });
+            };
+        })();
+
+
+        $(function () {
+            var $landingBar = $('#landing-bar');
+            var popup_mark = 'g_reg';
+            // 有些页面会自动弹注册框
+            if (
+            'selenium_main_app_window' === window.name ||
+            window.POPUP_REG && !window.name) {
+                $('#landing-bar').show();
+                $('#wrapper').addClass('landing');
+            }
+
+            $landingBar.delegate('a', 'click', function (e) {
+                // 第三方登录不处理，其他隐藏landing bar
+                if ($(this).parent().is('.item')) {
+                    return;
+                }
+
+                e.preventDefault();
+                $landingBar.hide();
+                if (window.POPUP_REG) {
+                    window.name = window.name || popup_mark;
+                }
+            });
+        });
+    </script>
+
+
+
+    <div class="back-to-top">
+        <a href="#">&#8593;回顶部</a>
+    </div>
+    <script>
+        Do(function () { var h = $(window); var k = $(document); var l; var a = $(".back-to-top"); var b = $(".aside"); var g; var i = $("#content"); var d = $.browser.msie && ($.browser.version | 0) < 7; var f = function (n) { if (!f.cache) { f.cache = [] } if (f.cache[n]) { return } var m = new Date; (new Image()).src = "/stat.html?source=group&action=back_top&iden=" + n + "&month=" + (m.getMonth() + 1) + "&day=" + m.getDate() + "&timestamp=" + (+new Date); f.cache[n] = 1 }; var e = function () { if (e.value) { return e.value } return i.offset().top + i.find(".article").outerHeight() + 30 }; h.load(function () { e.value = e() }); var c = function (m) { if (m + g >= e()) { a.css({ position: "absolute", bottom: "", top: e() - a.outerHeight() + 40 }) } else { if (!d) { a.css({ position: "fixed", top: "", bottom: 0 }) } } a.show().find("a").stop().animate({ top: 0 }); f("show") }; var j = function () { a.hide().find("a").css("top", 40) }; h.resize(function () { g = h.height(); a.css("left", b.offset().left + b.width() + 20); l = k.height() / g > 3 ? Math.max(2 * g, $(".aside").height()) : 0 }).trigger("resize"); h.scroll((function () { var m; return function () { if (m) { clearTimeout(m) } setTimeout(function () { if (l === 0) { return } var n = k.scrollTop(); if (n > l) { c(n) } else { j() } }, 100) } })()); a.find("a").click(function (m) { m.preventDefault(); k.scrollTop(0); f("use") }); if (d) { h.scroll(function () { if (k.scrollTop() + g >= e()) { return } a.css("top", k.scrollTop() + g - a.height() + 40) }) } });
+        Do(function () {
+            // comment fav num
+            var commentsVotes = '{"c522557610":2,"c555292589":1}',
+                votes = $.parseJSON(commentsVotes),
+                voteId;
+            for (vote in votes) {
+                voteId = vote.slice(1);
+                $('li[data-cid="' + voteId + '"]').find('.comment-vote').append(' (' + votes[vote] + ')');
+            }
+
+            function removeComment(obj, cid) {
+                $.post_withck("/j/group/topic/33666661/remove_comment", { cid: cid }, function (d) {
+                    d = $.parseJSON(d);
+                    if (d.r == 0) {
+                        if (d.manager) {
+                            window.location = d.url;
+                        } else {
+                            location.reload();
+                        }
+                    } else {
+                        alert(d.err_msg);
+                    }
+                });
+            }
+
+            $('.reply-quote .toggle-reply').click(function (e) {
+                e.preventDefault();
+                var el = $(this);
+                el.prevAll('span').toggle();
+                el.find('span').toggle();
+            });
+
+            $('.lnk-delete-comment').click(function () {
+                var o = $(this);
+                var comment = o.closest('.comment-item');
+                var cid = $(this).attr("data-cid");
+                var need_confirm = true;
+
+                if (need_confirm) {
+                    if (confirm($(this).attr('title'))) {
+                        removeComment(comment, cid);
+                    }
+                } else {
+                    removeComment(comment, cid);
+                }
+                return false;
+            });
+
+            $('.topic-reply').delegate('.lnk-fav', 'click', function () {
+                if (!get_cookie('ck')) {
+                    $('.a_show_login').eq(0).trigger('click');
+                    return false;
+                }
+                var o = $(this),
+                    comment = o.closest('.comment-item'),
+                    cid = comment.attr("data-cid"),
+                    loadClass = 'start-processing';
+                if (o.hasClass(loadClass)) {
+                    return;
+                }
+                o.addClass(loadClass);
+                $.post_withck('/j/group/topic/33666661/add_comment_vote', { cid: cid, start: $('#start').val() }, function (d) {
+                    d = $.parseJSON(d);
+                    if (d.r === 0 || d.r === 1) {
+                        var num = o.text().match(/\d+/) || 0;
+                        num = parseInt(num, 10);
+                        if (d.r === 0) {
+                            num++;
+                        }
+                        o.replaceWith(
+                            [
+                                '<span>已赞 (',
+                                    num,
+                                ')</span>'
+                            ].join('')
+                        );
+                    }
+                });
+            });
+
+            /* common dialog generator */
+            function generate_group_prompt_dialog(dui_config) {
+                var prompt_dlg = dui.Dialog({
+                    title: (dui_config.title ? dui_config.title : '操作提示'),
+                    content: (dui_config.content ? dui_config.content : '操作内容'),
+                    width: (dui_config.width ? dui_config.width : 400),
+                    buttons: [
+                        { text: '确定', method: function () { } }
+                    ]
+                });
+                var dui_dialog_ft_html = function (dui_config) {
+                    if (dui_config.callback) {
+                        $('.dui-dialog').delegate('.btn-ok', 'click', function () {
+                            dui_config.callback();
+                        });
+                    }
+                    $('.dui-dialog').delegate('.btn-cancel', 'click', function () {
+                        $(".dui-dialog").hide();
+                    });
+                    return '<div><span class="dui-dialog-prompt"><label><input type="checkbox" ' + (dui_config.checked ? 'checked=checked ' : '') + '/>' + dui_config.prompt + '</label></span><span class="bn-flat btn-cancel">取消</span><span class="bn-flat btn-ok">确定</span></div>';
+                };
+                prompt_dlg.open();
+                prompt_dlg.node.find('.ft').html(dui_dialog_ft_html(dui_config));
+            }
+            /* common over */
+            $('.ban-dialog-confirm').click(function () {
+                var ban_action = function () {
+                    var ban_url = $('.ban-dialog-confirm').attr('href');
+                    var remove_topic_url = $('.remove-dialog-confirm').attr('href');
+                    console.log(ban_url);
+                    $.post(ban_url, { timestamp: (new Date()).getTime() }, function (d) {
+                        $('.ban-dialog-confirm').closest('span').addClass('pl').html('已封禁');
+                        if ($('.dui-dialog-prompt input').attr('checked')) {
+                            window.location = remove_topic_url + "&delete_all=1";
+                        }
+                    });
+                    $('.dui-dialog').hide();
+                };
+                generate_group_prompt_dialog({ content: '真的要把233-Liutos永久封禁？', prompt: '同时删除用户在本小组的所有发言和回应', checked: false, callback: ban_action });
+                return false;
+            });
+            $('.remove-dialog-confirm').click(function () {
+                var remove_action = function () {
+                    var ban_url = $('.ban-dialog-confirm').attr('href');
+                    var remove_topic_url = $('.remove-dialog-confirm').attr('href');
+                    if ($('.dui-dialog-prompt input').attr('checked')) {
+                        $.post(ban_url, { timestamp: (new Date()).getTime() },
+                            function (r) {
+                                window.location = remove_topic_url;
+                            });
+                    } else {
+                        window.location = remove_topic_url;
+                    }
+                };
+                generate_group_prompt_dialog({ content: '真的要删除小组话题 怎么修改Git remote add时使用的远程仓库？？', prompt: '同时封禁该成员', callback: remove_action });
+                return false;
+            });
+        });
+    </script>
+    <!-- douban ad begin -->
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        (function (global) {
+            var newNode = global.document.createElement('script'),
+                existingNode = global.document.getElementsByTagName('script')[0],
+                adSource = 'http://erebor.douban.com/',
+                userId = '',
+                browserId = 'l8cAUbHlGa8',
+                ipAddress = '116.232.58.178',
+                criteria = '1:88491|2:技术|2:版本控制|2:分布式|2:编程|2:互联网|3:/group/topic/33666661/',
+                preview = '',
+                debug = false,
+                adSlots = ['dale_group_special3', 'dale_group_special4', 'dale_group_topic_new_top_right', 'dale_group_topic_new_top_right2', 'dale_group_topic_new_top_right_large', 'dale_group_topic_left_bottom', 'dale_group_topic_doublemint'];
+
+            global.DoubanAdRequest = { src: adSource, uid: userId, bid: browserId, ip: ipAddress, crtr: criteria, prv: preview, debug: debug };
+            global.DoubanAdSlots = (global.DoubanAdSlots || []).concat(adSlots);
+
+            newNode.setAttribute('type', 'text/javascript');
+            newNode.setAttribute('src', 'http://s.doubanio.com/f/shire/9a05c5455e63a8174be4fc85e713885c2a521c2a/js/ad.js');
+            newNode.setAttribute('async', true);
+            existingNode.parentNode.insertBefore(newNode, existingNode);
+        })(this);
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <!-- douban ad end -->
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var p = (('https:' == document.location.protocol) ? 'https' : 'http'), u = p + '://fundin.douban.com/';
+            _paq.push(['setTrackerUrl', u + 'piwik']);
+            _paq.push(['setSiteId', '100001']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.defer = true;
+            g.async = true;
+            g.src = p + '://s.doubanio.com/dae/fundin/piwik.js';
+            s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-7019765-1']);
+        _gaq.push(['_addOrganic', 'baidu', 'word']);
+        _gaq.push(['_addOrganic', 'soso', 'w']);
+        _gaq.push(['_addOrganic', '3721', 'name']);
+        _gaq.push(['_addOrganic', 'youdao', 'q']);
+        _gaq.push(['_addOrganic', 'so.360.cn', 'q']);
+        _gaq.push(['_addOrganic', 'vnet', 'kw']);
+        _gaq.push(['_addOrganic', 'sogou', 'query']);
+        _gaq.push(['_addIgnoredOrganic', '豆瓣']);
+        _gaq.push(['_addIgnoredOrganic', 'douban']);
+        _gaq.push(['_addIgnoredOrganic', '豆瓣网']);
+        _gaq.push(['_addIgnoredOrganic', 'www.douban.com']);
+        _gaq.push(['_setDomainName', '.douban.com']);
+
+
+        _gaq.push(['_setCustomVar', 1, 'responsive_view_mode', 'desktop', 3]);
+
+        _gaq.push(['_trackPageview']);
+        _gaq.push(['_trackPageLoadTime']);
+
+        window._ga_init = function () {
+            var ga = document.createElement('script');
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            ga.setAttribute('async', 'true');
+            document.documentElement.firstChild.appendChild(ga);
+        };
+        if (window.addEventListener) {
+            window.addEventListener('load', _ga_init, false);
+        } else {
+            window.attachEvent('onload', _ga_init);
+        }
+    </script>
+
+
+
+
+
+    <!-- hador9-->
+
+
+
+
+
+
+
+
+
+    <div id="g-popup-reg" class="popup-reg" style="display:none;">
+        <div class="bd">
+
+            <iframe src="about:blank" frameborder="0" scrolling="no"></iframe>
+            <a href="#" class="lnk-close">&times;</a>
+        </div>
+    </div>
+
+    <div id="landing-bar" style="display:none;">
+        <div class="bd">
+            <p>在这里发现跟你一样特别的人，并与之交流...</p>
+            <div class="operation">
+                <a href="" class="j a_show_register">注册</a>
+                <a href="" class="j a_show_login">登录</a>
+            </div>
+
+
+
+            <div class="item item-3rd">
+                <label>
+                    第三方登录：
+                </label>
+                <a target="_top" href="http://www.douban.com/accounts/connect/qq/?from=group&amp;redir=http%3A//www.douban.com/accounts/join_and_redir%3Fgroup_id%3D88491" class="item-qq"><img src="http://img3.douban.com/pics/connect_qq.png" title="QQ"></a>
+                <a target="_top" href="http://www.douban.com/accounts/connect/sina_weibo/?from=group&amp;redir=http%3A//www.douban.com/accounts/join_and_redir%3Fgroup_id%3D88491&amp;fallback=http://www.douban.com/group/git/" class="item-weibo"><img src="http://img3.douban.com/pics/connect_sina_weibo.png" title="新浪微博"></a>
+            </div>
+
+            <a href="#" class="lnk-close">&times;</a>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <script>_SPLITTEST = 'movie.tv-chart-gaia'</script>
+
+    <script>
+var _check_hijack = function () {
+    var _sig = "l8cAUbHl", _login = false, bid = get_cookie('bid');
+    if (location.protocol != "file:" && (
+            typeof (bid) != "string" && _login ||
+            typeof (bid) == "string" && bid.substring(0, 8) != _sig)) {
+        location.href += (/\?/.test(location.href) ? "&" : "?") + (
+                "_r=" + Math.random().toString(16).substring(2));
+    }
+};
+        if (typeof (Do) != 'undefined') Do(_check_hijack);
+        else if (typeof (get_cookie) != 'undefined') _check_hijack();
+    </script>
+</body>
+
+</html>
