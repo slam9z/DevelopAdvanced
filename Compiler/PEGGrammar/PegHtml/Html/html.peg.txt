@@ -11,161 +11,161 @@
 // Parsers for different kinds of block-level HTML content.
 // This is repetitive due to constraints of PEG grammar.
 
-HtmlBlockOpenAddress : '<' Spnl ('address'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenAddress : '<' Spnl ('address'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseAddress : '<' Spnl '/' ('address'  \i ) Spnl '>' ;
-^^HtmlBlockAddress : HtmlBlockOpenAddress (&HtmlBlockCloseAddress / HtmlBlock+) HtmlBlockCloseAddress;
+^^HtmlBlockAddress : HtmlBlockOpenAddress (&HtmlBlockCloseAddress / HtmlBlock+) @HtmlBlockCloseAddress;
 
-HtmlBlockOpenBlockquote : '<' Spnl ('blockquote'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenBlockquote : '<' Spnl ('blockquote'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseBlockquote : '<' Spnl '/' ('blockquote'  \i ) Spnl '>';
-^^HtmlBlockBlockquote : HtmlBlockOpenBlockquote (&HtmlBlockCloseBlockquote / HtmlBlock+) HtmlBlockCloseBlockquote;
+^^HtmlBlockBlockquote : HtmlBlockOpenBlockquote (&HtmlBlockCloseBlockquote / HtmlBlock+) @HtmlBlockCloseBlockquote;
 
-HtmlBlockOpenCenter : '<' Spnl ('center'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenCenter : '<' Spnl ('center'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseCenter : '<' Spnl '/' ('center'  \i ) Spnl '>';
-^^HtmlBlockCenter : HtmlBlockOpenCenter (&HtmlBlockCloseCenter / HtmlBlock+) HtmlBlockCloseCenter;
+^^HtmlBlockCenter : HtmlBlockOpenCenter (&HtmlBlockCloseCenter / HtmlBlock+) @HtmlBlockCloseCenter;
 
-HtmlBlockOpenDir : '<' Spnl ('dir'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenDir : '<' Spnl ('dir'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseDir : '<' Spnl '/' ('dir'  \i ) Spnl '>';
-^^HtmlBlockDir : HtmlBlockOpenDir (&HtmlBlockCloseDir / HtmlBlock+) HtmlBlockCloseDir;
+^^HtmlBlockDir : HtmlBlockOpenDir (&HtmlBlockCloseDir / HtmlBlock+) @HtmlBlockCloseDir;
 
-^^HtmlBlockOpenDiv : '<' Spnl ('div'  \i ) Spnl HtmlAttribute* '>';
+^^HtmlBlockOpenDiv : '<' Spnl ('div'  \i ) Spnl HtmlAttributes '>';
 ^^HtmlBlockCloseDiv : '<' Spnl '/' ('div'  \i ) Spnl '>';
 ^^HtmlBlockDiv : HtmlBlockOpenDiv (&  HtmlBlockCloseDiv / HtmlBlock+) @HtmlBlockCloseDiv;
 
-HtmlBlockOpenDl : '<' Spnl ('dl'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenDl : '<' Spnl ('dl'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseDl : '<' Spnl '/' ('dl'  \i ) Spnl '>';
-^^HtmlBlockDl : HtmlBlockOpenDl (&HtmlBlockCloseDl / HtmlBlock+) HtmlBlockCloseDl;
+^^HtmlBlockDl : HtmlBlockOpenDl (&HtmlBlockCloseDl / HtmlBlock+) @HtmlBlockCloseDl;
 
-HtmlBlockOpenFieldset : '<' Spnl ('fieldset'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenFieldset : '<' Spnl ('fieldset'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseFieldset : '<' Spnl '/' ('fieldset'  \i ) Spnl '>';
-^^HtmlBlockFieldset : HtmlBlockOpenFieldset (&HtmlBlockCloseFieldset / HtmlBlock+) HtmlBlockCloseFieldset;
+^^HtmlBlockFieldset : HtmlBlockOpenFieldset (&HtmlBlockCloseFieldset / HtmlBlock+) @HtmlBlockCloseFieldset;
 
-HtmlBlockOpenForm : '<' Spnl ('form'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenForm : '<' Spnl ('form'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseForm : '<' Spnl '/' ('form'  \i ) Spnl '>';
-^^HtmlBlockForm : HtmlBlockOpenForm (&HtmlBlockCloseForm / HtmlBlock+) HtmlBlockCloseForm;
+^^HtmlBlockForm : HtmlBlockOpenForm (&HtmlBlockCloseForm / HtmlBlock+) @HtmlBlockCloseForm;
 
-HtmlBlockOpenH1 : '<' Spnl ('h1' / 'H1') Spnl HtmlAttribute* '>';
+HtmlBlockOpenH1 : '<' Spnl ('h1' / 'H1') Spnl HtmlAttributes '>';
 HtmlBlockCloseH1 : '<' Spnl '/' ('h1' / 'H1') Spnl '>';
-^^HtmlBlockH1 : HtmlBlockOpenH1 (&HtmlBlockCloseH1 / HtmlBlock+) HtmlBlockCloseH1;
+^^HtmlBlockH1 : HtmlBlockOpenH1 (&HtmlBlockCloseH1 / HtmlBlock+) @HtmlBlockCloseH1;
 
-HtmlBlockOpenH2 : '<' Spnl ('h2' / 'H2') Spnl HtmlAttribute* '>';
+HtmlBlockOpenH2 : '<' Spnl ('h2' / 'H2') Spnl HtmlAttributes '>';
 HtmlBlockCloseH2 : '<' Spnl '/' ('h2' / 'H2') Spnl '>';
-^^HtmlBlockH2 : HtmlBlockOpenH2 (&HtmlBlockCloseH2 / HtmlBlock+) HtmlBlockCloseH2;
+^^HtmlBlockH2 : HtmlBlockOpenH2 (&HtmlBlockCloseH2 / HtmlBlock+) @HtmlBlockCloseH2;
 
-HtmlBlockOpenH3 : '<' Spnl ('h3' / 'H3') Spnl HtmlAttribute* '>';
+HtmlBlockOpenH3 : '<' Spnl ('h3' / 'H3') Spnl HtmlAttributes '>';
 HtmlBlockCloseH3 : '<' Spnl '/' ('h3' / 'H3') Spnl '>';
-^^HtmlBlockH3 : HtmlBlockOpenH3 (&HtmlBlockCloseH3 / HtmlBlock+) HtmlBlockCloseH3;
+^^HtmlBlockH3 : HtmlBlockOpenH3 (&HtmlBlockCloseH3 / HtmlBlock+) @HtmlBlockCloseH3;
 
-HtmlBlockOpenH4 : '<' Spnl ('h4' / 'H4') Spnl HtmlAttribute* '>';
+HtmlBlockOpenH4 : '<' Spnl ('h4' / 'H4') Spnl HtmlAttributes '>';
 HtmlBlockCloseH4 : '<' Spnl '/' ('h4' / 'H4') Spnl '>';
-HtmlBlockH4 : HtmlBlockOpenH4 (&HtmlBlockCloseH4 / HtmlBlock+) HtmlBlockCloseH4;
+HtmlBlockH4 : HtmlBlockOpenH4 (&HtmlBlockCloseH4 / HtmlBlock+) @HtmlBlockCloseH4;
 
-HtmlBlockOpenH5 : '<' Spnl ('h5' / 'H5') Spnl HtmlAttribute* '>';
+HtmlBlockOpenH5 : '<' Spnl ('h5' / 'H5') Spnl HtmlAttributes '>';
 HtmlBlockCloseH5 : '<' Spnl '/' ('h5' / 'H5') Spnl '>';
-^^HtmlBlockH5 : HtmlBlockOpenH5 (&HtmlBlockCloseH5 / HtmlBlock+) HtmlBlockCloseH5;
+^^HtmlBlockH5 : HtmlBlockOpenH5 (&HtmlBlockCloseH5 / HtmlBlock+) @HtmlBlockCloseH5;
 
-HtmlBlockOpenH6 : '<' Spnl ('h6' / 'H6') Spnl HtmlAttribute* '>';
+HtmlBlockOpenH6 : '<' Spnl ('h6' / 'H6') Spnl HtmlAttributes '>';
 HtmlBlockCloseH6 : '<' Spnl '/' ('h6' / 'H6') Spnl '>';
-^^HtmlBlockH6 : HtmlBlockOpenH6 (&HtmlBlockCloseH6 / HtmlBlock+) HtmlBlockCloseH6;
+^^HtmlBlockH6 : HtmlBlockOpenH6 (&HtmlBlockCloseH6 / HtmlBlock+) @HtmlBlockCloseH6;
 
-HtmlBlockOpenMenu : '<' Spnl ('menu'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenMenu : '<' Spnl ('menu'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseMenu : '<' Spnl '/' ('menu'  \i ) Spnl '>';
-^^HtmlBlockMenu : HtmlBlockOpenMenu (&HtmlBlockCloseMenu / HtmlBlock+) HtmlBlockCloseMenu;
+^^HtmlBlockMenu : HtmlBlockOpenMenu (&HtmlBlockCloseMenu / HtmlBlock+) @HtmlBlockCloseMenu;
 
-HtmlBlockOpenNoframes : '<' Spnl ('noframes'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenNoframes : '<' Spnl ('noframes'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseNoframes : '<' Spnl '/' ('noframes'  \i ) Spnl '>';
-^^HtmlBlockNoframes : HtmlBlockOpenNoframes (HtmlBlockNoframes / !HtmlBlockCloseNoframes .)* HtmlBlockCloseNoframes;
+^^HtmlBlockNoframes : HtmlBlockOpenNoframes (HtmlBlockNoframes / !HtmlBlockCloseNoframes .)* @HtmlBlockCloseNoframes;
 
-HtmlBlockOpenNoscript : '<' Spnl ('noscript'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenNoscript : '<' Spnl ('noscript'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseNoscript : '<' Spnl '/' ('noscript'  \i ) Spnl '>';
-^^HtmlBlockNoscript : HtmlBlockOpenNoscript (HtmlBlockNoscript / !HtmlBlockCloseNoscript .)* HtmlBlockCloseNoscript;
+^^HtmlBlockNoscript : HtmlBlockOpenNoscript (HtmlBlockNoscript / !HtmlBlockCloseNoscript .)* @HtmlBlockCloseNoscript;
 
-HtmlBlockOpenOl : '<' Spnl ('ol'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenOl : '<' Spnl ('ol'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseOl : '<' Spnl '/' ('ol'  \i ) Spnl '>';
-^^HtmlBlockOl : HtmlBlockOpenOl (&HtmlBlockCloseOl / HtmlBlock+) HtmlBlockCloseOl;
+^^HtmlBlockOl : HtmlBlockOpenOl (&HtmlBlockCloseOl / HtmlBlock+) @HtmlBlockCloseOl;
 
-HtmlBlockOpenP : '<' Spnl ('p'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenP : '<' Spnl ('p'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseP : '<' Spnl '/' ('p'  \i ) Spnl '>';
-^^HtmlBlockP : HtmlBlockOpenP (&HtmlBlockCloseP / HtmlBlock +) HtmlBlockCloseP;
+^^HtmlBlockP : HtmlBlockOpenP (&HtmlBlockCloseP / HtmlBlock +) @HtmlBlockCloseP;
 
-HtmlBlockOpenPre : '<' Spnl ('pre'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenPre : '<' Spnl ('pre'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockClosePre : '<' Spnl '/' ('pre'  \i ) Spnl '>';
-^^HtmlBlockPre : HtmlBlockOpenPre (HtmlBlockCode/(HtmlBlockPre / !HtmlBlockClosePre .)*) HtmlBlockClosePre;
+^^HtmlBlockPre : HtmlBlockOpenPre (HtmlBlockCode/(HtmlBlockPre / !HtmlBlockClosePre .)*) @HtmlBlockClosePre;
 
-HtmlBlockOpenTable : '<' Spnl ('table'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenTable : '<' Spnl ('table'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseTable : '<' Spnl '/' ('table'  \i ) Spnl '>';
-^^HtmlBlockTable : HtmlBlockOpenTable (&HtmlBlockCloseTable / HtmlBlock+) HtmlBlockCloseTable;
+^^HtmlBlockTable : HtmlBlockOpenTable (&HtmlBlockCloseTable / HtmlBlock+) @HtmlBlockCloseTable;
 
-HtmlBlockOpenUl : '<' Spnl ('ul'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenUl : '<' Spnl ('ul'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseUl : '<' Spnl '/' ('ul'  \i ) Spnl '>';
-^^HtmlBlockUl : HtmlBlockOpenUl (&HtmlBlockCloseUl /  HtmlBlock+ ) HtmlBlockCloseUl;
+^^HtmlBlockUl : HtmlBlockOpenUl (&HtmlBlockCloseUl /  HtmlBlock+ ) @HtmlBlockCloseUl;
 
-HtmlBlockOpenDd : '<' Spnl ('dd'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenDd : '<' Spnl ('dd'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseDd : '<' Spnl '/' ('dd'  \i ) Spnl '>';
-^^HtmlBlockDd : HtmlBlockOpenDd (&HtmlBlockCloseDd / HtmlBlock+) HtmlBlockCloseDd;
+^^HtmlBlockDd : HtmlBlockOpenDd (&HtmlBlockCloseDd / HtmlBlock+) @HtmlBlockCloseDd;
 
-HtmlBlockOpenDt : '<' Spnl ('dt'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenDt : '<' Spnl ('dt'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseDt : '<' Spnl '/' ('dt'  \i ) Spnl '>';
-^^HtmlBlockDt : HtmlBlockOpenDt (&HtmlBlockCloseDt / HtmlBlock+) HtmlBlockCloseDt;
+^^HtmlBlockDt : HtmlBlockOpenDt (&HtmlBlockCloseDt / HtmlBlock+) @HtmlBlockCloseDt;
 
-HtmlBlockOpenFrameset : '<' Spnl ('frameset'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenFrameset : '<' Spnl ('frameset'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseFrameset : '<' Spnl '/' ('frameset'  \i ) Spnl '>';
-^^HtmlBlockFrameset : HtmlBlockOpenFrameset (&HtmlBlockCloseFrameset / HtmlBlock+ ) HtmlBlockCloseFrameset;
+^^HtmlBlockFrameset : HtmlBlockOpenFrameset (&HtmlBlockCloseFrameset / HtmlBlock+ ) @HtmlBlockCloseFrameset;
 
-HtmlBlockOpenLi : '<' Spnl ('li'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenLi : '<' Spnl ('li'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseLi : '<' Spnl '/' ('li'  \i ) Spnl '>';
-^^HtmlBlockLi : HtmlBlockOpenLi (&HtmlBlockCloseLi/HtmlBlock+  ) HtmlBlockCloseLi;
+^^HtmlBlockLi : HtmlBlockOpenLi (&HtmlBlockCloseLi/HtmlBlock+  ) @HtmlBlockCloseLi;
 
-HtmlBlockOpenTbody : '<' Spnl ('tbody'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenTbody : '<' Spnl ('tbody'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseTbody : '<' Spnl '/' ('tbody' \i ) Spnl '>';
-^^HtmlBlockTbody : HtmlBlockOpenTbody (&HtmlBlockCloseTbody / HtmlBlock+ ) HtmlBlockCloseTbody;
+^^HtmlBlockTbody : HtmlBlockOpenTbody (&HtmlBlockCloseTbody / HtmlBlock+ ) @HtmlBlockCloseTbody;
 
-HtmlBlockOpenTd : '<' Spnl ('td'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenTd : '<' Spnl ('td'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseTd : '<' Spnl '/' ('td'  \i ) Spnl '>';
-^^HtmlBlockTd : HtmlBlockOpenTd (&HtmlBlockCloseTd / HtmlBlock+) HtmlBlockCloseTd;
+^^HtmlBlockTd : HtmlBlockOpenTd (&HtmlBlockCloseTd / HtmlBlock+) @HtmlBlockCloseTd;
 
-HtmlBlockOpenTfoot : '<' Spnl ('tfoot'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenTfoot : '<' Spnl ('tfoot'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseTfoot : '<' Spnl '/' ('tfoot'  \i ) Spnl '>';
-^^HtmlBlockTfoot : HtmlBlockOpenTfoot (&HtmlBlockCloseTfoot / HtmlBlock+) HtmlBlockCloseTfoot;
+^^HtmlBlockTfoot : HtmlBlockOpenTfoot (&HtmlBlockCloseTfoot / HtmlBlock+) @HtmlBlockCloseTfoot;
 
-HtmlBlockOpenTh : '<' Spnl ('th'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenTh : '<' Spnl ('th'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseTh : '<' Spnl '/' ('th'  \i ) Spnl '>';
-^^HtmlBlockTh : HtmlBlockOpenTh (&HtmlBlockCloseTh / HtmlBlock+) HtmlBlockCloseTh;
+^^HtmlBlockTh : HtmlBlockOpenTh (&HtmlBlockCloseTh / HtmlBlock+) @HtmlBlockCloseTh;
 
-HtmlBlockOpenThead : '<' Spnl ('thead'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenThead : '<' Spnl ('thead'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseThead : '<' Spnl '/' ('thead' \i ) Spnl '>';
-^^HtmlBlockThead : HtmlBlockOpenThead (&HtmlBlockCloseThead / HtmlBlockTr+ ) HtmlBlockCloseThead;
+^^HtmlBlockThead : HtmlBlockOpenThead (&HtmlBlockCloseThead / HtmlBlockTr+ ) @HtmlBlockCloseThead;
 
-HtmlBlockOpenTr : '<' Spnl ('tr'   \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenTr : '<' Spnl ('tr'   \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseTr : '<' Spnl '/' ('tr'  \i ) Spnl '>';
-^^HtmlBlockTr : HtmlBlockOpenTr (&HtmlBlockCloseTr / HtmlBlock+) HtmlBlockCloseTr;
+^^HtmlBlockTr : HtmlBlockOpenTr (&HtmlBlockCloseTr / HtmlBlock+) @HtmlBlockCloseTr;
 
-HtmlBlockOpenScript : '<' Spnl ('script'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenScript : '<' Spnl ('script'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseScript : '<' Spnl '/' ('script'   \i ) Spnl '>';
-^^HtmlBlockScript : HtmlBlockOpenScript (!HtmlBlockCloseScript .)* HtmlBlockCloseScript;
+^^HtmlBlockScript : HtmlBlockOpenScript (!HtmlBlockCloseScript .)* @HtmlBlockCloseScript;
 
-HtmlBlockOpenHead : '<' Spnl ('head'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenHead : '<' Spnl ('head'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseHead : '<' Spnl '/' ('head'  \i ) Spnl '>';
-^^HtmlBlockHead : HtmlBlockOpenHead (&HtmlBlockCloseHead/ HtmlBlock+) HtmlBlockCloseHead ;
+^^HtmlBlockHead : HtmlBlockOpenHead (&HtmlBlockCloseHead/ HtmlBlock+) @HtmlBlockCloseHead ;
 
 
-HtmlBlockOpenA : '<' Spnl ('a'  \i ) Spnl HtmlAttribute* '>';
+HtmlBlockOpenA : '<' Spnl ('a'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseA : '<' Spnl '/' ('a'  \i ) Spnl '>';
 ^^HtmlBlockA : HtmlBlockOpenA (!HtmlBlockCloseA .)* HtmlBlockCloseA ;
 
 HtmlBlockOpenCode : '<' Spnl ('code'  \i ) Spnl  '>';
 HtmlBlockCloseCode  : '<' Spnl '/' ('code'  \i ) Spnl '>';
-^^HtmlBlockCode : HtmlBlockOpenCode ( !HtmlBlockCloseCode .)* HtmlBlockCloseCode ;
+^^HtmlBlockCode : HtmlBlockOpenCode ( !HtmlBlockCloseCode .)* @HtmlBlockCloseCode ;
 
-HtmlBlockOpenSpan : '<' Spnl ('span'  \i ) Spnl HtmlAttribute*   '>';
+HtmlBlockOpenSpan : '<' Spnl ('span'  \i ) Spnl HtmlAttributes   '>';
 HtmlBlockCloseSpan  : '<' Spnl '/' ('span' \i) Spnl '>';
-^^HtmlBlockSpan : HtmlBlockOpenSpan ( &HtmlBlockCloseSpan /HtmlBlock+) HtmlBlockCloseSpan ;
+^^HtmlBlockSpan : HtmlBlockOpenSpan ( &HtmlBlockCloseSpan /HtmlBlock+) @HtmlBlockCloseSpan ;
 
-HtmlBlockOpenHtml : '<' Spnl ('html'  \i ) Spnl  HtmlAttribute*  '>';
+HtmlBlockOpenHtml : '<' Spnl ('html'  \i ) Spnl  HtmlAttributes  '>';
 HtmlBlockCloseHtml  : '<' Spnl '/' ('html' \i) Spnl '>';
-^^HtmlBlockHtml : HtmlBlockOpenHtml ( &HtmlBlockCloseHtml /HtmlBlock+) HtmlBlockCloseHtml ;
+^^HtmlBlockHtml : HtmlBlockOpenHtml ( &HtmlBlockCloseHtml /HtmlBlock+) @HtmlBlockCloseHtml ;
 
 
-HtmlBlockOpenUnknown : '<' Spnl ![>/] !HtmlBlockSelfClosingType UnknownTagName Spnl  HtmlAttribute* '>';
+HtmlBlockOpenUnknown : '<' Spnl ![>/] !HtmlBlockSelfClosingType UnknownTagName Spnl  HtmlAttributes '>';
 HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
 ^^HtmlBlockUnknown : HtmlBlockOpenUnknown ( &HtmlBlockCloseUnknown /HtmlBlock+) HtmlBlockCloseUnknown ;
 
@@ -213,11 +213,13 @@ HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
 		        / HtmlBlockUnknown
 				;
 
-^^HtmlBlock :(Spnl (HtmlComment/ HtmlBlockInTags  / HtmlBlockSelfClosing )Spnl)/InnerPlain ;
+^^HtmlBlock :(Spnl (HtmlComment/PreHtmlBlockSelfClosing/ HtmlBlockInTags  / HtmlBlockSelfClosing )Spnl)/InnerPlain ;
 
 
+^^PreHtmlBlockSelfClosing : '<' Spnl (PreHtmlBlockSelfClosingType  Spnl HtmlAttributes '/'? );
 
-^^HtmlBlockSelfClosing : '<' Spnl ( (PreHtmlBlockSelfClosingType  Spnl HtmlAttribute* '/'?) /(HtmlBlockType  Spnl HtmlAttribute* '/')/ (HtmlBlockSelfClosingType  Spnl HtmlAttribute* '/'?) ) Spnl '>';
+
+^^HtmlBlockSelfClosing : '<' Spnl ( (PreHtmlBlockSelfClosingType  Spnl HtmlAttributes '/'?) /(HtmlBlockType  Spnl HtmlAttributes '/')/ (HtmlBlockSelfClosingType  Spnl HtmlAttributes '/'?) ) Spnl '>';
 
 ^^HtmlBlockType : 'address'\i / 'blockquote'\i / 'center' \i/ 'dir'\i / 'div'\i / 'dl' \i/ 'fieldset' \i/ 'form'\i / 'h1'\i / 'h2'\i / 'h3' \i/
                 'h4' \i/ 'h5' \i/ 'h6' \i/ 'isindex'\i / 'menu' \i/ 'noframes' \i/ 'noscript'\i / 'ol' \i/ 'p'\i / 'pre' \i/ 'table'\i /
@@ -229,7 +231,7 @@ HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
 ^^PreHtmlBlockSelfClosingType:  'link' \i ;
 
 
-StyleOpen :     '<' Spnl ('style'  \i ) Spnl HtmlAttribute* '>'  ;
+StyleOpen :     '<' Spnl ('style'  \i ) Spnl HtmlAttributes '>'  ;
 StyleClose :    '<' Spnl '/' ('style'  \i ) Spnl '>' ;
 InStyleTags :   StyleOpen (!StyleClose .)* StyleClose ;
 ^^StyleBlock :    InStyleTags 
@@ -251,9 +253,10 @@ BlankLine :     Sp Newline;
 HtmlAttributeHeader: AlphanumericAscii / '-'/'.' ;
 ExpectedHeaderEnd:  Spnl/'=';
 
-^^HtmlAttribute : ( (HtmlAttributeHeader )+ (@ExpectedHeaderEnd Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;
+^^HtmlAttributes: HtmlAttribute*;
+HtmlAttribute : ( (HtmlAttributeHeader )+ (@ExpectedHeaderEnd Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;
 ^^HtmlComment :   '<!--' (!'-->' .)* '-->';
-HtmlTag :       '<' Spnl '/'? AlphanumericAscii+ Spnl HtmlAttribute* '/'? Spnl '>';
+HtmlTag :       '<' Spnl '/'? AlphanumericAscii+ Spnl HtmlAttributes '/'? Spnl '>';
 Spacechar :     ' ' / '\t';
 Nonspacechar :  !Spacechar !Newline .;
 Newline :       '\n' / '\r' '\n'?;

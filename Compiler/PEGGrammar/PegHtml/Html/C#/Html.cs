@@ -1,4 +1,4 @@
-/* created on 22/12/2016 22:50:38 from peg generator V1.0 using 'Html' as input*/
+/* created on 22/12/2016 23:11:21 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -44,16 +44,17 @@ namespace Peg.Html
                   HtmlBlockCloseSpan= 113, HtmlBlockSpan= 114, HtmlBlockOpenHtml= 115, 
                   HtmlBlockCloseHtml= 116, HtmlBlockHtml= 117, HtmlBlockOpenUnknown= 118, 
                   HtmlBlockCloseUnknown= 119, HtmlBlockUnknown= 120, UnknownTagName= 121, 
-                  HtmlBlockInTags= 122, HtmlBlock= 123, HtmlBlockSelfClosing= 124, 
-                  HtmlBlockType= 125, HtmlBlockSelfClosingType= 126, PreHtmlBlockSelfClosingType= 127, 
-                  StyleOpen= 128, StyleClose= 129, InStyleTags= 130, StyleBlock= 131, 
-                  Space= 132, RawHtml= 133, BlankLine= 134, Quoted= 135, GlobalAttributes= 136, 
-                  HtmlAttributeHeader= 137, ExpectedHeaderEnd= 138, HtmlAttribute= 139, 
-                  HtmlComment= 140, HtmlTag= 141, Spacechar= 142, Nonspacechar= 143, 
-                  Newline= 144, Sp= 145, Spnl= 146, AlphanumericAscii= 147, SpecialChar= 148, 
-                  NormalChar= 149, LiteralChar= 150, Symbol= 151, InnerPlain= 152, 
-                  PurePlainContents= 153, LeftPlainContents= 154, RightPlainContents= 155, 
-                  Eof= 156};
+                  HtmlBlockInTags= 122, HtmlBlock= 123, PreHtmlBlockSelfClosing= 124, 
+                  HtmlBlockSelfClosing= 125, HtmlBlockType= 126, HtmlBlockSelfClosingType= 127, 
+                  PreHtmlBlockSelfClosingType= 128, StyleOpen= 129, StyleClose= 130, 
+                  InStyleTags= 131, StyleBlock= 132, Space= 133, RawHtml= 134, 
+                  BlankLine= 135, Quoted= 136, GlobalAttributes= 137, HtmlAttributeHeader= 138, 
+                  ExpectedHeaderEnd= 139, HtmlAttributes= 140, HtmlAttribute= 141, 
+                  HtmlComment= 142, HtmlTag= 143, Spacechar= 144, Nonspacechar= 145, 
+                  Newline= 146, Sp= 147, Spnl= 148, AlphanumericAscii= 149, SpecialChar= 150, 
+                  NormalChar= 151, LiteralChar= 152, Symbol= 153, InnerPlain= 154, 
+                  PurePlainContents= 155, LeftPlainContents= 156, RightPlainContents= 157, 
+                  Eof= 158};
       public class Html : PegCharParser 
       {
         
@@ -136,7 +137,7 @@ namespace Peg.Html
                   && Char('>')
                   && Spnl() ) ); return result;
 		}
-        public bool HtmlBlockOpenAddress()    /*HtmlBlockOpenAddress : '<' Spnl ('address'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenAddress()    /*HtmlBlockOpenAddress : '<' Spnl ('address'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -144,7 +145,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('a','d','d','r','e','s','s')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseAddress()    /*HtmlBlockCloseAddress : '<' Spnl '/' ('address'  \i ) Spnl '>' ;*/
@@ -158,7 +159,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockAddress()    /*^^HtmlBlockAddress : HtmlBlockOpenAddress (&HtmlBlockCloseAddress / HtmlBlock+) HtmlBlockCloseAddress;*/
+        public bool HtmlBlockAddress()    /*^^HtmlBlockAddress : HtmlBlockOpenAddress (&HtmlBlockCloseAddress / HtmlBlock+) @HtmlBlockCloseAddress;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockAddress,()=>
@@ -167,9 +168,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseAddress() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseAddress() ) ); return result;
+                  && (    
+                         HtmlBlockCloseAddress()
+                      || Fatal("<<HtmlBlockCloseAddress>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenBlockquote()    /*HtmlBlockOpenBlockquote : '<' Spnl ('blockquote'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenBlockquote()    /*HtmlBlockOpenBlockquote : '<' Spnl ('blockquote'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -177,7 +180,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar("blockquote")
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseBlockquote()    /*HtmlBlockCloseBlockquote : '<' Spnl '/' ('blockquote'  \i ) Spnl '>';*/
@@ -191,7 +194,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockBlockquote()    /*^^HtmlBlockBlockquote : HtmlBlockOpenBlockquote (&HtmlBlockCloseBlockquote / HtmlBlock+) HtmlBlockCloseBlockquote;*/
+        public bool HtmlBlockBlockquote()    /*^^HtmlBlockBlockquote : HtmlBlockOpenBlockquote (&HtmlBlockCloseBlockquote / HtmlBlock+) @HtmlBlockCloseBlockquote;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockBlockquote,()=>
@@ -200,9 +203,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseBlockquote() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseBlockquote() ) ); return result;
+                  && (    
+                         HtmlBlockCloseBlockquote()
+                      || Fatal("<<HtmlBlockCloseBlockquote>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenCenter()    /*HtmlBlockOpenCenter : '<' Spnl ('center'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenCenter()    /*HtmlBlockOpenCenter : '<' Spnl ('center'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -210,7 +215,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('c','e','n','t','e','r')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseCenter()    /*HtmlBlockCloseCenter : '<' Spnl '/' ('center'  \i ) Spnl '>';*/
@@ -224,7 +229,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCenter()    /*^^HtmlBlockCenter : HtmlBlockOpenCenter (&HtmlBlockCloseCenter / HtmlBlock+) HtmlBlockCloseCenter;*/
+        public bool HtmlBlockCenter()    /*^^HtmlBlockCenter : HtmlBlockOpenCenter (&HtmlBlockCloseCenter / HtmlBlock+) @HtmlBlockCloseCenter;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockCenter,()=>
@@ -233,9 +238,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseCenter() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseCenter() ) ); return result;
+                  && (    
+                         HtmlBlockCloseCenter()
+                      || Fatal("<<HtmlBlockCloseCenter>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenDir()    /*HtmlBlockOpenDir : '<' Spnl ('dir'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenDir()    /*HtmlBlockOpenDir : '<' Spnl ('dir'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -243,7 +250,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('d','i','r')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseDir()    /*HtmlBlockCloseDir : '<' Spnl '/' ('dir'  \i ) Spnl '>';*/
@@ -257,7 +264,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockDir()    /*^^HtmlBlockDir : HtmlBlockOpenDir (&HtmlBlockCloseDir / HtmlBlock+) HtmlBlockCloseDir;*/
+        public bool HtmlBlockDir()    /*^^HtmlBlockDir : HtmlBlockOpenDir (&HtmlBlockCloseDir / HtmlBlock+) @HtmlBlockCloseDir;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockDir,()=>
@@ -266,9 +273,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseDir() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseDir() ) ); return result;
+                  && (    
+                         HtmlBlockCloseDir()
+                      || Fatal("<<HtmlBlockCloseDir>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenDiv()    /*^^HtmlBlockOpenDiv : '<' Spnl ('div'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenDiv()    /*^^HtmlBlockOpenDiv : '<' Spnl ('div'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockOpenDiv,()=>
@@ -277,7 +286,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('d','i','v')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ) ); return result;
 		}
         public bool HtmlBlockCloseDiv()    /*^^HtmlBlockCloseDiv : '<' Spnl '/' ('div'  \i ) Spnl '>';*/
@@ -305,7 +314,7 @@ namespace Peg.Html
                          HtmlBlockCloseDiv()
                       || Fatal("<<HtmlBlockCloseDiv>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenDl()    /*HtmlBlockOpenDl : '<' Spnl ('dl'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenDl()    /*HtmlBlockOpenDl : '<' Spnl ('dl'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -313,7 +322,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('d','l')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseDl()    /*HtmlBlockCloseDl : '<' Spnl '/' ('dl'  \i ) Spnl '>';*/
@@ -327,7 +336,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockDl()    /*^^HtmlBlockDl : HtmlBlockOpenDl (&HtmlBlockCloseDl / HtmlBlock+) HtmlBlockCloseDl;*/
+        public bool HtmlBlockDl()    /*^^HtmlBlockDl : HtmlBlockOpenDl (&HtmlBlockCloseDl / HtmlBlock+) @HtmlBlockCloseDl;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockDl,()=>
@@ -336,9 +345,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseDl() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseDl() ) ); return result;
+                  && (    
+                         HtmlBlockCloseDl()
+                      || Fatal("<<HtmlBlockCloseDl>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenFieldset()    /*HtmlBlockOpenFieldset : '<' Spnl ('fieldset'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenFieldset()    /*HtmlBlockOpenFieldset : '<' Spnl ('fieldset'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -346,7 +357,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar("fieldset")
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseFieldset()    /*HtmlBlockCloseFieldset : '<' Spnl '/' ('fieldset'  \i ) Spnl '>';*/
@@ -360,7 +371,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockFieldset()    /*^^HtmlBlockFieldset : HtmlBlockOpenFieldset (&HtmlBlockCloseFieldset / HtmlBlock+) HtmlBlockCloseFieldset;*/
+        public bool HtmlBlockFieldset()    /*^^HtmlBlockFieldset : HtmlBlockOpenFieldset (&HtmlBlockCloseFieldset / HtmlBlock+) @HtmlBlockCloseFieldset;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockFieldset,()=>
@@ -369,9 +380,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseFieldset() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseFieldset() ) ); return result;
+                  && (    
+                         HtmlBlockCloseFieldset()
+                      || Fatal("<<HtmlBlockCloseFieldset>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenForm()    /*HtmlBlockOpenForm : '<' Spnl ('form'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenForm()    /*HtmlBlockOpenForm : '<' Spnl ('form'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -379,7 +392,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('f','o','r','m')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseForm()    /*HtmlBlockCloseForm : '<' Spnl '/' ('form'  \i ) Spnl '>';*/
@@ -393,7 +406,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockForm()    /*^^HtmlBlockForm : HtmlBlockOpenForm (&HtmlBlockCloseForm / HtmlBlock+) HtmlBlockCloseForm;*/
+        public bool HtmlBlockForm()    /*^^HtmlBlockForm : HtmlBlockOpenForm (&HtmlBlockCloseForm / HtmlBlock+) @HtmlBlockCloseForm;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockForm,()=>
@@ -402,9 +415,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseForm() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseForm() ) ); return result;
+                  && (    
+                         HtmlBlockCloseForm()
+                      || Fatal("<<HtmlBlockCloseForm>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenH1()    /*HtmlBlockOpenH1 : '<' Spnl ('h1' / 'H1') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenH1()    /*HtmlBlockOpenH1 : '<' Spnl ('h1' / 'H1') Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -412,7 +427,7 @@ namespace Peg.Html
                   && Spnl()
                   && (    Char('h','1') || Char('H','1'))
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseH1()    /*HtmlBlockCloseH1 : '<' Spnl '/' ('h1' / 'H1') Spnl '>';*/
@@ -426,7 +441,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockH1()    /*^^HtmlBlockH1 : HtmlBlockOpenH1 (&HtmlBlockCloseH1 / HtmlBlock+) HtmlBlockCloseH1;*/
+        public bool HtmlBlockH1()    /*^^HtmlBlockH1 : HtmlBlockOpenH1 (&HtmlBlockCloseH1 / HtmlBlock+) @HtmlBlockCloseH1;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockH1,()=>
@@ -435,9 +450,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseH1() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseH1() ) ); return result;
+                  && (    
+                         HtmlBlockCloseH1()
+                      || Fatal("<<HtmlBlockCloseH1>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenH2()    /*HtmlBlockOpenH2 : '<' Spnl ('h2' / 'H2') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenH2()    /*HtmlBlockOpenH2 : '<' Spnl ('h2' / 'H2') Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -445,7 +462,7 @@ namespace Peg.Html
                   && Spnl()
                   && (    Char('h','2') || Char('H','2'))
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseH2()    /*HtmlBlockCloseH2 : '<' Spnl '/' ('h2' / 'H2') Spnl '>';*/
@@ -459,7 +476,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockH2()    /*^^HtmlBlockH2 : HtmlBlockOpenH2 (&HtmlBlockCloseH2 / HtmlBlock+) HtmlBlockCloseH2;*/
+        public bool HtmlBlockH2()    /*^^HtmlBlockH2 : HtmlBlockOpenH2 (&HtmlBlockCloseH2 / HtmlBlock+) @HtmlBlockCloseH2;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockH2,()=>
@@ -468,9 +485,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseH2() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseH2() ) ); return result;
+                  && (    
+                         HtmlBlockCloseH2()
+                      || Fatal("<<HtmlBlockCloseH2>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenH3()    /*HtmlBlockOpenH3 : '<' Spnl ('h3' / 'H3') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenH3()    /*HtmlBlockOpenH3 : '<' Spnl ('h3' / 'H3') Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -478,7 +497,7 @@ namespace Peg.Html
                   && Spnl()
                   && (    Char('h','3') || Char('H','3'))
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseH3()    /*HtmlBlockCloseH3 : '<' Spnl '/' ('h3' / 'H3') Spnl '>';*/
@@ -492,7 +511,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockH3()    /*^^HtmlBlockH3 : HtmlBlockOpenH3 (&HtmlBlockCloseH3 / HtmlBlock+) HtmlBlockCloseH3;*/
+        public bool HtmlBlockH3()    /*^^HtmlBlockH3 : HtmlBlockOpenH3 (&HtmlBlockCloseH3 / HtmlBlock+) @HtmlBlockCloseH3;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockH3,()=>
@@ -501,9 +520,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseH3() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseH3() ) ); return result;
+                  && (    
+                         HtmlBlockCloseH3()
+                      || Fatal("<<HtmlBlockCloseH3>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenH4()    /*HtmlBlockOpenH4 : '<' Spnl ('h4' / 'H4') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenH4()    /*HtmlBlockOpenH4 : '<' Spnl ('h4' / 'H4') Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -511,7 +532,7 @@ namespace Peg.Html
                   && Spnl()
                   && (    Char('h','4') || Char('H','4'))
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseH4()    /*HtmlBlockCloseH4 : '<' Spnl '/' ('h4' / 'H4') Spnl '>';*/
@@ -525,7 +546,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockH4()    /*HtmlBlockH4 : HtmlBlockOpenH4 (&HtmlBlockCloseH4 / HtmlBlock+) HtmlBlockCloseH4;*/
+        public bool HtmlBlockH4()    /*HtmlBlockH4 : HtmlBlockOpenH4 (&HtmlBlockCloseH4 / HtmlBlock+) @HtmlBlockCloseH4;*/
         {
 
            var result=And(()=>  
@@ -533,9 +554,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseH4() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseH4() ); return result;
+                  && (    
+                         HtmlBlockCloseH4()
+                      || Fatal("<<HtmlBlockCloseH4>> expected")) ); return result;
 		}
-        public bool HtmlBlockOpenH5()    /*HtmlBlockOpenH5 : '<' Spnl ('h5' / 'H5') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenH5()    /*HtmlBlockOpenH5 : '<' Spnl ('h5' / 'H5') Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -543,7 +566,7 @@ namespace Peg.Html
                   && Spnl()
                   && (    Char('h','5') || Char('H','5'))
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseH5()    /*HtmlBlockCloseH5 : '<' Spnl '/' ('h5' / 'H5') Spnl '>';*/
@@ -557,7 +580,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockH5()    /*^^HtmlBlockH5 : HtmlBlockOpenH5 (&HtmlBlockCloseH5 / HtmlBlock+) HtmlBlockCloseH5;*/
+        public bool HtmlBlockH5()    /*^^HtmlBlockH5 : HtmlBlockOpenH5 (&HtmlBlockCloseH5 / HtmlBlock+) @HtmlBlockCloseH5;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockH5,()=>
@@ -566,9 +589,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseH5() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseH5() ) ); return result;
+                  && (    
+                         HtmlBlockCloseH5()
+                      || Fatal("<<HtmlBlockCloseH5>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenH6()    /*HtmlBlockOpenH6 : '<' Spnl ('h6' / 'H6') Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenH6()    /*HtmlBlockOpenH6 : '<' Spnl ('h6' / 'H6') Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -576,7 +601,7 @@ namespace Peg.Html
                   && Spnl()
                   && (    Char('h','6') || Char('H','6'))
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseH6()    /*HtmlBlockCloseH6 : '<' Spnl '/' ('h6' / 'H6') Spnl '>';*/
@@ -590,7 +615,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockH6()    /*^^HtmlBlockH6 : HtmlBlockOpenH6 (&HtmlBlockCloseH6 / HtmlBlock+) HtmlBlockCloseH6;*/
+        public bool HtmlBlockH6()    /*^^HtmlBlockH6 : HtmlBlockOpenH6 (&HtmlBlockCloseH6 / HtmlBlock+) @HtmlBlockCloseH6;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockH6,()=>
@@ -599,9 +624,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseH6() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseH6() ) ); return result;
+                  && (    
+                         HtmlBlockCloseH6()
+                      || Fatal("<<HtmlBlockCloseH6>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenMenu()    /*HtmlBlockOpenMenu : '<' Spnl ('menu'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenMenu()    /*HtmlBlockOpenMenu : '<' Spnl ('menu'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -609,7 +636,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('m','e','n','u')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseMenu()    /*HtmlBlockCloseMenu : '<' Spnl '/' ('menu'  \i ) Spnl '>';*/
@@ -623,7 +650,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockMenu()    /*^^HtmlBlockMenu : HtmlBlockOpenMenu (&HtmlBlockCloseMenu / HtmlBlock+) HtmlBlockCloseMenu;*/
+        public bool HtmlBlockMenu()    /*^^HtmlBlockMenu : HtmlBlockOpenMenu (&HtmlBlockCloseMenu / HtmlBlock+) @HtmlBlockCloseMenu;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockMenu,()=>
@@ -632,9 +659,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseMenu() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseMenu() ) ); return result;
+                  && (    
+                         HtmlBlockCloseMenu()
+                      || Fatal("<<HtmlBlockCloseMenu>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenNoframes()    /*HtmlBlockOpenNoframes : '<' Spnl ('noframes'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenNoframes()    /*HtmlBlockOpenNoframes : '<' Spnl ('noframes'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -642,7 +671,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar("noframes")
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseNoframes()    /*HtmlBlockCloseNoframes : '<' Spnl '/' ('noframes'  \i ) Spnl '>';*/
@@ -656,7 +685,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockNoframes()    /*^^HtmlBlockNoframes : HtmlBlockOpenNoframes (HtmlBlockNoframes / !HtmlBlockCloseNoframes .)* HtmlBlockCloseNoframes;*/
+        public bool HtmlBlockNoframes()    /*^^HtmlBlockNoframes : HtmlBlockOpenNoframes (HtmlBlockNoframes / !HtmlBlockCloseNoframes .)* @HtmlBlockCloseNoframes;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockNoframes,()=>
@@ -668,9 +697,11 @@ namespace Peg.Html
                             || And(()=>        
                                        Not(()=> HtmlBlockCloseNoframes() )
                                     && Any() ) )
-                  && HtmlBlockCloseNoframes() ) ); return result;
+                  && (    
+                         HtmlBlockCloseNoframes()
+                      || Fatal("<<HtmlBlockCloseNoframes>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenNoscript()    /*HtmlBlockOpenNoscript : '<' Spnl ('noscript'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenNoscript()    /*HtmlBlockOpenNoscript : '<' Spnl ('noscript'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -678,7 +709,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar("noscript")
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseNoscript()    /*HtmlBlockCloseNoscript : '<' Spnl '/' ('noscript'  \i ) Spnl '>';*/
@@ -692,7 +723,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockNoscript()    /*^^HtmlBlockNoscript : HtmlBlockOpenNoscript (HtmlBlockNoscript / !HtmlBlockCloseNoscript .)* HtmlBlockCloseNoscript;*/
+        public bool HtmlBlockNoscript()    /*^^HtmlBlockNoscript : HtmlBlockOpenNoscript (HtmlBlockNoscript / !HtmlBlockCloseNoscript .)* @HtmlBlockCloseNoscript;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockNoscript,()=>
@@ -704,9 +735,11 @@ namespace Peg.Html
                             || And(()=>        
                                        Not(()=> HtmlBlockCloseNoscript() )
                                     && Any() ) )
-                  && HtmlBlockCloseNoscript() ) ); return result;
+                  && (    
+                         HtmlBlockCloseNoscript()
+                      || Fatal("<<HtmlBlockCloseNoscript>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenOl()    /*HtmlBlockOpenOl : '<' Spnl ('ol'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenOl()    /*HtmlBlockOpenOl : '<' Spnl ('ol'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -714,7 +747,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('o','l')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseOl()    /*HtmlBlockCloseOl : '<' Spnl '/' ('ol'  \i ) Spnl '>';*/
@@ -728,7 +761,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockOl()    /*^^HtmlBlockOl : HtmlBlockOpenOl (&HtmlBlockCloseOl / HtmlBlock+) HtmlBlockCloseOl;*/
+        public bool HtmlBlockOl()    /*^^HtmlBlockOl : HtmlBlockOpenOl (&HtmlBlockCloseOl / HtmlBlock+) @HtmlBlockCloseOl;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockOl,()=>
@@ -737,9 +770,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseOl() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseOl() ) ); return result;
+                  && (    
+                         HtmlBlockCloseOl()
+                      || Fatal("<<HtmlBlockCloseOl>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenP()    /*HtmlBlockOpenP : '<' Spnl ('p'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenP()    /*HtmlBlockOpenP : '<' Spnl ('p'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -747,7 +782,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('p')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseP()    /*HtmlBlockCloseP : '<' Spnl '/' ('p'  \i ) Spnl '>';*/
@@ -761,7 +796,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockP()    /*^^HtmlBlockP : HtmlBlockOpenP (&HtmlBlockCloseP / HtmlBlock +) HtmlBlockCloseP;*/
+        public bool HtmlBlockP()    /*^^HtmlBlockP : HtmlBlockOpenP (&HtmlBlockCloseP / HtmlBlock +) @HtmlBlockCloseP;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockP,()=>
@@ -770,9 +805,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseP() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseP() ) ); return result;
+                  && (    
+                         HtmlBlockCloseP()
+                      || Fatal("<<HtmlBlockCloseP>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenPre()    /*HtmlBlockOpenPre : '<' Spnl ('pre'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenPre()    /*HtmlBlockOpenPre : '<' Spnl ('pre'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -780,7 +817,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('p','r','e')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockClosePre()    /*HtmlBlockClosePre : '<' Spnl '/' ('pre'  \i ) Spnl '>';*/
@@ -794,7 +831,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockPre()    /*^^HtmlBlockPre : HtmlBlockOpenPre (HtmlBlockCode/(HtmlBlockPre / !HtmlBlockClosePre .)*) HtmlBlockClosePre;*/
+        public bool HtmlBlockPre()    /*^^HtmlBlockPre : HtmlBlockOpenPre (HtmlBlockCode/(HtmlBlockPre / !HtmlBlockClosePre .)*) @HtmlBlockClosePre;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockPre,()=>
@@ -808,9 +845,11 @@ namespace Peg.Html
                                     || And(()=>          
                                                  Not(()=> HtmlBlockClosePre() )
                                               && Any() ) ))
-                  && HtmlBlockClosePre() ) ); return result;
+                  && (    
+                         HtmlBlockClosePre()
+                      || Fatal("<<HtmlBlockClosePre>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenTable()    /*HtmlBlockOpenTable : '<' Spnl ('table'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenTable()    /*HtmlBlockOpenTable : '<' Spnl ('table'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -818,7 +857,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('t','a','b','l','e')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseTable()    /*HtmlBlockCloseTable : '<' Spnl '/' ('table'  \i ) Spnl '>';*/
@@ -832,7 +871,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockTable()    /*^^HtmlBlockTable : HtmlBlockOpenTable (&HtmlBlockCloseTable / HtmlBlock+) HtmlBlockCloseTable;*/
+        public bool HtmlBlockTable()    /*^^HtmlBlockTable : HtmlBlockOpenTable (&HtmlBlockCloseTable / HtmlBlock+) @HtmlBlockCloseTable;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockTable,()=>
@@ -841,9 +880,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseTable() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseTable() ) ); return result;
+                  && (    
+                         HtmlBlockCloseTable()
+                      || Fatal("<<HtmlBlockCloseTable>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenUl()    /*HtmlBlockOpenUl : '<' Spnl ('ul'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenUl()    /*HtmlBlockOpenUl : '<' Spnl ('ul'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -851,7 +892,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('u','l')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseUl()    /*HtmlBlockCloseUl : '<' Spnl '/' ('ul'  \i ) Spnl '>';*/
@@ -865,7 +906,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockUl()    /*^^HtmlBlockUl : HtmlBlockOpenUl (&HtmlBlockCloseUl /  HtmlBlock+ ) HtmlBlockCloseUl;*/
+        public bool HtmlBlockUl()    /*^^HtmlBlockUl : HtmlBlockOpenUl (&HtmlBlockCloseUl /  HtmlBlock+ ) @HtmlBlockCloseUl;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockUl,()=>
@@ -874,9 +915,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseUl() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseUl() ) ); return result;
+                  && (    
+                         HtmlBlockCloseUl()
+                      || Fatal("<<HtmlBlockCloseUl>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenDd()    /*HtmlBlockOpenDd : '<' Spnl ('dd'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenDd()    /*HtmlBlockOpenDd : '<' Spnl ('dd'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -884,7 +927,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('d','d')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseDd()    /*HtmlBlockCloseDd : '<' Spnl '/' ('dd'  \i ) Spnl '>';*/
@@ -898,7 +941,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockDd()    /*^^HtmlBlockDd : HtmlBlockOpenDd (&HtmlBlockCloseDd / HtmlBlock+) HtmlBlockCloseDd;*/
+        public bool HtmlBlockDd()    /*^^HtmlBlockDd : HtmlBlockOpenDd (&HtmlBlockCloseDd / HtmlBlock+) @HtmlBlockCloseDd;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockDd,()=>
@@ -907,9 +950,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseDd() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseDd() ) ); return result;
+                  && (    
+                         HtmlBlockCloseDd()
+                      || Fatal("<<HtmlBlockCloseDd>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenDt()    /*HtmlBlockOpenDt : '<' Spnl ('dt'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenDt()    /*HtmlBlockOpenDt : '<' Spnl ('dt'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -917,7 +962,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('d','t')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseDt()    /*HtmlBlockCloseDt : '<' Spnl '/' ('dt'  \i ) Spnl '>';*/
@@ -931,7 +976,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockDt()    /*^^HtmlBlockDt : HtmlBlockOpenDt (&HtmlBlockCloseDt / HtmlBlock+) HtmlBlockCloseDt;*/
+        public bool HtmlBlockDt()    /*^^HtmlBlockDt : HtmlBlockOpenDt (&HtmlBlockCloseDt / HtmlBlock+) @HtmlBlockCloseDt;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockDt,()=>
@@ -940,9 +985,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseDt() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseDt() ) ); return result;
+                  && (    
+                         HtmlBlockCloseDt()
+                      || Fatal("<<HtmlBlockCloseDt>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenFrameset()    /*HtmlBlockOpenFrameset : '<' Spnl ('frameset'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenFrameset()    /*HtmlBlockOpenFrameset : '<' Spnl ('frameset'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -950,7 +997,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar("frameset")
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseFrameset()    /*HtmlBlockCloseFrameset : '<' Spnl '/' ('frameset'  \i ) Spnl '>';*/
@@ -964,7 +1011,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockFrameset()    /*^^HtmlBlockFrameset : HtmlBlockOpenFrameset (&HtmlBlockCloseFrameset / HtmlBlock+ ) HtmlBlockCloseFrameset;*/
+        public bool HtmlBlockFrameset()    /*^^HtmlBlockFrameset : HtmlBlockOpenFrameset (&HtmlBlockCloseFrameset / HtmlBlock+ ) @HtmlBlockCloseFrameset;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockFrameset,()=>
@@ -973,9 +1020,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseFrameset() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseFrameset() ) ); return result;
+                  && (    
+                         HtmlBlockCloseFrameset()
+                      || Fatal("<<HtmlBlockCloseFrameset>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenLi()    /*HtmlBlockOpenLi : '<' Spnl ('li'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenLi()    /*HtmlBlockOpenLi : '<' Spnl ('li'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -983,7 +1032,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('l','i')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseLi()    /*HtmlBlockCloseLi : '<' Spnl '/' ('li'  \i ) Spnl '>';*/
@@ -997,7 +1046,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockLi()    /*^^HtmlBlockLi : HtmlBlockOpenLi (&HtmlBlockCloseLi/HtmlBlock+  ) HtmlBlockCloseLi;*/
+        public bool HtmlBlockLi()    /*^^HtmlBlockLi : HtmlBlockOpenLi (&HtmlBlockCloseLi/HtmlBlock+  ) @HtmlBlockCloseLi;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockLi,()=>
@@ -1006,9 +1055,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseLi() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseLi() ) ); return result;
+                  && (    
+                         HtmlBlockCloseLi()
+                      || Fatal("<<HtmlBlockCloseLi>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenTbody()    /*HtmlBlockOpenTbody : '<' Spnl ('tbody'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenTbody()    /*HtmlBlockOpenTbody : '<' Spnl ('tbody'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -1016,7 +1067,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('t','b','o','d','y')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseTbody()    /*HtmlBlockCloseTbody : '<' Spnl '/' ('tbody' \i ) Spnl '>';*/
@@ -1030,7 +1081,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockTbody()    /*^^HtmlBlockTbody : HtmlBlockOpenTbody (&HtmlBlockCloseTbody / HtmlBlock+ ) HtmlBlockCloseTbody;*/
+        public bool HtmlBlockTbody()    /*^^HtmlBlockTbody : HtmlBlockOpenTbody (&HtmlBlockCloseTbody / HtmlBlock+ ) @HtmlBlockCloseTbody;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockTbody,()=>
@@ -1039,9 +1090,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseTbody() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseTbody() ) ); return result;
+                  && (    
+                         HtmlBlockCloseTbody()
+                      || Fatal("<<HtmlBlockCloseTbody>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenTd()    /*HtmlBlockOpenTd : '<' Spnl ('td'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenTd()    /*HtmlBlockOpenTd : '<' Spnl ('td'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -1049,7 +1102,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('t','d')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseTd()    /*HtmlBlockCloseTd : '<' Spnl '/' ('td'  \i ) Spnl '>';*/
@@ -1063,7 +1116,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockTd()    /*^^HtmlBlockTd : HtmlBlockOpenTd (&HtmlBlockCloseTd / HtmlBlock+) HtmlBlockCloseTd;*/
+        public bool HtmlBlockTd()    /*^^HtmlBlockTd : HtmlBlockOpenTd (&HtmlBlockCloseTd / HtmlBlock+) @HtmlBlockCloseTd;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockTd,()=>
@@ -1072,9 +1125,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseTd() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseTd() ) ); return result;
+                  && (    
+                         HtmlBlockCloseTd()
+                      || Fatal("<<HtmlBlockCloseTd>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenTfoot()    /*HtmlBlockOpenTfoot : '<' Spnl ('tfoot'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenTfoot()    /*HtmlBlockOpenTfoot : '<' Spnl ('tfoot'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -1082,7 +1137,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('t','f','o','o','t')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseTfoot()    /*HtmlBlockCloseTfoot : '<' Spnl '/' ('tfoot'  \i ) Spnl '>';*/
@@ -1096,7 +1151,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockTfoot()    /*^^HtmlBlockTfoot : HtmlBlockOpenTfoot (&HtmlBlockCloseTfoot / HtmlBlock+) HtmlBlockCloseTfoot;*/
+        public bool HtmlBlockTfoot()    /*^^HtmlBlockTfoot : HtmlBlockOpenTfoot (&HtmlBlockCloseTfoot / HtmlBlock+) @HtmlBlockCloseTfoot;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockTfoot,()=>
@@ -1105,9 +1160,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseTfoot() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseTfoot() ) ); return result;
+                  && (    
+                         HtmlBlockCloseTfoot()
+                      || Fatal("<<HtmlBlockCloseTfoot>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenTh()    /*HtmlBlockOpenTh : '<' Spnl ('th'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenTh()    /*HtmlBlockOpenTh : '<' Spnl ('th'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -1115,7 +1172,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('t','h')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseTh()    /*HtmlBlockCloseTh : '<' Spnl '/' ('th'  \i ) Spnl '>';*/
@@ -1129,7 +1186,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockTh()    /*^^HtmlBlockTh : HtmlBlockOpenTh (&HtmlBlockCloseTh / HtmlBlock+) HtmlBlockCloseTh;*/
+        public bool HtmlBlockTh()    /*^^HtmlBlockTh : HtmlBlockOpenTh (&HtmlBlockCloseTh / HtmlBlock+) @HtmlBlockCloseTh;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockTh,()=>
@@ -1138,9 +1195,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseTh() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseTh() ) ); return result;
+                  && (    
+                         HtmlBlockCloseTh()
+                      || Fatal("<<HtmlBlockCloseTh>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenThead()    /*HtmlBlockOpenThead : '<' Spnl ('thead'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenThead()    /*HtmlBlockOpenThead : '<' Spnl ('thead'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -1148,7 +1207,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('t','h','e','a','d')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseThead()    /*HtmlBlockCloseThead : '<' Spnl '/' ('thead' \i ) Spnl '>';*/
@@ -1162,7 +1221,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockThead()    /*^^HtmlBlockThead : HtmlBlockOpenThead (&HtmlBlockCloseThead / HtmlBlockTr+ ) HtmlBlockCloseThead;*/
+        public bool HtmlBlockThead()    /*^^HtmlBlockThead : HtmlBlockOpenThead (&HtmlBlockCloseThead / HtmlBlockTr+ ) @HtmlBlockCloseThead;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockThead,()=>
@@ -1171,9 +1230,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseThead() )
                       || PlusRepeat(()=> HtmlBlockTr() ))
-                  && HtmlBlockCloseThead() ) ); return result;
+                  && (    
+                         HtmlBlockCloseThead()
+                      || Fatal("<<HtmlBlockCloseThead>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenTr()    /*HtmlBlockOpenTr : '<' Spnl ('tr'   \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenTr()    /*HtmlBlockOpenTr : '<' Spnl ('tr'   \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -1181,7 +1242,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('t','r')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseTr()    /*HtmlBlockCloseTr : '<' Spnl '/' ('tr'  \i ) Spnl '>';*/
@@ -1195,7 +1256,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockTr()    /*^^HtmlBlockTr : HtmlBlockOpenTr (&HtmlBlockCloseTr / HtmlBlock+) HtmlBlockCloseTr;*/
+        public bool HtmlBlockTr()    /*^^HtmlBlockTr : HtmlBlockOpenTr (&HtmlBlockCloseTr / HtmlBlock+) @HtmlBlockCloseTr;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockTr,()=>
@@ -1204,9 +1265,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseTr() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseTr() ) ); return result;
+                  && (    
+                         HtmlBlockCloseTr()
+                      || Fatal("<<HtmlBlockCloseTr>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenScript()    /*HtmlBlockOpenScript : '<' Spnl ('script'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenScript()    /*HtmlBlockOpenScript : '<' Spnl ('script'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -1214,7 +1277,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('s','c','r','i','p','t')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseScript()    /*HtmlBlockCloseScript : '<' Spnl '/' ('script'   \i ) Spnl '>';*/
@@ -1228,7 +1291,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockScript()    /*^^HtmlBlockScript : HtmlBlockOpenScript (!HtmlBlockCloseScript .)* HtmlBlockCloseScript;*/
+        public bool HtmlBlockScript()    /*^^HtmlBlockScript : HtmlBlockOpenScript (!HtmlBlockCloseScript .)* @HtmlBlockCloseScript;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockScript,()=>
@@ -1238,9 +1301,11 @@ namespace Peg.Html
                       And(()=>      
                                Not(()=> HtmlBlockCloseScript() )
                             && Any() ) )
-                  && HtmlBlockCloseScript() ) ); return result;
+                  && (    
+                         HtmlBlockCloseScript()
+                      || Fatal("<<HtmlBlockCloseScript>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenHead()    /*HtmlBlockOpenHead : '<' Spnl ('head'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenHead()    /*HtmlBlockOpenHead : '<' Spnl ('head'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -1248,7 +1313,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('h','e','a','d')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseHead()    /*HtmlBlockCloseHead : '<' Spnl '/' ('head'  \i ) Spnl '>';*/
@@ -1262,7 +1327,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockHead()    /*^^HtmlBlockHead : HtmlBlockOpenHead (&HtmlBlockCloseHead/ HtmlBlock+) HtmlBlockCloseHead ;*/
+        public bool HtmlBlockHead()    /*^^HtmlBlockHead : HtmlBlockOpenHead (&HtmlBlockCloseHead/ HtmlBlock+) @HtmlBlockCloseHead ;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockHead,()=>
@@ -1271,9 +1336,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseHead() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseHead() ) ); return result;
+                  && (    
+                         HtmlBlockCloseHead()
+                      || Fatal("<<HtmlBlockCloseHead>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenA()    /*HtmlBlockOpenA : '<' Spnl ('a'  \i ) Spnl HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenA()    /*HtmlBlockOpenA : '<' Spnl ('a'  \i ) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -1281,7 +1348,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('a')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseA()    /*HtmlBlockCloseA : '<' Spnl '/' ('a'  \i ) Spnl '>';*/
@@ -1326,7 +1393,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockCode()    /*^^HtmlBlockCode : HtmlBlockOpenCode ( !HtmlBlockCloseCode .)* HtmlBlockCloseCode ;*/
+        public bool HtmlBlockCode()    /*^^HtmlBlockCode : HtmlBlockOpenCode ( !HtmlBlockCloseCode .)* @HtmlBlockCloseCode ;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockCode,()=>
@@ -1334,9 +1401,11 @@ namespace Peg.Html
                      HtmlBlockOpenCode()
                   && OptRepeat(()=>    
                       And(()=>    Not(()=> HtmlBlockCloseCode() ) && Any() ) )
-                  && HtmlBlockCloseCode() ) ); return result;
+                  && (    
+                         HtmlBlockCloseCode()
+                      || Fatal("<<HtmlBlockCloseCode>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenSpan()    /*HtmlBlockOpenSpan : '<' Spnl ('span'  \i ) Spnl HtmlAttribute*   '>';*/
+        public bool HtmlBlockOpenSpan()    /*HtmlBlockOpenSpan : '<' Spnl ('span'  \i ) Spnl HtmlAttributes   '>';*/
         {
 
            var result=And(()=>  
@@ -1344,7 +1413,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('s','p','a','n')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseSpan()    /*HtmlBlockCloseSpan  : '<' Spnl '/' ('span' \i) Spnl '>';*/
@@ -1358,7 +1427,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockSpan()    /*^^HtmlBlockSpan : HtmlBlockOpenSpan ( &HtmlBlockCloseSpan /HtmlBlock+) HtmlBlockCloseSpan ;*/
+        public bool HtmlBlockSpan()    /*^^HtmlBlockSpan : HtmlBlockOpenSpan ( &HtmlBlockCloseSpan /HtmlBlock+) @HtmlBlockCloseSpan ;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockSpan,()=>
@@ -1367,9 +1436,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseSpan() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseSpan() ) ); return result;
+                  && (    
+                         HtmlBlockCloseSpan()
+                      || Fatal("<<HtmlBlockCloseSpan>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenHtml()    /*HtmlBlockOpenHtml : '<' Spnl ('html'  \i ) Spnl  HtmlAttribute*  '>';*/
+        public bool HtmlBlockOpenHtml()    /*HtmlBlockOpenHtml : '<' Spnl ('html'  \i ) Spnl  HtmlAttributes  '>';*/
         {
 
            var result=And(()=>  
@@ -1377,7 +1448,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('h','t','m','l')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseHtml()    /*HtmlBlockCloseHtml  : '<' Spnl '/' ('html' \i) Spnl '>';*/
@@ -1391,7 +1462,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ); return result;
 		}
-        public bool HtmlBlockHtml()    /*^^HtmlBlockHtml : HtmlBlockOpenHtml ( &HtmlBlockCloseHtml /HtmlBlock+) HtmlBlockCloseHtml ;*/
+        public bool HtmlBlockHtml()    /*^^HtmlBlockHtml : HtmlBlockOpenHtml ( &HtmlBlockCloseHtml /HtmlBlock+) @HtmlBlockCloseHtml ;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockHtml,()=>
@@ -1400,9 +1471,11 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseHtml() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseHtml() ) ); return result;
+                  && (    
+                         HtmlBlockCloseHtml()
+                      || Fatal("<<HtmlBlockCloseHtml>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenUnknown()    /*HtmlBlockOpenUnknown : '<' Spnl ![>/] !HtmlBlockSelfClosingType UnknownTagName Spnl  HtmlAttribute* '>';*/
+        public bool HtmlBlockOpenUnknown()    /*HtmlBlockOpenUnknown : '<' Spnl ![>/] !HtmlBlockSelfClosingType UnknownTagName Spnl  HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
@@ -1412,7 +1485,7 @@ namespace Peg.Html
                   && Not(()=> HtmlBlockSelfClosingType() )
                   && UnknownTagName()
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool HtmlBlockCloseUnknown()    /*HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';*/
@@ -1529,7 +1602,7 @@ namespace Peg.Html
                   || HtmlBlockSpan()
                   || HtmlBlockUnknown() ); return result;
 		}
-        public bool HtmlBlock()    /*^^HtmlBlock :(Spnl (HtmlComment/ HtmlBlockInTags  / HtmlBlockSelfClosing )Spnl)/InnerPlain ;*/
+        public bool HtmlBlock()    /*^^HtmlBlock :(Spnl (HtmlComment/PreHtmlBlockSelfClosing/ HtmlBlockInTags  / HtmlBlockSelfClosing )Spnl)/InnerPlain ;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlock,()=>
@@ -1538,12 +1611,26 @@ namespace Peg.Html
                          Spnl()
                       && (      
                                HtmlComment()
+                            || PreHtmlBlockSelfClosing()
                             || HtmlBlockInTags()
                             || HtmlBlockSelfClosing())
                       && Spnl() )
                   || InnerPlain() ); return result;
 		}
-        public bool HtmlBlockSelfClosing()    /*^^HtmlBlockSelfClosing : '<' Spnl ( (PreHtmlBlockSelfClosingType  Spnl HtmlAttribute* '/'?) /(HtmlBlockType  Spnl HtmlAttribute* '/')/ (HtmlBlockSelfClosingType  Spnl HtmlAttribute* '/'?) ) Spnl '>';*/
+        public bool PreHtmlBlockSelfClosing()    /*^^PreHtmlBlockSelfClosing : '<' Spnl (PreHtmlBlockSelfClosingType  Spnl HtmlAttributes '/'? );*/
+        {
+
+           var result= TreeNT((int)EHtml.PreHtmlBlockSelfClosing,()=>
+                And(()=>  
+                     Char('<')
+                  && Spnl()
+                  && And(()=>    
+                         PreHtmlBlockSelfClosingType()
+                      && Spnl()
+                      && HtmlAttributes()
+                      && Option(()=> Char('/') ) ) ) ); return result;
+		}
+        public bool HtmlBlockSelfClosing()    /*^^HtmlBlockSelfClosing : '<' Spnl ( (PreHtmlBlockSelfClosingType  Spnl HtmlAttributes '/'?) /(HtmlBlockType  Spnl HtmlAttributes '/')/ (HtmlBlockSelfClosingType  Spnl HtmlAttributes '/'?) ) Spnl '>';*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockSelfClosing,()=>
@@ -1554,17 +1641,17 @@ namespace Peg.Html
                          And(()=>      
                                PreHtmlBlockSelfClosingType()
                             && Spnl()
-                            && OptRepeat(()=> HtmlAttribute() )
+                            && HtmlAttributes()
                             && Option(()=> Char('/') ) )
                       || And(()=>      
                                HtmlBlockType()
                             && Spnl()
-                            && OptRepeat(()=> HtmlAttribute() )
+                            && HtmlAttributes()
                             && Char('/') )
                       || And(()=>      
                                HtmlBlockSelfClosingType()
                             && Spnl()
-                            && OptRepeat(()=> HtmlAttribute() )
+                            && HtmlAttributes()
                             && Option(()=> Char('/') ) ))
                   && Spnl()
                   && Char('>') ) ); return result;
@@ -1632,7 +1719,7 @@ namespace Peg.Html
            var result= TreeNT((int)EHtml.PreHtmlBlockSelfClosingType,()=>
                 IChar('l','i','n','k') ); return result;
 		}
-        public bool StyleOpen()    /*StyleOpen :     '<' Spnl ('style'  \i ) Spnl HtmlAttribute* '>'  ;*/
+        public bool StyleOpen()    /*StyleOpen :     '<' Spnl ('style'  \i ) Spnl HtmlAttributes '>'  ;*/
         {
 
            var result=And(()=>  
@@ -1640,7 +1727,7 @@ namespace Peg.Html
                   && Spnl()
                   && IChar('s','t','y','l','e')
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Char('>') ); return result;
 		}
         public bool StyleClose()    /*StyleClose :    '<' Spnl '/' ('style'  \i ) Spnl '>' ;*/
@@ -1719,11 +1806,16 @@ namespace Peg.Html
 
            var result=    Spnl() || Char('='); return result;
 		}
-        public bool HtmlAttribute()    /*^^HtmlAttribute : ( (HtmlAttributeHeader )+ (@ExpectedHeaderEnd Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;*/
+        public bool HtmlAttributes()    /*^^HtmlAttributes: HtmlAttribute*;*/
         {
 
-           var result= TreeNT((int)EHtml.HtmlAttribute,()=>
-                And(()=>  
+           var result= TreeNT((int)EHtml.HtmlAttributes,()=>
+                OptRepeat(()=> HtmlAttribute() ) ); return result;
+		}
+        public bool HtmlAttribute()    /*HtmlAttribute : ( (HtmlAttributeHeader )+ (@ExpectedHeaderEnd Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;*/
+        {
+
+           var result=And(()=>  
                      (    
                          And(()=>      
                                PlusRepeat(()=> HtmlAttributeHeader() )
@@ -1739,7 +1831,7 @@ namespace Peg.Html
                                                                            Not(()=> Char('>') )
                                                                         && Nonspacechar() ) )) ) )
                       || GlobalAttributes())
-                  && Spnl() ) ); return result;
+                  && Spnl() ); return result;
 		}
         public bool HtmlComment()    /*^^HtmlComment :   '<!--' (!'-->' .)* '-->';*/
         {
@@ -1751,7 +1843,7 @@ namespace Peg.Html
                       And(()=>    Not(()=> Char('-','-','>') ) && Any() ) )
                   && Char('-','-','>') ) ); return result;
 		}
-        public bool HtmlTag()    /*HtmlTag :       '<' Spnl '/'? AlphanumericAscii+ Spnl HtmlAttribute* '/'? Spnl '>';*/
+        public bool HtmlTag()    /*HtmlTag :       '<' Spnl '/'? AlphanumericAscii+ Spnl HtmlAttributes '/'? Spnl '>';*/
         {
 
            var result=And(()=>  
@@ -1760,7 +1852,7 @@ namespace Peg.Html
                   && Option(()=> Char('/') )
                   && PlusRepeat(()=> AlphanumericAscii() )
                   && Spnl()
-                  && OptRepeat(()=> HtmlAttribute() )
+                  && HtmlAttributes()
                   && Option(()=> Char('/') )
                   && Spnl()
                   && Char('>') ); return result;
