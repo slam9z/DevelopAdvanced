@@ -70,7 +70,6 @@
     <None Include="Markdown\input\link.md" />
     <None Include="Markdown\input\markdown.md" />
     <None Include="Markdown\input\orderedList.md" />
-    <None Include="Markdown\markdown.peg.md" />
     <None Include="Markdown\markdown_parser.leg" />
   </ItemGroup>
   <ItemGroup>

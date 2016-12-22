@@ -35,6 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEG SamplesTests", "PEGGram
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{0FD52E54-C0F9-464C-8B52-584E3B0AF303}"
 	ProjectSection(SolutionItems) = preProject
+		PEGGrammar\Documents\PEG .md = PEGGrammar\Documents\PEG .md
 		PEGGrammar\Documents\PEG_GrammarExplorer_fromCP.htm = PEGGrammar\Documents\PEG_GrammarExplorer_fromCP.htm
 		PEGGrammar\Documents\PEG_GrammerExplorer.jpg = PEGGrammar\Documents\PEG_GrammerExplorer.jpg
 	EndProjectSection

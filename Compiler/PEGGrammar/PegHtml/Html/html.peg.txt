@@ -29,7 +29,7 @@ HtmlBlockCloseDir : '<' Spnl '/' ('dir'  \i ) Spnl '>';
 
 ^^HtmlBlockOpenDiv : '<' Spnl ('div'  \i ) Spnl HtmlAttribute* '>';
 ^^HtmlBlockCloseDiv : '<' Spnl '/' ('div'  \i ) Spnl '>';
-^^HtmlBlockDiv : HtmlBlockOpenDiv (&  HtmlBlockCloseDiv / HtmlBlock+) HtmlBlockCloseDiv;
+^^HtmlBlockDiv : HtmlBlockOpenDiv (&  HtmlBlockCloseDiv / HtmlBlock+) @HtmlBlockCloseDiv;
 
 HtmlBlockOpenDl : '<' Spnl ('dl'  \i ) Spnl HtmlAttribute* '>';
 HtmlBlockCloseDl : '<' Spnl '/' ('dl'  \i ) Spnl '>';
@@ -213,7 +213,7 @@ HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
 		        / HtmlBlockUnknown
 				;
 
-^^HtmlBlock :(Spnl (HtmlBlockInTags / HtmlComment / HtmlBlockSelfClosing )Spnl)/InnerPlain ;
+^^HtmlBlock :(Spnl (HtmlComment/ HtmlBlockInTags  / HtmlBlockSelfClosing )Spnl)/InnerPlain ;
 
 
 
@@ -248,7 +248,10 @@ BlankLine :     Sp Newline;
 
 ^^GlobalAttributes :  'itemscope' ; 
 
-^^HtmlAttribute : ( (AlphanumericAscii / '-')+ Spnl ('=' Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;
+HtmlAttributeHeader: AlphanumericAscii / '-'/'.' ;
+ExpectedHeaderEnd:  Spnl/'=';
+
+^^HtmlAttribute : ( (HtmlAttributeHeader )+ (@ExpectedHeaderEnd Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;
 ^^HtmlComment :   '<!--' (!'-->' .)* '-->';
 HtmlTag :       '<' Spnl '/'? AlphanumericAscii+ Spnl HtmlAttribute* '/'? Spnl '>';
 Spacechar :     ' ' / '\t';

@@ -1,4 +1,4 @@
-/* created on 22/12/2016 21:41:14 from peg generator V1.0 using 'Html' as input*/
+/* created on 22/12/2016 22:50:38 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -48,11 +48,12 @@ namespace Peg.Html
                   HtmlBlockType= 125, HtmlBlockSelfClosingType= 126, PreHtmlBlockSelfClosingType= 127, 
                   StyleOpen= 128, StyleClose= 129, InStyleTags= 130, StyleBlock= 131, 
                   Space= 132, RawHtml= 133, BlankLine= 134, Quoted= 135, GlobalAttributes= 136, 
-                  HtmlAttribute= 137, HtmlComment= 138, HtmlTag= 139, Spacechar= 140, 
-                  Nonspacechar= 141, Newline= 142, Sp= 143, Spnl= 144, AlphanumericAscii= 145, 
-                  SpecialChar= 146, NormalChar= 147, LiteralChar= 148, Symbol= 149, 
-                  InnerPlain= 150, PurePlainContents= 151, LeftPlainContents= 152, 
-                  RightPlainContents= 153, Eof= 154};
+                  HtmlAttributeHeader= 137, ExpectedHeaderEnd= 138, HtmlAttribute= 139, 
+                  HtmlComment= 140, HtmlTag= 141, Spacechar= 142, Nonspacechar= 143, 
+                  Newline= 144, Sp= 145, Spnl= 146, AlphanumericAscii= 147, SpecialChar= 148, 
+                  NormalChar= 149, LiteralChar= 150, Symbol= 151, InnerPlain= 152, 
+                  PurePlainContents= 153, LeftPlainContents= 154, RightPlainContents= 155, 
+                  Eof= 156};
       public class Html : PegCharParser 
       {
         
@@ -291,7 +292,7 @@ namespace Peg.Html
                   && Spnl()
                   && Char('>') ) ); return result;
 		}
-        public bool HtmlBlockDiv()    /*^^HtmlBlockDiv : HtmlBlockOpenDiv (&  HtmlBlockCloseDiv / HtmlBlock+) HtmlBlockCloseDiv;*/
+        public bool HtmlBlockDiv()    /*^^HtmlBlockDiv : HtmlBlockOpenDiv (&  HtmlBlockCloseDiv / HtmlBlock+) @HtmlBlockCloseDiv;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlockDiv,()=>
@@ -300,7 +301,9 @@ namespace Peg.Html
                   && (    
                          Peek(()=> HtmlBlockCloseDiv() )
                       || PlusRepeat(()=> HtmlBlock() ))
-                  && HtmlBlockCloseDiv() ) ); return result;
+                  && (    
+                         HtmlBlockCloseDiv()
+                      || Fatal("<<HtmlBlockCloseDiv>> expected")) ) ); return result;
 		}
         public bool HtmlBlockOpenDl()    /*HtmlBlockOpenDl : '<' Spnl ('dl'  \i ) Spnl HtmlAttribute* '>';*/
         {
@@ -1526,7 +1529,7 @@ namespace Peg.Html
                   || HtmlBlockSpan()
                   || HtmlBlockUnknown() ); return result;
 		}
-        public bool HtmlBlock()    /*^^HtmlBlock :(Spnl (HtmlBlockInTags / HtmlComment / HtmlBlockSelfClosing )Spnl)/InnerPlain ;*/
+        public bool HtmlBlock()    /*^^HtmlBlock :(Spnl (HtmlComment/ HtmlBlockInTags  / HtmlBlockSelfClosing )Spnl)/InnerPlain ;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlBlock,()=>
@@ -1534,8 +1537,8 @@ namespace Peg.Html
                      And(()=>    
                          Spnl()
                       && (      
-                               HtmlBlockInTags()
-                            || HtmlComment()
+                               HtmlComment()
+                            || HtmlBlockInTags()
                             || HtmlBlockSelfClosing())
                       && Spnl() )
                   || InnerPlain() ); return result;
@@ -1706,18 +1709,28 @@ namespace Peg.Html
            var result= TreeNT((int)EHtml.GlobalAttributes,()=>
                 Char("itemscope") ); return result;
 		}
-        public bool HtmlAttribute()    /*^^HtmlAttribute : ( (AlphanumericAscii / '-')+ Spnl ('=' Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;*/
+        public bool HtmlAttributeHeader()    /*HtmlAttributeHeader: AlphanumericAscii / '-'/'.' ;*/
+        {
+
+           var result=    AlphanumericAscii() || Char('-') || Char('.'); return result;
+		}
+        public bool ExpectedHeaderEnd()    /*ExpectedHeaderEnd:  Spnl/'=';*/
+        {
+
+           var result=    Spnl() || Char('='); return result;
+		}
+        public bool HtmlAttribute()    /*^^HtmlAttribute : ( (HtmlAttributeHeader )+ (@ExpectedHeaderEnd Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlAttribute,()=>
                 And(()=>  
                      (    
                          And(()=>      
-                               PlusRepeat(()=>        
-                                        AlphanumericAscii() || Char('-') )
-                            && Spnl()
+                               PlusRepeat(()=> HtmlAttributeHeader() )
                             && And(()=>        
-                                       Char('=')
+                                       (          
+                                                 ExpectedHeaderEnd()
+                                              || Fatal("<<ExpectedHeaderEnd>> expected"))
                                     && Spnl()
                                     && (          
                                                  Quoted()
