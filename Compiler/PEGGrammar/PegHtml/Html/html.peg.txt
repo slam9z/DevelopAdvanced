@@ -83,7 +83,7 @@ HtmlBlockOpenOl : '<' Spnl ('ol'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseOl : '<' Spnl '/' ('ol'  \i ) Spnl '>';
 ^^HtmlBlockOl : HtmlBlockOpenOl (&HtmlBlockCloseOl / HtmlBlock+) @HtmlBlockCloseOl;
 
-HtmlBlockOpenP : '<' Spnl ('p'  \i ) Spnl HtmlAttributes '>';
+HtmlBlockOpenP : '<' Spnl ('p'  \i ) !('>'/LiteralChar) Spnl  HtmlAttributes '>';
 HtmlBlockCloseP : '<' Spnl '/' ('p'  \i ) Spnl '>';
 ^^HtmlBlockP : HtmlBlockOpenP (&HtmlBlockCloseP / HtmlBlock +) @HtmlBlockCloseP;
 
@@ -111,7 +111,7 @@ HtmlBlockOpenFrameset : '<' Spnl ('frameset'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseFrameset : '<' Spnl '/' ('frameset'  \i ) Spnl '>';
 ^^HtmlBlockFrameset : HtmlBlockOpenFrameset (&HtmlBlockCloseFrameset / HtmlBlock+ ) @HtmlBlockCloseFrameset;
 
-HtmlBlockOpenLi : '<' Spnl ('li'  \i ) Spnl HtmlAttributes '>';
+HtmlBlockOpenLi : '<' Spnl ('li'  \i ) !('>'/LiteralChar)  Spnl HtmlAttributes '>';
 HtmlBlockCloseLi : '<' Spnl '/' ('li'  \i ) Spnl '>';
 ^^HtmlBlockLi : HtmlBlockOpenLi (&HtmlBlockCloseLi/HtmlBlock+  ) @HtmlBlockCloseLi;
 
@@ -165,6 +165,11 @@ HtmlBlockCloseHtml  : '<' Spnl '/' ('html' \i) Spnl '>';
 ^^HtmlBlockHtml : HtmlBlockOpenHtml ( &HtmlBlockCloseHtml /HtmlBlock+) @HtmlBlockCloseHtml ;
 
 
+HtmlBlockOpenBody : '<' Spnl ('body'  \i ) Spnl  HtmlAttributes  '>';
+HtmlBlockCloseBody  : '<' Spnl '/' ('body' \i) Spnl '>';
+^^HtmlBlockBody : HtmlBlockOpenBody ( &HtmlBlockCloseBody /HtmlBlock+) @HtmlBlockCloseBody ;
+
+
 HtmlBlockOpenUnknown : '<' Spnl ![>/] !HtmlBlockSelfClosingType UnknownTagName Spnl  HtmlAttributes '>';
 HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
 ^^HtmlBlockUnknown : HtmlBlockOpenUnknown ( &HtmlBlockCloseUnknown /HtmlBlock+) HtmlBlockCloseUnknown ;
@@ -210,25 +215,23 @@ HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
 				/ HtmlBlockA
 				/ HtmlBlockCode
 				/ HtmlBlockSpan
+				/ HtmlBlockBody
 		        / HtmlBlockUnknown
 				;
 
-^^HtmlBlock :(Spnl (HtmlComment/PreHtmlBlockSelfClosing/ HtmlBlockInTags  / HtmlBlockSelfClosing )Spnl)/InnerPlain ;
+^^HtmlBlock :(Spnl (HtmlComment/ HtmlBlockInTags  / HtmlBlockSelfClosing )Spnl)/InnerPlain ;
 
 
-^^PreHtmlBlockSelfClosing : '<' Spnl (PreHtmlBlockSelfClosingType  Spnl HtmlAttributes '/'? );
 
+^^HtmlBlockSelfClosing : '<' Spnl ( (SingleHtmlBlockType  Spnl HtmlAttributes '/')/ (HtmlBlockSelfClosingType  Spnl HtmlAttributes '/'?) ) Spnl '>';
 
-^^HtmlBlockSelfClosing : '<' Spnl ( (PreHtmlBlockSelfClosingType  Spnl HtmlAttributes '/'?) /(HtmlBlockType  Spnl HtmlAttributes '/')/ (HtmlBlockSelfClosingType  Spnl HtmlAttributes '/'?) ) Spnl '>';
-
-^^HtmlBlockType : 'address'\i / 'blockquote'\i / 'center' \i/ 'dir'\i / 'div'\i / 'dl' \i/ 'fieldset' \i/ 'form'\i / 'h1'\i / 'h2'\i / 'h3' \i/
+^^SingleHtmlBlockType : 'address'\i / 'blockquote'\i / 'center' \i/ 'dir'\i / 'div'\i / 'dl' \i/ 'fieldset' \i/ 'form'\i / 'h1'\i / 'h2'\i / 'h3' \i/
                 'h4' \i/ 'h5' \i/ 'h6' \i/ 'isindex'\i / 'menu' \i/ 'noframes' \i/ 'noscript'\i / 'ol' \i/ 'p'\i / 'pre' \i/ 'table'\i /
-                'ul' \i/ 'dd'\i / 'dt'\i / 'frameset' \i/ 'li' \i/ 'tbody'\i / 'td' \i/ 'tfoot' \i/ 'th'\i / 'thead'\i / 'tr'\i / 'script'\i /
+                'ul' \i/ 'dd'\i / 'dt'\i / 'frameset' \i/ 'tbody'\i / 'td' \i/ 'tfoot' \i/ 'th'\i / 'thead'\i / 'tr'\i / 'script'\i /
                  'a' \i ;
 
-^^HtmlBlockSelfClosingType:  'br' \i / 'hr'  /'meta' \i /'input' \i / 'img' \i /'image' \i  /PreHtmlBlockSelfClosingType;
+^^HtmlBlockSelfClosingType:  'br' \i / 'hr'  /'meta' \i /'input' \i / 'img' \i /'image' \i  /'link' \i;
 
-^^PreHtmlBlockSelfClosingType:  'link' \i ;
 
 
 StyleOpen :     '<' Spnl ('style'  \i ) Spnl HtmlAttributes '>'  ;
@@ -250,11 +253,11 @@ BlankLine :     Sp Newline;
 
 ^^GlobalAttributes :  'itemscope' ; 
 
-HtmlAttributeHeader: AlphanumericAscii / '-'/'.' ;
-ExpectedHeaderEnd:  Spnl/'=';
+HtmlAttributeHeader: AlphanumericAscii / '-'/'.'/':' ;
+ExpectedHeaderEnd:  Spnl '=';
 
 ^^HtmlAttributes: HtmlAttribute*;
-HtmlAttribute : ( (HtmlAttributeHeader )+ (@ExpectedHeaderEnd Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;
+^^HtmlAttribute : ( (HtmlAttributeHeader )+ (@ExpectedHeaderEnd Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;
 ^^HtmlComment :   '<!--' (!'-->' .)* '-->';
 HtmlTag :       '<' Spnl '/'? AlphanumericAscii+ Spnl HtmlAttributes '/'? Spnl '>';
 Spacechar :     ' ' / '\t';

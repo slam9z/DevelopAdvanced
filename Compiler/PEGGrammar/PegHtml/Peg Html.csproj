@@ -61,6 +61,7 @@
     <Content Include="Html\input\Other\十万个冷笑话手游雷轰塔怎么过 雷轰塔通关攻略 - 8477手游网.html" />
     <Content Include="Html\input\Other\简历 黎为.htm" />
     <Content Include="Html\input\p.html" />
+    <Content Include="Html\input\path.html" />
     <Content Include="Html\input\span.html" />
     <Content Include="Html\input\DOCTYPE.html" />
     <Compile Include="Properties\AssemblyInfo.cs" />
