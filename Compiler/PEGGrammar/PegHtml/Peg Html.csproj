@@ -46,6 +46,7 @@
     <Content Include="Html\input\div.html" />
     <Content Include="Html\input\input.html" />
     <Content Include="Html\input\nestinput.html" />
+    <Content Include="Html\input\Other\DevelopAdvanced_syntax.htm" />
     <Content Include="Html\input\Other\_20141113 SecureBoot isn%27t configured correctly  message on the desktop - Windows Help.html" />
     <Content Include="Html\input\Other\_20141116 c# - Event handling in Windows Store Apps using MVVM - Stack Overflow.html" />
     <Content Include="Html\input\Other\_20141206 圣经 - 搜狗百科.html" />
@@ -89,6 +90,9 @@
     <Content Include="Html\input\a.html" />
     <Content Include="Html\input\litest.html" />
     <Content Include="Html\input\ultest.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="html错误疑问整理.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

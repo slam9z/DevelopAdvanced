@@ -143,12 +143,12 @@ HtmlBlockOpenScript : '<' Spnl ('script'  \i ) Spnl HtmlAttributes '>';
 HtmlBlockCloseScript : '<' Spnl '/' ('script'   \i ) Spnl '>';
 ^^HtmlBlockScript : HtmlBlockOpenScript (!HtmlBlockCloseScript .)* @HtmlBlockCloseScript;
 
-HtmlBlockOpenHead : '<' Spnl ('head'  \i ) Spnl HtmlAttributes '>';
+HtmlBlockOpenHead : '<' Spnl ('head'  \i )  !('>'/LiteralChar) Spnl HtmlAttributes '>';
 HtmlBlockCloseHead : '<' Spnl '/' ('head'  \i ) Spnl '>';
 ^^HtmlBlockHead : HtmlBlockOpenHead (&HtmlBlockCloseHead/ HtmlBlock+) @HtmlBlockCloseHead ;
 
 
-HtmlBlockOpenA : '<' Spnl ('a'  \i ) Spnl HtmlAttributes '>';
+HtmlBlockOpenA : '<' Spnl ('a'  \i ) !('>'/LiteralChar)  Spnl HtmlAttributes '>';
 HtmlBlockCloseA : '<' Spnl '/' ('a'  \i ) Spnl '>';
 ^^HtmlBlockA : HtmlBlockOpenA (!HtmlBlockCloseA .)* HtmlBlockCloseA ;
 
@@ -168,6 +168,12 @@ HtmlBlockCloseHtml  : '<' Spnl '/' ('html' \i) Spnl '>';
 HtmlBlockOpenBody : '<' Spnl ('body'  \i ) Spnl  HtmlAttributes  '>';
 HtmlBlockCloseBody  : '<' Spnl '/' ('body' \i) Spnl '>';
 ^^HtmlBlockBody : HtmlBlockOpenBody ( &HtmlBlockCloseBody /HtmlBlock+) @HtmlBlockCloseBody ;
+
+
+HtmlBlockOpenHeader : '<' Spnl ('header'  \i )  !('>'/LiteralChar) Spnl HtmlAttributes '>';
+HtmlBlockCloseHeader : '<' Spnl '/' ('header'  \i ) Spnl '>';
+^^HtmlBlockHeader : HtmlBlockOpenHeader (&HtmlBlockCloseHeader/ HtmlBlock+) @HtmlBlockCloseHeader ;
+
 
 
 HtmlBlockOpenUnknown : '<' Spnl ![>/] !HtmlBlockSelfClosingType UnknownTagName Spnl  HtmlAttributes '>';
@@ -211,6 +217,7 @@ HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
                 / HtmlBlockThead
                 / HtmlBlockTr
                 / HtmlBlockScript
+				/ HtmlBlockHeader
                 / HtmlBlockHead 
 				/ HtmlBlockA
 				/ HtmlBlockCode
@@ -226,9 +233,9 @@ HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
 ^^HtmlBlockSelfClosing : '<' Spnl ( (SingleHtmlBlockType  Spnl HtmlAttributes '/')/ (HtmlBlockSelfClosingType  Spnl HtmlAttributes '/'?) ) Spnl '>';
 
 ^^SingleHtmlBlockType : 'address'\i / 'blockquote'\i / 'center' \i/ 'dir'\i / 'div'\i / 'dl' \i/ 'fieldset' \i/ 'form'\i / 'h1'\i / 'h2'\i / 'h3' \i/
-                'h4' \i/ 'h5' \i/ 'h6' \i/ 'isindex'\i / 'menu' \i/ 'noframes' \i/ 'noscript'\i / 'ol' \i/ 'p'\i / 'pre' \i/ 'table'\i /
+                'h4' \i/ 'h5' \i/ 'h6' \i/ 'isindex'\i / 'menu' \i/ 'noframes' \i/ 'noscript'\i / 'ol' \i/ 'p'\i  !('>'/LiteralChar) / 'pre' \i/ 'table'\i /
                 'ul' \i/ 'dd'\i / 'dt'\i / 'frameset' \i/ 'tbody'\i / 'td' \i/ 'tfoot' \i/ 'th'\i / 'thead'\i / 'tr'\i / 'script'\i /
-                 'a' \i ;
+                 'a'  \i !('>'/LiteralChar)  ;
 
 ^^HtmlBlockSelfClosingType:  'br' \i / 'hr'  /'meta' \i /'input' \i / 'img' \i /'image' \i  /'link' \i;
 
@@ -251,13 +258,15 @@ RawHtml :    (HtmlComment / HtmlBlockScript / HtmlTag) ;
 BlankLine :     Sp Newline;
 ^^Quoted :         '\'' (!'\'' .)* '\''  /    '\"' (!'\"' .)* '\"';
 
-^^GlobalAttributes :  'itemscope' ; 
+^^GlobalAttributes :  'itemscope' /'readonly' /'hidden'; 
 
-HtmlAttributeHeader: AlphanumericAscii / '-'/'.'/':' ;
-ExpectedHeaderEnd:  Spnl '=';
+//到底哪些合法
+
+HtmlAttributeHeader: AlphanumericAscii / '-'/'.'/':'/'_' ;
+ExpectedHeaderEnd:  Spnl '=' /&GlobalAttributes;
 
 ^^HtmlAttributes: HtmlAttribute*;
-^^HtmlAttribute : ( (HtmlAttributeHeader )+ (@ExpectedHeaderEnd Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;
+^^HtmlAttribute : ( GlobalAttributes Spnl!'=' /(HtmlAttributeHeader )+ (@ExpectedHeaderEnd Spnl (Quoted / (!'>' Nonspacechar)+)) ) Spnl ;
 ^^HtmlComment :   '<!--' (!'-->' .)* '-->';
 HtmlTag :       '<' Spnl '/'? AlphanumericAscii+ Spnl HtmlAttributes '/'? Spnl '>';
 Spacechar :     ' ' / '\t';

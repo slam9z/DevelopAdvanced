@@ -318,7 +318,7 @@ namespace PEG_Explorer
         {
             tvParseTree.Nodes.Clear();
             AddTreeNode(null, root, nodeToString);
-            ExpandTop(10);
+            ExpandTop(100);
         }
 
         private int id;

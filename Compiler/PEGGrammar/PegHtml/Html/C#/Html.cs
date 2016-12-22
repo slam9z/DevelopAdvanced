@@ -1,4 +1,4 @@
-/* created on 22/12/2016 23:44:29 from peg generator V1.0 using 'Html' as input*/
+/* created on 23/12/2016 00:48:56 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -43,18 +43,19 @@ namespace Peg.Html
                   HtmlBlockCloseCode= 110, HtmlBlockCode= 111, HtmlBlockOpenSpan= 112, 
                   HtmlBlockCloseSpan= 113, HtmlBlockSpan= 114, HtmlBlockOpenHtml= 115, 
                   HtmlBlockCloseHtml= 116, HtmlBlockHtml= 117, HtmlBlockOpenBody= 118, 
-                  HtmlBlockCloseBody= 119, HtmlBlockBody= 120, HtmlBlockOpenUnknown= 121, 
-                  HtmlBlockCloseUnknown= 122, HtmlBlockUnknown= 123, UnknownTagName= 124, 
-                  HtmlBlockInTags= 125, HtmlBlock= 126, HtmlBlockSelfClosing= 127, 
-                  SingleHtmlBlockType= 128, HtmlBlockSelfClosingType= 129, StyleOpen= 130, 
-                  StyleClose= 131, InStyleTags= 132, StyleBlock= 133, Space= 134, 
-                  RawHtml= 135, BlankLine= 136, Quoted= 137, GlobalAttributes= 138, 
-                  HtmlAttributeHeader= 139, ExpectedHeaderEnd= 140, HtmlAttributes= 141, 
-                  HtmlAttribute= 142, HtmlComment= 143, HtmlTag= 144, Spacechar= 145, 
-                  Nonspacechar= 146, Newline= 147, Sp= 148, Spnl= 149, AlphanumericAscii= 150, 
-                  SpecialChar= 151, NormalChar= 152, LiteralChar= 153, Symbol= 154, 
-                  InnerPlain= 155, PurePlainContents= 156, LeftPlainContents= 157, 
-                  RightPlainContents= 158, Eof= 159};
+                  HtmlBlockCloseBody= 119, HtmlBlockBody= 120, HtmlBlockOpenHeader= 121, 
+                  HtmlBlockCloseHeader= 122, HtmlBlockHeader= 123, HtmlBlockOpenUnknown= 124, 
+                  HtmlBlockCloseUnknown= 125, HtmlBlockUnknown= 126, UnknownTagName= 127, 
+                  HtmlBlockInTags= 128, HtmlBlock= 129, HtmlBlockSelfClosing= 130, 
+                  SingleHtmlBlockType= 131, HtmlBlockSelfClosingType= 132, StyleOpen= 133, 
+                  StyleClose= 134, InStyleTags= 135, StyleBlock= 136, Space= 137, 
+                  RawHtml= 138, BlankLine= 139, Quoted= 140, GlobalAttributes= 141, 
+                  HtmlAttributeHeader= 142, ExpectedHeaderEnd= 143, HtmlAttributes= 144, 
+                  HtmlAttribute= 145, HtmlComment= 146, HtmlTag= 147, Spacechar= 148, 
+                  Nonspacechar= 149, Newline= 150, Sp= 151, Spnl= 152, AlphanumericAscii= 153, 
+                  SpecialChar= 154, NormalChar= 155, LiteralChar= 156, Symbol= 157, 
+                  InnerPlain= 158, PurePlainContents= 159, LeftPlainContents= 160, 
+                  RightPlainContents= 161, Eof= 162};
       public class Html : PegCharParser 
       {
         
@@ -1307,13 +1308,14 @@ namespace Peg.Html
                          HtmlBlockCloseScript()
                       || Fatal("<<HtmlBlockCloseScript>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenHead()    /*HtmlBlockOpenHead : '<' Spnl ('head'  \i ) Spnl HtmlAttributes '>';*/
+        public bool HtmlBlockOpenHead()    /*HtmlBlockOpenHead : '<' Spnl ('head'  \i )  !('>'/LiteralChar) Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && IChar('h','e','a','d')
+                  && Not(()=>     Char('>') || LiteralChar() )
                   && Spnl()
                   && HtmlAttributes()
                   && Char('>') ); return result;
@@ -1342,13 +1344,14 @@ namespace Peg.Html
                          HtmlBlockCloseHead()
                       || Fatal("<<HtmlBlockCloseHead>> expected")) ) ); return result;
 		}
-        public bool HtmlBlockOpenA()    /*HtmlBlockOpenA : '<' Spnl ('a'  \i ) Spnl HtmlAttributes '>';*/
+        public bool HtmlBlockOpenA()    /*HtmlBlockOpenA : '<' Spnl ('a'  \i ) !('>'/LiteralChar)  Spnl HtmlAttributes '>';*/
         {
 
            var result=And(()=>  
                      Char('<')
                   && Spnl()
                   && IChar('a')
+                  && Not(()=>     Char('>') || LiteralChar() )
                   && Spnl()
                   && HtmlAttributes()
                   && Char('>') ); return result;
@@ -1512,6 +1515,42 @@ namespace Peg.Html
                          HtmlBlockCloseBody()
                       || Fatal("<<HtmlBlockCloseBody>> expected")) ) ); return result;
 		}
+        public bool HtmlBlockOpenHeader()    /*HtmlBlockOpenHeader : '<' Spnl ('header'  \i )  !('>'/LiteralChar) Spnl HtmlAttributes '>';*/
+        {
+
+           var result=And(()=>  
+                     Char('<')
+                  && Spnl()
+                  && IChar('h','e','a','d','e','r')
+                  && Not(()=>     Char('>') || LiteralChar() )
+                  && Spnl()
+                  && HtmlAttributes()
+                  && Char('>') ); return result;
+		}
+        public bool HtmlBlockCloseHeader()    /*HtmlBlockCloseHeader : '<' Spnl '/' ('header'  \i ) Spnl '>';*/
+        {
+
+           var result=And(()=>  
+                     Char('<')
+                  && Spnl()
+                  && Char('/')
+                  && IChar('h','e','a','d','e','r')
+                  && Spnl()
+                  && Char('>') ); return result;
+		}
+        public bool HtmlBlockHeader()    /*^^HtmlBlockHeader : HtmlBlockOpenHeader (&HtmlBlockCloseHeader/ HtmlBlock+) @HtmlBlockCloseHeader ;*/
+        {
+
+           var result= TreeNT((int)EHtml.HtmlBlockHeader,()=>
+                And(()=>  
+                     HtmlBlockOpenHeader()
+                  && (    
+                         Peek(()=> HtmlBlockCloseHeader() )
+                      || PlusRepeat(()=> HtmlBlock() ))
+                  && (    
+                         HtmlBlockCloseHeader()
+                      || Fatal("<<HtmlBlockCloseHeader>> expected")) ) ); return result;
+		}
         public bool HtmlBlockOpenUnknown()    /*HtmlBlockOpenUnknown : '<' Spnl ![>/] !HtmlBlockSelfClosingType UnknownTagName Spnl  HtmlAttributes '>';*/
         {
 
@@ -1589,6 +1628,7 @@ namespace Peg.Html
                 / HtmlBlockThead
                 / HtmlBlockTr
                 / HtmlBlockScript
+				/ HtmlBlockHeader
                 / HtmlBlockHead 
 				/ HtmlBlockA
 				/ HtmlBlockCode
@@ -1634,6 +1674,7 @@ namespace Peg.Html
                   || HtmlBlockThead()
                   || HtmlBlockTr()
                   || HtmlBlockScript()
+                  || HtmlBlockHeader()
                   || HtmlBlockHead()
                   || HtmlBlockA()
                   || HtmlBlockCode()
@@ -1677,9 +1718,9 @@ namespace Peg.Html
                   && Char('>') ) ); return result;
 		}
         public bool SingleHtmlBlockType()    /*^^SingleHtmlBlockType : 'address'\i / 'blockquote'\i / 'center' \i/ 'dir'\i / 'div'\i / 'dl' \i/ 'fieldset' \i/ 'form'\i / 'h1'\i / 'h2'\i / 'h3' \i/
-                'h4' \i/ 'h5' \i/ 'h6' \i/ 'isindex'\i / 'menu' \i/ 'noframes' \i/ 'noscript'\i / 'ol' \i/ 'p'\i / 'pre' \i/ 'table'\i /
+                'h4' \i/ 'h5' \i/ 'h6' \i/ 'isindex'\i / 'menu' \i/ 'noframes' \i/ 'noscript'\i / 'ol' \i/ 'p'\i  !('>'/LiteralChar) / 'pre' \i/ 'table'\i /
                 'ul' \i/ 'dd'\i / 'dt'\i / 'frameset' \i/ 'tbody'\i / 'td' \i/ 'tfoot' \i/ 'th'\i / 'thead'\i / 'tr'\i / 'script'\i /
-                 'a' \i ;*/
+                 'a'  \i !('>'/LiteralChar)  ;*/
         {
 
            var result= TreeNT((int)EHtml.SingleHtmlBlockType,()=>
@@ -1703,7 +1744,9 @@ namespace Peg.Html
                   || IChar("noframes")
                   || IChar("noscript")
                   || IChar('o','l')
-                  || IChar('p')
+                  || And(()=>    
+                         IChar('p')
+                      && Not(()=>     Char('>') || LiteralChar() ) )
                   || IChar('p','r','e')
                   || IChar('t','a','b','l','e')
                   || IChar('u','l')
@@ -1717,7 +1760,9 @@ namespace Peg.Html
                   || IChar('t','h','e','a','d')
                   || IChar('t','r')
                   || IChar('s','c','r','i','p','t')
-                  || IChar('a') ); return result;
+                  || And(()=>    
+                         IChar('a')
+                      && Not(()=>     Char('>') || LiteralChar() ) ) ); return result;
 		}
         public bool HtmlBlockSelfClosingType()    /*^^HtmlBlockSelfClosingType:  'br' \i / 'hr'  /'meta' \i /'input' \i / 'img' \i /'image' \i  /'link' \i;*/
         {
@@ -1803,25 +1848,33 @@ namespace Peg.Html
                             And(()=>    Not(()=> Char('\"') ) && Any() ) )
                       && Char('\"') ) ); return result;
 		}
-        public bool GlobalAttributes()    /*^^GlobalAttributes :  'itemscope' ;*/
+        public bool GlobalAttributes()    /*^^GlobalAttributes :  'itemscope' /'readonly' /'hidden'; 
+
+//到底哪些合法*/
         {
 
            var result= TreeNT((int)EHtml.GlobalAttributes,()=>
-                Char("itemscope") ); return result;
+                  
+                     Char("itemscope")
+                  || Char("readonly")
+                  || Char('h','i','d','d','e','n') ); return result;
 		}
-        public bool HtmlAttributeHeader()    /*HtmlAttributeHeader: AlphanumericAscii / '-'/'.'/':' ;*/
+        public bool HtmlAttributeHeader()    /*HtmlAttributeHeader: AlphanumericAscii / '-'/'.'/':'/'_' ;*/
         {
 
            var result=  
                      AlphanumericAscii()
                   || Char('-')
                   || Char('.')
-                  || Char(':'); return result;
+                  || Char(':')
+                  || Char('_'); return result;
 		}
-        public bool ExpectedHeaderEnd()    /*ExpectedHeaderEnd:  Spnl '=';*/
+        public bool ExpectedHeaderEnd()    /*ExpectedHeaderEnd:  Spnl '=' /&GlobalAttributes;*/
         {
 
-           var result=And(()=>    Spnl() && Char('=') ); return result;
+           var result=  
+                     And(()=>    Spnl() && Char('=') )
+                  || Peek(()=> GlobalAttributes() ); return result;
 		}
         public bool HtmlAttributes()    /*^^HtmlAttributes: HtmlAttribute*;*/
         {
@@ -1829,13 +1882,17 @@ namespace Peg.Html
            var result= TreeNT((int)EHtml.HtmlAttributes,()=>
                 OptRepeat(()=> HtmlAttribute() ) ); return result;
 		}
-        public bool HtmlAttribute()    /*^^HtmlAttribute : ( (HtmlAttributeHeader )+ (@ExpectedHeaderEnd Spnl (Quoted / (!'>' Nonspacechar)+)) /GlobalAttributes) Spnl ;*/
+        public bool HtmlAttribute()    /*^^HtmlAttribute : ( GlobalAttributes Spnl!'=' /(HtmlAttributeHeader )+ (@ExpectedHeaderEnd Spnl (Quoted / (!'>' Nonspacechar)+)) ) Spnl ;*/
         {
 
            var result= TreeNT((int)EHtml.HtmlAttribute,()=>
                 And(()=>  
                      (    
                          And(()=>      
+                               GlobalAttributes()
+                            && Spnl()
+                            && Not(()=> Char('=') ) )
+                      || And(()=>      
                                PlusRepeat(()=> HtmlAttributeHeader() )
                             && And(()=>        
                                        (          
@@ -1847,8 +1904,7 @@ namespace Peg.Html
                                               || PlusRepeat(()=>            
                                                           And(()=>              
                                                                            Not(()=> Char('>') )
-                                                                        && Nonspacechar() ) )) ) )
-                      || GlobalAttributes())
+                                                                        && Nonspacechar() ) )) ) ))
                   && Spnl() ) ); return result;
 		}
         public bool HtmlComment()    /*^^HtmlComment :   '<!--' (!'-->' .)* '-->';*/
