@@ -78,10 +78,19 @@ namespace Peg.Html.Tests
         public void AllFileTest()
         {
             var files = Directory.GetFiles(_inputFolder, "*.*", SearchOption.AllDirectories);
+
+            var hasfail = false;
+
             foreach (var file in files)
             {
-                RunInstanceTest(file);
+                if (!RunInstanceTest(file))
+                {
+                    hasfail = true;
+                }
             }
+
+            Assert.AreEqual(false, hasfail);
+
         }
 
 
@@ -91,22 +100,27 @@ namespace Peg.Html.Tests
         }
 
 
-        private void RunInstanceTest(string path)
+        private bool RunInstanceTest(string path)
         {
             try
             {
                 var markdownSrc = File.ReadAllText(path);
 
-
                 var markdown = new Peg.Html.Html(markdownSrc, errOut);
 
-                Assert.AreEqual(true, markdown.Doc());
+                markdown.Doc();
+
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"source path: {path}");
                 Console.WriteLine($"error: {ex.Message}");
+
+                return false;
             }
+
+
 
         }
     }
