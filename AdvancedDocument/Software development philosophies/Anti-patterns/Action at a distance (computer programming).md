@@ -1,0 +1,7 @@
+[Action at a distance (computer programming)](https://en.wikipedia.org/wiki/Action_at_a_distance_(computer_programming))
+
+In computer science, action at a distance is an anti-pattern (a recognized common error) in which behavior in one part of a program varies wildly based on difficult or impossible to identify operations in another part of the program. The way to avoid the problems associated with action at a distance are a proper design, which avoids global variables and alters data in a controlled and local manner, or usage of a pure functional programming style with referential transparency.
+
+The term is based on the concept of action at a distance in physics, which may refer to a process that allows objects to interact without a mediator particle such as the gluon. In particular, Albert Einstein referred to this effect in quantum mechanics as "spooky action at a distance".
+
+Software bugs due to "action at a distance" may arise because a program component is doing something at the wrong time, or affecting something it should not. It is very difficult, however, to track down which component is responsible. Side effects from innocent actions can put the program in an unknown state, so local data is not necessarily local. The solution in this particular scenario is to define which components should be interacting with which others. A proper design that accurately defines the interface between parts of a program, and that avoids shared states, can largely eliminate problems caused by action at a distance.
