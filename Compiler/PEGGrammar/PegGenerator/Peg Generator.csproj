@@ -41,6 +41,7 @@
     <Compile Include="PegCSharpGenerator.cs" />
     <Compile Include="PegGrammarParser.cs" />
     <Compile Include="PegParserGenerator.cs" />
+    <Compile Include="PegRunUtils.cs" />
     <Compile Include="PegUtils.cs" />
   </ItemGroup>
   <ItemGroup>

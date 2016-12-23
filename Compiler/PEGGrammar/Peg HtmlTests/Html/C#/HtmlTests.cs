@@ -19,7 +19,6 @@ namespace Peg.Html.Tests
 
         private string _inputFolder = "..\\..\\..\\Peg HtmlTests\\Html\\input\\";
 
-
         private string _baseFolder = "..\\..\\..\\PegHtml\\Html\\";
 
 
@@ -46,65 +45,21 @@ namespace Peg.Html.Tests
             _htmlPEGFile = _baseFolder + "html.peg.txt";
         }
 
-        bool RunImpl(string src, TextWriter Fout)
-        {
-
-            try
-            {
-                var pg = new PegGrammarParser();
-                pg.Construct(src, Fout);
-                pg.SetSource(src);
-                pg.SetErrorDestination(Fout);
-                bool bMatches = pg.peg_module();
-                root = pg.GetRoot();
-                return bMatches;
-            }
-            catch (PegException exp)
-            {
-                // Console.WriteLine($"{exp.Message},{exp.StackTrace}");
-                Assert.Fail(exp.Message);
-                return false;
-            }
-        }
-        //         errOut_.WriteLine("<{0},{1}>{2}:{3}", lineNo, colNo, sErrKind, sMsg);
-
-
-
 
         [TestMethod()]
         public void CreateHtml()
         {
+
             pegSrc = File.ReadAllText(_htmlPEGFile);
-            if (RunImpl(pegSrc, errOut))
-            {
+            root = PegRunUtils.ParsePegGrammar(pegSrc, errOut);
+            var postProcParams = new ParserPostProcessParams(GetOutputDirectory(), "Html", "Html", root, pegSrc, errOut);
 
-                var postProcParams = new ParserPostProcessParams(GetOutputDirectory(), "Html", "Html", root, pegSrc, errOut);
-
-                var postProcessor = (IParserPostProcessor)new PegParserGenerator();
-                if (postProcessor != null)
-                {
-                    postProcessor.Postprocess(postProcParams);
-                }
-            }
+            PegRunUtils.CreatePegCodeFile(postProcParams);
 
         }
 
 
 
-        private string GetOutputDirectory()
-        {
-            return _baseFolder;
-        }
-
-
-        private void RunInstanceTest(string relativePath)
-        {
-            var markdownSrc = File.ReadAllText(Path.Combine(_inputFolder, relativePath ));
-            var markdown = new Peg.Html.Html(markdownSrc, errOut);
-            Console.WriteLine($"source length: {markdownSrc.Length}");
-            Console.WriteLine($"source : {markdownSrc}");
-            Assert.AreEqual(true, markdown.Doc());
-        }
 
         [TestMethod()]
         public void HtmlTest()
@@ -117,6 +72,22 @@ namespace Peg.Html.Tests
         public void SpecialCharTest()
         {
             RunInstanceTest("specialchar.html");
+        }
+
+
+        private string GetOutputDirectory()
+        {
+            return _baseFolder;
+        }
+
+
+        private void RunInstanceTest(string relativePath)
+        {
+            var markdownSrc = File.ReadAllText(Path.Combine(_inputFolder, relativePath));
+            var markdown = new Peg.Html.Html(markdownSrc, errOut);
+            Console.WriteLine($"source length: {markdownSrc.Length}");
+            Console.WriteLine($"source : {markdownSrc}");
+            Assert.AreEqual(true, markdown.Doc());
         }
     }
 }
