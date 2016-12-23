@@ -64,14 +64,24 @@ namespace Peg.Html.Tests
         [TestMethod()]
         public void HtmlTest()
         {
-            RunInstanceTest("html.html");
+            RunInstanceTest(Path.Combine(_inputFolder, "html.html"));
         }
 
 
         [TestMethod()]
         public void SpecialCharTest()
         {
-            RunInstanceTest("specialchar.html");
+            RunInstanceTest(Path.Combine(_inputFolder, "specialchar.html"));
+        }
+
+        [TestMethod()]
+        public void AllFileTest()
+        {
+            var files = Directory.GetFiles(_inputFolder, "*.*", SearchOption.AllDirectories);
+            foreach (var file in files)
+            {
+                RunInstanceTest(file);
+            }
         }
 
 
@@ -81,13 +91,23 @@ namespace Peg.Html.Tests
         }
 
 
-        private void RunInstanceTest(string relativePath)
+        private void RunInstanceTest(string path)
         {
-            var markdownSrc = File.ReadAllText(Path.Combine(_inputFolder, relativePath));
-            var markdown = new Peg.Html.Html(markdownSrc, errOut);
-            Console.WriteLine($"source length: {markdownSrc.Length}");
-            Console.WriteLine($"source : {markdownSrc}");
-            Assert.AreEqual(true, markdown.Doc());
+            try
+            {
+                var markdownSrc = File.ReadAllText(path);
+
+
+                var markdown = new Peg.Html.Html(markdownSrc, errOut);
+
+                Assert.AreEqual(true, markdown.Doc());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"source path: {path}");
+                Console.WriteLine($"error: {ex.Message}");
+            }
+
         }
     }
 }

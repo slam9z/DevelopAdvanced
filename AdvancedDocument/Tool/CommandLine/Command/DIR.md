@@ -2,7 +2,17 @@ Display a list of files and subfolders
 
 ## display folder all file
 
-Syntax
+```
+dir /s /b
+```
+
+### output file
+```
+chcp 65001
+dir /s /b >filelist.md
+```
+
+## Syntax
       DIR [pathname(s)] [display_format] [file_attributes] [sorted] [time] [options]
 Key
    [pathname] The drive, folder, and/or files to display, 
