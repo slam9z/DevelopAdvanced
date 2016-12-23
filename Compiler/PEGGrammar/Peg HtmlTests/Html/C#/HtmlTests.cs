@@ -17,7 +17,7 @@ namespace Peg.Html.Tests
     {
 
 
-        private string _inputFolder = "..\\..\\..\\PegHtml\\Html\\input\\";
+        private string _inputFolder = "..\\..\\..\\Peg HtmlTests\\Html\\input\\";
 
 
         private string _baseFolder = "..\\..\\..\\PegHtml\\Html\\";
@@ -69,7 +69,7 @@ namespace Peg.Html.Tests
         //         errOut_.WriteLine("<{0},{1}>{2}:{3}", lineNo, colNo, sErrKind, sMsg);
 
 
-        
+
 
         [TestMethod()]
         public void CreateHtml()
@@ -96,27 +96,27 @@ namespace Peg.Html.Tests
             return _baseFolder;
         }
 
-   
+
+        private void RunInstanceTest(string relativePath)
+        {
+            var markdownSrc = File.ReadAllText(Path.Combine(_inputFolder, relativePath ));
+            var markdown = new Peg.Html.Html(markdownSrc, errOut);
+            Console.WriteLine($"source length: {markdownSrc.Length}");
+            Console.WriteLine($"source : {markdownSrc}");
+            Assert.AreEqual(true, markdown.Doc());
+        }
 
         [TestMethod()]
         public void HtmlTest()
         {
-            var markdownSrc = File.ReadAllText(Path.Combine(_inputFolder, "html.html"));
-            var markdown = new Peg.Html.Html(markdownSrc, errOut);
-            Console.WriteLine($"source length: {markdownSrc.Length}");
-            Console.WriteLine($"source : {markdownSrc}");
-            markdown.Doc();
+            RunInstanceTest("html.html");
         }
 
 
         [TestMethod()]
         public void SpecialCharTest()
         {
-            var markdownSrc = File.ReadAllText(Path.Combine(_inputFolder, "specialchar.html"));
-            var markdown = new Peg.Html.Html(markdownSrc, errOut);
-            Console.WriteLine($"source length: {markdownSrc.Length}");
-            Console.WriteLine($"source : {markdownSrc}");
-            markdown.Doc();
+            RunInstanceTest("specialchar.html");
         }
     }
 }

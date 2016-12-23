@@ -1,4 +1,7 @@
 Display a list of files and subfolders
+
+## display folder all file
+
 Syntax
       DIR [pathname(s)] [display_format] [file_attributes] [sorted] [time] [options]
 Key
