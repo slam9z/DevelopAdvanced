@@ -1,4 +1,4 @@
-/* created on 24/12/2016 00:04:54 from peg generator V1.0 using 'Html' as input*/
+/* created on 24/12/2016 00:44:17 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -1886,18 +1886,20 @@ namespace Peg.Html
                             && QuotedContents()
                             && Char('\'') ) ) ); return result;
 		}
-        public bool Quoted()    /*^^Quoted :       '\"' QuotedContents '\"'  / '\'' QuotedContents '\'' ;*/
+        public bool Quoted()    /*^^Quoted :       '\"' (!'\"' .)* '\"'  / '\'' (!'\'' .)* '\'' ;*/
         {
 
            var result= TreeNT((int)EHtml.Quoted,()=>
                   
                      And(()=>    
                          Char('\"')
-                      && QuotedContents()
+                      && OptRepeat(()=>      
+                            And(()=>    Not(()=> Char('\"') ) && Any() ) )
                       && Char('\"') )
                   || And(()=>    
                          Char('\'')
-                      && QuotedContents()
+                      && OptRepeat(()=>      
+                            And(()=>    Not(()=> Char('\'') ) && Any() ) )
                       && Char('\'') ) ); return result;
 		}
         public bool GlobalAttributes()    /*^^GlobalAttributes :  'itemscope' /'readonly' /'hidden'; 

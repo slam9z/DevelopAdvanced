@@ -259,7 +259,7 @@ BlankLine :     Sp Newline;
 
 ^^QuotedContents :         ('\'' (!'\'' .)* '\''  /    '\"' (!'\"' .)* '\"' /  '\"' QuotedContents '\"'  / '\'' QuotedContents '\'')* ;
 
-^^Quoted :       '\"' QuotedContents '\"'  / '\'' QuotedContents '\'' ;
+^^Quoted :       '\"' (!'\"' .)* '\"'  / '\'' (!'\'' .)* '\'' ;
 
 ^^GlobalAttributes :  'itemscope' /'readonly' /'hidden'; 
 
