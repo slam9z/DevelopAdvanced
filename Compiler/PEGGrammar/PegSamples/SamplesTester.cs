@@ -97,7 +97,7 @@ namespace Peg.Samples
              (new Peg.Html.Html()).Doc,
              "HTML (readable grammar)",
              "HTML",
-             @"PegHtml\Html\input",
+             @"Peg HtmlTests\Html\input",
              null));
 
             sampleGrammars.Add(
