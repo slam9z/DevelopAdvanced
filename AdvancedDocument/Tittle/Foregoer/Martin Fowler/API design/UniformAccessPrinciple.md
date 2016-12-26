@@ -1,0 +1,1 @@
+[UniformAccessPrinciple](http://martinfowler.com/bliki/UniformAccessPrinciple.html)

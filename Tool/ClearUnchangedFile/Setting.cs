@@ -18,10 +18,7 @@ namespace ClearUnchangedFile
 
     public class Setting
     {
-        public string ClearFolder { get; set; }
-        public string CompareFolder { get; set; }
-        public IList<string> ForceDeleteFiles { get; set; }
-
+     
 
         public SettingInfo GetSettingInfo()
         {
@@ -89,7 +86,17 @@ namespace ClearUnchangedFile
             Console.WriteLine($"load setting {settingFileName}");
 
             var json = File.ReadAllText(settingFileName);
-            return (SettingInfo)JsonConvert.DeserializeObject(json, typeof(SettingInfo));
+            var info= (SettingInfo)JsonConvert.DeserializeObject(json, typeof(SettingInfo));
+            if (string.IsNullOrWhiteSpace(info.CompareFolder))
+            {
+                info.CompareFolder = info.ClearFolder + "_Compare";
+            }
+            if (info.ForceDeleteFiles == null)
+            {
+                info.ForceDeleteFiles = new List<string>();
+            }
+
+            return info;
         }
     }
 

@@ -1,0 +1,1 @@
+[Input text auto width filling 100% with other elements floating](http://stackoverflow.com/questions/10244927/input-text-auto-width-filling-100-with-other-elements-floating)

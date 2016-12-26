@@ -1,0 +1,3 @@
+[HeaderInterface](http://martinfowler.com/bliki/HeaderInterface.html)
+
+A header interface is an explicit interface that mimics the implicit public interface of a class. Essentially you take all the public methods of a class and declare them in an interface. You can then supply an alternative implementation for the class. This is the opposite of a RoleInterface - I discuss more details and the pros and cons there.

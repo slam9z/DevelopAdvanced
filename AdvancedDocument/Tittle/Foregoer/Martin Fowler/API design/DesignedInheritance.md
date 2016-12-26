@@ -1,0 +1,1 @@
+[DesignedInheritance](http://martinfowler.com/bliki/DesignedInheritance.html)

@@ -1,0 +1,1 @@
+[OpenInheritance](http://martinfowler.com/bliki/OpenInheritance.html)

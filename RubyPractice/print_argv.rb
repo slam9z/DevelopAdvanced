@@ -1,4 +1,4 @@
-
-print "²ÎÊı1 ",ARGV[0],"\n"
-print "²ÎÊı2 ",ARGV[1].to_i+1,"\n"
-print "²ÎÊı3 ",ARGV[2],"\n"
+ï»¿
+print "å‚æ•°1 ",ARGV[0],"\n"
+print "å‚æ•°2 ",ARGV[1].to_i+1,"\n"
+print "å‚æ•°3 ",ARGV[2],"\n"

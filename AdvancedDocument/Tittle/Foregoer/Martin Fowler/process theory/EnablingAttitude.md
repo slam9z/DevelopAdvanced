@@ -1,0 +1,5 @@
+[EnablingAttitude](http://martinfowler.com/bliki/EnablingAttitude.html)
+
+One of two SoftwareDevelopmentAttitudes.The enabling attitude takes the view that developers are responsible professionals and so should be given the freedom to do whatever they need to do. Designs that follow this attitude should make things easy to use well but should assume that developers know what they are doing and thus not try hard to prevent something being used badly. As such these tools can be misused, but take the attitude that users should know better, and if they don't they deserve all they get.
+
+People with a DirectingAttitude criticize this elitist attitude by saying it can only be used by the upper quartile of software developers. As such they just aren't practical for the general bell curve of software developers.

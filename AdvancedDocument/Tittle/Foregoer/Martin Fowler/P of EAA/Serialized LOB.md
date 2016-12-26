@@ -1,0 +1,1 @@
+[Serialized LOB](http://martinfowler.com/eaaCatalog/serializedLOB.html)

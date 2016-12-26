@@ -1,0 +1,1 @@
+[SetterInitialization](http://martinfowler.com/bliki/SetterInitialization.html)
