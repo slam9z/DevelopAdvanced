@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Client\Oppo\PC使用手机网络.md" />
     <Compile Include="Technology\AMQP\RabbitMQ\Tutorials\1. Hello World\Receive.cs" />
     <Compile Include="Technology\AMQP\RabbitMQ\Tutorials\1. Hello World\Send.cs" />
     <Compile Include="Technology\AMQP\RabbitMQ\Tutorials\2. Work queues\NewTask.cs" />
@@ -125,6 +126,7 @@
     <None Include="Client\APP\QQ.md" />
     <None Include="Client\APP\文件传输.md" />
     <None Include="Client\APP\输入法.md" />
+    <None Include="Client\Oppo\手机目录.md" />
     <None Include="Client\Windows\XAML\WPF WindowsFormsHost 类 .md" />
     <None Include="Data Access\ADO.NET\ConnectionString.md" />
     <None Include="Data Access\Paging\ROW_NUMBER分页.md" />
