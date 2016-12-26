@@ -1,4 +1,4 @@
-[If it ain't broke, don't fix it](https://en.wikipedia.org/wiki/Bert_Lance#.22If_it_ain.27t_broke.2C_don.27t_fix_it..22)
+[If it ain't(eɪnt) broke, don't fix it](https://en.wikipedia.org/wiki/Bert_Lance#.22If_it_ain.27t_broke.2C_don.27t_fix_it..22)
 
 如果没坏，就不要修理它。
 
