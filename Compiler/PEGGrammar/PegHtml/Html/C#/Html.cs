@@ -1,4 +1,4 @@
-/* created on 24/12/2016 00:44:17 from peg generator V1.0 using 'Html' as input*/
+/* created on 26/12/2016 21:26:32 from peg generator V1.0 using 'Html' as input*/
 
 using Peg.Base;
 using System;
@@ -44,19 +44,21 @@ namespace Peg.Html
                   HtmlBlockCloseSpan= 113, HtmlBlockSpan= 114, HtmlBlockOpenHtml= 115, 
                   HtmlBlockCloseHtml= 116, HtmlBlockHtml= 117, HtmlBlockOpenBody= 118, 
                   HtmlBlockCloseBody= 119, HtmlBlockBody= 120, HtmlBlockOpenHeader= 121, 
-                  HtmlBlockCloseHeader= 122, HtmlBlockHeader= 123, HtmlBlockOpenUnknown= 124, 
-                  HtmlBlockCloseUnknown= 125, HtmlBlockUnknown= 126, UnknownTagName= 127, 
-                  HtmlBlockInTags= 128, HtmlBlock= 129, UnknownHtmlBlockSelfClosing= 130, 
-                  HtmlBlockSelfClosing= 131, SingleHtmlBlockType= 132, HtmlBlockSelfClosingType= 133, 
-                  StyleOpen= 134, StyleClose= 135, InStyleTags= 136, StyleBlock= 137, 
-                  Space= 138, RawHtml= 139, BlankLine= 140, QuotedContents= 141, 
-                  Quoted= 142, GlobalAttributes= 143, HtmlAttributeHeader= 144, 
-                  ExpectedAttributeHeaderEnd= 145, ExpectedAttributeValue= 146, 
-                  HtmlAttributes= 147, HtmlAttribute= 148, HtmlComment= 149, HtmlTag= 150, 
-                  Spacechar= 151, Nonspacechar= 152, Newline= 153, Sp= 154, Spnl= 155, 
-                  AlphanumericAscii= 156, SpecialChar= 157, NormalChar= 158, LiteralChar= 159, 
-                  Symbol= 160, InnerPlain= 161, PurePlainContents= 162, LeftPlainContents= 163, 
-                  RightPlainContents= 164, Eof= 165};
+                  HtmlBlockCloseHeader= 122, HtmlBlockHeader= 123, HtmlBlockOpenImg= 124, 
+                  HtmlBlockCloseImg= 125, HtmlBlockImg= 126, HtmlBlockOpenImage= 127, 
+                  HtmlBlockCloseImage= 128, HtmlBlockImage= 129, HtmlBlockOpenUnknown= 130, 
+                  HtmlBlockCloseUnknown= 131, HtmlBlockUnknown= 132, UnknownTagName= 133, 
+                  HtmlBlockInTags= 134, HtmlBlock= 135, UnknownHtmlBlockSelfClosing= 136, 
+                  HtmlBlockSelfClosing= 137, SingleHtmlBlockType= 138, HtmlBlockSelfClosingType= 139, 
+                  StyleOpen= 140, StyleClose= 141, InStyleTags= 142, StyleBlock= 143, 
+                  Space= 144, RawHtml= 145, BlankLine= 146, QuotedContents= 147, 
+                  Quoted= 148, GlobalAttributes= 149, HtmlAttributeHeader= 150, 
+                  ExpectedAttributeHeaderEnd= 151, ExpectedAttributeValue= 152, 
+                  HtmlAttributes= 153, HtmlAttribute= 154, HtmlComment= 155, HtmlTag= 156, 
+                  Spacechar= 157, Nonspacechar= 158, Newline= 159, Sp= 160, Spnl= 161, 
+                  AlphanumericAscii= 162, SpecialChar= 163, NormalChar= 164, LiteralChar= 165, 
+                  Symbol= 166, InnerPlain= 167, PurePlainContents= 168, LeftPlainContents= 169, 
+                  RightPlainContents= 170, Eof= 171};
       public class Html : PegCharParser 
       {
         
@@ -1555,6 +1557,74 @@ namespace Peg.Html
                          HtmlBlockCloseHeader()
                       || Fatal("<<HtmlBlockCloseHeader>> expected")) ) ); return result;
 		}
+        public bool HtmlBlockOpenImg()    /*HtmlBlockOpenImg : '<' Spnl ('img'  \i )  !(LiteralChar) Spnl HtmlAttributes '>';*/
+        {
+
+           var result=And(()=>  
+                     Char('<')
+                  && Spnl()
+                  && IChar('i','m','g')
+                  && Not(()=> LiteralChar() )
+                  && Spnl()
+                  && HtmlAttributes()
+                  && Char('>') ); return result;
+		}
+        public bool HtmlBlockCloseImg()    /*HtmlBlockCloseImg : '<' Spnl '/' ('img'  \i ) Spnl '>';*/
+        {
+
+           var result=And(()=>  
+                     Char('<')
+                  && Spnl()
+                  && Char('/')
+                  && IChar('i','m','g')
+                  && Spnl()
+                  && Char('>') ); return result;
+		}
+        public bool HtmlBlockImg()    /*^^HtmlBlockImg : HtmlBlockOpenImg (!HtmlBlockCloseImg .)*  HtmlBlockCloseImg ;*/
+        {
+
+           var result= TreeNT((int)EHtml.HtmlBlockImg,()=>
+                And(()=>  
+                     HtmlBlockOpenImg()
+                  && OptRepeat(()=>    
+                      And(()=>    Not(()=> HtmlBlockCloseImg() ) && Any() ) )
+                  && HtmlBlockCloseImg() ) ); return result;
+		}
+        public bool HtmlBlockOpenImage()    /*HtmlBlockOpenImage : '<' Spnl ('image'  \i )  !(LiteralChar) Spnl HtmlAttributes '>';*/
+        {
+
+           var result=And(()=>  
+                     Char('<')
+                  && Spnl()
+                  && IChar('i','m','a','g','e')
+                  && Not(()=> LiteralChar() )
+                  && Spnl()
+                  && HtmlAttributes()
+                  && Char('>') ); return result;
+		}
+        public bool HtmlBlockCloseImage()    /*HtmlBlockCloseImage : '<' Spnl '/' ('img'  \i ) Spnl '>';*/
+        {
+
+           var result=And(()=>  
+                     Char('<')
+                  && Spnl()
+                  && Char('/')
+                  && IChar('i','m','g')
+                  && Spnl()
+                  && Char('>') ); return result;
+		}
+        public bool HtmlBlockImage()    /*^^HtmlBlockImage : HtmlBlockOpenImage (!HtmlBlockCloseImage .)*  HtmlBlockCloseImage ;*/
+        {
+
+           var result= TreeNT((int)EHtml.HtmlBlockImage,()=>
+                And(()=>  
+                     HtmlBlockOpenImage()
+                  && OptRepeat(()=>    
+                      And(()=>      
+                               Not(()=> HtmlBlockCloseImage() )
+                            && Any() ) )
+                  && HtmlBlockCloseImage() ) ); return result;
+		}
         public bool HtmlBlockOpenUnknown()    /*HtmlBlockOpenUnknown : '<' Spnl ![>/] !HtmlBlockSelfClosingType UnknownTagName Spnl  HtmlAttributes '>';*/
         {
 
@@ -1635,6 +1705,8 @@ namespace Peg.Html
 				/ HtmlBlockHeader
                 / HtmlBlockHead 
 				/ HtmlBlockA
+				/ HtmlBlockImage
+				/ HtmlBlockImg
 				/ HtmlBlockCode
 				/ HtmlBlockSpan
 				/ HtmlBlockBody
@@ -1681,6 +1753,8 @@ namespace Peg.Html
                   || HtmlBlockHeader()
                   || HtmlBlockHead()
                   || HtmlBlockA()
+                  || HtmlBlockImage()
+                  || HtmlBlockImg()
                   || HtmlBlockCode()
                   || HtmlBlockSpan()
                   || HtmlBlockBody()

@@ -175,6 +175,14 @@ HtmlBlockCloseHeader : '<' Spnl '/' ('header'  \i ) Spnl '>';
 ^^HtmlBlockHeader : HtmlBlockOpenHeader (&HtmlBlockCloseHeader/ HtmlBlock+) @HtmlBlockCloseHeader ;
 
 
+HtmlBlockOpenImg : '<' Spnl ('img'  \i )  !(LiteralChar) Spnl HtmlAttributes '>';
+HtmlBlockCloseImg : '<' Spnl '/' ('img'  \i ) Spnl '>';
+^^HtmlBlockImg : HtmlBlockOpenImg (!HtmlBlockCloseImg .)*  HtmlBlockCloseImg ;
+
+HtmlBlockOpenImage : '<' Spnl ('image'  \i )  !(LiteralChar) Spnl HtmlAttributes '>';
+HtmlBlockCloseImage : '<' Spnl '/' ('img'  \i ) Spnl '>';
+^^HtmlBlockImage : HtmlBlockOpenImage (!HtmlBlockCloseImage .)*  HtmlBlockCloseImage ;
+
 
 HtmlBlockOpenUnknown : '<' Spnl ![>/] !HtmlBlockSelfClosingType UnknownTagName Spnl  HtmlAttributes '>';
 HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
@@ -220,6 +228,8 @@ HtmlBlockCloseUnknown : '<' Spnl '/'  !'>'  UnknownTagName  Spnl '>';
 				/ HtmlBlockHeader
                 / HtmlBlockHead 
 				/ HtmlBlockA
+				/ HtmlBlockImage
+				/ HtmlBlockImg
 				/ HtmlBlockCode
 				/ HtmlBlockSpan
 				/ HtmlBlockBody

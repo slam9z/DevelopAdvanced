@@ -81,3 +81,11 @@ blogAbstract:'&nbsp;   <P style=\"TEXT-INDENT: 2em;\"=2em;\" \=\>Notepad++是闪
 ```html
 <span class="bk-album-arrow-icon">◆</span>
 ```
+
+
+
+## _20141206 圣经 - 搜狗百科
+
+```html
+<img src="http://cache.soso.com/baike/shop/220105.jpg" height="105" width="220" /></img>
+```
