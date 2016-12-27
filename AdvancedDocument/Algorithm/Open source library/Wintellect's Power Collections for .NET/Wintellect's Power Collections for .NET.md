@@ -1,0 +1,1 @@
+[Wintellect's Power Collections for .NET](http://powercollections.codeplex.com/SourceControl/latest)
