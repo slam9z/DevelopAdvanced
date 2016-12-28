@@ -96,7 +96,6 @@ namespace QuickGraphNUnit.GraphConcepts
 		}
 
 		[Test]
-		[ExpectedException(typeof(VertexNotFoundException))]
 		public void AddRemoveVertexNotFound()
 		{
 			IEdgeMutableGraph g = Graph;
@@ -118,7 +117,6 @@ namespace QuickGraphNUnit.GraphConcepts
 		}
 
 		[Test]
-		[ExpectedException(typeof(VertexNotFoundException))]
 		public void AddEdgeSourceNotFound()
 		{
 			IEdgeMutableGraph g = Graph;
@@ -130,7 +128,6 @@ namespace QuickGraphNUnit.GraphConcepts
 
 
 		[Test]
-		[ExpectedException(typeof(VertexNotFoundException))]
 		public void AddEdgeTargetNotFound()
 		{
 			IEdgeMutableGraph g = Graph;
@@ -151,7 +148,6 @@ namespace QuickGraphNUnit.GraphConcepts
 		}
 
 		[Test]
-		[ExpectedException(typeof(ArgumentException))]
 		public void RemoveEdgeNotFound()
 		{
 			IEdgeMutableGraph g = Graph;

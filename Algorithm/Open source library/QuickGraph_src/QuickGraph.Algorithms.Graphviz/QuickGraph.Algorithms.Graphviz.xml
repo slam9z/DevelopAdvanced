@@ -1,0 +1,1808 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QuickGraph.Algorithms.Graphviz</name>
+    </assembly>
+    <members>
+        <member name="T:QuickGraph.Algorithms.Graphviz.AlgorithmTracerVisitor">
+            <summary>
+            A visitor that output the graph color state at each change
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.AlgorithmTracerVisitor.#ctor(QuickGraph.Concepts.Traversals.IVertexAndEdgeListGraph,System.String,System.String,QuickGraph.Algorithms.Graphviz.GraphvizImageType)">
+            <summary>
+            
+            </summary>
+            <param name="g"></param>
+            <param name="prefix"></param>
+            <param name="path"></param>
+            <param name="imageType"></param>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.AlgorithmTracerVisitor.VertexLabels">
+            <summary>
+            Vertex name map
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.AlgorithmTracerVisitor.EdgeLabels">
+            <summary>
+            Edge name map
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.AlgorithmTracerVisitor.WriteGraph(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.AlgorithmTracerVisitor.WriteVertex(System.Object,QuickGraph.Concepts.VertexEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.AlgorithmTracerVisitor.WriteEdge(System.Object,QuickGraph.Concepts.EdgeEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.AlgorithmTracerVisitor.InitializeVertex(System.Object,QuickGraph.Concepts.VertexEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.AlgorithmTracerVisitor.DiscoverVertex(System.Object,QuickGraph.Concepts.VertexEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.AlgorithmTracerVisitor.FinishVertex(System.Object,QuickGraph.Concepts.VertexEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.AlgorithmTracerVisitor.OutputGraph(System.Object,QuickGraph.Concepts.VertexEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.AlgorithmTracerVisitor.TreeEdge(System.Object,QuickGraph.Concepts.EdgeEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection">
+            <summary>
+            A collection of elements of type GraphvizLayer
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.#ctor">
+            <summary>
+            Initializes a new empty instance of the GraphvizLayerCollection class.
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.#ctor(QuickGraph.Algorithms.Graphviz.GraphvizLayer[])">
+            <summary>
+            Initializes a new instance of the GraphvizLayerCollection class, containing elements
+            copied from an array.
+            </summary>
+            <param name="items">
+            The array whose elements are to be added to the new GraphvizLayerCollection.
+            </param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.#ctor(QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection)">
+            <summary>
+            Initializes a new instance of the GraphvizLayerCollection class, containing elements
+            copied from another instance of GraphvizLayerCollection
+            </summary>
+            <param name="items">
+            The GraphvizLayerCollection whose elements are to be added to the new GraphvizLayerCollection.
+            </param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.AddRange(QuickGraph.Algorithms.Graphviz.GraphvizLayer[])">
+            <summary>
+            Adds the elements of an array to the end of this GraphvizLayerCollection.
+            </summary>
+            <param name="items">
+            The array whose elements are to be added to the end of this GraphvizLayerCollection.
+            </param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.AddRange(QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection)">
+            <summary>
+            Adds the elements of another GraphvizLayerCollection to the end of this GraphvizLayerCollection.
+            </summary>
+            <param name="items">
+            The GraphvizLayerCollection whose elements are to be added to the end of this GraphvizLayerCollection.
+            </param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.Add(QuickGraph.Algorithms.Graphviz.GraphvizLayer)">
+            <summary>
+            Adds an instance of type GraphvizLayer to the end of this GraphvizLayerCollection.
+            </summary>
+            <param name="value">
+            The GraphvizLayer to be added to the end of this GraphvizLayerCollection.
+            </param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.Contains(QuickGraph.Algorithms.Graphviz.GraphvizLayer)">
+            <summary>
+            Determines whether a specfic GraphvizLayer value is in this GraphvizLayerCollection.
+            </summary>
+            <param name="value">
+            The GraphvizLayer value to locate in this GraphvizLayerCollection.
+            </param>
+            <returns>
+            true if value is found in this GraphvizLayerCollection;
+            false otherwise.
+            </returns>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.IndexOf(QuickGraph.Algorithms.Graphviz.GraphvizLayer)">
+            <summary>
+            Return the zero-based index of the first occurrence of a specific value
+            in this GraphvizLayerCollection
+            </summary>
+            <param name="value">
+            The GraphvizLayer value to locate in the GraphvizLayerCollection.
+            </param>
+            <returns>
+            The zero-based index of the first occurrence of the _ELEMENT value if found;
+            -1 otherwise.
+            </returns>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.Insert(System.Int32,QuickGraph.Algorithms.Graphviz.GraphvizLayer)">
+            <summary>
+            Inserts an element into the GraphvizLayerCollection at the specified index
+            </summary>
+            <param name="index">
+            The index at which the GraphvizLayer is to be inserted.
+            </param>
+            <param name="value">
+            The GraphvizLayer to insert.
+            </param>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.Item(System.Int32)">
+            <summary>
+            Gets or sets the GraphvizLayer at the given index in this GraphvizLayerCollection.
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.Remove(QuickGraph.Algorithms.Graphviz.GraphvizLayer)">
+            <summary>
+            Removes the first occurrence of a specific GraphvizLayer from this GraphvizLayerCollection.
+            </summary>
+            <param name="value">
+            The GraphvizLayer value to remove from this GraphvizLayerCollection.
+            </param>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.Separators">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.ToDot">
+            <summary>
+            Converts to dot code
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.Enumerator">
+            <summary>
+            Type-specific enumeration class, used by GraphvizLayerCollection.GetEnumerator.
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.Enumerator.#ctor(QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection)">
+            <summary>
+            Builds enumerator
+            </summary>
+            <param name="collection"></param>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.Enumerator.Current">
+            <summary>
+            Current layer
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.Enumerator.System#Collections#IEnumerator#Current">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.Enumerator.MoveNext">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.Enumerator.Reset">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.Collections.GraphvizLayerCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that can iterate through the elements of this GraphvizLayerCollection.
+            </summary>
+            <returns>
+            An object that implements System.Collections.IEnumerator.
+            </returns>        
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.DotRenderer">
+            <summary>
+            A dot commandline wrapper
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.DotRenderer.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.DotRenderer.#ctor(System.String,System.String,QuickGraph.Algorithms.Graphviz.GraphvizImageType)">
+            <summary>
+            Detailled constructor
+            </summary>
+            <param name="prefix"></param>
+            <param name="path"></param>
+            <param name="imageType"></param>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.DotRenderer.Prefix">
+            <summary>
+            String to create the file name
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.DotRenderer.Path">
+            <summary>
+            File output path
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.DotRenderer.ImageType">
+            <summary>
+            Output image type
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.DotRenderer.CleanDotFiles">
+            <summary>
+            Deletes .dot file in the current path
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.DotRenderer.Render(System.String,QuickGraph.Algorithms.Graphviz.GraphvizImageType)">
+            <summary>
+            Writes the dot code to the dotFileName and then executes dot on it.
+            </summary>
+            <param name="dotCode"></param>
+            <param name="imageType"></param>
+            <returns>output file name</returns>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.DotRenderer.Render(System.String)">
+            <summary>
+            Writes the dot code to the dotFileName and then executes dot on it.
+            </summary>
+            <param name="dotCode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape">
+            <summary>
+            Possigle vertex shape in the dot language
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Unspecified">
+            <summary>
+            Shape not specified
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Box">
+            <summary>
+            Box shape
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Polygon">
+            <summary>
+            Polygon, used with Sides, Skew and distorsion
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Ellipse">
+            <summary>
+            Elipse shpae
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Circle">
+            <summary>
+            Circle shape
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Point">
+            <summary>
+            Point
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Egg">
+            <summary>
+            Egg shpae
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Triangle">
+            <summary>
+            Triangle shape
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Plaintext">
+            <summary>
+            Plain text
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Diamond">
+            <summary>
+            Diamond shape
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Trapezium">
+            <summary>
+            Trapezion shape
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Parallelogram">
+            <summary>
+            Parallelogram
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.House">
+            <summary>
+            House shape
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Pentagon">
+            <summary>
+            Pentagon
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Hexagon">
+            <summary>
+            Hexagon
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Septagon">
+            <summary>
+            Septagon
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Octagon">
+            <summary>
+            Octagon
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.DoubleCircle">
+            <summary>
+            DoubleCircle
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.DoubleOctagon">
+            <summary>
+            DoubleOctagon
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.TripleOctagon">
+            <summary>
+            TripleOctagon
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.InvTriangle">
+            <summary>
+            InvTriangle
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.InvTrapezium">
+            <summary>
+            InvTrapezium
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.InvHouse">
+            <summary>
+            InvHouse
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.MDiamond">
+            <summary>
+            MiddleDiamond
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.MSquare">
+            <summary>
+            MiddleSquare
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.MCircle">
+            <summary>
+            MiddleCircle
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Rect">
+            <summary>
+            Rect
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Rectangle">
+            <summary>
+            Rectangle
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexShape.Record">
+            <summary>
+            Record
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizVertexStyle">
+            <summary>
+            Vertex styles in graphviz format
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexStyle.Unspecified">
+            <summary>
+            Not specified, ignored
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexStyle.Filled">
+            <summary>
+            Filled shape. Uses the FillColor
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexStyle.Diagonals">
+            <summary>
+            Adds diagonals. Show the TopLabel and BottomLabel.
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexStyle.Rounded">
+            <summary>
+            Rounded
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexStyle.Invis">
+            <summary>
+            Invisible shpae
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexStyle.Dashed">
+            <summary>
+            Dashed line
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexStyle.Dotted">
+            <summary>
+            Dotted line
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexStyle.Bold">
+            <summary>
+            Bold line
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizVertexStyle.Solid">
+            <summary>
+            Solid edge
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizEdgeStyle">
+            <summary>
+            Edge style
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizEdgeStyle.Unspecified">
+            <summary>
+            Not specified, ignored
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizEdgeStyle.Invis">
+            <summary>
+            Invisible shpae
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizEdgeStyle.Dashed">
+            <summary>
+            Dashed line
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizEdgeStyle.Dotted">
+            <summary>
+            Dotted line
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizEdgeStyle.Bold">
+            <summary>
+            Bold line
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizEdgeStyle.Solid">
+            <summary>
+            Solid edge
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizArrowShape">
+            <summary>
+            Arrow shape enumeration
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowShape.Box">
+            <summary>
+            Box arrow
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowShape.Crow">
+            <summary>
+            Crow arrow
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowShape.Diamond">
+            <summary>
+            Diamond arrow
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowShape.Dot">
+            <summary>
+            Dot arrow
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowShape.Inv">
+            <summary>
+            Inv
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowShape.None">
+            <summary>
+            No arrow
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowShape.Normal">
+            <summary>
+            Normal arrow
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowShape.Tee">
+            <summary>
+            Tee
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowShape.Vee">
+            <summary>
+            Vee
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizArrowClipping">
+            <summary>
+            Arrow clipping
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowClipping.None">
+            <summary>
+            No clipping
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowClipping.Left">
+            <summary>
+            Clip the shape, leaving only the part to the left of the edge. 
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowClipping.Right">
+            <summary>
+            Clip the shape, leaving only the part to the right of the edge. 
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizArrowFilling">
+            <summary>
+            Arrow fille
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowFilling.Close">
+            <summary>
+            Close, filled shaped
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizArrowFilling.Open">
+            <summary>
+            Opened non-fille shape
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizEdgeDirection">
+            <summary>
+            Enumeration that specifies where the arrow head is drawed
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizEdgeDirection.None">
+            <summary>
+            No arrow head
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizEdgeDirection.Forward">
+            <summary>
+            forward position
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizEdgeDirection.Back">
+            <summary>
+            Back position
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizEdgeDirection.Both">
+            <summary>
+            forward and back
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizImageType">
+            <summary>
+            Supported output image file types
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Fig">
+            <summary>
+            Fig
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Gd">
+            <summary>
+            Gd format
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Gd2">
+            <summary>
+            GD2 format
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Gif">
+            <summary>
+            Famous gif
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Hpgl">
+            <summary>
+            HP-GL/2
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Imap">
+            <summary>
+            Server-side imagemaps
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Cmap">
+            <summary>
+            Client-side imagemaps
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Jpeg">
+            <summary>
+            JPEG
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Mif">
+            <summary>
+            FrameMaker MIF format
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Mp">
+            <summary>
+            MetaPost
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Pcl">
+            <summary>
+            PCL
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Pic">
+            <summary>
+            PIC
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.PlainText">
+            <summary>
+            Simple text format
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Png">
+            <summary>
+            Portable Network Graphics format
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Ps">
+            <summary>
+            PostScript
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Ps2">
+            <summary>
+            PostScript for PDF
+            </summary>		
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Svg">
+            <summary>
+            Scalable Vector Graphics
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Svgz">
+            <summary>
+            Scalable Vector Graphics, gzipped
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Vrml">
+            <summary>
+            VRML
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Vtx">
+            <summary>
+            Visual Thought format
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.GraphvizImageType.Wbmp">
+            <summary>
+            Wireless BitMap format
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.ClusterMode">
+            <summary>
+            Mode used for handling clusters.
+            If clusterrank is "local", 
+            a subgraph whose name begins with "cluster" is given special treatment. 
+            The subgraph is laid out separately, and then integrated as a unit into 
+            its parent graph, with a bounding rectangle drawn about it. 
+            
+            If the cluster has a label parameter, this label is displayed within 
+            the rectangle. 
+            Note also that there can be clusters within clusters. At present, 
+            the modes "global" and "none" 
+            appear to be identical, both turning off the special cluster processing. 
+            color 
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.ClusterMode.Local">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.ClusterMode.Global">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.ClusterMode.None">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.LabelJustification">
+            <summary>
+            Justification for cluster labels.
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.LabelJustification.L">
+            <summary>
+            Left-justificed
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.LabelJustification.R">
+            <summary>
+            Right-justified
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.LabelJustification.C">
+            <summary>
+            Centered
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.LabelLocation">
+            <summary>
+            Top/bottom placement of graph and cluster labels. 
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.LabelLocation.T">
+            <summary>
+            Labels at top
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.LabelLocation.B">
+            <summary>
+            Bottom placement
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.OutputMode">
+            <summary>
+            Specify the order in which nodes and edges are drawn in concrete output.
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.OutputMode.BreadthFirst">
+            <summary>
+            The default BreadthFirst is the simplest, but when the graph 
+            layout does not avoid edge-node overlap, this mode will sometimes 
+            have edges drawn over nodes and sometimes on top of nodes.
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.OutputMode.NodesFirst">
+            <summary>
+            If the mode NodesFirst is chosen, all nodes are drawn first, 
+            followed by the edges. This guarantees an edge-node overlap will 
+            not be mistaken for an edge ending at a node.
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.OutputMode.EdgesFirst">
+            <summary>
+            Usually for aesthetic reasons, it may be desirable that all edges 
+            appear beneath nodes, even if the resulting drawing is ambiguous. 
+            This can be achieved by choosing EdgesFirst. 
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.PageDirection">
+            <summary>
+            These specify the 8 row or column major orders for traversing a 
+            rectangular array, the first character corresponding to the major 
+            order and the second to the minor order. Thus, for "BL", the major 
+            order is from bottom to top, and the minor order is from left to right. 
+            
+            This means the bottom row is traversed first, from left to right, 
+            then the next row up, from left to right, and so on, 
+            until the topmost row is traversed. 
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.PageDirection.BL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.PageDirection.BR">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.PageDirection.TL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.PageDirection.TR">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.PageDirection.RB">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.PageDirection.RT">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.PageDirection.LB">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.PageDirection.LT">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.RatioMode">
+            <summary>
+            Aspect ratio (drawing height/drawing width) for the drawing.
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.RatioMode.Fill">
+            <summary>
+            Vertex positions are scaled, separately in both x and y, so that 
+            the final drawing exactly fills the specified size. 
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.RatioMode.Compress">
+            <summary>
+            Dot attempts to compress the initial layout to fit in the given 
+            size. This achieves a tighter packing of nodes but reduces the 
+            balance and symmetry. This feature only works in dot. 
+            </summary>
+        </member>
+        <member name="F:QuickGraph.Algorithms.Graphviz.RatioMode.Auto">
+            <summary>
+            If ratio = "auto", the page attribute is set and the graph cannot 
+            be drawn on a single 
+            page, then size is set to an ``ideal'' value. In particular, the 
+            size in a given dimension will be the smallest integral multiple 
+            of the page size in that dimension which is at least half the
+            current size. The two dimensions are then scaled independently to 
+            the new size. This feature only works in dot. 
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizAlgorithm">
+            <summary>
+            A graphviz writer.
+            </summary>
+            <remarks>
+            <para>
+            This algorithms "renders" the graph to the dot format. dot is an open
+            source application for drawing graphs available at  
+            http://www.research.att.com/sw/tools/graphviz/.
+            </para>
+            <para>
+            Further output customization can be achieved by using visitors and
+            events. The events are
+            <list>
+            <para>The GraphViz .Net wrapping was found written by Leppied and can be found 
+            at http://www.codeproject.com/dotnet/dfamachine.asp</para>
+            <listheader>
+            	<term>Event</term>
+            	<description>Description</description>
+            </listheader>
+            <item>
+            	<term>WriteGraph</term>
+            	<description>Add graph and global customization code here.</description>
+            </item>
+            <item>
+            	<term>WriteVertex</term>
+            	<description>Add vertex appearance customization code here.</description>
+            </item>
+            <item>
+            	<term>WriteEdge</term>
+            	<description>Add edge appearance customization code here.</description>
+            </item>
+            </list>
+            </para>
+            </remarks>
+            <example>
+            This basic samples outputs the graph to a file:
+            <code>				
+            FileStream file = new FileStream(...,FileMode.Create, FileAccess.Write);
+            GraphvizWriterAlgorithm gw = new GraphvizWriterAlgorithm(g,file);
+            gw.Write();
+            </code>
+            </example>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizAlgorithm.#ctor(QuickGraph.Concepts.Traversals.IVertexAndEdgeListGraph)">
+            <summary>
+            
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizAlgorithm.#ctor(QuickGraph.Concepts.Traversals.IVertexAndEdgeListGraph,System.String,System.String,QuickGraph.Algorithms.Graphviz.GraphvizImageType)">
+            <summary>
+            Builds a new Graphviz writer of the graph g using the Stream s.
+            </summary>
+            <param name="g">Graph to visit.</param>
+            <param name="prefix"></param>
+            <param name="path">Path where files are to be created</param>
+            <param name="imageType">image output type</param>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizAlgorithm.VisitedGraph">
+            <summary>
+            Visited graph
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizAlgorithm.Renderer">
+            <summary>
+            Renderer
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizAlgorithm.Output">
+            <summary>
+            Dot output stream.
+            </summary>
+        </member>
+        <member name="E:QuickGraph.Algorithms.Graphviz.GraphvizAlgorithm.WriteGraph">
+            <summary>
+            Output the graph properties
+            </summary>
+        </member>
+        <member name="E:QuickGraph.Algorithms.Graphviz.GraphvizAlgorithm.WriteVertex">
+            <summary>
+            Outputs the vertex property
+            </summary>
+        </member>
+        <member name="E:QuickGraph.Algorithms.Graphviz.GraphvizAlgorithm.WriteEdge">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizAlgorithm.Write(QuickGraph.Algorithms.Graphviz.GraphvizImageType)">
+            <summary>
+            Generates the dot code to be rendered with GraphViz
+            </summary>
+            <param name="imageType"></param>
+            <returns>outputed file name</returns>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizAlgorithm.Write">
+            <summary>
+            Generates the dot code to be rendered with GraphViz
+            </summary>
+            <returns>outputed file name.</returns>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizAlgorithm.RegisterVisitor(QuickGraph.Algorithms.Graphviz.IGraphvizVisitor)">
+            <summary>
+            
+            </summary>
+            <param name="vis"></param>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizArrow">
+            <summary>
+            A arrow shape
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizArrow.#ctor(QuickGraph.Algorithms.Graphviz.GraphvizArrowShape)">
+            <summary>
+            Builds a arrow.
+            </summary>
+            <param name="shape">Arrow shape</param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizArrow.#ctor(QuickGraph.Algorithms.Graphviz.GraphvizArrowShape,QuickGraph.Algorithms.Graphviz.GraphvizArrowClipping,QuickGraph.Algorithms.Graphviz.GraphvizArrowFilling)">
+            <summary>
+            Builds an arrow
+            </summary>
+            <param name="shape">Arrow shape</param>
+            <param name="clip">Clip option</param>
+            <param name="fill">Fill option</param>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizArrow.Shape">
+            <summary>
+            Arrow shape
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizArrow.Clipping">
+            <summary>
+            Clip option
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizArrow.Filling">
+            <summary>
+            Filling
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizArrow.ToDot">
+            <summary>
+            Converts arrow to dot code
+            </summary>
+            <returns>dot code</returns>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizArrow.ToString">
+            <summary>
+            Converts arrow to string. Uses ToDot
+            </summary>
+            <returns>string representation of the arrow</returns>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizEdge">
+            <summary>
+            Helper for customizing the apperance of an edge in GraphViz
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizEdge.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.Url">
+            <summary>
+            See <see cref="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Url"/>.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.HeadArrow">
+            <summary>
+            Style of arrowhead on the head node of an edge.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.TailArrow">
+            <summary>
+            Style of arrowhead on the tail node of an edge.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.StrokeColor">
+            <summary>
+            Basic drawing color for graphics. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.Comment">
+            <summary>
+            Comments are inserted into output. Device-dependent 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.IsConstrained">
+            <summary>
+            See Graphviz doc.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.IsDecorated">
+            <summary>
+            If true, attach edge label to edge by a 2-segment polyline, 
+            underlining the label, then going to the closest point of spline. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.Dir">
+            <summary>
+            Arrow direction
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.Font">
+            <summary>
+            General font
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.FontColor">
+            <summary>
+            Text color
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.Head">
+            <summary>
+            Head description
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.Tail">
+            <summary>
+            Tail description
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.Label">
+            <summary>
+            Label description
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.Layer">
+            <summary>
+            Specifies layers in which the edge is present. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.MinLength">
+            <summary>
+            Minimum edge length (rank difference between head and tail). 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.Style">
+            <summary>
+            Set style foredge. For cluster subgraph, if "filled", 
+            the cluster box's background is filled. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.ToolTip">
+            <summary>
+            Tooltip annotation attached to the node or edge. 
+            This is used only if the object has a URL attribute.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdge.Weight">
+            <summary>
+            Weight of edge. In dot, the heavier the weight, the shorter, 
+            straighter and more vertical the edge is. 
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizEdge.ToDot">
+            <summary>
+            Returns dot code
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizEdge.ToString">
+            <summary>
+            Returns to string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizEdge.GenerateDot(System.Collections.Hashtable)">
+            <summary>
+            Converts a dictionary of parameters name-value to dot code.
+            </summary>
+            <param name="pairs">name-value pair collection</param>
+            <returns>dot code</returns>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizEdgeExtremity">
+            <summary>
+            Description r閟um閑 de GraphvizEdgeExtremity.
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizEdgeExtremity.#ctor(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="isHead"></param>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdgeExtremity.IsHead">
+            <summary>
+            True if is head
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdgeExtremity.Url">
+            <summary>
+            For the output format imap or cmap, if Url is defined, 
+            it is output as part of the extremity label of the edge.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdgeExtremity.IsClipped">
+            <summary>
+            If true, the extremity of an edge is clipped to the boundary of the extremity 
+            node; otherwise, the end of the edge goes to the center of the 
+            node, or the center of a port, if applicable.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdgeExtremity.Label">
+            <summary>
+            Text label to be placed near extremity of edge. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdgeExtremity.ToolTip">
+            <summary>
+            Tooltip annotation attached to the extremity of an edge. 
+            This is used only if the edge has a Url attribute. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdgeExtremity.Logical">
+            <summary>
+            Logical extremity of an edge. When compound is true, if Logical is 
+            defined and is the name of a cluster containing the real extremity, 
+            the edge is clipped to the boundary of the cluster.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdgeExtremity.Same">
+            <summary>
+            Edges with the same extremity and the same samehead value are 
+            aimed at the same point on the head. 
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizEdgeExtremity.AddParameters(System.Collections.IDictionary)">
+            <summary>
+            Adds the parameters relative to the extremity
+            </summary>
+            <param name="dic"></param>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizEdgeLabel">
+            <summary>
+            An edge label
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizEdgeLabel.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizEdgeLabel.AddParameters(System.Collections.IDictionary)">
+            <summary>
+            Adds parameters to the list
+            </summary>
+            <param name="dic">name-value map</param>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdgeLabel.Angle">
+            <summary>
+            Label angle
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdgeLabel.Distance">
+            <summary>
+            Lable distance
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdgeLabel.Float">
+            <summary>
+            If true, label is floating
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdgeLabel.FontColor">
+            <summary>
+            Label font color
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdgeLabel.Font">
+            <summary>
+            Label font
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizEdgeLabel.Value">
+            <summary>
+            Label text
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizGraph">
+            <summary>
+            Description r閟um閑 de GraphvizGraph.
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizGraph.#ctor">
+            <summary>
+            Default contructor
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizGraph.ToDot">
+            <summary>
+            Converts to dot code
+            </summary>
+            <returns>dot code</returns>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizGraph.ToString">
+            <summary>
+            Converts graph option to string. Uses ToDot
+            </summary>
+            <returns>string representation</returns>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.Url">
+            <summary>
+            Hyperlinks incorporated into device-dependent output. 
+            
+            At present, used in ps2, cmap, i*map and svg formats. 
+            For all these formats, URLs can be attached to nodes, edges and 
+            clusters. URL attributes can also be attached to the root graph in 
+            ps2, cmap and i*map formats. This serves as the base URL for 
+            relative URLs in the former, and as the default image map 
+            file in the latter. 
+            The active area for a node or cluster is its bounding box. 
+            For edges, the active areas are small circles where the edge
+            contacts its head and tail nodes. These areas may overlap the 
+            related node, and the edge URL dominates. If the edge has a label, 
+            this will also be active. Finally, if the edge has a head or tail 
+            label, this will also be active. Note, however, that if the edge 
+            has a headURL attribute, it is this value that is used near the 
+            head node and on the head label, if defined. The similar 
+            restriction holds when tailURL is defined. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.BackgroundColor">
+            <summary>
+            This color is used as the background for entire canvas. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.IsCentered">
+            <summary>
+            If true, the drawing is centered in the output canvas.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.ClusterRank">
+            <summary>
+            Mode used for handling clusters. If clusterrank is "local", 
+            a subgraph whose name begins with "cluster" is given special 
+            treatment. The subgraph is laid out separately, and then 
+            integrated as a unit into its parent graph, with a bounding 
+            rectangle drawn about it. If the cluster has a label parameter, 
+            this label is displayed within the rectangle. Note also that there 
+            can be clusters within clusters. At present, the modes "global" 
+            and "none" appear to be identical, both turning off the special 
+            cluster processing. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.Comment">
+            <summary>
+            Comments are inserted into output. Device-dependent 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.IsCompounded">
+            <summary>
+            If true, allow edges between clusters. See lhead and ltail 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.IsConcentrated">
+            <summary>
+            If true, use edge concentrators. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.Font">
+            <summary>
+            Text font
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.FontColor">
+            <summary>
+            Text color
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.Label">
+            <summary>
+            Text label attached to objects.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.LabelJustification">
+            <summary>
+            Justification for cluster labels. If "r", the label is
+            right-justified within bounding rectangle;
+            if "l", left-justified; else the label is centered. 
+            Note that a subgraph inherits attributes from its parent. 
+            
+            Thus, if the root graph sets labeljust to "l", the subgraph 
+            inherits this value. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.LabelLocation">
+            <summary>
+            Top/bottom placement of graph and cluster labels. 
+            
+            If the attribute is "t", place label at the top; if the attribute 
+            is "b", place label at the bottom. By default, root graph labels 
+            go on the bottom and cluster labels go on the top. 
+            
+            Note that a subgraph inherits attributes from its parent.
+             Thus, if the root graph sets labelloc to "b", the subgraph 
+             inherits this value.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.Layers">
+            <summary>
+            Layer collection
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.McLimit">
+            <summary>
+            Multiplicative scale factor used to alter the MinQuit (default = 8) 
+            and MaxIter (default = 24) parameters used during crossing 
+            minimization. 
+            
+            These correspond to the number of tries without improvement 
+            before quitting and the maximum number of iterations in each pass. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.NodeSeparation">
+            <summary>
+            Minimum space between two adjacent nodes in the same rank, 
+            in inches. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.IsNormalized">
+            <summary>
+            If set, normalize coordinates of final layout so that the first 
+            point is at the origin, and then rotate the layout so that 
+            the first edge is horizontal.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.NsLimit">
+            <summary>
+            Used to set number of iterations in network simplex applications. 
+            nslimit is used in computing node x coordinates, nslimit1 for 
+            ranking nodes. 
+            If defined, # iterations = nslimit(1) * # nodes; 
+            otherwise, # iterations = MAXINT. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.NsLimit1">
+            <summary>
+            Used to set number of iterations in network simplex applications. 
+            nslimit is used in computing node x coordinates, nslimit1 for 
+            ranking nodes. 
+            If defined, # iterations = nslimit(1) * # nodes; 
+            otherwise, # iterations = MAXINT. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.OutputOrder">
+            <summary>
+            Specify order in which nodes and edges are drawn. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.PageSize">
+            <summary>
+            Width and height of output pages, in inches. 
+            If this is set and is smaller than the size of the layout, 
+            a rectangular array of pages of the specified page size is 
+            overlaid on the layout, with origins aligned in the lower-left 
+            corner, thereby partitioning the layout into pages. 
+            
+            The pages are then produced one at a time, in pagedir order. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.PageDirection">
+            <summary>
+            If the page attribute is set and applicable, 
+            this attribute specifies the order in which the pages are emitted. 
+            This is limited to one of the 8 row or column major orders. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.Quantum">
+            <summary>
+            If quantum > 0.0, node label dimensions will be rounded to 
+            integral multiples of the quantum. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.RankSeparation">
+            <summary>
+            In dot, this the gives desired rank separation, in inches. 
+            
+            This is the minimum vertical distance between the bottom of the 
+            nodes in one rank and the tops of nodes in the next. If the value 
+            contains "equally", the centers of all ranks are spaced equally 
+            apart. 
+            
+            Note that both settings are possible, e.g., 
+            ranksep = "1.2 equally". 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.Ratio">
+            <summary>
+            Sets the ratio mode
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.IsReMinCross">
+            <summary>
+            If true and there are multiple clusters, run cross minimization 
+            a second time.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.Resolution">
+            <summary>
+            This specifies the expected number of pixels per inch on a display. 
+            
+            It is used to guarantee that dimensions in the output correspond 
+            to the correct number of points or inches
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.Rotate">
+            <summary>
+            Canvas roation in degrees. If 90, set drawing orientation to landscape. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.SamplePoints">
+            <summary>
+            Tthis give the number of points used to represent circles and 
+            ellipses. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.SearchSize">
+            <summary>
+            During network simplex, maximum number of edges with negative 
+            cut values to search when looking for one with minimum cut value. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.Size">
+            <summary>
+            Maximum width and height of drawing, inches. 
+            If defined and the drawing is too large, the drawing is uniformly 
+            scaled down so that it fits within the given size. 
+            Note that there is some interaction between the size and ratio 
+            attributes. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizGraph.StyleSheet">
+            <summary>
+            A URL or pathname specifying an XML style sheet, used in SVG output. 
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizLayer">
+            <summary>
+            Description r閟um閑 de GraphvizLayer.
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizLayer.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="name">Layer name</param>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizLayer.Name">
+            <summary>
+            Layer name
+            </summary>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.GraphvizVertex">
+            <summary>
+            A helper class for customizing Graphviz vertex appearance.
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizVertex.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Font">
+            <summary>
+            Vertex font
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Shape">
+            <summary>
+            Vertex shape.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.FixedSize">
+            <summary>
+            If set to true, the vertex size is fixed to Size.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Size">
+            <summary>
+            Vertex size (enabled if FixedSize is true).
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Label">
+            <summary>
+            Vertex Label
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Style">
+            <summary>
+            Vertex label
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Regular">
+            <summary>
+            If true, force polygon to be regular. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Url">
+            <summary>
+            <para>
+            Hyperlinks incorporated into device-dependent output. 
+            At present, used in ps2, cmap, i*map and svg formats. 
+            For all these formats, URLs can be attached to nodes, edges and 
+            clusters. 
+            </para>
+            <para>
+            URL attributes can also be attached to the root graph in 
+            ps2, cmap and i*map formats. This serves as the base URL for 
+            relative URLs in the former, and as the default image map file in 
+            the latter.
+            </para>
+            <para> 
+            The active area for a node or cluster is its bounding box. For 
+            edges, the active areas are small circles where the edge contacts 
+            its head and tail nodes. These areas may overlap the related node, 
+            and the edge URL dominates. If the edge has a label, this will also 
+            be active. 
+            </para>
+            <para>
+            Finally, if the edge has a head or tail label, this will also be 
+            active. Note, however, that if the edge has a headURL attribute, 
+            it is this value that is used near the head node and on the head 
+            label, if defined. The similar restriction holds when tailURL is 
+            defined. 
+            </para>
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.ToolTip">
+            <summary>
+            Tooltip annotation attached to the node or edge. 
+            This is used only if the object has a URL attribute. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.StrokeColor">
+            <summary>
+            Basic drawing color for graphics. 
+            Ignored if color = Color.Transparent
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.FillColor">
+            <summary>
+            <para>
+            Color used to fill the background of a node or cluster. 
+            </para>
+            <para>
+            If fillcolor is not defined, color is used. (For clusters, if color 
+            is not defined, bgcolor is used.) If this is not defined, 
+            the default is used, except for shape=point or when the output 
+            format is MIF, which use black by default. 
+            Note that a cluster inherits the root graph's attributes if 
+            defined. Thus, if the root graph has defined a fillcolor, this 
+            will override a color or bgcolor attribute set for the cluster.
+            </para>
+            <para>
+            Ignored if color = Color.Transparent
+            </para>
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.FontColor">
+            <summary>
+            <para>
+            Color used for text. 
+            </para>
+            <para>
+            Ignored if color = Color.Transparent
+            </para>
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Comment">
+            <summary>
+            Comments are inserted into output. Device-dependent 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Group">
+            <summary>
+            If the end points of an edge belong to the same group, i.e., 
+            have the same group attribute, parameters are set to avoid 
+            crossings and keep the edges straight. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Layer">
+            <summary>
+            Specifies layers in which the node or edge is present.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Orientation">
+            <summary>
+            Angle, in degrees, used to rotate node shapes. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Peripheries">
+            <summary>
+            <para>
+            Set number of peripheries used in polygonal shapes and cluster 
+            boundaries.
+            </para>
+            <para> 
+            Default peripheries value is 1 and the user-defined shape will be 
+            drawn in a bounding rectangle. 
+            Setting peripheries=0 will turn this off. 
+            </para>
+            <para>
+            Also, 1 is the maximum peripheries value for clusters.
+            </para>
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Z">
+            <summary>
+            Provides z coordinate for the node when output format is VRML. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Sides">
+            <summary>
+            Number of sides if shape=polygon. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Skew">
+            <summary>
+            Skew factor for shape=polygon. 
+            Positive values skew top of polygon to right; negative to left.
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.Distorsion">
+            <summary>
+            Distortion factor for shape=polygon. 
+            Positive values cause top part to be larger than bottom; 
+            negative values do the opposite. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.TopLabel">
+            <summary>
+            Additional label near top of nodes of shape M*. 
+            </summary>
+        </member>
+        <member name="P:QuickGraph.Algorithms.Graphviz.GraphvizVertex.BottomLabel">
+            <summary>
+            Additional label near bottom of nodes of shape M*.
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizVertex.ToDot">
+            <summary>
+            Generates dot code that represents the vertex appearance settings.
+            </summary>
+            <returns>dot code</returns>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizVertex.ToString">
+            <summary>
+            Returns ToDot()
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.GraphvizVertex.GenerateDot(System.Collections.Hashtable)">
+            <summary>
+            Converts a dictionary of parameters name-value to dot code.
+            </summary>
+            <param name="pairs">name-value pair collection</param>
+            <returns>dot code</returns>
+        </member>
+        <member name="T:QuickGraph.Algorithms.Graphviz.IGraphvizVisitor">
+            <summary>
+            A Graphviz visitor
+            </summary>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.IGraphvizVisitor.WriteGraph(System.Object,System.EventArgs)">
+            <summary>
+            Writes graph properties
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.IGraphvizVisitor.WriteVertex(System.Object,QuickGraph.Concepts.VertexEventArgs)">
+            <summary>
+            Writes vertex properties
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:QuickGraph.Algorithms.Graphviz.IGraphvizVisitor.WriteEdge(System.Object,QuickGraph.Concepts.EdgeEventArgs)">
+            <summary>
+            Writes edge properties
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+    </members>
+</doc>
