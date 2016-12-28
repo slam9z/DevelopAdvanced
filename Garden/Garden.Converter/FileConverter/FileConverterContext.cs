@@ -24,6 +24,8 @@ namespace Garden.Converter
 
         public string ErrorMessage { get; set; }
 
+        public bool IsConvertSuccess { get; set; } = true;
+
 
         public FileConverterContext(string targetPath, string targetType = null)
         {

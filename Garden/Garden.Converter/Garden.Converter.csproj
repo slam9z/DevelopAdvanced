@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileConverter\FileConverterContext.cs" />
+    <Compile Include="FileConverter\FileConverterPath.cs" />
     <Compile Include="FileConverter\FileConverterService.cs" />
     <Compile Include="FileConverter\FileConveterUtil.cs" />
     <Compile Include="FileConverter\IFileConverter.cs" />

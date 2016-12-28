@@ -26,7 +26,6 @@ namespace Garden.Converter
         /// </summary>
         int ConvertWeight { get; set; }
 
-        IFileConverter Next { get; set; }
 
         FileConverterContext Convert(FileConverterContext context);
 
