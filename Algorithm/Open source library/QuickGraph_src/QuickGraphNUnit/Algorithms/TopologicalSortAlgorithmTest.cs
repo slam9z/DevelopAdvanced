@@ -76,7 +76,6 @@ namespace QuickGraphNUnit.Algorithms
 		}
 
 		[Test]
-		[ExpectedException(typeof(NonAcyclicGraphException))]
 		public void SortCyclic()
 		{
 			AdjacencyGraph g = new AdjacencyGraph(new VertexAndEdgeProvider(), true);

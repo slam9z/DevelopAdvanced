@@ -1,15 +1,15 @@
 namespace QuickGraphTest
 {
-	using System;
-	using QuickGraph;
-	using QuickGraph.Collections;
-	using QuickGraph.Algorithms;
-	using QuickGraph.Algorithms.ShortestPath;
-
-	/// <summary>
-	/// A DijkstraShortestPath visitor for testing purpose
-	/// </summary>
-	public class TestDijkstraShortestPathVisitor
+    using System;
+    using QuickGraph;
+    using QuickGraph.Collections;
+    using QuickGraph.Algorithms;
+    using QuickGraph.Algorithms.ShortestPath;
+    using QuickGraph.Concepts;
+    /// <summary>
+    /// A DijkstraShortestPath visitor for testing purpose
+    /// </summary>
+    public class TestDijkstraShortestPathVisitor
 	{
 		private VertexStringDictionary m_Names;
 

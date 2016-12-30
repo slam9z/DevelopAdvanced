@@ -26,10 +26,11 @@
 
 
 using System;
+using QuickGraph.Concepts;
 
 namespace QuickGraph.Collections
 {
-	using QuickGraph.Concepts;
+	
 
 	/// <summary>
 	/// A dictionary with keys of type Edge and values of type Double

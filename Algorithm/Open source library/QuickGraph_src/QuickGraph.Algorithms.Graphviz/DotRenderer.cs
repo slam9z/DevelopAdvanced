@@ -184,10 +184,10 @@ namespace QuickGraph.Algorithms.Graphviz
 				fileName
 				);
 
-			lock(typeof(GraphVizdotNet.Dot))
-			{
-				GraphVizdotNet.Dot.Exec(commandLine);	
-			}
+			//lock(typeof(GraphVizdotNet.Dot))
+			//{
+			//	GraphVizdotNet.Dot.Exec(commandLine);	
+			//}
 
 			return baseFileName + '.'+ ext;
 		}
