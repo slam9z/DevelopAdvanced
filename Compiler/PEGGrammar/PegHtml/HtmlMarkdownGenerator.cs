@@ -47,11 +47,9 @@ namespace Peg.Html
 
         Dictionary<HtmlKind, CodeTemplate> templates = new Dictionary<HtmlKind, CodeTemplate>
         {
-            [HtmlKind.Heading] = new CodeTemplate(HtmlKind.Heading, "<h${HeaderLevel}>&{Html}</h${HeaderLevel}>\n"),
-            [HtmlKind.BulletList] = new CodeTemplate(HtmlKind.BulletList, "<ul>\n${ListBody}</ul>\n"),
-            [HtmlKind.OrderedList] = new CodeTemplate(HtmlKind.OrderedList, "<ol>\n${ListBody}</ol>\n"),
-            [HtmlKind.ListItem] = new CodeTemplate(HtmlKind.OrderedList, "<li>${ListItemBody}</li>\n"),
-
+            [HtmlKind.Heading] = new CodeTemplate(HtmlKind.Heading, "#"),
+            [HtmlKind.BulletList] = new CodeTemplate(HtmlKind.BulletList, "1. "),
+            [HtmlKind.OrderedList] = new CodeTemplate(HtmlKind.OrderedList, "* "),
         };
 
 
@@ -281,6 +279,19 @@ namespace Peg.Html
 
         #region header
 
+        private IDictionary<EHtml, int> _headLevel = new Dictionary<EHtml, int>()
+        {
+
+            [EHtml.HtmlBlockH1] = 1,
+            [EHtml.HtmlBlockH2] = 2,
+            [EHtml.HtmlBlockH3] = 3,
+            [EHtml.HtmlBlockH4] = 4,
+            [EHtml.HtmlBlockH5] = 5,
+            [EHtml.HtmlBlockH6] = 6,
+        };
+
+
+
         string CreateHeading(int headerlevel, string html)
         {
             return templates[HtmlKind.Heading].sCodeTemplate
@@ -291,6 +302,9 @@ namespace Peg.Html
         string GenHeading(PegNode heading)
         {
             var content = string.Empty;
+            var level = _headLevel[(EHtml)heading.child_.id_];
+
+            var header = new string('#', level);
 
             if (heading.child_.id_ == (int)EHtml.HtmlBlockH1)
             {

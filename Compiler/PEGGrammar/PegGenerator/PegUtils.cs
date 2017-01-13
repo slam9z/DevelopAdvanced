@@ -90,6 +90,34 @@ namespace Peg.Generator
             }
             return null;
         }
+
+        public static IEnumerable<PegNode> FindNodeGroup(PegNode node, int id)
+        {
+            var nodes = new List<PegNode>();
+
+            var child = FindNode(node, id);
+
+            if (child != null)
+            {
+                nodes.Add(child);
+            }
+
+            for (child = child.next_; child != null; child = child.next_)
+            {
+                if (node.id_ == (int)id)
+                {
+                    nodes.Add(child);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return nodes;
+
+        }
+
         public static PegNode GetPegSpecification(PegNode root)
         {
             return root.child_.next_;
