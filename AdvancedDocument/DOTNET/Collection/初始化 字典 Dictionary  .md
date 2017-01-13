@@ -5,8 +5,22 @@ a collection an initial set of elements. Initializing dictionaries and other obj
 adding a new syntax to object initializers allowing you to set values to keys through any indexer that the new object has:
 
 ```cs
-var numbers = new Dictionary<int, string> {
+var numbers = new Dictionary<int, string> 
+{
     [7] = "seven",
     [9] = "nine",
     [13] = "thirteen"
 };
+
+或者
+
+```cs
+
+var names = new Dictionary<int, string> 
+{
+  { 1, "Adam" },
+  { 2, "Bart" },
+  { 3, "Charlie" }
+};
+
+```

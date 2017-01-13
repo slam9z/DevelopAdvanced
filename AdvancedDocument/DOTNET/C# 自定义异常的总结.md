@@ -1,0 +1,1 @@
+[ C# 自定义异常的总结 ](http://blog.csdn.net/wangweitingaabbcc/article/details/6851717)

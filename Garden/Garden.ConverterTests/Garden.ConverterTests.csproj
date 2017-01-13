@@ -52,6 +52,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="FileConverter\FileConverterContextTests.cs" />
+    <Compile Include="FileConverter\FileConverterPathTests.cs" />
     <Compile Include="FileConverter\FileConverterServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
