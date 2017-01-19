@@ -58,9 +58,6 @@
   <ItemGroup>
     <Content Include="Html\html.peg.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="html错误疑问整理.md" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
