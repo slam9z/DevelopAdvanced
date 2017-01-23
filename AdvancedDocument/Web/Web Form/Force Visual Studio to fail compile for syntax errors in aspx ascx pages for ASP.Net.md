@@ -3,6 +3,7 @@
 使vs强制编译aspx和ascx。
 
 
+这个是必须的，连编译都通不过的代码，注定是垃圾！
 
 
 [How can I compile Asp.Net Aspx Pages before loading them with a webserver?](http://stackoverflow.com/questions/108405/how-can-i-compile-asp-net-aspx-pages-before-loading-them-with-a-webserver)
