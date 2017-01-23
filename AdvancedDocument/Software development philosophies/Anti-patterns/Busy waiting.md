@@ -1,1 +1,0 @@
-[Busy waiting](https://en.wikipedia.org/wiki/Busy_waiting)

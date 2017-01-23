@@ -1,4 +1,0 @@
-[Coding by exception](https://en.wikipedia.org/wiki/Coding_by_exception)
-
-Coding by exception is an accidental complexity in a software system in which the program handles specific errors that arise with unique exceptions. When an issue arises in a software system, an error is raised tracing the issue back to where it was caught and then where that problem came from, if applicable. Exceptions can be used to handle the error while the program is running and avoid crashing the system. Exceptions should be generalized and cover numerous errors that arise. Using these exceptions to handle specific errors that arise to continue the program is called coding by exception. This anti-pattern can quickly degrade software in performance and maintainability. Executing code even after the exception is raised resembles the goto method in many software languages, which is also considered poor practice.
-

@@ -1,0 +1,1 @@
+[Accidental complexity](https://en.wikipedia.org/wiki/Accidental_complexity): Programming tasks which could be eliminated with better tools (as opposed to essential complexity inherent in the problem being solved)

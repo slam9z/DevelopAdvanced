@@ -1,0 +1,1 @@
+[IBM Open Blockchain 白皮书节选 ](http://8btc.com/article-2891-1.html)
