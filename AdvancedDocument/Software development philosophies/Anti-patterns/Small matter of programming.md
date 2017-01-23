@@ -1,0 +1,8 @@
+[Small matter of programming](https://en.wikipedia.org/wiki/Small_matter_of_programming)
+
+In software development, Small Matter of Programming (SMOP) or Simple Matter of Programming is a phrase used to ironically indicate that a suggested feature or design change would in fact require a great deal of effort; it often implies that the person proposing the feature underestimates its cost. Such underestimated costs are common during cost estimation, particularly near the beginning of a project. The Jargon File describes an SMOP[1] as:
+
+* A piece of code, not yet written, whose anticipated length is significantly greater than its complexity. Used to refer to a program that could obviously be written, but is not worth the trouble. Also used ironically to imply that a difficult problem can be easily solved because a program can be written to do it; the irony is that it is very clear that writing such a program will be a great deal of work. “It's easy to enhance a FORTRAN compiler to compile COBOL as well; it's just a SMOP.”
+* Often used ironically by the intended victim when a suggestion for a program is made which seems easy to the suggester, but is obviously (to the victim) a lot of work. Compare minor detail.
+
+SMOP was among the "games" described in an article as paralleling the Games People Play identified by Dr. Eric Berne in the field of self-help psychology.[2] The game essentially consists of proposing seemingly simple adjustments to a design, leading to unexpected consequences and delays.

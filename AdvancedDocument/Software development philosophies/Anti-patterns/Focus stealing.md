@@ -1,0 +1,4 @@
+[Focus stealing](https://en.wikipedia.org/wiki/Focus_stealing)
+
+In computing, focus stealing is a mode error produced when a program not in focus (e.g. minimized or operating in background) places a window in the foreground and redirects all keyboard input to that window. This is considered to be an annoyance or hazard to some users because the program may steal the focus while their attention is not on the computer screen, such as when typing while reading copy to the side. This will cause everything typed after the window appeared to be lost - or worse, the typed input may cause an unintended effect in the newly focused window. On slow computers, users are sometimes not even alerted to this behavior in time, because the associated window is only actually displayed several seconds after the actual focus change happened.
+
