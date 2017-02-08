@@ -11,45 +11,45 @@ using System;
 using NUnit.Framework;
 
 
-public class MyMath 
+public class MyMath
 {
-  public static double SquareRoot(double x) 
-  {
-    return Math.Sqrt(x);
-  }
+    public static double SquareRoot(double x)
+    {
+        return Math.Sqrt(x);
+    }
 }
 
 [TestFixture]
-public class RootsTest 
+public class RootsTest
 {
 
-  [Test]
-  public void SquareRootUsingInverse() 
-  {
-    double x = MyMath.SquareRoot(4.0);
-    Assert.That(4.0, Is.EqualTo(x*x).Within(0.0001));
-  }
+    [Test]
+    public void SquareRootUsingInverse()
+    {
+        double x = MyMath.SquareRoot(4.0);
+        Assert.That(4.0, Is.EqualTo(x * x).Within(0.0001));
+    }
 
 
-  [Test]
-  public void SquareRootUsingStd() 
-  {
-    double number = 3880900.0;
-    double root1 = MyMath.SquareRoot(number);
-    double root2 = Math.Sqrt(number);
-    Assert.That(root2, Is.EqualTo(root1).Within(0.0001));
-  }
+    [Test]
+    public void SquareRootUsingStd()
+    {
+        double number = 3880900.0;
+        double root1 = MyMath.SquareRoot(number);
+        double root2 = Math.Sqrt(number);
+        Assert.That(root2, Is.EqualTo(root1).Within(0.0001));
+    }
 
 
-  public int Calculate(int a, int b) 
-  {
-    return a / (a+b);
-  }
+    public int Calculate(int a, int b)
+    {
+        return a / (a + b);
+    }
 
-  [Test]
-  //[ExpectedException(typeof(DivideByZeroException))]
-  public void DivZero() 
-  {
-     Calculate(-5, 5);
-  }
+    [Test]
+    //[ExpectedException(typeof(DivideByZeroException))]
+    public void DivZero()
+    {
+        Assert.Throws<DivideByZeroException>(() => Calculate(-5, 5));
+    }
 }

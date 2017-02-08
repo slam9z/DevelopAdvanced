@@ -12,71 +12,72 @@ using NUnit.Framework;
 using System;
 using System.Threading;
 
-class RefactorAwayMockExample 
+class RefactorAwayMockExample
 {
 
-  public void WaitForData(int dataSize) 
-  {
-    int timeToWait;
-    if (dataSize < 100)
+    public void WaitForData(int dataSize)
     {
-      timeToWait = 50;
-    }
-    else if (dataSize < 250)
-    {
-      timeToWait = 100;
-    }
-    else
-    {
-      timeToWait = 200;
+        int timeToWait;
+        if (dataSize < 100)
+        {
+            timeToWait = 50;
+        }
+        else if (dataSize < 250)
+        {
+            timeToWait = 100;
+        }
+        else
+        {
+            timeToWait = 200;
+        }
+
+        Thread.Sleep(timeToWait);
     }
 
-    Thread.Sleep(timeToWait);
-  }
-
-  public static void Main() 
-  { 
-  }
+    public static void Main()
+    {
+    }
 }
 
-class Waiter {
+class Waiter
+{
 
-  public int HowLongToWait(int dataSize) 
-  {
-    int timeToWait;
-    if (dataSize < 100)
+    public int HowLongToWait(int dataSize)
     {
-      timeToWait = 50;
+        int timeToWait;
+        if (dataSize < 100)
+        {
+            timeToWait = 50;
+        }
+        else if (dataSize < 250)
+        {
+            timeToWait = 100;
+        }
+        else
+        {
+            timeToWait = 200;
+        }
+
+        return timeToWait;
     }
-    else if (dataSize < 250)
+
+    public void WaitForData(int dataSize)
     {
-      timeToWait = 100;
+        Thread.Sleep(HowLongToWait(dataSize));
     }
-    else
+
+
+
+    [Test]
+    public void WaitTimes()
     {
-      timeToWait = 200;
+        Waiter w = new Waiter();
+        Assert.That(w.HowLongToWait(0), Is.EqualTo(50));
+        Assert.That(w.HowLongToWait(99), Is.EqualTo(50));
+        Assert.That(w.HowLongToWait(100), Is.EqualTo(100));
+        Assert.That(w.HowLongToWait(249), Is.EqualTo(100));
+        Assert.That(w.HowLongToWait(250), Is.EqualTo(200));
+        Assert.That(w.HowLongToWait(251), Is.EqualTo(200));
     }
-
-    return timeToWait;
-  }
-
-  public void WaitForData(int dataSize) 
-  {
-    Thread.Sleep(HowLongToWait(dataSize));
-  }
-
-
-
-  [Test]
-  void WaitTimes() 
-  {
-    Waiter w = new Waiter();
-    Assert.That(w.HowLongToWait(0), Is.EqualTo(50));
-    Assert.That(w.HowLongToWait(99), Is.EqualTo(50));
-    Assert.That(w.HowLongToWait(100), Is.EqualTo(100));
-    Assert.That(w.HowLongToWait(249), Is.EqualTo(100));
-    Assert.That(w.HowLongToWait(250), Is.EqualTo(200));
-    Assert.That(w.HowLongToWait(251), Is.EqualTo(200));
-  }
 
 }
