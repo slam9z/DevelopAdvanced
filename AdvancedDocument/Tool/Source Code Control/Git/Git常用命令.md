@@ -1,27 +1,27 @@
-#Git³£ÓÃÃüÁî
+#Gitå¸¸ç”¨å‘½ä»¤
 
 ##1.git reset 
 git reset --hard <sha1-commit-id>
 
-²Ù×÷Íê³ÉÌáÊ¾Óï¾ä:
+æ“ä½œå®Œæˆæç¤ºè¯­å¥:
 HEAD is now at bf28ab9 remove file
 
-»áÒÆ³ıcommit idÖ®ºóÌá½»µÄcommit, VSÖĞcommit details µÄActions¿ÉÒÔ¼òµ¥¸´ÖÆid
+ä¼šç§»é™¤commit idä¹‹åæäº¤çš„commit, VSä¸­commit details çš„Actionså¯ä»¥ç®€å•å¤åˆ¶id
 
 
 move  documents  location
 
 
 ##2.git commit 
-ĞŞ¸ÄÒÑ¾­Ìá½»µÄcommit
+ä¿®æ”¹å·²ç»æäº¤çš„commit
 git commit --amend -m "New commit message"
 
 http://stackoverflow.com/questions/179123/edit-an-incorrect-commit-message-in-git
 
-##3. fetchÓëpullµÄÇø±ğ,fetchÊÇ»ñÈ¡µ½Ô¶³ÌµÄ±ä»¯,µ«ÊÇpull»á»ñÈ¡Ô¶³ÌµÄ±ä»¯²¢ÇÒmerge
+##3. fetchä¸pullçš„åŒºåˆ«,fetchæ˜¯è·å–åˆ°è¿œç¨‹çš„å˜åŒ–,ä½†æ˜¯pullä¼šè·å–è¿œç¨‹çš„å˜åŒ–å¹¶ä¸”merge
 
 ##branch
 
-##Ìí¼ÓÉ¾³ıµÄÎÄ¼ş
+##æ·»åŠ åˆ é™¤çš„æ–‡ä»¶
 
 git ls-files --deleted -z | xargs -0 git rm 
