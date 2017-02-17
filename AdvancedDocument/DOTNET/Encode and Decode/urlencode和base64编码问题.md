@@ -1,0 +1,26 @@
+urlencode和base64编码问题
+
+## Data
+
+1. Source Data  (form data)
+
+    {"BizCode":"UpdateReminders","SubjectId":"c1b9b77c-541e-44a5-84ff-864aa7bd71e0","CurrentUser":{"UserId":"3C48F38A-BD9A-4466-9DC5-9D19AD93CB08","UserName":"曹艳"},"AddReminders":[],"RemoveReminders":[{"UserId":"CD369FA5-21A5-4FC1-99C3-C24DBE67490E","UserName":"邓继伟"}],"InstitutionNo":null,  "Token":null,"Ext":null,"SerialNo":null,"BizName":"","Remark":null}
+
+2. EncodeBase64String和UrlEncode
+
+    eyJCaXpDb2RlIjoiVXBkYXRlUmVtaW5kZXJzIiwiU3ViamVjdElkIjoiYzFiOWI3N2MtNTQxZS00NGE1LTg0ZmYtODY0YWE3YmQ3MWUwIiwiQ3VycmVudFVzZXIiOnsiVXNlcklkIjoiM0M0OEYzOEEtQkQ5QS00NDY2LTlEQzUtOUQxOUFEOTNDQjA4IiwiVXNlck5hbWUiOiLmm7noibMifSwiQWRkUmVtaW5kZXJzIjpbXSwiUmVtb3ZlUmVtaW5kZXJzIjpbeyJVc2VySWQiOiJDRDM2OUZBNS0yMUE1    LTRGQzEtOTlDMy1DMjREQkU2NzQ5MEUiLCJVc2VyTmFtZSI6IumCk%2be7p%2bS8nyJ9XSwiSW5zdGl0dXRpb25ObyI6bnVsbCwiVG9rZW4iOm51bGwsIkV4dCI6bnVsbCwiU2VyaWFsTm8iOm51bGwsIkJpek5hbWUiOiIiLCJSZW1hcmsiOm51bGx9
+
+3. UrlDecode (asp.net auto! )
+
+    eyJCaXpDb2RlIjoiVXBkYXRlUmVtaW5kZXJzIiwiU3ViamVjdElkIjoiYzFiOWI3N2MtNTQxZS00NGE1LTg0ZmYtODY0YWE3YmQ3MWUwIiwiQ3VycmVudFVzZXIiOnsiVXNlcklkIjoiM0M0OEYzOEEtQkQ5QS00NDY2LTlEQzUtOUQxOUFEOTNDQjA4IiwiVXNlck5hbWUiOiLmm7noibMifSwiQWRkUmVtaW5kZXJzIjpbXSwiUmVtb3ZlUmVtaW5kZXJzIjpbeyJVc2VySWQiOiJDRDM2OUZBNS0yMUE1    LTRGQzEtOTlDMy1DMjREQkU2NzQ5MEUiLCJVc2VyTmFtZSI6IumCk+e7p+S8nyJ9XSwiSW5zdGl0dXRpb25ObyI6bnVsbCwiVG9rZW4iOm51bGwsIkV4dCI6bnVsbCwiU2VyaWFsTm8iOm51bGwsIkJpek5hbWUiOiIiLCJSZW1hcmsiOm51bGx9
+
+4. UrlDecode again
+
+    eyJCaXpDb2RlIjoiVXBkYXRlUmVtaW5kZXJzIiwiU3ViamVjdElkIjoiYzFiOWI3N2MtNTQxZS00NGE1LTg0ZmYtODY0YWE3YmQ3MWUwIiwiQ3VycmVudFVzZXIiOnsiVXNlcklkIjoiM0M0OEYzOEEtQkQ5QS00NDY2LTlEQzUtOUQxOUFEOTNDQjA4IiwiVXNlck5hbWUiOiLmm7noibMifSwiQWRkUmVtaW5kZXJzIjpbXSwiUmVtb3ZlUmVtaW5kZXJzIjpbeyJVc2VySWQiOiJDRDM2OUZBNS0yMUE1    LTRGQzEtOTlDMy1DMjREQkU2NzQ5MEUiLCJVc2VyTmFtZSI6IumCk e7p S8nyJ9XSwiSW5zdGl0dXRpb25ObyI6bnVsbCwiVG9rZW4iOm51bGwsIkV4dCI6bnVsbCwiU2VyaWFsTm8iOm51bGwsIkJpek5hbWUiOiIiLCJSZW1hcmsiOm51bGx9
+
+
+## Program
+
++ replace to space, e7p左右！
+
+问题是为啥会UrlDecode 2次，还有一个小问题为什么编码出 + 号。
