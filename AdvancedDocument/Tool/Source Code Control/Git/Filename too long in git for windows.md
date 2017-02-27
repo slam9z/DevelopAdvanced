@@ -13,3 +13,10 @@ Basic Explanation : This answer suggest not to have such setting applied to glob
 
 
 > The specified path, file name, or both are too long. The fully qualified file name must be less than 260 characters, and the directory name must be less than 248 characters.
+
+
+```
+262字符
+
+E:\Source\MyGithub\DevelopAdvanced\AdvancedDocument\Design\Microsoft patterns & practices\Cloud Design Patterns Examples\External Configuration Store\ExternalConfigurationStore\ExternalConfigurationStore.Cloud\NewConfiguration\configurationdata-production.config
+```
