@@ -6,7 +6,12 @@
 EXEC sp_password NULL, '你的新密码', 'sa'
 ```
 
+```sql
+USE master
 
+EXEC sp_password NULL, 'sa123456#', 'sa'
+
+```
 ##[SQLSERVER2008 18456错误](http://www.cnblogs.com/496963524-zhangying/articles/2232599.html) 
 
 ###1. sa设置
