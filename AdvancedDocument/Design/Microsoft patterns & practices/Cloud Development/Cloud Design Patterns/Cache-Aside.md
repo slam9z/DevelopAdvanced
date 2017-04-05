@@ -1,0 +1,1 @@
+[Cache-Aside](https://docs.microsoft.com/en-us/azure/architecture/patterns/cache-aside)
