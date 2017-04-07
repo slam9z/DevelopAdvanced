@@ -1,0 +1,21 @@
+<script type="text/javascript">
+                    $(function () {
+                        var h = $("#tbList").height() + 15;
+                        var w = $(document).width();
+                        FixTable("tbList", 3, w, h);
+                        $("#tbList_tableColumn").css("background-color", "white");
+                    })
+</script>
+
+改造：
+1.简化使用，方便应用到各个页面
+2.需要去除“操作性”标签，如复选框
+
+
+
+AssetManage\AssetDistribution.aspx (资产管理/销售平台分配)
+
+
+
+SalePlan\AssetSaleBindList.aspx
+
