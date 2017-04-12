@@ -91,7 +91,7 @@ EntityClient在EntityFramework中的作用是相当重要的，所有发往EDM�
  
 
 
-##使用技巧及需要注意的问题
+## 使用技巧及需要注意的问题
 
 这也是上文提到的在ObjectContext下使用EntitySQL的一个主要作用，上面的例子比较简单可能看不到这样使用的优势，
 但是如下两种情况下使用EntitySQL可能是最好的选择。 
@@ -116,7 +116,7 @@ EntityClient在EntityFramework中的作用是相当重要的，所有发往EDM�
 
  
 
-##几种方法的性能分析及使用选择 
+## 几种方法的性能分析及使用选择 
 
 首先用下图来说明一个执行过程。 
 

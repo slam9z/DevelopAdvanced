@@ -2,14 +2,14 @@
 
 
 
-##2.常用的数据分页方法
+## 2.常用的数据分页方法
 
 我们经常会碰到要取n到m条记录，就是有分页思想，下面罗列一下一般的方法。
 
 我本地的一张表 tbl_FlightsDetail，有300多W记录，主键 FlightsDetailID(Guid)，
 要求按照FlightsDetailID排序 取 3000001 到3000010 之间的10条记录，也是百万级。
 
-###方法1 定位法 (利用ID大于多少)
+### 方法1 定位法 (利用ID大于多少)
 
 语句形式：
 
@@ -28,7 +28,7 @@ select top 10 * from tbl_FlightsDetail where FlightsDetailID>(
 *这个方法好像很多问题,如果数据列不唯一会查询不出结果*
 
 
-###方法2 (利用Not In)
+### 方法2 (利用Not In)
 
 
 语句形式：
@@ -46,7 +46,7 @@ select top 10* from tbl_FlightsDetail where FlightsDetailID not in (
 
  
 
-###方法3 (利用颠颠倒倒top)
+### 方法3 (利用颠颠倒倒top)
 
 语句形式：
 
@@ -60,7 +60,7 @@ select top 10* from (
 
  
 
-###方法4 (ROW_NUMBER()函数)
+### 方法4 (ROW_NUMBER()函数)
 
 
 语句形式：
@@ -77,7 +77,7 @@ select * from (
 
 Sql 2005版本或以上支持，也没用到索引，耗时2秒，速度还不错。
 
-###方法5 (利用IN)
+### 方法5 (利用IN)
 
 此方法是由 金色海洋（jyk）阳光男孩 回复的，飞常感谢，语句形式：
 
@@ -96,7 +96,7 @@ select top 10 * from tbl_FlightsDetail  where FlightsDetailID in(
 
 
 
-##3.千万级分页存储过程
+## 3.千万级分页存储过程
 
 大家百度一下这个标题立马会出现很多相关信息，都大同小异，我自己拷贝的一个，应项目的需要，修改了一个排序的bug以及添加了返回总记录数，如下：
 
@@ -250,7 +250,7 @@ SELECT *  FROM  tbl_FlightsDetail  WHERE FlightsDetailID   >= @SortColumn  ORDER
 你会发现，原来它跟我们标题2 常用的数据分页方法 中的 方法1 定位 类似，原来奥秘在这。
 
 
-###SET ROWCOUNT
+### SET ROWCOUNT
 
 [SQL里ROWCOUNT的使用](http://www.cnblogs.com/Daview/archive/2012/07/03/2574696.html) 
 

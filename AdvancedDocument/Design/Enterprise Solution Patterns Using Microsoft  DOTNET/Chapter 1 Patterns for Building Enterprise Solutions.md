@@ -33,7 +33,7 @@ This chapter introduces the notion of a pattern, explains how a pattern document
  and shows how collections of patterns provide a common language for developers and architects. 
 To illustrate these concepts, this chapter applies abbreviated versions of actual patterns to real-life development situations. 
 
-##Patterns Document Simple Mechanisms 
+## Patterns Document Simple Mechanisms 
 
 A pattern describes a recurring problem that occurs in a given context and, based on a set of guiding forces,
  recommends a solution. The solution is usually a simple mechanism, a collaboration between two or more classes, 
@@ -80,7 +80,7 @@ It is likely that you have solved problems like this in a similar manner, as man
 frequently, distilled the common solution, and documented the problem-solution pair as the Singleton pattern [Gamma95].
 
 
-##Patterns as Problem-Solution Pairs 
+## Patterns as Problem-Solution Pairs 
 
 
 Notice that the Singleton pattern does not mention a Quote or QuoteManager class. Instead, the pattern 
@@ -109,7 +109,7 @@ if you are familiar with the Singleton pattern, you probably noticed that the co
  explanation for the purposes of this introduction to patterns. However, an implementation of Singleton optimized
  for the C# language would look quite different, and while these two implementations differ significantly, both would be correct. 
 
-##Patterns at Different Levels 
+## Patterns at Different Levels 
 
 
 Patterns exist at many different levels of abstraction. Consider another example, this time at a higher level of 
@@ -167,7 +167,7 @@ Again, there is a difference between the pattern (Three-Layered Application) and
 organization. In contrast, the application of the pattern solves a very specific problem by creating specific layers,
  each layer resolving very specific requirements.
 
-###Simple Refinement[精炼] 
+### Simple Refinement[精炼] 
 
 
 Notice that Three-Layered Application is really a simple refinement of Layers;the context, forces, and solution
@@ -223,7 +223,7 @@ When grouped together, these Layers variations form a cluster of patterns (see F
 
 [Figure 8: A cluster of patterns]
 
-##Common Vocabulary[词汇量]
+## Common Vocabulary[词汇量]
 
 While considering the Singleton, Layers, Three-Layered Application, and Layered Services Application patterns, you 
 probably noticed that patterns also provide a powerful vocabulary for communicating software architecture and design
@@ -246,7 +246,7 @@ Over time, developers discover and describe new patterns, thus extending the com
  In addition, as you start to understand patterns and the relationships between patterns, you can describe entire 
 solutions in terms of patterns.
 
-##Concise[简明的] Solution Description 
+## Concise[简明的] Solution Description 
 
 
 In this guide, the term solution has two very distinct meanings: 
@@ -258,7 +258,7 @@ implies that you are not just concerned with software; you must deploy this soft
 provide a holistic technology solution. Further, the software under consideration includes
  both custom-developed software and purchased software infrastructure and platform components, all of which you integrate together.
 
-##Summary 
+## Summary 
 
 This chapter introduced the concept of a pattern, explained how patterns document simple, proven mechanisms, and showed 
 how patterns provide a common language for developers and architects. Chapter 2 explains how to organize your thinking 

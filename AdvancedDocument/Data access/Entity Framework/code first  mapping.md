@@ -1,6 +1,7 @@
 ﻿*映射* 
 
-##Fluent API
+## Fluent API
+
 一千道一万，EF还是一个ORM工具，映射永远是最核心的部分。所以接下来详细介绍Code First模式下EF的映射配置。 
 
 通过Code First来实现映射模型有两种方式*Data Annotation*和*Fluent API*。 
@@ -14,7 +15,7 @@ Fluent API方式中的核心对象是DbModelBuilder。
 
 在重写的DbContext的OnModelCreating方法中，我们可以这样配置一个实体的映射： 
 
-```C#
+```cs
 protected override void OnModelCreating(DbModelBuilder modelBuilder)
 
 {
@@ -32,7 +33,7 @@ protected override void OnModelCreating(DbModelBuilder modelBuilder)
 一种更好的方式是继承EntityTypeConfiguration<EntityType>并在这个类中添加映射代码，如：
 
 
-```C#
+```cs
 
 public class ProductMap : EntityTypeConfiguration<Product>
 
@@ -51,18 +52,18 @@ public class ProductMap : EntityTypeConfiguration<Product>
     }
 
 } 
-
+```
 
 然后将这个类的实例添加到modelBuilder的Configurations就可以了。
 
-```C#
+```cs
 modelBuilder.Configurations.Add(new ProductMap()); 
 ```
 
 如果不想手动一个个添加自定的映射配置类对象，还可以使用反射将程序集中所有的EntityTypeConfiguration<>一次性添加到modelBuilder.Configurations集合中
 ，下面的代码展示了这个操作（代码来自nopCommerce项目）：
 
-```
+```cs
 
 var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
 
@@ -79,7 +80,7 @@ foreach (var type in typesToRegister)
     modelBuilder.Configurations.Add(configurationInstance);
 
 } 
-````
+```
 
 这样，OnModelCreating就大大简化，并且一劳永逸的是，以后添加新的实体映射只需要添加新的继承自EntityTypeConfiguration<>的XXXMap类而不需要修改OnModelCreating方法。
 
@@ -90,11 +91,11 @@ foreach (var type in typesToRegister)
 
 >例如我们的程序中有一个名为Employee的实体类，我们没有为其定义映射配置(EntityTypeConfiguration<Employee>)，但如果我们使用类似下面这样的代码去进行调用，EF会自动为Employee创建默认映射并进行迁移等一系列操作。
 >
->```C#
+>
 >
 >var employeeList = context.Set<Employee>().ToList(); 
 >
->```
+>
 >
 >当然为了能更灵活的配置映射，还是建议手动创建EntityTypeConfiguration<Employee>。
 >
@@ -110,7 +111,7 @@ foreach (var type in typesToRegister)
 通过上面的介绍可以看到EntityTypeConfiguration类正事Fluent API的核心，下面我们以EntityTypeConfiguration的方法为线，
 依次了解如何进行Fluent API配置。
 
-##EntityTypeConfiguration 基本方法
+## EntityTypeConfiguration 基本方法
 
 ToTable：指定映射到的数据库表的名称。
 
@@ -124,7 +125,7 @@ Ignore：指定忽略哪个属性（不映射到数据表）
 对于基本映射这几个方法几乎包括了一切，下面是个综合示例： 
 
 
-```C#
+```cs
 ToTable("Product");
 
 ToTable("Product","newdbo");//指定schema，不使用默认的dbo
@@ -146,7 +147,7 @@ Ignore(p => p.Description);
 > * PrimitivePropertyConfiguration还有许多可配置的选项，如HasColumnOrder指定列在表中次序，IsOptional指定列是否可空，HasPrecision指定浮点数的精度等等，不再列举。 
 
 
-##EntityTypeConfiguration 关联
+## EntityTypeConfiguration 关联
 
 下面一系列示例的主角是产品，为了配合演示还请了产品小伙伴们，它们将在演示过程中逐一登场。 
 
@@ -158,7 +159,7 @@ Ignore(p => p.Description);
 产品类的基本结构如下，后面演示过程中将根据需要为其添加新的属性。 
 
 
-```C#
+```cs
 public class Product
 
 {
@@ -173,7 +174,7 @@ public class Product
 ```
 
 
-###1 - 1关联
+### 1 - 1关联
 
 （虽然看起来最简单，但这个好像是理解起来最麻烦的一种配置）
 
@@ -184,7 +185,7 @@ EF中各种配置方式无非就是告诉EF CodeFirst让那个表的主键作为
 
 这节使用到的是保修卡这个角色，我们知道一个产品对应一个保修卡，产品和保修卡使用相同的产品编号。这正是我们说的1对1的好例子。
 
-```C#
+```cs
 public class WarrantyCard
 
 {
@@ -200,14 +201,14 @@ public class WarrantyCard
 
 我们给Product也增加保修卡属性：
 
-```C#
+```cs
 public virtual WarrantyCard WarrantyCard { get; set; } 
 ```
 
 下面来看看怎么把Product和WarrantyCard关联起来。经过&ldquo;千百&rdquo;次的尝试，终于找到了下面这些结果看起来很正确的组合，先列于下方，
 后面慢慢分析：
 
-```C#
+```cs
 public class ProductMap : EntityTypeConfiguration<Product>
 
 {
@@ -263,7 +264,7 @@ public class WarrantyCardMap : EntityTypeConfiguration<WarrantyCard>
 
 第一组Fluent API生成的迁移代码：
 
-```C#
+```cs
 CreateTable(
 
     "dbo.Product",
@@ -310,7 +311,7 @@ CreateTable(
 
 再来看看第二组Fluent API生成的迁移代码：
 
-```C#
+```cs
 CreateTable(
 
     "dbo.Product",
@@ -362,7 +363,7 @@ CreateTable(
 
 可以一次性添加保修卡和合格证：
  
-```C#
+```cs
 
 var product = new Product()
 
@@ -390,7 +391,7 @@ context.SaveChanges();
 也可以分开进行：
 
 
-```C#
+```cs
 
 var product = new Product()
 
@@ -426,11 +427,11 @@ context.SaveChanges();
 对于查询来说，第一组和第二组配置生成的SQL相同。都是INNER JOIN，这里就不再列出了。
 
 
-###单向1 - *关联(可为空)
+### 单向1 - *关联(可为空)
 
 这里新登场角色是和发票，发票有自己的编号，有些产品有发票，有些产品没有发票。我们希望通过产品找到发票而又不需要由发票关联到产品。
 
-```C#
+```cs
 public class Invoice
 
 {
@@ -446,7 +447,7 @@ public class Invoice
 
 产品类新增的属性如下：
 
-```C#
+```cs
 public virtual Invoice Invoice { get; set; }
 
 public int? InvoiceId { get; set; } 
@@ -454,7 +455,7 @@ public int? InvoiceId { get; set; }
 
 可以使用如下代码创建Product到Invoice的关联
 
-```C#
+```cs
 
 public class ProductMap : EntityTypeConfiguration<Product>
 
@@ -502,7 +503,7 @@ HasOptional表示一个产品可能会有发票，WithMany的参数为空表示�
 下面写段代码来测试下这个映射配置，先是创建一个测试对象
 
 
-```C#
+```cs
 
 var product = new Product()
 
@@ -532,7 +533,7 @@ context.SaveChanges();
 然后查询，注意，创建和查询要分2次执行，不然不会走数据库，直接由EF Context返回结果了。
 
 
-```C#
+```cs
 
 var productGet = context.Set<Product>().Include(p=>p.Invoice).FirstOrDefault(); 
 ```
@@ -566,12 +567,12 @@ SELECT TOP (1)
 
  
 
-###单向1 - *关联（不可为空）
+### 单向1 - *关联（不可为空）
 
 为了演示这个关联，请出一个新对象合格证，合格证有自己的编号，而且一个产品是必须有合格证。
 
 
-```C#
+```cs
 
 public class Certification
 
@@ -587,7 +588,7 @@ public class Certification
 我们给Product添加关联合格证的属性：
 
 
-```C#
+```cs
 
 public virtual Certification Certification { get; set; }
 
@@ -597,7 +598,7 @@ public int CertificationId { get; set; }
 
 配置Product到Certification映射的代码与之前的类似，就是把HasOptional换成了HasRequired：
  
-```C#
+```cs
 
 HasRequired(p => p.Certification).WithMany().HasForeignKey(p=>p.CertificationId); 
 ```
@@ -606,11 +607,11 @@ HasRequired(p => p.Certification).WithMany().HasForeignKey(p=>p.CertificationId)
 不再赘述。
 
 
-###双向1 - *关联
+### 双向1 - *关联
 
 这是比较常见的场景，如一个产品可以对应多张照片，每张照片关联一个产品。先来看看新增的照片类：
 
-```C#
+```cs
 public class ProductPhoto
 
 {
@@ -630,13 +631,13 @@ public class ProductPhoto
 
 给Product增加ProductPhoto集合：
 
-```C#
+```cs
 public virtual ICollection<ProductPhoto> Photos { get; set; } 
 ```
 
 然后是映射配置：
 
-```C#
+```cs
 public class ProductMap : EntityTypeConfiguration<Product>
 
 {
@@ -678,7 +679,7 @@ public class ProductPhotoMap : EntityTypeConfiguration<ProductPhoto>
 
 我们来看另一种等价的写法（在ProductPhoto中配置关联）：
 
-```C#
+```cs
 public class ProductMap : EntityTypeConfiguration<Product>
 
 {
@@ -723,7 +724,7 @@ public class ProductPhotoMap : EntityTypeConfiguration<ProductPhoto>
 
 
 
-```C#
+```cs
 
 var product = new Product()
 
@@ -778,13 +779,13 @@ context.SaveChanges();
 
 试一试一次读取Product及ProductPhoto：
 
-```C#
+```cs
 var productGet = context.Set<Product>().Include(p=>p.Photos).ToList(); 
 ```
 
 生成的SQL如下：
 
-```C#
+```sql
 SELECT
 
         [Limit1].[Id] AS [Id], 
@@ -813,12 +814,12 @@ SELECT
 有点小复杂，用LEFT OUTER JOIN的原因是，可能有的Product没有ProductPhoto。
 
 
-###* - *关联 
+### * - *关联 
 
 这次轮到产品标签登场了。一个产品可以有多个标签，一个标签也可对应多个产品：
  
 
-```C#
+```cs
 
 
 public class Tag
@@ -837,14 +838,14 @@ public class Tag
 给Product增加标签集合：
 
 
-```C#
+```cs
 
 public virtual ICollection<Tag> Tags { get; set; } 
 ```
 
 映射代码：
 
-```C#
+```cs
 
 public class ProductMap : EntityTypeConfiguration<Product>
 
@@ -888,7 +889,7 @@ public class TagMap : EntityTypeConfiguration<Tag>
 比较特殊的就是需要指定一个关联表保存多对多的映射关系。
 
 
-```C#
+```cs
 
 
 CreateTable(
@@ -919,7 +920,7 @@ CreateTable(
 一般情况下使用自动生成的外键就好，也可以自己定义外键名称。
 
 
-```C#
+```cs
 HasMany(p => p.Tags).WithMany(t => t.Products).Map(m =>
 
 {
@@ -936,7 +937,7 @@ HasMany(p => p.Tags).WithMany(t => t.Products).Map(m =>
 迁移代码变成如下：
 
 
-```C#
+```cs
 
 CreateTable(
 
@@ -970,7 +971,7 @@ CreateTable(
 
 我们也写点数据进去，测试下：
 
-```C#
+```cs
 var product = new Product()
 
 {
@@ -998,7 +999,7 @@ context.SaveChanges();
 
 使用预加载(Include(p=>p.Tags))时的SQL：
 
-```C#
+```sql
 
 SELECT
 
@@ -1047,12 +1048,12 @@ SELECT
 
  
 
-###一点补充
+### 一点补充
 
 之前的示例中用到多次HasForeignKey()方法来指定外键，如果实体类中不存在表示外键的属性，我们可以用下面的方式指定外键列
 ，这样这个外键列只存在于数据库，不存在于实体中：
 
-```C#
+```cs
 HasOptional(p => p.Invoice).WithMany().Map(m => m.MapKey("DbOnlyInvoiceId")); 
 
 ```

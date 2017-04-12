@@ -2,7 +2,7 @@
 
 一般情况下，我们定义的一个SqlParameter参数数组，如：
 
-```c#
+```cs
 SqlParameter[] parms = 
 {
     new SqlParameter("@DateTime1", dtBegin),
@@ -14,7 +14,7 @@ SqlParameter[] parms =
 　　System.ArgumentException: 另一个SqlParameterCollection中已包含SqlParameter。
 
        
-##原因如下：
+## 原因如下：
 
 声明的SqlParameter数组，而在循环的内部，每一次执行ExecuteNonQuery(或者其它命令方法)都由该方法内部的IDbCommand.Parameters.Add(IDbDataParameter)
 将SqlParameter数组添加到IDbCommand的IDataParameterCollection中。而framework机制限制两个IDataParameterCollection指向同一个对象。
@@ -22,13 +22,13 @@ SqlParameter[] parms =
 ExecuteNonQuery方法结束时从内存中释放。但是实际上可能是由于垃圾回收机制并没有将IDbCommand临时对象即时的回收，而且改对象绑定的Parameter集合也存在，
 就像一个DropDownList添加Item一样。这样在下一个循环执行的时候，会导致两个IDataParameterCollection指向同一个对象，此时出现问题。
 
-##解决方案
+## 解决方案
 
-###解决方案一：
+### 解决方案一：
 
 在每一次循环时，重新生成对象，但这样会产生大量的垃圾变量，不可取。
 
-###解决方案二：
+### 解决方案二：
 
 将使用完之后的Command命令的Parameters集合清空。推荐使用，类似代码如下：
 
@@ -54,7 +54,7 @@ public static DataTable GetDataTable(
 
 另外，如果不是数组，只是一个SqlParameter变量，如：
 
-```c#
+```cs
 SqlParameter parm = 
     new SqlParameter("@Cust_Id", CustId.Trim());;
 ```
@@ -63,6 +63,6 @@ SqlParameter parm =
 参考自：http://www.cnblogs.com/yank/archive/2008/04/01/1132825.html 谢谢！
 
 
-##我的解决方法
+## 我的解决方法
 
 是别人封装的我怎么办呢？基础库也不好添加。只能每次都创建了！

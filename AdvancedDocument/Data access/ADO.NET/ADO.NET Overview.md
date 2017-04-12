@@ -2,7 +2,7 @@
 
 
 
-##[ADO.NET Architecture](https://msdn.microsoft.com/en-us/library/27y4ybxw(v=vs.110).aspx)
+## [ADO.NET Architecture](https://msdn.microsoft.com/en-us/library/27y4ybxw(v=vs.110).aspx)
 
 
 Choosing a DataReader or a DataSet

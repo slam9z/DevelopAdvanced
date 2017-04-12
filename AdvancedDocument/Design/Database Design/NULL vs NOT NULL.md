@@ -1,7 +1,7 @@
 ﻿[NULL vs NOT NULL](http://stackoverflow.com/questions/10933639/null-vs-not-null)
 
 
-##NOT NULL就不能在数据库中赋默认值？
+## NOT NULL就不能在数据库中赋默认值？
 
 
 《规范》

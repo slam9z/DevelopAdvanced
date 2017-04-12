@@ -1,6 +1,6 @@
 ﻿这里就是自己C#的编程规范，一定要遵守。
 
-##Naming Conventions
+## Naming Conventions
 
 Use camelCase与PascalCase命名方式。
 
@@ -30,7 +30,7 @@ Use camelCase与PascalCase命名方式。
 
 
 
-##Define Group
+## Define Group
 
 这个比较麻烦，自己也没弄好过，需要好好看一下书。主要是看类型与含义，这两者是有冲突的。
 
@@ -38,7 +38,7 @@ Use camelCase与PascalCase命名方式。
 
 1. 一般采用变量与属性，构造函数，方法从上到下定义。
 
-##Define Method
+## Define Method
 
 1. 一般习惯将callback方法，写在最后，但是default参数冲突。如果callback不可为空，怎作为第一个参数，可为空就放在最后。 
 
@@ -47,15 +47,15 @@ Use camelCase与PascalCase命名方式。
 1. 定义一堆Extentions Method 编程感觉不错，可以使用链式的编程方法。
 
 
-##Define Class
+## Define Class
 
 1. 尽可能不要使用静态类，毫无扩展性，可以用单实例对象替代静态类。
 
 
-##Define Enum
+## Define Enum
 
 
-##Expression
+## Expression
 
 1. 使用Expression来构建查询语句是一个非常好的办法：动态，安全，高效。
 

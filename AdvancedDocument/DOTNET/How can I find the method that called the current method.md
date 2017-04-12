@@ -1,7 +1,7 @@
 [How can I find the method that called the current method?](http://stackoverflow.com/questions/171970/how-can-i-find-the-method-that-called-the-current-method)
 
 
-##　answer
+## answer
 
 A quick recap of the 2 approaches with speed comparison being the important part.
 

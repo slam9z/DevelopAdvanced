@@ -1,7 +1,7 @@
-﻿##Socket
+﻿## Socket
 
 
-###Socket原理
+### Socket原理
 
 Socket是建立在各种底层传输层上的一个编程抽象接口，门面模式的设计模式。
     
@@ -22,9 +22,9 @@ Socket概念与方法
 
 [Network socket-Wiki](https://en.wikipedia.org/wiki/Network_socket)
 
-###Socket .NET实现
+### Socket .NET实现
 
-####Socket
+#### Socket
 
     Namespace：System.Net.Sockets
 
@@ -91,20 +91,20 @@ EndAccept(IAsyncResult)
 
 [C# SocketAsyncEventArgs High Performance Socket Code](http://www.codeproject.com/Articles/83102/C-SocketAsyncEventArgs-High-Performance-Socket-Cod)
 
-##Tcp
+## Tcp
 
-###Tcp协议
+## #Tcp协议
 
-####首部格式
+#### 首部格式
 
 ![格式图释](http://pic002.cnblogs.com/images/2012/387401/2012070916030558.png)
 
-####数据单位
+#### 数据单位
 
 TCP 传送的数据单位协议是 TCP 报文段(segment)
 
  
-####特点
+#### 特点
 
 TCP 是面向连接的传输层协议  
 每一条 TCP 连接只能有两个端点(endpoint),每一条 TCP 连接只能是点对点的（一对一）  
@@ -112,7 +112,7 @@ TCP 提供可靠交付的服务
 TCP 提供全双工通信  
 面向字节流  
 
-####具体实现
+#### 具体实现
 
 说明:
 
@@ -122,7 +122,7 @@ TCP 提供全双工通信
 * TCP连接的往返时间 RTT 也不是固定不变的.需要使用特定的算法估算较为合理的重传时间
 
 
-####运输连接
+#### 运输连接
 
 三个阶段:
 
@@ -135,9 +135,9 @@ TCP 提供全双工通信
 ![释放Tcp连接](http://pic002.cnblogs.com/images/2012/387401/2012070916205749.jpg)
 
 
-####拥塞处理相关概念
+#### 拥塞处理相关概念
 
-#####拥塞窗口:
+##### 拥塞窗口:
 
 含义:
 
@@ -148,14 +148,14 @@ TCP 提供全双工通信
 
 只要网络没有出现拥塞,拥塞窗口就再增大一些,以便把更多的分组发送出去.但只要网络出现拥塞,拥塞窗口就减小一些,以减少注入到网络中的分组数
 
-####TCP 的有限状态机
+#### TCP 的有限状态机
 
 ![TCP 的有限状态机](http://pic002.cnblogs.com/images/2012/387401/2012070916285990.png)
 
 [(传输层)TCP协议](http://www.cnblogs.com/kzloser/articles/2582957.html)
 
  
-###IP协议 
+### IP协议 
 
 IP协议是TCP/IP协议簇中的核心协议，也是TCP/IP的载体。所有的TCP，UDP，ICMP及IGMP数据都以IP数据报格式传输。
 IP提供不可靠的，无连接的数据传送服务。
@@ -165,7 +165,7 @@ IP提供不可靠的，无连接的数据传送服务。
 [IP协议](http://blog.csdn.net/houdong/article/details/1505798)
 
 
-####IP路由选择
+####IP 路由选择
 
 直接交付与间接交付
 
@@ -190,7 +190,7 @@ IP路由选择主要完成以下功能：
 
 *了解这些底层协议，也可以开阔自己的编程思维！要想更清楚的了解，可能还是要看书啊！Wireshark工具了解网络层*
 
-###OSI(Open System Interconnection)模型
+### OSI(Open System Interconnection)模型
 
 * 物理层
    
@@ -278,9 +278,9 @@ IP路由选择主要完成以下功能：
 
     [TCP/IP：数据链路层、IP协议以及IP协议相关技术](http://www.cocoachina.com/programmer/20160225/15363.html) 
 
-###Tcp .NET实现
+### Tcp .NET实现
 
-####TcpClient
+#### TcpClient
 
 * Connect
 
@@ -294,7 +294,7 @@ IP路由选择主要完成以下功能：
 * NetworkStream
         
 
-####TcpListener
+#### TcpListener
 
 * Start
 * TcpClient  AcceptTcpClient

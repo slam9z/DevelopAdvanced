@@ -1,6 +1,6 @@
 [使用Akka.net开发第一个分布式应用 ](http://www.cnblogs.com/richieyang/p/4945905.html)
 
-##一、什么是Actor模型
+## 一、什么是Actor模型
 
 Actor模型由Carl Hewitt于上世纪70年代早期提出并在Erlang语言中得到了广泛应用，目的是为了解决分布式编程中一系列问题。其主要特点如下：
 
@@ -12,7 +12,7 @@ Actor模型由Carl Hewitt于上世纪70年代早期提出并在Erlang语言中�
 [基于消息传递的软件架构模型演变 ](http://www.cnblogs.com/richieyang/p/4907441.html)
 
 
-##三、响应式宣言
+## 三、响应式宣言
 
 说到Akka.net不得不提到响应式宣言。随着互联网和软件行业的发展，早先的软件架构已经不适应社会发展的需求。
 软件系统的架构应该具备：弹性、松耦合、可伸缩性，更加容易开发和维护，发生错误时能够自我容错。所以响应式系统的概念随之而来：
@@ -24,6 +24,6 @@ Actor模型由Carl Hewitt于上世纪70年代早期提出并在Erlang语言中�
 
 ![](http://images2015.cnblogs.com/blog/600216/201511/600216-20151107192559211-1922269278.png)
 
-##六、Actor结构
+## 六、Actor结构
 
 ![](http://images2015.cnblogs.com/blog/600216/201511/600216-20151107193750461-319874135.png)

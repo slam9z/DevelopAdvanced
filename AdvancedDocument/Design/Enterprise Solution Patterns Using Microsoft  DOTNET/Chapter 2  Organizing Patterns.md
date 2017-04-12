@@ -25,7 +25,7 @@ This chapter answers some of these questions by demonstrating how to:
 * Organize patterns into a frame.
 * Use patterns to describe solutions concisely.
 
-##Pattern of Patterns 
+## Pattern of Patterns 
 
 One reason the object-oriented programming community embraced patterns so emphatically is because patterns describe 
 relationships. The base element of object-oriented programming is a class. However, a single class is not very
@@ -55,7 +55,7 @@ The somewhat random collection of circles becomes a connected web of patterns. W
 you can now identify closely related patterns and review those as well. You can also identify "neighborhoods" of
 closely related patterns and see how they are related to other, more remote patterns.
 
-##Pattern Clusters
+## Pattern Clusters
  
 Charting the relationships between patterns helps you navigate from one pattern to a set of related patterns.
  However, it does not yet tell you where to start. If you are building a Web application, should you read the
@@ -89,7 +89,7 @@ This initial release of Enterprise Solution Patterns Using Microsoft .NET (ESP) 
 Chapters 3 through 7 describe these clusters in detail. 
 
 
-##Different Levels of Abstraction 
+## Different Levels of Abstraction 
 
 
 Dividing patterns into clusters makes them more manageable. If you are building the front end of a Web application,
@@ -112,7 +112,7 @@ One way categorize the patterns is to divide the pattern graph into the three le
 This division largely coincides with the terminology used in some of the most influential books about software patterns.
 
 
-###Architecture Patterns 
+### Architecture Patterns 
 
 
 >"An architectural pattern expresses a fundamental structural organization schema for software systems. 
@@ -124,7 +124,7 @@ ESP follows the Buschmann, et al. definition of architecture patterns. These pat
  application at the highest level. For example, the Layered Application pattern is an architecture pattern.
 
 
-###Design Patterns 
+### Design Patterns 
 
 
 >"A design pattern provides a scheme for refining[精炼] the subsystems or components of a software system, 
@@ -136,7 +136,7 @@ Design patterns provide the next level of refinement, as described in the semina
  the iconic patterns, such as Model-View-Controller or Singleton, are in this layer.
 
 
-###Implementation Patterns 
+### Implementation Patterns 
 
 
 The patterns community refers to more detailed, programming-language-specific patterns as idioms[风格]. 
@@ -166,7 +166,7 @@ Dividing the collection of patterns into three levels of abstraction makes it ea
  flows from high-level organization, through progressive refinement of subsystems and components, down 
 to the implementation of these patterns using platform-specific technology.
 
-##Viewpoints 
+## Viewpoints 
 
 Although the levels of abstractions help to address different user groups, they do not reflect the fact that a
  software solution encompasses much more than code components. A holistic view of building an enterprise solution
@@ -208,7 +208,7 @@ Figure 5 overlays these viewpoints as vertical lines over the pattern graph and 
 For the sake of simplicity, Figure 5 does not show the cluster boundaries. However, the clusters, the layers of
  abstraction, and the viewpoints exist in parallel. They represent different ways to access the same set of patterns.
 
-##The Pattern Frame 
+## The Pattern Frame 
 
 The combination of three levels of refinement on the vertical axis and the four viewpoints on the horizontal axis
  results in a grid-like organization of the pattern graph. This arrangement, called the Pattern Frame, is shown in Figure 6.
@@ -218,7 +218,7 @@ The combination of three levels of refinement on the vertical axis and the four 
 The Pattern Frame is included with each individual pattern description as a point of reference and as a navigational aid.
 
 
-##Constraints 
+## Constraints 
 
 
 The Pattern Frame organizes the collection of patterns into meaningful subcategories. For example, you can now focus
@@ -284,7 +284,7 @@ that are in scope for the remainder of this guide. Figure 7 shows the root const
 Reducing the scope of the Pattern Frame makes it possible to focus on specific patterns and the relationships 
 between them in more relevant detail.
 
-##Pattlets 
+## Pattlets 
 
 The use of root constraints reduces the number of patterns to a manageable order of magnitude[巨大]. 
 Nevertheless, elaborating on all patterns in the grid takes a significant amount of effort. 
@@ -311,7 +311,7 @@ the original work for those readers who would like to look at the complete patte
 
 For a detailed list of all pattlets, see Appendix A.
 
-##Pattern Language for Solutions 
+## Pattern Language for Solutions 
 
 
 The constrained Pattern Frame and the patterns it contains provide enough data points to begin using patterns
@@ -377,7 +377,7 @@ about how the system works. Notice that you gained this understanding without ha
  documentation or step through endless lines of code. The communication benefits of patterns become clear 
 if you imagine how much more work would be involved in describing the solution without using patterns. 
 
-##Summary 
+## Summary 
 
 This chapter demonstrated how patterns provide a vocabulary to efficiently describe complex solutions without 
 sacrificing detail. Effectively, the patterns form a new language with which architects and designers can

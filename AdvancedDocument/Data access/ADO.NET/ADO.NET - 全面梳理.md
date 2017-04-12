@@ -1,7 +1,7 @@
 ﻿[ADO.NET - 全面梳理 ](http://www.cnblogs.com/yangcaogui/archive/2012/06/09/2537086.html)
 
 
-##1.简单的介绍下ADO.NET
+## 1.简单的介绍下ADO.NET
 
  　　了解System.Data命名空间下我们常用的一些类：
 
@@ -19,18 +19,18 @@
 
 ```
 
-##2.SqlConnection(连接对象)
+## 2.SqlConnection(连接对象)
 
 
-##3.SqlCommand(命令对象)
+## 3.SqlCommand(命令对象)
 
 
-##4.SqlParameter(Sql参数)
+## 4.SqlParameter(Sql参数)
 
 用参数来避免sql注入。
 
 
-##5.SqlDataReader(数据流读取器)
+## 5.SqlDataReader(数据流读取器)
 
 ```
 using (SqlConnection conn = new SqlConnection(""))
@@ -50,7 +50,7 @@ using (SqlConnection conn = new SqlConnection(""))
 ```
 
 
-##6.SqlTransaction(事务)
+## 6.SqlTransaction(事务)
 
 ```sql
 BEGIN TRANSACTION
@@ -70,9 +70,9 @@ ELSE
     COMMIT
 ```
 
-###4.说说“TransactionScope”，让事务更加的简单 
+### 4.说说“TransactionScope”，让事务更加的简单 
 
-```C#
+```cs
 using (TransactionScope transactionScope = new TransactionScope())
 {
     try

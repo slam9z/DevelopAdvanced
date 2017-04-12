@@ -1,4 +1,4 @@
-﻿##LocalDb stirng
+﻿## LocalDb stirng
 
 ``` xml
  <connectionStrings>
@@ -13,7 +13,7 @@
   <appSettings></appSettings>
 ```
 
-##Sql server express
+## Sql server express
 
 ``` xml
  <connectionStrings>

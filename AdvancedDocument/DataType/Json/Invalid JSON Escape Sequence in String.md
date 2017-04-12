@@ -2,7 +2,7 @@
 
 \用\\表示，基本是传统。因为转义字符。
 
-##question
+## question
 
 am working with a MySQL db that has encoded polygon for google maps. When I try to return the query as json, jsonlint complains.. I am not sure why its complaining , I did try escaping the "}" in the latlon but still get the same error.
 Parse error on line 20:
@@ -41,7 +41,7 @@ My json is:
 }
 ```
 
-##answer
+## answer
 
 The problem is that there is a slash before the C which is not a valid escape sequence.
 

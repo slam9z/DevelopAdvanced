@@ -1,6 +1,6 @@
-﻿##config
+﻿## config
 
-###节点位置
+### 节点位置
 
 Web.config
 
@@ -11,7 +11,7 @@ Web.config
 </configuration>
 ```
 
-###配置方法
+### 配置方法
 
 不同的位置不一样。
 
@@ -21,7 +21,7 @@ Web.config
 
 * 直接配置
 
-###database first
+### database first
 
 ```
  <add name="Entities" 

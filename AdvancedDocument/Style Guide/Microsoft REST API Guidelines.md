@@ -1,6 +1,6 @@
 [Microsoft REST API Guidelines](https://github.com/wei772/api-guidelines)
 
-##7.10 Response format
+## 7.10 Response format
 
 [7.10 Response format](https://github.com/wei772/api-guidelines/blob/master/Guidelines.md#710-response-formats)
 

@@ -1,13 +1,13 @@
-﻿##Saas
+﻿## Saas
     Software as a Service
 
 
-##IaaS
+## IaaS
     Infrastructure as a Service
 
-##PasS
+## PasS
     Platform as a Service
 
 
-##之前的关系
+## 之前的关系
 ![](http://ych.u1city.com/UserFiles/20111122/iaas-paas-saas.jpg)

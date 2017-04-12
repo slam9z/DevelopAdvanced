@@ -1,13 +1,13 @@
 ﻿[MVC、MVP以及Model2[上篇]](http://www.cnblogs.com/artech/archive/2012/03/08/mvc-01.html)
 
-##一、自治视图
+## 一、自治视图
 
 说到自治视图，可能很多人会感到模式，但是我想很多人（尤其是.NET开发人员）可能经常在采用这种模式来设计我们的应用。
 Windows Forms和ASP.NET Web Forms虽然分别属于GUI和Web开发框架，但是它们都采用了事件驱动的开发方式。
 所有与UI相关的逻辑都可以定义在针对视图（Windows Form或者Web Form）的后台代码（Code Behind）中，并最终注册到视图本身或者视图元素（控件）的相应事件上。
 
 
-##二、MVC模式
+## 二、MVC模式
 
 它将构成一个人机交互应用涉及到的功能分为Model、Controller和View三部分，三者各自具有的基本职责或者功能范围如下：
 
@@ -22,7 +22,7 @@ Windows Forms和ASP.NET Web Forms虽然分别属于GUI和Web开发框架，但�
 ![](http://images.cnblogs.com/cnblogs_com/artech/201203/201203081758064689.png)
 
 
-##三、多层架构中的MVC
+## 三、多层架构中的MVC
 
 我看到很多人将MVC和所谓的“三层架构”进行比较，其实两者并没有什么可比性，MVC更不是分别对应着UI、业务逻辑和数据存取三个层次。
 不过两者也不能说完全没有关系，我们现在就来讨论这个问题。
@@ -36,7 +36,7 @@ Trygve M. H. Reenskau当时提出MVC的时候实际上将其作为构建整个GU
 [MVC、MVP以及Model2[下篇]](http://www.cnblogs.com/artech/archive/2012/03/08/mvc-02.html)
 
 
-##一、 MVP
+## 一、 MVP
 
 MVP中的M和V对应中MVC的Model和View，而P（Presenter）则自然代替了MVC中的Controller。
 
@@ -45,7 +45,7 @@ MVP中的M和V对应中MVC的Model和View，而P（Presenter）则自然代替�
 
 Martin Folwer将MVP可分为PV（Passive View）和SoC（Supervising Controller）两种模式。
 
-###PV与SoC
+### PV与SoC
 
 *之前老大的部件式编程有点像MVP，但是接口太烂的，与控件耦合*
 
@@ -70,7 +70,7 @@ public interface IEmployeeSearchView
     string SelectedDepartment { get; }
     IEnumerable<Employee> Employees { set; }
 }
-···
+```
 
 缺点：
 
@@ -80,7 +80,7 @@ public interface IEmployeeSearchView
 在这种情况下我们往往采用SoC模式。
 
 
-###View和Presenter交互的规则（针对SoC模式）
+### View和Presenter交互的规则（针对SoC模式）
 
 View和Presenter之间的交互是整个MVP的核心，能够正确地应用MVP模式来架构我们的应用极大地取决于能够正确地处理View和Presenter两者之间的关系。
 在由Model、View和Presenter组成的三角关系的核心不是View而是Presenter，Presenter不是View调用Model的中介，而是最终决定如何响应用户交互行为的决策者。
@@ -89,7 +89,7 @@ View本身仅仅实现单纯的、独立的UI处理逻辑，它处理的数据�
 Presenter所需的关于View的状态应该在接收到View发送的用户交互请求的时候一次得到，而不需要通过View的属性去获取。
 
 
-##二、Model2
+## 二、Model2
 
 ![](http://images.cnblogs.com/cnblogs_com/artech/201203/20120308214247597.png)
 
@@ -109,7 +109,7 @@ Controller被激活之后Action方法被执行。对于需要传入Action方法�
 用户交互请求不再由View报告给Controller（Presenter），而是由拦截器直接转发给Controller。Controller不仅仅决定着Model的调用，
 还决定了View的选择和生成。ASP.NET MVC就是基于Model 2模式设计的。
 
-##三、ASP.NETMVC与Model2
+## 三、ASP.NETMVC与Model2
 
 
 由于ASP.NET MVC只有View Model，所以ASP.NET MVC应用框架本社实际上仅仅关于View和Controller，真正的Model以及Model和Controller之间的交互体现在我们如何来设计Controller。

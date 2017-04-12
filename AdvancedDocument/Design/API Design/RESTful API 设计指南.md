@@ -1,10 +1,10 @@
 ﻿[RESTful API 设计指南](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)
 
-##一、协议
+## 一、协议
 
 API与用户的通信协议，总是使用HTTPs协议。
 
-##二、域名
+## 二、域名
 
 应该尽量将API部署在专用域名之下。
 
@@ -18,7 +18,7 @@ https://api.example.com
 https://example.org/api/
 
 
-##三、版本（Versioning）
+## 三、版本（Versioning）
 
 应该将API的版本号放入URL。
 
@@ -28,7 +28,7 @@ https://api.example.com/v1/
 
 另一种做法是，将版本号放在HTTP头信息中，但不如放入URL方便和直观。Github采用这种做法。
 
-##四、路径（Endpoint）
+## 四、路径（Endpoint）
 
 路径又称"终点"（endpoint），表示API的具体网址。
 
@@ -40,7 +40,7 @@ https://api.example.com/v1/
 ◾https://api.example.com/v1/animals
 ◾https://api.example.com/v1/employees
 
-##五、HTTP动词
+## 五、HTTP动词
 
 对于资源的具体操作类型，由HTTP动词表示。
 
@@ -68,7 +68,7 @@ https://api.example.com/v1/
 ◾GET /zoos/ID/animals：列出某个指定动物园的所有动物
 ◾DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物
 
-##六、过滤信息（Filtering）
+## 六、过滤信息（Filtering）
 
 如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。
 
@@ -82,7 +82,7 @@ https://api.example.com/v1/
 
 参数的设计允许存在冗余，即允许API路径和URL参数偶尔有重复。比如，GET /zoo/ID/animals 与 GET /animals?zoo_id=ID 的含义是相同的。
 
-##七、状态码（Status Codes）
+## 七、状态码（Status Codes）
 
 服务器向用户返回的状态码和提示信息，常见的有以下一些（方括号中是该状态码对应的HTTP动词）。
 
@@ -101,7 +101,7 @@ https://api.example.com/v1/
 
 状态码的完全列表参见这里。
 
-##八、错误处理（Error handling）
+## 八、错误处理（Error handling）
 
 如果状态码是4xx，就应该向用户返回出错信息。一般来说，返回的信息中将error作为键名，出错信息作为键值即可。
 
@@ -111,7 +111,7 @@ https://api.example.com/v1/
 }
 
 
-##九、返回结果
+## 九、返回结果
 
 针对不同操作，服务器向用户返回的结果应该符合以下规范。
 
@@ -123,7 +123,7 @@ https://api.example.com/v1/
 ◾DELETE /collection/resource：返回一个空文档
 
 
-##十、Hypermedia API
+## 十、Hypermedia API
 
 RESTful API最好做到Hypermedia，即返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么。
 
@@ -161,7 +161,7 @@ Hypermedia API的设计被称为HATEOAS。Github的API就是这种设计，访�
 
 上面代码表示，服务器给出了提示信息，以及文档的网址。
 
-##十一、其他
+## 十一、其他
 
 （1）API的身份认证应该使用OAuth 2.0框架。
 

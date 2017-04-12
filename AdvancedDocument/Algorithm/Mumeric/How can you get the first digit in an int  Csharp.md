@@ -1,6 +1,6 @@
 ﻿[How can you get the first digit in an int (C#)?](http://stackoverflow.com/questions/701322/how-can-you-get-the-first-digit-in-an-int-c/701621#701621)
 
-##Question
+## Question
 
 GetFirstDigit
 
@@ -15,7 +15,7 @@ While this does the job, it feels like there is probably a good, simple, math-ba
 String manipulation feels clunky.
 
 
-##Best answer
+## Best answer
 
 *Benchmarks*
 
@@ -25,7 +25,7 @@ Firstly, you must decide on what you mean by "best" solution, of course that tak
 I ran each of these examples 10 million times, and the results value is the number of ElapsedTicks that have passed.
 Without further ado, from slowest to quickest, the algorithms are:
 
-###Converting to a string, take first character
+### Converting to a string, take first character
 
 ```c#
 int firstDigit = (int)(Value.ToString()[0]) - 48;
@@ -34,7 +34,7 @@ int firstDigit = (int)(Value.ToString()[0]) - 48;
 Results:
 12,552,893 ticks
 
-###Using a logarithm
+### Using a logarithm
 
 ```c#
 int firstDigit = (int)(Value / Math.Pow(10, (int)Math.Floor(Math.Log10(Value))));
@@ -43,7 +43,7 @@ int firstDigit = (int)(Value / Math.Pow(10, (int)Math.Floor(Math.Log10(Value))))
 Results:
 9,165,089 ticks
 
-###Looping
+### Looping
 
 ```C#
 while (number >= 10)
@@ -56,7 +56,7 @@ Results:
 6,001,570 ticks
 
 
-###Conditionals
+### Conditionals
 
 int firstdigit;
 
@@ -86,7 +86,7 @@ else
 Results:
 1,421,659 ticks
 
-###Unrolled & optimized loop
+### Unrolled & optimized loop
 
 ```C#
 if (i >= 100000000) i /= 100000000;
@@ -100,13 +100,13 @@ Results:
 Note:
 each test calls Random.Next() to get the next int
 
-##Relative question
+## Relative question
 
 求比当前数大，但是除最高位数外其它为0的数中的最小数。
 
-##Answer
+## Answer
 
-###Looping
+### Looping
 
 ```C#
 
@@ -121,7 +121,7 @@ var result = (long)(Math.Ceiling(number / base) * base);
 ```
 
 
-###Using a logarithm
+### Using a logarithm
 
 ```
 var base = Math.Pow(

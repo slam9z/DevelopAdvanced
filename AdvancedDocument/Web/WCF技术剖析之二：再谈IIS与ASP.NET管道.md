@@ -1,6 +1,6 @@
 ﻿[WCF技术剖析之二：再谈IIS与ASP.NET管道 ](http://www.cnblogs.com/artech/archive/2009/06/20/1507165.html)
 
-##IIS 5.x与ASP.NET
+## IIS 5.x与ASP.NET
 
 我们先来看看IIS 5.x是如何处理基于ASP.NET资源（比如.aspx,.asmx等）请求的，整个过程基本上可以通过图1体现。 
 
@@ -30,7 +30,7 @@ ASP.NET ISAPI扩展会创建ASP.NET的工作进程（如果该进程尚未启动
 在此AppDomain中，HTTP运行时（HTTP Runtime）被加载并用以创建相应的应用。对于寄宿于IIS 5.x的所有Web 应用都运行在同一个进程（*工作进程Aspnet_wp.exe*）
 的不同AppDomain中。 
 
-##IIS 6与ASP.NET
+## IIS 6与ASP.NET
 
 通过上面的介绍，我们可以看出IIS 5.x至少存在着如下两个方面的不足： 
 
@@ -54,7 +54,7 @@ HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Services/HTTP。HTTP.SYS能够带来
 
 图2 IIS 6与ASP.NET 
 
-##IIS 7.0与ASP.NET
+## IIS 7.0与ASP.NET
 
 IIS 7.0对请求的监听和分发机制上又进行了革新性的改进，主要体现在对于*Windows进程激活服务（Windows Process Activation Service，WAS）*的引入，
 将原来（IIS 6.0）W3SVC承载的部分功能分流给了WAS。具体来说，通过上面的介绍，我们知道对于IIS 6.0来说，W3SVC主要承载着三大功能：
@@ -74,7 +74,7 @@ IIS 7.0对请求的监听和分发机制上又进行了革新性的改进，主�
 
 
 
-##ASP.NET集成 
+## ASP.NET集成 
 
 从上面对IIS 5.x和IIS 6.0的介绍中，我们不难发现这一点，IIS与ASP.NET是两个相互独立的管道（Pipeline），
 在各自管辖范围内，它们各自具有自己的一套机制对HTTP请求进行处理。两个管道通过ISAPI实现“联通”：IIS是第一道屏障，
@@ -111,7 +111,7 @@ CGI和静态文件的请求。
 图6 基于IIS 7.0与ASP.NET集成管道设计 
 
 
-##ASP.NET管道
+## ASP.NET管道
 
 如果HTTP.SYS接收到的HTTP请求是对该Web应用的第一次访问，当成功加载了运行时后，会通过AppDomainFactory为该Web应用创建一个应用程序域（AppDomain）。
 随后，一个特殊的运行时IsapiRuntime被加载。IsapiRuntime定义在程序集System.Web中，对应的命名空间为System.Web.Hosting。IsapiRuntime会接管该HTTP请求。 
@@ -136,7 +136,7 @@ HttpApplicationFactory负责处理当前的HTTP请求。
 图7 ASP.NET 处理管道 
 
 
-###HttpApplication 
+### HttpApplication 
 
 HttpApplication是整个ASP.NET基础架构的核心，它负责处理分发给它的HTTP请求。由于一个HttpApplication对象在某个时刻只能处理一个请求
 ，只有完成对某个请求的处理后，HttpApplication才能用于后续的请求的处理。所以，ASP.NET采用对象池的机制来创建或者获取HttpApplication对象。
@@ -152,7 +152,7 @@ global.asax采用一种很直接的方式实现了这样的功能，这种方式
 在global.asax中，我们按照这样的方法命名规则进行事件注册：Application_{Event Name}。
 比如Application_BeginRequest方法用于处理HttpApplication的BeginRequest事件。
 
-###HttpModule 
+### HttpModule 
 
 ASP.NET为创建各种.NET Web应用提供了强大的平台，它拥有一个具有高度可扩展性的引擎，并且能够处理对于不同资源类型的请求。
 
@@ -173,7 +173,7 @@ Windows认证、Forms认证和Passport认证；
 * UrlAuthorizationModule + FileAuthorizationModule：实现了基于Uri和文件ACL（Access Control List）的授权。
 
 
-###HttpHandler 
+### HttpHandler 
 
 如果说HttpModule相当于IIS的ISAPI Filter的话，我们可以说HttpHandler则相当于IIS的ISAPI Extension，HttpHandler在ASP.NET中扮演请求的最终处理者的角色。
 对于不同资源类型的请求，ASP.NET会加载不同的Handler来处理，也就是说.aspx page与.asmx web service对应的Handler是不同的。 

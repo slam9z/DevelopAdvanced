@@ -15,7 +15,7 @@ insertSql
 
 这种形式会保存,说找不到参数。
 
-##AddWithValue
+## AddWithValue
 
 [How to insert SQL parameter's value in C#](http://www.codeproject.com/Questions/640647/How-to-inject-foreign-key-ih-the-Csharp)
 

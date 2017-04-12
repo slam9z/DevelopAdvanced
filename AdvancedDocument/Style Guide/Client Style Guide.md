@@ -1,11 +1,11 @@
 ﻿
-##Naming Conventions
+## Naming Conventions
 
 1. 控件本身的事件处理方法使用On+事件名，其它使用 控件名_事件名或者On控件名与事件名。
 
 1. 控件命名，使用后缀，不要与具体类型绑定。例如Input, text,options。
 
-##Xaml Styles
+## Xaml Styles
 
 1. 一个文件存储项目或者引用所有控件的默认样式，确保默认样式能适应大部分情况。
 
@@ -21,7 +21,7 @@
 
 1. 样式最好支持Light和Dark主题，并且支持替换主题色（？）
 
-##Xaml
+## Xaml
 
 1. 控件属性需要Group与排序，x:Name，binding,定位与margin，相对关系，Style与Tempalte,其它。
 

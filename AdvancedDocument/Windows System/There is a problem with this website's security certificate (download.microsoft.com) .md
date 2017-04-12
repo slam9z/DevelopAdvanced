@@ -1,5 +1,5 @@
  
-##Problem 
+## Problem 
 
 
 download.microsoft.com
@@ -27,7 +27,7 @@ Not recommended icon
 More information  More information  
 
 
-##Solution
+## Solution
 
 [how to prevent "There is a problem with this website's security certificate" error](https://social.technet.microsoft.com/Forums/zh-CN/46c8bf9f-97ea-498c-b153-eeca9cafa716/how-to-prevent-there-is-a-problem-with-this-websites-security-certificate-error?forum=winserversecurity)
 
