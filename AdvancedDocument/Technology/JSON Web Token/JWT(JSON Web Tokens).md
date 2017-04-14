@@ -1,0 +1,1 @@
+[JWT(JSON Web Tokens)](http://www.cnblogs.com/zaixiuxing/p/6005968.html)
