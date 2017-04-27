@@ -1,0 +1,2 @@
+[Introduction to working with static files in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files)
+
