@@ -598,6 +598,7 @@
     <None Include="Tool\Visual Studio\How to Run Visual Studio as Administrator by default.md" />
     <None Include="Tool\Visual Studio\Prevent iisexpress from running the websites in a solution.md" />
     <None Include="Tool\Visual Studio\Solve Solution Exploler  location error  by  reset  visual stuido user date.md" />
+    <None Include="Tool\Visual Studio\The operation could not be completed. The parameter is incorrect.md" />
     <None Include="Tool\Visual Studio\Visual studio  extended trial has expired.md" />
     <None Include="Tool\Visual Studio\Visual Studio  快捷键整理.md" />
     <None Include="Tool\Visual Studio\Visual Studio 2015 community expired.md" />
