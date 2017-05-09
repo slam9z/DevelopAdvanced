@@ -6,7 +6,7 @@
     Sample MusicStore application that uses MVC and Entity Framework.
 
 
-* [live.asp.net](https://github.com/aspnet/live.asp.net.git)
+* [live.asp.net](https://github.com/aspnet/live.asp.net)
 
     Code for live.asp.net, which hosts the ASP.NET Community Stand-up 
 
