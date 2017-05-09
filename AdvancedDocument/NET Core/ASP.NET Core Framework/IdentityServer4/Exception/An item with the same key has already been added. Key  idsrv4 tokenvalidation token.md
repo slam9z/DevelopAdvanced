@@ -3,7 +3,7 @@
 
 > `UseIdentityServerAuthentication` 使用了2次
 
-```
+```cs
 System.ArgumentException: An item with the same key has already been added. Key: idsrv4:tokenvalidation:token
    at System.ThrowHelper.ThrowAddingDuplicateWithKeyArgumentException(Object key)
    at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)

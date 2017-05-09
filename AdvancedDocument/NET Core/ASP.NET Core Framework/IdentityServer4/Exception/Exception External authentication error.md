@@ -5,6 +5,8 @@ IdentityServer4.Quickstart.UI.AccountController+<ExternalLoginCallback>d__8.Move
 
 > 使用`Quickstart.UI` OpenID Connect 登录之后
 
+>  需要设置`SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme`
+
 ```cs
 IdentityServer4.Quickstart.UI.AccountController+<ExternalLoginCallback>d__8.MoveNext() in AccountController.cs
 +
