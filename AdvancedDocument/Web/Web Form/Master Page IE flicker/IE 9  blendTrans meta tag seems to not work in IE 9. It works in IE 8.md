@@ -1,0 +1,1 @@
+[IE 9 - "blendTrans" meta tag seems to not work in IE 9. It works in IE 8/8](https://social.msdn.microsoft.com/Forums/ie/en-US/d41cfe03-5826-4606-96af-d6e67a799c2d/ie-9-blendtrans-meta-tag-seems-to-not-work-in-ie-9-it-works-in-ie-88?forum=iewebdevelopment)
