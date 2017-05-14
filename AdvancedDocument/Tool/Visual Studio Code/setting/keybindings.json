@@ -1,4 +1,7 @@
 // Place your key bindings in this file to overwrite the defaults
+
+// C:\Users\wei\AppData\Roaming\Code\User
+
 [
     { "key": "shift+alt+down",         "command": "editor.action.insertCursorBelow","when": "editorTextFocus" }
     ,
