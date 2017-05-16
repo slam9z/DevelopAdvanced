@@ -3,5 +3,10 @@
 // C:\Users\wei\AppData\Roaming\Code\User
 
 {
-    "files.autoSave": "onFocusChange"
+    "files.autoSave": "afterDelay",
+    "workbench.sideBar.location": "left",
+    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.iconTheme": "vs-seti",
+    "git.confirmSync": false,
+    "window.zoomLevel": 0
 }
